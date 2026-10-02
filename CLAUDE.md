@@ -4,7 +4,7 @@ Aide-mémoire Deadlock personnel : chrono de timings pour second écran + fiches
 
 ## État
 
-Quatre onglets construits, sans framework ni compilation, contrôlés dans Chromium mais pas encore essayés en partie réelle : Timeline (`index.html`, `js/timeline.js`), Carte (`carte.html`, `js/carte.js`), Mémo (`memo.html`, `js/memo.js`), Héros (`heros.html`, `js/heros.js`). `js/commun.js` porte le réglage de niveau partagé (clé `dln.niveau.v1`) et le chargement des données ; `css/style.css` est commun. Onglets Counters et Patch : à faire. Données de jeu : une collecte brute (`collecte/`) et les événements retenus pour le chrono (`data/timeline.json`). Repo GitHub `crakee/DeadLock_Noob` (public), branche `main` poussée.
+Quatre onglets construits, sans framework ni compilation, contrôlés dans Chromium mais pas encore essayés en partie réelle : Timeline (`index.html`, `js/timeline.js`), Carte (`carte.html`, `js/carte.js`), Mémo (`memo.html`, `js/memo.js`), Héros (`heros.html`, `js/heros.js`), Rôles (`roles.html`, `js/roles.js` : une fiche détaillée par rôle, reconstruite en HTML/SVG à partir des fiches de la vidéo de Wouks — les captures d'origine dans `docs/` sont ignorées par git et ne se publient pas). `js/commun.js` porte le réglage de niveau partagé (clé `dln.niveau.v1`) et le chargement des données ; `css/style.css` est commun. Onglets Counters (`counters.html`, `js/counters.js`) et Patch (`patch.html`, `js/patch.js`) : construits et contrôlés dans Chromium le 2 octobre 2026. Données de jeu : une collecte brute (`collecte/`) et les événements retenus pour le chrono (`data/timeline.json`). Repo GitHub `crakee/DeadLock_Noob` (public), branche `main` poussée.
 
 Site en ligne : `https://crakee.github.io/DeadLock_Noob/`, servi par GitHub Pages depuis la branche `gh-pages`. Pour publier : `git push origin main:gh-pages` après le push sur `main`.
 
@@ -25,7 +25,9 @@ Pour les valeurs : les pages de deadlock.wiki sont des gabarits, les chiffres so
 | `data/heroes.json`, `items.json`, `hero-stats.json`, `map.json` | Héros et compétences, objets, winrates par tranche de rang, carte et ses couches | `python3 outils/maj_donnees.py --patch "…" --depuis AAAA-MM-JJ` |
 | `data/map-elements.json` | Fiche de chaque élément de la carte : comment le reconnaître, effet, comment s'en servir | à la main, depuis le wiki |
 | `data/memo.json` | Mémo de macro en fiches, dont Gun contre Spirit | à la main, depuis `collecte/` |
-| `data/roles.json` | Rôles et héros par rôle (jugement, vidéo de Wouks) | à la main |
+| `data/roles.json` | Rôles et héros par rôle, définition, boucle de jeu, courbe d'impact, lexique (jugement, vidéo de Wouks) | à la main |
+| `data/counters.json` | Menaces (ce que fait un héros), objets qui y répondent, menaces et astuces par héros : classé à la main d'après le texte des compétences et des objets | à la main |
+| `data/patch.json` | Résumés reformulés des derniers patchs, changements des héros de l'utilisateur | à la main, depuis l'API `/v2/patches` et le wiki |
 | `data/profil.json` | Héros joués et à essayer, tranche de rang par défaut (préférences, pas données de jeu) | à la main |
 
 **Réglage de niveau unique** (demande de l'utilisateur) : un seul curseur 1 débutant / 2 intermédiaire / 3 avancé filtre la Timeline, le Mémo et les couches de la carte, plutôt qu'une version par rang. Le champ s'appelle `niveau` partout. Le rappel minimap doit pouvoir être désactivé.

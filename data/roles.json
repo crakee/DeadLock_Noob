@@ -1,8 +1,9 @@
 {
  "meta": {
-  "source": "Vidéo sur les rôles, Wouks – Deadlock Academy (transcription du 2026-10-02, lien à compléter), reformulée.",
+  "source": "Vidéo sur les rôles, Wouks – Deadlock Academy (transcription et captures des fiches du 2026-10-02, lien à compléter), reformulée.",
   "nature": "Jugement d'un joueur, pas une donnée du jeu : le jeu n'attribue aucun rôle. Les listes de héros changent avec la meta ; les rôles eux-mêmes sont plus stables.",
-  "verifie_le": "2026-10-02"
+  "verifie_le": "2026-10-02",
+  "courbes": "`courbe` reprend l'allure du graphique « impact selon les souls » de la vidéo : points [moment, impact] avec moment de 0 (début) à 3 (fin de late game) et impact de 0 à 1. Sans échelle : une forme, pas une mesure."
  },
  "roles": [
   {
@@ -60,7 +61,45 @@
      "id": 76,
      "nom": "Graves"
     }
-   ]
+   ],
+   "definition": [
+    "Carry principal de fin de partie, souvent gun.",
+    "A besoin de beaucoup de farm pour atteindre ses pics de puissance."
+   ],
+   "boucle": {
+    "depuis": "Waves",
+    "vers": [
+     "Jungle (camps, Sinner's Sacrifice)"
+    ]
+   },
+   "combats": {
+    "participe": "non",
+    "texte": "Sauf exception de macro ou besoin de l'équipe."
+   },
+   "pic": "Autour de 25 000 souls (avis de la vidéo).",
+   "courbe": [
+    [
+     0,
+     0.02
+    ],
+    [
+     1,
+     0.08
+    ],
+    [
+     2,
+     0.35
+    ],
+    [
+     2.5,
+     0.62
+    ],
+    [
+     3,
+     1
+    ]
+   ],
+   "position": "side"
   },
   {
    "id": "off_carry",
@@ -74,7 +113,8 @@
    },
    "quoi_faire": "Repousser sa side lane, puis rejoindre le centre pour les combats, les ganks et les urnes. C'est lui qui apporte les dégâts en milieu de partie.",
    "a_eviter": [
-    "Rester passif sur sa lane à farmer : sa fenêtre d'impact est le milieu de partie."
+    "Ne pas être assez actif et agressif en milieu de partie.",
+    "Rester passif sur sa lane à farmer : sa fenêtre d'impact est le milieu de partie, il faut en profiter."
    ],
    "objectifs": "Doit être présent aux combats et aux urnes.",
    "heros": [
@@ -116,7 +156,51 @@
      "id": 3,
      "nom": "Vindicta"
     }
-   ]
+   ],
+   "definition": [
+    "Carry secondaire de milieu de partie, souvent spirit.",
+    "A besoin de farm pour atteindre ses pics de puissance, mais moins que le main carry."
+   ],
+   "boucle": {
+    "depuis": "Waves",
+    "vers": [
+     "Gank mid",
+     "Counter jungle"
+    ]
+   },
+   "but": "Peser en milieu de partie.",
+   "combats": {
+    "participe": "oui",
+    "texte": "C'est la première source de dégâts de l'équipe : présence indispensable."
+   },
+   "pic": "Entre 10 000 et 15 000 souls (avis de la vidéo).",
+   "courbe": [
+    [
+     0,
+     0.03
+    ],
+    [
+     0.5,
+     0.42
+    ],
+    [
+     1,
+     0.62
+    ],
+    [
+     1.5,
+     0.78
+    ],
+    [
+     2,
+     0.7
+    ],
+    [
+     3,
+     0.55
+    ]
+   ],
+   "position": "side_autre"
   },
   {
    "id": "tank",
@@ -166,12 +250,45 @@
      "id": 15,
      "nom": "Bebop"
     }
-   ]
+   ],
+   "definition": [
+    "La frontline de l'équipe, très résistant.",
+    "Doit prendre le focus pendant les combats.",
+    "Cherche à déstabiliser les carries adverses."
+   ],
+   "boucle": {
+    "depuis": "Waves",
+    "vers": [
+     "Chercher une bonne engage",
+     "Counter jungle",
+     "Gank side lane",
+     "Accompagner l'urne"
+    ]
+   },
+   "combats": {
+    "participe": "oui",
+    "texte": "Participe."
+   },
+   "courbe": [
+    [
+     0,
+     0.38
+    ],
+    [
+     1,
+     0.55
+    ],
+    [
+     3,
+     0.55
+    ]
+   ],
+   "position": "centre"
   },
   {
    "id": "catch",
    "nom": "Catch / playmaker",
-   "richesse": 3,
+   "richesse": 2,
    "place": "Au centre, en mouvement permanent",
    "puissance": {
     "debut": "moyen",
@@ -180,7 +297,8 @@
    },
    "quoi_faire": "Sortir un adversaire de sa position pour lancer un combat en surnombre. Beaucoup se déplacer en fin de laning et en milieu de partie pour attraper des isolés.",
    "a_eviter": [
-    "Rater son attrape : sans elle, l'utilité du héros s'effondre."
+    "Rater sa mécanique (l'attrape) : sans elle, l'utilité du héros s'effondre.",
+    "Mal lire le jeu : attraper au mauvais endroit ou au mauvais moment."
    ],
    "objectifs": "Demande une bonne lecture de la carte. Cible idéale : le main carry adverse dans sa jungle.",
    "heros": [
@@ -217,12 +335,24 @@
      "nom": "Vindicta"
     }
    ],
-   "aussi": []
+   "aussi": [],
+   "definition": [
+    "Initiateur de combat, rôle utilitaire par excellence.",
+    "Son kit est utile avec ou sans souls.",
+    "Pic de puissance en milieu de partie."
+   ],
+   "but": "Roaming et counter jungle.",
+   "objets_cites": [
+    "Slowing Hex",
+    "Knockdown",
+    "Cursed Relic"
+   ],
+   "position": "centre"
   },
   {
    "id": "assassin",
    "nom": "Assassin / perturbateur",
-   "richesse": 3,
+   "richesse": 2,
    "place": "Au centre, sur les flancs",
    "puissance": {
     "debut": "moyen",
@@ -231,7 +361,8 @@
    },
    "quoi_faire": "Gros dégâts en très peu de temps, mobile, fort en 1 contre 1. Trouver des cibles isolées et les punir ; en fin de partie, diviser l'équipe adverse pendant les combats.",
    "a_eviter": [
-    "Engager sans avoir vérifié où sont les autres ennemis."
+    "Mal lire le jeu : engager sans avoir vérifié où sont les autres ennemis.",
+    "Prendre un mauvais combat."
    ],
    "objectifs": "Combats ciblés plutôt que mêlée générale.",
    "heros": [
@@ -260,7 +391,14 @@
      "nom": "Viscous"
     }
    ],
-   "aussi": []
+   "aussi": [],
+   "definition": [
+    "Beaucoup de dégâts en très peu de temps,",
+    "et/ou fort en spacing et en mobilité,",
+    "et/ou excellent en 1 contre 1."
+   ],
+   "but": "Milieu de partie : punir les cibles isolées. Fin de partie : spacing, diviser l'équipe adverse.",
+   "position": "centre"
   },
   {
    "id": "support",
@@ -312,7 +450,8 @@
      "nom": "Ivy"
     }
    ],
-   "aussi": []
+   "aussi": [],
+   "position": "centre"
   }
  ],
  "hybrides": {
@@ -357,6 +496,56 @@
   {
    "nom": "Équilibre gun / spirit",
    "texte": "Une équipe entièrement gun ou entièrement spirit se contre facilement avec un seul type de résistance. À repérer dès le début de partie."
+  }
+ ],
+ "lexique": [
+  {
+   "terme": "Carry",
+   "texte": "Héros qui fait gagner la partie par ses dégâts une fois riche."
+  },
+  {
+   "terme": "Farm",
+   "texte": "Gagner des souls sur les waves, les camps de jungle et les objectifs."
+  },
+  {
+   "terme": "Power spike",
+   "texte": "Moment où un héros devient nettement plus fort : objet clé acheté, palier de souls atteint."
+  },
+  {
+   "terme": "Frontline",
+   "texte": "Les héros placés devant, qui encaissent pour que les autres fassent des dégâts."
+  },
+  {
+   "terme": "Focus",
+   "texte": "La cible sur laquelle l'équipe adverse concentre ses dégâts."
+  },
+  {
+   "terme": "Engage",
+   "texte": "Action qui déclenche le combat : foncer, attraper ou immobiliser un adversaire."
+  },
+  {
+   "terme": "Gank",
+   "texte": "Venir par surprise sur une lane pour tuer un adversaire en surnombre."
+  },
+  {
+   "terme": "Counter jungle",
+   "texte": "Prendre les camps de la jungle adverse pour priver l'ennemi de farm."
+  },
+  {
+   "terme": "Roaming",
+   "texte": "Quitter sa lane pour se déplacer sur la carte et créer des occasions ailleurs."
+  },
+  {
+   "terme": "Spacing",
+   "texte": "Gérer sa distance : rester à portée de sa cible sans être à portée des autres."
+  },
+  {
+   "terme": "AFK farm",
+   "texte": "Farmer dans son coin sans regarder ce que fait l'équipe."
+  },
+  {
+   "terme": "Bag non sécurisé",
+   "texte": "Souls gagnées récemment et pas encore sécurisées (« unsecured ») : la vidéo dit de ne pas mourir en en portant beaucoup. Mécanique exacte non vérifiée ici."
   }
  ]
 }

@@ -8,3 +8,6 @@ medias/
 
 .venv/
 __pycache__/
+
+# Captures de vidéos de tiers : sources de travail, reprises en données dans data/roles.json
+docs/Capture*.png

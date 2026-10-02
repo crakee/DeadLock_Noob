@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
-  <title>Héros · DeadLock_Noob</title>
+  <title>Rôles · DeadLock_Noob</title>
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -14,19 +14,12 @@
       <a class="onglet" href="index.html">Timeline</a>
       <a class="onglet" href="carte.html">Carte</a>
       <a class="onglet" href="memo.html">Mémo</a>
-      <a class="onglet actif" href="heros.html" aria-current="page">Héros</a>
-      <a class="onglet" href="roles.html">Rôles</a>
+      <a class="onglet" href="heros.html">Héros</a>
+      <a class="onglet actif" href="roles.html" aria-current="page">Rôles</a>
       <a class="onglet" href="counters.html">Counters</a>
       <a class="onglet" href="patch.html">Patch</a>
     </nav>
     <div class="reglages">
-      <label class="reglage">Rang
-        <select id="opt-tranche"></select>
-      </label>
-      <label class="reglage">Rôle
-        <select id="opt-role"><option value="">tous</option></select>
-      </label>
-      <label class="reglage"><input type="checkbox" id="opt-miens"> Mes héros</label>
       <label class="reglage">Niveau
         <select id="opt-niveau">
           <option value="1">1 · débutant</option>
@@ -44,19 +37,15 @@
       <code>http://localhost:8000</code>.</p>
   </div>
 
-  <main id="app" class="page page-heros" hidden>
-    <section class="panneau" aria-label="Liste des héros">
-      <h2>Héros, du meilleur winrate au plus faible</h2>
-      <div id="liste" class="heros-liste"></div>
-    </section>
-    <section class="panneau" aria-label="Fiche du héros">
-      <div id="fiche" class="heros-fiche"></div>
-    </section>
+  <main id="app" class="page page-roles" hidden>
+    <nav id="choix" class="roles-choix" aria-label="Choisir un rôle"></nav>
+    <section id="fiche" class="panneau roles-fiche" aria-live="polite"></section>
+    <section id="annexes" class="roles-annexes"></section>
   </main>
 
   <footer id="meta" class="meta"></footer>
 
   <script src="js/commun.js"></script>
-  <script src="js/heros.js"></script>
+  <script src="js/roles.js"></script>
 </body>
 </html>

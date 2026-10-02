@@ -194,6 +194,9 @@
     document.getElementById('meta').textContent = 'Patch ' + heros.meta.patch + ' · stats depuis le ' + stats.meta.depuis +
       ' · un écart de winrate inférieur à la marge (±) n\'est pas un signal · rôles : avis de joueur, pas une donnée du jeu';
     construireFiltres();
+    // Lien direct depuis l'onglet Rôles : heros.html#h=13
+    const vise = /^#h=(\d+)$/.exec(location.hash);
+    if (vise) { reglages.choisi = Number(vise[1]); reglages.role = ''; reglages.miens = false; sauver(); }
     if (reglages.choisi == null) reglages.choisi = profil.heros_joues[0];
     afficher();
     DLN.surNiveau(afficher);
