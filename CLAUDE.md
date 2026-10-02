@@ -4,11 +4,11 @@ Aide-mémoire Deadlock personnel : chrono de timings pour second écran + fiches
 
 ## État
 
-Phase de cadrage terminée, aucun code d'interface. Données de jeu : une collecte brute (`collecte/`) et les événements retenus pour le chrono (`data/timeline.json`). Repo GitHub `crakee/DeadLock_Noob`, branche `main` poussée.
+Onglet Timeline construit (`index.html`, `css/style.css`, `js/timeline.js`, sans framework ni compilation) et contrôlé dans Chromium sur les critères du brief ; pas encore essayé en partie réelle. Onglets Héros et Objets : rien. Données de jeu : une collecte brute (`collecte/`) et les événements retenus pour le chrono (`data/timeline.json`). Repo GitHub `crakee/DeadLock_Noob`, branche `main` poussée.
 
 ## Prochaine étape
 
-Timeline : la collecte brute des timings est dans `collecte/timings-brut.md` (2 octobre 2026, patch « City Never Sleeps » du 29 septembre). Les événements retenus sont dans `data/timeline.json`. Prochaine étape : construire l'onglet Timeline en suivant `docs/brief-front-timeline.md`. Restent à lever en jeu les points marqués `incertain` (horaire de l'Unstable Rift surtout).
+Timeline : la collecte brute des timings est dans `collecte/timings-brut.md` (2 octobre 2026, patch « City Never Sleeps » du 29 septembre). Les événements retenus sont dans `data/timeline.json`. Le schéma du JSON est décrit dans `docs/brief-front-timeline.md`. Prochaine étape : essai en partie réelle, puis schéma de données Héros / Objets. Restent à lever en jeu les points marqués `incertain` (horaire de l'Unstable Rift surtout).
 
 `collecte/` contient aussi des notes tirées de vidéos (jugement, pas données). `outils/` sert à transcrire une vidéo sur le PC Windows de l'utilisateur (mode d'emploi dans `outils/tuto_transcription.md`).
 

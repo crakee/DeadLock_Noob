@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Timeline · DeadLock_Noob</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="barre">
+    <nav class="onglets" aria-label="Sections">
+      <a class="onglet actif" href="index.html" aria-current="page">Timeline</a>
+      <span class="onglet inactif" title="À venir">Héros</span>
+      <span class="onglet inactif" title="À venir">Objets</span>
+    </nav>
+    <div class="reglages">
+      <div id="filtres" class="filtres" role="group" aria-label="Catégories affichées"></div>
+      <label class="reglage">Préavis
+        <select id="opt-preavis">
+          <option value="0">normal</option>
+          <option value="15">+15 s</option>
+          <option value="30">+30 s</option>
+        </select>
+      </label>
+      <label class="reglage"><input type="checkbox" id="opt-son"> Son</label>
+      <label class="reglage"><input type="checkbox" id="opt-voix"> Voix</label>
+    </div>
+  </header>
+
+  <div id="erreur" class="erreur" hidden>
+    <h1>Données introuvables</h1>
+    <p id="erreur-texte"></p>
+    <p>Depuis le dossier du projet, lancer <code>python -m http.server</code> puis ouvrir
+      <code>http://localhost:8000</code>.</p>
+    <p>Sinon, choisir ici le fichier <code>data/timeline.json</code> :
+      <input type="file" id="erreur-fichier" accept=".json,application/json"></p>
+  </div>
+
+  <main id="app" hidden>
+    <section class="panneau horloge" aria-label="Horloge de partie">
+      <div class="horloge-ligne">
+        <div id="horloge" class="horloge-temps">0:00</div>
+        <div id="horloge-etat" class="horloge-etat">prêt</div>
+      </div>
+      <div class="commandes">
+        <button id="btn-marche" class="btn principal" type="button">Démarrer <kbd>Espace</kbd></button>
+        <div class="recalage" role="group" aria-label="Recaler l'horloge">
+          <button class="btn" type="button" data-recale="-10">−10</button>
+          <button class="btn" type="button" data-recale="-1">−1</button>
+          <button class="btn" type="button" data-recale="1">+1</button>
+          <button class="btn" type="button" data-recale="10">+10</button>
+        </div>
+        <form id="form-temps" class="saisie">
+          <input id="saisie-temps" type="text" inputmode="numeric" placeholder="12:34"
+                 aria-label="Régler l'horloge sur (mm:ss)" autocomplete="off">
+          <button class="btn" type="submit">Régler</button>
+        </form>
+        <button id="btn-zero" class="btn discret" type="button">Zéro</button>
+      </div>
+    </section>
+
+    <section class="panneau avenir" aria-label="À venir">
+      <h2>À venir</h2>
+      <ol id="avenir" class="avenir-liste"></ol>
+      <p id="avenir-vide" class="vide" hidden>Rien à annoncer.</p>
+    </section>
+
+    <section class="panneau declenches" aria-label="Minuteurs déclenchés">
+      <h2>Minuteurs</h2>
+      <div id="declenches" class="declenches-liste"></div>
+    </section>
+
+    <section class="panneau maintenant" aria-label="Maintenant">
+      <h2>Maintenant</h2>
+      <div class="phase">
+        <span id="phase-nom" class="phase-nom"></span>
+        <span id="phase-resume" class="phase-resume"></span>
+      </div>
+      <div id="courbes" class="courbes"></div>
+      <p id="palier" class="palier"></p>
+    </section>
+
+    <section class="panneau checklist" aria-label="Priorités">
+      <h2>Priorités <span class="note">conseils</span></h2>
+      <ol id="checklist"></ol>
+    </section>
+
+    <section class="panneau frise" aria-label="Frise de la partie">
+      <div id="frise" class="frise-piste"></div>
+      <p id="detail" class="detail">Cliquer un événement pour voir son détail.</p>
+    </section>
+  </main>
+
+  <footer id="meta" class="meta"></footer>
+
+  <script src="js/timeline.js"></script>
+</body>
+</html>

@@ -1,0 +1,363 @@
+:root {
+  --fond: #0b0d10;
+  --panneau: #151a20;
+  --bord: #27303a;
+  --texte: #f2f4f6;
+  --doux: #9aa6b2;
+  --alerte: #ffb020;
+  --alerte-fond: #3a2a08;
+
+  --cat-jungle: #6fd66f;
+  --cat-objectif: #ff6b9d;
+  --cat-lane: #5aa9ff;
+  --cat-structure: #b58cff;
+  --cat-deplacement: #4fd6d6;
+  --cat-phase: #9aa6b2;
+}
+
+/* Tout est dimensionné en rem : la taille de base suit la hauteur de l'écran
+   pour tenir sans défilement à 1080p et rester lisible de loin. */
+html { font-size: clamp(12px, 1.55vh, 22px); }
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  background: var(--fond);
+  color: var(--texte);
+  font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.25;
+}
+
+[hidden] { display: none !important; }
+
+h2 {
+  margin: 0 0 .4rem;
+  font-size: .8rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--doux);
+}
+
+kbd {
+  font: inherit;
+  font-size: .75em;
+  padding: .05em .4em;
+  border: 1px solid currentColor;
+  border-radius: .3em;
+  opacity: .7;
+}
+
+code { background: var(--panneau); padding: .1em .35em; border-radius: .25em; }
+
+/* ---------- barre ---------- */
+
+.barre {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem 1.5rem;
+  padding: .4rem .75rem;
+  border-bottom: 1px solid var(--bord);
+}
+
+.onglets { display: flex; gap: .25rem; }
+.onglet {
+  padding: .3rem .8rem;
+  border-radius: .4rem;
+  color: var(--doux);
+  text-decoration: none;
+  font-weight: 600;
+}
+.onglet.actif { background: var(--panneau); color: var(--texte); }
+.onglet.inactif { opacity: .45; }
+
+.reglages { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem 1rem; font-size: .85rem; }
+.reglage { display: flex; align-items: center; gap: .35rem; color: var(--doux); }
+.reglage select {
+  font: inherit;
+  color: var(--texte);
+  background: var(--panneau);
+  border: 1px solid var(--bord);
+  border-radius: .3rem;
+  padding: .1rem .3rem;
+}
+.filtres { display: flex; flex-wrap: wrap; gap: .3rem; }
+.filtre {
+  font: inherit;
+  padding: .15rem .6rem;
+  border-radius: 1rem;
+  border: 1px solid var(--cat);
+  background: transparent;
+  color: var(--texte);
+  cursor: pointer;
+}
+.filtre[aria-pressed="false"] { border-color: var(--bord); color: var(--doux); text-decoration: line-through; }
+
+/* ---------- grille ---------- */
+
+main {
+  display: grid;
+  gap: .6rem;
+  padding: .6rem .75rem;
+  min-height: 0;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  grid-template-rows: auto auto 1fr auto;
+  grid-template-areas:
+    "horloge    avenir"
+    "declenches avenir"
+    "maintenant checklist"
+    "frise      frise";
+}
+
+.panneau {
+  background: var(--panneau);
+  border: 1px solid var(--bord);
+  border-radius: .6rem;
+  padding: .6rem .8rem;
+  min-width: 0;
+}
+.horloge { grid-area: horloge; }
+.avenir { grid-area: avenir; display: flex; flex-direction: column; }
+.declenches { grid-area: declenches; }
+.maintenant { grid-area: maintenant; }
+.checklist { grid-area: checklist; }
+.frise { grid-area: frise; }
+
+/* ---------- boutons ---------- */
+
+.btn {
+  font: inherit;
+  font-weight: 600;
+  color: var(--texte);
+  background: #222a33;
+  border: 1px solid var(--bord);
+  border-radius: .4rem;
+  padding: .45rem .8rem;
+  cursor: pointer;
+}
+.btn:hover:not(:disabled) { background: #2c3642; }
+.btn:disabled { opacity: .4; cursor: default; }
+.btn.principal { background: #e9edf1; color: #0b0d10; border-color: #e9edf1; font-size: 1.15rem; padding: .5rem 1.1rem; }
+.btn.principal:hover { background: #fff; }
+.btn.discret { background: transparent; color: var(--doux); }
+.btn.confirmer { background: #7a1f1f; border-color: #c0392b; color: #fff; }
+:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+/* ---------- horloge ---------- */
+
+.horloge-ligne { display: flex; align-items: baseline; gap: 1rem; }
+.horloge-temps {
+  font-size: 8rem;
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -.02em;
+}
+.horloge-etat { font-size: 1.1rem; color: var(--doux); text-transform: uppercase; letter-spacing: .08em; }
+.horloge.en-pause .horloge-temps { color: var(--doux); }
+.horloge.en-pause .horloge-etat { color: var(--alerte); }
+
+.commandes { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin-top: .5rem; }
+.recalage { display: flex; gap: .25rem; }
+.saisie { display: flex; gap: .25rem; }
+.saisie input {
+  font: inherit;
+  width: 5.5em;
+  color: var(--texte);
+  background: var(--fond);
+  border: 1px solid var(--bord);
+  border-radius: .4rem;
+  padding: .45rem .6rem;
+  font-variant-numeric: tabular-nums;
+}
+.saisie input.invalide { border-color: #c0392b; }
+.commandes .discret { margin-left: auto; padding-inline: .5rem; }
+
+/* ---------- à venir ---------- */
+
+.avenir-liste {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+.carte {
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: .2rem 1rem;
+  padding: .5rem .9rem;
+  border: 2px solid var(--bord);
+  border-left: .5rem solid var(--cat);
+  border-radius: .5rem;
+  background: var(--fond);
+  cursor: pointer;
+}
+.carte-nom { font-size: 2rem; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.carte-conseil { font-size: 1.15rem; color: var(--doux); }
+.carte-droite { grid-row: 1 / span 2; grid-column: 2; text-align: right; }
+.carte-compte { font-size: 3.4rem; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; }
+.carte-heure { font-size: 1rem; color: var(--doux); font-variant-numeric: tabular-nums; }
+
+.carte.alerte { border-color: var(--alerte); border-left-color: var(--cat); background: var(--alerte-fond); }
+.carte.alerte .carte-compte { color: var(--alerte); }
+.carte.alerte .carte-conseil { color: var(--texte); }
+.carte.maintenant, .carte.ouverte { background: var(--alerte); border-color: var(--alerte); border-left-color: var(--cat); color: #14100a; }
+.carte.maintenant .carte-conseil, .carte.ouverte .carte-conseil,
+.carte.maintenant .carte-heure, .carte.ouverte .carte-heure { color: #14100a; }
+.carte.maintenant .carte-compte, .carte.ouverte .carte-compte { font-size: 2.2rem; }
+
+.marque {
+  display: inline-block;
+  margin-left: .5em;
+  padding: 0 .4em;
+  font-size: .7rem;
+  font-weight: 600;
+  vertical-align: middle;
+  border: 1px dashed currentColor;
+  border-radius: .3em;
+  opacity: .75;
+}
+.vide { color: var(--doux); }
+
+/* ---------- minuteurs déclenchés ---------- */
+
+.declenches-liste { display: flex; flex-direction: column; gap: .4rem; }
+.minuteur { display: flex; gap: .3rem; }
+.minuteur-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  text-align: left;
+  font-size: 1.35rem;
+  padding: .55rem .8rem;
+  border-width: 2px;
+}
+.minuteur-nom { flex: 1; min-width: 0; }
+.minuteur-compte { font-size: 1.9rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.minuteur-btn.repos .minuteur-compte { font-size: 1.1rem; color: var(--doux); font-weight: 400; }
+.minuteur-btn.attente { border-color: #4a5766; background: var(--fond); }
+.minuteur-btn.alerte { border-color: var(--alerte); background: var(--alerte-fond); }
+.minuteur-btn.alerte .minuteur-compte { color: var(--alerte); }
+.minuteur-btn.maintenant, .minuteur-btn.ouverte { background: var(--alerte); border-color: var(--alerte); color: #14100a; }
+.minuteur-annuler { padding: .3rem .7rem; color: var(--doux); }
+
+/* ---------- maintenant ---------- */
+
+.phase { display: flex; flex-wrap: wrap; align-items: baseline; gap: .2rem .8rem; }
+.phase-nom { font-size: 2.3rem; font-weight: 700; }
+.phase-resume { font-size: 1.25rem; color: var(--doux); }
+.courbes { display: flex; gap: 1.5rem; margin-top: .5rem; }
+.courbe-valeur { font-size: 3.2rem; font-weight: 700; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.courbe-nom { font-size: .85rem; color: var(--doux); }
+.palier { margin: .5rem 0 0; font-size: 1.15rem; color: var(--doux); }
+.palier strong { color: var(--texte); font-variant-numeric: tabular-nums; }
+
+/* ---------- checklist ---------- */
+
+.checklist ol { margin: 0; padding-left: 1.3em; font-size: 1.35rem; }
+.checklist li { margin: .45rem 0; }
+.checklist li::marker { color: var(--doux); font-weight: 700; }
+.note { text-transform: none; letter-spacing: 0; font-weight: 400; opacity: .8; }
+.note::before { content: "· "; }
+
+/* ---------- frise ---------- */
+
+.frise-piste { position: relative; margin: 0 1.5rem 0 6.5rem; }
+.frise-phases { position: relative; height: 1.3rem; }
+.frise-phase {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  padding: 0 .4rem;
+  font-size: .75rem;
+  line-height: 1.3rem;
+  color: var(--doux);
+  border-left: 1px solid var(--doux);
+  background: rgba(255, 255, 255, .04);
+  overflow: hidden;
+  white-space: nowrap;
+}
+.frise-phase:nth-child(even) { background: rgba(255, 255, 255, .09); }
+.frise-rang { position: relative; height: 1.15rem; border-top: 1px solid var(--bord); }
+.frise-rang-nom {
+  position: absolute;
+  right: 100%;
+  width: 6rem;
+  padding-right: .6rem;
+  text-align: right;
+  font-size: .75rem;
+  line-height: 1.15rem;
+  color: var(--cat);
+}
+.frise-point {
+  position: absolute;
+  top: 50%;
+  width: .7rem;
+  height: .7rem;
+  padding: 0;
+  transform: translate(-50%, -50%);
+  border: 0;
+  border-radius: 50%;
+  background: var(--cat);
+  cursor: pointer;
+}
+.frise-point.info { background: transparent; border: 2px solid var(--cat); }
+.frise-point.plage { border-radius: .35rem; transform: translateY(-50%); opacity: .8; }
+.frise-point.incertain { background: repeating-linear-gradient(90deg, var(--cat) 0 .3rem, transparent .3rem .5rem); }
+.frise-point:hover, .frise-point.choisi { outline: 2px solid #fff; outline-offset: 1px; }
+.frise-axe { position: relative; height: 1.1rem; border-top: 1px solid var(--bord); }
+.frise-graduation {
+  position: absolute;
+  top: .1rem;
+  transform: translateX(-50%);
+  font-size: .7rem;
+  color: var(--doux);
+  font-variant-numeric: tabular-nums;
+}
+.frise-curseur {
+  position: absolute;
+  top: 0;
+  bottom: 1.1rem;
+  width: 2px;
+  margin-left: -1px;
+  background: #fff;
+  pointer-events: none;
+}
+.detail { margin: .3rem 0 0; font-size: .95rem; color: var(--doux); min-height: 1.25em; }
+.detail strong { color: var(--texte); }
+
+/* ---------- pied, erreur ---------- */
+
+.meta { padding: .25rem .75rem .4rem; font-size: .75rem; color: var(--doux); }
+.erreur { max-width: 44rem; margin: 2rem auto; padding: 0 1rem; font-size: 1.1rem; }
+.erreur h1 { color: var(--alerte); }
+
+/* ---------- fenêtre étroite ou écran en portrait : une seule colonne ---------- */
+
+@media (max-width: 1000px), (orientation: portrait) {
+  main {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
+    grid-template-areas: "horloge" "avenir" "declenches" "maintenant" "checklist" "frise";
+  }
+  .horloge-temps { font-size: min(9rem, 26vw); }
+  .carte-nom { white-space: normal; }
+}
+@media (max-width: 600px) {
+  .carte-nom { font-size: 1.5rem; }
+  .carte-compte { font-size: 2.4rem; }
+  .frise-piste { margin-left: .5rem; }
+  .frise-rang-nom { display: none; }
+}

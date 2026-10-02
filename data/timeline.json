@@ -239,6 +239,7 @@
       "id": "rift_suivant",
       "nom": "Unstable Rift suivant",
       "bouton": "Rift terminé",
+      "termine": "rift",
       "delais_s": [420],
       "marge_s": 60,
       "annonce_avant_s": 60,

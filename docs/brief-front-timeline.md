@@ -45,7 +45,7 @@ Champs communs : `id`, `nom`, `categorie`, `annonce_avant_s`, `fiabilite`, `deta
 - `fiabilite` : `donnees`, `wiki` ou `incertain`. Les deux derniers doivent se distinguer visuellement (marque discrète, pas d'alarme) ; `incertain` affiche en plus un « ≈ ».
 - `categorie` : `jungle`, `objectif`, `lane`, `structure`, `deplacement`, `phase`. Sert au code couleur et aux filtres.
 
-`declenches[]` : un bouton (`bouton`) lance un compte à rebours de `delais_s[n]`, où `n` est le nombre de fois où le bouton a déjà servi ; le dernier délai se répète. `marge_s`, s'il existe, s'affiche en « ± ».
+`declenches[]` : un bouton (`bouton`) lance un compte à rebours de `delais_s[n]`, où `n` est le nombre de fois où le bouton a déjà servi ; le dernier délai se répète. `marge_s`, s'il existe, s'affiche en « ± ». `termine`, s'il existe, est l'`id` d'un événement que l'appui sur le bouton retire de « À venir » (le bouton « Rift terminé » clôt ainsi la fenêtre du premier Rift).
 
 `courbes.respawn.points_s` : interpolation linéaire entre les points, plafonnée à `plafond_s`. `courbes.vagues.paliers_s` : valeur du dernier palier atteint.
 
