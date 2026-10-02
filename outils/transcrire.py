@@ -1,7 +1,7 @@
 """Transcrit une vidéo ou un fichier audio en texte horodaté (faster-whisper, sur processeur).
 
 Usage : python transcrire.py fichier.webm [modele]
-Écrit `fichier.webm.txt`, une ligne par segment : [mm:ss] texte. Mode d'emploi dans README.md.
+Écrit `fichier.webm.txt`, une ligne par segment : [mm:ss] texte. Mode d'emploi dans tuto_transcription.md.
 """
 
 import os, sys

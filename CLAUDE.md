@@ -10,7 +10,7 @@ Phase de cadrage terminée, aucun code. Seule donnée de jeu : une collecte brut
 
 Timeline : la collecte brute des timings est dans `collecte/timings-brut.md` (2 octobre 2026, patch « City Never Sleeps » du 29 septembre). Les événements retenus sont dans `data/timeline.json`. Prochaine étape : construire l'onglet Timeline en suivant `docs/brief-front-timeline.md`. Restent à lever en jeu les points marqués `incertain` (horaire de l'Unstable Rift surtout).
 
-`collecte/` contient aussi des notes tirées de vidéos (jugement, pas données). `outils/` sert à transcrire une vidéo sur le PC Windows de l'utilisateur (mode d'emploi dans `outils/README.md`).
+`collecte/` contient aussi des notes tirées de vidéos (jugement, pas données). `outils/` sert à transcrire une vidéo sur le PC Windows de l'utilisateur (mode d'emploi dans `outils/tuto_transcription.md`).
 
 Pour les valeurs : les pages de deadlock.wiki sont des gabarits, les chiffres sont dans `Data:Convars.json`, `Data:NpcData.json`, `Data:GenericData.json`, `Data:MiscData.json` (lisibles avec `index.php?title=…&action=raw`) et dans `/v1/assets/misc-entities` de l'API.
 
