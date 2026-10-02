@@ -27,3 +27,7 @@ Pour les valeurs : les pages de deadlock.wiki sont des gabarits, les chiffres so
 `https://api.deadlock-api.com` — JSON public, sans clé, spec sur `/openapi.json`. Les assets sont sur `/v1/assets/heroes` et `/v1/assets/items` (le sous-domaine `assets.deadlock-api.com` ne se résolvait pas depuis cette machine le 2 octobre 2026).
 
 Identifiants des héros joués par l'utilisateur : Haze 13, Mirage 52, Yamato 27, Lady Geist 4.
+
+## Public visé
+
+L'utilisateur débute (environ 20 h de jeu début octobre 2026, nouveau sur les MOBA, pas encore de rang). Par défaut : tranche de rang la plus basse (`initiate_sentinel` dans `data/hero-stats.json`), conseils de base avant les notions avancées, termes de MOBA expliqués.
