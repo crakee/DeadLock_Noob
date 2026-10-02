@@ -4,7 +4,7 @@ Aide-mémoire Deadlock personnel : chrono de timings pour second écran + fiches
 
 ## État
 
-Phase de cadrage terminée, aucun code. Seule donnée de jeu : une collecte brute non triée (voir ci-dessous). Repo GitHub `crakee/DeadLock_Noob`, encore vide côté distant (rien n'a été commité).
+Phase de cadrage terminée, aucun code d'interface. Données de jeu : une collecte brute (`collecte/`) et les événements retenus pour le chrono (`data/timeline.json`). Repo GitHub `crakee/DeadLock_Noob`, branche `main` poussée.
 
 ## Prochaine étape
 
