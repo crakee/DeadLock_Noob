@@ -18,7 +18,7 @@ Ouvrir PowerShell normalement (pas en administrateur) et se placer dans le dossi
 cd C:\Users\lucas
 ```
 
-1. Télécharger l'audio — remplacer `nom` et le lien :
+1. Télécharger l'audio — remplacer `nom` et le lien. Prendre un `nom` différent à chaque vidéo : si `nom.webm` existe déjà, yt-dlp ne télécharge rien et garde l'ancien fichier.
 
 ```powershell
 python -m yt_dlp -f bestaudio -o "nom.%(ext)s" "https://www.youtube.com/watch?v=XXXX"
@@ -56,6 +56,7 @@ Get-Content nom.webm.txt -Encoding utf8 | Set-Clipboard
 |---|---|---|
 | `can't open file '…\transcrire.py'` | PowerShell n'est pas dans le bon dossier, ou le script n'y est pas | `cd C:\Users\lucas`, vérifier avec `dir transcrire.py` |
 | `unexpected keyword argument 'metadata_errors'` | Ancienne version du script | Reprendre `transcrire.py` de ce dossier |
+| Même durée `Audio lu` et même texte pour des vidéos différentes ; yt-dlp affiche `has already been downloaded` | Le `nom` de l'étape 1 a été réutilisé : l'ancien fichier audio est resté en place | Changer de `nom` à chaque vidéo, ou supprimer l'ancien (`del nom.webm`) avant de télécharger |
 | Accents abîmés (`Ã©`) au collage | Lecture du fichier sans préciser l'encodage | Utiliser `-Encoding utf8` comme à l'étape 3 |
 | Invite `>>` qui ne rend pas la main | PowerShell attend la fin d'un bloc collé | Appuyer sur Entrée jusqu'à revoir `PS C:\…>` |
 

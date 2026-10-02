@@ -1,0 +1,456 @@
+{
+ "meta": {
+  "patch": "City Never Sleeps (2026-09-29)",
+  "verifie_le": "2026-10-02",
+  "niveaux": {
+   "1": "débutant : les règles qui évitent de perdre",
+   "2": "intermédiaire : décider quoi faire et quand",
+   "3": "avancé : jouer avec l'équipe et contre l'adversaire"
+  },
+  "sources": {
+   "donnees": "Mécanique vérifiée dans les fichiers du jeu ou le wiki (détail dans collecte/timings-brut.md)",
+   "conseil": "Jugement tiré des guides de Wouks – Deadlock Academy (collecte/video-*.md), reformulé",
+   "wiki": "Texte du wiki, non retrouvé dans les données"
+  },
+  "note": "Le texte `conseil` est un avis de joueur, pas un fait. Les valeurs chiffrées citées viennent des autres fichiers de data/ : les y corriger d'abord."
+ },
+ "sections": [
+  {
+   "id": "but",
+   "titre": "Le but du jeu en trente secondes",
+   "fiches": [
+    {
+     "niveau": 1,
+     "titre": "Comment on gagne",
+     "texte": "Chaque équipe pousse trois lanes. Sur chacune : un Guardian, puis un Walker, puis deux Base Guardians. Ensuite les deux Shrines, puis le Patron. Détruire le Patron adverse gagne la partie.",
+     "source": "donnees"
+    },
+    {
+     "niveau": 1,
+     "titre": "Les souls",
+     "texte": "Monnaie et expérience à la fois. Elles viennent des Troopers (100 + 2 par minute chacun), de la jungle, des kills et des objectifs. Plus de souls = plus d'objets et plus de niveaux.",
+     "source": "donnees"
+    },
+    {
+     "niveau": 1,
+     "titre": "Les trois phases",
+     "texte": "Laning (0 à 8 min) : on reste sur sa lane. Milieu de partie (8 à 20-25 min) : la carte s'ouvre, c'est là que tout se décide. Fin de partie : les morts durent longtemps, on reste groupé.",
+     "source": "conseil"
+    }
+   ]
+  },
+  {
+   "id": "waves",
+   "titre": "Les waves : la règle numéro un",
+   "fiches": [
+    {
+     "niveau": 1,
+     "titre": "Wave d'abord",
+     "texte": "Avant un combat, un camp, une urne ou une rotation : ma wave est-elle poussée ? Si non, c'est là que je vais. Une wave perdue, ce sont des souls perdues et un objectif qui prend des dégâts.",
+     "source": "conseil"
+    },
+    {
+     "niveau": 1,
+     "titre": "Récupérer toutes les souls d'un Trooper",
+     "texte": "La moitié tombe au sol (personne ne peut te la prendre), l'autre moitié flotte dans un orbe que l'adversaire peut tirer pour te la voler. Tue le Trooper au corps à corps et tu touches tout d'un coup.",
+     "source": "donnees"
+    },
+    {
+     "niveau": 1,
+     "titre": "Le rythme",
+     "texte": "Une wave toutes les 30 s jusqu'à 20:00, puis 25 s, puis 20 s à partir de 35:00.",
+     "source": "donnees"
+    },
+    {
+     "niveau": 2,
+     "titre": "Les trois états d'une lane",
+     "texte": "Mes Troopers avancent chez eux : j'ai la priorité, un adversaire doit venir s'en occuper. Leurs Troopers sont près de mon Walker : c'est à moi de repousser. Les waves se battent au milieu : je la prends, sans m'exposer.",
+     "source": "conseil"
+    },
+    {
+     "niveau": 2,
+     "titre": "La règle des deux waves",
+     "texte": "Tuer deux waves pour que mes Troopers aillent s'écraser sur leur Walker, puis partir faire autre chose. Pas de « une de plus ».",
+     "source": "conseil"
+    },
+    {
+     "niveau": 2,
+     "titre": "Ce que j'ai après avoir repoussé",
+     "texte": "Si un adversaire vient défendre : 30 à 45 s de liberté pour un camp, un achat ou un gank. Si personne ne peut venir avant 15 à 20 s : attaquer le Walker.",
+     "source": "conseil"
+    },
+    {
+     "niveau": 3,
+     "titre": "Priorité et avantage numérique",
+     "texte": "Chaque lane que je pousse occupe un adversaire. Priorité sur les trois lanes = trois adversaires occupés et leur jungle ouverte.",
+     "source": "conseil"
+    }
+   ]
+  },
+  {
+   "id": "minimap",
+   "titre": "Lire la minimap",
+   "fiches": [
+    {
+     "niveau": 1,
+     "titre": "Le réflexe",
+     "texte": "Se forcer à la regarder toutes les quelques secondes, jusqu'à ce que ce soit automatique. Une seule question au début : ma wave est-elle poussée ?",
+     "source": "conseil"
+    },
+    {
+     "niveau": 1,
+     "titre": "Qui est visible",
+     "texte": "Un ennemi n'apparaît que si un allié le voit, ou s'il tire sur tes Troopers ou sur un objectif. Ne pas le voir ne veut pas dire qu'il n'est pas là.",
+     "source": "donnees"
+    },
+    {
+     "niveau": 2,
+     "titre": "Ce qu'on y lit",
+     "texte": "Où sont mes alliés, où sont les ennemis visibles, quelles lanes sont poussées, quels camps sont disponibles. Leur jungle vidée = ils n'ont plus rien à y faire et vont chercher un combat.",
+     "source": "conseil"
+    },
+    {
+     "niveau": 2,
+     "titre": "Un adversaire a quitté sa lane",
+     "texte": "Le signaler à l'équipe (Tab puis clic sur son portrait). Ensuite deux réponses seulement : le suivre, ou profiter de son absence pour pousser.",
+     "source": "conseil"
+    },
+    {
+     "niveau": 1,
+     "titre": "Les icônes de camp",
+     "texte": "Triangle seul : small camp. Un trait dessous : medium. Deux traits : large. Rectangle avec un cercle au milieu : Sinner's Sacrifice.",
+     "source": "donnees"
+    }
+   ]
+  },
+  {
+   "id": "jungle",
+   "titre": "La jungle sans y laisser sa vie",
+   "fiches": [
+    {
+     "niveau": 1,
+     "titre": "Viser l'œil",
+     "texte": "Les Haunts réduisent de 50 à 60 % les dégâts reçus sur le corps. L'œil est leur point critique.",
+     "source": "donnees"
+    },
+    {
+     "niveau": 1,
+     "titre": "Commencer petit",
+     "texte": "Small camp : 129 PV par monstre, dès 2:00. Medium : 322 PV, dès 5:00. Large : 1133 PV et plus résistant, dès 8:00. Ils gagnent 2,1 % de PV par minute.",
+     "source": "donnees"
+    },
+    {
+     "niveau": 1,
+     "titre": "Les souls de jungle se perdent",
+     "texte": "Ce sont des Haunted Souls : si tu meurs avant qu'elles soient sécurisées, tu les perds. Elles se sécurisent seules avec le temps. Ne pas aller en jungle avec peu de vie quand on en porte beaucoup.",
+     "source": "donnees"
+    },
+    {
+     "niveau": 1,
+     "titre": "Quand y aller",
+     "texte": "Entre deux waves, wave poussée. Jamais à la place d'une wave.",
+     "source": "conseil"
+    },
+    {
+     "niveau": 2,
+     "titre": "Réapparition",
+     "texte": "Le chrono démarre quand le camp est entièrement nettoyé : 1:25 (small), 4:50 (medium), 5:35 (large). Le jeu l'affiche sur place.",
+     "source": "donnees"
+    },
+    {
+     "niveau": 2,
+     "titre": "Sinner's Sacrifice",
+     "texte": "Dès 8:00, corps à corps uniquement, la machine riposte. Quand les ampoules se rallument toutes, finir d'un heavy melee : 4 buffs permanents au lieu de 1.",
+     "source": "donnees"
+    },
+    {
+     "niveau": 2,
+     "titre": "Caisses et statues",
+     "texte": "Dès 3:00. À casser sur le trajet, jamais en détour.",
+     "source": "conseil"
+    },
+    {
+     "niveau": 3,
+     "titre": "Voler leur jungle",
+     "texte": "Quand j'ai la priorité, leur jungle est sûre : ils sont occupés à repousser. Sinner's Sacrifice d'abord, camps ensuite. Ce que je prends chez eux leur manque aussi.",
+     "source": "conseil"
+    }
+   ]
+  },
+  {
+   "id": "objectifs",
+   "titre": "Les objectifs de la carte",
+   "fiches": [
+    {
+     "niveau": 1,
+     "titre": "Powerups",
+     "texte": "Sur les deux ponts, à 5:00 puis toutes les 5 min. Heavy melee pour prendre. Dure 2:40, perdu à la mort.",
+     "source": "donnees"
+    },
+    {
+     "niveau": 2,
+     "titre": "Soul Urn",
+     "texte": "À 10:00 puis toutes les 5 min. On la ramasse d'un coup de mêlée et on la livre de l'autre côté de la carte : 250 + 70 souls par minute de jeu et 4 buffs. Pas de zipline ni de teleporter en la portant ; un coup de mêlée ou un stun la fait lâcher.",
+     "source": "donnees"
+    },
+    {
+     "niveau": 2,
+     "titre": "Unstable Rift",
+     "texte": "Vers 11-13 min, puis environ toutes les 7 min : une zone à tenir 12 s sur un pont. L'équipe qui gagne reçoit des souls et des Troopers renforcés sur cette lane. Objectif d'équipe.",
+     "source": "wiki"
+    },
+    {
+     "niveau": 2,
+     "titre": "Mid-Boss",
+     "texte": "Sous le centre de la carte. Le tuer donne des souls à l'équipe et fait descendre un cristal : heavy melee dessus pour obtenir jusqu'à 3 résurrections sur place. L'adversaire peut voler le cristal.",
+     "source": "donnees"
+    },
+    {
+     "niveau": 2,
+     "titre": "Guardians et Walkers",
+     "texte": "Ils résistent beaucoup en début de partie et de moins en moins : un Guardian est à 0 % de résistance à 6:00, un Walker à 9:00. Chaque Walker détruit donne un emplacement d'objet à toute l'équipe.",
+     "source": "wiki"
+    },
+    {
+     "niveau": 3,
+     "titre": "Mourir pour un Walker",
+     "texte": "Avant 15 min environ, l'échange peut valoir le coup. Après, la mort coûte trop cher à l'équipe.",
+     "source": "conseil"
+    }
+   ]
+  },
+  {
+   "id": "gun_spirit",
+   "titre": "Gun contre Spirit",
+   "fiches": [
+    {
+     "niveau": 1,
+     "titre": "Deux types de dégâts",
+     "texte": "Weapon Damage : les balles de l'arme. Spirit Damage : la plupart des compétences. (Le corps à corps est un troisième type, Melee Damage.) C'est l'équivalent physique / magie des autres MOBA.",
+     "source": "donnees"
+    },
+    {
+     "niveau": 1,
+     "titre": "Deux résistances",
+     "texte": "Bullet Resist réduit les dégâts des balles, Spirit Resist ceux des compétences. Chacune ne protège que contre son type : la mauvaise résistance ne sert à rien.",
+     "source": "donnees"
+    },
+    {
+     "niveau": 1,
+     "titre": "Trois catégories d'objets",
+     "texte": "Weapon (dégâts de l'arme), Vitality (vie et défense), Spirit (puissance des compétences). Les objets de résistance sont surtout en Vitality.",
+     "source": "donnees"
+    },
+    {
+     "niveau": 2,
+     "titre": "Savoir ce qui me tue",
+     "texte": "À ma mort, regarder le détail des dégâts reçus : si l'essentiel vient de balles, il me faut du Bullet Resist ; si ce sont des compétences, du Spirit Resist. Le fil des kills indique aussi quel sort ou objet a tué.",
+     "source": "donnees"
+    },
+    {
+     "niveau": 2,
+     "titre": "S'adapter à l'équipe d'en face",
+     "texte": "Regarder qui est fort en face, pas la composition entière : on achète la résistance contre celui qui me tue le plus. Si leur danger principal est un tireur, Bullet Resist ; si c'est un lanceur de sorts, Spirit Resist.",
+     "source": "conseil"
+    },
+    {
+     "niveau": 2,
+     "titre": "Ne pas être prévisible",
+     "texte": "Une équipe entièrement gun ou entièrement spirit se contre avec un seul type de résistance. Si toute mon équipe fait le même type de dégâts, l'adversaire n'a qu'un objet à acheter.",
+     "source": "conseil"
+    },
+    {
+     "niveau": 3,
+     "titre": "Réduire la résistance adverse",
+     "texte": "Certains objets et compétences baissent le Bullet Resist ou le Spirit Resist de la cible : utile contre un adversaire qui a empilé de la défense.",
+     "source": "donnees"
+    }
+   ],
+   "objets_bullet_resist": [
+    {
+     "nom": "Battle Vest",
+     "tier": 2,
+     "cout": 1600,
+     "valeur": 18.0
+    },
+    {
+     "nom": "Weapon Shielding",
+     "tier": 2,
+     "cout": 1600,
+     "valeur": 18.0
+    },
+    {
+     "nom": "Bullet Resilience",
+     "tier": 3,
+     "cout": 3200,
+     "valeur": 30.0
+    }
+   ],
+   "objets_spirit_resist": [
+    {
+     "nom": "Spirit Shielding",
+     "tier": 2,
+     "cout": 1600,
+     "valeur": 18.0
+    },
+    {
+     "nom": "Enchanter's Emblem",
+     "tier": 2,
+     "cout": 1600,
+     "valeur": 18.0
+    },
+    {
+     "nom": "Spirit Resilience",
+     "tier": 3,
+     "cout": 3200,
+     "valeur": 30.0
+    }
+   ],
+   "note_objets": "Objets dont la résistance est la fonction principale, valeur en % lue dans l'API. Certaines valeurs peuvent être conditionnelles (bouclier, effet temporaire) : lire la description en jeu. Liste complète dans data/items.json."
+  },
+  {
+   "id": "mort",
+   "titre": "Mourir coûte de plus en plus cher",
+   "fiches": [
+    {
+     "niveau": 1,
+     "titre": "Le temps de respawn monte",
+     "texte": "8 s jusqu'à 5:00, 38 s à 20:00, 70 s à 30:00, jusqu'à 90 s. Plus la partie avance, plus une mort laisse l'équipe en infériorité longtemps.",
+     "source": "donnees"
+    },
+    {
+     "niveau": 1,
+     "titre": "Savoir repartir",
+     "texte": "Après un bon coup (un kill, un objectif), aller dépenser ses souls et se soigner plutôt que rester et tout reperdre.",
+     "source": "conseil"
+    },
+    {
+     "niveau": 2,
+     "titre": "Acheter sans rentrer",
+     "texte": "Préférer les shops de la carte quand on a assez de vie. La base sert à se soigner.",
+     "source": "conseil"
+    },
+    {
+     "niveau": 2,
+     "titre": "Ne pas mourir avec les autres",
+     "texte": "Si un allié part dans un combat perdu d'avance, lui dire de reculer plutôt que le suivre.",
+     "source": "conseil"
+    }
+   ]
+  },
+  {
+   "id": "deplacements",
+   "titre": "Se déplacer utilement",
+   "fiches": [
+    {
+     "niveau": 1,
+     "titre": "Zipline",
+     "texte": "Elle ne va que jusqu'où tes Troopers ont avancé. Prendre des dégâts d'un héros ennemi empêche de s'y accrocher pendant 3 s.",
+     "source": "donnees"
+    },
+    {
+     "niveau": 2,
+     "titre": "Toujours faire quelque chose",
+     "texte": "Wave, jungle, objectif, ou trajet vers l'un des trois. Pas de temps mort, pas de détour.",
+     "source": "conseil"
+    },
+    {
+     "niveau": 2,
+     "titre": "Penser au coup d'après",
+     "texte": "Avant de finir ce que je fais, savoir où je vais ensuite et par où. Ramasser ce qui est sur le chemin.",
+     "source": "conseil"
+    },
+    {
+     "niveau": 2,
+     "titre": "Teleporters",
+     "texte": "Deux paires, pour traverser la carte d'un côté à l'autre. 4 s de canalisation.",
+     "source": "wiki"
+    }
+   ]
+  },
+  {
+   "id": "rotations",
+   "titre": "Quand quitter sa lane",
+   "fiches": [
+    {
+     "niveau": 2,
+     "titre": "Bonnes raisons",
+     "texte": "Ma lane est poussée. Un objectif apparaît. Mon arrivée crée un surnombre. Un allié se fait attraper tout près. Mon ultimate est prêt et peut décider d'un combat.",
+     "source": "conseil"
+    },
+    {
+     "niveau": 2,
+     "titre": "Mauvaises raisons",
+     "texte": "Ma wave n'est pas poussée. Le combat est trop loin pour arriver à temps. Y aller « au cas où ». Je suis le carry et rester farmer rapporte plus.",
+     "source": "conseil"
+    },
+    {
+     "niveau": 3,
+     "titre": "Juger une rotation",
+     "texte": "Elle est réussie si elle rapporte un kill ou un objectif sans avoir coûté de wave.",
+     "source": "conseil"
+    }
+   ]
+  },
+  {
+   "id": "roles",
+   "titre": "Mon rôle dans l'équipe",
+   "fiches": [
+    {
+     "niveau": 2,
+     "titre": "Le jeu ne donne pas de rôle, mais ils existent",
+     "texte": "Main carry, off-carry, tank, catch, assassin, support. Le rôle dit où se placer, quel farm prendre et s'il faut aller aux combats. Détail et héros par rôle dans data/roles.json.",
+     "source": "conseil"
+    },
+    {
+     "niveau": 2,
+     "titre": "Le carry farme, les autres lui laissent",
+     "texte": "Le main carry a besoin du plus de souls : il tient une side lane seul et sa jungle. Les autres ne lui prennent pas ses camps.",
+     "source": "conseil"
+    },
+    {
+     "niveau": 3,
+     "titre": "1-4-1",
+     "texte": "Un joueur sur chaque side lane, quatre au centre qui bougent ensemble.",
+     "source": "conseil"
+    }
+   ]
+  },
+  {
+   "id": "priorites",
+   "titre": "Que faire maintenant ?",
+   "fiches": [
+    {
+     "niveau": 1,
+     "titre": "1. Ma lane",
+     "texte": "Vais-je perdre une wave ? Mon objectif est-il attaqué ? Si oui, j'y vais.",
+     "source": "conseil"
+    },
+    {
+     "niveau": 1,
+     "titre": "2. Farm et objectifs",
+     "texte": "Une wave, un camp sur ma route, un objectif qui apparaît et où je peux être à temps.",
+     "source": "conseil"
+    },
+    {
+     "niveau": 2,
+     "titre": "3. Pression",
+     "texte": "Menacer un Walker pour forcer une réaction, me montrer dans leur jungle.",
+     "source": "conseil"
+    },
+    {
+     "niveau": 2,
+     "titre": "4. Combat",
+     "texte": "Seulement s'il est proche, gagnable, et que ma wave est poussée.",
+     "source": "conseil"
+    },
+    {
+     "niveau": 1,
+     "titre": "La phrase à retenir",
+     "texte": "On se bat quand tout est réuni pour gagner sans rien sacrifier. Chercher le combat en premier n'est pas la solution.",
+     "source": "conseil"
+    }
+   ]
+  }
+ ]
+}

@@ -1,4 +1,4 @@
-"""Régénère data/heroes.json, data/items.json et data/hero-stats.json depuis api.deadlock-api.com.
+"""Régénère data/heroes.json, items.json, hero-stats.json et map.json depuis api.deadlock-api.com.
 
 Usage : python3 outils/maj_donnees.py --patch "City Never Sleeps" --depuis 2026-09-29
 `--depuis` est la date du dernier patch : les statistiques ne remontent pas avant.
@@ -170,8 +170,77 @@ def construire_objets(objets):
             "image": o.get("shop_image_webp") or o.get("image_webp"),
             "description": description,
             "contre": etiquettes(CONTRES, description),
+            "bullet_resist": nombre(((o.get("properties") or {}).get("BulletResist") or {}).get("value")) or None,
+            "spirit_resist": nombre(((o.get("properties") or {}).get("TechResist") or {}).get("value")) or None,
         })
     return sorted(sortie, key=lambda o: (o["categorie"] or "", o["tier"] or 0, o["nom"]))
+
+
+# Couches de la carte : (clé de l'API, id, nom, niveau, à quoi ça sert).
+# niveau 1 = à connaître dès le début, 2 = quand les bases sont acquises, 3 = détail.
+COUCHES = [
+    ("shops", "shops", "Shops", 1, "Acheter sans rentrer en base. Les shops de lane ferment quand le Guardian tombe."),
+    ("bridge_buffs", "powerups", "Powerups (ponts)", 1, "Bonus temporaire de 2:40, à prendre au heavy melee. Toutes les 5 min à partir de 5:00."),
+    ("soul_urn_spawns", "urn_depart", "Soul Urn — apparition", 2, "L'urne apparaît ici à partir de 10:00, puis toutes les 5 min."),
+    ("soul_urn_pads", "urn_depot", "Soul Urn — dépôt", 2, "Où livrer l'urne : de l'autre côté de la carte."),
+    ("unstable_rifts", "rifts", "Unstable Rift", 2, "Zone à capturer en équipe sur le pont d'une lane extérieure."),
+    ("teleporters", "teleporters", "Teleporters", 2, "Traverser la carte d'un côté à l'autre en 4 s de canalisation. Interdit avec l'urne."),
+    ("healing_snacks", "soins", "Healing Snacks", 2, "Petit soin à ramasser."),
+    ("crates", "crates", "Crates", 3, "Caisses : chance de lâcher des souls. À casser sur le trajet."),
+    ("tough_crates", "tough_crates", "Tough Crates", 3, "Caisses renforcées : heavy melee obligatoire."),
+    ("golden_statues", "buff_containers", "Buff Containers", 3, "Une chance sur deux de lâcher un buff permanent."),
+    ("bells", "cloches", "Cloche (Bell Tower)", 3, "Y casser quelque chose sonne sur toute la carte : tout le monde sait que tu y es."),
+    ("steam_vents", "steam_vents", "Steam Vents", 3, "Invisible tant qu'on reste dessus."),
+    ("cosmic_veils", "veils", "Cosmic Veils", 3, "Rideaux qui bloquent la vue, pas le passage."),
+    ("climb_ropes", "cordes", "Cordes", 3, "Monter sur les toits."),
+    ("bounce_pads", "bounce_pads", "Bounce pads", 3, "Tremplins vers les hauteurs."),
+]
+CAMPS = {
+    "weak": ("camps_small", "Small camps", 1, "Les plus faciles : dès 2:00, réapparaissent 1:25 après nettoyage. Viser l'œil."),
+    "medium": ("camps_medium", "Medium camps", 2, "À partir de 5:00, réapparaissent 4:50 après nettoyage."),
+    "strong": ("camps_large", "Large camps", 2, "À partir de 8:00. Résistants : à éviter tant qu'on ne les tue pas vite."),
+    "vault": ("sinners", "Sinner's Sacrifice", 2, "À partir de 8:00. Mêlée uniquement ; finir au heavy melee sur le jackpot pour 4 buffs."),
+}
+STRUCTURES = {"tier1": "Guardian", "tier2": "Walker", "titan": "Patron", "core": "Base"}
+
+
+def point(e):
+    return [round(e["left_relative"], 4), round(e["top_relative"], 4)]
+
+
+def construire_carte(m):
+    rayon = m["radius"]
+    couches = []
+    structures = []
+    for cle, pos in m["objective_positions"].items():
+        equipe, genre = cle.split("_")[0], cle.split("_")[1]
+        structures.append({"type": STRUCTURES.get(genre, genre), "equipe": int(equipe[-1]), "xy": point(pos)})
+    couches.append({"id": "structures", "nom": "Structures", "niveau": 1,
+                    "a_quoi_ca_sert": "Guardian puis Walker sur chaque lane, puis la base et le Patron. C'est ce qu'on défend et ce qu'on attaque.",
+                    "elements": structures})
+    lignes = []
+    for z in m["zipline_paths"]:
+        ox, oy = z["origin"][0], z["origin"][1]
+        trace = [[round((ox + p[0] + rayon) / (2 * rayon), 4), round((rayon - (oy + p[1])) / (2 * rayon), 4)] for p in z["P0_points"]]
+        lignes.append({"couleur": z["color"], "trace": trace})
+    couches.append({"id": "lanes", "nom": "Lanes et ziplines", "niveau": 1,
+                    "a_quoi_ca_sert": "Les trois lanes. La zipline n'est utilisable que jusqu'où tes Troopers ont avancé.",
+                    "lignes": lignes})
+    for genre, (ident, nom, niveau, role) in CAMPS.items():
+        elements = [{"nom": c["name"], "xy": point(c)} for c in m["neutral_camps"] if c["kind"] == genre]
+        couches.append({"id": ident, "nom": nom, "niveau": niveau, "a_quoi_ca_sert": role, "elements": elements})
+    for cle, ident, nom, niveau, role in COUCHES:
+        elements = []
+        for e in m["entities"].get(cle) or []:
+            el = {"xy": point(e)}
+            if e.get("kind"):
+                el["type"] = e["kind"]
+            if e.get("team") is not None:
+                el["equipe"] = e["team"]
+            elements.append(el)
+        couches.append({"id": ident, "nom": nom, "niveau": niveau, "a_quoi_ca_sert": role, "elements": elements})
+    return {"image": m["images"]["minimap"], "image_tunnels": m["images"].get("mid_tunnels"),
+            "couches": sorted(couches, key=lambda c: c["niveau"])}
 
 
 def construire_stats(depuis_ts):
@@ -236,7 +305,12 @@ def main():
                     "`tous` les inclut toutes."},
            {"tranches": construire_stats(depuis_ts)})
 
-    print(f"{len(heros)} héros, {len(objets)} objets")
+    carte = construire_carte(get("/v1/assets/map"))
+    ecrire("map.json", {**meta, "note": "Positions en fraction de l'image (x depuis la gauche, y depuis le haut). "
+                                        "Le Mid-Boss n'a pas de position dans l'API : il est sous le centre de la carte. "
+                                        "`niveau` : 1 débutant, 2 intermédiaire, 3 détail."}, carte)
+
+    print(f"{len(heros)} héros, {len(objets)} objets, {len(carte['couches'])} couches de carte")
 
 
 if __name__ == "__main__":

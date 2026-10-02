@@ -1,0 +1,38 @@
+{
+ "meta": {
+  "note": "Niveau à partir duquel un événement de data/timeline.json est affiché. 1 débutant, 2 intermédiaire, 3 tout. Fichier séparé pour ne pas dépendre de la structure de timeline.json.",
+  "verifie_le": "2026-10-02"
+ },
+ "evenements": {
+  "small_camps": 1,
+  "powerups": 1,
+  "medium_camps": 1,
+  "urn": 1,
+  "fin_laning": 1,
+  "large_camps": 2,
+  "sinners": 2,
+  "rift": 2,
+  "breakables": 2,
+  "zipline_boost": 2,
+  "buffs_niv2": 2,
+  "vagues_25": 2,
+  "trooper_melee": 3,
+  "guardian_0": 3,
+  "walker_0": 3,
+  "guardian_plancher": 3,
+  "walker_plancher": 3,
+  "buffs_niv3": 3,
+  "vagues_20": 3
+ },
+ "declenches": {
+  "midboss": 2,
+  "rejuv": 2,
+  "rift_suivant": 2
+ },
+ "rappel_minimap": {
+  "niveau_max": 2,
+  "intervalle_s": 20,
+  "texte": "Regarde ta map : ma wave est-elle poussée ?",
+  "desactivable": true
+ }
+}

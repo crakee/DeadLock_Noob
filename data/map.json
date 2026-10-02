@@ -1,0 +1,6901 @@
+{
+ "meta": {
+  "patch": "City Never Sleeps (2026-09-29)",
+  "verifie_le": "2026-10-02",
+  "source": "https://api.deadlock-api.com",
+  "genere_par": "outils/maj_donnees.py",
+  "note": "Positions en fraction de l'image (x depuis la gauche, y depuis le haut). Le Mid-Boss n'a pas de position dans l'API : il est sous le centre de la carte. `niveau` : 1 débutant, 2 intermédiaire, 3 détail."
+ },
+ "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/maps/minimap_midtown_mid.png",
+ "image_tunnels": "https://assets-bucket.deadlock-api.com/assets-api-res/images/maps/minimap_midtown_mid_tunnels.png",
+ "couches": [
+  {
+   "id": "structures",
+   "nom": "Structures",
+   "niveau": 1,
+   "a_quoi_ca_sert": "Guardian puis Walker sur chaque lane, puis la base et le Patron. C'est ce qu'on défend et ce qu'on attaque.",
+   "elements": [
+    {
+     "type": "Base",
+     "equipe": 0,
+     "xy": [
+      0.2905,
+      0.92
+     ]
+    },
+    {
+     "type": "Base",
+     "equipe": 1,
+     "xy": [
+      0.4095,
+      0.0
+     ]
+    },
+    {
+     "type": "Patron",
+     "equipe": 0,
+     "xy": [
+      0.3905,
+      0.8236
+     ]
+    },
+    {
+     "type": "Patron",
+     "equipe": 1,
+     "xy": [
+      0.5095,
+      0.0757
+     ]
+    },
+    {
+     "type": "Walker",
+     "equipe": 0,
+     "xy": [
+      0.1583,
+      0.6702
+     ]
+    },
+    {
+     "type": "Walker",
+     "equipe": 0,
+     "xy": [
+      0.3901,
+      0.6115
+     ]
+    },
+    {
+     "type": "Walker",
+     "equipe": 0,
+     "xy": [
+      0.7117,
+      0.6853
+     ]
+    },
+    {
+     "type": "Walker",
+     "equipe": 1,
+     "xy": [
+      0.1981,
+      0.2164
+     ]
+    },
+    {
+     "type": "Walker",
+     "equipe": 1,
+     "xy": [
+      0.5099,
+      0.2885
+     ]
+    },
+    {
+     "type": "Walker",
+     "equipe": 1,
+     "xy": [
+      0.7497,
+      0.2279
+     ]
+    },
+    {
+     "type": "Guardian",
+     "equipe": 0,
+     "xy": [
+      0.069,
+      0.5363
+     ]
+    },
+    {
+     "type": "Guardian",
+     "equipe": 0,
+     "xy": [
+      0.45,
+      0.5333
+     ]
+    },
+    {
+     "type": "Guardian",
+     "equipe": 0,
+     "xy": [
+      0.7774,
+      0.5423
+     ]
+    },
+    {
+     "type": "Guardian",
+     "equipe": 1,
+     "xy": [
+      0.1226,
+      0.3577
+     ]
+    },
+    {
+     "type": "Guardian",
+     "equipe": 1,
+     "xy": [
+      0.45,
+      0.3667
+     ]
+    },
+    {
+     "type": "Guardian",
+     "equipe": 1,
+     "xy": [
+      0.828,
+      0.3637
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lanes",
+   "nom": "Lanes et ziplines",
+   "niveau": 1,
+   "a_quoi_ca_sert": "Les trois lanes. La zipline n'est utilisable que jusqu'où tes Troopers ont avancé.",
+   "lignes": [
+    {
+     "couleur": "#29b1cc",
+     "trace": [
+      [
+       0.4405,
+       1.001
+      ],
+      [
+       0.4405,
+       0.9472
+      ],
+      [
+       0.4405,
+       0.9151
+      ],
+      [
+       0.4405,
+       0.8594
+      ],
+      [
+       0.4405,
+       0.8177
+      ],
+      [
+       0.4405,
+       0.785
+      ],
+      [
+       0.4405,
+       0.7634
+      ],
+      [
+       0.4405,
+       0.7248
+      ],
+      [
+       0.4405,
+       0.7024
+      ],
+      [
+       0.4412,
+       0.6804
+      ],
+      [
+       0.4449,
+       0.6603
+      ],
+      [
+       0.4546,
+       0.6466
+      ],
+      [
+       0.4747,
+       0.6336
+      ],
+      [
+       0.5,
+       0.619
+      ],
+      [
+       0.506,
+       0.5789
+      ],
+      [
+       0.506,
+       0.5565
+      ],
+      [
+       0.506,
+       0.5342
+      ],
+      [
+       0.503,
+       0.5179
+      ],
+      [
+       0.5,
+       0.5
+      ],
+      [
+       0.497,
+       0.4821
+      ],
+      [
+       0.494,
+       0.4658
+      ],
+      [
+       0.494,
+       0.4435
+      ],
+      [
+       0.494,
+       0.4211
+      ],
+      [
+       0.5,
+       0.381
+      ],
+      [
+       0.5253,
+       0.3664
+      ],
+      [
+       0.5454,
+       0.3534
+      ],
+      [
+       0.5558,
+       0.34
+      ],
+      [
+       0.5592,
+       0.3207
+      ],
+      [
+       0.5595,
+       0.2976
+      ],
+      [
+       0.5595,
+       0.2753
+      ],
+      [
+       0.5595,
+       0.2247
+      ],
+      [
+       0.5595,
+       0.1823
+      ],
+      [
+       0.5583,
+       0.1323
+      ],
+      [
+       0.5595,
+       0.0923
+      ],
+      [
+       0.5595,
+       0.0528
+      ],
+      [
+       0.5595,
+       0.0092
+      ],
+      [
+       0.5595,
+       -0.0015
+      ]
+     ]
+    },
+    {
+     "couleur": "#59b247",
+     "trace": [
+      [
+       0.4494,
+       1.0018
+      ],
+      [
+       0.4591,
+       0.9472
+      ],
+      [
+       0.4628,
+       0.9226
+      ],
+      [
+       0.4621,
+       0.8869
+      ],
+      [
+       0.4635,
+       0.8482
+      ],
+      [
+       0.5134,
+       0.8065
+      ],
+      [
+       0.5789,
+       0.7954
+      ],
+      [
+       0.6077,
+       0.7917
+      ],
+      [
+       0.6433,
+       0.7798
+      ],
+      [
+       0.6896,
+       0.7381
+      ],
+      [
+       0.721,
+       0.7374
+      ],
+      [
+       0.7386,
+       0.7374
+      ],
+      [
+       0.7507,
+       0.7321
+      ],
+      [
+       0.7609,
+       0.7143
+      ],
+      [
+       0.7649,
+       0.6845
+      ],
+      [
+       0.7976,
+       0.6637
+      ],
+      [
+       0.8041,
+       0.6449
+      ],
+      [
+       0.8347,
+       0.619
+      ],
+      [
+       0.8338,
+       0.5893
+      ],
+      [
+       0.839,
+       0.5536
+      ],
+      [
+       0.8463,
+       0.518
+      ],
+      [
+       0.8547,
+       0.5
+      ],
+      [
+       0.863,
+       0.4819
+      ],
+      [
+       0.8698,
+       0.4405
+      ],
+      [
+       0.881,
+       0.4131
+      ],
+      [
+       0.8824,
+       0.3973
+      ],
+      [
+       0.8798,
+       0.3862
+      ],
+      [
+       0.8512,
+       0.369
+      ],
+      [
+       0.8356,
+       0.3612
+      ],
+      [
+       0.8214,
+       0.3512
+      ],
+      [
+       0.8148,
+       0.3274
+      ],
+      [
+       0.8185,
+       0.2976
+      ],
+      [
+       0.8006,
+       0.2768
+      ],
+      [
+       0.7738,
+       0.2589
+      ],
+      [
+       0.7474,
+       0.2404
+      ],
+      [
+       0.7292,
+       0.2262
+      ],
+      [
+       0.7054,
+       0.2113
+      ],
+      [
+       0.6873,
+       0.2
+      ],
+      [
+       0.6503,
+       0.1927
+      ],
+      [
+       0.6205,
+       0.1815
+      ],
+      [
+       0.5826,
+       0.1518
+      ],
+      [
+       0.5804,
+       0.122
+      ],
+      [
+       0.5781,
+       0.0774
+      ],
+      [
+       0.5744,
+       0.0528
+      ],
+      [
+       0.5687,
+       0.0116
+      ],
+      [
+       0.562,
+       -0.0022
+      ]
+     ]
+    },
+    {
+     "couleur": "#F1CC30",
+     "trace": [
+      [
+       0.5566,
+       -0.0015
+      ],
+      [
+       0.5499,
+       0.0116
+      ],
+      [
+       0.5446,
+       0.0528
+      ],
+      [
+       0.5409,
+       0.0774
+      ],
+      [
+       0.5379,
+       0.1131
+      ],
+      [
+       0.5365,
+       0.1518
+      ],
+      [
+       0.4762,
+       0.1935
+      ],
+      [
+       0.4211,
+       0.1984
+      ],
+      [
+       0.392,
+       0.1958
+      ],
+      [
+       0.3514,
+       0.2009
+      ],
+      [
+       0.3023,
+       0.2344
+      ],
+      [
+       0.279,
+       0.2487
+      ],
+      [
+       0.2619,
+       0.2566
+      ],
+      [
+       0.2429,
+       0.2682
+      ],
+      [
+       0.2359,
+       0.2857
+      ],
+      [
+       0.2312,
+       0.3155
+      ],
+      [
+       0.2143,
+       0.3363
+      ],
+      [
+       0.1994,
+       0.358
+      ],
+      [
+       0.1748,
+       0.381
+      ],
+      [
+       0.1667,
+       0.4107
+      ],
+      [
+       0.1616,
+       0.4464
+      ],
+      [
+       0.1542,
+       0.482
+      ],
+      [
+       0.1458,
+       0.5
+      ],
+      [
+       0.1375,
+       0.5181
+      ],
+      [
+       0.1307,
+       0.5595
+      ],
+      [
+       0.1195,
+       0.5869
+      ],
+      [
+       0.1176,
+       0.6027
+      ],
+      [
+       0.1207,
+       0.6139
+      ],
+      [
+       0.1488,
+       0.631
+      ],
+      [
+       0.1644,
+       0.6388
+      ],
+      [
+       0.1786,
+       0.6488
+      ],
+      [
+       0.1845,
+       0.6726
+      ],
+      [
+       0.1964,
+       0.7024
+      ],
+      [
+       0.2143,
+       0.7262
+      ],
+      [
+       0.247,
+       0.7411
+      ],
+      [
+       0.2679,
+       0.75
+      ],
+      [
+       0.2827,
+       0.7649
+      ],
+      [
+       0.2976,
+       0.7738
+      ],
+      [
+       0.3214,
+       0.7975
+      ],
+      [
+       0.3497,
+       0.8073
+      ],
+      [
+       0.3795,
+       0.8185
+      ],
+      [
+       0.4174,
+       0.8482
+      ],
+      [
+       0.4189,
+       0.8869
+      ],
+      [
+       0.4182,
+       0.9226
+      ],
+      [
+       0.4219,
+       0.9472
+      ],
+      [
+       0.4315,
+       1.0018
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "camps_small",
+   "nom": "Small camps",
+   "niveau": 1,
+   "a_quoi_ca_sert": "Les plus faciles : dès 2:00, réapparaissent 1:25 après nettoyage. Viser l'œil.",
+   "elements": [
+    {
+     "nom": "dock_authority_camp",
+     "xy": [
+      0.1667,
+      0.5595
+     ]
+    },
+    {
+     "nom": "park_club_camp",
+     "xy": [
+      0.7932,
+      0.4552
+     ]
+    },
+    {
+     "nom": "nw_utility_south_neutrals",
+     "xy": [
+      0.4397,
+      0.4568
+     ]
+    },
+    {
+     "nom": "se_utility_neutrals",
+     "xy": [
+      0.5655,
+      0.5461
+     ]
+    }
+   ]
+  },
+  {
+   "id": "shops",
+   "nom": "Shops",
+   "niveau": 1,
+   "a_quoi_ca_sert": "Acheter sans rentrer en base. Les shops de lane ferment quand le Guardian tombe.",
+   "elements": [
+    {
+     "xy": [
+      0.0893,
+      0.5904
+     ],
+     "type": "lane",
+     "equipe": 0
+    },
+    {
+     "xy": [
+      0.2009,
+      0.4182
+     ],
+     "type": "lane",
+     "equipe": 1
+    },
+    {
+     "xy": [
+      0.3177,
+      0.4479
+     ],
+     "type": "secret"
+    },
+    {
+     "xy": [
+      0.4577,
+      0.442
+     ],
+     "type": "lane",
+     "equipe": 1
+    },
+    {
+     "xy": [
+      0.465,
+      0.9982
+     ],
+     "type": "base",
+     "equipe": 0
+    },
+    {
+     "xy": [
+      0.5476,
+      0.558
+     ],
+     "type": "lane",
+     "equipe": 0
+    },
+    {
+     "xy": [
+      0.6823,
+      0.5521
+     ],
+     "type": "secret"
+    },
+    {
+     "xy": [
+      0.7991,
+      0.5818
+     ],
+     "type": "lane",
+     "equipe": 0
+    },
+    {
+     "xy": [
+      0.9107,
+      0.4096
+     ],
+     "type": "lane",
+     "equipe": 1
+    }
+   ]
+  },
+  {
+   "id": "powerups",
+   "nom": "Powerups (ponts)",
+   "niveau": 1,
+   "a_quoi_ca_sert": "Bonus temporaire de 2:40, à prendre au heavy melee. Toutes les 5 min à partir de 5:00.",
+   "elements": [
+    {
+     "xy": [
+      0.317,
+      0.4937
+     ]
+    },
+    {
+     "xy": [
+      0.683,
+      0.506
+     ]
+    }
+   ]
+  },
+  {
+   "id": "camps_medium",
+   "nom": "Medium camps",
+   "niveau": 2,
+   "a_quoi_ca_sert": "À partir de 5:00, réapparaissent 4:50 après nettoyage.",
+   "elements": [
+    {
+     "nom": "slums_garage_down_camp",
+     "xy": [
+      0.3457,
+      0.5586
+     ]
+    },
+    {
+     "nom": "park_chapel_camp",
+     "xy": [
+      0.869,
+      0.6064
+     ]
+    },
+    {
+     "nom": "theater_upstairs_02_camp",
+     "xy": [
+      0.7202,
+      0.3266
+     ]
+    },
+    {
+     "nom": "construction_camp",
+     "xy": [
+      0.1299,
+      0.4051
+     ]
+    },
+    {
+     "nom": "slums_bodega_down_camp",
+     "xy": [
+      0.2664,
+      0.5316
+     ]
+    },
+    {
+     "nom": "theater_down_camp",
+     "xy": [
+      0.6994,
+      0.4524
+     ]
+    },
+    {
+     "nom": "hq_01_camp",
+     "xy": [
+      0.2917,
+      0.381
+     ]
+    },
+    {
+     "nom": "nursery_downstairs_camp",
+     "xy": [
+      0.7083,
+      0.5893
+     ]
+    },
+    {
+     "nom": "chinatown_fish_neutrals",
+     "xy": [
+      0.5893,
+      0.6622
+     ]
+    },
+    {
+     "nom": "slums_storage_camp",
+     "xy": [
+      0.2917,
+      0.6786
+     ]
+    },
+    {
+     "nom": "park_library_roof_camp",
+     "xy": [
+      0.7649,
+      0.5804
+     ]
+    },
+    {
+     "nom": "hq_roof_camp",
+     "xy": [
+      0.2351,
+      0.4226
+     ]
+    },
+    {
+     "nom": "sw_bodega_upstairs_camp",
+     "xy": [
+      0.244,
+      0.6711
+     ]
+    },
+    {
+     "nom": "ne_theater_upstairs_camp",
+     "xy": [
+      0.7708,
+      0.3147
+     ]
+    },
+    {
+     "nom": "park_mansion_roof_camp",
+     "xy": [
+      0.7932,
+      0.3973
+     ]
+    },
+    {
+     "nom": "slums_roof_camp",
+     "xy": [
+      0.2292,
+      0.6116
+     ]
+    },
+    {
+     "nom": "theater_stage_02_camp",
+     "xy": [
+      0.6756,
+      0.4137
+     ]
+    },
+    {
+     "nom": "slums_alley_camp",
+     "xy": [
+      0.314,
+      0.5789
+     ]
+    },
+    {
+     "nom": "dept_store_camp",
+     "xy": [
+      0.4107,
+      0.5402
+     ]
+    },
+    {
+     "nom": "oracle_camp",
+     "xy": [
+      0.5908,
+      0.4613
+     ]
+    },
+    {
+     "nom": "nw_bank_camp",
+     "xy": [
+      0.099,
+      0.3017
+     ]
+    },
+    {
+     "nom": "sw_asylum_camp",
+     "xy": [
+      0.872,
+      0.7202
+     ]
+    },
+    {
+     "nom": "plaza_rink_02_camp",
+     "xy": [
+      0.3869,
+      0.381
+     ]
+    },
+    {
+     "nom": "theater_lobby_camp",
+     "xy": [
+      0.6771,
+      0.3278
+     ]
+    },
+    {
+     "nom": "theater_upstairs_01_camp",
+     "xy": [
+      0.6548,
+      0.3274
+     ]
+    }
+   ]
+  },
+  {
+   "id": "camps_large",
+   "nom": "Large camps",
+   "niveau": 2,
+   "a_quoi_ca_sert": "À partir de 8:00. Résistants : à éviter tant qu'on ne les tue pas vite.",
+   "elements": [
+    {
+     "nom": "dock_camp",
+     "xy": [
+      0.0699,
+      0.5
+     ]
+    },
+    {
+     "nom": "park_gate_camp",
+     "xy": [
+      0.9271,
+      0.5
+     ]
+    },
+    {
+     "nom": "basketball_camp",
+     "xy": [
+      0.2714,
+      0.5833
+     ]
+    },
+    {
+     "nom": "theater_stage_01_camp",
+     "xy": [
+      0.7113,
+      0.4137
+     ]
+    },
+    {
+     "nom": "chinatown_street_camp",
+     "xy": [
+      0.6801,
+      0.686
+     ]
+    },
+    {
+     "nom": "slums_warehouse_camp",
+     "xy": [
+      0.3363,
+      0.7039
+     ]
+    },
+    {
+     "nom": "chinatown_bell_02_camp",
+     "xy": [
+      0.6458,
+      0.6808
+     ]
+    },
+    {
+     "nom": "chinatown_alley_camp",
+     "xy": [
+      0.6112,
+      0.6298
+     ]
+    },
+    {
+     "nom": "plaza_corner_camp",
+     "xy": [
+      0.3229,
+      0.3129
+     ]
+    },
+    {
+     "nom": "plaza_rink_03_camp",
+     "xy": [
+      0.4613,
+      0.3185
+     ]
+    },
+    {
+     "nom": "plaza_rink_01_camp",
+     "xy": [
+      0.3616,
+      0.381
+     ]
+    }
+   ]
+  },
+  {
+   "id": "sinners",
+   "nom": "Sinner's Sacrifice",
+   "niveau": 2,
+   "a_quoi_ca_sert": "À partir de 8:00. Mêlée uniquement ; finir au heavy melee sur le jackpot pour 4 buffs.",
+   "elements": [
+    {
+     "nom": "chinatown_bell_1",
+     "xy": [
+      0.651,
+      0.5878
+     ]
+    },
+    {
+     "nom": "slums_garage_up_camp",
+     "xy": [
+      0.3482,
+      0.5744
+     ]
+    },
+    {
+     "nom": "theater_balcony_camp",
+     "xy": [
+      0.6935,
+      0.3705
+     ]
+    },
+    {
+     "nom": "drug_store_camp",
+     "xy": [
+      0.6027,
+      0.5446
+     ]
+    },
+    {
+     "nom": "hotel_01_camp",
+     "xy": [
+      0.3968,
+      0.4524
+     ]
+    },
+    {
+     "nom": "park_library_vault",
+     "xy": [
+      0.7693,
+      0.558
+     ]
+    },
+    {
+     "nom": "york_radio_vault",
+     "xy": [
+      0.2336,
+      0.4435
+     ]
+    },
+    {
+     "nom": "dock_authority_vault",
+     "xy": [
+      0.2247,
+      0.5551
+     ]
+    },
+    {
+     "nom": "park_club_vault",
+     "xy": [
+      0.7749,
+      0.4373
+     ]
+    },
+    {
+     "nom": "plaza_pit_vault1",
+     "xy": [
+      0.3988,
+      0.3586
+     ]
+    },
+    {
+     "nom": "plaza_pit_vault2",
+     "xy": [
+      0.3988,
+      0.4033
+     ]
+    }
+   ]
+  },
+  {
+   "id": "urn_depart",
+   "nom": "Soul Urn — apparition",
+   "niveau": 2,
+   "a_quoi_ca_sert": "L'urne apparaît ici à partir de 10:00, puis toutes les 5 min.",
+   "elements": [
+    {
+     "xy": [
+      0.1938,
+      0.5
+     ]
+    },
+    {
+     "xy": [
+      0.2887,
+      0.381
+     ]
+    },
+    {
+     "xy": [
+      0.3289,
+      0.6429
+     ]
+    },
+    {
+     "xy": [
+      0.6994,
+      0.625
+     ]
+    },
+    {
+     "xy": [
+      0.7649,
+      0.4256
+     ]
+    },
+    {
+     "xy": [
+      0.7932,
+      0.5045
+     ]
+    }
+   ]
+  },
+  {
+   "id": "urn_depot",
+   "nom": "Soul Urn — dépôt",
+   "niveau": 2,
+   "a_quoi_ca_sert": "Où livrer l'urne : de l'autre côté de la carte.",
+   "elements": [
+    {
+     "xy": [
+      0.1935,
+      0.5004
+     ]
+    },
+    {
+     "xy": [
+      0.7932,
+      0.5045
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rifts",
+   "nom": "Unstable Rift",
+   "niveau": 2,
+   "a_quoi_ca_sert": "Zone à capturer en équipe sur le pont d'une lane extérieure.",
+   "elements": [
+    {
+     "xy": [
+      0.1443,
+      0.5
+     ]
+    },
+    {
+     "xy": [
+      0.8557,
+      0.5
+     ]
+    }
+   ]
+  },
+  {
+   "id": "teleporters",
+   "nom": "Teleporters",
+   "niveau": 2,
+   "a_quoi_ca_sert": "Traverser la carte d'un côté à l'autre en 4 s de canalisation. Interdit avec l'urne.",
+   "elements": [
+    {
+     "xy": [
+      0.3185,
+      0.4167
+     ]
+    },
+    {
+     "xy": [
+      0.3333,
+      0.6295
+     ]
+    },
+    {
+     "xy": [
+      0.6667,
+      0.3705
+     ]
+    },
+    {
+     "xy": [
+      0.6815,
+      0.5833
+     ]
+    }
+   ]
+  },
+  {
+   "id": "soins",
+   "nom": "Healing Snacks",
+   "niveau": 2,
+   "a_quoi_ca_sert": "Petit soin à ramasser.",
+   "elements": [
+    {
+     "xy": [
+      0.1012,
+      0.6458
+     ]
+    },
+    {
+     "xy": [
+      0.1272,
+      0.381
+     ]
+    },
+    {
+     "xy": [
+      0.1305,
+      0.314
+     ]
+    },
+    {
+     "xy": [
+      0.1336,
+      0.314
+     ]
+    },
+    {
+     "xy": [
+      0.1726,
+      0.2946
+     ]
+    },
+    {
+     "xy": [
+      0.2098,
+      0.6652
+     ]
+    },
+    {
+     "xy": [
+      0.2128,
+      0.5781
+     ]
+    },
+    {
+     "xy": [
+      0.2188,
+      0.6711
+     ]
+    },
+    {
+     "xy": [
+      0.2299,
+      0.4799
+     ]
+    },
+    {
+     "xy": [
+      0.2381,
+      0.6436
+     ]
+    },
+    {
+     "xy": [
+      0.247,
+      0.3774
+     ]
+    },
+    {
+     "xy": [
+      0.2701,
+      0.6726
+     ]
+    },
+    {
+     "xy": [
+      0.2723,
+      0.5506
+     ]
+    },
+    {
+     "xy": [
+      0.308,
+      0.7068
+     ]
+    },
+    {
+     "xy": [
+      0.3281,
+      0.6592
+     ]
+    },
+    {
+     "xy": [
+      0.3839,
+      0.2679
+     ]
+    },
+    {
+     "xy": [
+      0.4226,
+      0.4405
+     ]
+    },
+    {
+     "xy": [
+      0.5833,
+      0.5536
+     ]
+    },
+    {
+     "xy": [
+      0.5878,
+      0.7024
+     ]
+    },
+    {
+     "xy": [
+      0.619,
+      0.7381
+     ]
+    },
+    {
+     "xy": [
+      0.628,
+      0.2679
+     ]
+    },
+    {
+     "xy": [
+      0.6458,
+      0.6801
+     ]
+    },
+    {
+     "xy": [
+      0.6503,
+      0.4449
+     ]
+    },
+    {
+     "xy": [
+      0.686,
+      0.7039
+     ]
+    },
+    {
+     "xy": [
+      0.6949,
+      0.2917
+     ]
+    },
+    {
+     "xy": [
+      0.6994,
+      0.6458
+     ]
+    },
+    {
+     "xy": [
+      0.7336,
+      0.4423
+     ]
+    },
+    {
+     "xy": [
+      0.744,
+      0.3378
+     ]
+    },
+    {
+     "xy": [
+      0.744,
+      0.317
+     ]
+    },
+    {
+     "xy": [
+      0.7619,
+      0.7887
+     ]
+    },
+    {
+     "xy": [
+      0.7646,
+      0.5166
+     ]
+    },
+    {
+     "xy": [
+      0.7756,
+      0.3095
+     ]
+    },
+    {
+     "xy": [
+      0.8393,
+      0.7321
+     ]
+    },
+    {
+     "xy": [
+      0.8542,
+      0.3065
+     ]
+    },
+    {
+     "xy": [
+      0.8694,
+      0.6376
+     ]
+    },
+    {
+     "xy": [
+      0.8958,
+      0.3587
+     ]
+    }
+   ]
+  },
+  {
+   "id": "crates",
+   "nom": "Crates",
+   "niveau": 3,
+   "a_quoi_ca_sert": "Caisses : chance de lâcher des souls. À casser sur le trajet.",
+   "elements": [
+    {
+     "xy": [
+      0.0826,
+      0.3214
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.086,
+      0.3213
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.0871,
+      0.5655
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.0871,
+      0.5618
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.0878,
+      0.5439
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.0878,
+      0.5402
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.103,
+      0.6745
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.1067,
+      0.6745
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.119,
+      0.3467
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.1194,
+      0.343
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.1213,
+      0.3925
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.1302,
+      0.3769
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.1303,
+      0.381
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.1458,
+      0.4148
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.1462,
+      0.2972
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.1462,
+      0.2939
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.1464,
+      0.2909
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.1488,
+      0.731
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.1488,
+      0.7257
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.1506,
+      0.4066
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.1507,
+      0.6449
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.1541,
+      0.3889
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.1546,
+      0.6453
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.1615,
+      0.2634
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.1648,
+      0.2634
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.1844,
+      0.6026
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.1844,
+      0.5989
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.1986,
+      0.7709
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.1987,
+      0.7746
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.202,
+      0.6084
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.202,
+      0.5078
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.202,
+      0.4926
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2037,
+      0.6084
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2053,
+      0.4428
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2053,
+      0.4394
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2055,
+      0.4045
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2085,
+      0.4045
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2158,
+      0.5897
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2159,
+      0.5878
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2169,
+      0.625
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2169,
+      0.6213
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.218,
+      0.6711
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2183,
+      0.6957
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2254,
+      0.5949
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2266,
+      0.5685
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2266,
+      0.5666
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2266,
+      0.5647
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2266,
+      0.2173
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2299,
+      0.2173
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2329,
+      0.5949
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2403,
+      0.7712
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2404,
+      0.7676
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2417,
+      0.6265
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2433,
+      0.753
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2439,
+      0.7484
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2455,
+      0.6265
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2465,
+      0.6525
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2506,
+      0.6529
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2533,
+      0.3448
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2539,
+      0.6529
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.257,
+      0.3448
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.26,
+      0.548
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.26,
+      0.5443
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2656,
+      0.4157
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2656,
+      0.4122
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2664,
+      0.4345
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2679,
+      0.4286
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2719,
+      0.3065
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2719,
+      0.2072
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2727,
+      0.5789
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2727,
+      0.577
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2738,
+      0.532
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2746,
+      0.8125
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2753,
+      0.3951
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2753,
+      0.3065
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2753,
+      0.2072
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2768,
+      0.4051
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2772,
+      0.3951
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2775,
+      0.532
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2781,
+      0.8164
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2783,
+      0.3237
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.279,
+      0.3951
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2812,
+      0.3237
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2835,
+      0.6853
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2835,
+      0.6819
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2835,
+      0.4051
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2857,
+      0.3512
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2865,
+      0.6752
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2879,
+      0.5915
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2887,
+      0.2246
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2894,
+      0.3512
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2902,
+      0.6752
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2914,
+      0.2272
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2928,
+      0.5915
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2939,
+      0.6287
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2939,
+      0.625
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2958,
+      0.5117
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.2976,
+      0.5117
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3077,
+      0.5588
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3077,
+      0.5558
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.308,
+      0.6287
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3095,
+      0.4479
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3138,
+      0.4479
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3149,
+      0.558
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3155,
+      0.474
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3168,
+      0.5584
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3186,
+      0.5584
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3194,
+      0.2439
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3226,
+      0.247
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3229,
+      0.468
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3237,
+      0.6071
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3237,
+      0.6038
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3248,
+      0.715
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3253,
+      0.1668
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3259,
+      0.5158
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.326,
+      0.5215
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3266,
+      0.468
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3289,
+      0.5208
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3298,
+      0.2686
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3317,
+      0.558
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3335,
+      0.558
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3354,
+      0.5584
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3374,
+      0.4531
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3378,
+      0.5208
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3384,
+      0.3839
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3384,
+      0.378
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3445,
+      0.3531
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3451,
+      0.4085
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3495,
+      0.6142
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3497,
+      0.6001
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3519,
+      0.6213
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3534,
+      0.6481
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3534,
+      0.6142
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3534,
+      0.6011
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3534,
+      0.5871
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3557,
+      0.6213
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3616,
+      0.2496
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3624,
+      0.7068
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3624,
+      0.7028
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3646,
+      0.2496
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3661,
+      0.4085
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3676,
+      0.2578
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3676,
+      0.2541
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.369,
+      0.3531
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3708,
+      0.2541
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.372,
+      0.4085
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3728,
+      0.5744
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3729,
+      0.5791
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3735,
+      0.6354
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3787,
+      0.4453
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3806,
+      0.4453
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3869,
+      0.5519
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3888,
+      0.3531
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3891,
+      0.5519
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.3988,
+      0.5491
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4018,
+      0.2574
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4018,
+      0.2545
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4022,
+      0.5491
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4033,
+      0.5227
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4145,
+      0.4435
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4152,
+      0.6633
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4153,
+      0.6615
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4155,
+      0.6596
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4163,
+      0.4438
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4189,
+      0.5699
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4206,
+      0.3253
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4206,
+      0.3179
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4232,
+      0.5734
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4246,
+      0.5748
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4278,
+      0.2798
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4286,
+      0.4803
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4327,
+      0.5188
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4338,
+      0.4808
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4356,
+      0.4808
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.436,
+      0.2693
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4361,
+      0.2723
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4382,
+      0.3698
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4382,
+      0.3664
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4397,
+      0.6322
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4429,
+      0.6308
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4431,
+      0.4226
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4468,
+      0.4226
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4487,
+      0.6071
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4487,
+      0.5387
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4524,
+      0.6071
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4524,
+      0.5387
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.455,
+      0.4728
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4561,
+      0.6071
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4561,
+      0.4263
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4565,
+      0.3344
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4567,
+      0.4496
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4585,
+      0.4496
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4598,
+      0.4263
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4628,
+      0.6935
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4665,
+      0.6935
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4706,
+      0.3073
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4725,
+      0.5089
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4751,
+      0.3936
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4751,
+      0.3899
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4754,
+      0.3728
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4754,
+      0.3653
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4754,
+      0.3073
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4762,
+      0.3006
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4792,
+      0.5491
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4829,
+      0.3325
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4859,
+      0.5897
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4859,
+      0.3058
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4866,
+      0.3326
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4881,
+      0.5893
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4885,
+      0.4225
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4896,
+      0.5708
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.49,
+      0.5897
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4903,
+      0.3058
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4904,
+      0.4226
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4916,
+      0.5708
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4916,
+      0.3426
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4947,
+      0.6638
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4978,
+      0.5666
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4978,
+      0.5409
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4978,
+      0.4591
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.4996,
+      0.5669
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5015,
+      0.567
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5022,
+      0.5409
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5022,
+      0.4591
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5026,
+      0.4373
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5045,
+      0.4374
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5063,
+      0.4377
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5065,
+      0.3359
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5071,
+      0.6582
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5129,
+      0.6673
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5141,
+      0.6935
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5171,
+      0.6674
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5179,
+      0.6935
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5238,
+      0.6994
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5246,
+      0.6912
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5246,
+      0.6332
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5246,
+      0.6272
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5249,
+      0.6101
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5249,
+      0.6064
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5272,
+      0.4911
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5294,
+      0.6912
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5335,
+      0.3058
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5372,
+      0.3058
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5439,
+      0.5751
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5439,
+      0.3936
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5461,
+      0.5268
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5469,
+      0.4635
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5476,
+      0.5751
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5476,
+      0.3936
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5506,
+      0.4635
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5513,
+      0.3936
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5523,
+      0.4297
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.556,
+      0.5774
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.558,
+      0.5774
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.558,
+      0.5766
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5618,
+      0.5766
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5622,
+      0.3673
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5642,
+      0.3404
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5644,
+      0.519
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5644,
+      0.3378
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5654,
+      0.3654
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5662,
+      0.519
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5665,
+      0.7101
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5681,
+      0.6645
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5685,
+      0.5711
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5703,
+      0.5711
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5718,
+      0.7154
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5731,
+      0.519
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5792,
+      0.4301
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5818,
+      0.426
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5841,
+      0.6265
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5852,
+      0.6137
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5878,
+      0.7411
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5878,
+      0.6265
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5891,
+      0.6138
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.5975,
+      0.4509
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6012,
+      0.4509
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6058,
+      0.6165
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6058,
+      0.6076
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6125,
+      0.2924
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6125,
+      0.2883
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6135,
+      0.3164
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6135,
+      0.3125
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6176,
+      0.4345
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6198,
+      0.4345
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.622,
+      0.5568
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6224,
+      0.7481
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6239,
+      0.557
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6246,
+      0.5543
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6246,
+      0.5525
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.625,
+      0.6473
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6287,
+      0.7299
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6291,
+      0.7426
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6324,
+      0.4568
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6338,
+      0.6157
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6339,
+      0.3884
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6347,
+      0.4568
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6376,
+      0.3906
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6376,
+      0.3865
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6388,
+      0.3531
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6399,
+      0.6049
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6406,
+      0.5677
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6434,
+      0.3406
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6443,
+      0.6645
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6458,
+      0.6049
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6458,
+      0.2583
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6466,
+      0.5677
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6466,
+      0.4012
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6466,
+      0.388
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6496,
+      0.2584
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6503,
+      0.4018
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.654,
+      0.4271
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6626,
+      0.5469
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6633,
+      0.4375
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6637,
+      0.6726
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6652,
+      0.4375
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6704,
+      0.3147
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6711,
+      0.5313
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.673,
+      0.4498
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6731,
+      0.3687
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6734,
+      0.4818
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6736,
+      0.3147
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6749,
+      0.5313
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6756,
+      0.526
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6763,
+      0.3962
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6763,
+      0.3929
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6767,
+      0.4498
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6815,
+      0.5848
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.683,
+      0.3407
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6838,
+      0.7723
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6838,
+      0.7679
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6864,
+      0.3409
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6875,
+      0.6399
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6886,
+      0.6592
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6886,
+      0.3285
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6901,
+      0.3865
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6912,
+      0.4654
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.6968,
+      0.3865
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7001,
+      0.4654
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7009,
+      0.474
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7016,
+      0.1822
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7035,
+      0.1791
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7046,
+      0.7708
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7053,
+      0.3157
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7072,
+      0.4085
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7072,
+      0.3155
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7094,
+      0.5964
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7094,
+      0.5945
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7094,
+      0.5923
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7121,
+      0.4085
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7125,
+      0.2409
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7148,
+      0.6091
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7156,
+      0.243
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.718,
+      0.6615
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.718,
+      0.6101
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7213,
+      0.3057
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7243,
+      0.4386
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7248,
+      0.3057
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7268,
+      0.5943
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7269,
+      0.5971
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7269,
+      0.591
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7281,
+      0.4384
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7303,
+      0.6365
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7307,
+      0.4628
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7328,
+      0.7692
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7336,
+      0.4271
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7344,
+      0.5975
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7351,
+      0.7917
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7351,
+      0.7716
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7354,
+      0.585
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7354,
+      0.5811
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7374,
+      0.4524
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7374,
+      0.4271
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7384,
+      0.3504
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7385,
+      0.7917
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7389,
+      0.5637
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7437,
+      0.2945
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7462,
+      0.2827
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7493,
+      0.4003
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7567,
+      0.4003
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7588,
+      0.4107
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7603,
+      0.587
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7623,
+      0.4109
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7651,
+      0.389
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7688,
+      0.389
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7835,
+      0.3705
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7842,
+      0.484
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7842,
+      0.3743
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7842,
+      0.3452
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7846,
+      0.5219
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.785,
+      0.5586
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.785,
+      0.5547
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.785,
+      0.4717
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.785,
+      0.2217
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.785,
+      0.2158
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7887,
+      0.4714
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.7907,
+      0.2374
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.8002,
+      0.4371
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.8002,
+      0.4334
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.8103,
+      0.3854
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.8103,
+      0.3817
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.8199,
+      0.7251
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.8207,
+      0.7671
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.8207,
+      0.764
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.8237,
+      0.7251
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.8371,
+      0.2519
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.8374,
+      0.2481
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.8451,
+      0.683
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.846,
+      0.6771
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.8578,
+      0.5851
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.8601,
+      0.671
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.8601,
+      0.6265
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.8638,
+      0.6714
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.8638,
+      0.6265
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.8787,
+      0.5952
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.8882,
+      0.699
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.8884,
+      0.6949
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.9077,
+      0.4606
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.9077,
+      0.4568
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.9129,
+      0.4382
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.9129,
+      0.4345
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.914,
+      0.6787
+     ],
+     "type": "wooden_crate"
+    },
+    {
+     "xy": [
+      0.9174,
+      0.6791
+     ],
+     "type": "wooden_crate"
+    }
+   ]
+  },
+  {
+   "id": "tough_crates",
+   "nom": "Tough Crates",
+   "niveau": 3,
+   "a_quoi_ca_sert": "Caisses renforcées : heavy melee obligatoire.",
+   "elements": [
+    {
+     "xy": [
+      0.0528,
+      0.4725
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.064,
+      0.526
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.0685,
+      0.3624
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.0952,
+      0.6042
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.1496,
+      0.3192
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.1655,
+      0.7627
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.2194,
+      0.6637
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.2228,
+      0.5409
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.2345,
+      0.4118
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.25,
+      0.5573
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.262,
+      0.6749
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.2664,
+      0.3903
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.285,
+      0.526
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.2961,
+      0.6964
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.304,
+      0.192
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.3185,
+      0.4554
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.3222,
+      0.282
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.33,
+      0.4334
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.3307,
+      0.6354
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.3471,
+      0.5949
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.3497,
+      0.5603
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.3579,
+      0.4085
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.3631,
+      0.3534
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.3635,
+      0.6138
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.3746,
+      0.3534
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.3802,
+      0.4085
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.3817,
+      0.6992
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.383,
+      0.4648
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.3891,
+      0.744
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.4129,
+      0.529
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.4263,
+      0.3322
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.4698,
+      0.6826
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.4723,
+      0.4857
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.4725,
+      0.5164
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.4751,
+      0.3702
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.4762,
+      0.4591
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.4874,
+      0.4679
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.5126,
+      0.5326
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.5238,
+      0.5409
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.5249,
+      0.6298
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.5275,
+      0.4836
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.5276,
+      0.5143
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.5293,
+      0.3198
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.5774,
+      0.5893
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.5945,
+      0.4725
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.6042,
+      0.7351
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.6287,
+      0.2552
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.6376,
+      0.6129
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.6376,
+      0.5625
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.6496,
+      0.6129
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.6496,
+      0.5625
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.6581,
+      0.7262
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.6618,
+      0.4483
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.6745,
+      0.5703
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.6804,
+      0.3676
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.6815,
+      0.5461
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.6879,
+      0.715
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.7033,
+      0.3159
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.7076,
+      0.6399
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.717,
+      0.3471
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.7211,
+      0.316
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.7396,
+      0.4252
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.7405,
+      0.3684
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.7494,
+      0.2969
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.7509,
+      0.3606
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.7589,
+      0.7775
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.7693,
+      0.587
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.779,
+      0.4591
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.793,
+      0.3506
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.9085,
+      0.3958
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.9168,
+      0.6448
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.9237,
+      0.5223
+     ],
+     "type": "tough_crate"
+    },
+    {
+     "xy": [
+      0.9271,
+      0.4762
+     ],
+     "type": "tough_crate"
+    }
+   ]
+  },
+  {
+   "id": "buff_containers",
+   "nom": "Buff Containers",
+   "niveau": 3,
+   "a_quoi_ca_sert": "Une chance sur deux de lâcher un buff permanent.",
+   "elements": [
+    {
+     "xy": [
+      0.0693,
+      0.3655
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.0915,
+      0.6049
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.1086,
+      0.5104
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.1086,
+      0.4896
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.131,
+      0.3073
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.1504,
+      0.3987
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.151,
+      0.346
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.1614,
+      0.763
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.1741,
+      0.5
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.1782,
+      0.6008
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.2076,
+      0.4468
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.2121,
+      0.5885
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.2292,
+      0.5949
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.2381,
+      0.5551
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.2403,
+      0.6042
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.2431,
+      0.7559
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.25,
+      0.3444
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.25,
+      0.5528
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.2537,
+      0.4308
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.2602,
+      0.5517
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.2626,
+      0.3899
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.266,
+      0.5424
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.2723,
+      0.5387
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.2768,
+      0.4464
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.2801,
+      0.4051
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.2827,
+      0.676
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.2872,
+      0.6652
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.2872,
+      0.6507
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.2872,
+      0.6198
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.2928,
+      0.3511
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.2961,
+      0.5919
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.2965,
+      0.6927
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.2987,
+      0.5673
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.3021,
+      0.6347
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.3021,
+      0.5744
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.3043,
+      0.433
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.3047,
+      0.381
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.3065,
+      0.4479
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.3145,
+      0.5319
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.3216,
+      0.5183
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.3229,
+      0.6116
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.328,
+      0.1696
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.3289,
+      0.4643
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.3289,
+      0.4613
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.3297,
+      0.2656
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.3333,
+      0.5208
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.3393,
+      0.381
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.3408,
+      0.5603
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.3434,
+      0.381
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.3439,
+      0.5947
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.3441,
+      0.558
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.3445,
+      0.2481
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.3475,
+      0.7143
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.3534,
+      0.5833
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.3539,
+      0.561
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.3568,
+      0.6142
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.3586,
+      0.2909
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.3624,
+      0.4353
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.369,
+      0.4092
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.3705,
+      0.635
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.3824,
+      0.5878
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.3862,
+      0.2738
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.4063,
+      0.3899
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.4063,
+      0.372
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.4159,
+      0.5699
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.4211,
+      0.3216
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.4211,
+      0.2794
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.4263,
+      0.3289
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.4358,
+      0.2751
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.439,
+      0.3943
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.442,
+      0.5
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.4568,
+      0.3307
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.4621,
+      0.6042
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.4714,
+      0.5562
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.4754,
+      0.369
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.4821,
+      0.3058
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.4913,
+      0.4888
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.4914,
+      0.5114
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.4926,
+      0.4222
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.4948,
+      0.4951
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.5,
+      0.5402
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.5,
+      0.5295
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.5,
+      0.4705
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.5,
+      0.4598
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.5052,
+      0.5049
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.5086,
+      0.4886
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.5087,
+      0.5112
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.5112,
+      0.6942
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.5253,
+      0.6302
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.5357,
+      0.3981
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.558,
+      0.5007
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.5692,
+      0.7128
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.5722,
+      0.5759
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.5826,
+      0.4301
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.5843,
+      0.6073
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.6027,
+      0.4141
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.6065,
+      0.6121
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.6213,
+      0.7321
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.6287,
+      0.7485
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.6295,
+      0.7262
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.6339,
+      0.5623
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.6384,
+      0.3817
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.6396,
+      0.356
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.6429,
+      0.7552
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.6429,
+      0.6057
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.6432,
+      0.388
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.6436,
+      0.6129
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.6436,
+      0.567
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.6436,
+      0.5625
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.6443,
+      0.6958
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.6462,
+      0.3828
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.6467,
+      0.3406
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.6473,
+      0.6958
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.6473,
+      0.311
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.6481,
+      0.6643
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.6618,
+      0.7256
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.6656,
+      0.4609
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.6696,
+      0.5372
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.6696,
+      0.5357
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.6768,
+      0.3681
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.6771,
+      0.3884
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.6853,
+      0.4643
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.6869,
+      0.615
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.6935,
+      0.4232
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.6935,
+      0.3865
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.6935,
+      0.3612
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.6957,
+      0.4643
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.6961,
+      0.567
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.7005,
+      0.5908
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.7009,
+      0.4293
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.7039,
+      0.4081
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.7039,
+      0.6093
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.7132,
+      0.6105
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.7133,
+      0.2935
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.7143,
+      0.4658
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.7225,
+      0.3467
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.7228,
+      0.638
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.724,
+      0.5387
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.7262,
+      0.2308
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.7277,
+      0.5759
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.7336,
+      0.638
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.7336,
+      0.4524
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.7366,
+      0.7746
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.7378,
+      0.3409
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.7388,
+      0.3408
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.7396,
+      0.4286
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.7413,
+      0.3651
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.753,
+      0.4003
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.756,
+      0.5632
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.7723,
+      0.3891
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.7814,
+      0.5538
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.785,
+      0.2186
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.7913,
+      0.4059
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.7946,
+      0.2411
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.8065,
+      0.5
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.8067,
+      0.41
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.8214,
+      0.7609
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.8449,
+      0.6801
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.8594,
+      0.5938
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.8698,
+      0.6879
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.8795,
+      0.6235
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.8914,
+      0.5104
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.8914,
+      0.4896
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.8996,
+      0.7083
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.9048,
+      0.3958
+     ],
+     "type": "item_container"
+    },
+    {
+     "xy": [
+      0.9163,
+      0.6411
+     ],
+     "type": "item_container"
+    }
+   ]
+  },
+  {
+   "id": "cloches",
+   "nom": "Cloche (Bell Tower)",
+   "niveau": 3,
+   "a_quoi_ca_sert": "Y casser quelque chose sonne sur toute la carte : tout le monde sait que tu y es.",
+   "elements": [
+    {
+     "xy": [
+      0.6258,
+      0.593
+     ],
+     "type": "bell"
+    },
+    {
+     "xy": [
+      0.6607,
+      0.5634
+     ],
+     "type": "bell"
+    },
+    {
+     "xy": [
+      0.6615,
+      0.6116
+     ],
+     "type": "bell"
+    }
+   ]
+  },
+  {
+   "id": "steam_vents",
+   "nom": "Steam Vents",
+   "niveau": 3,
+   "a_quoi_ca_sert": "Invisible tant qu'on reste dessus.",
+   "elements": [
+    {
+     "xy": [
+      0.0871,
+      0.3596
+     ]
+    },
+    {
+     "xy": [
+      0.099,
+      0.6607
+     ]
+    },
+    {
+     "xy": [
+      0.1131,
+      0.3836
+     ]
+    },
+    {
+     "xy": [
+      0.173,
+      0.6176
+     ]
+    },
+    {
+     "xy": [
+      0.1745,
+      0.3065
+     ]
+    },
+    {
+     "xy": [
+      0.2292,
+      0.5112
+     ]
+    },
+    {
+     "xy": [
+      0.256,
+      0.6205
+     ]
+    },
+    {
+     "xy": [
+      0.2641,
+      0.4115
+     ]
+    },
+    {
+     "xy": [
+      0.2649,
+      0.3244
+     ]
+    },
+    {
+     "xy": [
+      0.2679,
+      0.6146
+     ]
+    },
+    {
+     "xy": [
+      0.2753,
+      0.6064
+     ]
+    },
+    {
+     "xy": [
+      0.2989,
+      0.5268
+     ]
+    },
+    {
+     "xy": [
+      0.3177,
+      0.6749
+     ]
+    },
+    {
+     "xy": [
+      0.3203,
+      0.4855
+     ]
+    },
+    {
+     "xy": [
+      0.3363,
+      0.4345
+     ]
+    },
+    {
+     "xy": [
+      0.3586,
+      0.4717
+     ]
+    },
+    {
+     "xy": [
+      0.3795,
+      0.381
+     ],
+     "type": "obscured"
+    },
+    {
+     "xy": [
+      0.4033,
+      0.5685
+     ]
+    },
+    {
+     "xy": [
+      0.4412,
+      0.433
+     ]
+    },
+    {
+     "xy": [
+      0.4636,
+      0.4729
+     ]
+    },
+    {
+     "xy": [
+      0.4643,
+      0.5744
+     ]
+    },
+    {
+     "xy": [
+      0.4747,
+      0.5402
+     ]
+    },
+    {
+     "xy": [
+      0.4769,
+      0.381
+     ]
+    },
+    {
+     "xy": [
+      0.4823,
+      0.2915
+     ]
+    },
+    {
+     "xy": [
+      0.5143,
+      0.7108
+     ]
+    },
+    {
+     "xy": [
+      0.5231,
+      0.619
+     ]
+    },
+    {
+     "xy": [
+      0.5253,
+      0.4598
+     ]
+    },
+    {
+     "xy": [
+      0.5369,
+      0.5277
+     ]
+    },
+    {
+     "xy": [
+      0.5744,
+      0.6228
+     ]
+    },
+    {
+     "xy": [
+      0.6055,
+      0.3795
+     ]
+    },
+    {
+     "xy": [
+      0.6071,
+      0.4375
+     ]
+    },
+    {
+     "xy": [
+      0.6198,
+      0.4315
+     ]
+    },
+    {
+     "xy": [
+      0.6202,
+      0.3542
+     ]
+    },
+    {
+     "xy": [
+      0.622,
+      0.6053
+     ]
+    },
+    {
+     "xy": [
+      0.6354,
+      0.256
+     ]
+    },
+    {
+     "xy": [
+      0.649,
+      0.7169
+     ]
+    },
+    {
+     "xy": [
+      0.6525,
+      0.6563
+     ]
+    },
+    {
+     "xy": [
+      0.6637,
+      0.5655
+     ]
+    },
+    {
+     "xy": [
+      0.6797,
+      0.5145
+     ]
+    },
+    {
+     "xy": [
+      0.6823,
+      0.2865
+     ]
+    },
+    {
+     "xy": [
+      0.6935,
+      0.4732
+     ]
+    },
+    {
+     "xy": [
+      0.6994,
+      0.3932
+     ]
+    },
+    {
+     "xy": [
+      0.747,
+      0.4338
+     ]
+    },
+    {
+     "xy": [
+      0.7649,
+      0.5655
+     ]
+    },
+    {
+     "xy": [
+      0.7723,
+      0.4888
+     ]
+    },
+    {
+     "xy": [
+      0.7946,
+      0.3423
+     ]
+    },
+    {
+     "xy": [
+      0.8339,
+      0.7132
+     ]
+    }
+   ]
+  },
+  {
+   "id": "veils",
+   "nom": "Cosmic Veils",
+   "niveau": 3,
+   "a_quoi_ca_sert": "Rideaux qui bloquent la vue, pas le passage.",
+   "elements": [
+    {
+     "xy": [
+      0.1689,
+      0.6101
+     ]
+    },
+    {
+     "xy": [
+      0.2623,
+      0.3759
+     ]
+    },
+    {
+     "xy": [
+      0.2708,
+      0.5632
+     ]
+    },
+    {
+     "xy": [
+      0.276,
+      0.695
+     ]
+    },
+    {
+     "xy": [
+      0.2917,
+      0.4293
+     ]
+    },
+    {
+     "xy": [
+      0.3114,
+      0.5499
+     ]
+    },
+    {
+     "xy": [
+      0.3274,
+      0.5871
+     ]
+    },
+    {
+     "xy": [
+      0.3274,
+      0.5618
+     ]
+    },
+    {
+     "xy": [
+      0.3594,
+      0.4464
+     ]
+    },
+    {
+     "xy": [
+      0.3653,
+      0.4405
+     ]
+    },
+    {
+     "xy": [
+      0.4278,
+      0.6004
+     ]
+    },
+    {
+     "xy": [
+      0.436,
+      0.5208
+     ]
+    },
+    {
+     "xy": [
+      0.4368,
+      0.5655
+     ]
+    },
+    {
+     "xy": [
+      0.4531,
+      0.4821
+     ]
+    },
+    {
+     "xy": [
+      0.4613,
+      0.3393
+     ]
+    },
+    {
+     "xy": [
+      0.4836,
+      0.5454
+     ]
+    },
+    {
+     "xy": [
+      0.5164,
+      0.4546
+     ]
+    },
+    {
+     "xy": [
+      0.5387,
+      0.6607
+     ]
+    },
+    {
+     "xy": [
+      0.5469,
+      0.5179
+     ]
+    },
+    {
+     "xy": [
+      0.5632,
+      0.4345
+     ]
+    },
+    {
+     "xy": [
+      0.564,
+      0.4792
+     ]
+    },
+    {
+     "xy": [
+      0.5722,
+      0.3996
+     ]
+    },
+    {
+     "xy": [
+      0.6347,
+      0.5595
+     ]
+    },
+    {
+     "xy": [
+      0.6406,
+      0.5536
+     ]
+    },
+    {
+     "xy": [
+      0.6812,
+      0.4416
+     ]
+    },
+    {
+     "xy": [
+      0.7083,
+      0.5707
+     ]
+    },
+    {
+     "xy": [
+      0.7202,
+      0.3077
+     ]
+    },
+    {
+     "xy": [
+      0.7398,
+      0.6384
+     ]
+    },
+    {
+     "xy": [
+      0.744,
+      0.593
+     ]
+    },
+    {
+     "xy": [
+      0.7701,
+      0.3765
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cordes",
+   "nom": "Cordes",
+   "niveau": 3,
+   "a_quoi_ca_sert": "Monter sur les toits.",
+   "elements": [
+    {
+     "xy": [
+      0.1629,
+      0.6124
+     ]
+    },
+    {
+     "xy": [
+      0.2009,
+      0.4018
+     ]
+    },
+    {
+     "xy": [
+      0.2835,
+      0.6399
+     ]
+    },
+    {
+     "xy": [
+      0.2876,
+      0.5495
+     ]
+    },
+    {
+     "xy": [
+      0.3095,
+      0.6629
+     ]
+    },
+    {
+     "xy": [
+      0.3166,
+      0.526
+     ]
+    },
+    {
+     "xy": [
+      0.3166,
+      0.4617
+     ]
+    },
+    {
+     "xy": [
+      0.3514,
+      0.6012
+     ]
+    },
+    {
+     "xy": [
+      0.4185,
+      0.2664
+     ]
+    },
+    {
+     "xy": [
+      0.465,
+      0.5513
+     ]
+    },
+    {
+     "xy": [
+      0.535,
+      0.4487
+     ]
+    },
+    {
+     "xy": [
+      0.6436,
+      0.5878
+     ]
+    },
+    {
+     "xy": [
+      0.6834,
+      0.5383
+     ]
+    },
+    {
+     "xy": [
+      0.6834,
+      0.474
+     ]
+    },
+    {
+     "xy": [
+      0.7046,
+      0.3676
+     ]
+    },
+    {
+     "xy": [
+      0.7991,
+      0.6071
+     ]
+    },
+    {
+     "xy": [
+      0.8162,
+      0.3824
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bounce_pads",
+   "nom": "Bounce pads",
+   "niveau": 3,
+   "a_quoi_ca_sert": "Tremplins vers les hauteurs.",
+   "elements": [
+    {
+     "xy": [
+      0.1098,
+      0.3243
+     ]
+    },
+    {
+     "xy": [
+      0.2158,
+      0.5327
+     ]
+    },
+    {
+     "xy": [
+      0.3006,
+      0.381
+     ]
+    },
+    {
+     "xy": [
+      0.3565,
+      0.8285
+     ]
+    },
+    {
+     "xy": [
+      0.3899,
+      0.4747
+     ]
+    },
+    {
+     "xy": [
+      0.4182,
+      0.4068
+     ]
+    },
+    {
+     "xy": [
+      0.4185,
+      0.3544
+     ]
+    },
+    {
+     "xy": [
+      0.4684,
+      0.1626
+     ]
+    },
+    {
+     "xy": [
+      0.5247,
+      0.8285
+     ]
+    },
+    {
+     "xy": [
+      0.5848,
+      0.5952
+     ]
+    },
+    {
+     "xy": [
+      0.6101,
+      0.5253
+     ]
+    },
+    {
+     "xy": [
+      0.6153,
+      0.6812
+     ]
+    },
+    {
+     "xy": [
+      0.6507,
+      0.1626
+     ]
+    },
+    {
+     "xy": [
+      0.6935,
+      0.4315
+     ]
+    },
+    {
+     "xy": [
+      0.7068,
+      0.6101
+     ]
+    },
+    {
+     "xy": [
+      0.7842,
+      0.4732
+     ]
+    },
+    {
+     "xy": [
+      0.8512,
+      0.6771
+     ]
+    }
+   ]
+  }
+ ]
+}

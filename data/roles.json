@@ -1,0 +1,362 @@
+{
+ "meta": {
+  "source": "Vidéo sur les rôles, Wouks – Deadlock Academy (transcription du 2026-10-02, lien à compléter), reformulée.",
+  "nature": "Jugement d'un joueur, pas une donnée du jeu : le jeu n'attribue aucun rôle. Les listes de héros changent avec la meta ; les rôles eux-mêmes sont plus stables.",
+  "verifie_le": "2026-10-02"
+ },
+ "roles": [
+  {
+   "id": "main_carry",
+   "nom": "Main carry",
+   "richesse": 4,
+   "place": "Side lane, seul, du côté où le Guardian est déjà tombé",
+   "puissance": {
+    "debut": "faible",
+    "milieu": "moyen",
+    "fin": "très fort"
+   },
+   "quoi_faire": "Alterner entre les waves qui arrivent sous son Walker et sa jungle (Sinner's Sacrifice, camps). Atteindre son pic de puissance le plus vite possible, mourir le moins possible.",
+   "a_eviter": [
+    "Farmer 30 minutes sans regarder la carte : l'équipe peut perdre avant le pic de puissance.",
+    "Mourir avec beaucoup de souls non sécurisées."
+   ],
+   "objectifs": "En général pas d'urne ni de combat en milieu de partie, sauf si la lane est poussée.",
+   "heros": [
+    {
+     "id": 1,
+     "nom": "Infernus"
+    },
+    {
+     "id": 4,
+     "nom": "Lady Geist"
+    },
+    {
+     "id": 52,
+     "nom": "Mirage"
+    },
+    {
+     "id": 2,
+     "nom": "Seven"
+    },
+    {
+     "id": 65,
+     "nom": "Venator"
+    },
+    {
+     "id": 25,
+     "nom": "Warden"
+    },
+    {
+     "id": 7,
+     "nom": "Wraith"
+    }
+   ],
+   "aussi": [
+    {
+     "id": 66,
+     "nom": "Victor"
+    },
+    {
+     "id": 76,
+     "nom": "Graves"
+    }
+   ]
+  },
+  {
+   "id": "off_carry",
+   "nom": "Off-carry",
+   "richesse": 3,
+   "place": "L'autre side lane, de préférence celle dont le Guardian tient encore, pour rejoindre vite le centre",
+   "puissance": {
+    "debut": "faible",
+    "milieu": "fort",
+    "fin": "moyen à fort"
+   },
+   "quoi_faire": "Repousser sa side lane, puis rejoindre le centre pour les combats, les ganks et les urnes. C'est lui qui apporte les dégâts en milieu de partie.",
+   "a_eviter": [
+    "Rester passif sur sa lane à farmer : sa fenêtre d'impact est le milieu de partie."
+   ],
+   "objectifs": "Doit être présent aux combats et aux urnes.",
+   "heros": [
+    {
+     "id": 77,
+     "nom": "Apollo"
+    },
+    {
+     "id": 81,
+     "nom": "Celeste"
+    },
+    {
+     "id": 17,
+     "nom": "Grey Talon"
+    },
+    {
+     "id": 63,
+     "nom": "Mina"
+    },
+    {
+     "id": 50,
+     "nom": "Pocket"
+    },
+    {
+     "id": 58,
+     "nom": "Vyper"
+    },
+    {
+     "id": 27,
+     "nom": "Yamato"
+    }
+   ],
+   "aussi": [
+    {
+     "id": 19,
+     "nom": "Shiv"
+    },
+    {
+     "id": 3,
+     "nom": "Vindicta"
+    }
+   ]
+  },
+  {
+   "id": "tank",
+   "nom": "Tank / frontline",
+   "richesse": 2,
+   "place": "Au centre, avec le groupe de quatre",
+   "puissance": {
+    "debut": "moyen à fort",
+    "milieu": "fort",
+    "fin": "correct"
+   },
+   "quoi_faire": "Repousser la mid lane, puis chercher le bon moment pour engager avec le groupe. Encaisser à la place des autres, protéger ses carries, accompagner les urnes.",
+   "a_eviter": [
+    "Engager sans allié à proximité.",
+    "Engager avant que les waves soient poussées et que l'équipe ait acheté.",
+    "Prendre le farm des carries."
+   ],
+   "objectifs": "Combats et urnes.",
+   "heros": [
+    {
+     "id": 6,
+     "nom": "Abrams"
+    },
+    {
+     "id": 72,
+     "nom": "Billy"
+    },
+    {
+     "id": 18,
+     "nom": "Mo & Krill"
+    },
+    {
+     "id": 19,
+     "nom": "Shiv"
+    },
+    {
+     "id": 80,
+     "nom": "Silver"
+    },
+    {
+     "id": 66,
+     "nom": "Victor"
+    }
+   ],
+   "aussi": [
+    {
+     "id": 15,
+     "nom": "Bebop"
+    }
+   ]
+  },
+  {
+   "id": "catch",
+   "nom": "Catch / playmaker",
+   "richesse": 3,
+   "place": "Au centre, en mouvement permanent",
+   "puissance": {
+    "debut": "moyen",
+    "milieu": "fort",
+    "fin": "utilitaire"
+   },
+   "quoi_faire": "Sortir un adversaire de sa position pour lancer un combat en surnombre. Beaucoup se déplacer en fin de laning et en milieu de partie pour attraper des isolés.",
+   "a_eviter": [
+    "Rater son attrape : sans elle, l'utilité du héros s'effondre."
+   ],
+   "objectifs": "Demande une bonne lecture de la carte. Cible idéale : le main carry adverse dans sa jungle.",
+   "heros": [
+    {
+     "id": 15,
+     "nom": "Bebop"
+    },
+    {
+     "id": 69,
+     "nom": "The Doorman"
+    },
+    {
+     "id": 13,
+     "nom": "Haze"
+    },
+    {
+     "id": 14,
+     "nom": "Holliday"
+    },
+    {
+     "id": 31,
+     "nom": "Lash"
+    },
+    {
+     "id": 18,
+     "nom": "Mo & Krill"
+    },
+    {
+     "id": 10,
+     "nom": "Paradox"
+    },
+    {
+     "id": 3,
+     "nom": "Vindicta"
+    }
+   ],
+   "aussi": []
+  },
+  {
+   "id": "assassin",
+   "nom": "Assassin / perturbateur",
+   "richesse": 3,
+   "place": "Au centre, sur les flancs",
+   "puissance": {
+    "debut": "moyen",
+    "milieu": "fort",
+    "fin": "utilitaire"
+   },
+   "quoi_faire": "Gros dégâts en très peu de temps, mobile, fort en 1 contre 1. Trouver des cibles isolées et les punir ; en fin de partie, diviser l'équipe adverse pendant les combats.",
+   "a_eviter": [
+    "Engager sans avoir vérifié où sont les autres ennemis."
+   ],
+   "objectifs": "Combats ciblés plutôt que mêlée générale.",
+   "heros": [
+    {
+     "id": 16,
+     "nom": "Calico"
+    },
+    {
+     "id": 64,
+     "nom": "Drifter"
+    },
+    {
+     "id": 50,
+     "nom": "Pocket"
+    },
+    {
+     "id": 80,
+     "nom": "Silver"
+    },
+    {
+     "id": 8,
+     "nom": "McGinnis"
+    },
+    {
+     "id": 35,
+     "nom": "Viscous"
+    }
+   ],
+   "aussi": []
+  },
+  {
+   "id": "support",
+   "nom": "Support",
+   "richesse": 1,
+   "place": "Au centre, là où on a besoin de lui",
+   "puissance": {
+    "debut": "utile",
+    "milieu": "utile",
+    "fin": "utile"
+   },
+   "quoi_faire": "Aider ses alliés avec ses compétences et ses objets actifs, acheter les objets qui contrent les adversaires. Porter l'urne pour laisser les autres se battre.",
+   "a_eviter": [
+    "À bas rang, le rôle rapporte moins : l'équipe ne suit pas toujours, un carry a souvent plus d'impact."
+   ],
+   "objectifs": "Combats et urnes. Ne brille pas au tableau des scores.",
+   "objets_cites": [
+    "Rescue Beam",
+    "Divine Barrier",
+    "Healing Nova"
+   ],
+   "heros": [
+    {
+     "id": 67,
+     "nom": "Paige"
+    },
+    {
+     "id": 79,
+     "nom": "Rem"
+    },
+    {
+     "id": 11,
+     "nom": "Dynamo"
+    },
+    {
+     "id": 35,
+     "nom": "Viscous"
+    },
+    {
+     "id": 12,
+     "nom": "Kelvin"
+    },
+    {
+     "id": 69,
+     "nom": "The Doorman"
+    },
+    {
+     "id": 20,
+     "nom": "Ivy"
+    }
+   ],
+   "aussi": []
+  }
+ ],
+ "hybrides": {
+  "note": "Héros jouables dans plusieurs rôles selon le build et la partie.",
+  "heros": [
+   {
+    "id": 35,
+    "nom": "Viscous"
+   },
+   {
+    "id": 12,
+    "nom": "Kelvin"
+   },
+   {
+    "id": 20,
+    "nom": "Ivy"
+   },
+   {
+    "id": 76,
+    "nom": "Graves"
+   },
+   {
+    "id": 60,
+    "nom": "Sinclair"
+   }
+  ]
+ },
+ "composition_ideale": "1 main carry, 1 off-carry, 1 tank, 1 support, 2 flex (idéalement un catch et un assassin). Sans draft, c'est rarement respecté : s'adapter.",
+ "concepts": [
+  {
+   "nom": "Richesse théorique",
+   "texte": "Chaque rôle a besoin d'une quantité différente de souls pour être utile, de 4 (main carry, le plus riche) à 1 (support). Savoir son rôle, c'est savoir quel farm on prend et lequel on laisse."
+  },
+  {
+   "nom": "Répartition du farm",
+   "texte": "Pendant le laning, les deux joueurs d'une lane gagnent à peu près autant. La répartition commence au milieu de partie : qui prend les camps, les Sinner's Sacrifice, les side lanes, les urnes."
+  },
+  {
+   "nom": "1-4-1",
+   "texte": "Deux joueurs tiennent chacun une side lane (les carries), les quatre autres bougent ensemble au centre : mid lane, ganks, jungle adverse, urnes."
+  },
+  {
+   "nom": "Équilibre gun / spirit",
+   "texte": "Une équipe entièrement gun ou entièrement spirit se contre facilement avec un seul type de résistance. À repérer dès le début de partie."
+  }
+ ]
+}
