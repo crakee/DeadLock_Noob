@@ -1,0 +1,5110 @@
+{
+ "meta": {
+  "patch": "City Never Sleeps (2026-09-29)",
+  "verifie_le": "2026-10-02",
+  "source": "https://api.deadlock-api.com",
+  "genere_par": "outils/maj_donnees.py",
+  "note": "`mecaniques` est déduit par mots-clés : à relire. `video` est à remplir à la main."
+ },
+ "heros": [
+  {
+   "id": 6,
+   "nom": "Abrams",
+   "type": "brawler",
+   "complexite": 1,
+   "etiquettes_jeu": [
+    "Tank",
+    "Brawler",
+    "Bull-Headed"
+   ],
+   "arme": "Shotgun",
+   "role": "Charges into close combat",
+   "style_de_jeu": "Abrams has the bulk and sustain to lead from the front, often running into the middle of his foes and watching them scatter. If his enemies waste their fire on him, his backline teammates can lay out damage with impunity.",
+   "pv_depart": 800,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/bull_card.webp",
+   "icone": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/bull_sm.webp",
+   "wiki": "https://deadlock.wiki/Abrams",
+   "video": null,
+   "mecaniques": [
+    "controle",
+    "degats_sur_la_duree",
+    "mobilite",
+    "soin"
+   ],
+   "competences": [
+    {
+     "touche": 1,
+     "nom": "Siphon Life",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/bull_drain.webp",
+     "resume": "Drain health from nearby enemies",
+     "description": "Drain health from nearby enemies, dealing spirit damage over time and healing for a portion of the damage dealt.",
+     "recharge_s": 42.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage Per Second",
+       "valeur": "22.0"
+      },
+      {
+       "nom": "Duration",
+       "valeur": "4s"
+      },
+      {
+       "nom": "Lifesteal",
+       "valeur": "70%"
+      }
+     ],
+     "ameliorations": [
+      "+2m Radius and +18.0 DPS with improved Spirit scaling"
+     ]
+    },
+    {
+     "touche": 2,
+     "nom": "Shoulder Charge",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/bull_charge.webp",
+     "resume": "Charge into the fray, dragging enemies along",
+     "description": "Charge forward, pulling enemies you hit. Pushing a hero into a wall applies stun. · If you collide with a hero you move faster during your charge.",
+     "recharge_s": 33.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "30.0"
+      },
+      {
+       "nom": "Weapon Damage",
+       "valeur": "0"
+      },
+      {
+       "nom": "Weapon Damage Duration",
+       "valeur": "0s"
+      },
+      {
+       "nom": "Move Speed",
+       "valeur": "0%"
+      }
+     ],
+     "ameliorations": [
+      "Applies +32.0% Slow for 3s",
+      "On Wall Hit: +0.8s Stun Duration",
+      "-18s Cooldown · On Hero Collide: +1.5 Weapon Damage for 6s"
+     ]
+    },
+    {
+     "touche": 3,
+     "nom": "Infernal Resilience",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/bull_beef.webp",
+     "resume": "Regenerate some of the damage you receive",
+     "description": "Gain bonus defensive attributes. Taking damage grants temporary regeneration for a portion of the damage taken.",
+     "recharge_s": null,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage Regenerated",
+       "valeur": "13%"
+      },
+      {
+       "nom": "Regeneration Time",
+       "valeur": "20s"
+      }
+     ],
+     "ameliorations": [
+      "+20% Debuff Resist and +9% Damage Regenerated"
+     ]
+    },
+    {
+     "touche": 4,
+     "nom": "Seismic Impact",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/bull_jump.webp",
+     "resume": "Smash into enemies from above, stunning them",
+     "description": "Leap high into the air before crashing into the ground, dealing spirit damage and applying stun.",
+     "recharge_s": 215.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "100.0"
+      },
+      {
+       "nom": "Max Health",
+       "valeur": "0"
+      },
+      {
+       "nom": "Fire Rate",
+       "valeur": "0%"
+      },
+      {
+       "nom": "Buff Duration",
+       "valeur": "0s"
+      }
+     ],
+     "ameliorations": [
+      "On cast, become Unstoppable for 5s and +6m Impact Radius"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 77,
+   "nom": "Apollo",
+   "type": "assassin",
+   "complexite": 2,
+   "etiquettes_jeu": [
+    "Finesse",
+    "Mobility",
+    "A Cut Above"
+   ],
+   "arme": "Spreadshot",
+   "role": "",
+   "style_de_jeu": "",
+   "pv_depart": 770,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/fencer_card.webp",
+   "icone": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/fencer_sm.webp",
+   "wiki": "https://deadlock.wiki/Apollo",
+   "video": null,
+   "mecaniques": [
+    "canalisation",
+    "controle",
+    "mobilite",
+    "ralentissement",
+    "soin"
+   ],
+   "competences": [
+    {
+     "touche": 1,
+     "nom": "Disengaging Sigil",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/fencer/fencer_sigil.webp",
+     "resume": "",
+     "description": "Draw a sigil sphere in front of you and then leap backwards as it explodes, damaging and slowing enemies caught in it.",
+     "recharge_s": 12.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "85"
+      },
+      {
+       "nom": "Move Speed",
+       "valeur": "24%"
+      },
+      {
+       "nom": "Fire Rate",
+       "valeur": "0%"
+      }
+     ],
+     "ameliorations": [
+      "Gain +25% Fire Rate and +25% Bullet Speed for 8s",
+      "On Player Hit: +1 stamina restored and resets Air Jump/Dash limit",
+      "Can be Recast within 4s"
+     ]
+    },
+    {
+     "touche": 2,
+     "nom": "Riposte",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/fencer/fencer_riposte.webp",
+     "resume": "",
+     "description": "Prepare to deflect the next incoming attack. On a successful deflection, briefly become invulnerable and target an enemy hero to dash towards them, stunning them and reducing their Melee Resist. · · Press Ability 2 to select a target. · Does not trigger against trooper or neutral damage.",
+     "recharge_s": 22.0,
+     "canalisee": true,
+     "valeurs": [
+      {
+       "nom": "Invulnerability Duration",
+       "valeur": "0.3ss"
+      },
+      {
+       "nom": "Stun Duration",
+       "valeur": "0.8s"
+      },
+      {
+       "nom": "Melee Resist",
+       "valeur": "-25%"
+      }
+     ],
+     "ameliorations": [
+      "-25% Melee Resist and +0.4s Stun Duration",
+      "Gain 75% Bullet, Spirit & Melee Lifesteal against the Riposte target for 13s"
+     ]
+    },
+    {
+     "touche": 3,
+     "nom": "Flawless Advance",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/fencer/fencer_lungingstab.webp",
+     "resume": "",
+     "description": "Perform a series of lunges in any direction, delivering piercing stabs ahead of you. Hold your ability key to time your attacks, dealing more damage the longer it's held. Releasing your attack during the perfect window deals maximum damage. · · Press Ability 3 to re-cast.",
+     "recharge_s": 26.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Base Hold Damage",
+       "valeur": "25"
+      },
+      {
+       "nom": "Max Hold Damage",
+       "valeur": "40"
+      },
+      {
+       "nom": "Perfect Damage",
+       "valeur": "65"
+      },
+      {
+       "nom": "Heal on hero hit",
+       "valeur": "0"
+      }
+     ],
+     "ameliorations": [
+      "Perfect Hit on Hero: Heal 35",
+      "-12s Cooldown. Gain +60% Bullet Resist during lunge",
+      "+65 Perfect Damage with improved Spirit scaling. · Increased lunge speed & distance."
+     ]
+    },
+    {
+     "touche": 4,
+     "nom": "Itani Lo Sahn",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/fencer/fencer_ult.webp",
+     "resume": "",
+     "description": "Charge up and perform a long range slash. Struck enemies cannot take action or heal and are stuck in slow motion. When this effect expires, they suffer devastating damage, dealing bonus damage against half-health enemies. · · While in slow motion, Apollo is invulnerable and enemies take reduced damage. · · Hold Ability 4 or to delay the cast.",
+     "recharge_s": 145.0,
+     "canalisee": true,
+     "valeurs": [
+      {
+       "nom": "Delayed Damage",
+       "valeur": "200.0"
+      },
+      {
+       "nom": "Bonus Damage",
+       "valeur": "60%"
+      },
+      {
+       "nom": "Cooldown Reduced on Hero Hit",
+       "valeur": "0s"
+      }
+     ],
+     "ameliorations": []
+    }
+   ]
+  },
+  {
+   "id": 15,
+   "nom": "Bebop",
+   "type": "brawler",
+   "complexite": 2,
+   "etiquettes_jeu": [
+    "Hook",
+    "Bomb",
+    "Punch"
+   ],
+   "arme": "Beam Weapon",
+   "role": "Hooks an enemy for a knockout combo",
+   "style_de_jeu": "Bebop can string together his abilities in many different ways. Disrupting enemy positions, saving an ally or dealing bursts of damage. When the situation doesn't require subtlety his giant laser still solves many problems.",
+   "pv_depart": 880,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/bebop_card.webp",
+   "icone": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/bebop_sm.webp",
+   "wiki": "https://deadlock.wiki/Bebop",
+   "video": null,
+   "mecaniques": [
+    "canalisation",
+    "controle",
+    "ralentissement"
+   ],
+   "competences": [
+    {
+     "touche": 1,
+     "nom": "Exploding Uppercut",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/bebop/bebop_uppercut.webp",
+     "resume": "Punch someone away from you",
+     "description": "Deal melee damage to nearby enemies and apply knockback. · · When they land, they deal spirit damage and apply reduced fire rate to other nearby enemies. · · Exploding Uppercut can be used on allies.",
+     "recharge_s": 22.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Uppercut Damage",
+       "valeur": "0.01"
+      },
+      {
+       "nom": "Missing HP Heal",
+       "valeur": "0%"
+      },
+      {
+       "nom": "Area Damage",
+       "valeur": "75.0"
+      },
+      {
+       "nom": "Fire Rate",
+       "valeur": "-14%"
+      }
+     ],
+     "ameliorations": [
+      "On Hero Hit: Gain fast spin-up time, 2x weapon range and +30% weapon damage for 9s",
+      "On Hero Hit: Set Grapple Arm cooldown to 0 and restores +18% of your missing health"
+     ]
+    },
+    {
+     "touche": 2,
+     "nom": "Sticky Bomb",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/bebop/bebop_sticky_bomb.webp",
+     "resume": "Plant a bomb on an enemy",
+     "description": "Attach a bomb that explodes after a delay, dealing spirit damage to nearby enemies. · · If the bomb hits or kills a hero, you gain permanent bonus damage on Sticky Bomb. · · Stacks diminish by half after 60 hits and 7 kills",
+     "recharge_s": 18.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Fuse Time",
+       "valeur": "3.5s"
+      },
+      {
+       "nom": "Damage",
+       "valeur": "85.0"
+      },
+      {
+       "nom": "Damage",
+       "valeur": "0%"
+      },
+      {
+       "nom": "Sticky Bomb Damage",
+       "valeur": "1.0%"
+      },
+      {
+       "nom": "Sticky Bomb Damage",
+       "valeur": "2.5%"
+      }
+     ],
+     "ameliorations": [
+      "On Cast: +5m Move Speed and +25% Debuff Resistance for 6s"
+     ]
+    },
+    {
+     "touche": 3,
+     "nom": "Grapple Arm",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/bebop/bebop_hook.webp",
+     "resume": "Pull in a target to you",
+     "description": "Launch out a mechanical hand that pulls the first character it hits, reeling them in. · · Grapple Arm can be used on allies.",
+     "recharge_s": 23.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Cast Range",
+       "valeur": "30mm"
+      },
+      {
+       "nom": "Damage",
+       "valeur": "0"
+      }
+     ],
+     "ameliorations": [
+      "+20% weapon damage against victims for 6s"
+     ]
+    },
+    {
+     "touche": 4,
+     "nom": "Hyper Beam",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/bebop/bebop_hyper_beam.webp",
+     "resume": "Unleash a massive damaging beam",
+     "description": "Channel a powerful torrent of energy that deals spirit damage and applies slow.",
+     "recharge_s": 120.0,
+     "canalisee": true,
+     "valeurs": [
+      {
+       "nom": "Damage Per Second",
+       "valeur": "160.0"
+      },
+      {
+       "nom": "Move Speed",
+       "valeur": "20%"
+      }
+     ],
+     "ameliorations": [
+      "Hyper Beam heals Bebop for 65% of its damage on Heroes. 20% on non-hero"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 72,
+   "nom": "Billy",
+   "type": "brawler",
+   "complexite": 3,
+   "etiquettes_jeu": [
+    "Punk",
+    "Chaotic",
+    "G.O.A.T."
+   ],
+   "arme": "Close Range",
+   "role": "",
+   "style_de_jeu": "",
+   "pv_depart": 820,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/punkgoat_card.webp",
+   "icone": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/punkgoat_sm.webp",
+   "wiki": "https://deadlock.wiki/Billy",
+   "video": null,
+   "mecaniques": [
+    "canalisation",
+    "controle",
+    "ralentissement"
+   ],
+   "competences": [
+    {
+     "touche": 1,
+     "nom": "Bashdown",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/punkgoat/goat_sigilslam.webp",
+     "resume": "",
+     "description": "Slam your bat into the ground, pulling enemies down and dealing melee damage. · · The slam creates a shockwave that deals spirit damage and applies knockup.",
+     "recharge_s": 35.0,
+     "canalisee": true,
+     "valeurs": [
+      {
+       "nom": "Melee Damage",
+       "valeur": "0"
+      },
+      {
+       "nom": "Damage",
+       "valeur": "0"
+      },
+      {
+       "nom": "Damage",
+       "valeur": "35"
+      },
+      {
+       "nom": "Move Speed",
+       "valeur": "0%"
+      }
+     ],
+     "ameliorations": [
+      "-10s Cooldown",
+      "+1 Charge and +2m Radius",
+      "-3.0s Charge Time · Now deals 50% Heavy Melee Damage"
+     ]
+    },
+    {
+     "touche": 2,
+     "nom": "Rising Ram",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/punkgoat/goat_risingram.webp",
+     "resume": "",
+     "description": "Charge head-first into an enemy and send them into the air along with Billy. · · Cooldown reduced by 50% on impact.",
+     "recharge_s": 32.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "40"
+      },
+      {
+       "nom": "Max Health",
+       "valeur": "0%"
+      }
+     ],
+     "ameliorations": [
+      "On Impact: +25.0% weapon damage for 5s"
+     ]
+    },
+    {
+     "touche": 3,
+     "nom": "Blasted",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/punkgoat/goat_blasted.webp",
+     "resume": "",
+     "description": "Passive: Melee hits restore ammo and inflict wrecked on the victim for 7.0s.",
+     "recharge_s": 27.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Melee Bonus Health",
+       "valeur": "70.0"
+      },
+      {
+       "nom": "Wrecked Bullet Amp",
+       "valeur": "10%"
+      },
+      {
+       "nom": "Move Speed",
+       "valeur": "0.0m m"
+      }
+     ],
+     "ameliorations": [
+      "While Blasted: +2.25m/s bonus move speed",
+      "+1 Bashdown Charge on use and +7% Wrecked Bullet Amp",
+      "+50 Melee Bonus Health and increases spirit scaling"
+     ]
+    },
+    {
+     "touche": 4,
+     "nom": "Chain Gang",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/punkgoat/goat_chaingang.webp",
+     "resume": "",
+     "description": "Chain nearby enemies to you. Chained enemies cannot use movement abilities and receive a heavy slow when they pull on the chain. · · After a delay, yank everyone towards Billy and deal spirit damage. · · The chain breaks if you lose line of sight for a short while.",
+     "recharge_s": 175.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "120"
+      },
+      {
+       "nom": "Duration",
+       "valeur": "2.8s"
+      }
+     ],
+     "ameliorations": [
+      "+40% spirit resist & bullet resist",
+      "+5m Range · +1.3s of Unstoppable Per Hero pulled in"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 16,
+   "nom": "Calico",
+   "type": "assassin",
+   "complexite": 2,
+   "etiquettes_jeu": [
+    "Tricksy",
+    "Slippery",
+    "Burst Damage"
+   ],
+   "arme": "Spreadshot",
+   "role": "Wreaks havoc from the sidelines",
+   "style_de_jeu": "Calico uses the shadows to her advantage, weaving in and out of combat to hunt down her enemies one by one.",
+   "pv_depart": 730,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/nano_card.webp",
+   "icone": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/nano_sm.webp",
+   "wiki": "https://deadlock.wiki/Calico",
+   "video": null,
+   "mecaniques": [
+    "canalisation",
+    "mobilite",
+    "soin"
+   ],
+   "competences": [
+    {
+     "touche": 1,
+     "nom": "Gloom Bombs",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/nano/nano_clustergrenade.webp",
+     "resume": "Throw out cluster bombs",
+     "description": "Throw a cluster of bombs that detonate after a delay, dealing spirit damage. · · Enemies hit by multiple bombs take 65% damage.",
+     "recharge_s": 14.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Bomb Count",
+       "valeur": "4"
+      },
+      {
+       "nom": "Damage",
+       "valeur": "45.0"
+      },
+      {
+       "nom": "Bonus Damage vs Barriers",
+       "valeur": "0"
+      }
+     ],
+     "ameliorations": [
+      "Per Bomb Touch : -6% Melee Resist for 6s"
+     ]
+    },
+    {
+     "touche": 2,
+     "nom": "Leaping Slash",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/nano/nano_dash.webp",
+     "resume": "Dash forward and slash enemies",
+     "description": "Dash forward before slashing all enemies in a circle, dealing melee damage. · · If the ability hits at least one hero, heal a small amount of health.",
+     "recharge_s": 13.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Impact Damage",
+       "valeur": "10.0"
+      },
+      {
+       "nom": "Heal Amount",
+       "valeur": "40"
+      },
+      {
+       "nom": "Cooldown Refund",
+       "valeur": "0%"
+      }
+     ],
+     "ameliorations": [
+      "Heroes killed within 3s grant +200 souls",
+      "+60 Damage & On Hero Hit: 50% Cooldown Refund"
+     ]
+    },
+    {
+     "touche": 3,
+     "nom": "Ava",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/nano/nano_catform.webp",
+     "resume": "Take control of Ava",
+     "description": "Turn to shadows and possess Ava. You gain bonus move speed that increases over time, and become hidden on the minimap. · · Taking damage from an enemy hero resets your bonus move speed and puts Ava on a brief cooldown.",
+     "recharge_s": 30.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Min Move Speed",
+       "valeur": "30%"
+      },
+      {
+       "nom": "Max Move Speed",
+       "valeur": "65%"
+      },
+      {
+       "nom": "Buff Duration",
+       "valeur": "15s"
+      }
+     ],
+     "ameliorations": [
+      "+15 Health Regen & +40% Max Move Speed",
+      "Gain Damage Amp over time, up to 18%. Lingers for 6s"
+     ]
+    },
+    {
+     "touche": 4,
+     "nom": "Return to Shadows",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/nano/nano_shadow_pulse.webp",
+     "resume": "Turn to Shadows, gaining movespeed and dealing delayed damage",
+     "description": "Instantly turn to shadows, becoming untargetable, gaining bonus move speed, and dealing spirit damage. · · After a delay, return from the shadows, dealing spirit damage again.",
+     "recharge_s": 115.0,
+     "canalisee": true,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "150.0"
+      },
+      {
+       "nom": "Move Speed",
+       "valeur": "20%"
+      }
+     ],
+     "ameliorations": [
+      "+75 Damage and +20% Move Speed",
+      "On Completion: Heal for 450 and refund all ability cooldowns"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 81,
+   "nom": "Celeste",
+   "type": "marksman",
+   "complexite": 2,
+   "etiquettes_jeu": [
+    "Performer",
+    "Disruptive",
+    "Dazzling"
+   ],
+   "arme": "Burst Fire",
+   "role": "",
+   "style_de_jeu": "",
+   "pv_depart": 690,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/unicorn_card.webp",
+   "icone": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/unicorn_sm.webp",
+   "wiki": "https://deadlock.wiki/Celeste",
+   "video": null,
+   "mecaniques": [
+    "bouclier",
+    "canalisation",
+    "mobilite",
+    "ralentissement",
+    "silence_desarmement",
+    "soin",
+    "zone"
+   ],
+   "competences": [
+    {
+     "touche": 1,
+     "nom": "Light Eater",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/unicorn/unicorn_flare.webp",
+     "resume": "",
+     "description": "Blast enemies in a cone in front of you with a flare of light. Blasted enemies take spirit damage when attacked by Celeste and provides her spirit lifesteal.",
+     "recharge_s": 20.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Spirit Lifesteal",
+       "valeur": "18%"
+      },
+      {
+       "nom": "Flare Damage",
+       "valeur": "40"
+      },
+      {
+       "nom": "Damage",
+       "valeur": "15"
+      }
+     ],
+     "ameliorations": [
+      "-10s Cooldown and +3m Cast Range",
+      "+22 Damage and Increased Spirit Scaling"
+     ]
+    },
+    {
+     "touche": 2,
+     "nom": "Dazzling Trick",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/unicorn/unicorn_shield.webp",
+     "resume": "",
+     "description": "Surround yourself in a protective prism. If the barrier is destroyed, it silences nearby enemies and deals a portion of the barrier as damage.",
+     "recharge_s": 38.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Barrier",
+       "valeur": "100"
+      },
+      {
+       "nom": "Move Speed",
+       "valeur": "0m m"
+      },
+      {
+       "nom": "Debuff Duration",
+       "valeur": "1.75s"
+      },
+      {
+       "nom": "Barrier Damage",
+       "valeur": "50%"
+      }
+     ],
+     "ameliorations": [
+      "+70 Barrier and Increased Barrier Spirit Scaling",
+      "+1.25 Silence Duration and -20s Cooldown. Allows Shining Wonder Bounce."
+     ]
+    },
+    {
+     "touche": 3,
+     "nom": "Radiant Daggers",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/unicorn/unicorn_luminousflux.webp",
+     "resume": "",
+     "description": "Call down a beam of light from the sky. After a short duration, the beam will fully form, causing an explosion that deals spirit damage to all targets in the area. · · Celeste will receive a stacking buff that increases her spirit damage anytime this hits an enemy hero.",
+     "recharge_s": 33.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Impact Damage",
+       "valeur": "55"
+      },
+      {
+       "nom": "Spirit Amp per Stack",
+       "valeur": "7%"
+      },
+      {
+       "nom": "Fire Rate per Stack",
+       "valeur": "0%"
+      }
+     ],
+     "ameliorations": []
+    },
+    {
+     "touche": 4,
+     "nom": "Shining Wonder",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/unicorn/unicorn_orb.webp",
+     "resume": "",
+     "description": "Launch a deadly orb of light that deals spirit damage and applies slow and reduces Dash Distance on impact. The orb then bounces to the enemies within range. If no target is found, the orb will linger for a short duration while continuing to look for targets. · · Prioritizes enemy heroes when picking targets.",
+     "recharge_s": 160.0,
+     "canalisee": true,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "140"
+      },
+      {
+       "nom": "Move Speed",
+       "valeur": "32%"
+      }
+     ],
+     "ameliorations": [
+      "-16% Move Speed and -14% Dash Distance",
+      "+90 Damage and Increased Spirit Scaling",
+      "+6 Max Bounces and -30s Cooldown"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 64,
+   "nom": "Drifter",
+   "type": "assassin",
+   "complexite": 3,
+   "etiquettes_jeu": [
+    "Stalker",
+    "Bloodthirsty",
+    "Cruel"
+   ],
+   "arme": "Spreadshot",
+   "role": "",
+   "style_de_jeu": "",
+   "pv_depart": 755,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/drifter_card.webp",
+   "icone": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/drifter_sm.webp",
+   "wiki": "https://deadlock.wiki/Drifter",
+   "video": null,
+   "mecaniques": [
+    "degats_sur_la_duree"
+   ],
+   "competences": [
+    {
+     "touche": 1,
+     "nom": "Rend",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/drifter/drifter_claw.webp",
+     "resume": "",
+     "description": "Swipe at enemies in a cone ahead of you, dealing spirit damage. If the enemy is in close range, deal bonus melee damage.",
+     "recharge_s": 16.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "40.0"
+      },
+      {
+       "nom": "Damage",
+       "valeur": "0.0"
+      },
+      {
+       "nom": "Damage",
+       "valeur": "0"
+      },
+      {
+       "nom": "Bullet Lifesteal",
+       "valeur": "0%"
+      }
+     ],
+     "ameliorations": [
+      "-8.0s Cooldown",
+      "Deals 55% Heavy Melee Damage · Silences enemies for 2s if close range"
+     ]
+    },
+    {
+     "touche": 2,
+     "nom": "Stalker's Mark",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/drifter/drifter_stalkersmark.webp",
+     "resume": "",
+     "description": "Send out a mark that bleeds the first target it hits, dealing spirit damage over time. · · While the enemy is bleeding you can re-activate Stalker's Mark to instantly appear behind their back.",
+     "recharge_s": 26.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Bleed Damage",
+       "valeur": "2.0% DPS"
+      },
+      {
+       "nom": "Duration",
+       "valeur": "5s"
+      },
+      {
+       "nom": "Incoming Healing",
+       "valeur": "0%"
+      },
+      {
+       "nom": "Fire Rate",
+       "valeur": "0%"
+      }
+     ],
+     "ameliorations": [
+      "-8% Bullet Resist",
+      "-10s Cooldown and +3s Duration",
+      "+1.5% Bleed and -40.0% Incoming Healing"
+     ]
+    },
+    {
+     "touche": 3,
+     "nom": "Bloodscent",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/drifter/drifter_thehunger.webp",
+     "resume": "",
+     "description": "",
+     "recharge_s": null,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Amplified Damage",
+       "valeur": "15%"
+      },
+      {
+       "nom": "Isolation Range",
+       "valeur": "20mm"
+      },
+      {
+       "nom": "Permanent Weapon Damage",
+       "valeur": "3%"
+      },
+      {
+       "nom": "Missing Health as Healing",
+       "valeur": "0%"
+      }
+     ],
+     "ameliorations": [
+      "+3m/s Move Speed when around an isolated enemy hero",
+      "On isolated hero death: Heal 24% of your missing health and restores 2 Stamina"
+     ]
+    },
+    {
+     "touche": 4,
+     "nom": "Eternal Night",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/drifter/darkness.webp",
+     "resume": "",
+     "description": "Surround nearby enemy heroes in darkness, severely limiting their vision of other units. Affected enemies are briefly revealed to you and are considered isolated for the duration. · · You gain bonus sprint speed.",
+     "recharge_s": 145.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Reduced Vision",
+       "valeur": "15mm"
+      },
+      {
+       "nom": "Sprint Speed",
+       "valeur": "2mm"
+      }
+     ],
+     "ameliorations": [
+      "+2.5s Duration and +1 Max Target."
+     ]
+    }
+   ]
+  },
+  {
+   "id": 11,
+   "nom": "Dynamo",
+   "type": "mystic",
+   "complexite": 2,
+   "etiquettes_jeu": [
+    "Teamplay",
+    "Initiator",
+    "Clutch"
+   ],
+   "arme": "Pistol",
+   "role": "Locks down the enemy team",
+   "style_de_jeu": "Dynamo keeps himself and his allies healthy while waiting for his moment. Few things can warp a team fight more than a well-coordinated use of Singularity.",
+   "pv_depart": 880,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/sumo_card.webp",
+   "icone": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/sumo_sm.webp",
+   "wiki": "https://deadlock.wiki/Dynamo",
+   "video": null,
+   "mecaniques": [
+    "canalisation",
+    "controle",
+    "degats_sur_la_duree",
+    "mobilite",
+    "soin",
+    "zone"
+   ],
+   "competences": [
+    {
+     "touche": 1,
+     "nom": "Kinetic Pulse",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/sumo/sumo_stomp.webp",
+     "resume": "Release a ground pulse that knocks enemies into the air",
+     "description": "Release an energy pulse that travels along the ground, dealing spirit damage and applying knockup.",
+     "recharge_s": 26.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "115.0"
+      },
+      {
+       "nom": "Bullet Resist",
+       "valeur": "0%"
+      },
+      {
+       "nom": "Move Speed",
+       "valeur": "0%"
+      },
+      {
+       "nom": "Slow Duration",
+       "valeur": "0s"
+      }
+     ],
+     "ameliorations": [
+      "+1 Charge",
+      "On Hit: -15% Bullet Resist and -24% Move Speed for 4s",
+      "+135.0 Damage and +20m Cast Range"
+     ]
+    },
+    {
+     "touche": 2,
+     "nom": "Quantum Entanglement",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/sumo/sumo_quantum.webp",
+     "resume": "Blink in and out of existence",
+     "description": "Briefly become untargetable while teleporting to the target location. Restores stamina upon use. · · : Bring nearby allies with you.",
+     "recharge_s": 20.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Cast Range",
+       "valeur": "10mm"
+      },
+      {
+       "nom": "Duration",
+       "valeur": "1.4s"
+      }
+     ],
+     "ameliorations": [
+      "Reduces non-ult debuffs by 50% · Replenishes 1 Charge"
+     ]
+    },
+    {
+     "touche": 3,
+     "nom": "Rejuvenating Aurora",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/sumo/sumo_pork_bun.webp",
+     "resume": "Heal yourself and those around you",
+     "description": "While channeling, restore health over time to you and any allies nearby. · You can dash and melee without breaking the channel.",
+     "recharge_s": 48.0,
+     "canalisee": true,
+     "valeurs": [
+      {
+       "nom": "Health Restored",
+       "valeur": "30/s"
+      },
+      {
+       "nom": "Channel Duration",
+       "valeur": "5s"
+      }
+     ],
+     "ameliorations": [
+      "Aura provides +4m Move Speed during channel",
+      "-20.0s Cooldown and +1.0s Duration",
+      "Full move and ability use and additionally heals +2.5% of Max Health per second"
+     ]
+    },
+    {
+     "touche": 4,
+     "nom": "Singularity",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/sumo/sumo_vacuum.webp",
+     "resume": "Pull in and stun the enemy team",
+     "description": "Create a singularity in your hands, dealing spirit damage over time, applying stun, and pulling in nearby enemies.",
+     "recharge_s": 250.0,
+     "canalisee": true,
+     "valeurs": [
+      {
+       "nom": "Damage Per Second",
+       "valeur": "75.0"
+      },
+      {
+       "nom": "Max Health as Damage",
+       "valeur": "0.0%"
+      }
+     ],
+     "ameliorations": []
+    }
+   ]
+  },
+  {
+   "id": 76,
+   "nom": "Graves",
+   "type": "marksman",
+   "complexite": 2,
+   "etiquettes_jeu": [
+    "Morbid",
+    "Area Denial",
+    "Necromancer"
+   ],
+   "arme": "Pistol",
+   "role": "",
+   "style_de_jeu": "",
+   "pv_depart": 730,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/necro_card.webp",
+   "icone": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/necro_sm.webp",
+   "wiki": "https://deadlock.wiki/Graves",
+   "video": null,
+   "mecaniques": [
+    "canalisation",
+    "controle",
+    "invocation"
+   ],
+   "competences": [
+    {
+     "touche": 1,
+     "nom": "Jar of Dead",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/necro/necro_skull.webp",
+     "resume": "",
+     "description": "Passive: Collect death when anything dies nearby and store it in your Jar of Dead. · · Active: Throw a jar to summon Deadheads that repeatedly deal spirit damage to enemies. · · Deadheads follow you instead if there's no nearby enemies, and prioritize the target of your weapon.",
+     "recharge_s": null,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Deadheads",
+       "valeur": "4"
+      },
+      {
+       "nom": "Damage",
+       "valeur": "16"
+      }
+     ],
+     "ameliorations": [
+      "Collecting death heals 5 health per pickup",
+      "On Hit: Apply 24% Slow for 1s",
+      "+2 Deadheads · +4s Deadhead Lifetime"
+     ]
+    },
+    {
+     "touche": 2,
+     "nom": "Grasping Hands",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/necro/necro_hands.webp",
+     "resume": "",
+     "description": "Unearth a line of grasping hands, summoning a Ghoul and leaving behind a rift. Enemies who pass through take spirit damage and receive immobilize. · · Alt-Cast rotates the orientation of the wall.",
+     "recharge_s": 34.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Ghouls Raised",
+       "valeur": "1"
+      },
+      {
+       "nom": "Damage",
+       "valeur": "90"
+      },
+      {
+       "nom": "Max Health Damage",
+       "valeur": "0%"
+      }
+     ],
+     "ameliorations": [
+      "+90 Damage and +10m Wall Length",
+      "+1 Ghouls Raised · -14s Cooldown · +0.75s Immobilize Duration"
+     ]
+    },
+    {
+     "touche": 3,
+     "nom": "Essence Theft",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/necro/necro_siphon.webp",
+     "resume": "",
+     "description": "Your weapon steals weapon damage and spirit resist over time, up to a maximum amount per target.",
+     "recharge_s": null,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Max Weapon Damage Stolen",
+       "valeur": "25%"
+      },
+      {
+       "nom": "Max Spirit Resist Stolen",
+       "valeur": "10%"
+      },
+      {
+       "nom": "Max Fire Rate Stolen",
+       "valeur": "0%"
+      }
+     ],
+     "ameliorations": [
+      "+1 Max Steal Targets · All Summons now apply Essence Theft"
+     ]
+    },
+    {
+     "touche": 4,
+     "nom": "Borrowed Decree",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/necro/necro_gravestone.webp",
+     "resume": "",
+     "description": "",
+     "recharge_s": 140.0,
+     "canalisee": true,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "115"
+      },
+      {
+       "nom": "Move Speed",
+       "valeur": "64%"
+      }
+     ],
+     "ameliorations": [
+      "+25% Ghoul Speed · -15s Cooldown",
+      "+10s Duration · -0.3s Time To Spawn",
+      "On Death: Deal +5% Current Health as Damage"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 17,
+   "nom": "Grey Talon",
+   "type": "marksman",
+   "complexite": 2,
+   "etiquettes_jeu": [
+    "Precision",
+    "Hunter",
+    "Area Denial"
+   ],
+   "arme": "Bow",
+   "role": "Delivers long range skill-shots",
+   "style_de_jeu": "A cunning predator, Grey Talon uses a combination of deadly accuracy, traps, and clever positioning to bring down the toughest of opponents.",
+   "pv_depart": 780,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/archer_card.webp",
+   "icone": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/archer_sm.webp",
+   "wiki": "https://deadlock.wiki/Grey_Talon",
+   "video": null,
+   "mecaniques": [
+    "canalisation",
+    "controle",
+    "mobilite",
+    "ralentissement",
+    "silence_desarmement",
+    "zone"
+   ],
+   "competences": [
+    {
+     "touche": 1,
+     "nom": "Charged Shot",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/archer/archer_charged_shot.webp",
+     "resume": "Charge up a long range shot",
+     "description": "Charge up a powerful shot that pierces through enemies. Hold Ability 1 or to hold the shot.",
+     "recharge_s": 17.0,
+     "canalisee": true,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "80.0"
+      }
+     ],
+     "ameliorations": [
+      "+54.0 Damage",
+      "Improved damage scaling and -3s Charge Delay"
+     ]
+    },
+    {
+     "touche": 2,
+     "nom": "Rain of Arrows",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/archer/archer_power_jump.webp",
+     "resume": "Jump high up in the air and unleash multishots",
+     "description": "Launches you high in the air, allowing you to glide slowly. While airborne, you gain Weapon Damage and multishot on your weapon. · for reduced jump height. · Press Jump / mantle to cancel the glide.",
+     "recharge_s": 25.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Weapon Multishot",
+       "valeur": "5"
+      },
+      {
+       "nom": "Weapon Damage",
+       "valeur": "3"
+      }
+     ],
+     "ameliorations": [
+      "While airborne, +3 Weapon Damage and weapon damage applies 24% movement slow for 1.5s",
+      "While airborne, +30% Bullet Lifesteal, +30% Spirit Lifesteal and +30% Bullet Evasion"
+     ]
+    },
+    {
+     "touche": 3,
+     "nom": "Spirit Snare",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/archer/imobolize_trap.webp",
+     "resume": "Place a trap that restricts enemy movement",
+     "description": "Throw out a trap that begins to arm itself. Once armed, the trap will trigger when an enemy enters its radius, applying Curse and Movement Slow that interrupts, Silences, Disarms, and prevents item usage. · Hit the trap with a Charged Shot to detonate early with increased radius.",
+     "recharge_s": 34.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Curse Duration",
+       "valeur": "2.25s"
+      },
+      {
+       "nom": "Damage",
+       "valeur": "25.0"
+      },
+      {
+       "nom": "Lifetime",
+       "valeur": "22s"
+      }
+     ],
+     "ameliorations": [
+      "Applies -15% Bullet Resist for 10s",
+      "+1s Curse Duration and +1.5m Radius"
+     ]
+    },
+    {
+     "touche": 4,
+     "nom": "Guided Owl",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/archer/archer_guided_arrow.webp",
+     "resume": "Fly your owl to damage enemies from afar",
+     "description": "After 1.5s cast time, launch a spirit owl that you control and which explodes on impact, damaging and stunning enemies. Hold [W] to accelerate the owl. · Press Jump / mantle to release control. Gain permanent Spirit Power for each enemy hero killed with Guided Owl.",
+     "recharge_s": 125.0,
+     "canalisee": true,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "230.0"
+      },
+      {
+       "nom": "Explosion Radius",
+       "valeur": "12mm"
+      },
+      {
+       "nom": "Stun Duration",
+       "valeur": "0.75s"
+      }
+     ],
+     "ameliorations": [
+      "After hit, kills enemies that are below 22% Health"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 13,
+   "nom": "Haze",
+   "type": "assassin",
+   "complexite": 1,
+   "etiquettes_jeu": [
+    "Assassin",
+    "Stealthy",
+    "Lethal"
+   ],
+   "arme": "Rapid Fire",
+   "role": "Sneaks in and sprays bullets",
+   "style_de_jeu": "When Haze fixates on a target she can hold her own in a firefight. She prefers to create one sided exchanges, avoiding damage then picking off unsuspecting targets up close.",
+   "pv_depart": 730,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/haze_card.webp",
+   "icone": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/haze_sm.webp",
+   "wiki": "https://deadlock.wiki/Haze",
+   "video": null,
+   "mecaniques": [
+    "controle",
+    "invisibilite",
+    "zone"
+   ],
+   "competences": [
+    {
+     "touche": 1,
+     "nom": "Sleep Dagger",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/haze/haze_sleep_dagger.webp",
+     "resume": "Put an enemy to sleep",
+     "description": "Throw a dagger that damages and sleeps the target. Sleeping targets wake up shortly after being damaged. Throwing a Dagger does not break your invisibility. Sleep Dagger does not interrupt enemies' channeling abilities.",
+     "recharge_s": 30.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "65.0"
+      },
+      {
+       "nom": "Sleep Duration",
+       "valeur": "2.75s"
+      }
+     ],
+     "ameliorations": [
+      "-10.0% Bullet Resist Reduction for 6.0s on wake-up",
+      "+1s Sleep Duration · Applies 15.0 Fixation Stacks",
+      "-17.0s Cooldown · -40% Move and Dash Speed for 3s on wake-up"
+     ]
+    },
+    {
+     "touche": 2,
+     "nom": "Smoke Bomb",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/haze/haze_smoke_bomb.webp",
+     "resume": "Fade out of sight",
+     "description": "Fade out of sight, becoming invisible and gaining sprint speed. Attacking removes invisibility, but using items does not. Close enemies can see through your invisibility.",
+     "recharge_s": 33.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Fade Time",
+       "valeur": "1.5s"
+      }
+     ],
+     "ameliorations": [
+      "Enable 2 Ability Charges",
+      "Dispels non-ult debuffs · Grants +50% Bullet Lifesteal for 5s"
+     ]
+    },
+    {
+     "touche": 3,
+     "nom": "Fixation",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/haze/haze_fixation.webp",
+     "resume": "Deal increasing bullet damage to a target",
+     "description": "Shooting a target increases your bullet damage on that target. Gain one stack per bullet hit, three if the hit is a headshot.",
+     "recharge_s": null,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Weapon Damage",
+       "valeur": "0.2/stack"
+      },
+      {
+       "nom": "Max Stacks",
+       "valeur": "40"
+      },
+      {
+       "nom": "Spirit Damage",
+       "valeur": "0"
+      }
+     ],
+     "ameliorations": [
+      "40.0 Spirit damage and 12% slow for 2s to target every 20 stacks",
+      "+40 Max Stacks and +5s Duration",
+      "+0.11/ per Stack · Scales with Weapon Damage"
+     ]
+    },
+    {
+     "touche": 4,
+     "nom": "Bullet Dance",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/haze/haze_bullet_flurry.webp",
+     "resume": "Unleash a flurry of bullets around you",
+     "description": "Enter a flurry, firing your weapon at nearby enemies with perfect accuracy and added Bullet Damage.",
+     "recharge_s": 165.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Fire Rate",
+       "valeur": "25%"
+      },
+      {
+       "nom": "Bullet Damage",
+       "valeur": "7"
+      },
+      {
+       "nom": "Targets Hit Per Shot",
+       "valeur": "1"
+      }
+     ],
+     "ameliorations": [
+      "+10.0% Fire Rate · +3m Movespeed",
+      "+40.0% Evasion · -65s Cooldown"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 14,
+   "nom": "Holliday",
+   "type": "marksman",
+   "complexite": 3,
+   "etiquettes_jeu": [
+    "Crackshot",
+    "Explosive",
+    "Apprehender"
+   ],
+   "arme": "Pistol",
+   "role": "Bounces about dispensing trick shots",
+   "style_de_jeu": "Holliday depends on her skills as a crack shot, shooting things she's bounced into the air. With good aim she can lay out heavy damage. Her movement skills let her isolate her enemies or beat a hasty retreat.",
+   "pv_depart": 780,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/astro_card.webp",
+   "icone": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/astro_sm.webp",
+   "wiki": "https://deadlock.wiki/Holliday",
+   "video": null,
+   "mecaniques": [
+    "controle",
+    "degats_sur_la_duree",
+    "mobilite"
+   ],
+   "competences": [
+    {
+     "touche": 1,
+     "nom": "Powder Keg",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/astro/holliday_powder_keg.webp",
+     "resume": "Throw a barrel that explodes when shot",
+     "description": "Throw a barrel that explodes after a delay, dealing spirit damage, setting enemies on fire and applying knockup. · · The barrel can be detonated early by being shot, melee'd, or detonated by another barrel. · · The burn stacks, so overlapping barrels burn for their combined damage. · Can be Alt-Cast to place the barrel in front of Holliday.",
+     "recharge_s": 28.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Impact Damage",
+       "valeur": "40.0"
+      },
+      {
+       "nom": "Damage Per Second",
+       "valeur": "13.3333"
+      }
+     ],
+     "ameliorations": [
+      "+40 Impact Damage · +13.3333 Burn Damage per Second · -5s Charge Time · Improved Spirit Scaling"
+     ]
+    },
+    {
+     "touche": 2,
+     "nom": "Bounce Pad",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/astro/holliday_bounce_pad.webp",
+     "resume": "Send yourself and others flying",
+     "description": "Drop a bounce pad in the world that launches any hero. · · You explode on landing, dealing Damage to any nearby enemies. · · The explosion can only occur once per person per Bounce Pad.",
+     "recharge_s": 41.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Stomp Damage",
+       "valeur": "60.0"
+      },
+      {
+       "nom": "Radius",
+       "valeur": "9mm"
+      }
+     ],
+     "ameliorations": [
+      "-10s Cooldown",
+      "You and allies gain a +4m/s move speed bonus for 4s on landing",
+      "+0.7s Stomp Stun"
+     ]
+    },
+    {
+     "touche": 3,
+     "nom": "Crackshot",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/astro/holliday_crackshot.webp",
+     "resume": "Deal bonus damage with headshots",
+     "description": "Headshots deal bonus Damage and applies a Fading Move Speed penalty. This effect can only occur when off cooldown. · · Cooldown is reduced by 50% on NPC hits. · Crackshot ignores range damage fall-off and does not apply to objectives.",
+     "recharge_s": 20.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "55.0"
+      },
+      {
+       "nom": "Fading Move Speed",
+       "valeur": "40%"
+      },
+      {
+       "nom": "Debuff Duration",
+       "valeur": "2s"
+      },
+      {
+       "nom": "Bullet Resist",
+       "valeur": "0%"
+      }
+     ],
+     "ameliorations": [
+      "-20% Fading Move Speed",
+      "+49.5 Damage and -6% Bullet Resist for 5s",
+      "-6s Cooldown on Hero Headshots. -3s on NPC Headshots"
+     ]
+    },
+    {
+     "touche": 4,
+     "nom": "Spirit Lasso",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/astro/holliday_spirit_lasso.webp",
+     "resume": "Grab an enemy and drag them behind you",
+     "description": "Throw out your lasso, dealing spirit damage, pulling, and applying stun. · Using a Bounce Pad extends the duration of Spirit Lasso.",
+     "recharge_s": 130.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Cast Range",
+       "valeur": "20mm"
+      },
+      {
+       "nom": "Damage",
+       "valeur": "80.0"
+      }
+     ],
+     "ameliorations": []
+    }
+   ]
+  },
+  {
+   "id": 1,
+   "nom": "Infernus",
+   "type": "marksman",
+   "complexite": 1,
+   "etiquettes_jeu": [
+    "Arsonist",
+    "Explosive",
+    "Burn Rubber"
+   ],
+   "arme": "Rapid Fire",
+   "role": "Lights up enemies and watches them burn",
+   "style_de_jeu": "Infernus has many ways to deal damage over time, burning foes before swooping in for the kill. Due to Infernus' blazing speed, his enemies won't be able to escape the flames.",
+   "pv_depart": 830,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/inferno_card.webp",
+   "icone": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/inferno_sm.webp",
+   "wiki": "https://deadlock.wiki/Infernus",
+   "video": null,
+   "mecaniques": [
+    "controle",
+    "degats_sur_la_duree",
+    "mobilite",
+    "ralentissement"
+   ],
+   "competences": [
+    {
+     "touche": 1,
+     "nom": "Napalm",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/inferno_molotov.webp",
+     "resume": "Spew napalm that amplifies your damage",
+     "description": "Spew an incendiary mixture, dealing spirit damage, applying slow, and coating targets in napalm.",
+     "recharge_s": 25.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "40.0"
+      },
+      {
+       "nom": "Move Speed",
+       "valeur": "28%"
+      },
+      {
+       "nom": "Slow Duration",
+       "valeur": "4s"
+      },
+      {
+       "nom": "Damage Taken",
+       "valeur": "16%"
+      },
+      {
+       "nom": "Lifesteal",
+       "valeur": "0%"
+      },
+      {
+       "nom": "Incoming Healing",
+       "valeur": "0%"
+      }
+     ],
+     "ameliorations": [
+      "Napalm Effect: +15% Lifesteal",
+      "Napalm Effect: +17% Damage Taken and -33% Healing"
+     ]
+    },
+    {
+     "touche": 2,
+     "nom": "Flame Dash",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/inferno_dash.webp",
+     "resume": "Blaze forward, leaving a flame trail in your wake",
+     "description": "Dash forward, gaining slow resistance while leaving a flaming trail that deals spirit damage over time. · · Hold [W] while active to dash farther.",
+     "recharge_s": 38.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Max Dash Speed",
+       "valeur": "20mm"
+      },
+      {
+       "nom": "Damage Per Second",
+       "valeur": "30.0"
+      },
+      {
+       "nom": "Fire Rate",
+       "valeur": "0%"
+      }
+     ],
+     "ameliorations": [
+      "+1.0s Trail Duration and +20.0 DPS",
+      "Enable 2 Ability Charges with 14s Recharge time"
+     ]
+    },
+    {
+     "touche": 3,
+     "nom": "Afterburn",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/inferno_deflect.webp",
+     "resume": "Shoot enemies to set them on fire",
+     "description": "Weapon hits build up a burning effect, dealing spirit damage over time. · · Abilities refresh to the base burn duration and weapon hits extend it.",
+     "recharge_s": null,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage Per Second",
+       "valeur": "14.0"
+      },
+      {
+       "nom": "Base Burn Duration",
+       "valeur": "3s"
+      },
+      {
+       "nom": "Max Burn Duration",
+       "valeur": "3s"
+      },
+      {
+       "nom": "Spirit Damage",
+       "valeur": "0%"
+      }
+     ],
+     "ameliorations": [
+      "Burn Effect: -35% Spirit Damage",
+      "+3.0s Max Burn Duration"
+     ]
+    },
+    {
+     "touche": 4,
+     "nom": "Concussive Combustion",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/inferno_bomb.webp",
+     "resume": "Stun all nearby enemies after a short delay",
+     "description": "Become a living bomb, dealing spirit damage and applying stun to all nearby enemies after a delay. · · Once cast, Concussive Combustion cannot be interrupted.",
+     "recharge_s": 190.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Explosion Delay",
+       "valeur": "3.25s"
+      },
+      {
+       "nom": "Damage",
+       "valeur": "125.0"
+      },
+      {
+       "nom": "Fire Rate",
+       "valeur": "0%"
+      },
+      {
+       "nom": "Buff Duration",
+       "valeur": "0s"
+      }
+     ],
+     "ameliorations": [
+      "-65.0s Cooldown and +100.0% Explosion Lifesteal",
+      "+0.9s Stun Duration and +10m Radius"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 20,
+   "nom": "Ivy",
+   "type": "marksman",
+   "complexite": 3,
+   "etiquettes_jeu": [
+    "Team-up",
+    "Disruptor",
+    "Rock Solid"
+   ],
+   "arme": "Rapid Fire",
+   "role": "Sets up a power duo with a lucky ally",
+   "style_de_jeu": "Ivy has disruptive combat tricks that slow and stun enemies. She's most effective when linking up with an ally, empowering her and her ally's guns as well as sharing heals.",
+   "pv_depart": 755,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/tengu_card.webp",
+   "icone": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/tengu_sm.webp",
+   "wiki": "https://deadlock.wiki/Ivy",
+   "video": null,
+   "mecaniques": [
+    "controle",
+    "invocation",
+    "mobilite",
+    "ralentissement",
+    "soin",
+    "zone"
+   ],
+   "competences": [
+    {
+     "touche": 1,
+     "nom": "Entangling Thorns",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/tengu/tengu_storm_flask.webp",
+     "resume": "Damage and slow enemies in the area",
+     "description": "Summon a patch of choking thorns that damages and slows enemies in its radius.",
+     "recharge_s": 32.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage Per Second",
+       "valeur": "40.0"
+      },
+      {
+       "nom": "Move Speed",
+       "valeur": "28%"
+      }
+     ],
+     "ameliorations": [
+      "+2m Radius and increased DPS Spirit scaling",
+      "Enemies caught in thorns for 2.0s are Immobilized for +1.6s"
+     ]
+    },
+    {
+     "touche": 2,
+     "nom": "Kudzu Connection",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/tengu/tengu_tether.webp",
+     "resume": "Empower yourself and a nearby ally",
+     "description": "Connect with a nearby ally to gain bonuses, replicated healing, and ignore the move speed penalty while shooting. · · Receive 50% of Bonuses with no connection · Connection requires line of sight.",
+     "recharge_s": 37.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Fire Rate",
+       "valeur": "10%"
+      },
+      {
+       "nom": "Bullet Lifesteal",
+       "valeur": "15%"
+      },
+      {
+       "nom": "Replicated Healing",
+       "valeur": "35%"
+      }
+     ],
+     "ameliorations": [
+      "+8% Fire Rate and +8% Bullet Lifesteal",
+      "Ability is always active"
+     ]
+    },
+    {
+     "touche": 3,
+     "nom": "Stone Form",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/tengu/tengu_stone_form.webp",
+     "resume": "Turn into impervious stone and stun enemies nearby",
+     "description": "Turn yourself into impervious stone and smash into the ground, stunning and damaging enemies nearby. Heals you for a percentage of your max health.",
+     "recharge_s": 40.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "75.0"
+      },
+      {
+       "nom": "Max Health Heal",
+       "valeur": "6%"
+      }
+     ],
+     "ameliorations": [
+      "+0.75s Stun Duration and increased Damage spirit scaling"
+     ]
+    },
+    {
+     "touche": 4,
+     "nom": "Air Drop",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/tengu/tengu_lightning_crash.webp",
+     "resume": "Death from Above! Fly and drop an ally on enemies",
+     "description": "Grab an ally and take flight with them. Drop your ally to cause an explosion, dealing spirit damage. You and your ally gain increased Outgoing Damage when flying ends. · · Cooldown reduced by 30% when used on allies. · Taking damage briefly disables using the ability. · While lifted, your ally cannot attack and deals -20% damage.",
+     "recharge_s": 100.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Explode Damage",
+       "valeur": "115.0"
+      },
+      {
+       "nom": "Outgoing Damage Bonus",
+       "valeur": "20%"
+      },
+      {
+       "nom": "Barrier",
+       "valeur": "0"
+      }
+     ],
+     "ameliorations": [
+      "On Fly End : 300 Barrier to Ivy and ally that scales with Spirit",
+      "+32% Slow for 3s on enemies hit",
+      "Silence for 3s on enemies hit. · Increases damage and barrier scaling."
+     ]
+    }
+   ]
+  },
+  {
+   "id": 12,
+   "nom": "Kelvin",
+   "type": "brawler",
+   "complexite": 2,
+   "etiquettes_jeu": [
+    "Protector",
+    "Explorer",
+    "Ice Cold"
+   ],
+   "arme": "Heavy Hitter",
+   "role": "Freezes enemies in their tracks",
+   "style_de_jeu": "Timely heals and splitting a teamfight properly is the difference between an easy victory or a ruinous defeat. Gliding around slowing enemies gives Kelvin's team the maneuvering advantage to make this happen.",
+   "pv_depart": 880,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/kelvin_card.webp",
+   "icone": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/kelvin_sm.webp",
+   "wiki": "https://deadlock.wiki/Kelvin",
+   "video": null,
+   "mecaniques": [
+    "mobilite",
+    "ralentissement",
+    "soin"
+   ],
+   "competences": [
+    {
+     "touche": 1,
+     "nom": "Frost Grenade",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/kelvin/freezing_grenade.webp",
+     "resume": "Damage and slow enemies",
+     "description": "Throw a grenade that explodes in a cloud of freezing ice that heals allies and applies spirit damage and move speed reduction to enemies.",
+     "recharge_s": 30.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "60.0"
+      },
+      {
+       "nom": "Heal Amount",
+       "valeur": "60"
+      },
+      {
+       "nom": "Move Speed",
+       "valeur": "32%"
+      }
+     ],
+     "ameliorations": [
+      "+30 Damage and +30 Heal Amount",
+      "-10 Cooldown and debuff now freezes Stamina Regen",
+      "+2m Radius. Damage and Heal Spirit Scaling increased."
+     ]
+    },
+    {
+     "touche": 2,
+     "nom": "Ice Path",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/kelvin/ice_path.webp",
+     "resume": "Speed around on a floating path of ice",
+     "description": "Kelvin creates a floating trail of ice and snow that gives movement bonuses to him and his allies. Kelvin gains 60% slow resistance for the duration. Enemies can also walk on the floating trail. · Press Dash / Crouch / slide to travel up or down while in Ice Path.",
+     "recharge_s": 50.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Move Speed",
+       "valeur": "2mm"
+      },
+      {
+       "nom": "Sprint Speed",
+       "valeur": "2mm"
+      }
+     ],
+     "ameliorations": [
+      "+2m Move Speed and +35% Bullet Resist for Kelvin while on Ice Path",
+      "+35% Spirit and +20 Spirit for Kelvin while on Ice Path"
+     ]
+    },
+    {
+     "touche": 3,
+     "nom": "Arctic Beam",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/kelvin/ice_beam.webp",
+     "resume": "Apply an escalating slow",
+     "description": "Shoot freezing cold energy out in front of you, damaging targets and progressively reducing their movement and fire rate the longer you sustain the beam on them. You have reduced move speed while using Arctic Beam. The beam may also claim Souls.",
+     "recharge_s": 28.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage Per Second",
+       "valeur": "45.0"
+      },
+      {
+       "nom": "Max Move Speed",
+       "valeur": "16%"
+      },
+      {
+       "nom": "Max Fire Rate",
+       "valeur": "20%"
+      }
+     ],
+     "ameliorations": [
+      "-20.0% to Fire Rate and Move Speed",
+      "+20.0 DPS and increased Spirit Scaling",
+      "-13s Cooldown and Fires 2 additional Arctic Beams within 10m of the last target hit."
+     ]
+    },
+    {
+     "touche": 4,
+     "nom": "Frozen Shelter",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/kelvin/frozen_shelter.webp",
+     "resume": "Create an impenetrable healing dome",
+     "description": "Target yourself or a Hero to freeze the air and create an impenetrable dome around them. While in the dome, allies gain rapid regeneration and enemies are slowed. · · Objectives become Invulnerable and Frozen under Frozen Shelter",
+     "recharge_s": 185.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Health Regen",
+       "valeur": "90"
+      },
+      {
+       "nom": "Fire Rate",
+       "valeur": "0%"
+      }
+     ],
+     "ameliorations": [
+      "Purges non-ult debuffs for you and your allies. · +65 Health Regen and increased Spirit Scaling"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 4,
+   "nom": "Lady Geist",
+   "type": "mystic",
+   "complexite": 2,
+   "etiquettes_jeu": [
+    "Lifesteal",
+    "Self Damage",
+    "Fatale"
+   ],
+   "arme": "Pistol",
+   "role": "Sacrifices health then drains it back",
+   "style_de_jeu": "Expending health to achieve devastating effects is the source of Lady Geist's power. When running low, she can drain the life out of her rivals.",
+   "pv_depart": 880,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/spectre_card.webp",
+   "icone": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/spectre_sm.webp",
+   "wiki": "https://deadlock.wiki/Lady_Geist",
+   "video": null,
+   "mecaniques": [
+    "controle",
+    "mobilite",
+    "ralentissement",
+    "soin"
+   ],
+   "competences": [
+    {
+     "touche": 1,
+     "nom": "Essence Bomb",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/spectre/blood_bomb.webp",
+     "resume": "Sacrifice some health to launch a damaging bomb",
+     "description": "Sacrifice some of your health to launch a bomb that deals damage after a brief arm time. · Self damage type is Spirit and can be mitigated.",
+     "recharge_s": 14.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "90.0"
+      },
+      {
+       "nom": "Health Cost",
+       "valeur": "30%"
+      },
+      {
+       "nom": "Toxic Mess Duration",
+       "valeur": "0s"
+      }
+     ],
+     "ameliorations": [
+      "+2m Radius and +50.0 Damage.",
+      "Bombs leave a toxic mess on the ground, dealing 30.0% of the original damage per second, for 6s."
+     ]
+    },
+    {
+     "touche": 2,
+     "nom": "Life Drain",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/spectre/life_drain.webp",
+     "resume": "Steal health from an enemy over time",
+     "description": "Create a tether that drains enemy health over time and heals you. Target must be in line of sight and within max range to drain. You can shoot and use other abilities during the drain, but your move speed is reduced. · to give health to friendly Heroes.",
+     "recharge_s": 34.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage Per Second",
+       "valeur": "24.0"
+      }
+     ],
+     "ameliorations": [
+      "Enables and Grants +2 Charges. Increases spirit scaling."
+     ]
+    },
+    {
+     "touche": 3,
+     "nom": "Malice",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/spectre/geist_dagger.webp",
+     "resume": "Stack damage amplification on an enemy",
+     "description": "Sacrifice some of your health to launch blood shards that apply a stack of Malice. Each stack slows the victim and increases the damage they take from you. The slow effect decreases over time.",
+     "recharge_s": 6.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "23.0"
+      },
+      {
+       "nom": "Health Cost",
+       "valeur": "9%"
+      },
+      {
+       "nom": "Damage Amplification",
+       "valeur": "7%"
+      },
+      {
+       "nom": "Movement Slow",
+       "valeur": "12%"
+      }
+     ],
+     "ameliorations": [
+      "+25.199999 Damage and +4 Blood Shards",
+      "+8% Damage Amp"
+     ]
+    },
+    {
+     "touche": 4,
+     "nom": "Soul Exchange",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/spectre/blood_exchange.webp",
+     "resume": "Swap your current health with an enemy hero's",
+     "description": "Swaps health levels with an enemy target. There is a minimum health percentage that enemies can be brought down to and a minimum amount of health received based on victims current health.",
+     "recharge_s": 220.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Enemy Min Health",
+       "valeur": "30%"
+      },
+      {
+       "nom": "Min Health Received",
+       "valeur": "30%"
+      }
+     ],
+     "ameliorations": [
+      "Silence enemies within 25m for 3s",
+      "On cast, +60 Spirit Power, +40% Fire Rate and +50% Spirit Resistance for 8s."
+     ]
+    }
+   ]
+  },
+  {
+   "id": 31,
+   "nom": "Lash",
+   "type": "assassin",
+   "complexite": 3,
+   "etiquettes_jeu": [
+    "Initiator",
+    "High Flying",
+    "Arrogant"
+   ],
+   "arme": "Burst Fire",
+   "role": "Dives down to stomp his foes",
+   "style_de_jeu": "Lash gives his enemies little room to breathe, either by flying in from long distances to initiate combat with unsuspecting enemies, or pursuing said enemies when they try to run.",
+   "pv_depart": 780,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/lash_card.webp",
+   "icone": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/lash_sm.webp",
+   "wiki": "https://deadlock.wiki/Lash",
+   "video": null,
+   "mecaniques": [
+    "canalisation",
+    "controle",
+    "mobilite",
+    "ralentissement",
+    "soin"
+   ],
+   "competences": [
+    {
+     "touche": 1,
+     "nom": "Ground Strike",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/lash/lash_death_slam.webp",
+     "resume": "Slam down to the ground, damaging enemies",
+     "description": "Stomp the ground beneath you, damaging enemies in front of you. If you perform Ground Strike while airborne, you quickly dive towards the ground. Damage grows slower after 25m.",
+     "recharge_s": 18.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Stomp Damage",
+       "valeur": "60.0"
+      },
+      {
+       "nom": "Damage Per Meter",
+       "valeur": "5.5"
+      }
+     ],
+     "ameliorations": [
+      "Struck enemies are knocked up and slowed by 40% for 3s",
+      "Damage Per Meter +120% and improved scaling"
+     ]
+    },
+    {
+     "touche": 2,
+     "nom": "Grapple",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/lash/lash_lash.webp",
+     "resume": "Use your whip to pull yourself to an enemy",
+     "description": "Pull yourself through the air toward a target. Using Grapple also resets your limit of air jumps and dashes.",
+     "recharge_s": 35.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Jump Velocity",
+       "valeur": "20mm"
+      }
+     ],
+     "ameliorations": [
+      "+20m Cast Range and gain +7.0 Weapon Damage for 6s",
+      "+1 Charges · OnCast : +1 Stamina and +60% Air Control"
+     ]
+    },
+    {
+     "touche": 3,
+     "nom": "Flog",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/lash/lash_flog.webp",
+     "resume": "Heals from targets ahead of you",
+     "description": "Strike enemies in front of you with your whip, healing for a portion of the damage dealt.",
+     "recharge_s": 26.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "65.0"
+      },
+      {
+       "nom": "Heal vs heroes",
+       "valeur": "40%"
+      },
+      {
+       "nom": "Attack Angle",
+       "valeur": "40°"
+      }
+     ],
+     "ameliorations": [
+      "Apply -28% Move speed for 3s",
+      "Apply -30% Fire Rate · -16.0s Cooldown",
+      "+80.0 Damage · +25.0 Attack angle · +15.0% Heal"
+     ]
+    },
+    {
+     "touche": 4,
+     "nom": "Death Slam",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/lash/lash_counter_lash.webp",
+     "resume": "Lift enemies and smash them into the ground",
+     "description": "Focus on enemies to connect whips to them. After channeling, connected enemies are lifted and stunned then slammed into the ground. Your victims and any enemies in the landing zone will be damaged and slowed. · Press to throw connected enemies early. Enemies that are not in line of sight or go out of range during the latch time will not be grabbed.",
+     "recharge_s": 170.0,
+     "canalisee": true,
+     "valeurs": [
+      {
+       "nom": "Impact Damage",
+       "valeur": "105.0"
+      },
+      {
+       "nom": "Max Throw Distance",
+       "valeur": "14mm"
+      }
+     ],
+     "ameliorations": [
+      "Stun enemies in Radius for 1.2s · +6m Cast Range"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 8,
+   "nom": "McGinnis",
+   "type": "mystic",
+   "complexite": 1,
+   "etiquettes_jeu": [
+    "Inventor",
+    "Support",
+    "Disruption"
+   ],
+   "arme": "Heavy Artillery",
+   "role": "Controls the battle with combat turrets",
+   "style_de_jeu": "Precise placement is everything for McGinnis, whether she's creating a killzone or splitting the enemy team. She can help keep her team running making them hard to dislodge when entrenched.",
+   "pv_depart": 780,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/engineer_card.webp",
+   "icone": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/engineer_sm.webp",
+   "wiki": "https://deadlock.wiki/McGinnis",
+   "video": null,
+   "mecaniques": [
+    "degats_sur_la_duree",
+    "invocation",
+    "ralentissement",
+    "soin",
+    "zone"
+   ],
+   "competences": [
+    {
+     "touche": 1,
+     "nom": "Mini Turret",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/engineer_turret.webp",
+     "resume": "Deploy an automated turret",
+     "description": "Deploy a turret that shoots enemies, dealing spirit damage over time. The turret expires after a limited lifetime. · Turrets deal reduced damage to troopers and objectives.",
+     "recharge_s": 18.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Turret DPS",
+       "valeur": "24.0"
+      },
+      {
+       "nom": "Turret Health",
+       "valeur": "100"
+      },
+      {
+       "nom": "Attack Range",
+       "valeur": "30mm"
+      }
+     ],
+     "ameliorations": [
+      "+10 Turret DPS and +10m Attack Range",
+      "+25% Turret Fire Rate and +12s Turret Lifetime"
+     ]
+    },
+    {
+     "touche": 2,
+     "nom": "Medicinal Specter",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/engineer_resupply.webp",
+     "resume": "Deploy a healing spirit",
+     "description": "Deploy a spirit that provides healing to nearby allies.",
+     "recharge_s": 50.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Health Regen",
+       "valeur": "25/s"
+      },
+      {
+       "nom": "Heal Radius",
+       "valeur": "6mm"
+      }
+     ],
+     "ameliorations": [
+      "+1.5s Duration",
+      "-20.0s Cooldown and provides +100.0% Stamina Recovery",
+      "+2.0% Max HP Regen · +3m Heal Radius · +40% Spirit Resist"
+     ]
+    },
+    {
+     "touche": 3,
+     "nom": "Spectral Wall",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/engineer_fissure_2.webp",
+     "resume": "Conjure a wall to block your foes",
+     "description": "Cast a wall that applies slow on enemies it passes through. Erupt the wall to divide the terrain in half and damage nearby enemies. · After casting, press or Ability 3 to erupt the wall early. · · Can be Destroyed with Melee Attacks",
+     "recharge_s": 50.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "60.0"
+      },
+      {
+       "nom": "Move Speed",
+       "valeur": "16%"
+      }
+     ],
+     "ameliorations": [
+      "Amplifies McGinnis's damage by +20% on hit enemies for 7s",
+      "-20.0s Cooldown and +2.0s Duration",
+      "Deploy 2 Mini Turrets near the wall for 8s · +24% Slow"
+     ]
+    },
+    {
+     "touche": 4,
+     "nom": "Heavy Barrage",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/engineer_rockets.webp",
+     "resume": "Bombard an area with rockets",
+     "description": "Unleashes a volley of rockets that home in on a targeted location. · · McGinnis is slowed and is still able to use stamina.",
+     "recharge_s": 200.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage Per Rocket",
+       "valeur": "21.0"
+      },
+      {
+       "nom": "Rockets per second",
+       "valeur": "6"
+      },
+      {
+       "nom": "Explosion Radius",
+       "valeur": "4.5mm"
+      }
+     ],
+     "ameliorations": [
+      "Applies 24% movement and dash slow for 1s",
+      "-45.0s Cooldown and +6.0s Duration",
+      "+2m Radius and +15.0 Damage per Rocket with increased spirit scaling"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 63,
+   "nom": "Mina",
+   "type": "marksman",
+   "complexite": 3,
+   "etiquettes_jeu": [
+    "Harasser",
+    "Nimble",
+    "Vexing"
+   ],
+   "arme": "Pistol",
+   "role": "",
+   "style_de_jeu": "",
+   "pv_depart": 660,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/vampirebat_card.webp",
+   "icone": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/vampirebat_sm.webp",
+   "wiki": "https://deadlock.wiki/Mina",
+   "video": null,
+   "mecaniques": [
+    "mobilite",
+    "silence_desarmement"
+   ],
+   "competences": [
+    {
+     "touche": 1,
+     "nom": "Rake",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/vampirebat/vampirebat_rake.webp",
+     "resume": "",
+     "description": "",
+     "recharge_s": 16.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "60"
+      },
+      {
+       "nom": "Missing Health as Damage",
+       "valeur": "6%"
+      },
+      {
+       "nom": "Heal Per Kill",
+       "valeur": "25"
+      }
+     ],
+     "ameliorations": [
+      "+30.0 Heal per Kill · -8.0s Cooldown",
+      "+7.0% Missing health damage and increased Heal per Kill Spirit scaling"
+     ]
+    },
+    {
+     "touche": 2,
+     "nom": "Sanguine Retreat",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/vampirebat/vampirebat_sanguine_retreat.webp",
+     "resume": "",
+     "description": "Briefly disperse, becoming untargetable and flying to a target location. · · Can be recast within a brief window.",
+     "recharge_s": 32.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Cast Range",
+       "valeur": "9mm"
+      },
+      {
+       "nom": "Recast Window",
+       "valeur": "4s"
+      },
+      {
+       "nom": "Fire Rate",
+       "valeur": "0%"
+      },
+      {
+       "nom": "Bonus Bullets",
+       "valeur": "0"
+      }
+     ],
+     "ameliorations": [
+      "On Cast: Gain +25% Fire Rate for 8s and add 8 bullets",
+      "+1 Recast · +4m Range"
+     ]
+    },
+    {
+     "touche": 3,
+     "nom": "Love Bites",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/vampirebat/vampirebat_love_bites.webp",
+     "resume": "",
+     "description": "Your bullets apply additional spirit damage. Dealing damage with your abilities builds up to a vicious bite, dealing a burst of bonus spirit damage. · · Love Bites has a unique cooldown per target.",
+     "recharge_s": null,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Spirit Damage Per Bullet",
+       "valeur": "4"
+      },
+      {
+       "nom": "Bonus Damage",
+       "valeur": "45"
+      },
+      {
+       "nom": "Fire Rate",
+       "valeur": "0%"
+      }
+     ],
+     "ameliorations": [
+      "On Proc: +24% Slow for 3s",
+      "+3.0 Spirit Damage per Bullet & · +45.0 Bonus Damage",
+      "-5 Cooldown · On Proc: +25% Fire Rate for 5s"
+     ]
+    },
+    {
+     "touche": 4,
+     "nom": "Nox Nostra",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/vampirebat/vampirebat_nox_nostra.webp",
+     "resume": "",
+     "description": "Active: Unleash a cloud of bats that seek out targets, each dealing spirit damage and applying Silence. · · Passive: Triggering Love Bites against heroes permanently increases the number of bats released.",
+     "recharge_s": 150.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Bats per Second",
+       "valeur": "30"
+      },
+      {
+       "nom": "Damage",
+       "valeur": "4.6"
+      },
+      {
+       "nom": "Current Health",
+       "valeur": "0%"
+      }
+     ],
+     "ameliorations": [
+      "On Hit: Deal +0.5% Current Health as Damage"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 52,
+   "nom": "Mirage",
+   "type": "assassin",
+   "complexite": 2,
+   "etiquettes_jeu": [
+    "Bodyguard",
+    "Traveller",
+    "Focused"
+   ],
+   "arme": "Pistol",
+   "role": "Times his shots and catches fleeing targets",
+   "style_de_jeu": "Mirage can envelop himself in a violent tornado to catch up to enemies and lift them up. His scarabs help him sustain against multiple enemies, and he's always ready to help an ally or punish an enemy anywhere.",
+   "pv_depart": 730,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/mirage_card.webp",
+   "icone": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/mirage_sm.webp",
+   "wiki": "https://deadlock.wiki/Mirage",
+   "video": null,
+   "mecaniques": [
+    "controle",
+    "mobilite",
+    "ralentissement",
+    "soin"
+   ],
+   "competences": [
+    {
+     "touche": 1,
+     "nom": "Fire Scarabs",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/mirage/mirage_fire_beetles.webp",
+     "resume": "Send out scarabs that steal life from enemies",
+     "description": "Infest an enemy with fire scarabs, stealing life from them and causing them to deal reduced damage.",
+     "recharge_s": 35.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Health Steal Per Sec",
+       "valeur": "8.0"
+      },
+      {
+       "nom": "Damage Penalty",
+       "valeur": "-20%"
+      }
+     ],
+     "ameliorations": [
+      "+1 Charge · +2s Duration",
+      "-15% Damage Penalty · Increased Spirit scaling"
+     ]
+    },
+    {
+     "touche": 2,
+     "nom": "Dust Devil",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/mirage/mirage_tornado.webp",
+     "resume": "Transform yourself into a whirlwind that lifts enemies",
+     "description": "Transform yourself into a whirlwind that travels forward, damaging enemies, slowing their move speed and lifting them up in the air. After emerging from the tornado you gain bullet evasion.",
+     "recharge_s": 36.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "65.0"
+      },
+      {
+       "nom": "Lift Duration",
+       "valeur": "0.3s"
+      },
+      {
+       "nom": "Bullet Evasion Chance",
+       "valeur": "30%"
+      }
+     ],
+     "ameliorations": [
+      "+60 Damage",
+      "· -12s Cooldown · +30% Evasion",
+      "Recast within 6s. · Increases spirit scaling."
+     ]
+    },
+    {
+     "touche": 3,
+     "nom": "Djinn's Mark",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/mirage/mirage_sand_phantom.webp",
+     "resume": "Apply marks of escalating damage",
+     "description": "Active: Consume all Djinn Marks to deal their damage now.",
+     "recharge_s": 2.75,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Base Damage",
+       "valeur": "11.0"
+      },
+      {
+       "nom": "Damage Per Mark",
+       "valeur": "2x"
+      },
+      {
+       "nom": "Max Marks",
+       "valeur": "4"
+      }
+     ],
+     "ameliorations": [
+      "On Proc: Apply a fading 48% Slow for 0.8s",
+      "+20 Base Damage and +3s Multiplier Duration",
+      "-0.75s Cooldown · +1 Max Marks · Stun Victim for 0.5s on Max Marks"
+     ]
+    },
+    {
+     "touche": 4,
+     "nom": "Traveler",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/mirage/mirage_teleport.webp",
+     "resume": "Teleport to an ally or enemy hero",
+     "description": "Target a location on the minimap. After a brief wait, teleport to that location. Taking damage during the wait period causes the teleport to be interrupted.",
+     "recharge_s": 140.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Wait Time",
+       "valeur": "2s"
+      },
+      {
+       "nom": "Fire Rate",
+       "valeur": "0%"
+      },
+      {
+       "nom": "Move Speed",
+       "valeur": "0m m"
+      },
+      {
+       "nom": "Barrier",
+       "valeur": "0"
+      }
+     ],
+     "ameliorations": [
+      "+3m Move Speed and +20% Fire Rate for 12s",
+      "400 Barrier that scales with Spirit"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 18,
+   "nom": "Mo & Krill",
+   "type": "brawler",
+   "complexite": 3,
+   "etiquettes_jeu": [
+    "Tag-Team",
+    "Initiator",
+    "Burrower"
+   ],
+   "arme": "Spreadshot",
+   "role": "Burrows underneath his enemies",
+   "style_de_jeu": "By burrowing through the ground, Mo and Krill can get the drop on almost anyone; and once they get in close the results can be devastating.",
+   "pv_depart": 930,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/digger_card.webp",
+   "icone": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/digger_sm.webp",
+   "wiki": "https://deadlock.wiki/Mo_%26_Krill",
+   "video": null,
+   "mecaniques": [
+    "canalisation",
+    "controle",
+    "ralentissement",
+    "silence_desarmement",
+    "soin"
+   ],
+   "competences": [
+    {
+     "touche": 1,
+     "nom": "Scorn",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/grappler/grappler_regen.webp",
+     "resume": "Damage enemies nearby, healing from each hit",
+     "description": "Deal damage to nearby enemies and heal yourself based on the damage done. Heal is stronger against enemy heroes.",
+     "recharge_s": 13.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "50.0"
+      },
+      {
+       "nom": "Hero Damage to Heal",
+       "valeur": "1.2x"
+      }
+     ],
+     "ameliorations": [
+      "-5.0s Cooldown · +1m Radius",
+      "Adds a debuff to enemies that lets Mo & Krill deal +15% Damage to them. Stacks and lasts 16s."
+     ]
+    },
+    {
+     "touche": 2,
+     "nom": "Burrow",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/grappler/grappler_spin.webp",
+     "resume": "Travel underground, emerging with spin damage",
+     "description": "Burrow underground, moving faster, and gaining spirit and bullet armor. Damage from enemy heroes will reduce the speed bonus. · · When you jump out, deal spirit damage, slow, and knockup.",
+     "recharge_s": 40.0,
+     "canalisee": true,
+     "valeurs": [
+      {
+       "nom": "Move Speed",
+       "valeur": "5m m"
+      },
+      {
+       "nom": "Damage Per Second",
+       "valeur": "75.0"
+      },
+      {
+       "nom": "Spin Duration",
+       "valeur": "1.5s"
+      }
+     ],
+     "ameliorations": [
+      "+50.0 Spin DPS",
+      "+4s Burrow time and +2m radius",
+      "-20.0 Cooldown and +4m/s Move Speed"
+     ]
+    },
+    {
+     "touche": 3,
+     "nom": "Sand Blast",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/grappler/grappler_throw_sand.webp",
+     "resume": "Disarm enemies in front of you",
+     "description": "Spray sand that disarms enemies in front of you and deals damage.",
+     "recharge_s": 40.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "40"
+      },
+      {
+       "nom": "Move Speed",
+       "valeur": "0%"
+      }
+     ],
+     "ameliorations": [
+      "+50 Damage and +5m Range",
+      "Slow targets by -24% and reduces dash distances by -26%",
+      "+1.5s Duration and -25.0 Cooldown"
+     ]
+    },
+    {
+     "touche": 4,
+     "nom": "Combo",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/grappler/grappler_combo.webp",
+     "resume": "Hold the enemy hero in place and pummel them",
+     "description": "Hold the target in place, stunning them and dealing damage during the channel. If they die during, or within 3 seconds of Combo ending, you permanently gain max health.",
+     "recharge_s": 150.0,
+     "canalisee": true,
+     "valeurs": [
+      {
+       "nom": "Damage Per Second",
+       "valeur": "40.0"
+      },
+      {
+       "nom": "Bonus Max Health Per Kill",
+       "valeur": "40"
+      }
+     ],
+     "ameliorations": [
+      "+100% lifesteal",
+      "-30.0s Cooldown and +50.0% Bullet Resist",
+      "+0.7s Duration and +40.0 Damage Per Second and increased scaling"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 67,
+   "nom": "Paige",
+   "type": "mystic",
+   "complexite": 1,
+   "etiquettes_jeu": [
+    "Helpful",
+    "Protector",
+    "Booksmart"
+   ],
+   "arme": "Projectile",
+   "role": "",
+   "style_de_jeu": "",
+   "pv_depart": 680,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/bookworm_card.webp",
+   "icone": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/bookworm_sm.webp",
+   "wiki": "https://deadlock.wiki/Paige",
+   "video": null,
+   "mecaniques": [
+    "bouclier",
+    "canalisation",
+    "controle",
+    "degats_sur_la_duree",
+    "mobilite",
+    "ralentissement",
+    "soin",
+    "zone"
+   ],
+   "competences": [
+    {
+     "touche": 1,
+     "nom": "Bookwyrm",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/bookworm/bookworm_dragon.webp",
+     "resume": "",
+     "description": "Conjure a dragon that appears at the target location before flying forward, dealing spirit damage and leaving a burning path in its trail.",
+     "recharge_s": 33.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "60"
+      },
+      {
+       "nom": "Damage Per Second",
+       "valeur": "30"
+      },
+      {
+       "nom": "Trail Duration",
+       "valeur": "3.0s"
+      }
+     ],
+     "ameliorations": [
+      "-12s Cooldown",
+      "+1.0 Charge · +2s Trail Duration · +1m Radius ·",
+      "+12m Travel Range · +100.0 Damage · +30.0 DPS"
+     ]
+    },
+    {
+     "touche": 2,
+     "nom": "Plot Armor",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/bookworm/bookworm_defendandfight.webp",
+     "resume": "",
+     "description": "Grant an ally a barrier. While the barrier holds, they gain bonus weapon damage.",
+     "recharge_s": 28.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Barrier",
+       "valeur": "125"
+      },
+      {
+       "nom": "Weapon Damage",
+       "valeur": "25%"
+      },
+      {
+       "nom": "Fire Rate",
+       "valeur": "0%"
+      }
+     ],
+     "ameliorations": [
+      "On Barrier: +14% Fire Rate",
+      "+100 Barrier and +2s Duration",
+      "Affects up to 2 additional allies. · Increases barrier scaling."
+     ]
+    },
+    {
+     "touche": 3,
+     "nom": "Captivating Read",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/bookworm/bookworm_blindinglight.webp",
+     "resume": "",
+     "description": "Target an area with latent magic, applying slow. · · The magic detonates after a delay, dealing spirit damage and applying immobilize.",
+     "recharge_s": 30.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "90"
+      },
+      {
+       "nom": "Spirit Resist",
+       "valeur": "0%"
+      }
+     ],
+     "ameliorations": [
+      "+2m Radius · On Hit: Reduce Spirit Resist by -18% for 6s"
+     ]
+    },
+    {
+     "touche": 4,
+     "nom": "Rallying Charge",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/bookworm/bookworm_charge.webp",
+     "resume": "",
+     "description": "Release a wave of spectral knights and steeds that charge across the entire city, healing allies and dealing spirit damage to enemies. · · The strength of the heal and spirit damage is amplified as the knights travel further.",
+     "recharge_s": 210.0,
+     "canalisee": true,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "125"
+      },
+      {
+       "nom": "Heal Amount",
+       "valeur": "125"
+      },
+      {
+       "nom": "Move Speed",
+       "valeur": "5m m"
+      }
+     ],
+     "ameliorations": [
+      "Increase width by +4 Steeds · -45 Cooldown",
+      "+160.0 Damage · +0.5s Stun Duration · +70% Max Amp"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 10,
+   "nom": "Paradox",
+   "type": "marksman",
+   "complexite": 3,
+   "etiquettes_jeu": [
+    "Calculated",
+    "Disruptor",
+    "Tactician"
+   ],
+   "arme": "Burst Fire",
+   "role": "Manipulates Space and Time",
+   "style_de_jeu": "Manipulating time lets Paradox outpace an enemy in one on one combat. She thrives by subjecting her enemies to timely swaps into a waiting pulse grenade, her wall, or into the middle of her teammates.",
+   "pv_depart": 730,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/chrono_card.webp",
+   "icone": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/chrono_sm.webp",
+   "wiki": "https://deadlock.wiki/Paradox",
+   "video": null,
+   "mecaniques": [
+    "mobilite",
+    "ralentissement",
+    "zone"
+   ],
+   "competences": [
+    {
+     "touche": 1,
+     "nom": "Pulse Grenade",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/chrono/chrono_time_bomb.webp",
+     "resume": "Throw a grenade that pulses, dealing damage and time slowing",
+     "description": "Throw a grenade that begins pulsing when it lands. Each pulse expands the radius and applies spirit damage, time slow, and stacking increased damage for Paradox against the victim.",
+     "recharge_s": 32.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Pulse Damage",
+       "valeur": "35.0"
+      },
+      {
+       "nom": "Damage Amp per stack",
+       "valeur": "4%"
+      }
+     ],
+     "ameliorations": [
+      "+20.0 Pulse Damage and increased Spirit scaling",
+      "+4.0% Damage Amp and +1.6s Duration"
+     ]
+    },
+    {
+     "touche": 2,
+     "nom": "Time Wall",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/chrono/chrono_time_wall.webp",
+     "resume": "Create a wall that greatly slows projectiles",
+     "description": "Create a time warping wall that stops time for all enemy projectiles and bullets that touch it and increases the speed and damage of friendly bullets. · · Enemies that touch the wall will be briefly slowed.",
+     "recharge_s": 25.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Silence Duration",
+       "valeur": "0s"
+      },
+      {
+       "nom": "Movement Slow",
+       "valeur": "64%"
+      },
+      {
+       "nom": "Time Stop Duration",
+       "valeur": "0.5s"
+      },
+      {
+       "nom": "Ally Weapon Damage",
+       "valeur": "30%"
+      }
+     ],
+     "ameliorations": [
+      "+3.5s Duration · +3m Width · +1m Height",
+      "Silences enemies for 2.3s · +35.0% Weapon Damage",
+      "+2 Ability Charges"
+     ]
+    },
+    {
+     "touche": 3,
+     "nom": "Kinetic Carbine",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/duo/duo_attack.webp",
+     "resume": "Charge up your weapon to deal high damage and timestop",
+     "description": "Charge up a powerful shot of time energy, dealing spirit damage and applying a Time-Stop to enemies hit. The damage dealt increases with weapon damage. Move speed is increased while charging. · · While in the air and charging, to timeslow your movement.",
+     "recharge_s": 28.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Max Damage",
+       "valeur": "5.0"
+      },
+      {
+       "nom": "Max Time-Stop",
+       "valeur": "0.4s"
+      },
+      {
+       "nom": "Bonus Speed",
+       "valeur": "25%"
+      }
+     ],
+     "ameliorations": [
+      "-12.0s Cooldown · Increases Speed Scaling",
+      "+2s Charge Hold Duration and +55% Damage Scaling"
+     ]
+    },
+    {
+     "touche": 4,
+     "nom": "Paradoxical Swap",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/chrono/chrono_swap.webp",
+     "resume": "Swap positions with an enemy hero.",
+     "description": "Fire a projectile that swaps your position with the target enemy hero.",
+     "recharge_s": 110.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Swap Damage",
+       "valeur": "150.0"
+      },
+      {
+       "nom": "Max Health Damage",
+       "valeur": "0.0%"
+      }
+     ],
+     "ameliorations": [
+      "200 Barrier for 8s. Barrier scales with Spirit",
+      "-30s Cooldown and +13m Cast Range",
+      "Swaps all enemies within 7m of hit target and +10% Max Health Damage"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 50,
+   "nom": "Pocket",
+   "type": "assassin",
+   "complexite": 2,
+   "etiquettes_jeu": [
+    "Trickster",
+    "Burst Damage",
+    "Frogs"
+   ],
+   "arme": "Spreadshot",
+   "role": "Infiltrates and disrupts the backline",
+   "style_de_jeu": "With a powerful shotgun and a thin frame, Pocket relies on their ability to briefly escape into a mystic suitcase and teleport via a flying cloak in order to survive close encounters.",
+   "pv_depart": 780,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/synth_card.webp",
+   "icone": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/synth_sm.webp",
+   "wiki": "https://deadlock.wiki/Pocket",
+   "video": null,
+   "mecaniques": [
+    "canalisation",
+    "degats_sur_la_duree",
+    "mobilite",
+    "ralentissement"
+   ],
+   "competences": [
+    {
+     "touche": 1,
+     "nom": "Barrage",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/synth/synth_barrage.webp",
+     "resume": "Air glide while firing multiple projectiles",
+     "description": "Channel to start launching projectiles that deal spirit damage and apply slow around their impact point. Projectiles that hit a hero grant Pocket increased damage that stacks. · Casting while airborne will cause Pocket to float. · · Casting AirDash or Flying Cloak will not cancel Barrage.",
+     "recharge_s": 32.0,
+     "canalisee": true,
+     "valeurs": [
+      {
+       "nom": "Amp Per Stack",
+       "valeur": "6%"
+      },
+      {
+       "nom": "Damage Per Projectile",
+       "valeur": "32.0"
+      },
+      {
+       "nom": "Move Speed",
+       "valeur": "24%"
+      }
+     ],
+     "ameliorations": [
+      "+4% Amp Per Stack and 3m Radius"
+     ]
+    },
+    {
+     "touche": 2,
+     "nom": "Flying Cloak",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/synth/synth_plasma_flux.webp",
+     "resume": "Launch a damaging cloak that you can teleport to",
+     "description": "Launch a sentient cloak that travels forward and damages enemies. You can press Ability 2 to teleport to its location.",
+     "recharge_s": 26.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "60.0"
+      }
+     ],
+     "ameliorations": [
+      "+5.0 Weapon Damage for 6s",
+      "+1.6s Lifetime and -10s Cooldown."
+     ]
+    },
+    {
+     "touche": 3,
+     "nom": "Enchanter's Satchel",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/synth/synth_pulse.webp",
+     "resume": "Briefly escape into your suitcase, then deal damage",
+     "description": "Escape into your suitcase. When the duration ends, deal spirit damage to nearby enemies. Duration can be ended early by performing any action.",
+     "recharge_s": 17.0,
+     "canalisee": true,
+     "valeurs": [
+      {
+       "nom": "Escape Duration",
+       "valeur": "1.5s"
+      },
+      {
+       "nom": "Damage",
+       "valeur": "65.0"
+      },
+      {
+       "nom": "Move Speed",
+       "valeur": "0%"
+      },
+      {
+       "nom": "Fire Rate",
+       "valeur": "0%"
+      }
+     ],
+     "ameliorations": [
+      "+1.5s Duration · +4m Radius · -32% Move Speed and Fire Rate for 4.0s"
+     ]
+    },
+    {
+     "touche": 4,
+     "nom": "Affliction",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/synth/synth_affliction.webp",
+     "resume": "Apply damage over time to enemies nearby",
+     "description": "Applies damage over time to enemies nearby. · · Affliction's damage is non-lethal and does not apply item procs.",
+     "recharge_s": 170.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Current Health Damage",
+       "valeur": "0.0%"
+      },
+      {
+       "nom": "Damage Per Second",
+       "valeur": "32.0"
+      },
+      {
+       "nom": "Debuff Duration",
+       "valeur": "10s"
+      }
+     ],
+     "ameliorations": [
+      "+3s Duration and +4m Radius",
+      "Prevents all healing · +13.0 DPS with increased Spirit scaling"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 79,
+   "nom": "Rem",
+   "type": null,
+   "complexite": 3,
+   "etiquettes_jeu": [
+    "Helpful",
+    "Tiny",
+    "zZzzZ"
+   ],
+   "arme": null,
+   "role": "",
+   "style_de_jeu": "",
+   "pv_depart": 680,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/familiar_card.webp",
+   "icone": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/familiar_sm.webp",
+   "wiki": "https://deadlock.wiki/Rem",
+   "video": null,
+   "mecaniques": [
+    "canalisation",
+    "controle",
+    "mobilite",
+    "ralentissement",
+    "soin"
+   ],
+   "competences": [
+    {
+     "touche": 1,
+     "nom": "Pillow Toss",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/familiar/familiar_pillow.webp",
+     "resume": "",
+     "description": "Throw your trusty pillow inflicting spirit damage and heavy knockback. · · Landing hits reduces the cooldown of your other abilities.",
+     "recharge_s": 25.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "75"
+      },
+      {
+       "nom": "Fading Move Speed",
+       "valeur": "36%"
+      }
+     ],
+     "ameliorations": [
+      "+2m Radius and applies -35% Fire Rate",
+      "+100 Damage and +1 Charge"
+     ]
+    },
+    {
+     "touche": 2,
+     "nom": "Tag Along",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/familiar/familiar_tag_along.webp",
+     "resume": "",
+     "description": "Jump to an ally and nap alongside them. Both you and the ally receive a burst heal based on missing health followed by lingering regeneration. · · Hop between allies with Ability 2 to apply the heal, once per ally. · · You are knocked off if stunned by an ultimate ability. · You can use items and all self-casts target your ally instead.",
+     "recharge_s": 40.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Missing Health Burst",
+       "valeur": "15%"
+      },
+      {
+       "nom": "Health Restored",
+       "valeur": "42/s"
+      },
+      {
+       "nom": "Barrier Effectiveness",
+       "valeur": "0%"
+      },
+      {
+       "nom": "Bonus Item Duration/Range",
+       "valeur": "0%"
+      }
+     ],
+     "ameliorations": [
+      "35% Bonus Item Range, Duration, and Barrier Effectiveness while napping",
+      "+15% Spirit Power and +35 Spirit Power while napping and for 10s after napping · Improved Spirit Scaling"
+     ]
+    },
+    {
+     "touche": 3,
+     "nom": "Lil Helpers",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/familiar/familiar_helpers.webp",
+     "resume": "",
+     "description": "Signal a Helper to lend a hand. They can collect boxes, do Sinner's Sacrifices, or be sent to support allies and troopers. · · Follow a hero: Provides a short burst of spirit resist and fading move speed. · · Follow a trooper: Provides healing, damage, resists, and allows tagging along. When no hero is around, souls from trooper kills are split amongst the team. · · Can be cast during Tag Along. Helpers will take a nap for 15.1s after following someone.",
+     "recharge_s": null,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Spirit Resist",
+       "valeur": "12%"
+      },
+      {
+       "nom": "Move Speed",
+       "valeur": "3.0m m"
+      },
+      {
+       "nom": "Duration",
+       "valeur": "8s"
+      },
+      {
+       "nom": "Damage / Resists",
+       "valeur": "30%"
+      },
+      {
+       "nom": "Trooper Heal",
+       "valeur": "8/s"
+      },
+      {
+       "nom": "Duration",
+       "valeur": "50s"
+      }
+     ],
+     "ameliorations": [
+      "+1 Helper · +1.5m/s Move Speed",
+      "+1 Helper · +15% Trooper Damage and Resist",
+      "+1 Helper · +15% Spirit Resist"
+     ]
+    },
+    {
+     "touche": 4,
+     "nom": "Naptime",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/familiar/familiar_sleep.webp",
+     "resume": "",
+     "description": "Cast your gaze forward, piercing walls and floors. Enemies in the gaze are slowed, have reduced dash distance, and cannot use movement abilities. · · When the channel ends they fall asleep before waking up to a splitting headache that deals heavy spirit damage.",
+     "recharge_s": 200.0,
+     "canalisee": true,
+     "valeurs": [
+      {
+       "nom": "Wake Damage",
+       "valeur": "120"
+      },
+      {
+       "nom": "Sleep Damage Threshold",
+       "valeur": "100"
+      },
+      {
+       "nom": "Move/Dash Slow",
+       "valeur": "20%"
+      }
+     ],
+     "ameliorations": [
+      "-1 Stamina On Wake and no Stamina Regen while sleeping",
+      "+3m Radius and +0.75s Sleep Duration",
+      "-55s cooldown · Reduced damage and unstoppable while channeling"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 2,
+   "nom": "Seven",
+   "type": "mystic",
+   "complexite": 1,
+   "etiquettes_jeu": [
+    "High Voltage",
+    "Merciless",
+    "Area Denial"
+   ],
+   "arme": "Burst Fire",
+   "role": "Electrocutes crowds of enemies",
+   "style_de_jeu": "Seven thrives in a skirmish waiting for the time to strike. Then he rolls into the fight like a storm and batters his enemies with a cascade of lightning.",
+   "pv_depart": 730,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/gigawatt_card.webp",
+   "icone": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/gigawatt_sm.webp",
+   "wiki": "https://deadlock.wiki/Seven",
+   "video": null,
+   "mecaniques": [
+    "canalisation",
+    "controle",
+    "ralentissement",
+    "zone"
+   ],
+   "competences": [
+    {
+     "touche": 1,
+     "nom": "Lightning Ball",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/giga_ball.webp",
+     "resume": "Launch a damaging ball of lightning",
+     "description": "Shoot a ball of lightning that travels in a straight line. Does damage to all targets in its radius. Slows down when damaging enemies and stops if it hits the world.",
+     "recharge_s": 26.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage Per Second",
+       "valeur": "75.0"
+      },
+      {
+       "nom": "Radius",
+       "valeur": "4.25mm"
+      },
+      {
+       "nom": "Move Speed",
+       "valeur": "0%"
+      }
+     ],
+     "ameliorations": [
+      "-28% move speed on hit targets and +1s Lifetime",
+      "+58.5 DPS and +1.75m radius"
+     ]
+    },
+    {
+     "touche": 2,
+     "nom": "Static Charge",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/giga_static.webp",
+     "resume": "Apply a delayed area stun to an enemy hero",
+     "description": "Apply a charge to a target enemy hero. After a short duration, the static charge stuns and damages enemies within the radius.",
+     "recharge_s": 42.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Delay Before Stun",
+       "valeur": "3.5s"
+      },
+      {
+       "nom": "Damage",
+       "valeur": "35.0"
+      }
+     ],
+     "ameliorations": [
+      "+7m Radius · +5m Cast range",
+      "+0.9s Stun Duration · +160 Damage"
+     ]
+    },
+    {
+     "touche": 3,
+     "nom": "Power Surge",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/giga_chain.webp",
+     "resume": "Create electric arcs with your shots",
+     "description": "Power up your weapon with a shock effect, making your bullets proc shock damage on your target. This shock damage bounces to enemies near your target. Occurs once per burst shot.",
+     "recharge_s": 50.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Shock Damage",
+       "valeur": "10"
+      },
+      {
+       "nom": "Max Jumps",
+       "valeur": "4"
+      }
+     ],
+     "ameliorations": [
+      "+3m Move Speed · +8 Damage and increased scaling",
+      "+10s Duration · Applies -15% Spirit Resist"
+     ]
+    },
+    {
+     "touche": 4,
+     "nom": "Storm Cloud",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/giga_storm.webp",
+     "resume": "Fry all enemies in a large area",
+     "description": "Channel an expanding storm cloud around you that damages all enemies within its radius. Enemies do not take damage when they are out of line-of-sight.",
+     "recharge_s": 205.0,
+     "canalisee": true,
+     "valeurs": [
+      {
+       "nom": "Damage Per Second",
+       "valeur": "95.0"
+      },
+      {
+       "nom": "Flight Speed",
+       "valeur": "1.5mm"
+      }
+     ],
+     "ameliorations": [
+      "+55% Bullet Resist while channeling Storm Cloud",
+      "+7s Channel Time · +10m Final Radius · +5m Initial Radius",
+      "+65.0 DPS · +4m Flight Speed"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 19,
+   "nom": "Shiv",
+   "type": "brawler",
+   "complexite": 3,
+   "etiquettes_jeu": [
+    "Rage",
+    "Bleed",
+    "Repeat"
+   ],
+   "arme": "Spreadshot",
+   "role": "Bleeds out foes, then goes in for a kill",
+   "style_de_jeu": "Shiv has zero interest in playing fair, which is why he relies on hit and run tactics to weaken enemies before he dives in for the kill.",
+   "pv_depart": 830,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/shiv_card.webp",
+   "icone": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/shiv_sm.webp",
+   "wiki": "https://deadlock.wiki/Shiv",
+   "video": null,
+   "mecaniques": [
+    "canalisation",
+    "degats_sur_la_duree",
+    "mobilite",
+    "soin"
+   ],
+   "competences": [
+    {
+     "touche": 1,
+     "nom": "Serrated Knives",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/shiv/shiv_toss.webp",
+     "resume": "Apply stacking bleed to the target",
+     "description": "Throw a knife that bleeds an enemy. Each additional hit adds a stack and refreshes the bleed duration, causing the bleed to increase per stack.",
+     "recharge_s": 16.0,
+     "canalisee": true,
+     "valeurs": [
+      {
+       "nom": "Impact Damage",
+       "valeur": "0.0"
+      },
+      {
+       "nom": "Bleed DPS Per Knife",
+       "valeur": "10.0"
+      },
+      {
+       "nom": "Bleed Duration",
+       "valeur": "5s"
+      },
+      {
+       "nom": "Current Health Damage",
+       "valeur": "3.5%"
+      },
+      {
+       "nom": "Movement Slow",
+       "valeur": "28%"
+      }
+     ],
+     "ameliorations": [
+      "+2 Charges",
+      "+12.0 Bleed DPS with increased Spirit scaling"
+     ]
+    },
+    {
+     "touche": 2,
+     "nom": "Slice and Dice",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/shiv/shiv_flash.webp",
+     "resume": "Dash ahead, damaging all enemies along the path",
+     "description": "Perform a dash forward, damaging enemies along the path. Hit Enemies have their spirit resist reduced. This debuff can stack.",
+     "recharge_s": 16.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Impact Damage",
+       "valeur": "75.0"
+      },
+      {
+       "nom": "Dash Range",
+       "valeur": "12mm"
+      },
+      {
+       "nom": "Spirit Resist",
+       "valeur": "-6%"
+      },
+      {
+       "nom": "Cooldown Reduced on Hero Hit",
+       "valeur": "0s"
+      },
+      {
+       "nom": "Max Cooldown Reduction",
+       "valeur": "0"
+      }
+     ],
+     "ameliorations": [
+      "-4% Spirit Resist · +2m Dash Range",
+      "+50 Impact Damage · -2s Cooldown per Hero hit."
+     ]
+    },
+    {
+     "touche": 3,
+     "nom": "Bloodletting",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/shiv/shiv_bloodletting.webp",
+     "resume": "Defer a portion of damage taken",
+     "description": "Take only a portion of incoming damage immediately and defer the rest to be taken over time. Activate to clear a portion of the deferred damage.",
+     "recharge_s": 25.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Incoming Damage Deferred",
+       "valeur": "25%"
+      },
+      {
+       "nom": "Deferred Damage Duration",
+       "valeur": "6s"
+      },
+      {
+       "nom": "Deferred Damage Cleared",
+       "valeur": "30%"
+      },
+      {
+       "nom": "Incoming Damage Deferred",
+       "valeur": "15%"
+      }
+     ],
+     "ameliorations": []
+    },
+    {
+     "touche": 4,
+     "nom": "Killing Blow",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/shiv/shiv_killing_blow.webp",
+     "resume": "Travel to a low health hero and instantly kill it",
+     "description": "",
+     "recharge_s": 145.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "200"
+      },
+      {
+       "nom": "Enemy health threshold",
+       "valeur": "18%"
+      },
+      {
+       "nom": "Full Rage Damage Bonus",
+       "valeur": "8%"
+      },
+      {
+       "nom": "Move Speed",
+       "valeur": "0 m"
+      }
+     ],
+     "ameliorations": [
+      "+6 m Range · +2 m/s in Full Rage.",
+      "+16% Full Rage Bonus Damage · -25s Cooldown",
+      "+10% Enemy Health Threshold"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 80,
+   "nom": "Silver",
+   "type": "marksman",
+   "complexite": 1,
+   "etiquettes_jeu": [
+    "Feral",
+    "Hot Mess",
+    "Transformation"
+   ],
+   "arme": "Long Range",
+   "role": "",
+   "style_de_jeu": "",
+   "pv_depart": 830,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/werewolf_card.webp",
+   "icone": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/werewolf_sm.webp",
+   "wiki": "https://deadlock.wiki/Silver",
+   "video": null,
+   "mecaniques": [
+    "canalisation",
+    "ralentissement",
+    "soin"
+   ],
+   "competences": [
+    {
+     "touche": 1,
+     "nom": "Slam Fire",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/werewolf/werewolf_slamfire.webp",
+     "resume": "",
+     "description": "Instantly reload your gun. You gain bonus fire rate and deal bonus weapon damage based on the target's health for a limited number of shots, but suffer from reduced accuracy. · · Deals bonus Weapon Damage against troopers and neutrals.",
+     "recharge_s": 25.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Max Shots",
+       "valeur": "3"
+      },
+      {
+       "nom": "Fire Rate",
+       "valeur": "300%"
+      },
+      {
+       "nom": "Current Health as Damage",
+       "valeur": "2.5%"
+      }
+     ],
+     "ameliorations": [
+      "If you hit all shots, deal +7% current health as damage"
+     ]
+    },
+    {
+     "touche": 2,
+     "nom": "Boot Kick",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/werewolf/werewolf_jumpback.webp",
+     "resume": "",
+     "description": "",
+     "recharge_s": 21.0,
+     "canalisee": true,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "0"
+      },
+      {
+       "nom": "Bonus Damage",
+       "valeur": "25"
+      }
+     ],
+     "ameliorations": [
+      "On Hero Hit: Restore 2 Stamina",
+      "+80 Bonus Damage and kicked enemies deal -35% Damage for 5s"
+     ]
+    },
+    {
+     "touche": 3,
+     "nom": "Entangling Bola",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/werewolf/werewolf_bola.webp",
+     "resume": "",
+     "description": "Throw a bola, dealing spirit damage, applying slow and preventing movement abilities or stamina.",
+     "recharge_s": 23.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "40"
+      },
+      {
+       "nom": "Move Speed",
+       "valeur": "16%"
+      },
+      {
+       "nom": "Debuff Duration",
+       "valeur": "1.5s"
+      },
+      {
+       "nom": "Gravity Scale",
+       "valeur": "100%"
+      }
+     ],
+     "ameliorations": [
+      "+0.75s Debuff Duration. · Bola ricochets to 2 additional targets"
+     ]
+    },
+    {
+     "touche": 4,
+     "nom": "Lycan Curse",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/werewolf/werewolf_lycancurse.webp",
+     "resume": "",
+     "description": "Passive: Dealing damage generates bloodlust, increased at low health. At max bloodlust, you automatically cast Lycan Curse. · · Active: Instantly transform, gaining increased max health, and stacking fire rate on enemy heroes, and replacing your abilities and weapon with their ferocious versions.",
+     "recharge_s": 60.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Bonus Health",
+       "valeur": "125"
+      },
+      {
+       "nom": "Move Speed",
+       "valeur": "1.5m m"
+      },
+      {
+       "nom": "Sprint Speed",
+       "valeur": "0m"
+      },
+      {
+       "nom": "Fire Rate",
+       "valeur": "60%"
+      }
+     ],
+     "ameliorations": [
+      "+15% Bullet & Spirit Resistance",
+      "+4 m/s Move Speed and 200 Bonus Health",
+      "On Hero Kill: Refresh abilities and duration"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 60,
+   "nom": "Sinclair",
+   "type": "mystic",
+   "complexite": 4,
+   "etiquettes_jeu": [
+    "Trickster",
+    "Copycat",
+    "Versatile"
+   ],
+   "arme": "Burst Fire",
+   "role": "Misdirect and hex enemies",
+   "style_de_jeu": "With the help of their unwilling assistant, The Magnificent Sinclair can confuse enemies with curving hexes and rapid bolts.",
+   "pv_depart": 730,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/magician_card.webp",
+   "icone": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/magician_sm.webp",
+   "wiki": "https://deadlock.wiki/Sinclair",
+   "video": null,
+   "mecaniques": [
+    "invocation",
+    "mobilite",
+    "zone"
+   ],
+   "competences": [
+    {
+     "touche": 1,
+     "nom": "Vexing Bolt",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/magician/magician_magicbolt.webp",
+     "resume": "Launch a guided bolt of magic",
+     "description": "Fire a bolt of magic that deals Damage, increasing as it travels. If you have an Assistant, they also cast Vexing Bolt at reduced damage. · · Press Ability 1 to redirect the bolt towards your crosshairs.",
+     "recharge_s": 24.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Minimum Damage",
+       "valeur": "60.0"
+      },
+      {
+       "nom": "Max Damage",
+       "valeur": "120.0"
+      },
+      {
+       "nom": "Assistant Damage",
+       "valeur": "50.0%"
+      }
+     ],
+     "ameliorations": [
+      "Bolts apply -25% Fire Rate for 5s.",
+      "+126.0 Max Damage. +50.0% Assistant Damage."
+     ]
+    },
+    {
+     "touche": 2,
+     "nom": "Spectral Assistant",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/magician/magician_cloneturret.webp",
+     "resume": "Summon your faithful assistant",
+     "description": "Summon an Assistant at the targeted location. The Assistant attacks whenever you fire your weapon, dealing Damage. · · While the Assistant is out, you can press Ability 2 to swap positions with your Assistant. · · Casting Spectral Assistant also reloads your weapon.",
+     "recharge_s": 40.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "15.0"
+      },
+      {
+       "nom": "Duration",
+       "valeur": "6s"
+      },
+      {
+       "nom": "Max Swaps",
+       "valeur": "2"
+      }
+     ],
+     "ameliorations": [
+      "+7s Duration & 5m Range",
+      "+60% Fire Rate and +12.599999 Assistant Damage"
+     ]
+    },
+    {
+     "touche": 3,
+     "nom": "Rabbit Hex",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/magician/magician_animalcurse.webp",
+     "resume": "",
+     "description": "Hex a target area and transform all enemies into a Rabbit for a limited duration. · · Rabbits are small and move faster, but take increased Damage and are unable to perform most actions. · Hex does not interrupt abilities.",
+     "recharge_s": 26.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "0"
+      },
+      {
+       "nom": "Hex Duration",
+       "valeur": "2s"
+      },
+      {
+       "nom": "Damage Amp",
+       "valeur": "15%"
+      }
+     ],
+     "ameliorations": [
+      "+7% Damage Amp and +3m Radius"
+     ]
+    },
+    {
+     "touche": 4,
+     "nom": "Audience Participation",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/magician/magician_copyult.webp",
+     "resume": "Copy an enemy's Ultimate for a limited time",
+     "description": "Copy the Ultimate of an enemy hero for a limited time. Reactivating the ability will use the Copied Ultimate instead. · · Copies will inherit this ability's upgrade points. · Audience Participation will also copy the cooldown.",
+     "recharge_s": 85.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Copy Duration",
+       "valeur": "12s"
+      },
+      {
+       "nom": "Copied Cooldown",
+       "valeur": "40%"
+      }
+     ],
+     "ameliorations": [
+      "Upgrade the Copy.",
+      "Upgrade the Copy AGAIN!",
+      "Upgrade the Copy ONCE AGAIN!"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 69,
+   "nom": "The Doorman",
+   "type": "mystic",
+   "complexite": 1,
+   "etiquettes_jeu": [
+    "Disorienting",
+    "Map Control",
+    "Mind Games"
+   ],
+   "arme": "Pistol",
+   "role": "",
+   "style_de_jeu": "",
+   "pv_depart": 755,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/doorman_card.webp",
+   "icone": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/doorman_sm.webp",
+   "wiki": "https://deadlock.wiki/The_Doorman",
+   "video": null,
+   "mecaniques": [
+    "canalisation",
+    "controle",
+    "ralentissement"
+   ],
+   "competences": [
+    {
+     "touche": 1,
+     "nom": "Call Bell",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/doorman/doorman_bell.webp",
+     "resume": "",
+     "description": "Throw out a call bell that deals spirit damage on impact. After a short delay it explodes, dealing additional spirit damage and causing affected enemies to suffer reduced weapon accuracy and movement slow. · · Can be shot to detonate early.",
+     "recharge_s": 18.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Impact Damage",
+       "valeur": "40"
+      },
+      {
+       "nom": "Explosion Damage",
+       "valeur": "55"
+      },
+      {
+       "nom": "Weapon Accuracy",
+       "valeur": "-40%"
+      },
+      {
+       "nom": "Move Speed",
+       "valeur": "28%"
+      }
+     ],
+     "ameliorations": [
+      "+1 Charge",
+      "+30 Impact Damage · +40 Explosion Damage",
+      "+4.5m Radius · +26s Bell Lifetime · Improved Scaling"
+     ]
+    },
+    {
+     "touche": 2,
+     "nom": "Doorway",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/doorman/doorman_doorway.webp",
+     "resume": "",
+     "description": "Place two connected doors in the world. Players and most projectiles entering one door will exit out through the other. The doors will close at the end of the duration. · · The two doors must be placed within the doorway distance of each other.",
+     "recharge_s": 45.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Doorway Distance",
+       "valeur": "65mm"
+      },
+      {
+       "nom": "Barrier",
+       "valeur": "0"
+      },
+      {
+       "nom": "Barrier Duration",
+       "valeur": "0s"
+      }
+     ],
+     "ameliorations": [
+      "Grants a Barrier first time traveling through doors",
+      "+30m Cast Range. +40m Doorway Distance · and scales with Spirit Power."
+     ]
+    },
+    {
+     "touche": 3,
+     "nom": "Luggage Cart",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/doorman/doorman_luggagetrolley.webp",
+     "resume": "",
+     "description": "Send out a Luggage Cart that deals spirit damage and pulls enemy heroes along its path. · · Can be alt cast with to target friendly heroes instead.",
+     "recharge_s": 30.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Cart Damage",
+       "valeur": "60"
+      },
+      {
+       "nom": "Impact Damage",
+       "valeur": "0"
+      }
+     ],
+     "ameliorations": [
+      "+25m Cast Range · +75 Damage on wall impact",
+      "-15s Cooldown and 1.25s stun on wall impact"
+     ]
+    },
+    {
+     "touche": 4,
+     "nom": "Hotel Guest",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/doorman/doorman_elevator.webp",
+     "resume": "",
+     "description": "Send the target's physical body to be a guest at the Baroness Hotel. The guest is to promptly make their way to the exit elevator, where they'll be sent back to their original position. · · A stay at the Baroness Hotel is paid for in spirit damage. Failure to check-out on time costs additional spirit damage.",
+     "recharge_s": 140.0,
+     "canalisee": true,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "75"
+      },
+      {
+       "nom": "Damage",
+       "valeur": "125"
+      },
+      {
+       "nom": "Check-Out Time",
+       "valeur": "6.5s"
+      },
+      {
+       "nom": "Slow",
+       "valeur": "%"
+      }
+     ],
+     "ameliorations": [
+      "1 Stamina Drain and -20 Cooldown",
+      "+150 Damage · +1.5s Stun on Failure to Check Out",
+      "Unstoppable while the Baroness is occupied. · 15s Cooldown on Failure to Check Out."
+     ]
+    }
+   ]
+  },
+  {
+   "id": 65,
+   "nom": "Venator",
+   "type": "marksman",
+   "complexite": 2,
+   "etiquettes_jeu": [
+    "Devout",
+    "Arms Expert",
+    "Tactical"
+   ],
+   "arme": "Crossbow",
+   "role": "",
+   "style_de_jeu": "",
+   "pv_depart": 820,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/priest_card.webp",
+   "icone": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/priest_sm.webp",
+   "wiki": "https://deadlock.wiki/Venator",
+   "video": null,
+   "mecaniques": [
+    "controle",
+    "degats_sur_la_duree",
+    "soin",
+    "zone"
+   ],
+   "competences": [
+    {
+     "touche": 1,
+     "nom": "Consecrating Grenade",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/priest/priest_grenade.webp",
+     "resume": "",
+     "description": "Fire a grenade that bounces before exploding, dealing weapon damage and setting enemies on fire. · · Burning targets deal pure damage to enemies in the area and suffer from reduced healing.",
+     "recharge_s": 25.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "35"
+      },
+      {
+       "nom": "Incoming Healing",
+       "valeur": "-30%"
+      },
+      {
+       "nom": "Damage Per Second",
+       "valeur": "10"
+      },
+      {
+       "nom": "Max Health as Damage",
+       "valeur": "0%"
+      },
+      {
+       "nom": "Move Speed",
+       "valeur": "0%"
+      },
+      {
+       "nom": "Fire Rate",
+       "valeur": "0%"
+      }
+     ],
+     "ameliorations": [
+      "+1.5m Radius & +1.0s Burn Duration",
+      "-20% Incoming Healing and allow Charges"
+     ]
+    },
+    {
+     "touche": 2,
+     "nom": "Gutshot",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/priest/priest_shotgun.webp",
+     "resume": "",
+     "description": "Fire a blast with your shotgun, dealing weapon damage and pushing enemies back. Enemies near a wall receive stun and take bonus weapon damage.",
+     "recharge_s": 23.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "60"
+      },
+      {
+       "nom": "Bonus Damage",
+       "valeur": "30"
+      }
+     ],
+     "ameliorations": [
+      "-10s Ability Cooldown and +0.4s Stun Duration",
+      "On Wall Stun: Your next heavy melee is blessed"
+     ]
+    },
+    {
+     "touche": 3,
+     "nom": "Hex-Lined Snap Trap",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/priest/priest_trap.webp",
+     "resume": "",
+     "description": "Kick a trap that arms after a brief delay. · · The trap springs on the first enemy it touches, dealing spirit damage, applying immobilize, and revealing enemies for a duration afterwards.",
+     "recharge_s": 28.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "80"
+      }
+     ],
+     "ameliorations": [
+      "+1 Charge · Deal +30% damage against revealed targets"
+     ]
+    },
+    {
+     "touche": 4,
+     "nom": "Ira Domini",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/priest/priest_crossbow.webp",
+     "resume": "",
+     "description": "Load your crossbow with 3 stakes, dealing massively increased weapon damage. · · The final stake is blessed, dealing bonus pure damage and executing low-health enemies.",
+     "recharge_s": 160.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "120"
+      },
+      {
+       "nom": "Bonus Damage",
+       "valeur": "115"
+      },
+      {
+       "nom": "Execute Threshold",
+       "valeur": "8%"
+      }
+     ],
+     "ameliorations": [
+      "While Active: Gain 1.2 m/s Move Speed",
+      "-15s Ability Cooldown and +65 Bonus Damage",
+      "All Stakes are Blessed"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 66,
+   "nom": "Victor",
+   "type": "brawler",
+   "complexite": 2,
+   "etiquettes_jeu": [
+    "You",
+    "Can't",
+    "Kill Me"
+   ],
+   "arme": "Pistol",
+   "role": "",
+   "style_de_jeu": "",
+   "pv_depart": 800,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/frank_card.webp",
+   "icone": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/frank_sm.webp",
+   "wiki": "https://deadlock.wiki/Victor",
+   "video": null,
+   "mecaniques": [
+    "canalisation",
+    "controle",
+    "degats_sur_la_duree",
+    "ralentissement",
+    "soin"
+   ],
+   "competences": [
+    {
+     "touche": 1,
+     "nom": "Pain Battery",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/frank/frank_pain_battery.webp",
+     "resume": "",
+     "description": "Taking any damage passively charges up your Pain Battery. · · Once full, activating the ability fires multiple shocking bolts, dealing spirit damage once per target.",
+     "recharge_s": 2.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "100"
+      },
+      {
+       "nom": "Move Speed",
+       "valeur": "0%"
+      },
+      {
+       "nom": "Missing Health as Healing",
+       "valeur": "0%"
+      }
+     ],
+     "ameliorations": [
+      "On Hit: Apply 32% Slow for 2ss",
+      "On Hero Hit: Heal for 15% of your missing health and increased Spirit scaling"
+     ]
+    },
+    {
+     "touche": 2,
+     "nom": "Jumpstart",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/frank/frank_jump_start.webp",
+     "resume": "",
+     "description": "Deal spirit damage to yourself. Then, gain bonus regeneration and bonus move speed, decaying over time.",
+     "recharge_s": 30.0,
+     "canalisee": true,
+     "valeurs": [
+      {
+       "nom": "Current Health",
+       "valeur": "15%"
+      },
+      {
+       "nom": "Total HP Regen",
+       "valeur": "100"
+      },
+      {
+       "nom": "Move Speed",
+       "valeur": "3m m"
+      },
+      {
+       "nom": "Debuff Resist",
+       "valeur": "0%"
+      }
+     ],
+     "ameliorations": [
+      "+70 Total HP Regen and -8s Cooldown",
+      "+1 Charge · +50% Debuff Resistance · Increases spirit scaling"
+     ]
+    },
+    {
+     "touche": 3,
+     "nom": "Aura of Suffering",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/frank/frank_aura_of_suffering.webp",
+     "resume": "",
+     "description": "Unleash pain, dealing spirit damage over time to both enemies and yourself. · · The damage continues to increase the longer the ability is channeled, up to a maximum amount.",
+     "recharge_s": 2.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Minimum DPS",
+       "valeur": "13"
+      },
+      {
+       "nom": "Max DPS",
+       "valeur": "58"
+      },
+      {
+       "nom": "Move Speed",
+       "valeur": "0%"
+      },
+      {
+       "nom": "Damage",
+       "valeur": "0%"
+      },
+      {
+       "nom": "Damage Taken",
+       "valeur": "0%"
+      }
+     ],
+     "ameliorations": [
+      "Enemies receive 20% Move and Dash Slow",
+      "+6 Min DPS and +34.0 Max DPS",
+      "+1m Radius · Enemies take +15% Damage"
+     ]
+    },
+    {
+     "touche": 4,
+     "nom": "Shocking Reanimation",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/frank/frank_shocking_reanimation.webp",
+     "resume": "",
+     "description": "Release a wave after taking lethal damage, applying a diminishing slow. · · After a brief channel you reanimate, dealing spirit damage and applying stun to nearby enemies.",
+     "recharge_s": 240.0,
+     "canalisee": true,
+     "valeurs": [
+      {
+       "nom": "Rebirth Health",
+       "valeur": "50%"
+      },
+      {
+       "nom": "Barrier",
+       "valeur": "0"
+      },
+      {
+       "nom": "Damage",
+       "valeur": "200"
+      }
+     ],
+     "ameliorations": [
+      "While On Cooldown: Gain +15% Fire Rate and 6.0 Spirit Damage per Bullet",
+      "+175 Damage · +1.5 Stun · -95.0s Cooldown"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 3,
+   "nom": "Vindicta",
+   "type": "marksman",
+   "complexite": 1,
+   "etiquettes_jeu": [
+    "Sniper",
+    "Soaring",
+    "One Shot Kill"
+   ],
+   "arme": "Long Range",
+   "role": "Snipes the unsuspecting",
+   "style_de_jeu": "Vindicta has the mobility to engage at her leisure, picking at her prey and bleeding them out slowly. Injured enemies at any distance should fear being picked off when she is on the map.",
+   "pv_depart": 755,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/hornet_card.webp",
+   "icone": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/hornet_sm.webp",
+   "wiki": "https://deadlock.wiki/Vindicta",
+   "video": null,
+   "mecaniques": [
+    "canalisation",
+    "controle",
+    "degats_sur_la_duree",
+    "mobilite",
+    "reduction_de_resistance",
+    "soin"
+   ],
+   "competences": [
+    {
+     "touche": 1,
+     "nom": "Stake",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/hornet/vindicta_stake.webp",
+     "resume": "Tether your enemies to the ground",
+     "description": "Throw a stake that tethers enemies to the location where the stake lands. Enemy movement is restricted to the length of the tether.",
+     "recharge_s": 40.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Tether Duration",
+       "valeur": "1.75s"
+      },
+      {
+       "nom": "Damage",
+       "valeur": "40.0"
+      },
+      {
+       "nom": "Capture Radius",
+       "valeur": "9mm"
+      }
+     ],
+     "ameliorations": [
+      "+0.75s Tether Duration and +2m Capture Radius"
+     ]
+    },
+    {
+     "touche": 2,
+     "nom": "Flight",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/hornet/vindicta_flight.webp",
+     "resume": "Take flight and empower your weapon",
+     "description": "Leap into the air and fly. While in flight your weapon deals bonus spirit damage and your items have increased range.",
+     "recharge_s": 42.0,
+     "canalisee": true,
+     "valeurs": [
+      {
+       "nom": "Spirit Damage Per Bullet",
+       "valeur": "10.0"
+      },
+      {
+       "nom": "Item Range",
+       "valeur": "50%"
+      }
+     ],
+     "ameliorations": [
+      "+50% base Ammo while flying",
+      "Hero Kills Refresh Duration. · +10.0 Spirit Damage with increased Spirit scaling"
+     ]
+    },
+    {
+     "touche": 3,
+     "nom": "Crow Familiar",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/hornet/hornet_crow.webp",
+     "resume": "Make a target bleed over time",
+     "description": "Your crow familiar deals impact damage, reduces their bullet resist and applies a bleed that deals damage based on the target's current health.",
+     "recharge_s": 32.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Impact Damage",
+       "valeur": "40.0"
+      },
+      {
+       "nom": "Bleed Damage",
+       "valeur": "2.2% DPS"
+      },
+      {
+       "nom": "Debuff Duration",
+       "valeur": "5s"
+      }
+     ],
+     "ameliorations": [
+      "Reduces Incoming Healing by -35%",
+      "+0.5% Bleed Damage · -16.0s Cooldown",
+      "+2s Duration · -8% Bullet Resist · -8% Spirit Resist"
+     ]
+    },
+    {
+     "touche": 4,
+     "nom": "Assassinate",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/hornet/hornet_assassinate.webp",
+     "resume": "Snipe injured targets for massive damage",
+     "description": "Use your scoped rifle to fire a powerful shot over long distances. Deal only partial damage until fully charged after 1.0s of being scoped. Does bonus damage to enemies with less than 50% health remaining. Landing a killing blow on a player with Assassinate grants you bonus weapon damage.",
+     "recharge_s": 55.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "90.0"
+      },
+      {
+       "nom": "Max Bonus Damage",
+       "valeur": "90.0"
+      },
+      {
+       "nom": "Weapon Damage Per Kill",
+       "valeur": "6%"
+      }
+     ],
+     "ameliorations": []
+    }
+   ]
+  },
+  {
+   "id": 35,
+   "nom": "Viscous",
+   "type": "mystic",
+   "complexite": 2,
+   "etiquettes_jeu": [
+    "Evasive",
+    "Disruptor",
+    "Gooey"
+   ],
+   "arme": "Projectile",
+   "role": "Rolls around deflecting bullets",
+   "style_de_jeu": "Viscous vexes his opponents through clever evasion and strategic uses of healing, enabling him to withstand the most brutal of enemy attacks.",
+   "pv_depart": 780,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/viscous_card.webp",
+   "icone": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/viscous_sm.webp",
+   "wiki": "https://deadlock.wiki/Viscous",
+   "video": null,
+   "mecaniques": [
+    "controle",
+    "ralentissement",
+    "soin",
+    "zone"
+   ],
+   "competences": [
+    {
+     "touche": 1,
+     "nom": "Splatter",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/viscous/viscous_goo_ball.webp",
+     "resume": "Damage enemies and make a mess",
+     "description": "Throw a ball of goo that deals damage and leaves puddles of goo behind that apply movement slow to enemies in the radius.",
+     "recharge_s": 26.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "55.0"
+      },
+      {
+       "nom": "Move Speed",
+       "valeur": "28%"
+      },
+      {
+       "nom": "Puddle Duration",
+       "valeur": "10s"
+      }
+     ],
+     "ameliorations": [
+      "+36.0 Damage and +1.5m Radius",
+      "+1 Bounces and improved Spirit Scaling"
+     ]
+    },
+    {
+     "touche": 2,
+     "nom": "The Cube",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/viscous/viscous_restorative_goo.webp",
+     "resume": "The Cube is a safe place to be",
+     "description": "Encase the target in a cube of restorative goo that protects from damage, and increases health regen. Target is unable to take any new actions while cubed. Can be used on self. Press Jump / mantle to escape early.",
+     "recharge_s": 42.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Health Regen",
+       "valeur": "40"
+      },
+      {
+       "nom": "Duration",
+       "valeur": "3s"
+      },
+      {
+       "nom": "Move Speed",
+       "valeur": "0m m"
+      },
+      {
+       "nom": "Stamina Recovery",
+       "valeur": "0%"
+      },
+      {
+       "nom": "Buff Duration",
+       "valeur": "8s"
+      }
+     ],
+     "ameliorations": [
+      "Increases Move Speed and Stamina Recovery",
+      "+25 Health Regen and +1s Duration",
+      "Removes all non-ult Debuffs and -20.0s Cooldown"
+     ]
+    },
+    {
+     "touche": 3,
+     "nom": "Puddle Punch",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/viscous/viscous_goo_punch.webp",
+     "resume": "Punch enemies with a giant fist",
+     "description": "Materialize a fist in the world that punches everyone in the area, applying knockup. · · Punching an enemy deals melee damage and applies slow. Enemies can Parry this attack. · · You and your allies have increased Air Control.",
+     "recharge_s": 24.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "20.0"
+      },
+      {
+       "nom": "Damage",
+       "valeur": "0"
+      },
+      {
+       "nom": "Move Speed",
+       "valeur": "24%"
+      }
+     ],
+     "ameliorations": [
+      "+1 Charge and +20 Damage",
+      "+1.5m Radius and +60% Lifesteal",
+      "-14.0s Cooldown and now deals Heavy Melee Damage"
+     ]
+    },
+    {
+     "touche": 4,
+     "nom": "Goo Ball",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/viscous/viscous_goo_sphere.webp",
+     "resume": "Roll around and cause chaos",
+     "description": "Morph into a large goo ball that deals damage and stuns enemies on impact. The ball grants large amounts of Bullet and Spirit resist, bounces off walls and can double jump.",
+     "recharge_s": 150.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "110.0"
+      },
+      {
+       "nom": "Stun Duration",
+       "valeur": "0.5s"
+      },
+      {
+       "nom": "Ball Radius",
+       "valeur": "1.4mm"
+      }
+     ],
+     "ameliorations": [
+      "+70 Damage and +20% Resists",
+      "+7s Duration, +0.3s Stun Duration, and +0.2 Spirit Scaling"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 58,
+   "nom": "Vyper",
+   "type": "assassin",
+   "complexite": 1,
+   "etiquettes_jeu": [
+    "Gunner",
+    "Slippery",
+    "Rat-a-Tat"
+   ],
+   "arme": "Rapid Fire",
+   "role": "Slither in and assassinate enemies",
+   "style_de_jeu": "With a powerful weapon (and deadly venom to match), Vyper can slither into the back of teams and assassinate high-priority targets in a storm of bullets.",
+   "pv_depart": 780,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/kali_card.webp",
+   "icone": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/kali_sm.webp",
+   "wiki": "https://deadlock.wiki/Vyper",
+   "video": null,
+   "mecaniques": [
+    "ralentissement",
+    "soin",
+    "zone"
+   ],
+   "competences": [
+    {
+     "touche": 1,
+     "nom": "Screwjab Dagger",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/viper/viper_debuffdagger.webp",
+     "resume": "Throw a slowing dagger",
+     "description": "Throw a dagger, dealing spirit damage and applying slow. · · Every subsequent dagger against the same target stacks in spirit damage and slow.",
+     "recharge_s": 10.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "50"
+      },
+      {
+       "nom": "Move Speed",
+       "valeur": "28%"
+      },
+      {
+       "nom": "Bullet Resist",
+       "valeur": "0%"
+      },
+      {
+       "nom": "Damage per Stack",
+       "valeur": "25"
+      },
+      {
+       "nom": "Move Speed per Stack",
+       "valeur": "12%"
+      },
+      {
+       "nom": "Bullet Resist per Stack",
+       "valeur": "0%"
+      }
+     ],
+     "ameliorations": [
+      "On Hit: -8% Bullet Resist and -6% Bullet Resist per Stack",
+      "+2 Max Stacks · -2s Charge Delay · On Hit: Refund 55% Charge Cooldown"
+     ]
+    },
+    {
+     "touche": 2,
+     "nom": "Lethal Venom",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/viper/viper_venom.webp",
+     "resume": "Inject your enemies with a deadly venom",
+     "description": "Inject a target with lethal venom. After a delay the venom triggers, dealing Spirit Damage. The damage is increased by the target's missing health. · · Lethal Venom will ignore Petrify's damage block.",
+     "recharge_s": 28.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Minimum Venom Damage",
+       "valeur": "20.0"
+      },
+      {
+       "nom": "Max Venom Damage",
+       "valeur": "140.0"
+      },
+      {
+       "nom": "Missing Health Damage",
+       "valeur": "0%"
+      }
+     ],
+     "ameliorations": [
+      "-40% Incoming Healing and -12s Cooldown",
+      "Bullets also build up Lethal Venom"
+     ]
+    },
+    {
+     "touche": 3,
+     "nom": "Slither",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/viper/viper_snakedash.webp",
+     "resume": "Increase the agility of your Slide",
+     "description": "You have increased Slide Distance, can Slide up hills, and can turn faster while Sliding.",
+     "recharge_s": null,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Slide Distance",
+       "valeur": "15%"
+      },
+      {
+       "nom": "Barrier",
+       "valeur": "0"
+      }
+     ],
+     "ameliorations": [
+      "On Slide: Gain 180 barrier for 4s"
+     ]
+    },
+    {
+     "touche": 4,
+     "nom": "Petrifying Bola",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/viper/viper_petrifybola.webp",
+     "resume": "Toss a petrifying bola",
+     "description": "Throw an explosive bola. On exploding, the bola Slows and Damages all enemies in the area. · · Direct hits deal Additional Damage and Petrify instead. Petrified units block all damage, but cannot take actions.",
+     "recharge_s": 115.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "50.0"
+      },
+      {
+       "nom": "Petrify Damage",
+       "valeur": "180.0"
+      }
+     ],
+     "ameliorations": [
+      "+1.0s Petrify Duration. Petrifies all enemies in the area."
+     ]
+    }
+   ]
+  },
+  {
+   "id": 25,
+   "nom": "Warden",
+   "type": "brawler",
+   "complexite": 2,
+   "etiquettes_jeu": [
+    "Initiator",
+    "Fearless",
+    "One Man Army"
+   ],
+   "arme": "Heavy Hitter",
+   "role": "Weakens his enemies and chases them down",
+   "style_de_jeu": "Warden leads from the front, jumping into the fray and hindering his opponents' ability to fight effectively. But what Warden considers brave, others consider reckless, and if he's not careful he can easily find himself in over his head.",
+   "pv_depart": 805,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/warden_card.webp",
+   "icone": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/warden_sm.webp",
+   "wiki": "https://deadlock.wiki/Warden",
+   "video": null,
+   "mecaniques": [
+    "bouclier",
+    "controle",
+    "soin"
+   ],
+   "competences": [
+    {
+     "touche": 1,
+     "nom": "Alchemical Flask",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/warden/warden_crowd_control.webp",
+     "resume": "Damage and debuff enemies nearby",
+     "description": "Throw a flask that damages and reduces the weapon damage and move speed of enemies it hits.",
+     "recharge_s": 12.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "60.0"
+      },
+      {
+       "nom": "Move Speed",
+       "valeur": "16%"
+      },
+      {
+       "nom": "Weapon Damage",
+       "valeur": "-25%"
+      }
+     ],
+     "ameliorations": [
+      "Hit enemies lose 1 Stamina",
+      "+35 Damage and -25% Weapon Damage",
+      "-7s Cooldown and +2m Radius · Applies -30% Fire Rate"
+     ]
+    },
+    {
+     "touche": 2,
+     "nom": "Willpower",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/warden/warden_high_alert.webp",
+     "resume": "Gain a Barrier and move speed",
+     "description": "Gain a Barrier and bonus move speed.",
+     "recharge_s": 40.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Barrier",
+       "valeur": "125"
+      },
+      {
+       "nom": "Move Speed bonus",
+       "valeur": "15%"
+      },
+      {
+       "nom": "Debuff Resist",
+       "valeur": "0%"
+      }
+     ],
+     "ameliorations": [
+      "-24s Cooldown and +2s Duration",
+      "+30% Debuff Resistance and improved Barrier scaling"
+     ]
+    },
+    {
+     "touche": 3,
+     "nom": "Binding Word",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/warden/warden_lock_down.webp",
+     "resume": "Curse your target, rooting them if they don't escape",
+     "description": "Curse an enemy hero. If they don't move away from their initial position within the escape time, they will be damaged and immobilized.",
+     "recharge_s": 34.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "110.0"
+      },
+      {
+       "nom": "Immobilize Duration",
+       "valeur": "1.75s"
+      }
+     ],
+     "ameliorations": [
+      "Warden deals +20% more Bullet Damage to trapped Heroes for 5s",
+      "+0.75s Duration",
+      "-14s Cooldown · Silences enemies until they escape or are immobilized"
+     ]
+    },
+    {
+     "touche": 4,
+     "nom": "Last Stand",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/warden/warden_riot_protocol.webp",
+     "resume": "Emit pulses that steal health from enemies",
+     "description": "After charging for 2s, release pulses that damage enemies and heal you based on the damage done. · While channeling Last Stand you have greatly increased bullet and spirit resist.",
+     "recharge_s": 180.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "DPS",
+       "valeur": "70.0"
+      },
+      {
+       "nom": "Hero Lifesteal",
+       "valeur": "75%"
+      },
+      {
+       "nom": "Move Speed",
+       "valeur": "0m m"
+      }
+     ],
+     "ameliorations": [
+      "+40.5 DPS · -30.0s Cooldown",
+      "+4s Duration · Unstoppable and +30% Resists while channeling"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 7,
+   "nom": "Wraith",
+   "type": "marksman",
+   "complexite": 1,
+   "etiquettes_jeu": [
+    "Duelist",
+    "Isolator",
+    "Telekinetic"
+   ],
+   "arme": "Rapid Fire",
+   "role": "Melts isolated targets",
+   "style_de_jeu": "Excelling at one-on-one combat, Wraith isolates targets, eliminating them with ruthless efficiency. Then teleporting away before anyone can retaliate.",
+   "pv_depart": 730,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/wraith_card.webp",
+   "icone": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/wraith_sm.webp",
+   "wiki": "https://deadlock.wiki/Wraith",
+   "video": null,
+   "mecaniques": [
+    "canalisation",
+    "controle",
+    "invocation",
+    "mobilite",
+    "silence_desarmement"
+   ],
+   "competences": [
+    {
+     "touche": 1,
+     "nom": "Card Trick",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/wraith_card_trick.webp",
+     "resume": "Throw homing cards",
+     "description": "Deal weapon damage to summon cards of a random suit. Each card can be thrown, dealing damage and applying a different effect depending on its suit. Cards thrown fly towards the enemy or point under your crosshair. · · Alt-cast to throw first card",
+     "recharge_s": 0.6,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "45"
+      },
+      {
+       "nom": "Bonus Damage",
+       "valeur": "60%"
+      },
+      {
+       "nom": "Bullet and Spirit Resist Reduction",
+       "valeur": "-7.0%"
+      },
+      {
+       "nom": "Move Speed",
+       "valeur": "24%"
+      },
+      {
+       "nom": "Heal",
+       "valeur": "60"
+      }
+     ],
+     "ameliorations": [
+      "+40 Damage and increased Spirit Scaling",
+      "All suits are improved and higher chance for Jokers"
+     ]
+    },
+    {
+     "touche": 2,
+     "nom": "Project Mind",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/wraith_teleport.webp",
+     "resume": "Teleport to the targeted location",
+     "description": "Teleport to the targeted location.",
+     "recharge_s": 46.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Cast Range",
+       "valeur": "25mm"
+      },
+      {
+       "nom": "Barrier",
+       "valeur": "0"
+      }
+     ],
+     "ameliorations": [
+      "300 Barrier for 5s. Barrier scales with Spirit Power."
+     ]
+    },
+    {
+     "touche": 3,
+     "nom": "Full Auto",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/wraith_aura.webp",
+     "resume": "Boost your fire rate",
+     "description": "Temporarily boost your fire rate and deal bonus spirit damage",
+     "recharge_s": 45.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Fire Rate",
+       "valeur": "20%"
+      },
+      {
+       "nom": "Spirit Damage Per Bullet",
+       "valeur": "2"
+      }
+     ],
+     "ameliorations": [
+      "+10% Fire Rate and +3s Duration",
+      "Unlimited Ammo and Increased Scaling on Spirit Damage Per Bullet"
+     ]
+    },
+    {
+     "touche": 4,
+     "nom": "Telekinesis",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/wraith_lift.webp",
+     "resume": "Lift an enemy, interrupting and silencing them",
+     "description": "Lift an enemy hero into the air and then slam them towards the target location.",
+     "recharge_s": 150.0,
+     "canalisee": true,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "100"
+      },
+      {
+       "nom": "Throw Range",
+       "valeur": "13mm"
+      },
+      {
+       "nom": "Duration",
+       "valeur": "2.25s"
+      },
+      {
+       "nom": "Move Speed",
+       "valeur": "32%"
+      }
+     ],
+     "ameliorations": [
+      "+1.5s Debuff Duration and +6m Throw and Cast Range"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 27,
+   "nom": "Yamato",
+   "type": "assassin",
+   "complexite": 3,
+   "etiquettes_jeu": [
+    "Relentless",
+    "Acrobatics",
+    "Pursuer"
+   ],
+   "arme": "Spreadshot",
+   "role": "Delivers charged attacks with finesse",
+   "style_de_jeu": "Yamato uses precise strikes to decimate her rivals. However, such damaging attacks often will leave her exposed, so she needs to make every shot count.",
+   "pv_depart": 730,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/yamato_card.webp",
+   "icone": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/yamato_sm.webp",
+   "wiki": "https://deadlock.wiki/Yamato",
+   "video": null,
+   "mecaniques": [
+    "canalisation",
+    "mobilite",
+    "ralentissement",
+    "soin"
+   ],
+   "competences": [
+    {
+     "touche": 1,
+     "nom": "Power Slash",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/yamato/yamato_power_slash.webp",
+     "resume": "Charge up an attack, dealing high damage on a full charge",
+     "description": "Channel to increase damage over 1.4 seconds, then release a fully-charged sword strike. · Press Ability 1 or to trigger the strike early, dealing partial damage.",
+     "recharge_s": 12.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Full Charge Damage",
+       "valeur": "145.0"
+      },
+      {
+       "nom": "Slash Length",
+       "valeur": "22mm"
+      }
+     ],
+     "ameliorations": [
+      "+32% Movement Slow for 3s",
+      "-4s Ability Cooldown",
+      "+8m Cast Range · +150.0 Damage and Increases Spirit Power scaling"
+     ]
+    },
+    {
+     "touche": 2,
+     "nom": "Flying Slash",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/yamato/yamato_flying_strike.webp",
+     "resume": "Fly towards an enemy target",
+     "description": "Throw a grappling hook to reel yourself towards an enemy, dealingmelee damage and slowing the target when you arrive.",
+     "recharge_s": 36.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "0"
+      },
+      {
+       "nom": "Move Speed",
+       "valeur": "40%"
+      },
+      {
+       "nom": "Bonus Spirit",
+       "valeur": "0.0"
+      },
+      {
+       "nom": "Buff Duration",
+       "valeur": "0s"
+      }
+     ],
+     "ameliorations": [
+      "Gain +35 Spirit Power for 6s",
+      "Alt-Cast to Grapple allies · +15m Cast Range · Gains 1 extra charge"
+     ]
+    },
+    {
+     "touche": 3,
+     "nom": "Crimson Slash",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/yamato/yamato_crimson_slash.webp",
+     "resume": "Damage enemies nearby, healing on hit",
+     "description": "Slash enemies in front of you, damaging them and slowing their fire rate. If any enemy heroes are hit, you heal.",
+     "recharge_s": 16.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "55.0"
+      },
+      {
+       "nom": "Heal on hero hit",
+       "valeur": "55"
+      },
+      {
+       "nom": "Fire Rate",
+       "valeur": "30%"
+      }
+     ],
+     "ameliorations": [
+      "On Hit : +30% Melee Damage for 4s",
+      "On Hero Hit : +6% Max Health Heal",
+      "-10s Cooldown and increases scaling"
+     ]
+    },
+    {
+     "touche": 4,
+     "nom": "Shadow Transformation",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/yamato/yamato_blinding_steel.webp",
+     "resume": "Become invincible and more powerful",
+     "description": "Become infused with Yamato's shadow soul. After an initial invincible transformation your abilities are refreshed and are 60% faster. You gain immunity to negative status effects and have greatly increased bullet and spirit resist. · When you get a hero kill, you heal and the duration is extended.",
+     "recharge_s": 150.0,
+     "canalisee": true,
+     "valeurs": [
+      {
+       "nom": "Duration",
+       "valeur": "5s"
+      },
+      {
+       "nom": "Ability Speed",
+       "valeur": "60%"
+      },
+      {
+       "nom": "Max HP Heal On Kill",
+       "valeur": "15%"
+      }
+     ],
+     "ameliorations": [
+      "+4m Move Speed and -20 Cooldown",
+      "+3.0s Duration · +30% Bullet Resist · +30% Spirit Resist"
+     ]
+    }
+   ]
+  }
+ ]
+}

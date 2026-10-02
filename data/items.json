@@ -1,0 +1,2048 @@
+{
+ "meta": {
+  "patch": "City Never Sleeps (2026-09-29)",
+  "verifie_le": "2026-10-02",
+  "source": "https://api.deadlock-api.com",
+  "genere_par": "outils/maj_donnees.py",
+  "note": "`contre` est déduit par mots-clés : à relire."
+ },
+ "objets": [
+  {
+   "id": 3776945997,
+   "nom": "Extra Charge",
+   "categorie": "spirit",
+   "tier": 1,
+   "cout": 800,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/extra_charge.webp",
+   "description": "",
+   "contre": []
+  },
+  {
+   "id": 968099481,
+   "nom": "Extra Spirit",
+   "categorie": "spirit",
+   "tier": 1,
+   "cout": 800,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/extra_spirit.webp",
+   "description": "",
+   "contre": []
+  },
+  {
+   "id": 2462046703,
+   "nom": "Golden Goose Egg",
+   "categorie": "spirit",
+   "tier": 1,
+   "cout": 800,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/goose_egg.webp",
+   "description": "Gain souls over time, as long as you are alive. Hatch the egg, gaining souls and permanent buffs. · · The value of the egg grows the longer you hold onto it. · · Gain a permanent buff per 80 Souls accrued when hatched.",
+   "contre": []
+  },
+  {
+   "id": 1998374645,
+   "nom": "Mystic Burst",
+   "categorie": "spirit",
+   "tier": 1,
+   "cout": 800,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/mystic_burst.webp",
+   "description": "Charges up over time with bonus spirit damage, causing abilities dealing more than 80 damage to deal additional damage.",
+   "contre": []
+  },
+  {
+   "id": 754480263,
+   "nom": "Mystic Expansion",
+   "categorie": "spirit",
+   "tier": 1,
+   "cout": 800,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/mystic_reach.webp",
+   "description": "Imbue an ability to increase its range and effect radius.",
+   "contre": []
+  },
+  {
+   "id": 1439347412,
+   "nom": "Mystic Regeneration",
+   "categorie": "spirit",
+   "tier": 1,
+   "cout": 800,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/mystic_regen.webp",
+   "description": "Dealing spirit damage to enemy Heroes grants you Bonus regeneration. Stacks when dealing damage to different heroes.",
+   "contre": []
+  },
+  {
+   "id": 2922054143,
+   "nom": "Rusted Barrel",
+   "categorie": "spirit",
+   "tier": 1,
+   "cout": 800,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/rusted_barrel.webp",
+   "description": "Target an enemy to reduce their Fire Rate and Bullet Resistance.",
+   "contre": [
+    "degats_par_balles"
+   ]
+  },
+  {
+   "id": 465043967,
+   "nom": "Spirit Strike",
+   "categorie": "spirit",
+   "tier": 1,
+   "cout": 800,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/spirit_strike.webp",
+   "description": "When you perform a Light or Heavy Melee attack against a hero, deal extra spirit damage with the attack and reduce the target's Spirit Resist. · · Cooldown is 2x longer for Light Melee hits.",
+   "contre": [
+    "degats_spirit"
+   ]
+  },
+  {
+   "id": 1150006784,
+   "nom": "Arcane Surge",
+   "categorie": "spirit",
+   "tier": 2,
+   "cout": 1600,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/arcane_surge.webp",
+   "description": "After you Dash-Jump, the next ability you use within 7s will have bonus Range, Duration, and Spirit Power.",
+   "contre": []
+  },
+  {
+   "id": 2971868509,
+   "nom": "Bullet Resist Shredder",
+   "categorie": "spirit",
+   "tier": 2,
+   "cout": 1600,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/bullet_resist_shredder.webp",
+   "description": "Reduces Bullet Resist on enemies when you deal spirit damage.",
+   "contre": [
+    "degats_par_balles"
+   ]
+  },
+  {
+   "id": 1976391348,
+   "nom": "Cold Front",
+   "categorie": "spirit",
+   "tier": 2,
+   "cout": 1600,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/cold_front.webp",
+   "description": "Release an expanding ice blast that deals spirit damage and Slows targets it hits.",
+   "contre": [
+    "mobilite"
+   ]
+  },
+  {
+   "id": 380806748,
+   "nom": "Compress Cooldown",
+   "categorie": "spirit",
+   "tier": 2,
+   "cout": 1600,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/improved_cooldown.webp",
+   "description": "Imbue an ability to reduce its Cooldown.",
+   "contre": []
+  },
+  {
+   "id": 2951612397,
+   "nom": "Duration Extender",
+   "categorie": "spirit",
+   "tier": 2,
+   "cout": 1600,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/duration_extender.webp",
+   "description": "Imbue an ability to increase its Duration.",
+   "contre": []
+  },
+  {
+   "id": 7409189,
+   "nom": "Improved Spirit",
+   "categorie": "spirit",
+   "tier": 2,
+   "cout": 1600,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/improved_spirit.webp",
+   "description": "",
+   "contre": []
+  },
+  {
+   "id": 1102081447,
+   "nom": "Mystic Slow",
+   "categorie": "spirit",
+   "tier": 2,
+   "cout": 1600,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/mystic_slow.webp",
+   "description": "When the target takes spirit damage, they have their Move Speed reduced.",
+   "contre": []
+  },
+  {
+   "id": 2081037738,
+   "nom": "Mystic Vulnerability",
+   "categorie": "spirit",
+   "tier": 2,
+   "cout": 1600,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/mystic_vulnerability.webp",
+   "description": "When an enemy takes spirit damage, they have their spirit resist reduced.",
+   "contre": [
+    "degats_spirit"
+   ]
+  },
+  {
+   "id": 84321454,
+   "nom": "Quicksilver Reload",
+   "categorie": "spirit",
+   "tier": 2,
+   "cout": 1600,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/quicksilver_reload.webp",
+   "description": "Your imbued ability charges up over time with bonus spirit damage, bonus fire rate, and reloads bullets on use.",
+   "contre": []
+  },
+  {
+   "id": 1813726886,
+   "nom": "Slowing Hex",
+   "categorie": "spirit",
+   "tier": 2,
+   "cout": 1600,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/slowing_hex.webp",
+   "description": "Slows movement of enemy target. Also Silences their movement-based items and abilities. · Increases the target's gravity. · Does not affect target's stamina usage.",
+   "contre": [
+    "degats_spirit",
+    "mobilite"
+   ]
+  },
+  {
+   "id": 1219329868,
+   "nom": "Spirit Sap",
+   "categorie": "spirit",
+   "tier": 2,
+   "cout": 1600,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/spirit_sap.webp",
+   "description": "Target an enemy to reduce their Spirit Resist and Spirit Power.",
+   "contre": [
+    "degats_spirit"
+   ]
+  },
+  {
+   "id": 1925087134,
+   "nom": "Suppressor",
+   "categorie": "spirit",
+   "tier": 2,
+   "cout": 1600,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/suppressor.webp",
+   "description": "When you deal spirit damage to enemies, you also reduce their Fire Rate.",
+   "contre": [
+    "degats_par_balles"
+   ]
+  },
+  {
+   "id": 3144988365,
+   "nom": "Decay",
+   "categorie": "spirit",
+   "tier": 3,
+   "cout": 3200,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/decay.webp",
+   "description": "Inflict damage over time to a target, dealing damage based on their current health. · Decay's damage is non-lethal and does not apply item procs.",
+   "contre": []
+  },
+  {
+   "id": 2061878743,
+   "nom": "Disarming Hex",
+   "categorie": "spirit",
+   "tier": 3,
+   "cout": 3200,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/disarming_hex.webp",
+   "description": "Disarms enemy target and reduces their Bullet Resist.",
+   "contre": [
+    "degats_par_balles"
+   ]
+  },
+  {
+   "id": 1193964439,
+   "nom": "Greater Expansion",
+   "categorie": "spirit",
+   "tier": 3,
+   "cout": 3200,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/greater_expansion.webp",
+   "description": "Increases the range and effect radius of your abilities and items.",
+   "contre": []
+  },
+  {
+   "id": 1254091416,
+   "nom": "Knockdown",
+   "categorie": "spirit",
+   "tier": 3,
+   "cout": 3200,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/knockdown.webp",
+   "description": "Apply a Stun after 2s. Stun duration is increased against airborne targets. · · Increases the target's gravity for the duration of the stun.",
+   "contre": []
+  },
+  {
+   "id": 2947183272,
+   "nom": "Radiant Regeneration",
+   "categorie": "spirit",
+   "tier": 3,
+   "cout": 3200,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/radiant_regeneration.webp",
+   "description": "Heal and gain bonus Movement Speed for a short duration when you cast an ability. Dealing spirit damage to enemy Heroes grants you Bonus regeneration. Stacks when dealing damage to different heroes.",
+   "contre": []
+  },
+  {
+   "id": 787198704,
+   "nom": "Rapid Recharge",
+   "categorie": "spirit",
+   "tier": 3,
+   "cout": 3200,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/rapid_recharge.webp",
+   "description": "",
+   "contre": []
+  },
+  {
+   "id": 619484391,
+   "nom": "Silence Wave",
+   "categorie": "spirit",
+   "tier": 3,
+   "cout": 3200,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/silence_glyph.webp",
+   "description": "Launch an expanding projectile which Silences enemies for a short duration and deals impact damage. · · Silence does not interrupt channeling abilities.",
+   "contre": [
+    "degats_spirit"
+   ]
+  },
+  {
+   "id": 3190916303,
+   "nom": "Spirit Snatch",
+   "categorie": "spirit",
+   "tier": 3,
+   "cout": 3200,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/spirit_snatch.webp",
+   "description": "When you perform a Light or Heavy Melee attack against a hero, the attack deals extra spirit damage and steals Spirit Resist and Spirit Power. · · Effects are reduced by 30% for Light Melee hits.",
+   "contre": [
+    "degats_spirit"
+   ]
+  },
+  {
+   "id": 3261353684,
+   "nom": "Superior Cooldown",
+   "categorie": "spirit",
+   "tier": 3,
+   "cout": 3200,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/superior_cooldown.webp",
+   "description": "Reduces the Cooldown of your abilities.",
+   "contre": []
+  },
+  {
+   "id": 2717651715,
+   "nom": "Superior Duration",
+   "categorie": "spirit",
+   "tier": 3,
+   "cout": 3200,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/superior_duration.webp",
+   "description": "Increases the duration of your abilities and items.",
+   "contre": []
+  },
+  {
+   "id": 1292979587,
+   "nom": "Surge of Power",
+   "categorie": "spirit",
+   "tier": 3,
+   "cout": 3200,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/surge_of_power.webp",
+   "description": "Imbue an ability with permanent Spirit Power. When that ability is used, gain bonus Move Speed and maintain full speed while attacking.",
+   "contre": []
+  },
+  {
+   "id": 2121044373,
+   "nom": "Tankbuster",
+   "categorie": "spirit",
+   "tier": 3,
+   "cout": 3200,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/tankbuster.webp",
+   "description": "Charges up over time with bonus spirit damage, causing abilities dealing more than 165 damage to deal additional damage. Ignores Spirit Resistance.",
+   "contre": [
+    "degats_spirit"
+   ]
+  },
+  {
+   "id": 395944548,
+   "nom": "Torment Pulse",
+   "categorie": "spirit",
+   "tier": 3,
+   "cout": 3200,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/torment_pulse.webp",
+   "description": "Periodically deals spirit damage to the closest two enemies nearby.",
+   "contre": []
+  },
+  {
+   "id": 3812615317,
+   "nom": "Arctic Blast",
+   "categorie": "spirit",
+   "tier": 4,
+   "cout": 6400,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/arctic_blast.webp",
+   "description": "Release an expanding ice blast that deals spirit damage, Freezing and then Slowing targets it hits. · · Slowed targets have their stamina regen frozen",
+   "contre": [
+    "mobilite"
+   ]
+  },
+  {
+   "id": 2519598785,
+   "nom": "Boundless Spirit",
+   "categorie": "spirit",
+   "tier": 4,
+   "cout": 6400,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/boundless_spirit.webp",
+   "description": "",
+   "contre": []
+  },
+  {
+   "id": 2617435668,
+   "nom": "Cursed Relic",
+   "categorie": "spirit",
+   "tier": 4,
+   "cout": 6400,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/curse.webp",
+   "description": "Curses an enemy - interrupting, Silencing, Disarming, and preventing item usage. Removes all non-ultimate buffs. · · Your own Damage Output is reduced for the duration.",
+   "contre": [
+    "degats_par_balles",
+    "degats_spirit"
+   ]
+  },
+  {
+   "id": 630839635,
+   "nom": "Echo Shard",
+   "categorie": "spirit",
+   "tier": 4,
+   "cout": 6400,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/echo_shard.webp",
+   "description": "Reset the cooldown of the imbued non-ultimate ability. · · This item's cooldown is increased by the cooldown of the imbued ability.",
+   "contre": []
+  },
+  {
+   "id": 3005970438,
+   "nom": "Escalating Exposure",
+   "categorie": "spirit",
+   "tier": 4,
+   "cout": 6400,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/escalating_exposure.webp",
+   "description": "Dealing spirit damage applies a stacking Spirit Amp that increases your spirit damage to the target.",
+   "contre": []
+  },
+  {
+   "id": 2533252781,
+   "nom": "Ethereal Shift",
+   "categorie": "spirit",
+   "tier": 4,
+   "cout": 6400,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/ethereal_shift.webp",
+   "description": "Instantly enter a void state and become Invulnerable for a short duration. Afterwards, gain a variety of temporary buffs:",
+   "contre": []
+  },
+  {
+   "id": 2142980412,
+   "nom": "Focus Lens",
+   "categorie": "spirit",
+   "tier": 4,
+   "cout": 6400,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/focus_lens.webp",
+   "description": "Target an enemy to Silence them. A portion of all damage dealt during the silence gets applied to the target when the silence wears off.",
+   "contre": [
+    "degats_spirit"
+   ]
+  },
+  {
+   "id": 493591231,
+   "nom": "Lightning Scroll",
+   "categorie": "spirit",
+   "tier": 4,
+   "cout": 6400,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/lightning_scroll.webp",
+   "description": "Damage from your ultimate applies a stun and deals bonus spirit damage after a short delay. This effect can only trigger once per target per ultimate. Mystic Slow effects",
+   "contre": [
+    "mobilite"
+   ]
+  },
+  {
+   "id": 2800629741,
+   "nom": "Magic Carpet",
+   "categorie": "spirit",
+   "tier": 4,
+   "cout": 6400,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/magic_carpet.webp",
+   "description": "Summon a Magic Carpet that will fly you away. While flying you are immune to slows and doing any action will dismiss the carpet. · Cannot use abilities while the carpet is being summoned.",
+   "contre": [
+    "mobilite"
+   ]
+  },
+  {
+   "id": 3919289022,
+   "nom": "Mercurial Magnum",
+   "categorie": "spirit",
+   "tier": 4,
+   "cout": 6400,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/mercurial_magnum.webp",
+   "description": "Your imbued ability charges up over time with bonus spirit damage, bonus fire rate, and reloads bullets on use. Until your next reload, your bullets deal bonus spirit damage based on your Spirit Power.",
+   "contre": []
+  },
+  {
+   "id": 3577481646,
+   "nom": "Mystic Reverb",
+   "categorie": "spirit",
+   "tier": 4,
+   "cout": 6400,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/mystic_reverb.webp",
+   "description": "Imbue an ability with Lifesteal and to apply slow on a hit target and deal an additional percentage of the damage dealt to enemies around the target after a short delay.",
+   "contre": [
+    "mobilite"
+   ]
+  },
+  {
+   "id": 677738769,
+   "nom": "Refresher",
+   "categorie": "spirit",
+   "tier": 4,
+   "cout": 6400,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/refresher.webp",
+   "description": "Reset the cooldown of all your abilities and restore all your charges.",
+   "contre": []
+  },
+  {
+   "id": 2417568017,
+   "nom": "Scourge",
+   "categorie": "spirit",
+   "tier": 4,
+   "cout": 6400,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/scourge.webp",
+   "description": "Apply Spirit Resist, Debuff Resist and an aura on a friendly target that deals damage to enemies proportional to their max health. Existing debuffs on the target are reduced. · Can be self cast.",
+   "contre": [
+    "debuffs_et_controle",
+    "degats_spirit"
+   ]
+  },
+  {
+   "id": 343572757,
+   "nom": "Spirit Burn",
+   "categorie": "spirit",
+   "tier": 4,
+   "cout": 6400,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/spirit_burn.webp",
+   "description": "Dealing significant spirit damage to an enemy within 5s causes an explosion dealing damage and a burn to that enemy. While burning, enemies take damage over time and receive reduced healing. · The cooldown is per enemy, so each target can only be burned once per cooldown. Deals half-damage on non-heroes.",
+   "contre": []
+  },
+  {
+   "id": 915014646,
+   "nom": "Transcendent Cooldown",
+   "categorie": "spirit",
+   "tier": 4,
+   "cout": 6400,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/transcendent_cooldown.webp",
+   "description": "Reduces the Cooldown of your abilities and items.",
+   "contre": []
+  },
+  {
+   "id": 1152158042,
+   "nom": "Vortex Web",
+   "categorie": "spirit",
+   "tier": 4,
+   "cout": 6400,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/vortex_web.webp",
+   "description": "Throw a vacuum grenade, pulling all enemies into a small area and applying Slowing Hex. · · Alt Cast to Target Unit Directly.",
+   "contre": [
+    "mobilite"
+   ]
+  },
+  {
+   "id": 2068250483,
+   "nom": "Frostbite Charm",
+   "categorie": "spirit",
+   "tier": 5,
+   "cout": 9999,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/brawl/frostbite.webp",
+   "description": "Imbued ability has its Cooldown reduced and gains Spirit Power. When the ability deals damage, freeze the target and apply bonus damage. · · Cooldown is per target.",
+   "contre": []
+  },
+  {
+   "id": 4050602737,
+   "nom": "Mystic Conduit",
+   "categorie": "spirit",
+   "tier": 5,
+   "cout": 9999,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/brawl/patrons_blessing.webp",
+   "description": "Provides yourself and allies with a powerful spirit focused aura. Has reduced values on allies. Dealing significant Damage to an enemy Hero within 5s causes you to heal yourself and nearby allies.",
+   "contre": []
+  },
+  {
+   "id": 2054088113,
+   "nom": "Mystical Piano",
+   "categorie": "spirit",
+   "tier": 5,
+   "cout": 9999,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/brawl/mystical_piano.webp",
+   "description": "After a short delay, enemies in the target area will be stunned and have their stamina depleted. After the stun they will be temporarily dazed.",
+   "contre": []
+  },
+  {
+   "id": 424779525,
+   "nom": "Omnicharge Signet",
+   "categorie": "spirit",
+   "tier": 5,
+   "cout": 9999,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/brawl/omnicharge_pendant.webp",
+   "description": "Imbue any active non-ultimate ability with Bonus Ability Charges. Already charged abilities receive more bonus charges.",
+   "contre": []
+  },
+  {
+   "id": 1132564516,
+   "nom": "Prism Blast",
+   "categorie": "spirit",
+   "tier": 5,
+   "cout": 9999,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/brawl/prism_blast.webp",
+   "description": "You enter a void state and become untargetable and invincible for a short duration, during which lasers blast out and rotate around you.",
+   "contre": []
+  },
+  {
+   "id": 4121584236,
+   "nom": "Shrink Ray",
+   "categorie": "spirit",
+   "tier": 5,
+   "cout": 9999,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/brawl/shrink_ray.webp",
+   "description": "Reduces Model Size and grants Move Speed to the target. Allows usage of tunnels in this mode. Can be self-cast.",
+   "contre": []
+  },
+  {
+   "id": 1558545403,
+   "nom": "Unstable Concoction",
+   "categorie": "spirit",
+   "tier": 5,
+   "cout": 9999,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/brawl/unstable_concoction.webp",
+   "description": "Consume a concoction that grants you Unstoppable and increased speed, health, spirit and weapon damage. After a short duration you die and explode, stunning nearby enemies and dealing damage based on your maximum health. Dying this way reduces your respawn time by 50%.",
+   "contre": [
+    "debuffs_et_controle"
+   ]
+  },
+  {
+   "id": 3633614685,
+   "nom": "Extra Health",
+   "categorie": "vitality",
+   "tier": 1,
+   "cout": 800,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/extra_health.webp",
+   "description": "",
+   "contre": []
+  },
+  {
+   "id": 2829638276,
+   "nom": "Extra Regen",
+   "categorie": "vitality",
+   "tier": 1,
+   "cout": 800,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/extra_regen.webp",
+   "description": "",
+   "contre": []
+  },
+  {
+   "id": 4139877411,
+   "nom": "Extra Stamina",
+   "categorie": "vitality",
+   "tier": 1,
+   "cout": 800,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/extra_stamina.webp",
+   "description": "",
+   "contre": []
+  },
+  {
+   "id": 1672893796,
+   "nom": "Grit",
+   "categorie": "vitality",
+   "tier": 1,
+   "cout": 800,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/grit.webp",
+   "description": "Gain a Barrier for a short duration.",
+   "contre": []
+  },
+  {
+   "id": 1710079648,
+   "nom": "Healing Rite",
+   "categorie": "vitality",
+   "tier": 1,
+   "cout": 800,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/healing_rite.webp",
+   "description": "Grant Regen and Sprint Speed to the target. Gets dispelled if you take damage from enemy players or objectives. Can be self-cast.",
+   "contre": []
+  },
+  {
+   "id": 1437614329,
+   "nom": "Melee Lifesteal",
+   "categorie": "vitality",
+   "tier": 1,
+   "cout": 800,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/melee_lifesteal.webp",
+   "description": "Your next Melee attack heals you. · · This heal is 30% effective vs non-heroes. · Cooldown is 1.5x as long for Light Melee hits.",
+   "contre": []
+  },
+  {
+   "id": 4204808176,
+   "nom": "Rebuttal",
+   "categorie": "vitality",
+   "tier": 1,
+   "cout": 800,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/rebuttal.webp",
+   "description": "On a successful Parry against an enemy Hero, Heal yourself for the damage parried and returns that damage to the target, and temporarily gain increased damage.",
+   "contre": []
+  },
+  {
+   "id": 3399065363,
+   "nom": "Sprint Boots",
+   "categorie": "vitality",
+   "tier": 1,
+   "cout": 800,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/sprint_boots.webp",
+   "description": "",
+   "contre": []
+  },
+  {
+   "id": 1235347618,
+   "nom": "Battle Vest",
+   "categorie": "vitality",
+   "tier": 2,
+   "cout": 1600,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/battle_vest.webp",
+   "description": "While you are above 65% health, gain weapon damage and bonus fire rate.",
+   "contre": []
+  },
+  {
+   "id": 499683006,
+   "nom": "Bullet Lifesteal",
+   "categorie": "vitality",
+   "tier": 2,
+   "cout": 1600,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/bullet_lifesteal.webp",
+   "description": "",
+   "contre": []
+  },
+  {
+   "id": 1047818222,
+   "nom": "Debuff Reducer",
+   "categorie": "vitality",
+   "tier": 2,
+   "cout": 1600,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/debuff_reducer.webp",
+   "description": "Reduces the duration of all negative effects applied to you.",
+   "contre": []
+  },
+  {
+   "id": 3970837787,
+   "nom": "Enchanter's Emblem",
+   "categorie": "vitality",
+   "tier": 2,
+   "cout": 1600,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/enchanters_emblem.webp",
+   "description": "While you are above 65% health, gain bonus Spirit and Cooldown Reduction.",
+   "contre": []
+  },
+  {
+   "id": 2447176615,
+   "nom": "Enduring Speed",
+   "categorie": "vitality",
+   "tier": 2,
+   "cout": 1600,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/enduring_speed.webp",
+   "description": "Reduces the effect of enemy Move Speed penalties.",
+   "contre": []
+  },
+  {
+   "id": 857669956,
+   "nom": "Guardian Ward",
+   "categorie": "vitality",
+   "tier": 2,
+   "cout": 1600,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/guardian_ward.webp",
+   "description": "Provide the target with a Barrier and temporary Move Speed. · Can be self-cast. · Cooldown is reduced by half when cast on someone else.",
+   "contre": []
+  },
+  {
+   "id": 2603935618,
+   "nom": "Healbane",
+   "categorie": "vitality",
+   "tier": 2,
+   "cout": 1600,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/healbane.webp",
+   "description": "Your spirit damage reduces the enemy's Incoming Healing. If an enemy hero dies under this effect, you receive a large heal.",
+   "contre": [
+    "soin"
+   ]
+  },
+  {
+   "id": 2566692615,
+   "nom": "Healing Booster",
+   "categorie": "vitality",
+   "tier": 2,
+   "cout": 1600,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/healing_booster.webp",
+   "description": "Increases the effectiveness of your healing.",
+   "contre": []
+  },
+  {
+   "id": 1644605047,
+   "nom": "Reactive Barrier",
+   "categorie": "vitality",
+   "tier": 2,
+   "cout": 1600,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/reactive_barrier.webp",
+   "description": "Gain a Barrier when you are Stunned, Chained, Immobilized, Slept or Silenced.",
+   "contre": [
+    "degats_spirit",
+    "mobilite"
+   ]
+  },
+  {
+   "id": 2059712766,
+   "nom": "Restorative Locket",
+   "categorie": "vitality",
+   "tier": 2,
+   "cout": 1600,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/restorative_locket.webp",
+   "description": "When an enemy uses an ability within 32mm range from you, store one Restoration Stack. · · Consume all stacks to heal yourself and replenish up to 3 stamina based on how many stacks you have.",
+   "contre": []
+  },
+  {
+   "id": 3361075077,
+   "nom": "Return Fire",
+   "categorie": "vitality",
+   "tier": 2,
+   "cout": 1600,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/return_fire.webp",
+   "description": "Automatically fire a bullet towards any attacker who damages you with their abilities or weapon.",
+   "contre": []
+  },
+  {
+   "id": 876563814,
+   "nom": "Spirit Lifesteal",
+   "categorie": "vitality",
+   "tier": 2,
+   "cout": 1600,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/spirit_lifesteal.webp",
+   "description": "",
+   "contre": []
+  },
+  {
+   "id": 112198670,
+   "nom": "Spirit Shielding",
+   "categorie": "vitality",
+   "tier": 2,
+   "cout": 1600,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/spirit_shielding.webp",
+   "description": "Gain a Barrier whenever you take significant spirit damage from enemy Heroes in a small time frame.",
+   "contre": []
+  },
+  {
+   "id": 3074274290,
+   "nom": "Trophy Collector",
+   "categorie": "vitality",
+   "tier": 2,
+   "cout": 1600,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/trophy_collector.webp",
+   "description": "Whenever you score an assist or kill, gain extra sprint, ability range and passive soul generation. This effect stacks and persists through death.",
+   "contre": []
+  },
+  {
+   "id": 805079544,
+   "nom": "Weapon Shielding",
+   "categorie": "vitality",
+   "tier": 2,
+   "cout": 1600,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/weapon_shielding.webp",
+   "description": "Gain a Barrier whenever you take significant weapon damage from enemy Heroes in a small time frame.",
+   "contre": []
+  },
+  {
+   "id": 3140772621,
+   "nom": "Bullet Resilience",
+   "categorie": "vitality",
+   "tier": 3,
+   "cout": 3200,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/bullet_resilience.webp",
+   "description": "When below 50% health, gain additional Bullet Resist.",
+   "contre": [
+    "degats_par_balles"
+   ]
+  },
+  {
+   "id": 1414025773,
+   "nom": "Counterspell",
+   "categorie": "vitality",
+   "tier": 3,
+   "cout": 3200,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/counterspell.webp",
+   "description": "Your next parry protects you from the damage and effects of enemy abilities and items. On a successful spell parry heal and gain move speed and Spirit.",
+   "contre": []
+  },
+  {
+   "id": 3731635960,
+   "nom": "Dispel Magic",
+   "categorie": "vitality",
+   "tier": 3,
+   "cout": 3200,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/debuff_remover.webp",
+   "description": "Purge all non-ultimate negative effects currently applied to you. If any effects were removed, heal yourself and gain a move speed bonus. · Cannot be used while Stunned or Slept.",
+   "contre": [
+    "debuffs_et_controle"
+   ]
+  },
+  {
+   "id": 3585132399,
+   "nom": "Fortitude",
+   "categorie": "vitality",
+   "tier": 3,
+   "cout": 3200,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/fortitude.webp",
+   "description": "After not taking damage for a period, gain health regen. When you are above 75% health, you have bonus Move Speed.",
+   "contre": []
+  },
+  {
+   "id": 1409190604,
+   "nom": "Fury Trance",
+   "categorie": "vitality",
+   "tier": 3,
+   "cout": 3200,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/fury_trance.webp",
+   "description": "Grants Fire Rate, Spirit Resistance and Move Speed, and removes the Move Speed penalty while shooting, but Silences you and disables stamina usage and regeneration.",
+   "contre": [
+    "degats_spirit"
+   ]
+  },
+  {
+   "id": 2956256701,
+   "nom": "Healing Nova",
+   "categorie": "vitality",
+   "tier": 3,
+   "cout": 3200,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/healing_nova.webp",
+   "description": "Heal yourself and nearby allies.",
+   "contre": []
+  },
+  {
+   "id": 1252627263,
+   "nom": "Lifestrike",
+   "categorie": "vitality",
+   "tier": 3,
+   "cout": 3200,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/lifestrike.webp",
+   "description": "Your Melee Attack applies Movement Slow and heals you for a percentage of the Melee Damage dealt plus a fixed amount. · · This heal is 40% effective vs non-heroes. · Cooldown is 1.5x as long for Light Melee hits.",
+   "contre": [
+    "mobilite"
+   ]
+  },
+  {
+   "id": 600033864,
+   "nom": "Majestic Leap",
+   "categorie": "vitality",
+   "tier": 3,
+   "cout": 3200,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/majestic_leap.webp",
+   "description": "Launch yourself high into the air and grant yourself a Barrier. While in the air, you can use the active again to drop down faster. · · Cannot be used for 5s if attacked by enemy Hero.",
+   "contre": []
+  },
+  {
+   "id": 1378931225,
+   "nom": "Metal Skin",
+   "categorie": "vitality",
+   "tier": 3,
+   "cout": 3200,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/metal_skin.webp",
+   "description": "Become immune to bullets.",
+   "contre": []
+  },
+  {
+   "id": 1804594021,
+   "nom": "Rescue Beam",
+   "categorie": "vitality",
+   "tier": 3,
+   "cout": 3200,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/rescue_beam.webp",
+   "description": "Heals a target allied hero and yourself for a percentage of Max Health. Once while healing, you can Pull the target towards you. Can be self-cast.",
+   "contre": []
+  },
+  {
+   "id": 2163598980,
+   "nom": "Spirit Resilience",
+   "categorie": "vitality",
+   "tier": 3,
+   "cout": 3200,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/spirit_resilience.webp",
+   "description": "When below 50% health, gain additional Spirit Resist.",
+   "contre": [
+    "degats_spirit"
+   ]
+  },
+  {
+   "id": 334300056,
+   "nom": "Stamina Mastery",
+   "categorie": "vitality",
+   "tier": 3,
+   "cout": 3200,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/stamina_mastery.webp",
+   "description": "Allows an additional use of Air Jump or Air Dash before landing.",
+   "contre": []
+  },
+  {
+   "id": 865958998,
+   "nom": "Veil Walker",
+   "categorie": "vitality",
+   "tier": 3,
+   "cout": 3200,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/veil_walker.webp",
+   "description": "Walking through a cosmic veil grants you Stealth, Heal and increased Move Speed.",
+   "contre": []
+  },
+  {
+   "id": 3270001687,
+   "nom": "Warp Stone",
+   "categorie": "vitality",
+   "tier": 3,
+   "cout": 3200,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/warp_stone.webp",
+   "description": "Teleport straight ahead, gaining Bullet Resist.",
+   "contre": [
+    "degats_par_balles"
+   ]
+  },
+  {
+   "id": 3361811174,
+   "nom": "Cheat Death",
+   "categorie": "vitality",
+   "tier": 4,
+   "cout": 6400,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/cheat_death.webp",
+   "description": "When you would take lethal damage, instead become temporarily death immune and remove all non-stun debuffs. · · While death immune, you deal reduced damage and have reduced healing.",
+   "contre": []
+  },
+  {
+   "id": 2407781327,
+   "nom": "Colossus",
+   "categorie": "vitality",
+   "tier": 4,
+   "cout": 6400,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/colossus.webp",
+   "description": "Grow larger in size, gaining bullet resist, spirit resist, and melee damage. · · Nearby enemies suffer from slow and have reduced dash speed.",
+   "contre": [
+    "degats_par_balles",
+    "degats_spirit",
+    "mobilite"
+   ]
+  },
+  {
+   "id": 1662311306,
+   "nom": "Divine Barrier",
+   "categorie": "vitality",
+   "tier": 4,
+   "cout": 6400,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/divine_barrier.webp",
+   "description": "Remove all non-stun debuffs from the target and provide them with a Barrier and Move Speed. · Can be self-cast. Cooldown is reduced by half when cast on someone else.",
+   "contre": []
+  },
+  {
+   "id": 2820116164,
+   "nom": "Diviner's Kevlar",
+   "categorie": "vitality",
+   "tier": 4,
+   "cout": 6400,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/diviners_kevlar.webp",
+   "description": "Upon casting an ultimate ability gain a Barrier and temporary Spirit Power.",
+   "contre": []
+  },
+  {
+   "id": 1427630806,
+   "nom": "Healing Tempo",
+   "categorie": "vitality",
+   "tier": 4,
+   "cout": 6400,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/healing_tempo.webp",
+   "description": "Applying heal to yourself or an ally grants the target bonus fire rate and bonus move speed. · · Does not apply on innate Regen or passive Bullet/Spirit Lifesteals.",
+   "contre": []
+  },
+  {
+   "id": 951866250,
+   "nom": "Indomitable",
+   "categorie": "vitality",
+   "tier": 4,
+   "cout": 6400,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/indomitable.webp",
+   "description": "The next Stun, Chain, Immobilize, Sleep or Silence is automatically cleansed. When this happens, you gain a barrier and all your ability cooldowns get reduced by 20%.",
+   "contre": [
+    "degats_spirit",
+    "mobilite"
+   ]
+  },
+  {
+   "id": 1797283378,
+   "nom": "Infuser",
+   "categorie": "vitality",
+   "tier": 4,
+   "cout": 6400,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/infuser.webp",
+   "description": "Gain Spirit Lifesteal and Spirit Power.",
+   "contre": []
+  },
+  {
+   "id": 2037039379,
+   "nom": "Inhibitor",
+   "categorie": "vitality",
+   "tier": 4,
+   "cout": 6400,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/inhibitor.webp",
+   "description": "Your bullets build up to reduce the target's outgoing damage and apply healing reduction.",
+   "contre": [
+    "soin"
+   ]
+  },
+  {
+   "id": 1250307611,
+   "nom": "Juggernaut",
+   "categorie": "vitality",
+   "tier": 4,
+   "cout": 6400,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/juggernaut.webp",
+   "description": "Enemies that shoot you have their Fire Rate slowed.",
+   "contre": [
+    "degats_par_balles",
+    "mobilite"
+   ]
+  },
+  {
+   "id": 865846625,
+   "nom": "Leech",
+   "categorie": "vitality",
+   "tier": 4,
+   "cout": 6400,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/leech.webp",
+   "description": "Reduces the effect of enemy applied healing reduction.",
+   "contre": [
+    "soin"
+   ]
+  },
+  {
+   "id": 1371725689,
+   "nom": "Phantom Strike",
+   "categorie": "vitality",
+   "tier": 4,
+   "cout": 6400,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/phantom_strike.webp",
+   "description": "Teleport to an enemy target and pull them to the ground. Dealing damage, Move speed reduction and Disarm.",
+   "contre": [
+    "degats_par_balles"
+   ]
+  },
+  {
+   "id": 3491236900,
+   "nom": "Plated Armor",
+   "categorie": "vitality",
+   "tier": 4,
+   "cout": 6400,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/plated_armor.webp",
+   "description": "Gain a chance to either deflect incoming bullets, preventing all weapon damage or prevent all on-hit effects from bullets.",
+   "contre": []
+  },
+  {
+   "id": 1282141666,
+   "nom": "Siphon Bullets",
+   "categorie": "vitality",
+   "tier": 4,
+   "cout": 6400,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/siphon_bullets.webp",
+   "description": "Your bullets temporarily steal Max HP from enemies. Enemies regain their stolen health when the debuff expires.",
+   "contre": []
+  },
+  {
+   "id": 1955841979,
+   "nom": "Spellbreaker",
+   "categorie": "vitality",
+   "tier": 4,
+   "cout": 6400,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/spellbreaker.webp",
+   "description": "The next instance of high spirit damage you take is significantly reduced.",
+   "contre": []
+  },
+  {
+   "id": 3357231760,
+   "nom": "Unstoppable",
+   "categorie": "vitality",
+   "tier": 4,
+   "cout": 6400,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/unstoppable.webp",
+   "description": "Temporarily suppress negative status effects and become immune to Stun, Silence, Sleep, Root, and Disarm. · Cannot be used while Stunned or Slept.",
+   "contre": [
+    "debuffs_et_controle",
+    "degats_par_balles",
+    "degats_spirit",
+    "mobilite"
+   ]
+  },
+  {
+   "id": 1055679805,
+   "nom": "Vampiric Burst",
+   "categorie": "vitality",
+   "tier": 4,
+   "cout": 6400,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/vampiric_burst.webp",
+   "description": "Grants Lifesteal, Fire Rate, and Ammo. This added Ammo is not limited by your max magazine size.",
+   "contre": []
+  },
+  {
+   "id": 3028234315,
+   "nom": "Witchmail",
+   "categorie": "vitality",
+   "tier": 4,
+   "cout": 6400,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/witchmail.webp",
+   "description": "Taking heavy hits of spirit damage from an enemy reduces a random ability cooldown.",
+   "contre": []
+  },
+  {
+   "id": 3729138568,
+   "nom": "Celestial Blessing",
+   "categorie": "vitality",
+   "tier": 5,
+   "cout": 9999,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/brawl/celestial_guidance.webp",
+   "description": "Applies an extremely powerful cleanse that replenishes your allies globally.",
+   "contre": []
+  },
+  {
+   "id": 3523480953,
+   "nom": "Cloak of Opportunity",
+   "categorie": "vitality",
+   "tier": 5,
+   "cout": 9999,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/brawl/cloak_of_opportunity.webp",
+   "description": "Block the next debuff that would apply movement lock, Stun, Chained, Immobilize, or Sleep and become Unstoppable. Also gain a Barrier and bonus move speed",
+   "contre": [
+    "debuffs_et_controle",
+    "mobilite"
+   ]
+  },
+  {
+   "id": 1825399334,
+   "nom": "Electric Slippers",
+   "categorie": "vitality",
+   "tier": 5,
+   "cout": 9999,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/brawl/electric_slippers.webp",
+   "description": "When sliding, evade bullets, gain fire rate and deal damage to enemies around you. · · Cooldown is per target.",
+   "contre": []
+  },
+  {
+   "id": 230297145,
+   "nom": "Eternal Gift",
+   "categorie": "vitality",
+   "tier": 5,
+   "cout": 9999,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/brawl/eternal_gift.webp",
+   "description": "Periodically gain a random permanent stat buff. Reduces your next death's respawn timer.",
+   "contre": []
+  },
+  {
+   "id": 3949773228,
+   "nom": "Nullification Burst",
+   "categorie": "vitality",
+   "tier": 5,
+   "cout": 9999,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/brawl/nullification_aura.webp",
+   "description": "Removes any positive buffs and prevents stamina usage and healing effects on enemies.",
+   "contre": []
+  },
+  {
+   "id": 1736094134,
+   "nom": "Seraphim Wings",
+   "categorie": "vitality",
+   "tier": 5,
+   "cout": 9999,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/brawl/icarus_wings.webp",
+   "description": "When Airborne, You deal more damage and take reduced damage. Allows unlimited Air Dash and Jumping.",
+   "contre": []
+  },
+  {
+   "id": 2319629810,
+   "nom": "Shadow Strike",
+   "categorie": "vitality",
+   "tier": 5,
+   "cout": 9999,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/brawl/shadow_strike.webp",
+   "description": "Go Invisible on Stamina use with no detection range. Doing a melee attack while invisible will cause you to steal bullet and spirit resistance from them and deal damage over time.",
+   "contre": [
+    "degats_spirit"
+   ]
+  },
+  {
+   "id": 1342610602,
+   "nom": "Close Quarters",
+   "categorie": "weapon",
+   "tier": 1,
+   "cout": 800,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/close_quarters.webp",
+   "description": "Deal additional Weapon Damage when in close range to your target.",
+   "contre": []
+  },
+  {
+   "id": 1548066885,
+   "nom": "Extended Magazine",
+   "categorie": "weapon",
+   "tier": 1,
+   "cout": 800,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/basic_magazine.webp",
+   "description": "",
+   "contre": []
+  },
+  {
+   "id": 2010028405,
+   "nom": "Headshot Booster",
+   "categorie": "weapon",
+   "tier": 1,
+   "cout": 800,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/headshot_booster.webp",
+   "description": "Your next headshot against an enemy Hero deals bonus weapon damage.",
+   "contre": []
+  },
+  {
+   "id": 3077079169,
+   "nom": "High-Velocity Rounds",
+   "categorie": "weapon",
+   "tier": 1,
+   "cout": 800,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/high_velocity_rounds.webp",
+   "description": "",
+   "contre": []
+  },
+  {
+   "id": 1009965641,
+   "nom": "Monster Rounds",
+   "categorie": "weapon",
+   "tier": 1,
+   "cout": 800,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/monster_rounds.webp",
+   "description": "",
+   "contre": []
+  },
+  {
+   "id": 668299740,
+   "nom": "Rapid Rounds",
+   "categorie": "weapon",
+   "tier": 1,
+   "cout": 800,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/rapid_rounds.webp",
+   "description": "",
+   "contre": []
+  },
+  {
+   "id": 3862866912,
+   "nom": "Restorative Shot",
+   "categorie": "weapon",
+   "tier": 1,
+   "cout": 800,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/restorative_shot.webp",
+   "description": "Your next bullet will heal you based on what target you hit.",
+   "contre": []
+  },
+  {
+   "id": 381961617,
+   "nom": "Active Reload",
+   "categorie": "weapon",
+   "tier": 2,
+   "cout": 1600,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/active_reload.webp",
+   "description": "While reloading, pressing Reload during the highlighted portion will instantly finish your reload and grant you Fire Rate, Bullet Lifesteal and Move Speed.",
+   "contre": []
+  },
+  {
+   "id": 3403085434,
+   "nom": "Fleetfoot",
+   "categorie": "weapon",
+   "tier": 2,
+   "cout": 1600,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/fleetfoot.webp",
+   "description": "Removes the Move Speed penalty while shooting. Gain bonus Move Speed and Slow Resistance.",
+   "contre": [
+    "mobilite"
+   ]
+  },
+  {
+   "id": 2407033488,
+   "nom": "Intensifying Magazine",
+   "categorie": "weapon",
+   "tier": 2,
+   "cout": 1600,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/intensifying_magazine.webp",
+   "description": "Increases Weapon Damage as you continuously fire your weapon.",
+   "contre": []
+  },
+  {
+   "id": 3977876567,
+   "nom": "Kinetic Dash",
+   "categorie": "weapon",
+   "tier": 2,
+   "cout": 1600,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/kinetic_dash.webp",
+   "description": "When you Dash-Jump you gain Fire Rate and bonus Ammo until your next reload. Lasts up to 7s.",
+   "contre": []
+  },
+  {
+   "id": 3331811235,
+   "nom": "Long Range",
+   "categorie": "weapon",
+   "tier": 2,
+   "cout": 1600,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/long_range.webp",
+   "description": "Deal additional Weapon Damage when beyond a minimum distance from your target.",
+   "contre": []
+  },
+  {
+   "id": 26002154,
+   "nom": "Melee Charge",
+   "categorie": "weapon",
+   "tier": 2,
+   "cout": 1600,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/melee_charge.webp",
+   "description": "Your next Heavy Melee attack against an enemy deals increased damage.",
+   "contre": []
+  },
+  {
+   "id": 395867183,
+   "nom": "Mystic Shot",
+   "categorie": "weapon",
+   "tier": 2,
+   "cout": 1600,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/mystic_shot.webp",
+   "description": "Your next bullet deals bonus spirit damage.",
+   "contre": []
+  },
+  {
+   "id": 2064029594,
+   "nom": "Opening Rounds",
+   "categorie": "weapon",
+   "tier": 2,
+   "cout": 1600,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/opening_rounds.webp",
+   "description": "Your attacks have additional Weapon Damage against enemies above 50% health.",
+   "contre": []
+  },
+  {
+   "id": 1763073141,
+   "nom": "Recharging Rush",
+   "categorie": "weapon",
+   "tier": 2,
+   "cout": 1600,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/recharging_rounds.webp",
+   "description": "Dealing significant weapon damage replenishes a charge for each of your charged abilities.",
+   "contre": []
+  },
+  {
+   "id": 393974127,
+   "nom": "Slowing Bullets",
+   "categorie": "weapon",
+   "tier": 2,
+   "cout": 1600,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/slowing_bullets.webp",
+   "description": "Your bullets build up a Movement Slow on enemies.",
+   "contre": [
+    "mobilite"
+   ]
+  },
+  {
+   "id": 1144549437,
+   "nom": "Spirit Shredder",
+   "categorie": "weapon",
+   "tier": 2,
+   "cout": 1600,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/spirit_shredder_bullets.webp",
+   "description": "Your bullets apply a debuff that reduces the Spirit Resist of the target and grants you and your allies Spirit Lifesteal against them.",
+   "contre": [
+    "degats_spirit"
+   ]
+  },
+  {
+   "id": 3647584222,
+   "nom": "Split Shot",
+   "categorie": "weapon",
+   "tier": 2,
+   "cout": 1600,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/split_shot.webp",
+   "description": "Make your weapon fire multishot. · · Hitting more than one Hero per attack will grant a stacking weapon damage bonus. · · Targets can only be hit once per multishot.",
+   "contre": []
+  },
+  {
+   "id": 98582110,
+   "nom": "Stalker",
+   "categorie": "weapon",
+   "tier": 2,
+   "cout": 1600,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/backstabber.webp",
+   "description": "Dealing weapon damage at close range opens a wound and grants you bonus move speed. · · Wounded enemies take spirit damage over time, have reduced bullet resist, and are revealed through walls.",
+   "contre": [
+    "degats_par_balles",
+    "invisibilite"
+   ]
+  },
+  {
+   "id": 4104549924,
+   "nom": "Swift Striker",
+   "categorie": "weapon",
+   "tier": 2,
+   "cout": 1600,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/swift_striker.webp",
+   "description": "",
+   "contre": []
+  },
+  {
+   "id": 2356412290,
+   "nom": "Titanic Magazine",
+   "categorie": "weapon",
+   "tier": 2,
+   "cout": 1600,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/titanic_magazine.webp",
+   "description": "",
+   "contre": []
+  },
+  {
+   "id": 1770441818,
+   "nom": "Weakening Headshot",
+   "categorie": "weapon",
+   "tier": 2,
+   "cout": 1600,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/weakening_headshot.webp",
+   "description": "Landing a Headshot reduces their Bullet Resist.",
+   "contre": [
+    "degats_par_balles"
+   ]
+  },
+  {
+   "id": 1932939246,
+   "nom": "Alchemical Fire",
+   "categorie": "weapon",
+   "tier": 3,
+   "cout": 3200,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/alchemical_fire.webp",
+   "description": "Throw a flask that explodes on contact, creating an area that does increasing spirit damage per second and reduces enemy Bullet Resist. · · 50% less effective vs non-heroes.",
+   "contre": [
+    "degats_par_balles"
+   ]
+  },
+  {
+   "id": 3294954488,
+   "nom": "Ballistic Enchantment",
+   "categorie": "weapon",
+   "tier": 3,
+   "cout": 3200,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/alchemical_seal.webp",
+   "description": "Imbue an ability with increased range. Dealing damage with that ability grants you increased weapon damage per unique hero hit. Has reduced effect on non-heroes.",
+   "contre": []
+  },
+  {
+   "id": 1414319208,
+   "nom": "Berserker",
+   "categorie": "weapon",
+   "tier": 3,
+   "cout": 3200,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/berserker.webp",
+   "description": "Your Weapon Damage increases as you take sustained damage.",
+   "contre": []
+  },
+  {
+   "id": 989206714,
+   "nom": "Blood Tribute",
+   "categorie": "weapon",
+   "tier": 3,
+   "cout": 3200,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/blood_tribute.webp",
+   "description": "Toggle: Continually sacrifice Health to improve fire rate, Debuff Resistance and Move Speed.",
+   "contre": [
+    "debuffs_et_controle"
+   ]
+  },
+  {
+   "id": 2739107182,
+   "nom": "Burst Fire",
+   "categorie": "weapon",
+   "tier": 3,
+   "cout": 3200,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/burst_fire.webp",
+   "description": "Briefly gain Fire Rate and Move Speed when one of your bullets hits an enemy hero.",
+   "contre": []
+  },
+  {
+   "id": 709540378,
+   "nom": "Cultist Sacrifice",
+   "categorie": "weapon",
+   "tier": 3,
+   "cout": 3200,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/cultist_sacrifice.webp",
+   "description": "Target an enemy NPC and consume it for 170% Bonus Souls and grants a powerful long lasting buff.",
+   "contre": []
+  },
+  {
+   "id": 2463960640,
+   "nom": "Escalating Resilience",
+   "categorie": "weapon",
+   "tier": 3,
+   "cout": 3200,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/escalating_resilience.webp",
+   "description": "Grants Bullet Resist when your bullets hit an enemy hero. Each shot can only grant one stack.",
+   "contre": [
+    "degats_par_balles"
+   ]
+  },
+  {
+   "id": 690458959,
+   "nom": "Express Shot",
+   "categorie": "weapon",
+   "tier": 3,
+   "cout": 3200,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/express_shot.webp",
+   "description": "Your next attack will fire twice in quick succession with increased damage and velocity. This attack consumes extra ammo.",
+   "contre": []
+  },
+  {
+   "id": 4053935515,
+   "nom": "Headhunter",
+   "categorie": "weapon",
+   "tier": 3,
+   "cout": 3200,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/headhunter.webp",
+   "description": "Your next headshot against an enemy Hero deals bonus weapon damage, heal you, and briefly grants bonus move speed.",
+   "contre": []
+  },
+  {
+   "id": 2108215830,
+   "nom": "Heroic Aura",
+   "categorie": "weapon",
+   "tier": 3,
+   "cout": 3200,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/heroic_aura.webp",
+   "description": "Provides Bullet Resist to nearby friendly units. Provides move speed and fire rate to you and nearby allies. Minions get double value.",
+   "contre": [
+    "degats_par_balles"
+   ]
+  },
+  {
+   "id": 2678489038,
+   "nom": "Hollow Point",
+   "categorie": "weapon",
+   "tier": 3,
+   "cout": 3200,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/hollow_point.webp",
+   "description": "When you are above 65% health, deal additional Weapon Damage and your bullets reduce enemy Bullet Resist.",
+   "contre": [
+    "degats_par_balles"
+   ]
+  },
+  {
+   "id": 2481177645,
+   "nom": "Hunter's Aura",
+   "categorie": "weapon",
+   "tier": 3,
+   "cout": 3200,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/hunters_aura.webp",
+   "description": "Reduces nearby enemies' Bullet Resist and Fire Rate. If there is only one enemy hero nearby, this effect is doubled.",
+   "contre": [
+    "degats_par_balles"
+   ]
+  },
+  {
+   "id": 2095565695,
+   "nom": "Point Blank",
+   "categorie": "weapon",
+   "tier": 3,
+   "cout": 3200,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/point_blank.webp",
+   "description": "When in close range to your target, gain Weapon Damage and your bullets apply a Movement Slow.",
+   "contre": [
+    "mobilite"
+   ]
+  },
+  {
+   "id": 1798666702,
+   "nom": "Shadow Weave",
+   "categorie": "weapon",
+   "tier": 3,
+   "cout": 3200,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/shadow_weave.webp",
+   "description": "Become Stealthed. Whenever you take damage while Stealthed you get briefly revealed. · Attacking or using an ability will end your stealth and start an ambush, temporarily granting you bonus Fire Rate, Spirit Power and Melee Damage.",
+   "contre": [
+    "invisibilite"
+   ]
+  },
+  {
+   "id": 2152872419,
+   "nom": "Sharpshooter",
+   "categorie": "weapon",
+   "tier": 3,
+   "cout": 3200,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/sharp_shooter.webp",
+   "description": "Deal additional Weapon Damage when beyond a minimum distance from your target.",
+   "contre": []
+  },
+  {
+   "id": 4075861416,
+   "nom": "Spirit Rend",
+   "categorie": "weapon",
+   "tier": 3,
+   "cout": 3200,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/spellslinger_headshots.webp",
+   "description": "Your bullets apply a debuff that reduces the Spirit Resist of the target and grants you and your allies Spirit Lifesteal against them. Landing headshots against the target reduces their Spirit Resist further.",
+   "contre": [
+    "degats_spirit"
+   ]
+  },
+  {
+   "id": 811521119,
+   "nom": "Tesla Bullets",
+   "categorie": "weapon",
+   "tier": 3,
+   "cout": 3200,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/tesla_bullets.webp",
+   "description": "Your bullets have a chance to shock your target. The shock will jump to a nearby enemy.",
+   "contre": []
+  },
+  {
+   "id": 3696726732,
+   "nom": "Toxic Bullets",
+   "categorie": "weapon",
+   "tier": 3,
+   "cout": 3200,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/toxic_bullets.webp",
+   "description": "Your bullets build up a Bleed on enemies, causing them to lose a percentage of their Max Health over time. Also reduces Incoming Healing on the bleeding target.",
+   "contre": [
+    "soin"
+   ]
+  },
+  {
+   "id": 3791587546,
+   "nom": "Weighted Shots",
+   "categorie": "weapon",
+   "tier": 3,
+   "cout": 3200,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/weighted_shots.webp",
+   "description": "Your bullets build up a Movement Slow on enemies.",
+   "contre": [
+    "mobilite"
+   ]
+  },
+  {
+   "id": 673001892,
+   "nom": "Armor Piercer",
+   "categorie": "weapon",
+   "tier": 4,
+   "cout": 6400,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/armor_piercing_rounds.webp",
+   "description": "Your Bullets have a chance to become unavoidable, piercing through enemies and ignoring their Bullet Resistance.",
+   "contre": [
+    "degats_par_balles"
+   ]
+  },
+  {
+   "id": 710436191,
+   "nom": "Capacitor",
+   "categorie": "weapon",
+   "tier": 4,
+   "cout": 6400,
+   "actif": true,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/capacitor.webp",
+   "description": "Launch a projectile that deals damage, applies a strong slow that recovers over time, prevents Stamina usage and Silences their movement-based items and abilities. Your bullets have a chance to shock your target. The shock will jump to a nearby enemy.",
+   "contre": [
+    "degats_spirit",
+    "mobilite"
+   ]
+  },
+  {
+   "id": 3884003354,
+   "nom": "Crippling Headshot",
+   "categorie": "weapon",
+   "tier": 4,
+   "cout": 6400,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/crippling_headshot.webp",
+   "description": "Landing a Headshot will reduce their Bullet, Spirit Resist, and Incoming Healing.",
+   "contre": [
+    "degats_spirit"
+   ]
+  },
+  {
+   "id": 800008313,
+   "nom": "Crushing Fists",
+   "categorie": "weapon",
+   "tier": 4,
+   "cout": 6400,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/crushing_fists.webp",
+   "description": "Your melee damage will restore ammo and apply a stacking bullet resist debuff on enemies. Heavy melee applies 2 stacks. · · If the target reaches max stacks, they will be stunned. Your next Heavy Melee attack against an enemy deals increased damage.",
+   "contre": [
+    "degats_par_balles"
+   ]
+  },
+  {
+   "id": 339443430,
+   "nom": "Frenzy",
+   "categorie": "weapon",
+   "tier": 4,
+   "cout": 6400,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/frenzy.webp",
+   "description": "While you are below 50% health, you gain stat bonuses for a duration and existing debuffs on you are reduced.",
+   "contre": []
+  },
+  {
+   "id": 365620721,
+   "nom": "Glass Cannon",
+   "categorie": "weapon",
+   "tier": 4,
+   "cout": 6400,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/glass_cannon.webp",
+   "description": "Each hero kill grants permanent Fire Rate (up to a max of 8 times). Death results in the loss of 1 stack.",
+   "contre": []
+  },
+  {
+   "id": 1396247347,
+   "nom": "Lucky Shot",
+   "categorie": "weapon",
+   "tier": 4,
+   "cout": 6400,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/lucky_shot.webp",
+   "description": "Your bullets have a chance to be empowered, causing them to deal bonus weapon damage on hit. · Bonus damage cannot Crit.",
+   "contre": []
+  },
+  {
+   "id": 2480592370,
+   "nom": "Ricochet",
+   "categorie": "weapon",
+   "tier": 4,
+   "cout": 6400,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/ricochet.webp",
+   "description": "Your bullets will ricochet on enemies near your target, applying any bullet procs and dealing a percentage of the original damage.",
+   "contre": []
+  },
+  {
+   "id": 1113837674,
+   "nom": "Silencer",
+   "categorie": "weapon",
+   "tier": 4,
+   "cout": 6400,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/silencer.webp",
+   "description": "Your bullets build up to a Silence. Victims are immune to the build up for 10s after silence expires. Your bullets reduce the target's outgoing spirit damage.",
+   "contre": [
+    "degats_spirit"
+   ]
+  },
+  {
+   "id": 2221211450,
+   "nom": "Spellslinger",
+   "categorie": "weapon",
+   "tier": 4,
+   "cout": 6400,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/spell_slinger.webp",
+   "description": "While in-combat whenever you cast an ability or item, gain a stacking buff that improves fire rate and reload speed. · Each stack refreshes the duration.",
+   "contre": []
+  },
+  {
+   "id": 2226497419,
+   "nom": "Spiritual Overflow",
+   "categorie": "weapon",
+   "tier": 4,
+   "cout": 6400,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/spiritual_overflow.webp",
+   "description": "Gain bonus Fire Rate, Spirit Power and Spirit Lifesteal by charging up when shooting enemy heroes.",
+   "contre": []
+  },
+  {
+   "id": 3568217437,
+   "nom": "Haunting Shot",
+   "categorie": "weapon",
+   "tier": 5,
+   "cout": 9999,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/brawl/eldritch_shot.webp",
+   "description": "Your next bullet applies a powerful debuff reducing the enemy's damage output, healing and movement speed. It also deals bonus spirit damage based on the target's current Health. · · The bullet is larger and penetrates through targets.",
+   "contre": []
+  },
+  {
+   "id": 3269957497,
+   "nom": "Infinite Rounds",
+   "categorie": "weapon",
+   "tier": 5,
+   "cout": 9999,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/brawl/infinite_rounds.webp",
+   "description": "You have infinite ammo. Your Bullets have a chance to become unavoidable, piercing through enemies and ignoring their Bullet Resistance.",
+   "contre": [
+    "degats_par_balles"
+   ]
+  },
+  {
+   "id": 64550694,
+   "nom": "Runed Gauntlets",
+   "categorie": "weapon",
+   "tier": 5,
+   "cout": 9999,
+   "actif": false,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/brawl/runed_gauntlets.webp",
+   "description": "Every time you land a heavy melee, your existing cooldowns get reduced. Pierces through parry.",
+   "contre": []
+  }
+ ]
+}
