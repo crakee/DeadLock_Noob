@@ -1,0 +1,1020 @@
+{
+ "meta": {
+  "patch": "City Never Sleeps (2026-09-29)",
+  "verifie_le": "2026-10-02",
+  "methode": "Chaque héros est classé à la main d'après le texte de ses compétences (data/heroes.json) ; chaque objet d'après sa description (data/items.json). Aucun classement de winrates : un counter est justifié par une mécanique.",
+  "limites": "Lecture des descriptions, pas expérience de jeu : à corriger à l'usage. Les 17 objets sans description dans l'API et les objets de tier 5 sont ignorés. Les six héros du patch du 29/09 ne sont pas encore couverts."
+ },
+ "menaces": {
+  "soin": {
+   "nom": "Se soigne beaucoup",
+   "niveau": 1,
+   "explication": "Il récupère de la vie en combat (vol de vie, drain, soins). Sans réduction de soin, il gagne les échanges qui durent.",
+   "reponse": "Acheter une réduction de soin et l'appliquer avant qu'il se soigne. Le tuer vite plutôt que l'user lentement.",
+   "objets": [
+    {
+     "nom": "Healbane",
+     "quand": "si tu fais des dégâts spirit"
+    },
+    {
+     "nom": "Toxic Bullets",
+     "quand": "si tu tires beaucoup"
+    },
+    {
+     "nom": "Inhibitor",
+     "quand": "si tu tires beaucoup, plus tard"
+    },
+    {
+     "nom": "Crippling Headshot",
+     "quand": "si tu touches la tête"
+    },
+    {
+     "nom": "Spirit Burn",
+     "quand": "si tu fais de gros dégâts spirit"
+    }
+   ]
+  },
+  "tir": {
+   "nom": "Dégâts à l'arme",
+   "niveau": 1,
+   "explication": "L'essentiel de ses dégâts vient de ses balles : plus le combat dure, plus il fait mal.",
+   "reponse": "Bullet Resist, et ne pas rester à découvert. Lui casser sa cadence de tir ou le désarmer coupe ses dégâts.",
+   "objets": [
+    {
+     "nom": "Battle Vest",
+     "quand": "défense de base"
+    },
+    {
+     "nom": "Weapon Shielding",
+     "quand": "défense de base"
+    },
+    {
+     "nom": "Bullet Resilience",
+     "quand": "s'il est leur principal danger"
+    },
+    {
+     "nom": "Metal Skin",
+     "quand": "actif : immunisé aux balles un court instant"
+    },
+    {
+     "nom": "Rusted Barrel",
+     "quand": "actif, pas cher : baisse sa cadence de tir"
+    },
+    {
+     "nom": "Suppressor",
+     "quand": "si tu fais des dégâts spirit : baisse sa cadence"
+    },
+    {
+     "nom": "Disarming Hex",
+     "quand": "actif : l'empêche de tirer"
+    },
+    {
+     "nom": "Juggernaut",
+     "quand": "ceux qui te tirent dessus tirent moins vite"
+    }
+   ]
+  },
+  "sorts": {
+   "nom": "Dégâts de compétences",
+   "niveau": 1,
+   "explication": "Ses dégâts viennent de ses compétences (Spirit Damage), souvent en rafale courte.",
+   "reponse": "Spirit Resist. Un Silence l'empêche de lancer ses compétences ; esquiver la première, c'est souvent gagner l'échange.",
+   "objets": [
+    {
+     "nom": "Spirit Shielding",
+     "quand": "défense de base"
+    },
+    {
+     "nom": "Enchanter's Emblem",
+     "quand": "défense de base"
+    },
+    {
+     "nom": "Spirit Resilience",
+     "quand": "s'il est leur principal danger"
+    },
+    {
+     "nom": "Spirit Sap",
+     "quand": "actif : baisse sa puissance spirit"
+    },
+    {
+     "nom": "Silence Wave",
+     "quand": "actif : silence de zone"
+    },
+    {
+     "nom": "Silencer",
+     "quand": "si tu tires beaucoup : silence au bout de quelques balles"
+    },
+    {
+     "nom": "Focus Lens",
+     "quand": "actif : silence ciblé"
+    }
+   ]
+  },
+  "controle": {
+   "nom": "Stun, sommeil, immobilisation",
+   "niveau": 1,
+   "explication": "Il peut t'empêcher de bouger ou d'agir (stun, sleep, immobilize, pull, lift). Seul, c'est souvent la mort.",
+   "reponse": "Garder ses distances tant que sa compétence est disponible, rester près d'un allié. Les objets ci-dessous annulent ou absorbent le contrôle.",
+   "objets": [
+    {
+     "nom": "Reactive Barrier",
+     "quand": "pas cher : une barrière quand tu es contrôlé"
+    },
+    {
+     "nom": "Dispel Magic",
+     "quand": "actif : enlève les effets négatifs (pas utilisable pendant un stun ou un sleep)"
+    },
+    {
+     "nom": "Indomitable",
+     "quand": "annule automatiquement le prochain contrôle"
+    },
+    {
+     "nom": "Unstoppable",
+     "quand": "actif : immunisé aux contrôles un court instant, à lancer avant"
+    },
+    {
+     "nom": "Divine Barrier",
+     "quand": "actif : nettoie un allié ou soi-même (sauf stun)"
+    }
+   ]
+  },
+  "debuffs": {
+   "nom": "Dégâts sur la durée et affaiblissements",
+   "niveau": 2,
+   "explication": "Il pose des effets qui durent : brûlure, saignement, marques, ralentissements, baisse de résistance.",
+   "reponse": "Sortir du combat quand les effets s'empilent. Un objet qui enlève les effets négatifs remet à zéro.",
+   "objets": [
+    {
+     "nom": "Dispel Magic",
+     "quand": "actif : enlève les effets négatifs et soigne"
+    },
+    {
+     "nom": "Divine Barrier",
+     "quand": "actif : nettoie un allié ou soi-même"
+    },
+    {
+     "nom": "Fleetfoot",
+     "quand": "résistance aux ralentissements"
+    },
+    {
+     "nom": "Cheat Death",
+     "quand": "enlève les effets négatifs en évitant une mort"
+    }
+   ]
+  },
+  "mobilite": {
+   "nom": "Très mobile",
+   "niveau": 2,
+   "explication": "Il entre et sort des combats par des dashs, des téléportations ou des phases où on ne peut pas le cibler.",
+   "reponse": "Ne pas le poursuivre seul. Les ralentissements et les objets qui bloquent les compétences de mouvement l'empêchent de repartir.",
+   "objets": [
+    {
+     "nom": "Slowing Hex",
+     "quand": "actif : ralentit et bloque ses compétences de mouvement"
+    },
+    {
+     "nom": "Slowing Bullets",
+     "quand": "si tu tires : ralentissement"
+    },
+    {
+     "nom": "Knockdown",
+     "quand": "actif : stun après 2 s"
+    },
+    {
+     "nom": "Capacitor",
+     "quand": "actif : gros ralentissement, bloque le mouvement"
+    },
+    {
+     "nom": "Phantom Strike",
+     "quand": "actif : te téléporte sur lui et le plaque au sol"
+    }
+   ]
+  },
+  "vol": {
+   "nom": "Vole ou tire d'en haut",
+   "niveau": 2,
+   "explication": "Il prend de la hauteur pour tirer hors de portée.",
+   "reponse": "Se mettre à couvert sous un toit. Certains objets le ramènent au sol.",
+   "objets": [
+    {
+     "nom": "Knockdown",
+     "quand": "actif : stun plus long sur une cible en l'air"
+    },
+    {
+     "nom": "Slowing Hex",
+     "quand": "actif : augmente sa gravité"
+    },
+    {
+     "nom": "Phantom Strike",
+     "quand": "actif : le plaque au sol"
+    },
+    {
+     "nom": "Metal Skin",
+     "quand": "actif : immunisé à ses balles"
+    }
+   ]
+  },
+  "canalisation": {
+   "nom": "Ultimate à canaliser",
+   "niveau": 2,
+   "explication": "Sa compétence la plus dangereuse demande de rester concentré plusieurs secondes : elle peut être interrompue.",
+   "reponse": "Garder un stun pour ce moment-là. Attention : un Silence n'interrompt pas une canalisation.",
+   "objets": [
+    {
+     "nom": "Knockdown",
+     "quand": "actif : stun après 2 s, à lancer dès qu'il commence"
+    },
+    {
+     "nom": "Cursed Relic",
+     "quand": "actif : interrompt et réduit au silence"
+    }
+   ]
+  },
+  "tank": {
+   "nom": "Très résistant",
+   "niveau": 2,
+   "explication": "Beaucoup de vie, de résistance ou de barrières : il encaisse pour son équipe.",
+   "reponse": "Ne pas vider ses compétences sur lui si un carry est accessible. Les dégâts en pourcentage de vie et la réduction de résistance le font fondre.",
+   "objets": [
+    {
+     "nom": "Toxic Bullets",
+     "quand": "si tu tires : saignement en % de sa vie max"
+    },
+    {
+     "nom": "Bullet Resist Shredder",
+     "quand": "si tu fais des dégâts spirit : baisse son Bullet Resist"
+    },
+    {
+     "nom": "Mystic Vulnerability",
+     "quand": "baisse son Spirit Resist"
+    },
+    {
+     "nom": "Weakening Headshot",
+     "quand": "si tu touches la tête : baisse son Bullet Resist"
+    },
+    {
+     "nom": "Spirit Rend",
+     "quand": "si tu tires : baisse son Spirit Resist"
+    },
+    {
+     "nom": "Siphon Bullets",
+     "quand": "si tu tires : lui vole de la vie max"
+    }
+   ]
+  },
+  "invisibilite": {
+   "nom": "Invisible",
+   "niveau": 1,
+   "explication": "Il approche sans être vu pour ouvrir le combat sur toi.",
+   "reponse": "Aucun objet de la boutique ne révèle directement un invisible d'après les descriptions. Rester près d'un allié, ne pas farmer seul loin de sa lane quand il manque sur la minimap, et prévoir une défense contre son ouverture.",
+   "objets": [
+    {
+     "nom": "Reactive Barrier",
+     "quand": "une barrière quand il t'endort ou te stun"
+    },
+    {
+     "nom": "Metal Skin",
+     "quand": "actif : immunisé aux balles pendant son burst"
+    }
+   ]
+  },
+  "invocations": {
+   "nom": "Tourelles et invocations",
+   "niveau": 2,
+   "explication": "Il pose des unités qui tirent ou gênent à sa place et tiennent une zone.",
+   "reponse": "Détruire les invocations ou ne pas combattre dans la zone qu'il a préparée. Pas d'objet dédié.",
+   "objets": []
+  }
+ },
+ "heros": {
+  "6": {
+   "nom": "Abrams",
+   "menaces": [
+    {
+     "id": "soin",
+     "pourquoi": "Siphon Life draine la vie autour de lui, Infernal Resilience lui rend de la vie quand il prend des dégâts"
+    },
+    {
+     "id": "controle",
+     "pourquoi": "Shoulder Charge stun s'il te pousse dans un mur, Seismic Impact stun à l'atterrissage"
+    },
+    {
+     "id": "tank",
+     "pourquoi": "Héros de mêlée fait pour encaisser"
+    }
+   ],
+   "astuces": [
+    "Ne pas se tenir dos à un mur : c'est le mur qui déclenche le stun de Shoulder Charge."
+   ]
+  },
+  "77": {
+   "nom": "Apollo",
+   "menaces": [
+    {
+     "id": "mobilite",
+     "pourquoi": "Bonds et fentes dans toutes les directions"
+    },
+    {
+     "id": "controle",
+     "pourquoi": "Riposte stun après avoir paré une attaque ; son ultimate fige la cible et l'empêche de se soigner"
+    }
+   ],
+   "astuces": [
+    "Riposte renvoie la prochaine attaque : ne pas lui tirer dessus quand il la prépare."
+   ]
+  },
+  "15": {
+   "nom": "Bebop",
+   "menaces": [
+    {
+     "id": "controle",
+     "pourquoi": "Grapple Arm attire la première cible touchée, Exploding Uppercut projette"
+    },
+    {
+     "id": "canalisation",
+     "pourquoi": "Hyper Beam est un rayon canalisé"
+    },
+    {
+     "id": "sorts",
+     "pourquoi": "Sticky Bomb gagne des dégâts à chaque bombe posée sur un héros"
+    }
+   ],
+   "astuces": [
+    "Rester derrière ses Troopers : le grappin s'arrête sur la première cible touchée."
+   ]
+  },
+  "72": {
+   "nom": "Billy",
+   "menaces": [
+    {
+     "id": "controle",
+     "pourquoi": "Chain Gang enchaîne les ennemis proches et bloque leurs compétences de mouvement, Bashdown et Rising Ram projettent en l'air"
+    },
+    {
+     "id": "tank",
+     "pourquoi": "Héros de mêlée"
+    }
+   ],
+   "astuces": [
+    "Chain Gang se casse si on s'éloigne assez : fuir tout de suite plutôt que se battre enchaîné."
+   ]
+  },
+  "16": {
+   "nom": "Calico",
+   "menaces": [
+    {
+     "id": "mobilite",
+     "pourquoi": "Ava la cache sur la minimap et accélère, Return to Shadows la rend impossible à cibler"
+    },
+    {
+     "id": "sorts",
+     "pourquoi": "Gloom Bombs en rafale"
+    }
+   ],
+   "astuces": [
+    "Lui faire des dégâts quand elle est en Ava annule son bonus de vitesse."
+   ]
+  },
+  "81": {
+   "nom": "Celeste",
+   "menaces": [
+    {
+     "id": "sorts",
+     "pourquoi": "Radiant Daggers et Shining Wonder"
+    },
+    {
+     "id": "soin",
+     "pourquoi": "Light Eater lui donne du vol de vie spirit"
+    },
+    {
+     "id": "canalisation",
+     "pourquoi": "Shining Wonder se canalise"
+    }
+   ],
+   "astuces": [
+    "Dazzling Trick : casser sa barrière réduit au silence ceux qui sont autour. Ne pas la casser au corps à corps."
+   ]
+  },
+  "64": {
+   "nom": "Drifter",
+   "menaces": [
+    {
+     "id": "mobilite",
+     "pourquoi": "Stalker's Mark lui permet d'apparaître dans ton dos"
+    },
+    {
+     "id": "debuffs",
+     "pourquoi": "Saignement, et Eternal Night qui limite la vision"
+    }
+   ],
+   "astuces": [
+    "Il est plus fort contre une cible isolée : rester groupé."
+   ]
+  },
+  "11": {
+   "nom": "Dynamo",
+   "menaces": [
+    {
+     "id": "controle",
+     "pourquoi": "Singularity attire et stun plusieurs ennemis, Kinetic Pulse projette en l'air"
+    },
+    {
+     "id": "canalisation",
+     "pourquoi": "Singularity et Rejuvenating Aurora se canalisent"
+    },
+    {
+     "id": "soin",
+     "pourquoi": "Rejuvenating Aurora soigne ses alliés"
+    }
+   ],
+   "astuces": [
+    "Ne pas se regrouper serré face à lui : Singularity punit les équipes collées."
+   ]
+  },
+  "76": {
+   "nom": "Graves",
+   "menaces": [
+    {
+     "id": "invocations",
+     "pourquoi": "Jar of Dead et Grasping Hands invoquent des créatures"
+    },
+    {
+     "id": "controle",
+     "pourquoi": "Grasping Hands immobilise ceux qui traversent"
+    },
+    {
+     "id": "tir",
+     "pourquoi": "Essence Theft vole des dégâts d'arme et de la résistance spirit à chaque tir"
+    }
+   ],
+   "astuces": []
+  },
+  "17": {
+   "nom": "Grey Talon",
+   "menaces": [
+    {
+     "id": "vol",
+     "pourquoi": "Rain of Arrows le fait planer en tirant"
+    },
+    {
+     "id": "controle",
+     "pourquoi": "Spirit Snare maudit et ralentit, Guided Owl stun"
+    },
+    {
+     "id": "sorts",
+     "pourquoi": "Charged Shot traverse les ennemis"
+    }
+   ],
+   "astuces": [
+    "Regarder le sol : Spirit Snare est un piège posé à l'avance."
+   ]
+  },
+  "13": {
+   "nom": "Haze",
+   "menaces": [
+    {
+     "id": "invisibilite",
+     "pourquoi": "Smoke Bomb la rend invisible"
+    },
+    {
+     "id": "controle",
+     "pourquoi": "Sleep Dagger endort"
+    },
+    {
+     "id": "tir",
+     "pourquoi": "Fixation augmente ses dégâts à chaque balle sur la même cible, Bullet Dance tire sur tout ce qui est proche"
+    }
+   ],
+   "astuces": [
+    "De près, on voit à travers son invisibilité.",
+    "Le sommeil se termine dès que la cible prend des dégâts : un allié peut te réveiller en te touchant d'un tir ennemi… ou elle-même en tirant.",
+    "Fixation s'empile sur une seule cible : casser la ligne de vue remet à zéro son avantage."
+   ]
+  },
+  "14": {
+   "nom": "Holliday",
+   "menaces": [
+    {
+     "id": "controle",
+     "pourquoi": "Spirit Lasso attire et stun, Powder Keg projette en l'air"
+    },
+    {
+     "id": "debuffs",
+     "pourquoi": "Powder Keg met le feu, et la brûlure s'empile"
+    },
+    {
+     "id": "tir",
+     "pourquoi": "Crackshot : les tirs à la tête font des dégâts bonus"
+    }
+   ],
+   "astuces": []
+  },
+  "1": {
+   "nom": "Infernus",
+   "menaces": [
+    {
+     "id": "debuffs",
+     "pourquoi": "Afterburn et Napalm font brûler la cible sur la durée"
+    },
+    {
+     "id": "controle",
+     "pourquoi": "Concussive Combustion stun tout autour de lui après un délai"
+    },
+    {
+     "id": "tir",
+     "pourquoi": "Ses balles entretiennent la brûlure"
+    }
+   ],
+   "astuces": [
+    "Concussive Combustion ne peut pas être interrompue : s'éloigner dès qu'il s'illumine."
+   ]
+  },
+  "20": {
+   "nom": "Ivy",
+   "menaces": [
+    {
+     "id": "vol",
+     "pourquoi": "Air Drop : elle s'envole avec un allié"
+    },
+    {
+     "id": "controle",
+     "pourquoi": "Stone Form stun autour du point de chute"
+    },
+    {
+     "id": "soin",
+     "pourquoi": "Kudzu Connection partage les soins avec un allié, Stone Form la soigne"
+    }
+   ],
+   "astuces": []
+  },
+  "12": {
+   "nom": "Kelvin",
+   "menaces": [
+    {
+     "id": "soin",
+     "pourquoi": "Frost Grenade soigne ses alliés, Frozen Shelter les régénère sous un dôme"
+    },
+    {
+     "id": "debuffs",
+     "pourquoi": "Arctic Beam réduit peu à peu la vitesse et la cadence de tir"
+    }
+   ],
+   "astuces": [
+    "Frozen Shelter rend aussi les objectifs invulnérables : attendre la fin du dôme."
+   ]
+  },
+  "4": {
+   "nom": "Lady Geist",
+   "menaces": [
+    {
+     "id": "soin",
+     "pourquoi": "Life Drain lui rend la vie qu'elle draine, Soul Exchange échange son niveau de vie avec le tien"
+    },
+    {
+     "id": "sorts",
+     "pourquoi": "Essence Bomb et Malice, qui augmente les dégâts que tu subis d'elle"
+    }
+   ],
+   "astuces": [
+    "Life Drain s'arrête si tu sors de sa ligne de vue ou de sa portée.",
+    "Elle sacrifie sa propre vie pour lancer ses sorts : elle est souvent basse en vie juste avant Soul Exchange."
+   ]
+  },
+  "31": {
+   "nom": "Lash",
+   "menaces": [
+    {
+     "id": "mobilite",
+     "pourquoi": "Grapple le tire dans les airs, Ground Strike le fait plonger"
+    },
+    {
+     "id": "controle",
+     "pourquoi": "Death Slam soulève et stun plusieurs ennemis"
+    },
+    {
+     "id": "canalisation",
+     "pourquoi": "Death Slam demande une canalisation"
+    }
+   ],
+   "astuces": [
+    "Death Slam a besoin de te voir : passer derrière un mur ou un Cosmic Veil casse la visée."
+   ]
+  },
+  "8": {
+   "nom": "McGinnis",
+   "menaces": [
+    {
+     "id": "invocations",
+     "pourquoi": "Mini Turret"
+    },
+    {
+     "id": "soin",
+     "pourquoi": "Medicinal Specter soigne la zone"
+    },
+    {
+     "id": "debuffs",
+     "pourquoi": "Spectral Wall ralentit et coupe le terrain en deux"
+    }
+   ],
+   "astuces": [
+    "Spectral Wall se détruit au corps à corps."
+   ]
+  },
+  "63": {
+   "nom": "Mina",
+   "menaces": [
+    {
+     "id": "mobilite",
+     "pourquoi": "Sanguine Retreat la rend impossible à cibler pendant qu'elle se déplace"
+    },
+    {
+     "id": "sorts",
+     "pourquoi": "Love Bites ajoute des dégâts spirit à ses balles"
+    },
+    {
+     "id": "controle",
+     "pourquoi": "Nox Nostra réduit au silence"
+    }
+   ],
+   "astuces": []
+  },
+  "52": {
+   "nom": "Mirage",
+   "menaces": [
+    {
+     "id": "soin",
+     "pourquoi": "Fire Scarabs lui vole de la vie et réduit tes dégâts"
+    },
+    {
+     "id": "controle",
+     "pourquoi": "Dust Devil soulève en l'air"
+    },
+    {
+     "id": "mobilite",
+     "pourquoi": "Traveler le téléporte n'importe où sur la carte"
+    }
+   ],
+   "astuces": [
+    "Traveler est interrompu s'il prend des dégâts pendant l'attente.",
+    "Quand il disparaît de sa lane, il peut arriver sur n'importe quel combat : le signaler."
+   ]
+  },
+  "18": {
+   "nom": "Mo & Krill",
+   "menaces": [
+    {
+     "id": "controle",
+     "pourquoi": "Combo maintient la cible en stun, Burrow projette en l'air, Sand Blast désarme"
+    },
+    {
+     "id": "canalisation",
+     "pourquoi": "Combo est canalisé : un stun sur lui libère la cible"
+    },
+    {
+     "id": "soin",
+     "pourquoi": "Scorn le soigne selon les dégâts faits"
+    },
+    {
+     "id": "tank",
+     "pourquoi": "Burrow lui donne de l'armure"
+    }
+   ],
+   "astuces": [
+    "Combo n'attrape qu'une cible : un allié avec un stun peut te sauver."
+   ]
+  },
+  "67": {
+   "nom": "Paige",
+   "menaces": [
+    {
+     "id": "soin",
+     "pourquoi": "Plot Armor donne une barrière à un allié, Rallying Charge soigne sur toute la carte"
+    },
+    {
+     "id": "controle",
+     "pourquoi": "Captivating Read ralentit puis immobilise après un délai"
+    },
+    {
+     "id": "sorts",
+     "pourquoi": "Bookwyrm laisse une traînée de feu"
+    }
+   ],
+   "astuces": [
+    "Captivating Read explose après un délai : sortir de la zone tout de suite."
+   ]
+  },
+  "10": {
+   "nom": "Paradox",
+   "menaces": [
+    {
+     "id": "controle",
+     "pourquoi": "Kinetic Carbine fige la cible, Paradoxical Swap échange sa position avec la tienne"
+    },
+    {
+     "id": "sorts",
+     "pourquoi": "Pulse Grenade augmente les dégâts qu'elle te fait à chaque pulsation"
+    }
+   ],
+   "astuces": [
+    "Time Wall arrête les balles et projectiles ennemis : ne pas tirer à travers."
+   ]
+  },
+  "50": {
+   "nom": "Pocket",
+   "menaces": [
+    {
+     "id": "mobilite",
+     "pourquoi": "Flying Cloak le téléporte, Enchanter's Satchel le met à l'abri"
+    },
+    {
+     "id": "sorts",
+     "pourquoi": "Barrage"
+    },
+    {
+     "id": "debuffs",
+     "pourquoi": "Affliction fait des dégâts sur la durée, sans pouvoir tuer"
+    }
+   ],
+   "astuces": [
+    "Affliction ne tue pas à elle seule : ne pas paniquer, mais ne pas rester à portée du reste."
+   ]
+  },
+  "79": {
+   "nom": "Rem",
+   "menaces": [
+    {
+     "id": "soin",
+     "pourquoi": "Tag Along soigne l'allié sur lequel il saute"
+    },
+    {
+     "id": "controle",
+     "pourquoi": "Naptime ralentit puis endort, Pillow Toss repousse fort"
+    },
+    {
+     "id": "canalisation",
+     "pourquoi": "Naptime se canalise"
+    }
+   ],
+   "astuces": []
+  },
+  "2": {
+   "nom": "Seven",
+   "menaces": [
+    {
+     "id": "sorts",
+     "pourquoi": "Lightning Ball, Power Surge et Storm Cloud"
+    },
+    {
+     "id": "controle",
+     "pourquoi": "Static Charge stun autour de la cible après un court délai"
+    },
+    {
+     "id": "canalisation",
+     "pourquoi": "Storm Cloud se canalise"
+    }
+   ],
+   "astuces": [
+    "Storm Cloud ne fait aucun dégât hors de sa ligne de vue : se cacher derrière un mur.",
+    "Static Charge stun aussi les alliés proches de la cible : s'écarter du groupe quand on est marqué."
+   ]
+  },
+  "19": {
+   "nom": "Shiv",
+   "menaces": [
+    {
+     "id": "debuffs",
+     "pourquoi": "Serrated Knives empile un saignement, Slice and Dice baisse le Spirit Resist"
+    },
+    {
+     "id": "tank",
+     "pourquoi": "Bloodletting reporte une partie des dégâts reçus à plus tard"
+    },
+    {
+     "id": "mobilite",
+     "pourquoi": "Slice and Dice est un dash"
+    }
+   ],
+   "astuces": []
+  },
+  "80": {
+   "nom": "Silver",
+   "menaces": [
+    {
+     "id": "tir",
+     "pourquoi": "Slam Fire recharge et accélère le tir, Lycan Curse empile de la cadence"
+    },
+    {
+     "id": "mobilite",
+     "pourquoi": "Entangling Bola ralentit et bloque tes compétences de mouvement"
+    },
+    {
+     "id": "tank",
+     "pourquoi": "Lycan Curse augmente sa vie max"
+    }
+   ],
+   "astuces": []
+  },
+  "60": {
+   "nom": "Sinclair",
+   "menaces": [
+    {
+     "id": "controle",
+     "pourquoi": "Rabbit Hex transforme en lapin : plus de dégâts subis, presque aucune action possible"
+    },
+    {
+     "id": "sorts",
+     "pourquoi": "Vexing Bolt fait plus mal de loin"
+    },
+    {
+     "id": "invocations",
+     "pourquoi": "Spectral Assistant tire en même temps que lui"
+    }
+   ],
+   "astuces": [
+    "Audience Participation copie l'ultimate d'un ennemi : il peut retourner le tien contre ton équipe."
+   ]
+  },
+  "69": {
+   "nom": "The Doorman",
+   "menaces": [
+    {
+     "id": "controle",
+     "pourquoi": "Luggage Cart entraîne les héros sur son passage, Hotel Guest sort la cible du combat"
+    },
+    {
+     "id": "mobilite",
+     "pourquoi": "Doorway relie deux portes"
+    },
+    {
+     "id": "sorts",
+     "pourquoi": "Call Bell"
+    }
+   ],
+   "astuces": [
+    "Hotel Guest : rejoindre l'ascenseur de sortie au plus vite pour revenir."
+   ]
+  },
+  "65": {
+   "nom": "Venator",
+   "menaces": [
+    {
+     "id": "tir",
+     "pourquoi": "Ira Domini charge trois carreaux très puissants, le dernier exécute les cibles basses en vie"
+    },
+    {
+     "id": "controle",
+     "pourquoi": "Gutshot stun contre un mur, Hex-Lined Snap Trap immobilise et révèle"
+    }
+   ],
+   "astuces": [
+    "Consecrating Grenade réduit les soins reçus : il contre lui-même les héros qui se soignent.",
+    "Ne pas rester près d'un mur face à Gutshot."
+   ]
+  },
+  "66": {
+   "nom": "Victor",
+   "menaces": [
+    {
+     "id": "tank",
+     "pourquoi": "Jumpstart le régénère, Shocking Reanimation le relève après des dégâts mortels"
+    },
+    {
+     "id": "debuffs",
+     "pourquoi": "Aura of Suffering fait de plus en plus mal tant qu'elle dure"
+    },
+    {
+     "id": "soin",
+     "pourquoi": "Régénération importante"
+    }
+   ],
+   "astuces": [
+    "Il se relève une fois : garder des dégâts et de la réduction de soin pour après sa réanimation."
+   ]
+  },
+  "3": {
+   "nom": "Vindicta",
+   "menaces": [
+    {
+     "id": "vol",
+     "pourquoi": "Flight la fait voler en tirant"
+    },
+    {
+     "id": "tir",
+     "pourquoi": "Assassinate : tir de précision à longue distance, plus fort sur les cibles sous 50 % de vie"
+    },
+    {
+     "id": "controle",
+     "pourquoi": "Stake t'attache à un point"
+    }
+   ],
+   "astuces": [
+    "Sous la moitié de ta vie, sortir de sa ligne de vue."
+   ]
+  },
+  "35": {
+   "nom": "Viscous",
+   "menaces": [
+    {
+     "id": "controle",
+     "pourquoi": "Goo Ball stun à l'impact, Puddle Punch projette en l'air"
+    },
+    {
+     "id": "tank",
+     "pourquoi": "The Cube protège de tous les dégâts, Goo Ball donne beaucoup de résistance"
+    },
+    {
+     "id": "soin",
+     "pourquoi": "The Cube régénère la cible"
+    }
+   ],
+   "astuces": [
+    "Puddle Punch se pare.",
+    "The Cube peut protéger un allié : changer de cible plutôt qu'attendre."
+   ]
+  },
+  "58": {
+   "nom": "Vyper",
+   "menaces": [
+    {
+     "id": "tir",
+     "pourquoi": "Arme à tir rapide"
+    },
+    {
+     "id": "controle",
+     "pourquoi": "Petrifying Bola pétrifie sur un coup direct"
+    },
+    {
+     "id": "debuffs",
+     "pourquoi": "Screwjab Dagger empile dégâts et ralentissement, Lethal Venom fait plus mal à une cible basse en vie"
+    }
+   ],
+   "astuces": []
+  },
+  "25": {
+   "nom": "Warden",
+   "menaces": [
+    {
+     "id": "controle",
+     "pourquoi": "Binding Word immobilise si on ne s'éloigne pas à temps, Alchemical Flask réduit tes dégâts d'arme"
+    },
+    {
+     "id": "tank",
+     "pourquoi": "Willpower lui donne une barrière, Last Stand beaucoup de résistance"
+    },
+    {
+     "id": "soin",
+     "pourquoi": "Last Stand le soigne selon les dégâts faits"
+    }
+   ],
+   "astuces": [
+    "Binding Word : s'éloigner tout de suite du point où on a été marqué pour l'annuler.",
+    "Last Stand met 2 s à se charger : s'écarter ou l'interrompre."
+   ]
+  },
+  "7": {
+   "nom": "Wraith",
+   "menaces": [
+    {
+     "id": "tir",
+     "pourquoi": "Full Auto augmente fortement sa cadence de tir"
+    },
+    {
+     "id": "controle",
+     "pourquoi": "Telekinesis soulève puis écrase la cible"
+    },
+    {
+     "id": "mobilite",
+     "pourquoi": "Project Mind la téléporte"
+    }
+   ],
+   "astuces": [
+    "Elle cherche les cibles isolées : rester à portée d'un allié."
+   ]
+  },
+  "27": {
+   "nom": "Yamato",
+   "menaces": [
+    {
+     "id": "sorts",
+     "pourquoi": "Power Slash chargé"
+    },
+    {
+     "id": "mobilite",
+     "pourquoi": "Flying Slash la tire vers sa cible"
+    },
+    {
+     "id": "soin",
+     "pourquoi": "Crimson Slash la soigne si elle touche un héros"
+    },
+    {
+     "id": "tank",
+     "pourquoi": "Shadow Transformation : invincible un instant, puis immunisée aux effets négatifs et très résistante"
+    }
+   ],
+   "astuces": [
+    "Pendant Shadow Transformation, les stuns et les effets négatifs ne marchent pas : reculer et attendre la fin.",
+    "Power Slash se charge 1,4 s : c'est le moment de s'écarter."
+   ]
+  }
+ }
+}

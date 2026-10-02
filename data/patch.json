@@ -1,0 +1,102 @@
+{
+ "meta": {
+  "verifie_le": "2026-10-02",
+  "sources": "api.deadlock-api.com/v2/patches, deadlock.wiki (pages Update), forum officiel. Résumés reformulés.",
+  "note": "Les notes officielles font foi : suivre le lien de chaque patch pour le détail."
+ },
+ "a_venir": {
+  "titre": "Six nouveaux héros en cours de sortie",
+  "texte": "Nurse Harrow, Rat King, Solomon, Deadman Danny, Baba et Violet sortent un par un, les mardis et vendredis à 23 h (heure française), à partir du 2 octobre. L'ordre dépend d'un vote des joueurs. Les statistiques vont bouger à chaque sortie.",
+  "fiabilite": "wiki"
+ },
+ "patchs": [
+  {
+   "date": "2026-09-30",
+   "titre": "Correctif du 30 septembre",
+   "type": "correctif",
+   "lien": "https://forums.playdeadlock.com/threads/09-29-2026.166726/",
+   "resume": [
+    "Interface seulement : options d'affichage des noms et des barres de vie, couleur des ziplines ennemies.",
+    "Un signal apparaît sur la minimap quand la cloche de la Bell Tower sonne.",
+    "Aucun changement d'équilibrage."
+   ],
+   "heros": {},
+   "pour_toi": []
+  },
+  {
+   "date": "2026-09-29",
+   "titre": "City Never Sleeps",
+   "type": "majeur",
+   "lien": "https://store.steampowered.com/news/app/1422450/view/694273194214819790",
+   "resume": [
+    "Carte entièrement refaite, jouée de nuit ; la minimap affiche le nom des lanes et des districts.",
+    "Les monstres de jungle deviennent les Haunts, avec de nouvelles familles par district.",
+    "Nouveaux objets à casser : Tough Crates (heavy melee obligatoire) et Healing Snacks. Steam Vents pour se cacher.",
+    "Les Golden Statues deviennent les Buff Containers ; quatre buffs permanents de plus (Spirit Resist, Bullet Resist, Ability Range, Move Speed).",
+    "Le timing du jackpot des Sinner's Sacrifice devient variable.",
+    "Parer un objectif ne remet plus à zéro le cooldown du Parry.",
+    "Interface : nouvelles barres de vie, fil des kills détaillé, chrono du Mid-Boss dans la barre du haut, chrono de réapparition sur les camps.",
+    "The Broker (objets corrompus) : marchand temporaire, annoncé jusqu'au 2 octobre.",
+    "Pas de changement chiffré d'équilibrage des héros dans les notes."
+   ],
+   "heros": {
+    "corriges": [
+     "Yamato",
+     "Sinclair"
+    ]
+   },
+   "pour_toi": [
+    "Yamato : correction d'un bug de Flying Slash contre les cibles solides (tourelles, Shrines, objectifs)."
+   ]
+  },
+  {
+   "date": "2026-09-16",
+   "titre": "Mise à jour du 16 septembre",
+   "type": "equilibrage",
+   "lien": "https://forums.playdeadlock.com/threads/09-16-2026-update.162572/",
+   "resume": [
+    "Tous les ralentissements de déplacement réduits d'environ 20 %.",
+    "Guardian : +10 % de souls ; Walker : +5 %. La part donnée aux héros proches d'un objectif passe de 30 à 25 %.",
+    "Temps de respawn à 20 minutes : 35 s → 38 s.",
+    "Parer met maintenant le rechargement en pause, et annule un dash en cours.",
+    "Les objets à casser des tunnels apparaissent et réapparaissent en 5 min au lieu de 3.",
+    "Bonus de rattrapage réduits ; une partie va désormais aux deux joueurs les plus pauvres de l'équipe.",
+    "Résistances de rattrapage de l'Unstable Rift : 10 % + 1 % par minute, plafonnées à 40 %."
+   ],
+   "heros": {
+    "buffs": [
+     "Graves",
+     "Haze",
+     "Holliday",
+     "Kelvin",
+     "Lady Geist",
+     "Paige",
+     "Silver",
+     "Venator",
+     "Yamato"
+    ],
+    "nerfs": [
+     "Celeste",
+     "Ivy",
+     "Paradox",
+     "Viscous",
+     "Vyper",
+     "Warden"
+    ],
+    "ajustes": [
+     "Abrams",
+     "Lash",
+     "Shiv",
+     "Wraith"
+    ]
+   },
+   "pour_toi": [
+    "Haze (buff) : Fixation donne 3 charges par tir à la tête au lieu de 2.",
+    "Lady Geist (buff) : les améliorations de niveau 3 de Life Drain et d'Essence Bomb sont renforcées.",
+    "Yamato (buff) : Crimson Slash soigne davantage au niveau 3 ; Flying Slash frappe plus fort.",
+    "Paige (buff) : Captivating Read se recharge plus vite et porte plus loin avec ses améliorations.",
+    "Abrams (ajusté) : un peu plus de régénération sur Infernal Resilience, une seconde de moins d'immunité sur Seismic Impact."
+   ]
+  }
+ ]
+}

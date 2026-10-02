@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Counters · DeadLock_Noob</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="barre">
+    <nav class="onglets" aria-label="Sections">
+      <a class="onglet" href="index.html">Timeline</a>
+      <a class="onglet" href="carte.html">Carte</a>
+      <a class="onglet" href="memo.html">Mémo</a>
+      <a class="onglet" href="heros.html">Héros</a>
+      <a class="onglet" href="roles.html">Rôles</a>
+      <a class="onglet actif" href="counters.html" aria-current="page">Counters</a>
+      <a class="onglet" href="patch.html">Patch</a>
+    </nav>
+    <div class="reglages">
+      <label class="reglage">Niveau
+        <select id="opt-niveau">
+          <option value="1">1 · débutant</option>
+          <option value="2">2 · intermédiaire</option>
+          <option value="3">3 · tout</option>
+        </select>
+      </label>
+    </div>
+  </header>
+
+  <div id="erreur" class="erreur" hidden>
+    <h1>Données introuvables</h1>
+    <p id="erreur-texte"></p>
+    <p>Depuis le dossier du projet, lancer <code>python -m http.server</code> puis ouvrir
+      <code>http://localhost:8000</code>.</p>
+  </div>
+
+  <main id="app" class="page page-counters" hidden>
+    <section class="panneau" aria-label="Héros adverses">
+      <h2>En face <span id="compte" class="note"></span>
+        <button id="btn-vider" class="btn discret" type="button">Vider</button></h2>
+      <div id="grille" class="heros-grille"></div>
+    </section>
+    <div id="resultat" class="counters-resultat"></div>
+  </main>
+
+  <footer id="meta" class="meta"></footer>
+
+  <script src="js/commun.js"></script>
+  <script src="js/counters.js"></script>
+</body>
+</html>
