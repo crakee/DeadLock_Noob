@@ -12,8 +12,9 @@
   <header class="barre">
     <nav class="onglets" aria-label="Sections">
       <a class="onglet actif" href="index.html" aria-current="page">Timeline</a>
-      <span class="onglet inactif" title="À venir">Héros</span>
-      <span class="onglet inactif" title="À venir">Objets</span>
+      <a class="onglet" href="carte.html">Carte</a>
+      <a class="onglet" href="memo.html">Mémo</a>
+      <a class="onglet" href="heros.html">Héros</a>
     </nav>
     <div class="reglages">
       <div id="filtres" class="filtres" role="group" aria-label="Catégories affichées"></div>
@@ -26,6 +27,14 @@
       </label>
       <label class="reglage"><input type="checkbox" id="opt-son"> Son</label>
       <label class="reglage"><input type="checkbox" id="opt-voix"> Voix</label>
+      <label class="reglage"><input type="checkbox" id="opt-rappel"> Rappel map</label>
+      <label class="reglage">Niveau
+        <select id="opt-niveau">
+          <option value="1">1 · débutant</option>
+          <option value="2">2 · intermédiaire</option>
+          <option value="3">3 · tout</option>
+        </select>
+      </label>
     </div>
   </header>
 
@@ -59,6 +68,7 @@
         </form>
         <button id="btn-zero" class="btn discret" type="button">Zéro</button>
       </div>
+      <div id="rappel" class="rappel" role="status"></div>
     </section>
 
     <section class="panneau avenir" aria-label="À venir">
@@ -70,6 +80,7 @@
     <section class="panneau declenches" aria-label="Minuteurs déclenchés">
       <h2>Minuteurs</h2>
       <div id="declenches" class="declenches-liste"></div>
+      <p id="declenches-vide" class="vide" hidden>Les minuteurs (Mid-Boss, Rejuvenator, Rift) apparaissent à partir du niveau 2.</p>
     </section>
 
     <section class="panneau maintenant" aria-label="Maintenant">
@@ -95,6 +106,7 @@
 
   <footer id="meta" class="meta"></footer>
 
+  <script src="js/commun.js"></script>
   <script src="js/timeline.js"></script>
 </body>
 </html>

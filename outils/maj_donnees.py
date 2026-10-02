@@ -239,6 +239,10 @@ def construire_carte(m):
                 el["equipe"] = e["team"]
             elements.append(el)
         couches.append({"id": ident, "nom": nom, "niveau": niveau, "a_quoi_ca_sert": role, "elements": elements})
+    # Absent de l'API : le wiki le situe au centre exact de la carte, sous Broadway.
+    couches.append({"id": "midboss", "nom": "Mid-Boss", "niveau": 2,
+                    "a_quoi_ca_sert": "Boss neutre dans une fosse souterraine. Le tuer donne des souls et un cristal de résurrection.",
+                    "elements": [{"xy": [0.5, 0.5], "approximatif": True}]})
     return {"image": m["images"]["minimap"], "image_tunnels": m["images"].get("mid_tunnels"),
             "couches": sorted(couches, key=lambda c: c["niveau"])}
 

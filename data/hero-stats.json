@@ -13,232 +13,232 @@
    "badge_max": null,
    "heros": {
     "1": {
-     "parties": 37970,
-     "winrate": 48.17,
-     "presence": 43.87,
-     "marge": 0.5
+     "parties": 50930,
+     "winrate": 48.19,
+     "presence": 43.89,
+     "marge": 0.43
     },
     "2": {
-     "parties": 29848,
-     "winrate": 55.01,
-     "presence": 34.49,
-     "marge": 0.57
+     "parties": 40202,
+     "winrate": 54.85,
+     "presence": 34.64,
+     "marge": 0.49
     },
     "3": {
-     "parties": 27326,
-     "winrate": 50.59,
-     "presence": 31.57,
-     "marge": 0.59
+     "parties": 36775,
+     "winrate": 50.9,
+     "presence": 31.69,
+     "marge": 0.51
     },
     "4": {
-     "parties": 27247,
-     "winrate": 52.61,
-     "presence": 31.48,
-     "marge": 0.59
+     "parties": 36458,
+     "winrate": 52.44,
+     "presence": 31.42,
+     "marge": 0.51
     },
     "6": {
-     "parties": 30309,
-     "winrate": 53.4,
-     "presence": 35.02,
-     "marge": 0.56
-    },
-    "7": {
-     "parties": 27195,
-     "winrate": 49.94,
-     "presence": 31.42,
-     "marge": 0.59
-    },
-    "8": {
-     "parties": 13540,
-     "winrate": 49.79,
-     "presence": 15.64,
-     "marge": 0.84
-    },
-    "10": {
-     "parties": 27965,
-     "winrate": 45.95,
-     "presence": 32.31,
-     "marge": 0.59
-    },
-    "11": {
-     "parties": 25438,
-     "winrate": 52.11,
-     "presence": 29.39,
-     "marge": 0.61
-    },
-    "12": {
-     "parties": 15981,
-     "winrate": 54.83,
-     "presence": 18.46,
-     "marge": 0.78
-    },
-    "13": {
-     "parties": 43660,
-     "winrate": 53.11,
-     "presence": 50.45,
-     "marge": 0.47
-    },
-    "14": {
-     "parties": 19495,
-     "winrate": 47.41,
-     "presence": 22.52,
-     "marge": 0.7
-    },
-    "15": {
-     "parties": 37782,
-     "winrate": 47.49,
-     "presence": 43.65,
-     "marge": 0.5
-    },
-    "16": {
-     "parties": 22403,
-     "winrate": 50.06,
-     "presence": 25.88,
-     "marge": 0.65
-    },
-    "17": {
-     "parties": 14962,
-     "winrate": 48.36,
-     "presence": 17.29,
-     "marge": 0.8
-    },
-    "18": {
-     "parties": 29071,
-     "winrate": 51.98,
-     "presence": 33.59,
-     "marge": 0.57
-    },
-    "19": {
-     "parties": 28483,
-     "winrate": 45.81,
-     "presence": 32.91,
-     "marge": 0.58
-    },
-    "20": {
-     "parties": 25597,
-     "winrate": 53.28,
-     "presence": 29.58,
-     "marge": 0.61
-    },
-    "25": {
-     "parties": 13415,
-     "winrate": 45.79,
-     "presence": 15.5,
-     "marge": 0.85
-    },
-    "27": {
-     "parties": 25777,
-     "winrate": 49.6,
-     "presence": 29.78,
-     "marge": 0.61
-    },
-    "31": {
-     "parties": 42174,
-     "winrate": 50.2,
-     "presence": 48.73,
+     "parties": 40835,
+     "winrate": 53.23,
+     "presence": 35.19,
      "marge": 0.48
     },
-    "35": {
-     "parties": 15919,
-     "winrate": 47.37,
-     "presence": 18.39,
-     "marge": 0.78
+    "7": {
+     "parties": 36739,
+     "winrate": 50.15,
+     "presence": 31.66,
+     "marge": 0.51
     },
-    "50": {
-     "parties": 23487,
-     "winrate": 45.41,
-     "presence": 27.14,
-     "marge": 0.64
+    "8": {
+     "parties": 18286,
+     "winrate": 49.64,
+     "presence": 15.76,
+     "marge": 0.72
     },
-    "52": {
-     "parties": 13274,
-     "winrate": 44.31,
-     "presence": 15.34,
-     "marge": 0.85
+    "10": {
+     "parties": 37382,
+     "winrate": 45.81,
+     "presence": 32.21,
+     "marge": 0.51
     },
-    "58": {
-     "parties": 17756,
-     "winrate": 49.21,
-     "presence": 20.52,
-     "marge": 0.74
+    "11": {
+     "parties": 34307,
+     "winrate": 52.22,
+     "presence": 29.56,
+     "marge": 0.53
     },
-    "60": {
-     "parties": 14740,
-     "winrate": 46.15,
-     "presence": 17.03,
-     "marge": 0.81
+    "12": {
+     "parties": 21555,
+     "winrate": 54.51,
+     "presence": 18.57,
+     "marge": 0.67
     },
-    "63": {
-     "parties": 37892,
-     "winrate": 46.12,
-     "presence": 43.78,
-     "marge": 0.5
+    "13": {
+     "parties": 58392,
+     "winrate": 52.9,
+     "presence": 50.32,
+     "marge": 0.41
     },
-    "64": {
-     "parties": 42613,
-     "winrate": 50.58,
-     "presence": 49.24,
-     "marge": 0.47
+    "14": {
+     "parties": 26228,
+     "winrate": 47.47,
+     "presence": 22.6,
+     "marge": 0.61
     },
-    "65": {
-     "parties": 40425,
-     "winrate": 46.78,
-     "presence": 46.71,
-     "marge": 0.49
+    "15": {
+     "parties": 50560,
+     "winrate": 47.54,
+     "presence": 43.57,
+     "marge": 0.44
     },
-    "66": {
-     "parties": 29485,
-     "winrate": 56.23,
-     "presence": 34.07,
+    "16": {
+     "parties": 29713,
+     "winrate": 50.04,
+     "presence": 25.6,
      "marge": 0.57
     },
-    "67": {
-     "parties": 32849,
-     "winrate": 56.55,
-     "presence": 37.95,
-     "marge": 0.54
+    "17": {
+     "parties": 20255,
+     "winrate": 48.17,
+     "presence": 17.45,
+     "marge": 0.69
     },
-    "69": {
-     "parties": 17386,
-     "winrate": 44.92,
-     "presence": 20.09,
-     "marge": 0.74
+    "18": {
+     "parties": 38881,
+     "winrate": 52.14,
+     "presence": 33.5,
+     "marge": 0.5
     },
-    "72": {
-     "parties": 30678,
-     "winrate": 48.74,
-     "presence": 35.45,
-     "marge": 0.56
+    "19": {
+     "parties": 38046,
+     "winrate": 45.64,
+     "presence": 32.79,
+     "marge": 0.5
     },
-    "76": {
-     "parties": 36104,
-     "winrate": 56.19,
-     "presence": 41.72,
-     "marge": 0.52
+    "20": {
+     "parties": 33867,
+     "winrate": 53.25,
+     "presence": 29.18,
+     "marge": 0.53
     },
-    "77": {
-     "parties": 24987,
-     "winrate": 51.11,
-     "presence": 28.87,
-     "marge": 0.62
+    "25": {
+     "parties": 17941,
+     "winrate": 45.55,
+     "presence": 15.46,
+     "marge": 0.73
     },
-    "79": {
-     "parties": 39201,
-     "winrate": 46.82,
-     "presence": 45.29,
+    "27": {
+     "parties": 34691,
+     "winrate": 49.8,
+     "presence": 29.89,
+     "marge": 0.53
+    },
+    "31": {
+     "parties": 55731,
+     "winrate": 50.24,
+     "presence": 48.02,
+     "marge": 0.42
+    },
+    "35": {
+     "parties": 21198,
+     "winrate": 47.24,
+     "presence": 18.27,
+     "marge": 0.67
+    },
+    "50": {
+     "parties": 31410,
+     "winrate": 45.57,
+     "presence": 27.07,
+     "marge": 0.55
+    },
+    "52": {
+     "parties": 18018,
+     "winrate": 44.45,
+     "presence": 15.53,
+     "marge": 0.73
+    },
+    "58": {
+     "parties": 23703,
+     "winrate": 49.28,
+     "presence": 20.43,
+     "marge": 0.64
+    },
+    "60": {
+     "parties": 19696,
+     "winrate": 46.07,
+     "presence": 16.97,
+     "marge": 0.7
+    },
+    "63": {
+     "parties": 50731,
+     "winrate": 46.01,
+     "presence": 43.72,
+     "marge": 0.44
+    },
+    "64": {
+     "parties": 57205,
+     "winrate": 50.68,
+     "presence": 49.29,
+     "marge": 0.41
+    },
+    "65": {
+     "parties": 54326,
+     "winrate": 47.12,
+     "presence": 46.81,
+     "marge": 0.42
+    },
+    "66": {
+     "parties": 39438,
+     "winrate": 56.18,
+     "presence": 33.98,
      "marge": 0.49
     },
+    "67": {
+     "parties": 44224,
+     "winrate": 56.7,
+     "presence": 38.11,
+     "marge": 0.47
+    },
+    "69": {
+     "parties": 23514,
+     "winrate": 44.64,
+     "presence": 20.26,
+     "marge": 0.64
+    },
+    "72": {
+     "parties": 41139,
+     "winrate": 48.93,
+     "presence": 35.45,
+     "marge": 0.48
+    },
+    "76": {
+     "parties": 48712,
+     "winrate": 56.43,
+     "presence": 41.98,
+     "marge": 0.44
+    },
+    "77": {
+     "parties": 33819,
+     "winrate": 50.87,
+     "presence": 29.14,
+     "marge": 0.53
+    },
+    "79": {
+     "parties": 52403,
+     "winrate": 46.79,
+     "presence": 45.16,
+     "marge": 0.43
+    },
     "80": {
-     "parties": 28315,
-     "winrate": 47.24,
-     "presence": 32.72,
-     "marge": 0.58
+     "parties": 38072,
+     "winrate": 47.29,
+     "presence": 32.81,
+     "marge": 0.5
     },
     "81": {
-     "parties": 27840,
-     "winrate": 49.42,
-     "presence": 32.17,
-     "marge": 0.59
+     "parties": 37178,
+     "winrate": 49.12,
+     "presence": 32.04,
+     "marge": 0.51
     }
    }
   },
@@ -247,232 +247,232 @@
    "badge_max": 46,
    "heros": {
     "1": {
-     "parties": 4496,
-     "winrate": 47.31,
-     "presence": 56.42,
-     "marge": 1.46
+     "parties": 6201,
+     "winrate": 47.2,
+     "presence": 56.35,
+     "marge": 1.24
     },
     "2": {
-     "parties": 3374,
-     "winrate": 53.97,
-     "presence": 42.34,
-     "marge": 1.69
-    },
-    "3": {
-     "parties": 2476,
-     "winrate": 52.63,
-     "presence": 31.07,
-     "marge": 1.97
-    },
-    "4": {
-     "parties": 3170,
-     "winrate": 53.44,
-     "presence": 39.78,
-     "marge": 1.74
-    },
-    "6": {
-     "parties": 2557,
-     "winrate": 53.27,
-     "presence": 32.09,
-     "marge": 1.94
-    },
-    "7": {
-     "parties": 2790,
-     "winrate": 48.49,
-     "presence": 35.01,
-     "marge": 1.86
-    },
-    "8": {
-     "parties": 1525,
-     "winrate": 49.44,
-     "presence": 19.14,
-     "marge": 2.51
-    },
-    "10": {
-     "parties": 2141,
-     "winrate": 44.18,
-     "presence": 26.87,
-     "marge": 2.12
-    },
-    "11": {
-     "parties": 2570,
-     "winrate": 50.89,
-     "presence": 32.25,
-     "marge": 1.93
-    },
-    "12": {
-     "parties": 1488,
-     "winrate": 51.88,
-     "presence": 18.67,
-     "marge": 2.54
-    },
-    "13": {
-     "parties": 4690,
-     "winrate": 50.7,
-     "presence": 58.85,
+     "parties": 4704,
+     "winrate": 53.04,
+     "presence": 42.74,
      "marge": 1.43
     },
-    "14": {
-     "parties": 1675,
-     "winrate": 49.19,
-     "presence": 21.02,
-     "marge": 2.39
-    },
-    "15": {
-     "parties": 3485,
-     "winrate": 47.6,
-     "presence": 43.73,
+    "3": {
+     "parties": 3466,
+     "winrate": 51.96,
+     "presence": 31.49,
      "marge": 1.66
     },
-    "16": {
-     "parties": 1855,
-     "winrate": 50.78,
-     "presence": 23.28,
-     "marge": 2.28
+    "4": {
+     "parties": 4300,
+     "winrate": 53.47,
+     "presence": 39.07,
+     "marge": 1.49
     },
-    "17": {
-     "parties": 1243,
-     "winrate": 48.75,
-     "presence": 15.6,
-     "marge": 2.78
-    },
-    "18": {
-     "parties": 2817,
-     "winrate": 51.33,
-     "presence": 35.35,
-     "marge": 1.85
-    },
-    "19": {
-     "parties": 2513,
-     "winrate": 43.45,
-     "presence": 31.53,
-     "marge": 1.95
-    },
-    "20": {
-     "parties": 2365,
-     "winrate": 55.26,
-     "presence": 29.68,
-     "marge": 2.02
-    },
-    "25": {
-     "parties": 1354,
-     "winrate": 45.42,
-     "presence": 16.99,
-     "marge": 2.66
-    },
-    "27": {
-     "parties": 2343,
-     "winrate": 49.34,
-     "presence": 29.4,
-     "marge": 2.02
-    },
-    "31": {
-     "parties": 3876,
-     "winrate": 51.63,
-     "presence": 48.64,
-     "marge": 1.57
-    },
-    "35": {
-     "parties": 1341,
-     "winrate": 47.28,
-     "presence": 16.83,
-     "marge": 2.68
-    },
-    "50": {
-     "parties": 1788,
-     "winrate": 44.57,
-     "presence": 22.44,
-     "marge": 2.32
-    },
-    "52": {
-     "parties": 924,
-     "winrate": 42.53,
-     "presence": 11.59,
-     "marge": 3.22
-    },
-    "58": {
-     "parties": 1402,
-     "winrate": 49.0,
-     "presence": 17.59,
-     "marge": 2.62
-    },
-    "60": {
-     "parties": 1141,
-     "winrate": 48.03,
-     "presence": 14.32,
-     "marge": 2.9
-    },
-    "63": {
-     "parties": 3243,
-     "winrate": 46.16,
-     "presence": 40.69,
-     "marge": 1.72
-    },
-    "64": {
-     "parties": 3853,
-     "winrate": 51.93,
-     "presence": 48.35,
-     "marge": 1.58
-    },
-    "65": {
-     "parties": 2757,
-     "winrate": 47.19,
-     "presence": 34.6,
-     "marge": 1.87
-    },
-    "66": {
-     "parties": 3008,
-     "winrate": 55.62,
-     "presence": 37.74,
-     "marge": 1.79
-    },
-    "67": {
-     "parties": 3585,
-     "winrate": 55.87,
-     "presence": 44.98,
+    "6": {
+     "parties": 3551,
+     "winrate": 53.06,
+     "presence": 32.27,
      "marge": 1.64
     },
+    "7": {
+     "parties": 3887,
+     "winrate": 48.8,
+     "presence": 35.32,
+     "marge": 1.57
+    },
+    "8": {
+     "parties": 2076,
+     "winrate": 49.57,
+     "presence": 18.86,
+     "marge": 2.15
+    },
+    "10": {
+     "parties": 2927,
+     "winrate": 44.14,
+     "presence": 26.6,
+     "marge": 1.81
+    },
+    "11": {
+     "parties": 3572,
+     "winrate": 50.64,
+     "presence": 32.46,
+     "marge": 1.64
+    },
+    "12": {
+     "parties": 2085,
+     "winrate": 50.98,
+     "presence": 18.95,
+     "marge": 2.15
+    },
+    "13": {
+     "parties": 6460,
+     "winrate": 50.77,
+     "presence": 58.7,
+     "marge": 1.22
+    },
+    "14": {
+     "parties": 2297,
+     "winrate": 48.89,
+     "presence": 20.87,
+     "marge": 2.04
+    },
+    "15": {
+     "parties": 4777,
+     "winrate": 47.06,
+     "presence": 43.41,
+     "marge": 1.42
+    },
+    "16": {
+     "parties": 2582,
+     "winrate": 49.38,
+     "presence": 23.46,
+     "marge": 1.93
+    },
+    "17": {
+     "parties": 1777,
+     "winrate": 48.51,
+     "presence": 16.15,
+     "marge": 2.32
+    },
+    "18": {
+     "parties": 3929,
+     "winrate": 51.74,
+     "presence": 35.7,
+     "marge": 1.56
+    },
+    "19": {
+     "parties": 3447,
+     "winrate": 43.98,
+     "presence": 31.32,
+     "marge": 1.67
+    },
+    "20": {
+     "parties": 3220,
+     "winrate": 55.25,
+     "presence": 29.26,
+     "marge": 1.73
+    },
+    "25": {
+     "parties": 1847,
+     "winrate": 45.32,
+     "presence": 16.78,
+     "marge": 2.28
+    },
+    "27": {
+     "parties": 3221,
+     "winrate": 49.71,
+     "presence": 29.27,
+     "marge": 1.73
+    },
+    "31": {
+     "parties": 5290,
+     "winrate": 51.57,
+     "presence": 48.07,
+     "marge": 1.35
+    },
+    "35": {
+     "parties": 1844,
+     "winrate": 47.89,
+     "presence": 16.76,
+     "marge": 2.28
+    },
+    "50": {
+     "parties": 2474,
+     "winrate": 45.51,
+     "presence": 22.48,
+     "marge": 1.97
+    },
+    "52": {
+     "parties": 1260,
+     "winrate": 43.1,
+     "presence": 11.45,
+     "marge": 2.76
+    },
+    "58": {
+     "parties": 1891,
+     "winrate": 50.66,
+     "presence": 17.18,
+     "marge": 2.25
+    },
+    "60": {
+     "parties": 1563,
+     "winrate": 48.18,
+     "presence": 14.2,
+     "marge": 2.48
+    },
+    "63": {
+     "parties": 4462,
+     "winrate": 45.81,
+     "presence": 40.54,
+     "marge": 1.47
+    },
+    "64": {
+     "parties": 5324,
+     "winrate": 51.52,
+     "presence": 48.38,
+     "marge": 1.34
+    },
+    "65": {
+     "parties": 3791,
+     "winrate": 47.74,
+     "presence": 34.45,
+     "marge": 1.59
+    },
+    "66": {
+     "parties": 4208,
+     "winrate": 56.56,
+     "presence": 38.24,
+     "marge": 1.51
+    },
+    "67": {
+     "parties": 5031,
+     "winrate": 56.31,
+     "presence": 45.71,
+     "marge": 1.38
+    },
     "69": {
-     "parties": 1551,
-     "winrate": 45.0,
-     "presence": 19.46,
-     "marge": 2.49
+     "parties": 2150,
+     "winrate": 44.47,
+     "presence": 19.54,
+     "marge": 2.11
     },
     "72": {
-     "parties": 2783,
-     "winrate": 50.77,
-     "presence": 34.92,
-     "marge": 1.86
-    },
-    "76": {
-     "parties": 3865,
-     "winrate": 54.93,
-     "presence": 48.5,
+     "parties": 3858,
+     "winrate": 50.41,
+     "presence": 35.06,
      "marge": 1.58
     },
+    "76": {
+     "parties": 5356,
+     "winrate": 55.53,
+     "presence": 48.67,
+     "marge": 1.34
+    },
     "77": {
-     "parties": 1833,
-     "winrate": 52.48,
-     "presence": 23.0,
-     "marge": 2.29
+     "parties": 2569,
+     "winrate": 52.2,
+     "presence": 23.34,
+     "marge": 1.93
     },
     "79": {
-     "parties": 3625,
-     "winrate": 45.3,
-     "presence": 45.49,
-     "marge": 1.63
+     "parties": 4950,
+     "winrate": 45.62,
+     "presence": 44.98,
+     "marge": 1.39
     },
     "80": {
-     "parties": 1921,
-     "winrate": 47.74,
-     "presence": 24.1,
-     "marge": 2.24
+     "parties": 2673,
+     "winrate": 46.65,
+     "presence": 24.29,
+     "marge": 1.9
     },
     "81": {
-     "parties": 2209,
-     "winrate": 46.85,
-     "presence": 27.72,
-     "marge": 2.09
+     "parties": 3044,
+     "winrate": 47.11,
+     "presence": 27.66,
+     "marge": 1.78
     }
    }
   },
@@ -481,232 +481,232 @@
    "badge_max": 86,
    "heros": {
     "1": {
-     "parties": 4404,
-     "winrate": 45.46,
-     "presence": 49.22,
-     "marge": 1.48
+     "parties": 5895,
+     "winrate": 45.77,
+     "presence": 49.6,
+     "marge": 1.28
     },
     "2": {
-     "parties": 3177,
-     "winrate": 53.51,
-     "presence": 35.51,
-     "marge": 1.74
+     "parties": 4207,
+     "winrate": 53.36,
+     "presence": 35.4,
+     "marge": 1.51
     },
     "3": {
-     "parties": 2977,
-     "winrate": 50.49,
-     "presence": 33.27,
-     "marge": 1.8
+     "parties": 3961,
+     "winrate": 51.27,
+     "presence": 33.33,
+     "marge": 1.56
     },
     "4": {
-     "parties": 2452,
-     "winrate": 51.88,
-     "presence": 27.4,
-     "marge": 1.98
+     "parties": 3250,
+     "winrate": 51.63,
+     "presence": 27.34,
+     "marge": 1.72
     },
     "6": {
-     "parties": 3354,
-     "winrate": 53.34,
-     "presence": 37.48,
-     "marge": 1.69
-    },
-    "7": {
-     "parties": 3461,
-     "winrate": 49.61,
-     "presence": 38.68,
-     "marge": 1.67
-    },
-    "8": {
-     "parties": 1315,
-     "winrate": 49.2,
-     "presence": 14.7,
-     "marge": 2.7
-    },
-    "10": {
-     "parties": 3295,
-     "winrate": 47.47,
-     "presence": 36.82,
-     "marge": 1.71
-    },
-    "11": {
-     "parties": 2612,
-     "winrate": 52.18,
-     "presence": 29.19,
-     "marge": 1.92
-    },
-    "12": {
-     "parties": 2010,
-     "winrate": 54.63,
-     "presence": 22.46,
-     "marge": 2.19
-    },
-    "13": {
-     "parties": 5708,
-     "winrate": 52.19,
-     "presence": 63.79,
-     "marge": 1.3
-    },
-    "14": {
-     "parties": 2103,
-     "winrate": 47.36,
-     "presence": 23.5,
-     "marge": 2.14
-    },
-    "15": {
-     "parties": 4534,
-     "winrate": 46.49,
-     "presence": 50.67,
+     "parties": 4516,
+     "winrate": 52.83,
+     "presence": 38.0,
      "marge": 1.46
     },
-    "16": {
-     "parties": 3076,
-     "winrate": 52.57,
-     "presence": 34.38,
-     "marge": 1.77
+    "7": {
+     "parties": 4695,
+     "winrate": 50.14,
+     "presence": 39.5,
+     "marge": 1.43
     },
-    "17": {
-     "parties": 1572,
-     "winrate": 45.55,
-     "presence": 17.57,
-     "marge": 2.47
+    "8": {
+     "parties": 1726,
+     "winrate": 49.42,
+     "presence": 14.52,
+     "marge": 2.36
     },
-    "18": {
-     "parties": 3546,
-     "winrate": 51.64,
-     "presence": 39.63,
+    "10": {
+     "parties": 4311,
+     "winrate": 47.27,
+     "presence": 36.27,
+     "marge": 1.49
+    },
+    "11": {
+     "parties": 3522,
+     "winrate": 53.04,
+     "presence": 29.63,
      "marge": 1.65
     },
+    "12": {
+     "parties": 2717,
+     "winrate": 54.69,
+     "presence": 22.86,
+     "marge": 1.88
+    },
+    "13": {
+     "parties": 7559,
+     "winrate": 51.62,
+     "presence": 63.6,
+     "marge": 1.13
+    },
+    "14": {
+     "parties": 2840,
+     "winrate": 48.52,
+     "presence": 23.89,
+     "marge": 1.84
+    },
+    "15": {
+     "parties": 6024,
+     "winrate": 46.1,
+     "presence": 50.68,
+     "marge": 1.26
+    },
+    "16": {
+     "parties": 4043,
+     "winrate": 52.39,
+     "presence": 34.02,
+     "marge": 1.54
+    },
+    "17": {
+     "parties": 2087,
+     "winrate": 46.24,
+     "presence": 17.56,
+     "marge": 2.15
+    },
+    "18": {
+     "parties": 4729,
+     "winrate": 52.13,
+     "presence": 39.79,
+     "marge": 1.43
+    },
     "19": {
-     "parties": 3283,
-     "winrate": 45.96,
-     "presence": 36.69,
-     "marge": 1.71
+     "parties": 4329,
+     "winrate": 45.05,
+     "presence": 36.42,
+     "marge": 1.49
     },
     "20": {
-     "parties": 2872,
-     "winrate": 51.67,
-     "presence": 32.1,
-     "marge": 1.83
+     "parties": 3744,
+     "winrate": 52.19,
+     "presence": 31.5,
+     "marge": 1.6
     },
     "25": {
-     "parties": 1163,
-     "winrate": 43.51,
-     "presence": 13.0,
-     "marge": 2.87
+     "parties": 1535,
+     "winrate": 42.28,
+     "presence": 12.91,
+     "marge": 2.5
     },
     "27": {
-     "parties": 2870,
-     "winrate": 50.24,
-     "presence": 32.07,
-     "marge": 1.83
+     "parties": 3775,
+     "winrate": 51.34,
+     "presence": 31.76,
+     "marge": 1.6
     },
     "31": {
-     "parties": 5304,
-     "winrate": 49.04,
-     "presence": 59.28,
-     "marge": 1.35
+     "parties": 6975,
+     "winrate": 49.32,
+     "presence": 58.68,
+     "marge": 1.17
     },
     "35": {
-     "parties": 1599,
-     "winrate": 47.4,
-     "presence": 17.87,
-     "marge": 2.45
+     "parties": 2110,
+     "winrate": 46.78,
+     "presence": 17.75,
+     "marge": 2.13
     },
     "50": {
-     "parties": 2770,
-     "winrate": 45.52,
-     "presence": 30.96,
-     "marge": 1.86
+     "parties": 3650,
+     "winrate": 45.62,
+     "presence": 30.71,
+     "marge": 1.62
     },
     "52": {
-     "parties": 1111,
-     "winrate": 44.55,
-     "presence": 12.42,
-     "marge": 2.94
+     "parties": 1480,
+     "winrate": 43.65,
+     "presence": 12.45,
+     "marge": 2.55
     },
     "58": {
-     "parties": 1453,
-     "winrate": 52.58,
-     "presence": 16.24,
-     "marge": 2.57
+     "parties": 1921,
+     "winrate": 52.16,
+     "presence": 16.16,
+     "marge": 2.24
     },
     "60": {
-     "parties": 1443,
-     "winrate": 48.65,
-     "presence": 16.13,
-     "marge": 2.58
+     "parties": 1897,
+     "winrate": 47.44,
+     "presence": 15.96,
+     "marge": 2.25
     },
     "63": {
-     "parties": 3627,
-     "winrate": 48.44,
-     "presence": 40.53,
-     "marge": 1.63
+     "parties": 4909,
+     "winrate": 48.14,
+     "presence": 41.3,
+     "marge": 1.4
     },
     "64": {
-     "parties": 4550,
-     "winrate": 51.32,
-     "presence": 50.85,
-     "marge": 1.45
+     "parties": 6080,
+     "winrate": 51.33,
+     "presence": 51.15,
+     "marge": 1.26
     },
     "65": {
-     "parties": 3467,
-     "winrate": 47.19,
-     "presence": 38.75,
-     "marge": 1.66
+     "parties": 4597,
+     "winrate": 47.84,
+     "presence": 38.68,
+     "marge": 1.45
     },
     "66": {
-     "parties": 2657,
-     "winrate": 55.02,
-     "presence": 29.69,
-     "marge": 1.9
+     "parties": 3544,
+     "winrate": 54.6,
+     "presence": 29.82,
+     "marge": 1.65
     },
     "67": {
-     "parties": 3391,
-     "winrate": 56.12,
-     "presence": 37.9,
-     "marge": 1.68
+     "parties": 4548,
+     "winrate": 56.22,
+     "presence": 38.26,
+     "marge": 1.45
     },
     "69": {
-     "parties": 1600,
-     "winrate": 44.81,
-     "presence": 17.88,
-     "marge": 2.45
+     "parties": 2127,
+     "winrate": 44.38,
+     "presence": 17.9,
+     "marge": 2.12
     },
     "72": {
-     "parties": 2661,
-     "winrate": 49.3,
-     "presence": 29.74,
-     "marge": 1.9
+     "parties": 3539,
+     "winrate": 49.68,
+     "presence": 29.78,
+     "marge": 1.65
     },
     "76": {
-     "parties": 2931,
-     "winrate": 55.0,
-     "presence": 32.76,
-     "marge": 1.81
+     "parties": 3811,
+     "winrate": 55.05,
+     "presence": 32.06,
+     "marge": 1.59
     },
     "77": {
-     "parties": 1887,
-     "winrate": 52.78,
-     "presence": 21.09,
-     "marge": 2.26
+     "parties": 2525,
+     "winrate": 52.83,
+     "presence": 21.24,
+     "marge": 1.95
     },
     "79": {
-     "parties": 2980,
-     "winrate": 46.38,
-     "presence": 33.3,
-     "marge": 1.8
+     "parties": 3966,
+     "winrate": 45.46,
+     "presence": 33.37,
+     "marge": 1.56
     },
     "80": {
-     "parties": 2182,
-     "winrate": 48.85,
-     "presence": 24.39,
-     "marge": 2.1
+     "parties": 2883,
+     "winrate": 50.02,
+     "presence": 24.26,
+     "marge": 1.83
     },
     "81": {
-     "parties": 1977,
-     "winrate": 51.9,
-     "presence": 22.09,
-     "marge": 2.2
+     "parties": 2601,
+     "winrate": 50.87,
+     "presence": 21.88,
+     "marge": 1.92
     }
    }
   },
@@ -715,232 +715,232 @@
    "badge_max": 116,
    "heros": {
     "1": {
-     "parties": 1421,
-     "winrate": 45.95,
-     "presence": 35.93,
-     "marge": 2.6
-    },
-    "2": {
-     "parties": 1099,
-     "winrate": 55.14,
-     "presence": 27.79,
-     "marge": 2.96
-    },
-    "3": {
-     "parties": 1365,
-     "winrate": 47.91,
-     "presence": 34.51,
-     "marge": 2.65
-    },
-    "4": {
-     "parties": 808,
-     "winrate": 50.62,
-     "presence": 20.43,
-     "marge": 3.45
-    },
-    "6": {
-     "parties": 1404,
-     "winrate": 53.06,
-     "presence": 35.5,
-     "marge": 2.62
-    },
-    "7": {
-     "parties": 1667,
-     "winrate": 50.81,
-     "presence": 42.15,
-     "marge": 2.4
-    },
-    "8": {
-     "parties": 692,
-     "winrate": 49.13,
-     "presence": 17.5,
-     "marge": 3.73
-    },
-    "10": {
-     "parties": 1394,
-     "winrate": 45.55,
-     "presence": 35.24,
-     "marge": 2.62
-    },
-    "11": {
-     "parties": 960,
-     "winrate": 55.73,
-     "presence": 24.27,
-     "marge": 3.16
-    },
-    "12": {
-     "parties": 877,
-     "winrate": 53.36,
-     "presence": 22.17,
-     "marge": 3.31
-    },
-    "13": {
-     "parties": 2610,
-     "winrate": 51.57,
-     "presence": 65.99,
-     "marge": 1.92
-    },
-    "14": {
-     "parties": 904,
-     "winrate": 50.33,
-     "presence": 22.86,
-     "marge": 3.26
-    },
-    "15": {
-     "parties": 1851,
-     "winrate": 48.62,
-     "presence": 46.8,
+     "parties": 1848,
+     "winrate": 46.16,
+     "presence": 35.33,
      "marge": 2.28
     },
+    "2": {
+     "parties": 1434,
+     "winrate": 56.07,
+     "presence": 27.41,
+     "marge": 2.59
+    },
+    "3": {
+     "parties": 1780,
+     "winrate": 48.93,
+     "presence": 34.03,
+     "marge": 2.32
+    },
+    "4": {
+     "parties": 1053,
+     "winrate": 50.14,
+     "presence": 20.13,
+     "marge": 3.02
+    },
+    "6": {
+     "parties": 1918,
+     "winrate": 53.6,
+     "presence": 36.66,
+     "marge": 2.24
+    },
+    "7": {
+     "parties": 2215,
+     "winrate": 51.24,
+     "presence": 42.34,
+     "marge": 2.08
+    },
+    "8": {
+     "parties": 894,
+     "winrate": 48.88,
+     "presence": 17.09,
+     "marge": 3.28
+    },
+    "10": {
+     "parties": 1887,
+     "winrate": 45.73,
+     "presence": 36.07,
+     "marge": 2.26
+    },
+    "11": {
+     "parties": 1286,
+     "winrate": 54.43,
+     "presence": 24.58,
+     "marge": 2.73
+    },
+    "12": {
+     "parties": 1136,
+     "winrate": 52.73,
+     "presence": 21.72,
+     "marge": 2.91
+    },
+    "13": {
+     "parties": 3397,
+     "winrate": 51.49,
+     "presence": 64.94,
+     "marge": 1.68
+    },
+    "14": {
+     "parties": 1200,
+     "winrate": 50.17,
+     "presence": 22.94,
+     "marge": 2.83
+    },
+    "15": {
+     "parties": 2471,
+     "winrate": 47.92,
+     "presence": 47.24,
+     "marge": 1.97
+    },
     "16": {
-     "parties": 1680,
-     "winrate": 50.06,
-     "presence": 42.48,
-     "marge": 2.39
+     "parties": 2235,
+     "winrate": 50.29,
+     "presence": 42.72,
+     "marge": 2.07
     },
     "17": {
-     "parties": 815,
-     "winrate": 47.61,
-     "presence": 20.61,
-     "marge": 3.43
+     "parties": 1066,
+     "winrate": 46.81,
+     "presence": 20.38,
+     "marge": 3.0
     },
     "18": {
-     "parties": 1700,
-     "winrate": 49.35,
-     "presence": 42.98,
-     "marge": 2.38
+     "parties": 2205,
+     "winrate": 49.16,
+     "presence": 42.15,
+     "marge": 2.09
     },
     "19": {
-     "parties": 1400,
-     "winrate": 48.36,
-     "presence": 35.4,
-     "marge": 2.62
+     "parties": 1890,
+     "winrate": 47.51,
+     "presence": 36.13,
+     "marge": 2.25
     },
     "20": {
-     "parties": 1360,
-     "winrate": 51.91,
-     "presence": 34.38,
-     "marge": 2.66
+     "parties": 1756,
+     "winrate": 51.31,
+     "presence": 33.57,
+     "marge": 2.34
     },
     "25": {
-     "parties": 370,
-     "winrate": 47.03,
-     "presence": 9.35,
-     "marge": 5.09
+     "parties": 471,
+     "winrate": 46.71,
+     "presence": 9.0,
+     "marge": 4.52
     },
     "27": {
-     "parties": 1686,
-     "winrate": 52.55,
-     "presence": 42.63,
-     "marge": 2.39
-    },
-    "31": {
-     "parties": 2267,
-     "winrate": 51.43,
-     "presence": 57.32,
+     "parties": 2273,
+     "winrate": 52.75,
+     "presence": 43.45,
      "marge": 2.06
     },
+    "31": {
+     "parties": 3003,
+     "winrate": 50.85,
+     "presence": 57.41,
+     "marge": 1.79
+    },
     "35": {
-     "parties": 605,
-     "winrate": 45.12,
-     "presence": 15.3,
-     "marge": 3.98
+     "parties": 817,
+     "winrate": 48.71,
+     "presence": 15.62,
+     "marge": 3.43
     },
     "50": {
-     "parties": 1308,
-     "winrate": 46.33,
-     "presence": 33.07,
-     "marge": 2.71
+     "parties": 1748,
+     "winrate": 47.48,
+     "presence": 33.41,
+     "marge": 2.34
     },
     "52": {
-     "parties": 528,
-     "winrate": 45.27,
-     "presence": 13.35,
-     "marge": 4.26
+     "parties": 705,
+     "winrate": 44.26,
+     "presence": 13.48,
+     "marge": 3.69
     },
     "58": {
-     "parties": 746,
-     "winrate": 55.23,
-     "presence": 18.86,
-     "marge": 3.59
+     "parties": 985,
+     "winrate": 52.79,
+     "presence": 18.83,
+     "marge": 3.12
     },
     "60": {
-     "parties": 620,
-     "winrate": 46.45,
-     "presence": 15.68,
-     "marge": 3.94
+     "parties": 828,
+     "winrate": 46.01,
+     "presence": 15.83,
+     "marge": 3.41
     },
     "63": {
-     "parties": 1733,
-     "winrate": 47.43,
-     "presence": 43.82,
-     "marge": 2.35
+     "parties": 2264,
+     "winrate": 47.7,
+     "presence": 43.28,
+     "marge": 2.06
     },
     "64": {
-     "parties": 2180,
-     "winrate": 49.77,
-     "presence": 55.12,
-     "marge": 2.1
+     "parties": 2914,
+     "winrate": 49.93,
+     "presence": 55.7,
+     "marge": 1.82
     },
     "65": {
-     "parties": 1835,
-     "winrate": 49.32,
-     "presence": 46.39,
-     "marge": 2.29
+     "parties": 2424,
+     "winrate": 49.63,
+     "presence": 46.34,
+     "marge": 1.99
     },
     "66": {
-     "parties": 1111,
-     "winrate": 50.77,
-     "presence": 28.09,
-     "marge": 2.94
-    },
-    "67": {
-     "parties": 1456,
-     "winrate": 55.01,
-     "presence": 36.81,
+     "parties": 1459,
+     "winrate": 50.58,
+     "presence": 27.89,
      "marge": 2.57
     },
+    "67": {
+     "parties": 1942,
+     "winrate": 54.99,
+     "presence": 37.12,
+     "marge": 2.22
+    },
     "69": {
-     "parties": 695,
-     "winrate": 46.33,
-     "presence": 17.57,
-     "marge": 3.72
+     "parties": 912,
+     "winrate": 46.16,
+     "presence": 17.43,
+     "marge": 3.25
     },
     "72": {
-     "parties": 1205,
-     "winrate": 47.47,
-     "presence": 30.47,
-     "marge": 2.82
+     "parties": 1573,
+     "winrate": 49.27,
+     "presence": 30.07,
+     "marge": 2.47
     },
     "76": {
-     "parties": 1002,
-     "winrate": 53.29,
-     "presence": 25.33,
-     "marge": 3.1
+     "parties": 1322,
+     "winrate": 52.57,
+     "presence": 25.27,
+     "marge": 2.7
     },
     "77": {
-     "parties": 972,
-     "winrate": 52.16,
-     "presence": 24.57,
-     "marge": 3.14
+     "parties": 1322,
+     "winrate": 50.91,
+     "presence": 25.27,
+     "marge": 2.7
     },
     "79": {
-     "parties": 1150,
-     "winrate": 46.26,
-     "presence": 29.08,
-     "marge": 2.89
+     "parties": 1504,
+     "winrate": 45.94,
+     "presence": 28.75,
+     "marge": 2.53
     },
     "80": {
-     "parties": 1024,
-     "winrate": 47.46,
-     "presence": 25.89,
-     "marge": 3.06
+     "parties": 1384,
+     "winrate": 48.63,
+     "presence": 26.46,
+     "marge": 2.63
     },
     "81": {
-     "parties": 963,
-     "winrate": 52.54,
-     "presence": 24.35,
-     "marge": 3.16
+     "parties": 1254,
+     "winrate": 52.79,
+     "presence": 23.97,
+     "marge": 2.77
     }
    }
   }

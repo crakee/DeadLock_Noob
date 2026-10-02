@@ -4,12 +4,14 @@
   'use strict';
 
   const URL_DONNEES = 'data/timeline.json';
+  const URL_NIVEAUX = 'data/niveaux.json';
   const CLE_ETAT = 'dln.timeline.etat.v1';
   const CLE_REGLAGES = 'dln.timeline.reglages.v1';
 
   // Choix d'affichage (pas des valeurs de jeu)
   const MAINTIEN_S = 10;      // durée du « maintenant » après l'heure d'un événement
   const NB_AVENIR = 4;        // cartes affichées dans « À venir »
+  const DUREE_RAPPEL_S = 4;   // durée d'affichage du rappel « regarde ta map »
   const FRISE_MIN_S = 2400;   // étendue minimale de la frise
   const LIBELLES_CATEGORIE = {
     jungle: 'Jungle', objectif: 'Objectif', lane: 'Lane',
@@ -17,8 +19,9 @@
   };
 
   let donnees = null;
+  let niveaux = null;         // data/niveaux.json ; absent : tout est affiché
   let etat = { depart: null, pauseA: null, declenches: {}, termines: {} };
-  let reglages = { son: true, voix: false, decalage: 0, masquees: [] };
+  let reglages = { son: true, voix: false, rappel: true, decalage: 0, masquees: [] };
 
   const $ = (id) => document.getElementById(id);
 
@@ -128,10 +131,17 @@
   const preavis = (objet) => objet.annonce_avant_s > 0 ? objet.annonce_avant_s + reglages.decalage : 0;
   const masquee = (categorie) => reglages.masquees.indexOf(categorie) !== -1;
 
+  // Un événement ou un minuteur n'apparaît qu'à partir du niveau indiqué dans niveaux.json.
+  function auNiveau(table, id) {
+    const requis = niveaux && niveaux[table] ? niveaux[table][id] : null;
+    return requis == null || requis <= DLN.niveau();
+  }
+  const cache = (ev) => masquee(ev.categorie) || !auNiveau('evenements', ev.id);
+
   function aVenir(t) {
     const items = [];
     donnees.evenements.forEach((ev) => {
-      if (!(ev.annonce_avant_s > 0) || masquee(ev.categorie) || etat.termines[ev.id]) return;
+      if (!(ev.annonce_avant_s > 0) || cache(ev) || etat.termines[ev.id]) return;
       const occ = occurrence(ev, t);
       if (!occ) return;
       items.push({
@@ -343,7 +353,7 @@
       const bouton = el('button', 'btn minuteur-btn');
       bouton.type = 'button';
       const m = {
-        d: d, bouton: bouton,
+        d: d, bouton: bouton, ligne: ligne,
         nom: el('span', 'minuteur-nom'),
         compte: el('span', 'minuteur-compte'),
         annuler: el('button', 'btn discret minuteur-annuler', '×')
@@ -395,7 +405,7 @@
 
     const rangs = {};
     donnees.evenements.forEach((ev) => {
-      if (masquee(ev.categorie)) return;
+      if (cache(ev)) return;
       let rang = rangs[ev.categorie];
       if (!rang) {
         rang = rangs[ev.categorie] = { noeud: el('div', 'frise-rang'), pris: {} };
@@ -498,6 +508,8 @@
     let modifie = false;
     minuteurs.forEach((m) => {
       const d = m.d;
+      m.ligne.hidden = !auNiveau('declenches', d.id);
+      if (m.ligne.hidden) return;
       const marge = d.marge_s || 0;
       const e = etat.declenches[d.id];
       if (e && e.fin != null && t >= e.fin + marge + MAINTIEN_S) {
@@ -527,6 +539,7 @@
         ? (marge ? 'vers maintenant' : 'écoulé')
         : approx + fmtRestant(e.fin - t) + suffixe;
     });
+    $('declenches-vide').hidden = minuteurs.some((m) => !m.ligne.hidden);
     if (modifie) sauverEtat();
   }
 
@@ -541,13 +554,22 @@
     // Prochains événements sans préavis (paliers d'information)
     let prochain = null;
     donnees.evenements.forEach((ev) => {
-      if (ev.annonce_avant_s > 0 || ev.temps_s == null || ev.temps_s <= t || masquee(ev.categorie)) return;
+      if (ev.annonce_avant_s > 0 || ev.temps_s == null || ev.temps_s <= t || cache(ev)) return;
       if (!prochain || ev.temps_s < prochain.temps_s) prochain = { temps_s: ev.temps_s, noms: [ev.nom] };
       else if (ev.temps_s === prochain.temps_s) prochain.noms.push(ev.nom);
     });
     const zone = $('palier');
     zone.textContent = '';
     if (prochain) zone.append('Prochain palier ', el('strong', null, fmt(prochain.temps_s)), ' · ' + prochain.noms.join(' · '));
+  }
+
+  function rafraichirRappel(t) {
+    const r = niveaux && niveaux.rappel_minimap;
+    const zone = $('rappel');
+    const actif = Boolean(r) && reglages.rappel && enMarche() && DLN.niveau() <= r.niveau_max &&
+      t >= r.intervalle_s && (t % r.intervalle_s) < DUREE_RAPPEL_S;
+    zone.classList.toggle('actif', actif);
+    if (actif && zone.textContent !== r.texte) zone.textContent = r.texte;
   }
 
   function rafraichirFrise(t) {
@@ -566,6 +588,7 @@
     rafraichirAvenir(t);
     rafraichirMinuteurs(t);
     rafraichirMaintenant(t);
+    rafraichirRappel(t);
     rafraichirFrise(t);
     premierPassage = false;
   }
@@ -623,6 +646,10 @@
     son.addEventListener('change', () => { reglages.son = son.checked; sauverReglages(); preparerAudio(); if (son.checked) bip(); });
     voix.addEventListener('change', () => { reglages.voix = voix.checked; sauverReglages(); if (voix.checked) dire('Annonces vocales activées'); });
     choixPreavis.addEventListener('change', () => { reglages.decalage = Number(choixPreavis.value); sauverReglages(); rafraichir(); });
+    const rappel = $('opt-rappel');
+    rappel.checked = reglages.rappel;
+    rappel.addEventListener('change', () => { reglages.rappel = rappel.checked; sauverReglages(); rafraichir(); });
+    DLN.surNiveau(() => { friseEtendue = 0; rafraichir(); });
 
     document.addEventListener('keydown', (e) => {
       if (e.ctrlKey || e.metaKey || e.altKey) return;
@@ -633,7 +660,7 @@
       } else if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
         e.preventDefault();
         recaler((e.key === 'ArrowLeft' ? -1 : 1) * (e.shiftKey ? 10 : 1));
-      } else if (/^[1-9]$/.test(e.key) && minuteurs[Number(e.key) - 1]) {
+      } else if (/^[1-9]$/.test(e.key) && minuteurs[Number(e.key) - 1] && !minuteurs[Number(e.key) - 1].ligne.hidden) {
         if (!e.repeat) { preparerAudio(); declencher(minuteurs[Number(e.key) - 1].d); }
       }
     });
@@ -674,5 +701,9 @@
 
   fetch(URL_DONNEES, { cache: 'no-cache' })
     .then((r) => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-    .then(demarrer, (err) => echec(err.message));
+    .then((json) => fetch(URL_NIVEAUX, { cache: 'no-cache' })
+      .then((r) => (r.ok ? r.json() : null))
+      .catch(() => null)
+      .then((n) => { niveaux = n; demarrer(json); }),
+    (err) => echec(err.message));
 })();

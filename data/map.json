@@ -1512,6 +1512,21 @@
    ]
   },
   {
+   "id": "midboss",
+   "nom": "Mid-Boss",
+   "niveau": 2,
+   "a_quoi_ca_sert": "Boss neutre dans une fosse souterraine. Le tuer donne des souls et un cristal de résurrection.",
+   "elements": [
+    {
+     "xy": [
+      0.5,
+      0.5
+     ],
+     "approximatif": true
+    }
+   ]
+  },
+  {
    "id": "crates",
    "nom": "Crates",
    "niveau": 3,

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Héros · DeadLock_Noob</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="barre">
+    <nav class="onglets" aria-label="Sections">
+      <a class="onglet" href="index.html">Timeline</a>
+      <a class="onglet" href="carte.html">Carte</a>
+      <a class="onglet" href="memo.html">Mémo</a>
+      <a class="onglet actif" href="heros.html" aria-current="page">Héros</a>
+    </nav>
+    <div class="reglages">
+      <label class="reglage">Rang
+        <select id="opt-tranche"></select>
+      </label>
+      <label class="reglage">Rôle
+        <select id="opt-role"><option value="">tous</option></select>
+      </label>
+      <label class="reglage"><input type="checkbox" id="opt-miens"> Mes héros</label>
+      <label class="reglage">Niveau
+        <select id="opt-niveau">
+          <option value="1">1 · débutant</option>
+          <option value="2">2 · intermédiaire</option>
+          <option value="3">3 · tout</option>
+        </select>
+      </label>
+    </div>
+  </header>
+
+  <div id="erreur" class="erreur" hidden>
+    <h1>Données introuvables</h1>
+    <p id="erreur-texte"></p>
+    <p>Depuis le dossier du projet, lancer <code>python -m http.server</code> puis ouvrir
+      <code>http://localhost:8000</code>.</p>
+  </div>
+
+  <main id="app" class="page page-heros" hidden>
+    <section class="panneau" aria-label="Liste des héros">
+      <h2>Héros, du meilleur winrate au plus faible</h2>
+      <div id="liste" class="heros-liste"></div>
+    </section>
+    <section class="panneau" aria-label="Fiche du héros">
+      <div id="fiche" class="heros-fiche"></div>
+    </section>
+  </main>
+
+  <footer id="meta" class="meta"></footer>
+
+  <script src="js/commun.js"></script>
+  <script src="js/heros.js"></script>
+</body>
+</html>

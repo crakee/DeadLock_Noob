@@ -226,8 +226,9 @@
    "effet": "Il n'attaque que ceux qui entrent dans la fosse et ne prend de dégâts que de là. Il a un bouclier qui se régénère. Le tuer donne des souls et fait descendre un cristal vert : jusqu'à 3 résurrections sur place pour l'équipe qui le frappe.",
    "comment": "À faire à plusieurs, après un combat gagné. Heavy melee sur le cristal une fois posé au sol ; l'équipe adverse peut le voler de la même façon.",
    "fiabilite": "donnees",
-   "sur_la_minimap": "Symbole doré du Rejuvenator quand il est vivant. Sa position n'est pas dans nos données de carte : à placer au centre.",
-   "quand": "Présent dès le début ; revient 7 min après sa première mort."
+   "sur_la_minimap": "Symbole doré du Rejuvenator quand il est vivant. Sur notre carte, sa position est approximative (centre).",
+   "quand": "Présent dès le début ; revient 7 min après sa première mort.",
+   "couche_carte": "midboss"
   },
   {
    "id": "ziplines",

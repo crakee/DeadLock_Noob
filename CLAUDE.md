@@ -4,7 +4,7 @@ Aide-mémoire Deadlock personnel : chrono de timings pour second écran + fiches
 
 ## État
 
-Onglet Timeline construit (`index.html`, `css/style.css`, `js/timeline.js`, sans framework ni compilation) et contrôlé dans Chromium sur les critères du brief ; pas encore essayé en partie réelle. Onglets Héros, Carte, Mémo, Counters, Patch : données prêtes ou en cours (voir « Fichiers de données »), interface à faire. Données de jeu : une collecte brute (`collecte/`) et les événements retenus pour le chrono (`data/timeline.json`). Repo GitHub `crakee/DeadLock_Noob` (public), branche `main` poussée.
+Quatre onglets construits, sans framework ni compilation, contrôlés dans Chromium mais pas encore essayés en partie réelle : Timeline (`index.html`, `js/timeline.js`), Carte (`carte.html`, `js/carte.js`), Mémo (`memo.html`, `js/memo.js`), Héros (`heros.html`, `js/heros.js`). `js/commun.js` porte le réglage de niveau partagé (clé `dln.niveau.v1`) et le chargement des données ; `css/style.css` est commun. Onglets Counters et Patch : à faire. Données de jeu : une collecte brute (`collecte/`) et les événements retenus pour le chrono (`data/timeline.json`). Repo GitHub `crakee/DeadLock_Noob` (public), branche `main` poussée.
 
 Site en ligne : `https://crakee.github.io/DeadLock_Noob/`, servi par GitHub Pages depuis la branche `gh-pages`. Pour publier : `git push origin main:gh-pages` après le push sur `main`.
 
@@ -26,6 +26,7 @@ Pour les valeurs : les pages de deadlock.wiki sont des gabarits, les chiffres so
 | `data/map-elements.json` | Fiche de chaque élément de la carte : comment le reconnaître, effet, comment s'en servir | à la main, depuis le wiki |
 | `data/memo.json` | Mémo de macro en fiches, dont Gun contre Spirit | à la main, depuis `collecte/` |
 | `data/roles.json` | Rôles et héros par rôle (jugement, vidéo de Wouks) | à la main |
+| `data/profil.json` | Héros joués et à essayer, tranche de rang par défaut (préférences, pas données de jeu) | à la main |
 
 **Réglage de niveau unique** (demande de l'utilisateur) : un seul curseur 1 débutant / 2 intermédiaire / 3 avancé filtre la Timeline, le Mémo et les couches de la carte, plutôt qu'une version par rang. Le champ s'appelle `niveau` partout. Le rappel minimap doit pouvoir être désactivé.
 

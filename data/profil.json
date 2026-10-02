@@ -1,0 +1,17 @@
+{
+ "meta": {
+  "note": "Préférences de l'utilisateur, pas des données de jeu."
+ },
+ "heros_joues": [
+  13,
+  52,
+  27,
+  4
+ ],
+ "heros_a_essayer": [
+  2,
+  67,
+  6
+ ],
+ "tranche_par_defaut": "initiate_sentinel"
+}
