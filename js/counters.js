@@ -8,9 +8,11 @@
   const CLE = 'dln.counters.choisis.v1';
   const MAX_ADVERSAIRES = 6;
   const LIBELLES_CATEGORIE = { weapon: 'Weapon', vitality: 'Vitality', spirit: 'Spirit' };
+  const ORDRE_CATEGORIES = ['weapon', 'vitality', 'spirit', 'autre'];
 
   let counters = null, heros = null, objets = {};
   let choisis = [];
+  let filtre = 'tous';   // filtre de la liste d'achats : tous, passifs, actifs
 
   try { choisis = JSON.parse(localStorage.getItem(CLE)) || []; } catch (e) { choisis = []; }
   const sauver = () => { try { localStorage.setItem(CLE, JSON.stringify(choisis)); } catch (e) { /* stockage indisponible */ } };
@@ -44,25 +46,98 @@
     document.getElementById('compte').textContent = choisis.length + ' / ' + MAX_ADVERSAIRES;
   }
 
-  function ligneObjet(o) {
+  // Une ligne d'objet : icône, nom, prix, marque « actif », quand l'acheter, et contre quoi.
+  function ligneObjet(o, contre) {
     const fiche = objets[o.nom];
     const li = el('li', 'objet');
-    li.append(el('strong', null, o.nom));
-    if (fiche) li.append(el('span', 'objet-prix', fiche.cout + ' · ' + (LIBELLES_CATEGORIE[fiche.categorie] || fiche.categorie)));
-    li.append(el('span', 'objet-quand', o.quand));
-    if (fiche && DLN.niveau() >= 3 && fiche.description) li.append(el('span', 'objet-description', fiche.description));
+    if (fiche && fiche.image) {
+      const img = el('img', 'objet-icone');
+      img.src = fiche.image;
+      img.alt = '';
+      img.loading = 'lazy';
+      li.append(img);
+    }
+    const corps = el('div', 'objet-corps');
+    const tete = el('div', 'objet-tete');
+    tete.append(el('strong', null, o.nom));
+    if (fiche) tete.append(el('span', 'objet-prix', fiche.cout.toLocaleString('fr-FR')));
+    if (fiche && fiche.actif) {
+      const actif = el('span', 'objet-actif', 'actif');
+      actif.title = 'Objet à activer avec une touche';
+      tete.append(actif);
+    }
+    corps.append(tete, el('span', 'objet-quand', o.quand));
+    if (contre) corps.append(el('span', 'objet-contre', 'Contre : ' + contre));
+    if (fiche && DLN.niveau() >= 3 && fiche.description) corps.append(el('span', 'objet-description', fiche.description));
+    li.append(corps);
     return li;
   }
+
+  const filtreOk = (o) => {
+    const fiche = objets[o.nom];
+    return filtre === 'tous' || !fiche || (filtre === 'actifs') === !!fiche.actif;
+  };
+
+  // Objets regroupés par catégorie de la boutique. `limite` : nombre maximal par catégorie.
+  function groupesObjets(liste, limite, contreDe) {
+    const boite = el('div', 'objets-groupes');
+    ORDRE_CATEGORIES.forEach((categorie) => {
+      let ici = liste.filter((o) => ((objets[o.nom] || {}).categorie || 'autre') === categorie && filtreOk(o));
+      if (!ici.length) return;
+      if (limite) ici = ici.slice(0, limite);
+      const groupe = el('div', 'objets-groupe ' + categorie);
+      groupe.append(el('h4', null, LIBELLES_CATEGORIE[categorie] || 'Autres'));
+      const ul = el('ul', 'objets');
+      ici.forEach((o) => ul.append(ligneObjet(o, contreDe ? contreDe(o) : null)));
+      groupe.append(ul);
+      boite.append(groupe);
+    });
+    if (!boite.childNodes.length) boite.append(el('p', 'vide', 'Aucun objet pour ce filtre.'));
+    return boite;
+  }
+
+  const parPrix = (a, b) => ((objets[a.nom] || {}).cout || 0) - ((objets[b.nom] || {}).cout || 0);
 
   function listeObjets(menace) {
     let liste = menace.objets.slice();
     // Débutant : les deux moins chers suffisent.
-    if (DLN.niveau() === 1) {
-      liste = liste.sort((a, b) => ((objets[a.nom] || {}).cout || 0) - ((objets[b.nom] || {}).cout || 0)).slice(0, 2);
-    }
-    const ul = el('ul', 'objets');
-    liste.forEach((o) => ul.append(ligneObjet(o)));
-    return ul;
+    if (DLN.niveau() === 1) liste = liste.sort(parPrix).slice(0, 2);
+    return groupesObjets(liste);
+  }
+
+  // Liste d'achats : tous les objets qui répondent aux adversaires choisis, sans doublon,
+  // classés par nombre d'adversaires concernés puis par prix.
+  function afficherAchats(zone) {
+    const parNom = {};
+    choisis.forEach((id) => menacesDe(id).forEach((m) => {
+      counters.menaces[m.id].objets.forEach((o) => {
+        const e = parNom[o.nom] || (parNom[o.nom] = { nom: o.nom, quand: o.quand, heros: [], menaces: [] });
+        const nom = counters.heros[String(id)].nom;
+        if (e.heros.indexOf(nom) === -1) e.heros.push(nom);
+        if (e.menaces.indexOf(m.id) === -1) e.menaces.push(m.id);
+      });
+    }));
+    const liste = Object.keys(parNom).map((n) => parNom[n])
+      .sort((a, b) => b.heros.length - a.heros.length || parPrix(a, b));
+    if (!liste.length) return;
+
+    const bloc = el('section', 'panneau counters-achats');
+    const titre = el('h2', null, 'Liste d\'achats ');
+    titre.append(el('span', 'note', 'par catégorie de la boutique'));
+    const choix = el('div', 'filtres achats-filtre');
+    [['tous', 'Tous'], ['passifs', 'Passifs'], ['actifs', 'Actifs']].forEach((f) => {
+      const b = el('button', 'filtre', f[1]);
+      b.type = 'button';
+      b.setAttribute('aria-pressed', String(filtre === f[0]));
+      b.addEventListener('click', () => { filtre = f[0]; afficher(); });
+      choix.append(b);
+    });
+    bloc.append(titre, choix);
+    bloc.append(groupesObjets(liste, DLN.niveau() === 1 ? 3 : 0, (o) =>
+      o.menaces.map((m) => counters.menaces[m].nom.toLowerCase()).join(', ') +
+      (choisis.length > 1 ? ' (' + o.heros.join(', ') + ')' : '')));
+    if (DLN.niveau() === 1) bloc.append(el('p', 'doux petit', 'Niveau débutant : trois objets par catégorie au plus. Passer au niveau 2 pour tout voir.'));
+    zone.append(bloc);
   }
 
   function afficherResume(zone) {
@@ -128,6 +203,7 @@
       return;
     }
     if (choisis.length > 1) afficherResume(zone);
+    afficherAchats(zone);
     choisis.forEach((id) => afficherHeros(zone, id));
   }
 

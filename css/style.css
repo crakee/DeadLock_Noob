@@ -658,11 +658,27 @@ main.page p { margin: .3rem 0; }
 .menace h3 { margin: 0 0 .15rem; }
 .menace-qui { margin-left: .6rem; font-weight: 400; font-size: .9rem; color: var(--doux); }
 .menace-pourquoi { color: var(--doux); }
-.objets { list-style: none; margin: .3rem 0 0; padding: 0; display: flex; flex-direction: column; gap: .15rem; }
-.objet { display: flex; flex-wrap: wrap; align-items: baseline; gap: .1rem .6rem; }
-.objet-prix { color: var(--alerte); font-size: .85rem; font-variant-numeric: tabular-nums; }
-.objet-quand { color: var(--doux); }
-.objet-description { flex-basis: 100%; color: var(--doux); font-size: .85rem; padding-left: 1rem; }
+.objets-groupes { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: .4rem .8rem; margin-top: .4rem; align-items: start; }
+.objets-groupe { --obj: var(--doux); padding-left: .5rem; border-left: .2rem solid var(--obj); }
+.objets-groupe.weapon { --obj: #e8a33d; }
+.objets-groupe.vitality { --obj: #6fd66f; }
+.objets-groupe.spirit { --obj: #b58cff; }
+.objets-groupe h4 { margin: 0 0 .2rem; font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: var(--obj); }
+.objets { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .3rem; }
+.objet { display: flex; align-items: flex-start; gap: .5rem; }
+.objet-icone { width: 2.2rem; height: 2.2rem; flex: none; border-radius: .3rem; background: var(--obj); }
+.objet-corps { display: flex; flex-direction: column; min-width: 0; }
+.objet-tete { display: flex; flex-wrap: wrap; align-items: baseline; gap: .1rem .5rem; }
+.objet-prix { color: var(--cat-deplacement); font-size: .85rem; font-variant-numeric: tabular-nums; }
+.objet-actif { padding: 0 .4em; font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: #14100a; background: var(--alerte); border-radius: .25em; }
+.objet-quand { color: var(--doux); font-size: .9rem; }
+.objet-contre { font-size: .85rem; }
+.objet-description { color: var(--doux); font-size: .85rem; }
+.counters-achats { border-color: var(--cat-deplacement); }
+.achats-filtre { margin-bottom: .2rem; }
+.achats-filtre .filtre { --cat: var(--texte); }
+.achats-filtre .filtre[aria-pressed="false"] { text-decoration: none; }
+.achats-filtre .filtre[aria-pressed="true"] { background: var(--texte); color: var(--fond); }
 .astuces { margin: .2rem 0 0; padding-left: 1.2rem; }
 
 /* ---------- patch ---------- */
