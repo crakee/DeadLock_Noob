@@ -1,0 +1,280 @@
+{
+  "meta": {
+    "patch": "City Never Sleeps (2026-09-29, correctif 2026-09-30)",
+    "verifie_le": "2026-10-02",
+    "detail_sources": "collecte/timings-brut.md",
+    "fiabilite": {
+      "donnees": "Valeur lue dans les fichiers du jeu (wiki Data:*.json et api.deadlock-api.com), recoupée",
+      "wiki": "Texte rédigé à la main sur deadlock.wiki, non retrouvé dans les données",
+      "incertain": "Sources contradictoires ou déduction : à vérifier en jeu"
+    },
+    "conseils": "Les champs `conseil` sont du jugement (mécaniques + guide macro de Wouks), pas des valeurs de jeu."
+  },
+
+  "evenements": [
+    {
+      "id": "small_camps",
+      "nom": "Small camps",
+      "categorie": "jungle",
+      "type": "unique",
+      "temps_s": 120,
+      "annonce_avant_s": 15,
+      "fiabilite": "donnees",
+      "detail": "Réapparition 1:25 après nettoyage du camp.",
+      "conseil": "Seulement entre deux waves, sans en perdre une."
+    },
+    {
+      "id": "breakables",
+      "nom": "Crates et Buff Containers",
+      "categorie": "jungle",
+      "type": "unique",
+      "temps_s": 180,
+      "annonce_avant_s": 0,
+      "fiabilite": "donnees",
+      "detail": "Réapparition 3:00 après avoir été cassés. Tunnels : 5:00.",
+      "conseil": "À prendre sur le trajet, jamais en détour."
+    },
+    {
+      "id": "medium_camps",
+      "nom": "Medium camps",
+      "categorie": "jungle",
+      "type": "unique",
+      "temps_s": 300,
+      "annonce_avant_s": 15,
+      "fiabilite": "donnees",
+      "detail": "Réapparition 4:50 après nettoyage.",
+      "conseil": "Wave renvoyée d'abord."
+    },
+    {
+      "id": "powerups",
+      "nom": "Powerups (ponts)",
+      "categorie": "objectif",
+      "type": "recurrent",
+      "temps_s": 300,
+      "intervalle_s": 300,
+      "annonce_avant_s": 30,
+      "fiabilite": "donnees",
+      "detail": "Heavy melee pour prendre. Dure 2:40, perdu à la mort. Deux ponts en même temps.",
+      "conseil": "Y aller si la wave est poussée ; utile juste avant un combat ou un objectif."
+    },
+    {
+      "id": "trooper_melee",
+      "nom": "Melee Troopers dans les vagues",
+      "categorie": "lane",
+      "type": "unique",
+      "temps_s": 300,
+      "annonce_avant_s": 0,
+      "fiabilite": "wiki",
+      "detail": "Les vagues passent à 2 Ranged + 1 Melee + 1 Medic."
+    },
+    {
+      "id": "guardian_0",
+      "nom": "Guardians à 0 % de résistance",
+      "categorie": "structure",
+      "type": "unique",
+      "temps_s": 360,
+      "annonce_avant_s": 0,
+      "fiabilite": "wiki",
+      "detail": "50 % à 0:00, −50 % à 12:00."
+    },
+    {
+      "id": "zipline_boost",
+      "nom": "Zipline Speed Boost disponible",
+      "categorie": "deplacement",
+      "type": "unique",
+      "temps_s": 360,
+      "annonce_avant_s": 0,
+      "fiabilite": "wiki",
+      "detail": "+80 % pendant 32 s, cooldown 6 min."
+    },
+    {
+      "id": "large_camps",
+      "nom": "Large camps",
+      "categorie": "jungle",
+      "type": "unique",
+      "temps_s": 480,
+      "annonce_avant_s": 15,
+      "fiabilite": "donnees",
+      "detail": "Réapparition 5:35 après nettoyage. Résistants : difficiles tôt.",
+      "conseil": "Wave renvoyée d'abord ; pas seul si le héros ne nettoie pas vite."
+    },
+    {
+      "id": "sinners",
+      "nom": "Sinner's Sacrifice",
+      "categorie": "jungle",
+      "type": "unique",
+      "temps_s": 480,
+      "annonce_avant_s": 15,
+      "fiabilite": "donnees",
+      "detail": "Réapparition 5:00. Finir au heavy melee sur le jackpot : 4 buffs permanents.",
+      "conseil": "Prioritaire sur les camps. Ceux du côté adverse quand on a la priorité de lane."
+    },
+    {
+      "id": "fin_laning",
+      "nom": "Fin du laning",
+      "categorie": "phase",
+      "type": "unique",
+      "temps_s": 480,
+      "annonce_avant_s": 0,
+      "fiabilite": "donnees",
+      "detail": "Revenu passif pour les deux joueurs les plus pauvres de l'équipe."
+    },
+    {
+      "id": "walker_0",
+      "nom": "Walkers à 0 % de résistance",
+      "categorie": "structure",
+      "type": "unique",
+      "temps_s": 540,
+      "annonce_avant_s": 0,
+      "fiabilite": "wiki",
+      "detail": "65 % à 0:00, −65 % à 18:00."
+    },
+    {
+      "id": "urn",
+      "nom": "Soul Urn",
+      "categorie": "objectif",
+      "type": "recurrent",
+      "temps_s": 600,
+      "intervalle_s": 300,
+      "annonce_avant_s": 30,
+      "fiabilite": "donnees",
+      "detail": "Ramassable 12,5 s après l'apparition. Première côté Yellow, puis alternance. 250 + 70 souls/min, 4 buffs au porteur. Pas de zipline ni de teleporter.",
+      "conseil": "À livrer quand l'équipe met la pression devant. Mirage : Traveler fait lâcher l'urne."
+    },
+    {
+      "id": "buffs_niv2",
+      "nom": "Buffs permanents niveau 2",
+      "categorie": "jungle",
+      "type": "unique",
+      "temps_s": 600,
+      "annonce_avant_s": 0,
+      "fiabilite": "donnees",
+      "detail": "Buff Containers, Sinner's Sacrifice et Urn donnent des buffs plus forts."
+    },
+    {
+      "id": "rift",
+      "nom": "Unstable Rift",
+      "categorie": "objectif",
+      "type": "fenetre",
+      "debut_s": 680,
+      "fin_s": 800,
+      "annonce_avant_s": 60,
+      "fiabilite": "incertain",
+      "detail": "Ouverture estimée entre 11:20 et 13:20 ; effet visuel sur un pont 1:20 avant. Capture en 12 s. Suivants environ 7 min après (± 1 min).",
+      "conseil": "Objectif d'équipe : s'y rendre groupés, wave poussée."
+    },
+    {
+      "id": "guardian_plancher",
+      "nom": "Guardians à −50 %",
+      "categorie": "structure",
+      "type": "unique",
+      "temps_s": 720,
+      "annonce_avant_s": 0,
+      "fiabilite": "wiki",
+      "detail": "Résistance minimale atteinte."
+    },
+    {
+      "id": "walker_plancher",
+      "nom": "Walkers à −65 %",
+      "categorie": "structure",
+      "type": "unique",
+      "temps_s": 1080,
+      "annonce_avant_s": 0,
+      "fiabilite": "wiki",
+      "detail": "Résistance minimale atteinte."
+    },
+    {
+      "id": "vagues_25",
+      "nom": "Vagues toutes les 25 s",
+      "categorie": "lane",
+      "type": "unique",
+      "temps_s": 1200,
+      "annonce_avant_s": 0,
+      "fiabilite": "donnees",
+      "detail": "Au lieu de 30 s. Le Patron commence à gagner des PV."
+    },
+    {
+      "id": "buffs_niv3",
+      "nom": "Buffs permanents niveau 3",
+      "categorie": "jungle",
+      "type": "unique",
+      "temps_s": 1800,
+      "annonce_avant_s": 0,
+      "fiabilite": "donnees",
+      "detail": "Dernier palier."
+    },
+    {
+      "id": "vagues_20",
+      "nom": "Vagues toutes les 20 s",
+      "categorie": "lane",
+      "type": "unique",
+      "temps_s": 2100,
+      "annonce_avant_s": 0,
+      "fiabilite": "donnees",
+      "detail": "Troopers +50 % PV (wiki)."
+    }
+  ],
+
+  "declenches": [
+    {
+      "id": "midboss",
+      "nom": "Mid-Boss",
+      "bouton": "Mid-Boss tué",
+      "delais_s": [420, 360, 300],
+      "annonce_avant_s": 45,
+      "fiabilite": "wiki",
+      "detail": "Présent dès 0:00. 7 min après la 1re mort (données), puis 6 et 5 min (wiki seul). Le dernier délai se répète.",
+      "conseil": "À faire après un combat gagné avec 2-3 ennemis morts. Le Rejuvenator se vole au heavy melee."
+    },
+    {
+      "id": "rejuv",
+      "nom": "Rejuvenator actif",
+      "bouton": "Rejuv pris",
+      "delais_s": [180],
+      "annonce_avant_s": 30,
+      "fiabilite": "donnees",
+      "detail": "Le buff dure 3 min ; le jeu prévient à 30 s de la fin."
+    },
+    {
+      "id": "rift_suivant",
+      "nom": "Unstable Rift suivant",
+      "bouton": "Rift terminé",
+      "delais_s": [420],
+      "marge_s": 60,
+      "annonce_avant_s": 60,
+      "fiabilite": "incertain",
+      "detail": "Environ 7 min après le précédent, à ± 1 min."
+    }
+  ],
+
+  "courbes": {
+    "respawn": {
+      "nom": "Temps de respawn",
+      "fiabilite": "donnees",
+      "points_s": [[0, 8], [300, 8], [1200, 38], [1800, 70], [2400, 85]],
+      "plafond_s": 90,
+      "detail": "Interpolation linéaire entre les points. +10 s si on meurt d'une unité non-joueur."
+    },
+    "vagues": {
+      "nom": "Intervalle des vagues de Troopers",
+      "fiabilite": "donnees",
+      "paliers_s": [[0, 30], [1200, 25], [2100, 20]]
+    }
+  },
+
+  "phases": [
+    { "nom": "Laning", "debut_s": 0, "fin_s": 480, "resume": "Farmer sa lane, ne pas perdre de wave." },
+    { "nom": "Mid-game", "debut_s": 480, "fin_s": 1320, "resume": "La carte s'ouvre : wave d'abord, puis jungle et objectifs." },
+    { "nom": "Late-game", "debut_s": 1320, "fin_s": null, "resume": "Respawns longs : rester groupé, la sécurité avant l'efficacité." }
+  ],
+
+  "checklist": {
+    "source": "Guide macro de Wouks – Deadlock Academy (10 septembre 2026), reformulé. Jugement, pas donnée de jeu.",
+    "priorites": [
+      "Ma lane : vais-je perdre une wave, ai-je la priorité, mon objectif est-il attaqué ?",
+      "Farm et objectifs : une wave, un camp sur ma route, un objectif à prendre à temps ?",
+      "Pression : menacer un Walker, me montrer dans leur jungle.",
+      "Combat : seulement s'il est proche, gagnable et que ma wave est poussée."
+    ]
+  }
+}

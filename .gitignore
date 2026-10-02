@@ -1,0 +1,10 @@
+# Vidéos et transcriptions brutes : contenu de tiers, ne pas publier
+medias/
+*.mp4
+*.mkv
+*.webm
+*.m4a
+*.mp3
+
+.venv/
+__pycache__/
