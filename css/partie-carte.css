@@ -52,3 +52,4 @@ main.partie {
 /* La colonne Priorités est plus étroite depuis l'ajout de la carte : elle défile si besoin. */
 main.partie .checklist { overflow-y: auto; min-height: 0; }
 main.partie .checklist ol { font-size: .95rem; }
+.horloge-etat { white-space: nowrap; }

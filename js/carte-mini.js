@@ -120,7 +120,11 @@
   }
 
   function creer(conteneur, donnees) {
-    const carte = donnees.carte, timeline = donnees.timeline;
+    const carte = donnees.carte, timeline = donnees.timeline, niveaux = donnees.niveaux || { evenements: {} };
+    // Même filtre que le chrono : un événement s'affiche à partir du niveau donné par data/niveaux.json ;
+    // une couche sans événement suit le niveau de data/map.json.
+    const montre = (c, couche) => (c.evenement && niveaux.evenements[c.evenement] != null
+      ? niveaux.evenements[c.evenement] : (couche.niveau || 1)) <= DLN.niveau();
     const parId = {};
     carte.couches.forEach((c) => { parId[c.id] = c; });
     const evParId = {};
@@ -149,7 +153,7 @@
       const lignes = [];
       COUCHES.forEach((c) => {
         const couche = parId[c.id];
-        if (!couche) return;
+        if (!couche || !montre(c, couche)) return;
         const ev = c.evenement ? evParId[c.evenement] : null;
         const st = etatEvenement(ev, t);
         const g = svgEl('g', { class: 'mini-couche etat-' + st.etat });
@@ -185,7 +189,9 @@
         else if (l.st.etat === 'ferme') texte = 'ouvre à ' + fmt(t + l.st.dans);
         else if (l.st.etat === 'attente') texte = l.st.dans != null ? 'prochain dans ' + fmt(l.st.dans) : 'terminé';
         else texte = 'ouvert';
-        li.append(p, el('span', 'mini-nom', l.ev.nom.split(' (')[0]), el('span', 'mini-quand', texte));
+        const nom = el('span', 'mini-nom', l.ev.nom.split(' (')[0]);
+        if (l.ev.fiabilite === 'incertain') nom.append(' ', el('span', 'marque', 'incertain'));
+        li.append(p, nom, el('span', 'mini-quand', texte));
         if (l.ev.conseil && (l.st.etat === 'maintenant' || l.st.etat === 'bientot')) li.append(el('span', 'mini-conseil', l.ev.conseil));
         liste.append(li);
       });
@@ -193,6 +199,7 @@
 
     dessiner();
     setInterval(dessiner, 1000);
+    DLN.surNiveau(dessiner);
     window.addEventListener('storage', (e) => { if (e.key === CLE_CHRONO) dessiner(); });
     return { redessiner: dessiner };
   }
@@ -202,8 +209,8 @@
   // Sur la page En partie : remplit #carte-partie s'il existe.
   const cible = document.getElementById('carte-partie');
   if (cible) {
-    Promise.all([DLN.charger('data/map.json'), DLN.charger('data/timeline.json')])
-      .then((r) => creer(cible, { carte: r[0], timeline: r[1] }))
+    Promise.all([DLN.charger('data/map.json'), DLN.charger('data/timeline.json'), DLN.charger('data/niveaux.json').catch(() => null)])
+      .then((r) => creer(cible, { carte: r[0], timeline: r[1], niveaux: r[2] }))
       .catch(() => { cible.append(el('p', 'vide', 'Carte indisponible (data/map.json).')); });
   }
 })();
