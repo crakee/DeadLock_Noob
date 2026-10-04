@@ -76,6 +76,16 @@
     const visibles = panneauxVisibles();
     document.querySelectorAll('[data-panneau]').forEach((s) => { s.hidden = visibles.indexOf(s.dataset.panneau) === -1; });
     Object.keys(MODES).forEach((m) => document.body.classList.toggle('mode-' + m, m === affichage.mode));
+    // En mode Complet, « Maintenant » et « Priorités » passent sous « À venir » : la colonne de gauche
+    // garde le chrono, le plan et les minuteurs, sans que tout s'empile au même endroit.
+    const gauche = document.querySelector('.col-gauche'), centre = document.querySelector('.col-avenir');
+    if (gauche && centre) {
+      const cible = affichage.mode === 'complet' ? centre : gauche;
+      ['maintenant', 'checklist'].forEach((id) => {
+        const s = document.querySelector('[data-panneau="' + id + '"]');
+        if (s && s.parentNode !== cible) cible.append(s);
+      });
+    }
     // Une colonne sans panneau visible disparaît (secours si :has n'est pas pris en charge).
     document.querySelectorAll('.partie-colonnes > .col').forEach((c) => {
       c.hidden = !Array.prototype.some.call(c.children, (x) => !x.hidden);
@@ -173,7 +183,7 @@
     liste.append(bouton('Revenir au réglage du mode', 'discret', () => { delete affichage.perso[affichage.mode]; ecrire(CLE_AFFICHAGE, affichage); appliquerAffichage(); dessinerContexte(); }));
     perso.append(liste);
 
-    zone.append(choixHeros, role, lanes, equipe, modes, perso);
+    zone.append(choixHeros, role, lanes, equipe, modes, perso, menuAlertes());
     if (installation) zone.append(bouton('📲 Installer', 'discret', installer, 'Installer le site comme une application (écran d\'accueil, plein écran)'));
   }
 
@@ -338,6 +348,147 @@
     }
   }
 
+  // ---------- alertes : flash plein écran, notification système, vibration ----------
+  // Le son et la voix restent ceux du chrono (js/timeline.js, cases #opt-son et #opt-voix) :
+  // le menu « Alertes » les regroupe ici.
+
+  const CLE_ALERTES = 'dln.partie.alertes.v1';
+  let premiereFois = false;
+  try { premiereFois = localStorage.getItem(CLE_ALERTES) == null; } catch (e) { /* stockage indisponible */ }
+  let alertes = lire(CLE_ALERTES, { flash: true, notif: false, vibre: true });
+  // Premier passage : son et voix du chrono activés (on ne regarde pas le second écran en partie).
+  function activerSonEtVoix() {
+    if (!premiereFois) return;
+    premiereFois = false;
+    ecrire(CLE_ALERTES, alertes);
+    ['opt-son', 'opt-voix'].forEach((id) => {
+      const c = document.getElementById(id);
+      if (c && !c.checked) { c.checked = true; c.dispatchEvent(new Event('change')); }
+    });
+  }
+  const declenchees = new Set();
+  let premierPassage = true;
+
+  function evenementsSurveilles() {
+    if (!D) return [];
+    const r = roleCourant();
+    const prio = r && D.conseils.roles[r] ? D.conseils.roles[r].priorites : null;
+    return D.timeline.evenements.filter((e) => e.annonce_avant_s > 0 && niveauOk(e.id) && (!prio || prio.indexOf(e.id) !== -1));
+  }
+
+  // Seuils (préavis puis apparition) de la prochaine occurrence et de la précédente.
+  function seuils(ev, t) {
+    const liste = [];
+    const ajoute = (debut, n) => {
+      liste.push({ cle: ev.id + ':' + n + ':avant', t: debut - ev.annonce_avant_s, debut: debut, avant: true });
+      liste.push({ cle: ev.id + ':' + n + ':mtn', t: debut, debut: debut, avant: false });
+    };
+    if (ev.type === 'unique') ajoute(ev.temps_s, 0);
+    else if (ev.type === 'fenetre') ajoute(ev.debut_s, 0);
+    else if (ev.type === 'recurrent') {
+      const n = Math.max(0, Math.floor((t - ev.temps_s) / ev.intervalle_s));
+      ajoute(ev.temps_s + n * ev.intervalle_s, n);
+      ajoute(ev.temps_s + (n + 1) * ev.intervalle_s, n + 1);
+    }
+    return liste;
+  }
+
+  function surveiller() {
+    const chrono = tempsChrono();
+    if (!D || !chrono.lance) { premierPassage = true; return; }
+    const t = chrono.t;
+    evenementsSurveilles().forEach((ev) => {
+      seuils(ev, t).forEach((s) => {
+        if (t < s.t) { declenchees.delete(s.cle); return; }       // l'horloge a été reculée
+        if (t > s.t + 8 || declenchees.has(s.cle)) { declenchees.add(s.cle); return; }
+        declenchees.add(s.cle);
+        if (!premierPassage) alerter(ev, s.avant ? s.debut - t : 0);
+      });
+    });
+    premierPassage = false;
+  }
+
+  function alerter(ev, restant) {
+    const nom = ev.nom.split(' (')[0];
+    const titre = restant > 1 ? nom + ' dans ' + Math.round(restant) + ' s' : nom + ' : maintenant';
+    const texte = ev.conseil || ev.detail || '';
+    if (alertes.flash) flash(titre, texte);
+    if (alertes.vibre && navigator.vibrate) { try { navigator.vibrate([250, 120, 250, 120, 400]); } catch (e) { /* pas de vibration */ } }
+    if (alertes.notif) notifier(titre, texte, ev.id);
+  }
+
+  function flash(titre, texte) {
+    let z = document.getElementById('alerte-flash');
+    if (!z) {
+      z = el('div', 'alerte-flash');
+      z.id = 'alerte-flash';
+      z.setAttribute('role', 'alert');
+      z.addEventListener('click', () => { z.hidden = true; });
+      document.body.append(z);
+    }
+    z.textContent = '';
+    z.append(el('div', 'alerte-flash-titre', titre), el('div', 'alerte-flash-texte', texte), el('div', 'alerte-flash-aide', 'clic pour fermer'));
+    z.hidden = false;
+    z.classList.remove('anime');
+    void z.offsetWidth;                // relance l'animation
+    z.classList.add('anime');
+    clearTimeout(flash.minuteur);
+    flash.minuteur = setTimeout(() => { z.hidden = true; }, 7000);
+  }
+
+  function notifier(titre, texte, tag) {
+    if (!('Notification' in window) || Notification.permission !== 'granted') return;
+    const options = { body: texte, tag: 'dln-' + tag, renotify: true, icon: 'icones/icone-192.png', badge: 'icones/icone-192.png' };
+    const repli = () => { try { new Notification(titre, options); } catch (e) { /* notifications indisponibles */ } };
+    if (navigator.serviceWorker && navigator.serviceWorker.getRegistration) {
+      navigator.serviceWorker.getRegistration().then((r) => (r ? r.showNotification(titre, options) : repli())).catch(repli);
+    } else repli();
+  }
+
+  function menuAlertes() {
+    const d = el('details', 'contexte-panneaux contexte-alertes');
+    const resume = el('summary', null, '🔔 Alertes');
+    d.append(resume);
+    const liste = el('div', 'contexte-panneaux-liste alertes-liste');
+    const caseAlerte = (texte, aide, lireV, ecrireV) => {
+      const label = el('label');
+      const c = el('input');
+      c.type = 'checkbox';
+      c.checked = lireV();
+      c.addEventListener('change', () => { ecrireV(c.checked); c.blur(); });
+      label.append(c, ' ' + texte);
+      if (aide) label.title = aide;
+      liste.append(label);
+      return c;
+    };
+    // Son et voix : on pilote les cases du chrono pour garder un seul réglage.
+    const relais = (id) => () => { const c = document.getElementById(id); return !!(c && c.checked); };
+    const relaisEcrire = (id) => (v) => { const c = document.getElementById(id); if (c && c.checked !== v) { c.checked = v; c.dispatchEvent(new Event('change')); } };
+    caseAlerte('Son (bip)', 'Un bip au début du préavis', relais('opt-son'), relaisEcrire('opt-son'));
+    caseAlerte('Voix (« Soul Urn dans 30 secondes »)', 'Annonce vocale du navigateur', relais('opt-voix'), relaisEcrire('opt-voix'));
+    caseAlerte('Flash plein écran', 'Un grand bandeau sur toute la page', () => alertes.flash, (v) => { alertes.flash = v; ecrire(CLE_ALERTES, alertes); });
+    caseAlerte('Vibration (téléphone)', null, () => alertes.vibre, (v) => { alertes.vibre = v; ecrire(CLE_ALERTES, alertes); });
+    const notif = caseAlerte('Notifications du système', 'Elles s\'affichent par-dessus les autres fenêtres, sur ton écran principal', () => alertes.notif && 'Notification' in window && Notification.permission === 'granted', (v) => {
+      if (!v) { alertes.notif = false; ecrire(CLE_ALERTES, alertes); return; }
+      if (!('Notification' in window)) { notif.checked = false; return; }
+      Notification.requestPermission().then((p) => {
+        alertes.notif = p === 'granted';
+        notif.checked = alertes.notif;
+        ecrire(CLE_ALERTES, alertes);
+        if (alertes.notif) notifier('Notifications activées', 'Tu seras prévenu même si tu ne regardes pas cet écran.', 'test');
+      });
+    });
+    liste.append(bouton('Tester une alerte', 'discret', () => {
+      const ev = evenementsSurveilles()[0] || { id: 'test', nom: 'Soul Urn', conseil: 'Exemple d\'alerte.' };
+      alerter(ev, 30);
+      const c = document.getElementById('opt-voix');
+      if (c && c.checked && 'speechSynthesis' in window) { const u = new SpeechSynthesisUtterance(ev.nom.split(' (')[0] + ' dans 30 secondes'); u.lang = 'fr-FR'; speechSynthesis.speak(u); }
+    }));
+    liste.append(el('p', 'aide', 'Conseil : active la voix et les notifications. En jeu plein écran exclusif, Windows peut masquer les notifications : préfère le mode « plein écran fenêtré » du jeu.'));
+    d.append(liste);
+    return d;
+  }
+
   // ---------- installation (PWA) ----------
 
   let installation = null;
@@ -373,6 +524,8 @@
     dessinerPlan();
     ecouteurs.forEach((f) => f());
     setInterval(dessinerPlan, 1000);
+    setInterval(surveiller, 500);
+    activerSonEtVoix();
     DLN.surNiveau(dessinerPlan);
     if (DLN.orientationCarte) DLN.orientationCarte.surChange(dessinerContexte);
     window.addEventListener('storage', (e) => { if (e.key === CLE_ENFACE || e.key === CLE_CHRONO) dessinerPlan(); });

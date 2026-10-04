@@ -14,7 +14,11 @@ main.partie {
 .col-avenir { flex: 5 1 0; }
 .col-carte { flex: 5 1 0; }
 .col-enface { flex: 4 1 0; }
-.col > section { min-height: 0; }
+.col > section { min-height: 0; overflow-y: auto; }
+/* Le chrono et les minuteurs gardent leur taille ; les autres panneaux rétrécissent et défilent. */
+.col > .horloge, .col > .declenches { flex-shrink: 0; overflow: visible; }
+.col-avenir .avenir { flex: 1 1 60%; }
+.col-avenir .maintenant, .col-avenir .checklist { flex: 0 1 auto; }
 .col-avenir .avenir, .col-enface .enface, .col-carte .carte-partie { flex: 1 1 auto; }
 .col-gauche .plan { flex: 1 1 auto; overflow-y: auto; }
 .col-gauche .checklist { overflow-y: auto; flex: 0 1 auto; }
@@ -42,6 +46,7 @@ main.partie .frise { flex: none; }
 
 /* ---------- chrono plus discret hors mode Complet ---------- */
 body.mode-normal .horloge-temps, body.mode-compact .horloge-temps { font-size: 4.6rem; }
+body.mode-complet .horloge-temps { font-size: 5.6rem; }
 body.mode-normal .horloge .commandes, body.mode-compact .horloge .commandes { margin-top: .3rem; }
 body.mode-compact .partie-colonnes { justify-content: center; }
 body.mode-compact .col-gauche { flex: 0 1 46rem; }
@@ -112,3 +117,21 @@ body.mode-compact .col-gauche { flex: 0 1 46rem; }
 }
 .plan-ouverts { margin: .4rem 0 0; font-size: .92rem; color: var(--doux); }
 .plan-ennemis-titre { margin: .4rem 0 .1rem; font-size: .9rem; }
+
+/* ---------- alertes ---------- */
+.alertes-liste { grid-template-columns: 1fr; min-width: 18rem; right: .7rem; }
+.alertes-liste .aide { margin: .3rem 0 0; max-width: 22rem; white-space: normal; }
+.alerte-flash {
+  position: fixed; inset: 0; z-index: 50;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem;
+  padding: 2rem; text-align: center; cursor: pointer;
+  background: rgba(59, 42, 12, .92);
+  border: 1.2rem solid var(--alerte);
+}
+.alerte-flash[hidden] { display: none; }
+.alerte-flash.anime { animation: alerte-clignote .5s ease-in-out 4 alternate; }
+@keyframes alerte-clignote { from { border-color: var(--alerte); background: rgba(59, 42, 12, .92); } to { border-color: #fff; background: rgba(120, 80, 10, .95); } }
+@media (prefers-reduced-motion: reduce) { .alerte-flash.anime { animation: none; } }
+.alerte-flash-titre { font-family: var(--titre); font-size: clamp(2.5rem, 9vw, 7rem); line-height: 1; text-transform: uppercase; color: #fff; }
+.alerte-flash-texte { font-size: clamp(1.1rem, 2.4vw, 2rem); max-width: 50rem; color: var(--texte); }
+.alerte-flash-aide { font-size: .9rem; color: var(--doux); }
