@@ -112,3 +112,11 @@ details.counters-actifs > summary { font-size: .8rem; text-transform: uppercase;
   .page-counters { grid-template-columns: minmax(0, 1fr); }
   .compo-table { font-size: .8rem; }
 }
+
+/* Notes de puissance Early / Mid / End */
+.notes-puissance { display: inline-flex; flex-wrap: wrap; gap: .25rem; vertical-align: middle; margin-left: .4rem; font-size: .8rem; font-weight: 400; text-transform: none; letter-spacing: 0; }
+.note-phase { padding: 0 .45em; border: 1px solid var(--bord); border-radius: .3em; white-space: nowrap; }
+.note-haute { border-color: var(--bon); color: var(--bon); }
+.note-basse { border-color: var(--danger); color: var(--danger); }
+.compo-table .notes-puissance { margin-left: 0; }
+.compo-nom .etiquettes { display: flex; margin-top: .15rem; }

@@ -102,7 +102,7 @@
           (mode === 'compo' && allies.indexOf(h.id) !== -1 ? ' allie' : ''));
         b.type = 'button';
         b.title = h.nom + (rolesDe(h.id).length > 1 ? ' · ' + rolesDe(h.id).map((r) => r.nom).join(', ') : '');
-        b.append(icone(h), el('span', null, h.nom));
+        b.append(icone(h), el('span', null, h.nom), DLN.etiquettes.pastilles(h.id));
         b.addEventListener('click', () => basculer(h.id));
         grille.append(b);
       });
@@ -413,8 +413,47 @@
   const LIBELLES_TENDANCE = {
     tard: 'plus fort quand la partie dure',
     tot: 'plus fort quand la partie est courte',
-    stable: 'pas de tendance nette selon la durée'
+    stable: 'N/A'
   };
+  const PHASES_DUREE = ['Early', 'Mid', 'End'];
+
+  // Note de puissance sur 10 par durée de partie : 5 = son winrate habituel, +1 par point de winrate
+  // au-dessus. Affichée seulement si la tendance dépasse la marge d'erreur, sinon « N/A ».
+  function notesPuissance(id) {
+    const td = tendance(id);
+    const t = tempoDe(id);
+    const s = (stats.tranches[tranche] || {}).heros ? stats.tranches[tranche].heros[String(id)] : null;
+    if (!td || td.sens === 'stable' || !t || !s || s.winrate == null) return null;
+    return t.durees.map((d, i) => ({
+      phase: PHASES_DUREE[i] || ('> ' + d.de_min + ' min'),
+      duree: d.a_min ? d.de_min + '–' + d.a_min + ' min' : 'plus de ' + d.de_min + ' min',
+      note: d.winrate == null ? null : Math.max(0, Math.min(10, Math.round(5 + d.winrate - s.winrate)))
+    }));
+  }
+
+  function texteNotes(id) {
+    const n = notesPuissance(id);
+    if (!n) return 'N/A';
+    return n.map((x) => x.phase + ' ' + (x.note == null ? '?' : x.note) + '/10').join(' · ');
+  }
+
+  function blocNotes(id) {
+    const n = notesPuissance(id);
+    const z = el('span', 'notes-puissance');
+    if (!n) {
+      z.append(el('span', 'puce', 'N/A'));
+      z.title = 'Pas d\'écart entre parties courtes et longues au-delà de la marge d\'erreur dans cette tranche de rang.';
+      return z;
+    }
+    n.forEach((x) => {
+      const p = el('span', 'note-phase note-' + (x.note == null ? 'na' : x.note >= 6 ? 'haute' : x.note <= 4 ? 'basse' : 'moyenne'));
+      p.append(el('span', null, x.phase + ' '), el('strong', null, x.note == null ? '?' : x.note + '/10'));
+      p.title = 'Parties de ' + x.duree;
+      z.append(p);
+    });
+    z.title = 'Note de puissance selon la durée de la partie : 5/10 = son winrate habituel, +1 par point de winrate en plus.';
+    return z;
+  }
 
   function blocTempo(id) {
     const t = tempoDe(id);
@@ -422,7 +461,8 @@
     if (!t) return bloc;
     const td = tendance(id);
     const titre = el('h3', null, 'Quand il est fort ');
-    if (td) titre.append(el('span', 'puce fort tendance-' + td.sens, LIBELLES_TENDANCE[td.sens]));
+    titre.append(blocNotes(id));
+    if (td && td.sens !== 'stable') titre.append(el('span', 'puce fort tendance-' + td.sens, LIBELLES_TENDANCE[td.sens]));
     bloc.append(titre);
     const table = el('table', 'tempo-table');
     const tr1 = el('tr'), tr2 = el('tr');
@@ -483,7 +523,7 @@
     retirer.title = 'Retirer ' + h.nom;
     retirer.addEventListener('click', () => basculer(id));
     tete.append(icone(h, 'heros-icone'), el('h2', null, h.nom), el('span', 'doux', h.role || ''), retirer);
-    bloc.append(tete, bandeStats(id));
+    bloc.append(tete, DLN.etiquettes.editeur(id), bandeStats(id));
     if (h.style_de_jeu) bloc.append(el('p', 'heros-style', h.style_de_jeu));
     bloc.append(blocTempo(id), blocCompetences(h));
     bloc.append(el('h3', 'section-titre', 'Ce qui le rend dangereux, et quoi acheter'));
@@ -536,7 +576,7 @@
     lien.append(icone(h), el('span', null, h.nom));
     lien.title = 'Ouvrir sa fiche';
     lien.addEventListener('click', () => { if (face) ouvrir(id); else { courant = null; ouvrirAllie(id); } });
-    nom.append(lien);
+    nom.append(lien, DLN.etiquettes.pastilles(id));
     const s = (stats.tranches[tranche] || {}).heros ? stats.tranches[tranche].heros[String(id)] : null;
     const td = tendance(id);
     const d = dureeA(id, minute);
@@ -546,7 +586,7 @@
       el('td', null, rolesDe(id).map((r) => r.nom).join(', ') || '—'),
       el('td', null, typeDegats(id) || '—'),
       el('td', 'nombre', s && s.winrate != null ? s.winrate.toFixed(1) + ' %' : '—'),
-      el('td', td ? 'tendance-' + td.sens : null, td ? LIBELLES_TENDANCE[td.sens] : '—'),
+      (function () { const c = el('td', td ? 'tendance-' + td.sens : null); c.append(blocNotes(id)); return c; })(),
       el('td', null, deja.length ? deja.map((o) => o.nom).join(', ') : 'rien de majeur'),
       el('td', null, prochain ? prochain.nom + ' vers ' + Math.round(prochain.minute) + ' min' : '—'));
     if (face) {
@@ -571,7 +611,7 @@
     }
     const table = el('table', 'compo-table');
     const tete = el('tr');
-    ['Héros', 'Rôle', 'Dégâts', 'Winrate', 'Quand il est fort', 'Objets clés déjà achetés à ' + minute + ' min', 'Prochain pic']
+    ['Héros', 'Rôle', 'Dégâts', 'Winrate', 'Puissance (Early · Mid · End)', 'Objets clés déjà achetés à ' + minute + ' min', 'Prochain pic']
       .concat(face ? ['Ce qu\'il fait'] : []).forEach((t) => tete.append(el('th', null, t)));
     table.append(tete);
     ids.forEach((id) => table.append(ligneCompo(id, face)));
@@ -605,6 +645,7 @@
       'en ' + LIBELLES_TRANCHE[tranche] + ', peu de héros ont une tendance qui dépasse la marge d\'erreur.'));
     zone.append(reglage);
 
+    zone.append(tableCompo('En face', choisis, true), tableCompo('Mon équipe', allies, false));
     // Pics de puissance d'en face, dans l'ordre chronologique.
     const pics = [];
     choisis.forEach((id) => objetsClesDe(id).forEach((o) => pics.push({ id: id, o: o })));
@@ -624,7 +665,6 @@
       zone.append(bloc);
     }
 
-    zone.append(tableCompo('En face', choisis, true), tableCompo('Mon équipe', allies, false));
     if (choisis.length) {
       afficherResume(zone);
       afficherAchats(zone);
@@ -688,7 +728,7 @@
   }
 
   Promise.all(['data/counters.json', 'data/heroes.json', 'data/items.json', 'data/heros-details.json',
-    'data/hero-stats.json', 'data/roles.json', 'data/profil.json', 'data/tempo.json'].map(DLN.charger).concat([DLN.profil])).then((r) => {
+    'data/hero-stats.json', 'data/roles.json', 'data/profil.json', 'data/tempo.json'].map(DLN.charger).concat([DLN.profil, DLN.etiquettes.pret])).then((r) => {
     counters = r[0]; heros = r[1]; details = r[3]; stats = r[4]; roles = r[5]; profil = r[6]; tempo = r[7];
     r[2].objets.forEach((o) => { objets[o.nom] = o; });
     document.getElementById('app').hidden = false;
@@ -700,6 +740,8 @@
     });
     tranche = DLN.tranche();
     DLN.surTranche(() => { tranche = DLN.tranche(); afficher(); });
+    // La grille et les tableaux suivent les étiquettes ; la fiche ouverte garde son éditeur (il se redessine seul).
+    DLN.etiquettes.surChange(() => { if (mode === 'compo') afficher(); else afficherGrille(); });
     afficher();
     DLN.surNiveau(afficher);
   }, DLN.echec);

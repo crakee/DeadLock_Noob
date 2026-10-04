@@ -112,8 +112,11 @@ def competence(a):
     }
 
 
-def construire_heros(heros, capacites):
+def construire_heros(heros, capacites, heros_fr=None, capacites_fr=None):
+    """`heros_fr` et `capacites_fr` : mêmes listes demandées avec language=french (textes officiels du jeu)."""
     par_classe = {a["class_name"]: a for a in capacites}
+    par_classe_fr = {a["class_name"]: a for a in (capacites_fr or [])}
+    heros_fr = {x["id"]: x for x in (heros_fr or [])}
     sortie = []
     for h in sorted(heros, key=lambda h: h["name"]):
         if not h.get("player_selectable") or h.get("disabled") or h.get("in_development"):
@@ -122,13 +125,22 @@ def construire_heros(heros, capacites):
         for emplacement in ("signature1", "signature2", "signature3", "signature4"):
             a = par_classe.get((h.get("items") or {}).get(emplacement))
             if a:
-                comps.append({"touche": int(emplacement[-1]), **competence(a)})
+                c = {"touche": int(emplacement[-1]), **competence(a)}
+                fr = par_classe_fr.get(a["class_name"])
+                if fr:
+                    dfr = fr.get("description") or {}
+                    c["nom_fr"] = fr.get("name")
+                    c["resume_fr"] = texte(dfr.get("quip"))
+                    c["description_fr"] = texte(dfr.get("desc"))
+                    c["ameliorations_fr"] = [texte(dfr.get(k)) for k in ("t1_desc", "t2_desc", "t3_desc") if dfr.get(k)]
+                comps.append(c)
         # Effet de base seulement : les améliorations ajoutent du vol de vie ou un ralentissement à presque tout le monde.
         corpus = " ".join(f"{c['resume']} {c['description']}" for c in comps)
         mecaniques = etiquettes(MECANIQUES, corpus)
         if any(c["canalisee"] for c in comps):
             mecaniques.append("canalisation")
         d = h.get("description") or {}
+        dfr = (heros_fr.get(h["id"]) or {}).get("description") or {}
         stats = h.get("starting_stats") or {}
         sortie.append({
             "id": h["id"],
@@ -139,6 +151,8 @@ def construire_heros(heros, capacites):
             "arme": h.get("gun_tag"),
             "role": texte(d.get("role")),
             "style_de_jeu": texte(d.get("playstyle")),
+            "role_fr": texte(dfr.get("role")) or None,
+            "style_de_jeu_fr": texte(dfr.get("playstyle")) or None,
             "pv_depart": (stats.get("max_health") or {}).get("value"),
             "image": (h.get("images") or {}).get("icon_hero_card_webp"),
             "icone": (h.get("images") or {}).get("icon_image_small_webp"),
@@ -419,6 +433,47 @@ def construire_tempo(depuis_ts, stats, objets):
     return sortie
 
 
+# Sections nommées par une clé de traduction du jeu dans les builds publics.
+SECTIONS_BUILD = {
+    "#Citadel_HeroBuilds_EarlyGame": "Early game", "#Citadel_HeroBuilds_Early": "Early game",
+    "#Citadel_HeroBuilds_MidGame": "Mid game", "#Citadel_HeroBuilds_Mid": "Mid game",
+    "#Citadel_HeroBuilds_LateGame": "Late game", "#Citadel_HeroBuilds_Late": "Late game",
+}
+
+
+def court(t, n=220):
+    t = texte(t)
+    return (t[:n - 1].rstrip() + "…") if len(t) > n else t
+
+
+def construire_builds(depuis_ts, heros, objets, nombre=3):
+    """Les builds publics (ceux du navigateur de builds du jeu) les plus mis en favori, mis à jour depuis le patch."""
+    par_id = {o["id"]: o for o in objets}
+    sortie = {}
+    for h in heros:
+        lignes = get("/v1/builds", hero_id=h["id"], sort_by="favorites", only_latest="true", limit=nombre,
+                     min_unix_timestamp=depuis_ts)
+        builds = []
+        for l in lignes:
+            b = l["hero_build"]
+            sections = []
+            for c in (b.get("details") or {}).get("mod_categories") or []:
+                ids = [m["ability_id"] for m in c.get("mods") or [] if m.get("ability_id") in par_id]
+                if not ids:
+                    continue
+                nom = c.get("name") or ""
+                nom = SECTIONS_BUILD.get(nom, nom.replace("#Citadel_HeroBuilds_", "") if nom.startswith("#") else nom)
+                sections.append({"nom": nom or "Sans titre", "note": court(c.get("description")) or None,
+                                 # Les annotations par objet (souvent longues, en anglais) ne sont pas gardées.
+                                 "objets": [par_id[i]["nom"] for i in ids]})
+            builds.append({"id": b["hero_build_id"], "nom": b.get("name"), "description": court(b.get("description"), 300) or None,
+                           "favoris": l.get("num_favorites"), "version": b.get("version"),
+                           "mis_a_jour": dt.datetime.fromtimestamp(b.get("last_updated_timestamp") or 0, dt.timezone.utc).date().isoformat(),
+                           "sections": sections})
+        sortie[str(h["id"])] = builds
+    return sortie
+
+
 def ecrire(nom, meta, contenu):
     DATA.mkdir(exist_ok=True)
     chemin = DATA / nom
@@ -431,7 +486,7 @@ def main():
     parseur.add_argument("--patch", required=True, help="nom ou date du patch en cours")
     parseur.add_argument("--depuis", required=True, help="date du patch, AAAA-MM-JJ (UTC)")
     parseur.add_argument("--seulement", default="", help="fichiers à régénérer, séparés par des virgules "
-                         "(heroes,items,stats,map,details,achats,tempo) ; tous par défaut")
+                         "(heroes,items,stats,map,details,achats,tempo,builds) ; tous par défaut")
     args = parseur.parse_args()
     voulu = lambda nom: not args.seulement or nom in args.seulement.split(",")
 
@@ -446,7 +501,9 @@ def main():
     }
 
     heros_api = get("/v1/assets/heroes", only_active="true")
-    heros = construire_heros(heros_api, get("/v1/assets/items/by-type/ability"))
+    heros = construire_heros(heros_api, get("/v1/assets/items/by-type/ability"),
+                             get("/v1/assets/heroes", only_active="true", language="french"),
+                             get("/v1/assets/items/by-type/ability", language="french"))
     if voulu("heroes"):
         ecrire("heroes.json", {**meta, "note": "`mecaniques` est déduit par mots-clés : à relire. `video` est à remplir à la main."},
            {"heros": heros})
@@ -473,6 +530,13 @@ def main():
                         "d'après la force globale des deux héros (log5), en points. Un écart inférieur à la marge (95 %) n'est pas un signal."},
                {"fiches": construire_fiches(heros_api, get("/v1/assets/items/by-type/weapon")),
                 "matchups": construire_matchups(depuis_ts, stats)})
+
+    if voulu("builds"):
+        ecrire("builds.json",
+               {**meta, "depuis": depuis_texte,
+                "note": "Builds publics du jeu (navigateur de builds), les plus mis en favori parmi ceux mis à jour depuis le patch. "
+                        "Sections et notes telles que leurs auteurs les ont écrites (souvent en anglais)."},
+               {"heros": construire_builds(depuis_ts, heros, objets)})
 
     if voulu("tempo"):
         ecrire("tempo.json",

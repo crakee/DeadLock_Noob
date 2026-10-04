@@ -1,0 +1,53 @@
+/* Fiche héros : compléments à style.css (compétences bilingues, « Le contrer » en deux temps, builds publics). */
+
+/* Compétences */
+.nom-anglais { font-style: italic; font-weight: 400; font-size: .85em; opacity: .55; }
+.lien-demo {
+  display: inline-block; margin-top: .4rem; padding: .1rem .6rem;
+  font-size: .85rem; color: var(--or-clair); text-decoration: none;
+  border: 1px solid var(--bord-fort); border-radius: 1em;
+}
+.lien-demo:hover { border-color: var(--or); color: var(--texte); }
+
+/* Le contrer : résumé puis détail replié */
+.contrer-resume { padding: .7rem .9rem; background: var(--fond-2); border: 1px solid var(--bord); border-left: .25rem solid var(--or); border-radius: .4rem; }
+.contrer-resume h3 { margin: 0 0 .4rem; }
+.contrer-lignes { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .35rem; }
+.contrer-lignes li { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
+.contrer-fleche { color: var(--doux); }
+.contrer-objet {
+  display: inline-flex; align-items: center; gap: .35rem;
+  padding: .05rem .55rem .05rem .2rem; font-size: .9rem;
+  border: 1px solid var(--obj, var(--bord)); border-radius: 1em;
+}
+.contrer-objet img { width: 1.4rem; height: 1.4rem; border-radius: .25rem; }
+.contrer-portee { margin: .6rem 0 0; color: var(--doux); font-size: .92rem; }
+.obj-weapon { --obj: var(--weapon); }
+.obj-vitality { --obj: var(--vitality); }
+.obj-spirit { --obj: var(--spirit); }
+
+details.menace > summary { list-style: none; display: flex; flex-direction: column; gap: .1rem; }
+details.menace > summary::-webkit-details-marker { display: none; }
+details.menace .menace-titre::before { content: "▸ "; color: var(--or); }
+details.menace[open] .menace-titre::before { content: "▾ "; }
+.menace-titre { font-family: var(--titre); font-size: 1.05rem; letter-spacing: .02em; }
+details.menace .menace-pourquoi { font-size: .9rem; }
+details.menace[open] > summary { margin-bottom: .4rem; }
+
+/* Builds publics */
+.build-public { margin-top: .5rem; padding: .5rem .7rem; background: var(--fond-2); border: 1px solid var(--bord); border-radius: .4rem; }
+.build-public > summary { cursor: pointer; }
+.texte-auteur { margin: .4rem 0; font-size: .9rem; font-style: italic; color: var(--doux); }
+.build-section { display: grid; grid-template-columns: 8rem minmax(0, 1fr); gap: .6rem; align-items: start; padding: .35rem 0; border-top: 1px solid var(--bord); }
+.build-section-titre { font-family: var(--titre); font-size: .85rem; letter-spacing: .04em; text-transform: uppercase; color: var(--or); }
+.build-objets { display: flex; flex-wrap: wrap; gap: .3rem; }
+.build-objet {
+  display: inline-flex; align-items: center; gap: .3rem;
+  padding: .05rem .5rem .05rem .15rem; font-size: .82rem;
+  background: var(--panneau-2); border: 1px solid var(--obj, var(--bord)); border-radius: .35rem;
+}
+.build-objet img { width: 1.5rem; height: 1.5rem; border-radius: .2rem; }
+.build-objet.actif { box-shadow: inset 0 0 0 1px var(--alerte); }
+@media (max-width: 700px) {
+  .build-section { grid-template-columns: minmax(0, 1fr); }
+}
