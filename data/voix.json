@@ -1,7 +1,9 @@
 {
  "meta": {
   "note": "Clips des annonces vocales : nom puis fin, assemblés par js/voix.js. Liste produite par outils/generer_voix.py.",
-  "voix": null
+  "outil": null,
+  "voix": null,
+  "licence": null
  },
  "clips": {
   "nom-small-camps": {
