@@ -4,7 +4,13 @@ Aide-mémoire Deadlock personnel : chrono de timings pour second écran + fiches
 
 ## État
 
-Quatre onglets construits, sans framework ni compilation, contrôlés dans Chromium mais pas encore essayés en partie réelle : Timeline (`index.html`, `js/timeline.js`), Carte (`carte.html`, `js/carte.js`), Mémo (`memo.html`, `js/memo.js`), Héros (`heros.html`, `js/heros.js`), Rôles (`roles.html`, `js/roles.js` : une fiche détaillée par rôle, reconstruite en HTML/SVG à partir des fiches de la vidéo de Wouks — les captures d'origine dans `docs/` sont ignorées par git et ne se publient pas). `js/commun.js` porte le réglage de niveau partagé (clé `dln.niveau.v1`) et le chargement des données ; `css/style.css` est commun. Onglets Counters (`counters.html`, `js/counters.js`) et Patch (`patch.html`, `js/patch.js`) : construits et contrôlés dans Chromium le 2 octobre 2026. Données de jeu : une collecte brute (`collecte/`) et les événements retenus pour le chrono (`data/timeline.json`). Repo GitHub `crakee/DeadLock_Noob` (public), branche `main` poussée.
+Site sans framework ni compilation, refondu le 4 octobre 2026 en quatre espaces (contrôlés dans Chromium, pas encore essayés en partie réelle) :
+- **En partie** (`index.html`, `js/timeline.js` + `js/enface.js`) : chrono, et panneau « En face » (héros adverses, quoi acheter, leurs prochains gros achats) qui partage la clé `dln.counters.choisis.v1` avec Counters. Pensé pour un second moniteur 1080p sans défilement.
+- **Héros** : `heros.html`/`js/heros.js` = une fiche unique par héros, onglets Aperçu, Compétences, Le contrer, Builds, Matchups, Patch (adresse `heros.html#h=ID&o=onglet`) ; sous-onglet `counters.html`/`js/counters.js` (Counters & compo, CSS propre dans `css/counters.css`).
+- **Apprendre** : `memo.html` (Les bases), `roles.html` (fiche par rôle, reconstruite d'après la vidéo de Wouks — captures d'origine dans `docs/`, ignorées par git), `carte.html`, `objets.html`/`js/objets.js` (Objets clés : chaque menace, ses objets, les héros concernés).
+- **Patch** (`patch.html`, `js/patch.js`).
+
+`js/commun.js` construit la barre de navigation (page désignée par `<body data-page="…">`, `data-rang` pour proposer le rang) et le menu ⚙ : niveau (`dln.niveau.v1`) et tranche de rang partagée (`dln.tranche.v1`, `DLN.tranche()` / `DLN.surTranche`). `css/style.css` est commun (palette « ambiance Deadlock », polices Oswald + Inter depuis Google Fonts). Données de jeu : une collecte brute (`collecte/`) et les événements retenus pour le chrono (`data/timeline.json`). Repo GitHub `crakee/DeadLock_Noob` (public), branche `main` poussée.
 
 Site en ligne : `https://crakee.github.io/DeadLock_Noob/`, servi par GitHub Pages depuis la branche `gh-pages`. Pour publier : `git push origin main:gh-pages` après le push sur `main`.
 

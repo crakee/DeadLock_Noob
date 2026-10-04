@@ -4,19 +4,11 @@
   'use strict';
 
   const el = DLN.el;
-  const CLE = 'dln.patch.tranche.v1';
   const NB_META = 8;
-  const LIBELLES_TRANCHE = {
-    tous: 'Tous rangs', initiate_sentinel: 'Initiate → Sentinel',
-    mystic_oracle: 'Mystic → Oracle', phantom_eternus: 'Phantom → Eternus'
-  };
   const LIBELLES_TYPE = { majeur: 'majeur', equilibrage: 'équilibrage', correctif: 'correctif' };
   const LIBELLES_SENS = { buffs: 'Renforcés', nerfs: 'Affaiblis', ajustes: 'Ajustés', corriges: 'Bugs corrigés' };
 
   let patch = null, stats = null, heros = null, profil = null;
-  let tranche = null;
-
-  try { tranche = localStorage.getItem(CLE); } catch (e) { /* stockage indisponible */ }
 
   const miens = () => profil.heros_joues.concat(profil.heros_a_essayer);
   const estMien = (nom) => heros.heros.some((h) => h.nom === nom && miens().indexOf(h.id) !== -1);
@@ -59,7 +51,12 @@
         if (!liste || !liste.length) return;
         const ligne = el('p', 'puces patch-heros ' + sens);
         ligne.append(el('strong', null, LIBELLES_SENS[sens] + ' '));
-        liste.forEach((nom) => ligne.append(el('span', 'puce' + (estMien(nom) ? ' mien' : ''), nom)));
+        liste.forEach((nom) => {
+          const h = heros.heros.find((x) => x.nom === nom);
+          const puce = el(h ? 'a' : 'span', 'puce' + (estMien(nom) ? ' mien' : ''), nom);
+          if (h) puce.href = DLN.lienHeros(h.id, 'patch');
+          ligne.append(puce);
+        });
         bloc.append(ligne);
       });
       zone.append(bloc);
@@ -68,7 +65,21 @@
 
   function ligneMeta(table, h, s) {
     const tr = el('tr', miens().indexOf(h.id) !== -1 ? 'mien' : null);
-    tr.append(el('td', null, h.nom), el('td', 'nombre', s.winrate.toFixed(1) + ' %'),
+    const nom = el('td');
+    const a = el('a', null, null);
+    a.href = DLN.lienHeros(h.id);
+    a.append(DLN.img(h.icone || h.image), h.nom);
+    nom.append(a);
+    // Barre : écart à 50 % sur une échelle de 40 à 60 %.
+    const jauge = el('td');
+    const barre = el('div', 'barre-wr');
+    const pos = (v) => Math.max(0, Math.min(100, (v - 40) * 5));
+    const b = el('span', s.winrate >= 50 ? 'haut' : 'bas');
+    b.style.left = Math.min(pos(50), pos(s.winrate)) + '%';
+    b.style.width = Math.abs(pos(s.winrate) - pos(50)) + '%';
+    barre.append(b);
+    jauge.append(barre);
+    tr.append(nom, jauge, el('td', 'nombre', s.winrate.toFixed(1) + ' %'),
       el('td', 'nombre doux', '± ' + s.marge.toFixed(1)), el('td', 'nombre doux', s.presence.toFixed(0) + ' % des parties'));
     table.append(tr);
   }
@@ -76,7 +87,7 @@
   function afficherMeta() {
     const zone = document.getElementById('meta-heros');
     zone.textContent = '';
-    const donnees = stats.tranches[tranche].heros;
+    const donnees = stats.tranches[DLN.tranche()].heros;
     const lignes = heros.heros.map((h) => ({ h: h, s: donnees[String(h.id)] })).filter((l) => l.s && l.s.winrate != null)
       .sort((a, b) => b.s.winrate - a.s.winrate);
     const bloc = (titre, liste) => {
@@ -96,21 +107,9 @@
     afficherMeta();
   }
 
-  Promise.all(['data/patch.json', 'data/hero-stats.json', 'data/heroes.json', 'data/profil.json'].map(DLN.charger)).then((r) => {
+  Promise.all([DLN.charger('data/patch.json'), DLN.charger('data/hero-stats.json'), DLN.charger('data/heroes.json'), DLN.profil]).then((r) => {
     patch = r[0]; stats = r[1]; heros = r[2]; profil = r[3];
-    const choix = document.getElementById('opt-tranche');
-    Object.keys(stats.tranches).forEach((cle) => {
-      const o = el('option', null, LIBELLES_TRANCHE[cle] || cle);
-      o.value = cle;
-      choix.append(o);
-    });
-    if (!stats.tranches[tranche]) tranche = profil.tranche_par_defaut;
-    choix.value = tranche;
-    choix.addEventListener('change', () => {
-      tranche = choix.value;
-      try { localStorage.setItem(CLE, tranche); } catch (e) { /* stockage indisponible */ }
-      afficherMeta();
-    });
+    DLN.surTranche(afficherMeta);
     document.getElementById('app').hidden = false;
     document.getElementById('meta').textContent = 'Patchs vérifiés le ' + patch.meta.verifie_le +
       ' · résumés reformulés : les notes officielles (liens) font foi · stats : ' + stats.meta.source;

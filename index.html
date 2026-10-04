@@ -4,42 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
-  <title>Timeline · DeadLock_Noob</title>
+  <title>En partie · DeadLock_Noob</title>
   <link rel="icon" href="data:,">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Oswald:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-  <header class="barre">
-    <nav class="onglets" aria-label="Sections">
-      <a class="onglet actif" href="index.html" aria-current="page">Timeline</a>
-      <a class="onglet" href="carte.html">Carte</a>
-      <a class="onglet" href="memo.html">Mémo</a>
-      <a class="onglet" href="heros.html">Héros</a>
-      <a class="onglet" href="roles.html">Rôles</a>
-      <a class="onglet" href="counters.html">Counters</a>
-      <a class="onglet" href="patch.html">Patch</a>
-    </nav>
-    <div class="reglages">
-      <div id="filtres" class="filtres" role="group" aria-label="Catégories affichées"></div>
-      <label class="reglage">Préavis
-        <select id="opt-preavis">
-          <option value="0">normal</option>
-          <option value="15">+15 s</option>
-          <option value="30">+30 s</option>
-        </select>
-      </label>
-      <label class="reglage"><input type="checkbox" id="opt-son"> Son</label>
-      <label class="reglage"><input type="checkbox" id="opt-voix"> Voix</label>
-      <label class="reglage"><input type="checkbox" id="opt-rappel"> Rappel map</label>
-      <label class="reglage">Niveau
-        <select id="opt-niveau">
-          <option value="1">1 · débutant</option>
-          <option value="2">2 · intermédiaire</option>
-          <option value="3">3 · tout</option>
-        </select>
-      </label>
-    </div>
-  </header>
+<body data-page="partie">
+  <header id="barre"></header>
 
   <div id="erreur" class="erreur" hidden>
     <h1>Données introuvables</h1>
@@ -50,7 +23,7 @@
       <input type="file" id="erreur-fichier" accept=".json,application/json"></p>
   </div>
 
-  <main id="app" hidden>
+  <main id="app" class="partie" hidden>
     <section class="panneau horloge" aria-label="Horloge de partie">
       <div class="horloge-ligne">
         <div id="horloge" class="horloge-temps">0:00</div>
@@ -72,6 +45,22 @@
         <button id="btn-zero" class="btn discret" type="button">Zéro</button>
       </div>
       <div id="rappel" class="rappel" role="status"></div>
+      <details class="chrono-reglages">
+        <summary>Réglages du chrono · raccourcis <kbd>Espace</kbd> <kbd>1</kbd><kbd>2</kbd><kbd>3</kbd> <kbd>←</kbd><kbd>→</kbd></summary>
+        <div id="filtres" class="filtres" role="group" aria-label="Catégories affichées"></div>
+        <div class="ligne">
+          <label class="reglage">Préavis
+            <select id="opt-preavis">
+              <option value="0">normal</option>
+              <option value="15">+15 s</option>
+              <option value="30">+30 s</option>
+            </select>
+          </label>
+          <label class="reglage"><input type="checkbox" id="opt-son"> Son</label>
+          <label class="reglage"><input type="checkbox" id="opt-voix"> Voix</label>
+          <label class="reglage"><input type="checkbox" id="opt-rappel"> Rappel « regarde ta map »</label>
+        </div>
+      </details>
     </section>
 
     <section class="panneau avenir" aria-label="À venir">
@@ -81,9 +70,9 @@
     </section>
 
     <section class="panneau declenches" aria-label="Minuteurs déclenchés">
-      <h2>Minuteurs</h2>
+      <h2>Minuteurs <span class="note">à lancer quand l'objectif tombe</span></h2>
       <div id="declenches" class="declenches-liste"></div>
-      <p id="declenches-vide" class="vide" hidden>Les minuteurs (Mid-Boss, Rejuvenator, Rift) apparaissent à partir du niveau 2.</p>
+      <p id="declenches-vide" class="vide" hidden>Les minuteurs (Mid-Boss, Rejuvenator, Rift) apparaissent au niveau 2 (menu ⚙).</p>
     </section>
 
     <section class="panneau maintenant" aria-label="Maintenant">
@@ -101,15 +90,34 @@
       <ol id="checklist"></ol>
     </section>
 
+    <section class="panneau enface" aria-label="Héros d'en face">
+      <div class="enface-tete">
+        <h2>En face</h2>
+        <button id="enface-vider" class="btn discret" type="button">Vider</button>
+      </div>
+      <div id="enface-equipe" class="enface-equipe"></div>
+      <div id="enface-corps" class="enface-corps"></div>
+    </section>
+
     <section class="panneau frise" aria-label="Frise de la partie">
       <div id="frise" class="frise-piste"></div>
       <p id="detail" class="detail">Cliquer un événement pour voir son détail.</p>
     </section>
   </main>
 
+  <dialog id="choix-heros" class="choix-heros" aria-label="Choisir un héros adverse">
+    <div class="choix-heros-tete">
+      <h2>Ajouter un héros d'en face</h2>
+      <input id="choix-recherche" class="recherche" type="search" placeholder="Rechercher…" style="max-width: 16rem">
+      <button class="btn" type="button" data-fermer>Fermer</button>
+    </div>
+    <div id="choix-grille"></div>
+  </dialog>
+
   <footer id="meta" class="meta"></footer>
 
   <script src="js/commun.js"></script>
   <script src="js/timeline.js"></script>
+  <script src="js/enface.js"></script>
 </body>
 </html>

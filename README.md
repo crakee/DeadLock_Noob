@@ -4,7 +4,7 @@ Aide-mémoire personnel pour progresser sur Deadlock (Valve) : les timings de la
 
 ## 👉 Ouvrir l'app : **https://crakee.github.io/DeadLock_Noob/**
 
-Rien à installer : le lien s'ouvre dans n'importe quel navigateur (PC ou téléphone pour le second écran). Onglets : Timeline, Carte, Mémo, Héros, Rôles, Counters, Patch.
+Rien à installer : le lien s'ouvre dans n'importe quel navigateur (PC ou téléphone pour le second écran). Quatre espaces : **En partie** (chrono + héros d'en face et quoi acheter), **Héros** (une fiche par héros : aperçu, compétences, le contrer, builds, matchups, patch ; plus Counters & compo), **Apprendre** (les bases, rôles, carte, objets clés), **Patch**. Niveau et rang se règlent une fois pour tout le site dans le menu ⚙.
 
 ### Lancer en local (seulement pour modifier le projet)
 

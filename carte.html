@@ -6,29 +6,13 @@
   <meta name="color-scheme" content="dark">
   <title>Carte · DeadLock_Noob</title>
   <link rel="icon" href="data:,">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Oswald:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-  <header class="barre">
-    <nav class="onglets" aria-label="Sections">
-      <a class="onglet" href="index.html">Timeline</a>
-      <a class="onglet actif" href="carte.html" aria-current="page">Carte</a>
-      <a class="onglet" href="memo.html">Mémo</a>
-      <a class="onglet" href="heros.html">Héros</a>
-      <a class="onglet" href="roles.html">Rôles</a>
-      <a class="onglet" href="counters.html">Counters</a>
-      <a class="onglet" href="patch.html">Patch</a>
-    </nav>
-    <div class="reglages">
-      <label class="reglage">Niveau
-        <select id="opt-niveau">
-          <option value="1">1 · débutant</option>
-          <option value="2">2 · intermédiaire</option>
-          <option value="3">3 · tout</option>
-        </select>
-      </label>
-    </div>
-  </header>
+<body data-page="carte">
+  <header id="barre"></header>
 
   <div id="erreur" class="erreur" hidden>
     <h1>Données introuvables</h1>

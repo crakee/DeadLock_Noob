@@ -465,7 +465,7 @@
 
   function rafraichirHorloge(t) {
     $('horloge').textContent = fmt(t);
-    document.title = (auRepos() ? '' : fmt(t) + ' · ') + 'Timeline · DeadLock_Noob';
+    document.title = (auRepos() ? '' : fmt(t) + ' · ') + 'En partie · DeadLock_Noob';
     const bouton = $('btn-marche');
     const libelle = enMarche() ? 'Pause' : (auRepos() ? 'Démarrer' : 'Reprendre');
     if (bouton.firstChild.nodeValue !== libelle + ' ') bouton.firstChild.nodeValue = libelle + ' ';
@@ -654,6 +654,7 @@
     document.addEventListener('keydown', (e) => {
       if (e.ctrlKey || e.metaKey || e.altKey) return;
       if (/^(INPUT|SELECT|TEXTAREA)$/.test(e.target.tagName)) return;
+      if (document.querySelector('dialog[open]')) return;
       if (e.code === 'Space') {
         e.preventDefault();
         if (!e.repeat) { preparerAudio(); basculer(); }

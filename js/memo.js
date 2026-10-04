@@ -4,8 +4,7 @@
 
   const el = DLN.el;
   const LIBELLES_SOURCE = { donnees: 'jeu', conseil: 'conseil', wiki: 'wiki' };
-  let memo = null, achats = null, profil = null, heros = null, objets = {};
-  let choisi = null;
+  let memo = null, profil = null, heros = null;
 
   function tableauObjets(titre, objets) {
     const bloc = el('div', 'memo-objets');
@@ -20,62 +19,18 @@
     return bloc;
   }
 
-  // Achats réels des héros de l'utilisateur (data/achats.json), rangés par phase de la partie.
-  const PHASES = [['Early', 'avant 10 min', 0, 10], ['Mid', '10 à 20 min', 10, 20], ['Late', 'après 20 min', 20, Infinity]];
-  const LIBELLES_CATEGORIE = { weapon: 'Weapon', vitality: 'Vitality', spirit: 'Spirit' };
-
+  // Les achats réels de chaque héros sont dans sa fiche (onglet Builds) : ici, des raccourcis.
   function blocAchats() {
-    const bloc = el('div', 'memo-achats');
-    const tranche = achats.tranches[profil.tranche_par_defaut] ? profil.tranche_par_defaut : 'tous';
-    const ids = profil.heros_joues.concat(profil.heros_a_essayer).filter((id) => achats.tranches[tranche][String(id)]);
-    if (!ids.length) return bloc;
-    if (choisi == null || ids.indexOf(choisi) === -1) choisi = ids[0];
-
-    const tete = el('div', 'memo-achats-tete');
-    tete.append(el('h3', null, 'Ce que les joueurs achètent vraiment'));
-    const onglets = el('div', 'filtres');
-    ids.forEach((id) => {
+    const bloc = el('div', 'encadre');
+    bloc.style.marginTop = '.8rem';
+    bloc.append(el('h3', null, 'Ce que les joueurs achètent vraiment'),
+      el('p', 'doux', 'Pour chacun de tes héros : objets les plus pris, phase par phase, à leur minute moyenne d\'achat.'));
+    const puces = el('div', 'puces');
+    profil.heros_joues.concat(profil.heros_a_essayer).forEach((id) => {
       const h = heros.heros.find((x) => x.id === id);
-      const b = el('button', 'filtre', h ? h.nom : String(id));
-      b.type = 'button';
-      b.setAttribute('aria-pressed', String(id === choisi));
-      b.addEventListener('click', () => { choisi = id; afficher(); });
-      onglets.append(b);
+      if (h) puces.append(DLN.pastilleHeros(h, 'builds'));
     });
-    tete.append(onglets);
-    const donnees = achats.tranches[tranche][String(choisi)];
-    bloc.append(tete, el('p', 'aide', 'Objets achetés par au moins 20 % des joueurs de ce héros (' + donnees.parties.toLocaleString('fr-FR') +
-      ' parties, rang ' + tranche.replace('_', ' → ') + ', depuis le ' + achats.meta.depuis + '), à leur minute moyenne d\'achat. Un pourcentage élevé = presque tout le monde le prend.'));
-
-    const colonnes = el('div', 'memo-achats-phases');
-    PHASES.forEach((ph) => {
-      const ici = donnees.objets.filter((o) => o.minute >= ph[2] && o.minute < ph[3]);
-      const col = el('div', 'memo-achats-phase');
-      const total = ici.reduce((s, o) => s + o.cout, 0);
-      const titre = el('h4', null, ph[0] + ' ');
-      titre.append(el('span', 'aide', ph[1] + ' · ' + ici.length + ' objets · ' + total.toLocaleString('fr-FR') + ' souls'));
-      col.append(titre);
-      const ul = el('ul', 'memo-achats-liste');
-      ici.forEach((o) => {
-        const li = el('li', 'cat-' + o.categorie);
-        const it = objets[o.nom];
-        if (it && it.image) {
-          const img = el('img');
-          img.src = it.image;
-          img.alt = '';
-          img.loading = 'lazy';
-          li.append(img);
-        }
-        const nom = el('span', 'memo-achats-nom', o.nom);
-        if (o.actif) nom.append(el('span', 'objet-actif', 'actif'));
-        li.append(nom, el('span', 'aide', o.cout.toLocaleString('fr-FR') + ' · ' + (LIBELLES_CATEGORIE[o.categorie] || o.categorie) +
-          ' · ' + o.achete_par + ' % · ~' + Math.round(o.minute) + ' min'));
-        ul.append(li);
-      });
-      col.append(ul);
-      colonnes.append(col);
-    });
-    bloc.append(colonnes);
+    bloc.append(puces);
     return bloc;
   }
 
@@ -84,6 +39,13 @@
     const zone = document.getElementById('sections');
     sommaire.textContent = '';
     zone.textContent = '';
+    const legende = el('div', 'legende');
+    [['jeu : mécanique vérifiée', 'var(--bon)'], ['conseil : avis de joueur', 'var(--or)'], ['wiki : pas confirmé par les données', 'var(--doux)']].forEach((l) => {
+      const s = el('span', null, l[0]);
+      s.style.setProperty('--c', l[1]);
+      legende.append(s);
+    });
+    zone.append(legende);
     memo.sections.forEach((section) => {
       const fiches = section.fiches.filter((f) => f.niveau <= DLN.niveau());
       if (!fiches.length) return;
@@ -109,14 +71,13 @@
           tableauObjets('Contre les compétences (Spirit Resist)', section.objets_spirit_resist));
         bloc.append(objets, el('p', 'aide', section.note_objets));
       }
-      if (section.achats_par_heros && achats) bloc.append(blocAchats());
+      if (section.achats_par_heros) bloc.append(blocAchats());
       zone.append(bloc);
     });
   }
 
-  Promise.all(['data/memo.json', 'data/achats.json', 'data/profil.json', 'data/heroes.json', 'data/items.json'].map(DLN.charger)).then((r) => {
-    memo = r[0]; achats = r[1]; profil = r[2]; heros = r[3];
-    r[4].objets.forEach((o) => { objets[o.nom] = o; });
+  Promise.all([DLN.charger('data/memo.json'), DLN.profil, DLN.charger('data/heroes.json')]).then((r) => {
+    memo = r[0]; profil = r[1]; heros = r[2];
     document.getElementById('app').hidden = false;
     document.getElementById('meta').textContent = 'Patch ' + memo.meta.patch + ' · vérifié le ' + memo.meta.verifie_le +
       ' · « jeu » : mécanique vérifiée · « conseil » : avis de joueur (guides de Wouks) · « wiki » : non confirmé par les données';

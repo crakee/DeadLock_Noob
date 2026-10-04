@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
-  <title>Rôles · DeadLock_Noob</title>
+  <title>Objets clés · DeadLock_Noob</title>
   <link rel="icon" href="data:,">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Oswald:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body data-page="roles">
+<body data-page="objets">
   <header id="barre"></header>
 
   <div id="erreur" class="erreur" hidden>
@@ -21,15 +21,18 @@
       <code>http://localhost:8000</code>.</p>
   </div>
 
-  <main id="app" class="page page-roles" hidden>
-    <nav id="choix" class="roles-choix" aria-label="Choisir un rôle"></nav>
-    <section id="fiche" class="panneau roles-fiche" aria-live="polite"></section>
-    <section id="annexes" class="roles-annexes"></section>
+  <main id="app" class="page page-objets" hidden>
+    <section class="objets-intro">
+      <h1>Objets clés</h1>
+      <p class="doux">Les problèmes qu'un héros adverse peut te poser, et les objets de la boutique qui y répondent. Un objet <span class="objet-actif">actif</span> se déclenche avec une touche, comme une compétence (quatre au maximum). Cliquer un héros ouvre sa fiche « Le contrer ».</p>
+      <div id="filtre" class="filtres choix" role="group" aria-label="Objets affichés"></div>
+    </section>
+    <div id="menaces" class="objets-menaces"></div>
   </main>
 
   <footer id="meta" class="meta"></footer>
 
   <script src="js/commun.js"></script>
-  <script src="js/roles.js"></script>
+  <script src="js/objets.js"></script>
 </body>
 </html>
