@@ -25,9 +25,9 @@
 .menace-pourquoi { color: var(--doux); }
 .objets-groupes { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: .4rem .8rem; margin-top: .4rem; align-items: start; }
 .objets-groupe { --obj: var(--doux); padding-left: .5rem; border-left: .2rem solid var(--obj); }
-.objets-groupe.weapon { --obj: #e8a33d; }
-.objets-groupe.vitality { --obj: #6fd66f; }
-.objets-groupe.spirit { --obj: #b58cff; }
+.objets-groupe.weapon { --obj: var(--weapon); }
+.objets-groupe.vitality { --obj: var(--vitality); }
+.objets-groupe.spirit { --obj: var(--spirit); }
 .objets-groupe h4 { margin: 0 0 .2rem; font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: var(--obj); }
 .objets { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .3rem; }
 .objet { display: flex; align-items: flex-start; gap: .5rem; }
@@ -94,12 +94,12 @@ details.counters-actifs > summary { font-size: .8rem; text-transform: uppercase;
 .modes { margin-bottom: .4rem; }
 .modes .filtre { --cat: var(--texte); text-decoration: none; }
 .modes .filtre[aria-pressed="true"] { background: var(--texte); color: var(--fond); }
-.heros-case.allie { border-color: var(--cat-lane); color: var(--texte); background: #12263d; }
+.heros-case.allie { border-color: var(--cat-lane); color: var(--texte); background: var(--panneau-2); }
 .onglets-adversaires { margin-bottom: .2rem; }
 .section-titre { margin-top: 1rem; }
 .tempo-table { border-collapse: collapse; margin: .2rem 0; }
 .tempo-table th, .tempo-table td { padding: .15rem .9rem .15rem 0; text-align: left; }
-.tendance-tard { color: #ff8f8f; }
+.tendance-tard { color: var(--danger); }
 .tendance-tot { color: var(--cat-deplacement); }
 .compo-table { width: 100%; border-collapse: collapse; font-size: .9rem; }
 .compo-table th { text-align: left; color: var(--doux); font-weight: 600; padding: .2rem .4rem; border-bottom: 1px solid var(--bord); }
