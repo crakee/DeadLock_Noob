@@ -1,0 +1,8220 @@
+{
+ "meta": {
+  "patch": "City Never Sleeps (2026-09-29)",
+  "verifie_le": "2026-10-04",
+  "source": "https://api.deadlock-api.com",
+  "genere_par": "outils/maj_donnees.py",
+  "depuis": "2026-09-30",
+  "note": "Objets achetés par au moins 20 % des joueurs du héros depuis le patch, par tranche de rang, rangés par minute moyenne d'achat. `achete_par` en % des parties du héros. Héros de data/profil.json."
+ },
+ "tranches": {
+  "tous": {
+   "13": {
+    "parties": 108057,
+    "objets": [
+     {
+      "nom": "Extra Spirit",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 75,
+      "minute": 3.8,
+      "winrate": 54.2
+     },
+     {
+      "nom": "Rapid Rounds",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 86,
+      "minute": 4.4,
+      "winrate": 54.0
+     },
+     {
+      "nom": "Extra Regen",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 28,
+      "minute": 5.8,
+      "winrate": 53.3
+     },
+     {
+      "nom": "Extended Magazine",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 39,
+      "minute": 7.3,
+      "winrate": 54.7
+     },
+     {
+      "nom": "Swift Striker",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 93,
+      "minute": 7.3,
+      "winrate": 54.2
+     },
+     {
+      "nom": "Active Reload",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 76,
+      "minute": 8.0,
+      "winrate": 54.3
+     },
+     {
+      "nom": "Extra Health",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 48,
+      "minute": 8.2,
+      "winrate": 55.5
+     },
+     {
+      "nom": "Titanic Magazine",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 41,
+      "minute": 11.5,
+      "winrate": 54.7
+     },
+     {
+      "nom": "Sprint Boots",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 28,
+      "minute": 12.9,
+      "winrate": 54.0
+     },
+     {
+      "nom": "Bullet Lifesteal",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 59,
+      "minute": 14.6,
+      "winrate": 54.3
+     },
+     {
+      "nom": "Slowing Hex",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": true,
+      "achete_par": 37,
+      "minute": 14.9,
+      "winrate": 53.7
+     },
+     {
+      "nom": "Weakening Headshot",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 32,
+      "minute": 15.4,
+      "winrate": 56.2
+     },
+     {
+      "nom": "Bullet Resist Shredder",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 42,
+      "minute": 16.2,
+      "winrate": 56.0
+     },
+     {
+      "nom": "Enduring Speed",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 36,
+      "minute": 16.4,
+      "winrate": 54.3
+     },
+     {
+      "nom": "Surge of Power",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 63,
+      "minute": 17.5,
+      "winrate": 55.3
+     },
+     {
+      "nom": "Fortitude",
+      "categorie": "vitality",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 41,
+      "minute": 17.6,
+      "winrate": 56.0
+     },
+     {
+      "nom": "Fury Trance",
+      "categorie": "vitality",
+      "tier": 3,
+      "cout": 3200,
+      "actif": true,
+      "achete_par": 21,
+      "minute": 18.8,
+      "winrate": 52.1
+     },
+     {
+      "nom": "Burst Fire",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 81,
+      "minute": 20.4,
+      "winrate": 55.3
+     },
+     {
+      "nom": "Tesla Bullets",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 24,
+      "minute": 20.9,
+      "winrate": 54.4
+     },
+     {
+      "nom": "Ricochet",
+      "categorie": "weapon",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 77,
+      "minute": 23.8,
+      "winrate": 56.9
+     },
+     {
+      "nom": "Spirit Resilience",
+      "categorie": "vitality",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 24,
+      "minute": 27.1,
+      "winrate": 55.3
+     },
+     {
+      "nom": "Capacitor",
+      "categorie": "weapon",
+      "tier": 4,
+      "cout": 6400,
+      "actif": true,
+      "achete_par": 22,
+      "minute": 28.4,
+      "winrate": 57.3
+     },
+     {
+      "nom": "Vampiric Burst",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": true,
+      "achete_par": 27,
+      "minute": 30.9,
+      "winrate": 58.0
+     },
+     {
+      "nom": "Lucky Shot",
+      "categorie": "weapon",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 33,
+      "minute": 31.7,
+      "winrate": 62.4
+     },
+     {
+      "nom": "Silencer",
+      "categorie": "weapon",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 46,
+      "minute": 31.9,
+      "winrate": 62.8
+     },
+     {
+      "nom": "Siphon Bullets",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 31,
+      "minute": 32.5,
+      "winrate": 61.9
+     },
+     {
+      "nom": "Crippling Headshot",
+      "categorie": "weapon",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 22,
+      "minute": 33.1,
+      "winrate": 60.7
+     },
+     {
+      "nom": "Unstoppable",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": true,
+      "achete_par": 20,
+      "minute": 34.6,
+      "winrate": 59.2
+     },
+     {
+      "nom": "Inhibitor",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 20,
+      "minute": 35.1,
+      "winrate": 61.4
+     }
+    ]
+   },
+   "52": {
+    "parties": 33182,
+    "objets": [
+     {
+      "nom": "Mystic Regeneration",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 87,
+      "minute": 2.8,
+      "winrate": 45.1
+     },
+     {
+      "nom": "Monster Rounds",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 40,
+      "minute": 3.2,
+      "winrate": 44.7
+     },
+     {
+      "nom": "Headshot Booster",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 30,
+      "minute": 4.2,
+      "winrate": 43.9
+     },
+     {
+      "nom": "Opening Rounds",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 21,
+      "minute": 6.9,
+      "winrate": 45.4
+     },
+     {
+      "nom": "Suppressor",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 46,
+      "minute": 8.1,
+      "winrate": 44.9
+     },
+     {
+      "nom": "Healbane",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 76,
+      "minute": 10.2,
+      "winrate": 45.3
+     },
+     {
+      "nom": "Extra Spirit",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 38,
+      "minute": 11.6,
+      "winrate": 45.2
+     },
+     {
+      "nom": "Compress Cooldown",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 70,
+      "minute": 12.7,
+      "winrate": 45.1
+     },
+     {
+      "nom": "Extended Magazine",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 39,
+      "minute": 12.7,
+      "winrate": 46.5
+     },
+     {
+      "nom": "Recharging Rush",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 33,
+      "minute": 14.1,
+      "winrate": 45.7
+     },
+     {
+      "nom": "Quicksilver Reload",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 28,
+      "minute": 15.0,
+      "winrate": 45.0
+     },
+     {
+      "nom": "Mystic Vulnerability",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 85,
+      "minute": 15.3,
+      "winrate": 45.5
+     },
+     {
+      "nom": "Headhunter",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 25,
+      "minute": 16.4,
+      "winrate": 44.2
+     },
+     {
+      "nom": "Titanic Magazine",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 61,
+      "minute": 16.8,
+      "winrate": 46.3
+     },
+     {
+      "nom": "Improved Spirit",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 36,
+      "minute": 19.2,
+      "winrate": 45.8
+     },
+     {
+      "nom": "Spirit Shredder",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 21,
+      "minute": 19.3,
+      "winrate": 46.9
+     },
+     {
+      "nom": "Dispel Magic",
+      "categorie": "vitality",
+      "tier": 3,
+      "cout": 3200,
+      "actif": true,
+      "achete_par": 41,
+      "minute": 20.5,
+      "winrate": 46.0
+     },
+     {
+      "nom": "Toxic Bullets",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 84,
+      "minute": 21.2,
+      "winrate": 45.8
+     },
+     {
+      "nom": "Ricochet",
+      "categorie": "weapon",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 85,
+      "minute": 24.3,
+      "winrate": 46.6
+     },
+     {
+      "nom": "Superior Cooldown",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 60,
+      "minute": 27.2,
+      "winrate": 46.6
+     },
+     {
+      "nom": "Spirit Lifesteal",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 32,
+      "minute": 27.7,
+      "winrate": 49.5
+     },
+     {
+      "nom": "Escalating Exposure",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 76,
+      "minute": 28.1,
+      "winrate": 47.7
+     },
+     {
+      "nom": "Spiritual Overflow",
+      "categorie": "weapon",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 39,
+      "minute": 34.5,
+      "winrate": 52.4
+     },
+     {
+      "nom": "Boundless Spirit",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 31,
+      "minute": 35.6,
+      "winrate": 51.4
+     },
+     {
+      "nom": "Inhibitor",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 30,
+      "minute": 36.0,
+      "winrate": 53.0
+     },
+     {
+      "nom": "Transcendent Cooldown",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 30,
+      "minute": 36.3,
+      "winrate": 49.2
+     },
+     {
+      "nom": "Silencer",
+      "categorie": "weapon",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 21,
+      "minute": 38.4,
+      "winrate": 54.4
+     }
+    ]
+   },
+   "27": {
+    "parties": 60781,
+    "objets": [
+     {
+      "nom": "Restorative Shot",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 73,
+      "minute": 2.5,
+      "winrate": 49.1
+     },
+     {
+      "nom": "Melee Lifesteal",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 75,
+      "minute": 4.1,
+      "winrate": 49.3
+     },
+     {
+      "nom": "Spirit Strike",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 78,
+      "minute": 6.1,
+      "winrate": 48.9
+     },
+     {
+      "nom": "Extra Regen",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 54,
+      "minute": 7.7,
+      "winrate": 49.3
+     },
+     {
+      "nom": "Stalker",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 60,
+      "minute": 8.1,
+      "winrate": 49.7
+     },
+     {
+      "nom": "Mystic Regeneration",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 38,
+      "minute": 8.8,
+      "winrate": 49.9
+     },
+     {
+      "nom": "Extra Spirit",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 47,
+      "minute": 9.0,
+      "winrate": 47.9
+     },
+     {
+      "nom": "Mystic Shot",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 53,
+      "minute": 9.6,
+      "winrate": 48.3
+     },
+     {
+      "nom": "Close Quarters",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 31,
+      "minute": 10.7,
+      "winrate": 50.5
+     },
+     {
+      "nom": "Mystic Burst",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 34,
+      "minute": 10.9,
+      "winrate": 47.6
+     },
+     {
+      "nom": "Improved Spirit",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 57,
+      "minute": 13.7,
+      "winrate": 48.1
+     },
+     {
+      "nom": "Radiant Regeneration",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 44,
+      "minute": 13.9,
+      "winrate": 49.8
+     },
+     {
+      "nom": "Bullet Resist Shredder",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 30,
+      "minute": 14.4,
+      "winrate": 51.1
+     },
+     {
+      "nom": "Cold Front",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": true,
+      "achete_par": 20,
+      "minute": 15.2,
+      "winrate": 47.3
+     },
+     {
+      "nom": "Recharging Rush",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 45,
+      "minute": 15.7,
+      "winrate": 50.2
+     },
+     {
+      "nom": "Healing Booster",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 62,
+      "minute": 15.7,
+      "winrate": 49.6
+     },
+     {
+      "nom": "Healbane",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 49,
+      "minute": 16.3,
+      "winrate": 49.5
+     },
+     {
+      "nom": "Spirit Snatch",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 70,
+      "minute": 17.6,
+      "winrate": 49.2
+     },
+     {
+      "nom": "Lifestrike",
+      "categorie": "vitality",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 50,
+      "minute": 17.7,
+      "winrate": 50.7
+     },
+     {
+      "nom": "Torment Pulse",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 42,
+      "minute": 20.4,
+      "winrate": 49.3
+     },
+     {
+      "nom": "Hunter's Aura",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 47,
+      "minute": 21.8,
+      "winrate": 51.7
+     },
+     {
+      "nom": "Compress Cooldown",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 26,
+      "minute": 22.9,
+      "winrate": 50.7
+     },
+     {
+      "nom": "Tankbuster",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 42,
+      "minute": 24.3,
+      "winrate": 48.5
+     },
+     {
+      "nom": "Spirit Resilience",
+      "categorie": "vitality",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 25,
+      "minute": 27.7,
+      "winrate": 48.6
+     },
+     {
+      "nom": "Superior Cooldown",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 39,
+      "minute": 27.7,
+      "winrate": 51.3
+     },
+     {
+      "nom": "Boundless Spirit",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 47,
+      "minute": 29.1,
+      "winrate": 51.2
+     },
+     {
+      "nom": "Mystic Reverb",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 31,
+      "minute": 29.9,
+      "winrate": 54.8
+     },
+     {
+      "nom": "Transcendent Cooldown",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 28,
+      "minute": 33.7,
+      "winrate": 53.1
+     },
+     {
+      "nom": "Witchmail",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 21,
+      "minute": 34.2,
+      "winrate": 56.1
+     },
+     {
+      "nom": "Refresher",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": true,
+      "achete_par": 26,
+      "minute": 35.4,
+      "winrate": 58.8
+     },
+     {
+      "nom": "Spirit Burn",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 20,
+      "minute": 35.9,
+      "winrate": 55.6
+     }
+    ]
+   },
+   "4": {
+    "parties": 63386,
+    "objets": [
+     {
+      "nom": "Monster Rounds",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 26,
+      "minute": 3.1,
+      "winrate": 47.8
+     },
+     {
+      "nom": "Mystic Burst",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 83,
+      "minute": 4.2,
+      "winrate": 52.0
+     },
+     {
+      "nom": "Extra Regen",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 53,
+      "minute": 4.2,
+      "winrate": 50.1
+     },
+     {
+      "nom": "Mystic Regeneration",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 89,
+      "minute": 4.8,
+      "winrate": 51.3
+     },
+     {
+      "nom": "Extra Spirit",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 72,
+      "minute": 7.4,
+      "winrate": 52.4
+     },
+     {
+      "nom": "Mystic Expansion",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 68,
+      "minute": 7.5,
+      "winrate": 52.9
+     },
+     {
+      "nom": "Sprint Boots",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 53,
+      "minute": 7.9,
+      "winrate": 53.2
+     },
+     {
+      "nom": "Extra Stamina",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 25,
+      "minute": 11.6,
+      "winrate": 48.9
+     },
+     {
+      "nom": "Radiant Regeneration",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 92,
+      "minute": 13.0,
+      "winrate": 51.5
+     },
+     {
+      "nom": "Kinetic Dash",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 29,
+      "minute": 13.0,
+      "winrate": 47.8
+     },
+     {
+      "nom": "Spirit Lifesteal",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 69,
+      "minute": 14.3,
+      "winrate": 52.9
+     },
+     {
+      "nom": "Healing Booster",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 48,
+      "minute": 15.0,
+      "winrate": 49.8
+     },
+     {
+      "nom": "Enduring Speed",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 52,
+      "minute": 16.1,
+      "winrate": 53.2
+     },
+     {
+      "nom": "Improved Spirit",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 61,
+      "minute": 16.9,
+      "winrate": 53.4
+     },
+     {
+      "nom": "Compress Cooldown",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 53,
+      "minute": 17.9,
+      "winrate": 53.5
+     },
+     {
+      "nom": "Tankbuster",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 63,
+      "minute": 19.1,
+      "winrate": 53.1
+     },
+     {
+      "nom": "Mystic Vulnerability",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 56,
+      "minute": 20.7,
+      "winrate": 54.2
+     },
+     {
+      "nom": "Berserker",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 36,
+      "minute": 21.8,
+      "winrate": 49.5
+     },
+     {
+      "nom": "Superior Cooldown",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 54,
+      "minute": 23.5,
+      "winrate": 53.8
+     },
+     {
+      "nom": "Spirit Resilience",
+      "categorie": "vitality",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 50,
+      "minute": 23.9,
+      "winrate": 51.8
+     },
+     {
+      "nom": "Greater Expansion",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 47,
+      "minute": 27.0,
+      "winrate": 54.3
+     },
+     {
+      "nom": "Mystic Reverb",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 30,
+      "minute": 27.3,
+      "winrate": 56.6
+     },
+     {
+      "nom": "Leech",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 40,
+      "minute": 28.4,
+      "winrate": 53.3
+     },
+     {
+      "nom": "Spellslinger",
+      "categorie": "weapon",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 24,
+      "minute": 28.6,
+      "winrate": 51.5
+     },
+     {
+      "nom": "Escalating Exposure",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 50,
+      "minute": 30.6,
+      "winrate": 56.3
+     },
+     {
+      "nom": "Boundless Spirit",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 41,
+      "minute": 33.0,
+      "winrate": 55.5
+     },
+     {
+      "nom": "Spirit Burn",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 38,
+      "minute": 33.3,
+      "winrate": 58.1
+     },
+     {
+      "nom": "Transcendent Cooldown",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 35,
+      "minute": 34.5,
+      "winrate": 55.1
+     }
+    ]
+   },
+   "2": {
+    "parties": 74512,
+    "objets": [
+     {
+      "nom": "Monster Rounds",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 75,
+      "minute": 2.5,
+      "winrate": 54.8
+     },
+     {
+      "nom": "Extra Regen",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 42,
+      "minute": 4.2,
+      "winrate": 54.8
+     },
+     {
+      "nom": "Extra Stamina",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 33,
+      "minute": 7.7,
+      "winrate": 55.6
+     },
+     {
+      "nom": "Extra Spirit",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 60,
+      "minute": 8.1,
+      "winrate": 55.0
+     },
+     {
+      "nom": "Arcane Surge",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 47,
+      "minute": 9.2,
+      "winrate": 55.3
+     },
+     {
+      "nom": "Extra Charge",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 41,
+      "minute": 9.2,
+      "winrate": 55.5
+     },
+     {
+      "nom": "Intensifying Magazine",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 23,
+      "minute": 9.7,
+      "winrate": 52.9
+     },
+     {
+      "nom": "Grit",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": true,
+      "achete_par": 25,
+      "minute": 10.1,
+      "winrate": 56.4
+     },
+     {
+      "nom": "Suppressor",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 20,
+      "minute": 10.6,
+      "winrate": 54.1
+     },
+     {
+      "nom": "Enchanter's Emblem",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 36,
+      "minute": 10.9,
+      "winrate": 56.1
+     },
+     {
+      "nom": "Cultist Sacrifice",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": true,
+      "achete_par": 50,
+      "minute": 11.7,
+      "winrate": 54.8
+     },
+     {
+      "nom": "Sprint Boots",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 25,
+      "minute": 11.8,
+      "winrate": 55.0
+     },
+     {
+      "nom": "Mystic Expansion",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 47,
+      "minute": 12.1,
+      "winrate": 55.8
+     },
+     {
+      "nom": "Improved Spirit",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 57,
+      "minute": 14.9,
+      "winrate": 55.6
+     },
+     {
+      "nom": "Healbane",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 68,
+      "minute": 15.1,
+      "winrate": 55.5
+     },
+     {
+      "nom": "Surge of Power",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 23,
+      "minute": 17.2,
+      "winrate": 54.1
+     },
+     {
+      "nom": "Mystic Vulnerability",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 84,
+      "minute": 17.2,
+      "winrate": 55.6
+     },
+     {
+      "nom": "Duration Extender",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 56,
+      "minute": 17.4,
+      "winrate": 56.3
+     },
+     {
+      "nom": "Spirit Lifesteal",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 74,
+      "minute": 18.4,
+      "winrate": 56.3
+     },
+     {
+      "nom": "Enduring Speed",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 24,
+      "minute": 18.5,
+      "winrate": 54.8
+     },
+     {
+      "nom": "Compress Cooldown",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 28,
+      "minute": 20.4,
+      "winrate": 57.0
+     },
+     {
+      "nom": "Toxic Bullets",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 36,
+      "minute": 22.9,
+      "winrate": 55.4
+     },
+     {
+      "nom": "Superior Duration",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 67,
+      "minute": 24.0,
+      "winrate": 57.0
+     },
+     {
+      "nom": "Rapid Recharge",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 33,
+      "minute": 24.3,
+      "winrate": 56.0
+     },
+     {
+      "nom": "Escalating Exposure",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 83,
+      "minute": 25.3,
+      "winrate": 57.1
+     },
+     {
+      "nom": "Greater Expansion",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 46,
+      "minute": 25.9,
+      "winrate": 57.4
+     },
+     {
+      "nom": "Debuff Reducer",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 23,
+      "minute": 26.5,
+      "winrate": 56.9
+     },
+     {
+      "nom": "Superior Cooldown",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 37,
+      "minute": 26.8,
+      "winrate": 57.1
+     },
+     {
+      "nom": "Spirit Resilience",
+      "categorie": "vitality",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 20,
+      "minute": 29.5,
+      "winrate": 54.7
+     },
+     {
+      "nom": "Spiritual Overflow",
+      "categorie": "weapon",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 32,
+      "minute": 31.4,
+      "winrate": 58.6
+     },
+     {
+      "nom": "Unstoppable",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": true,
+      "achete_par": 38,
+      "minute": 31.7,
+      "winrate": 57.3
+     },
+     {
+      "nom": "Boundless Spirit",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 50,
+      "minute": 31.8,
+      "winrate": 58.1
+     },
+     {
+      "nom": "Indomitable",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 21,
+      "minute": 32.7,
+      "winrate": 59.9
+     },
+     {
+      "nom": "Infuser",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": true,
+      "achete_par": 35,
+      "minute": 33.3,
+      "winrate": 58.4
+     },
+     {
+      "nom": "Transcendent Cooldown",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 27,
+      "minute": 35.5,
+      "winrate": 58.0
+     },
+     {
+      "nom": "Spirit Burn",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 24,
+      "minute": 36.8,
+      "winrate": 61.9
+     }
+    ]
+   },
+   "67": {
+    "parties": 82416,
+    "objets": [
+     {
+      "nom": "High-Velocity Rounds",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 74,
+      "minute": 2.1,
+      "winrate": 56.9
+     },
+     {
+      "nom": "Grit",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": true,
+      "achete_par": 60,
+      "minute": 6.0,
+      "winrate": 57.4
+     },
+     {
+      "nom": "Opening Rounds",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 54,
+      "minute": 6.2,
+      "winrate": 57.0
+     },
+     {
+      "nom": "Healing Rite",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": true,
+      "achete_par": 39,
+      "minute": 6.5,
+      "winrate": 56.4
+     },
+     {
+      "nom": "Sprint Boots",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 55,
+      "minute": 8.0,
+      "winrate": 57.2
+     },
+     {
+      "nom": "Extra Charge",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 76,
+      "minute": 8.8,
+      "winrate": 57.0
+     },
+     {
+      "nom": "Trophy Collector",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 68,
+      "minute": 9.2,
+      "winrate": 57.7
+     },
+     {
+      "nom": "Guardian Ward",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": true,
+      "achete_par": 69,
+      "minute": 9.3,
+      "winrate": 57.5
+     },
+     {
+      "nom": "Extra Spirit",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 62,
+      "minute": 10.2,
+      "winrate": 57.2
+     },
+     {
+      "nom": "Mystic Expansion",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 80,
+      "minute": 12.2,
+      "winrate": 57.6
+     },
+     {
+      "nom": "Extra Stamina",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 32,
+      "minute": 13.5,
+      "winrate": 57.4
+     },
+     {
+      "nom": "Slowing Hex",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": true,
+      "achete_par": 31,
+      "minute": 16.2,
+      "winrate": 57.1
+     },
+     {
+      "nom": "Arcane Surge",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 29,
+      "minute": 17.6,
+      "winrate": 57.9
+     },
+     {
+      "nom": "Improved Spirit",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 58,
+      "minute": 17.8,
+      "winrate": 57.7
+     },
+     {
+      "nom": "Compress Cooldown",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 61,
+      "minute": 18.4,
+      "winrate": 58.1
+     },
+     {
+      "nom": "Healbane",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 21,
+      "minute": 19.4,
+      "winrate": 56.4
+     },
+     {
+      "nom": "Knockdown",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": true,
+      "achete_par": 41,
+      "minute": 19.9,
+      "winrate": 56.8
+     },
+     {
+      "nom": "Rescue Beam",
+      "categorie": "vitality",
+      "tier": 3,
+      "cout": 3200,
+      "actif": true,
+      "achete_par": 28,
+      "minute": 20.1,
+      "winrate": 57.1
+     },
+     {
+      "nom": "Duration Extender",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 43,
+      "minute": 21.0,
+      "winrate": 59.0
+     },
+     {
+      "nom": "Mystic Vulnerability",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 24,
+      "minute": 22.3,
+      "winrate": 59.2
+     },
+     {
+      "nom": "Rapid Recharge",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 64,
+      "minute": 22.6,
+      "winrate": 57.4
+     },
+     {
+      "nom": "Superior Cooldown",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 67,
+      "minute": 23.4,
+      "winrate": 58.3
+     },
+     {
+      "nom": "Greater Expansion",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 73,
+      "minute": 25.5,
+      "winrate": 58.4
+     },
+     {
+      "nom": "Vortex Web",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": true,
+      "achete_par": 23,
+      "minute": 27.4,
+      "winrate": 59.0
+     },
+     {
+      "nom": "Divine Barrier",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": true,
+      "achete_par": 52,
+      "minute": 27.8,
+      "winrate": 59.1
+     },
+     {
+      "nom": "Superior Duration",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 55,
+      "minute": 28.0,
+      "winrate": 59.8
+     },
+     {
+      "nom": "Transcendent Cooldown",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 56,
+      "minute": 32.0,
+      "winrate": 59.6
+     },
+     {
+      "nom": "Boundless Spirit",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 45,
+      "minute": 32.5,
+      "winrate": 59.9
+     },
+     {
+      "nom": "Escalating Exposure",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 24,
+      "minute": 33.6,
+      "winrate": 60.8
+     },
+     {
+      "nom": "Spirit Burn",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 30,
+      "minute": 34.4,
+      "winrate": 61.7
+     }
+    ]
+   },
+   "6": {
+    "parties": 70275,
+    "objets": [
+     {
+      "nom": "Restorative Shot",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 29,
+      "minute": 2.6,
+      "winrate": 52.9
+     },
+     {
+      "nom": "Extra Regen",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 69,
+      "minute": 3.5,
+      "winrate": 51.7
+     },
+     {
+      "nom": "Monster Rounds",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 29,
+      "minute": 4.2,
+      "winrate": 51.1
+     },
+     {
+      "nom": "Close Quarters",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 81,
+      "minute": 4.6,
+      "winrate": 52.0
+     },
+     {
+      "nom": "Melee Lifesteal",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 77,
+      "minute": 5.7,
+      "winrate": 52.1
+     },
+     {
+      "nom": "Stalker",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 58,
+      "minute": 9.0,
+      "winrate": 52.6
+     },
+     {
+      "nom": "Spirit Strike",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 46,
+      "minute": 9.2,
+      "winrate": 51.9
+     },
+     {
+      "nom": "Melee Charge",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 90,
+      "minute": 9.4,
+      "winrate": 52.4
+     },
+     {
+      "nom": "Bullet Resist Shredder",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 50,
+      "minute": 12.5,
+      "winrate": 53.2
+     },
+     {
+      "nom": "Sprint Boots",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 23,
+      "minute": 12.7,
+      "winrate": 52.2
+     },
+     {
+      "nom": "Healing Booster",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 44,
+      "minute": 15.0,
+      "winrate": 52.4
+     },
+     {
+      "nom": "Extra Health",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 31,
+      "minute": 15.5,
+      "winrate": 52.7
+     },
+     {
+      "nom": "Duration Extender",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 45,
+      "minute": 19.0,
+      "winrate": 54.1
+     },
+     {
+      "nom": "Hunter's Aura",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 57,
+      "minute": 19.7,
+      "winrate": 54.3
+     },
+     {
+      "nom": "Warp Stone",
+      "categorie": "vitality",
+      "tier": 3,
+      "cout": 3200,
+      "actif": true,
+      "achete_par": 34,
+      "minute": 20.3,
+      "winrate": 52.3
+     },
+     {
+      "nom": "Lifestrike",
+      "categorie": "vitality",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 59,
+      "minute": 20.4,
+      "winrate": 53.2
+     },
+     {
+      "nom": "Spirit Snatch",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 50,
+      "minute": 21.7,
+      "winrate": 53.6
+     },
+     {
+      "nom": "Point Blank",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 48,
+      "minute": 23.5,
+      "winrate": 53.6
+     },
+     {
+      "nom": "Superior Duration",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 66,
+      "minute": 23.8,
+      "winrate": 54.6
+     },
+     {
+      "nom": "Debuff Reducer",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 22,
+      "minute": 25.2,
+      "winrate": 55.3
+     },
+     {
+      "nom": "Spirit Resilience",
+      "categorie": "vitality",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 46,
+      "minute": 26.3,
+      "winrate": 53.3
+     },
+     {
+      "nom": "Crushing Fists",
+      "categorie": "weapon",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 66,
+      "minute": 28.2,
+      "winrate": 56.0
+     },
+     {
+      "nom": "Phantom Strike",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": true,
+      "achete_par": 44,
+      "minute": 28.5,
+      "winrate": 58.1
+     },
+     {
+      "nom": "Berserker",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 22,
+      "minute": 28.8,
+      "winrate": 57.4
+     },
+     {
+      "nom": "Colossus",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": true,
+      "achete_par": 26,
+      "minute": 34.7,
+      "winrate": 60.3
+     }
+    ]
+   }
+  },
+  "initiate_sentinel": {
+   "13": {
+    "parties": 11260,
+    "objets": [
+     {
+      "nom": "Extra Spirit",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 73,
+      "minute": 4.1,
+      "winrate": 53.3
+     },
+     {
+      "nom": "Rapid Rounds",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 84,
+      "minute": 4.3,
+      "winrate": 52.9
+     },
+     {
+      "nom": "Extra Regen",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 23,
+      "minute": 5.6,
+      "winrate": 51.4
+     },
+     {
+      "nom": "Extended Magazine",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 41,
+      "minute": 7.0,
+      "winrate": 53.7
+     },
+     {
+      "nom": "Swift Striker",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 90,
+      "minute": 7.2,
+      "winrate": 53.2
+     },
+     {
+      "nom": "Active Reload",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 70,
+      "minute": 8.0,
+      "winrate": 53.5
+     },
+     {
+      "nom": "Extra Health",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 43,
+      "minute": 8.1,
+      "winrate": 55.0
+     },
+     {
+      "nom": "Titanic Magazine",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 44,
+      "minute": 11.0,
+      "winrate": 53.6
+     },
+     {
+      "nom": "Sprint Boots",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 24,
+      "minute": 12.7,
+      "winrate": 54.0
+     },
+     {
+      "nom": "Bullet Lifesteal",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 66,
+      "minute": 14.4,
+      "winrate": 53.5
+     },
+     {
+      "nom": "Slowing Hex",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": true,
+      "achete_par": 33,
+      "minute": 15.3,
+      "winrate": 52.8
+     },
+     {
+      "nom": "Bullet Resist Shredder",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 38,
+      "minute": 16.0,
+      "winrate": 55.0
+     },
+     {
+      "nom": "Weakening Headshot",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 29,
+      "minute": 16.2,
+      "winrate": 54.7
+     },
+     {
+      "nom": "Enduring Speed",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 30,
+      "minute": 17.1,
+      "winrate": 54.1
+     },
+     {
+      "nom": "Surge of Power",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 61,
+      "minute": 17.8,
+      "winrate": 54.2
+     },
+     {
+      "nom": "Fortitude",
+      "categorie": "vitality",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 38,
+      "minute": 18.2,
+      "winrate": 54.5
+     },
+     {
+      "nom": "Tesla Bullets",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 25,
+      "minute": 20.1,
+      "winrate": 52.0
+     },
+     {
+      "nom": "Burst Fire",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 77,
+      "minute": 20.3,
+      "winrate": 54.0
+     },
+     {
+      "nom": "Ricochet",
+      "categorie": "weapon",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 79,
+      "minute": 23.2,
+      "winrate": 55.3
+     },
+     {
+      "nom": "Spirit Resilience",
+      "categorie": "vitality",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 23,
+      "minute": 27.6,
+      "winrate": 54.0
+     },
+     {
+      "nom": "Capacitor",
+      "categorie": "weapon",
+      "tier": 4,
+      "cout": 6400,
+      "actif": true,
+      "achete_par": 22,
+      "minute": 28.8,
+      "winrate": 55.3
+     },
+     {
+      "nom": "Vampiric Burst",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": true,
+      "achete_par": 33,
+      "minute": 30.0,
+      "winrate": 57.5
+     },
+     {
+      "nom": "Silencer",
+      "categorie": "weapon",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 48,
+      "minute": 31.9,
+      "winrate": 61.6
+     },
+     {
+      "nom": "Lucky Shot",
+      "categorie": "weapon",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 33,
+      "minute": 32.0,
+      "winrate": 62.2
+     },
+     {
+      "nom": "Siphon Bullets",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 30,
+      "minute": 33.1,
+      "winrate": 62.8
+     },
+     {
+      "nom": "Crippling Headshot",
+      "categorie": "weapon",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 23,
+      "minute": 33.1,
+      "winrate": 59.7
+     },
+     {
+      "nom": "Inhibitor",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 21,
+      "minute": 35.5,
+      "winrate": 60.8
+     }
+    ]
+   },
+   "52": {
+    "parties": 2168,
+    "objets": [
+     {
+      "nom": "Mystic Regeneration",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 86,
+      "minute": 2.8,
+      "winrate": 45.2
+     },
+     {
+      "nom": "Monster Rounds",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 37,
+      "minute": 3.2,
+      "winrate": 41.4
+     },
+     {
+      "nom": "Headshot Booster",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 25,
+      "minute": 4.3,
+      "winrate": 45.0
+     },
+     {
+      "nom": "Opening Rounds",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 24,
+      "minute": 7.2,
+      "winrate": 49.8
+     },
+     {
+      "nom": "Suppressor",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 43,
+      "minute": 8.5,
+      "winrate": 44.1
+     },
+     {
+      "nom": "Healbane",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 68,
+      "minute": 10.7,
+      "winrate": 46.5
+     },
+     {
+      "nom": "Extra Spirit",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 37,
+      "minute": 10.8,
+      "winrate": 42.1
+     },
+     {
+      "nom": "Extended Magazine",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 39,
+      "minute": 11.8,
+      "winrate": 46.8
+     },
+     {
+      "nom": "Compress Cooldown",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 67,
+      "minute": 13.0,
+      "winrate": 44.7
+     },
+     {
+      "nom": "Recharging Rush",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 32,
+      "minute": 14.1,
+      "winrate": 47.9
+     },
+     {
+      "nom": "Quicksilver Reload",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 32,
+      "minute": 14.9,
+      "winrate": 47.9
+     },
+     {
+      "nom": "Mystic Vulnerability",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 83,
+      "minute": 15.5,
+      "winrate": 45.7
+     },
+     {
+      "nom": "Titanic Magazine",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 61,
+      "minute": 15.9,
+      "winrate": 46.5
+     },
+     {
+      "nom": "Headhunter",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 21,
+      "minute": 16.7,
+      "winrate": 45.1
+     },
+     {
+      "nom": "Improved Spirit",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 38,
+      "minute": 18.5,
+      "winrate": 43.2
+     },
+     {
+      "nom": "Spirit Shredder",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 22,
+      "minute": 19.3,
+      "winrate": 50.7
+     },
+     {
+      "nom": "Toxic Bullets",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 84,
+      "minute": 21.6,
+      "winrate": 45.8
+     },
+     {
+      "nom": "Dispel Magic",
+      "categorie": "vitality",
+      "tier": 3,
+      "cout": 3200,
+      "actif": true,
+      "achete_par": 37,
+      "minute": 21.9,
+      "winrate": 48.0
+     },
+     {
+      "nom": "Ricochet",
+      "categorie": "weapon",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 89,
+      "minute": 23.3,
+      "winrate": 46.0
+     },
+     {
+      "nom": "Spirit Lifesteal",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 31,
+      "minute": 27.0,
+      "winrate": 50.1
+     },
+     {
+      "nom": "Superior Cooldown",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 56,
+      "minute": 27.4,
+      "winrate": 45.7
+     },
+     {
+      "nom": "Escalating Exposure",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 77,
+      "minute": 28.6,
+      "winrate": 47.3
+     },
+     {
+      "nom": "Spirit Rend",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 21,
+      "minute": 28.9,
+      "winrate": 52.2
+     },
+     {
+      "nom": "Spiritual Overflow",
+      "categorie": "weapon",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 41,
+      "minute": 34.6,
+      "winrate": 54.0
+     },
+     {
+      "nom": "Boundless Spirit",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 33,
+      "minute": 35.2,
+      "winrate": 49.1
+     },
+     {
+      "nom": "Inhibitor",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 31,
+      "minute": 35.4,
+      "winrate": 52.4
+     },
+     {
+      "nom": "Transcendent Cooldown",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 30,
+      "minute": 36.1,
+      "winrate": 48.6
+     },
+     {
+      "nom": "Silencer",
+      "categorie": "weapon",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 21,
+      "minute": 38.7,
+      "winrate": 54.7
+     }
+    ]
+   },
+   "27": {
+    "parties": 5472,
+    "objets": [
+     {
+      "nom": "Restorative Shot",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 66,
+      "minute": 2.2,
+      "winrate": 49.1
+     },
+     {
+      "nom": "Melee Lifesteal",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 71,
+      "minute": 4.0,
+      "winrate": 49.3
+     },
+     {
+      "nom": "Spirit Strike",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 83,
+      "minute": 6.1,
+      "winrate": 49.1
+     },
+     {
+      "nom": "Extra Regen",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 48,
+      "minute": 7.4,
+      "winrate": 48.6
+     },
+     {
+      "nom": "Stalker",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 52,
+      "minute": 8.2,
+      "winrate": 50.5
+     },
+     {
+      "nom": "Extra Spirit",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 53,
+      "minute": 8.8,
+      "winrate": 47.3
+     },
+     {
+      "nom": "Mystic Regeneration",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 29,
+      "minute": 9.3,
+      "winrate": 49.0
+     },
+     {
+      "nom": "Mystic Shot",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 55,
+      "minute": 9.4,
+      "winrate": 48.5
+     },
+     {
+      "nom": "Close Quarters",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 23,
+      "minute": 10.0,
+      "winrate": 51.9
+     },
+     {
+      "nom": "Mystic Burst",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 39,
+      "minute": 10.7,
+      "winrate": 47.0
+     },
+     {
+      "nom": "Improved Spirit",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 64,
+      "minute": 13.2,
+      "winrate": 47.7
+     },
+     {
+      "nom": "Cold Front",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": true,
+      "achete_par": 23,
+      "minute": 13.7,
+      "winrate": 49.1
+     },
+     {
+      "nom": "Bullet Resist Shredder",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 22,
+      "minute": 15.0,
+      "winrate": 53.3
+     },
+     {
+      "nom": "Radiant Regeneration",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 35,
+      "minute": 15.3,
+      "winrate": 48.6
+     },
+     {
+      "nom": "Healing Booster",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 56,
+      "minute": 15.7,
+      "winrate": 48.8
+     },
+     {
+      "nom": "Healbane",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 56,
+      "minute": 15.7,
+      "winrate": 49.5
+     },
+     {
+      "nom": "Recharging Rush",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 35,
+      "minute": 15.9,
+      "winrate": 50.6
+     },
+     {
+      "nom": "Spirit Snatch",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 76,
+      "minute": 17.4,
+      "winrate": 49.3
+     },
+     {
+      "nom": "Lifestrike",
+      "categorie": "vitality",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 46,
+      "minute": 18.0,
+      "winrate": 50.9
+     },
+     {
+      "nom": "Torment Pulse",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 46,
+      "minute": 19.4,
+      "winrate": 48.7
+     },
+     {
+      "nom": "Hunter's Aura",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 40,
+      "minute": 21.7,
+      "winrate": 51.6
+     },
+     {
+      "nom": "Compress Cooldown",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 26,
+      "minute": 23.6,
+      "winrate": 52.8
+     },
+     {
+      "nom": "Tankbuster",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 47,
+      "minute": 24.2,
+      "winrate": 48.1
+     },
+     {
+      "nom": "Spirit Resilience",
+      "categorie": "vitality",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 27,
+      "minute": 27.1,
+      "winrate": 50.7
+     },
+     {
+      "nom": "Superior Cooldown",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 40,
+      "minute": 27.9,
+      "winrate": 52.3
+     },
+     {
+      "nom": "Boundless Spirit",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 54,
+      "minute": 28.4,
+      "winrate": 50.1
+     },
+     {
+      "nom": "Mystic Reverb",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 41,
+      "minute": 29.1,
+      "winrate": 53.3
+     },
+     {
+      "nom": "Transcendent Cooldown",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 29,
+      "minute": 34.4,
+      "winrate": 54.8
+     },
+     {
+      "nom": "Witchmail",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 21,
+      "minute": 34.7,
+      "winrate": 55.2
+     },
+     {
+      "nom": "Spirit Burn",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 27,
+      "minute": 35.1,
+      "winrate": 55.7
+     },
+     {
+      "nom": "Refresher",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": true,
+      "achete_par": 29,
+      "minute": 35.3,
+      "winrate": 58.7
+     }
+    ]
+   },
+   "4": {
+    "parties": 7227,
+    "objets": [
+     {
+      "nom": "Mystic Burst",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 86,
+      "minute": 4.1,
+      "winrate": 51.7
+     },
+     {
+      "nom": "Extra Regen",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 44,
+      "minute": 4.2,
+      "winrate": 52.0
+     },
+     {
+      "nom": "Mystic Regeneration",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 86,
+      "minute": 4.8,
+      "winrate": 51.3
+     },
+     {
+      "nom": "Mystic Expansion",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 77,
+      "minute": 7.0,
+      "winrate": 52.1
+     },
+     {
+      "nom": "Extra Spirit",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 76,
+      "minute": 7.3,
+      "winrate": 52.1
+     },
+     {
+      "nom": "Sprint Boots",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 59,
+      "minute": 7.5,
+      "winrate": 51.7
+     },
+     {
+      "nom": "Radiant Regeneration",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 89,
+      "minute": 13.5,
+      "winrate": 51.5
+     },
+     {
+      "nom": "Spirit Lifesteal",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 75,
+      "minute": 14.0,
+      "winrate": 52.5
+     },
+     {
+      "nom": "Healing Booster",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 38,
+      "minute": 15.7,
+      "winrate": 51.5
+     },
+     {
+      "nom": "Enduring Speed",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 56,
+      "minute": 16.0,
+      "winrate": 52.1
+     },
+     {
+      "nom": "Improved Spirit",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 70,
+      "minute": 17.3,
+      "winrate": 52.8
+     },
+     {
+      "nom": "Compress Cooldown",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 61,
+      "minute": 17.8,
+      "winrate": 51.7
+     },
+     {
+      "nom": "Tankbuster",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 73,
+      "minute": 18.8,
+      "winrate": 51.8
+     },
+     {
+      "nom": "Mystic Vulnerability",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 64,
+      "minute": 21.0,
+      "winrate": 53.3
+     },
+     {
+      "nom": "Berserker",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 24,
+      "minute": 21.4,
+      "winrate": 50.4
+     },
+     {
+      "nom": "Superior Cooldown",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 62,
+      "minute": 23.4,
+      "winrate": 52.4
+     },
+     {
+      "nom": "Spirit Resilience",
+      "categorie": "vitality",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 47,
+      "minute": 24.3,
+      "winrate": 52.6
+     },
+     {
+      "nom": "Mystic Reverb",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 42,
+      "minute": 26.2,
+      "winrate": 54.3
+     },
+     {
+      "nom": "Greater Expansion",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 56,
+      "minute": 26.9,
+      "winrate": 53.5
+     },
+     {
+      "nom": "Leech",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 37,
+      "minute": 28.7,
+      "winrate": 53.4
+     },
+     {
+      "nom": "Escalating Exposure",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 58,
+      "minute": 30.4,
+      "winrate": 56.2
+     },
+     {
+      "nom": "Spirit Burn",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 48,
+      "minute": 32.2,
+      "winrate": 56.4
+     },
+     {
+      "nom": "Boundless Spirit",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 46,
+      "minute": 32.8,
+      "winrate": 55.1
+     },
+     {
+      "nom": "Transcendent Cooldown",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 40,
+      "minute": 34.3,
+      "winrate": 54.2
+     }
+    ]
+   },
+   "2": {
+    "parties": 8262,
+    "objets": [
+     {
+      "nom": "Monster Rounds",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 68,
+      "minute": 2.3,
+      "winrate": 53.2
+     },
+     {
+      "nom": "Extra Regen",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 37,
+      "minute": 3.7,
+      "winrate": 53.4
+     },
+     {
+      "nom": "Extra Spirit",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 64,
+      "minute": 7.5,
+      "winrate": 53.1
+     },
+     {
+      "nom": "Extra Stamina",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 29,
+      "minute": 7.8,
+      "winrate": 52.9
+     },
+     {
+      "nom": "Extra Charge",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 43,
+      "minute": 8.6,
+      "winrate": 54.0
+     },
+     {
+      "nom": "Arcane Surge",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 41,
+      "minute": 9.2,
+      "winrate": 53.3
+     },
+     {
+      "nom": "Sprint Boots",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 26,
+      "minute": 10.7,
+      "winrate": 53.1
+     },
+     {
+      "nom": "Enchanter's Emblem",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 33,
+      "minute": 10.7,
+      "winrate": 54.5
+     },
+     {
+      "nom": "Grit",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": true,
+      "achete_par": 23,
+      "minute": 11.0,
+      "winrate": 55.4
+     },
+     {
+      "nom": "Cultist Sacrifice",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": true,
+      "achete_par": 44,
+      "minute": 11.3,
+      "winrate": 53.7
+     },
+     {
+      "nom": "Mystic Expansion",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 50,
+      "minute": 11.9,
+      "winrate": 54.3
+     },
+     {
+      "nom": "Improved Spirit",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 61,
+      "minute": 14.4,
+      "winrate": 54.1
+     },
+     {
+      "nom": "Healbane",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 61,
+      "minute": 14.9,
+      "winrate": 53.5
+     },
+     {
+      "nom": "Surge of Power",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 23,
+      "minute": 16.7,
+      "winrate": 51.2
+     },
+     {
+      "nom": "Mystic Vulnerability",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 85,
+      "minute": 17.1,
+      "winrate": 53.5
+     },
+     {
+      "nom": "Duration Extender",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 57,
+      "minute": 17.3,
+      "winrate": 55.1
+     },
+     {
+      "nom": "Spirit Lifesteal",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 78,
+      "minute": 17.6,
+      "winrate": 54.6
+     },
+     {
+      "nom": "Enduring Speed",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 21,
+      "minute": 18.6,
+      "winrate": 51.4
+     },
+     {
+      "nom": "Compress Cooldown",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 32,
+      "minute": 19.5,
+      "winrate": 55.8
+     },
+     {
+      "nom": "Mystic Slow",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 22,
+      "minute": 21.3,
+      "winrate": 56.7
+     },
+     {
+      "nom": "Reactive Barrier",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 21,
+      "minute": 21.4,
+      "winrate": 54.7
+     },
+     {
+      "nom": "Toxic Bullets",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 31,
+      "minute": 22.6,
+      "winrate": 52.9
+     },
+     {
+      "nom": "Rapid Recharge",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 35,
+      "minute": 23.2,
+      "winrate": 54.9
+     },
+     {
+      "nom": "Superior Duration",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 68,
+      "minute": 23.8,
+      "winrate": 56.0
+     },
+     {
+      "nom": "Escalating Exposure",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 85,
+      "minute": 25.5,
+      "winrate": 55.0
+     },
+     {
+      "nom": "Greater Expansion",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 49,
+      "minute": 25.6,
+      "winrate": 55.8
+     },
+     {
+      "nom": "Debuff Reducer",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 25,
+      "minute": 26.3,
+      "winrate": 55.5
+     },
+     {
+      "nom": "Superior Cooldown",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 40,
+      "minute": 26.4,
+      "winrate": 56.1
+     },
+     {
+      "nom": "Spiritual Overflow",
+      "categorie": "weapon",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 30,
+      "minute": 31.4,
+      "winrate": 55.6
+     },
+     {
+      "nom": "Boundless Spirit",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 52,
+      "minute": 31.7,
+      "winrate": 56.7
+     },
+     {
+      "nom": "Unstoppable",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": true,
+      "achete_par": 41,
+      "minute": 31.7,
+      "winrate": 56.3
+     },
+     {
+      "nom": "Indomitable",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 26,
+      "minute": 32.2,
+      "winrate": 57.7
+     },
+     {
+      "nom": "Infuser",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": true,
+      "achete_par": 35,
+      "minute": 33.0,
+      "winrate": 56.2
+     },
+     {
+      "nom": "Lightning Scroll",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 22,
+      "minute": 34.0,
+      "winrate": 58.8
+     },
+     {
+      "nom": "Transcendent Cooldown",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 27,
+      "minute": 35.6,
+      "winrate": 57.8
+     },
+     {
+      "nom": "Spirit Burn",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 27,
+      "minute": 36.1,
+      "winrate": 60.7
+     },
+     {
+      "nom": "Refresher",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": true,
+      "achete_par": 21,
+      "minute": 37.4,
+      "winrate": 56.2
+     }
+    ]
+   },
+   "67": {
+    "parties": 8812,
+    "objets": [
+     {
+      "nom": "High-Velocity Rounds",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 69,
+      "minute": 2.1,
+      "winrate": 56.3
+     },
+     {
+      "nom": "Healing Rite",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": true,
+      "achete_par": 40,
+      "minute": 6.0,
+      "winrate": 56.3
+     },
+     {
+      "nom": "Opening Rounds",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 48,
+      "minute": 6.2,
+      "winrate": 56.4
+     },
+     {
+      "nom": "Grit",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": true,
+      "achete_par": 56,
+      "minute": 6.3,
+      "winrate": 56.7
+     },
+     {
+      "nom": "Sprint Boots",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 55,
+      "minute": 7.9,
+      "winrate": 56.7
+     },
+     {
+      "nom": "Extra Charge",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 81,
+      "minute": 8.1,
+      "winrate": 56.7
+     },
+     {
+      "nom": "Trophy Collector",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 70,
+      "minute": 9.0,
+      "winrate": 57.0
+     },
+     {
+      "nom": "Guardian Ward",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": true,
+      "achete_par": 65,
+      "minute": 9.2,
+      "winrate": 57.5
+     },
+     {
+      "nom": "Extra Spirit",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 64,
+      "minute": 10.0,
+      "winrate": 57.3
+     },
+     {
+      "nom": "Mystic Expansion",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 80,
+      "minute": 12.0,
+      "winrate": 57.8
+     },
+     {
+      "nom": "Extra Stamina",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 30,
+      "minute": 13.4,
+      "winrate": 58.5
+     },
+     {
+      "nom": "Slowing Hex",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": true,
+      "achete_par": 26,
+      "minute": 16.3,
+      "winrate": 55.4
+     },
+     {
+      "nom": "Improved Spirit",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 60,
+      "minute": 17.1,
+      "winrate": 57.9
+     },
+     {
+      "nom": "Arcane Surge",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 24,
+      "minute": 17.5,
+      "winrate": 56.5
+     },
+     {
+      "nom": "Compress Cooldown",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 63,
+      "minute": 18.6,
+      "winrate": 58.1
+     },
+     {
+      "nom": "Healbane",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 22,
+      "minute": 19.0,
+      "winrate": 54.9
+     },
+     {
+      "nom": "Rescue Beam",
+      "categorie": "vitality",
+      "tier": 3,
+      "cout": 3200,
+      "actif": true,
+      "achete_par": 28,
+      "minute": 19.2,
+      "winrate": 57.2
+     },
+     {
+      "nom": "Knockdown",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": true,
+      "achete_par": 45,
+      "minute": 19.7,
+      "winrate": 55.5
+     },
+     {
+      "nom": "Duration Extender",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 41,
+      "minute": 21.3,
+      "winrate": 59.2
+     },
+     {
+      "nom": "Mystic Vulnerability",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 29,
+      "minute": 21.7,
+      "winrate": 59.3
+     },
+     {
+      "nom": "Rapid Recharge",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 69,
+      "minute": 22.3,
+      "winrate": 56.8
+     },
+     {
+      "nom": "Superior Cooldown",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 69,
+      "minute": 23.6,
+      "winrate": 58.5
+     },
+     {
+      "nom": "Tankbuster",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 21,
+      "minute": 24.4,
+      "winrate": 59.5
+     },
+     {
+      "nom": "Greater Expansion",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 74,
+      "minute": 25.5,
+      "winrate": 58.3
+     },
+     {
+      "nom": "Superior Duration",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 50,
+      "minute": 28.3,
+      "winrate": 60.6
+     },
+     {
+      "nom": "Divine Barrier",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": true,
+      "achete_par": 49,
+      "minute": 28.5,
+      "winrate": 59.2
+     },
+     {
+      "nom": "Transcendent Cooldown",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 57,
+      "minute": 32.2,
+      "winrate": 60.5
+     },
+     {
+      "nom": "Boundless Spirit",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 48,
+      "minute": 32.3,
+      "winrate": 60.2
+     },
+     {
+      "nom": "Escalating Exposure",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 28,
+      "minute": 33.2,
+      "winrate": 61.3
+     },
+     {
+      "nom": "Spirit Burn",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 36,
+      "minute": 33.7,
+      "winrate": 61.1
+     }
+    ]
+   },
+   "6": {
+    "parties": 5815,
+    "objets": [
+     {
+      "nom": "Restorative Shot",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 26,
+      "minute": 2.3,
+      "winrate": 51.9
+     },
+     {
+      "nom": "Extra Regen",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 68,
+      "minute": 3.4,
+      "winrate": 52.4
+     },
+     {
+      "nom": "Monster Rounds",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 26,
+      "minute": 3.9,
+      "winrate": 51.7
+     },
+     {
+      "nom": "Close Quarters",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 78,
+      "minute": 4.7,
+      "winrate": 51.8
+     },
+     {
+      "nom": "Melee Lifesteal",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 77,
+      "minute": 5.8,
+      "winrate": 52.4
+     },
+     {
+      "nom": "Stalker",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 54,
+      "minute": 8.9,
+      "winrate": 52.3
+     },
+     {
+      "nom": "Spirit Strike",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 48,
+      "minute": 9.1,
+      "winrate": 51.8
+     },
+     {
+      "nom": "Melee Charge",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 91,
+      "minute": 9.5,
+      "winrate": 52.3
+     },
+     {
+      "nom": "Bullet Resist Shredder",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 46,
+      "minute": 12.6,
+      "winrate": 52.7
+     },
+     {
+      "nom": "Sprint Boots",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 23,
+      "minute": 12.6,
+      "winrate": 52.8
+     },
+     {
+      "nom": "Extra Health",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 28,
+      "minute": 14.7,
+      "winrate": 52.5
+     },
+     {
+      "nom": "Healing Booster",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 46,
+      "minute": 14.9,
+      "winrate": 52.1
+     },
+     {
+      "nom": "Duration Extender",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 44,
+      "minute": 19.0,
+      "winrate": 54.7
+     },
+     {
+      "nom": "Hunter's Aura",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 54,
+      "minute": 19.8,
+      "winrate": 53.8
+     },
+     {
+      "nom": "Lifestrike",
+      "categorie": "vitality",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 61,
+      "minute": 20.6,
+      "winrate": 53.0
+     },
+     {
+      "nom": "Warp Stone",
+      "categorie": "vitality",
+      "tier": 3,
+      "cout": 3200,
+      "actif": true,
+      "achete_par": 28,
+      "minute": 21.0,
+      "winrate": 54.9
+     },
+     {
+      "nom": "Spirit Snatch",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 52,
+      "minute": 21.6,
+      "winrate": 53.7
+     },
+     {
+      "nom": "Point Blank",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 49,
+      "minute": 23.4,
+      "winrate": 53.0
+     },
+     {
+      "nom": "Superior Duration",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 64,
+      "minute": 23.9,
+      "winrate": 54.9
+     },
+     {
+      "nom": "Debuff Reducer",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 23,
+      "minute": 25.1,
+      "winrate": 55.9
+     },
+     {
+      "nom": "Spirit Resilience",
+      "categorie": "vitality",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 47,
+      "minute": 25.8,
+      "winrate": 53.5
+     },
+     {
+      "nom": "Crushing Fists",
+      "categorie": "weapon",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 69,
+      "minute": 27.5,
+      "winrate": 56.2
+     },
+     {
+      "nom": "Phantom Strike",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": true,
+      "achete_par": 41,
+      "minute": 28.6,
+      "winrate": 57.5
+     },
+     {
+      "nom": "Berserker",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 22,
+      "minute": 28.9,
+      "winrate": 58.0
+     },
+     {
+      "nom": "Witchmail",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 21,
+      "minute": 32.6,
+      "winrate": 59.4
+     },
+     {
+      "nom": "Colossus",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": true,
+      "achete_par": 24,
+      "minute": 34.9,
+      "winrate": 60.9
+     }
+    ]
+   }
+  },
+  "mystic_oracle": {
+   "13": {
+    "parties": 12850,
+    "objets": [
+     {
+      "nom": "Extra Spirit",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 76,
+      "minute": 3.5,
+      "winrate": 53.0
+     },
+     {
+      "nom": "Rapid Rounds",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 91,
+      "minute": 4.3,
+      "winrate": 53.1
+     },
+     {
+      "nom": "Extra Regen",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 27,
+      "minute": 5.5,
+      "winrate": 52.6
+     },
+     {
+      "nom": "Swift Striker",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 94,
+      "minute": 7.1,
+      "winrate": 53.1
+     },
+     {
+      "nom": "Active Reload",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 77,
+      "minute": 7.2,
+      "winrate": 52.9
+     },
+     {
+      "nom": "Extended Magazine",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 36,
+      "minute": 7.4,
+      "winrate": 54.3
+     },
+     {
+      "nom": "Extra Health",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 49,
+      "minute": 8.4,
+      "winrate": 55.2
+     },
+     {
+      "nom": "Battle Vest",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 20,
+      "minute": 10.5,
+      "winrate": 54.3
+     },
+     {
+      "nom": "Titanic Magazine",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 34,
+      "minute": 11.1,
+      "winrate": 52.9
+     },
+     {
+      "nom": "Sprint Boots",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 31,
+      "minute": 12.9,
+      "winrate": 54.0
+     },
+     {
+      "nom": "Slowing Hex",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": true,
+      "achete_par": 43,
+      "minute": 14.0,
+      "winrate": 51.6
+     },
+     {
+      "nom": "Bullet Lifesteal",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 52,
+      "minute": 14.9,
+      "winrate": 52.3
+     },
+     {
+      "nom": "Weakening Headshot",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 34,
+      "minute": 15.1,
+      "winrate": 55.7
+     },
+     {
+      "nom": "Bullet Resist Shredder",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 42,
+      "minute": 15.5,
+      "winrate": 54.8
+     },
+     {
+      "nom": "Enduring Speed",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 39,
+      "minute": 15.8,
+      "winrate": 53.7
+     },
+     {
+      "nom": "Surge of Power",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 64,
+      "minute": 16.5,
+      "winrate": 54.4
+     },
+     {
+      "nom": "Fortitude",
+      "categorie": "vitality",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 42,
+      "minute": 16.8,
+      "winrate": 55.6
+     },
+     {
+      "nom": "Tesla Bullets",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 24,
+      "minute": 18.7,
+      "winrate": 53.3
+     },
+     {
+      "nom": "Burst Fire",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 82,
+      "minute": 19.9,
+      "winrate": 54.4
+     },
+     {
+      "nom": "Ricochet",
+      "categorie": "weapon",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 78,
+      "minute": 22.6,
+      "winrate": 55.7
+     },
+     {
+      "nom": "Spirit Resilience",
+      "categorie": "vitality",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 28,
+      "minute": 25.4,
+      "winrate": 54.7
+     },
+     {
+      "nom": "Capacitor",
+      "categorie": "weapon",
+      "tier": 4,
+      "cout": 6400,
+      "actif": true,
+      "achete_par": 21,
+      "minute": 25.7,
+      "winrate": 55.8
+     },
+     {
+      "nom": "Vampiric Burst",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": true,
+      "achete_par": 23,
+      "minute": 30.0,
+      "winrate": 57.2
+     },
+     {
+      "nom": "Silencer",
+      "categorie": "weapon",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 47,
+      "minute": 30.3,
+      "winrate": 62.0
+     },
+     {
+      "nom": "Lucky Shot",
+      "categorie": "weapon",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 29,
+      "minute": 30.6,
+      "winrate": 61.3
+     },
+     {
+      "nom": "Siphon Bullets",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 32,
+      "minute": 30.9,
+      "winrate": 62.1
+     },
+     {
+      "nom": "Crippling Headshot",
+      "categorie": "weapon",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 20,
+      "minute": 32.4,
+      "winrate": 61.2
+     },
+     {
+      "nom": "Unstoppable",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": true,
+      "achete_par": 26,
+      "minute": 32.9,
+      "winrate": 58.5
+     }
+    ]
+   },
+   "52": {
+    "parties": 2581,
+    "objets": [
+     {
+      "nom": "Mystic Regeneration",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 90,
+      "minute": 2.2,
+      "winrate": 44.2
+     },
+     {
+      "nom": "Monster Rounds",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 39,
+      "minute": 3.1,
+      "winrate": 44.9
+     },
+     {
+      "nom": "Headshot Booster",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 30,
+      "minute": 3.9,
+      "winrate": 44.9
+     },
+     {
+      "nom": "Suppressor",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 50,
+      "minute": 7.5,
+      "winrate": 44.4
+     },
+     {
+      "nom": "Healbane",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 83,
+      "minute": 9.6,
+      "winrate": 45.1
+     },
+     {
+      "nom": "Extra Spirit",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 35,
+      "minute": 11.4,
+      "winrate": 44.6
+     },
+     {
+      "nom": "Compress Cooldown",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 75,
+      "minute": 12.4,
+      "winrate": 45.3
+     },
+     {
+      "nom": "Extended Magazine",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 45,
+      "minute": 12.9,
+      "winrate": 44.9
+     },
+     {
+      "nom": "Recharging Rush",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 27,
+      "minute": 13.5,
+      "winrate": 43.2
+     },
+     {
+      "nom": "Kinetic Dash",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 25,
+      "minute": 13.6,
+      "winrate": 43.6
+     },
+     {
+      "nom": "Headhunter",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 24,
+      "minute": 14.9,
+      "winrate": 45.9
+     },
+     {
+      "nom": "Quicksilver Reload",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 24,
+      "minute": 15.1,
+      "winrate": 40.4
+     },
+     {
+      "nom": "Mystic Vulnerability",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 86,
+      "minute": 15.2,
+      "winrate": 44.8
+     },
+     {
+      "nom": "Titanic Magazine",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 61,
+      "minute": 17.2,
+      "winrate": 45.2
+     },
+     {
+      "nom": "Improved Spirit",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 35,
+      "minute": 19.2,
+      "winrate": 44.5
+     },
+     {
+      "nom": "Dispel Magic",
+      "categorie": "vitality",
+      "tier": 3,
+      "cout": 3200,
+      "actif": true,
+      "achete_par": 57,
+      "minute": 19.2,
+      "winrate": 44.2
+     },
+     {
+      "nom": "Toxic Bullets",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 88,
+      "minute": 19.7,
+      "winrate": 45.0
+     },
+     {
+      "nom": "Ricochet",
+      "categorie": "weapon",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 86,
+      "minute": 23.7,
+      "winrate": 45.3
+     },
+     {
+      "nom": "Escalating Exposure",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 76,
+      "minute": 27.0,
+      "winrate": 46.4
+     },
+     {
+      "nom": "Superior Cooldown",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 57,
+      "minute": 27.0,
+      "winrate": 47.4
+     },
+     {
+      "nom": "Spirit Lifesteal",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 29,
+      "minute": 28.2,
+      "winrate": 50.3
+     },
+     {
+      "nom": "Spiritual Overflow",
+      "categorie": "weapon",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 33,
+      "minute": 33.3,
+      "winrate": 54.4
+     },
+     {
+      "nom": "Inhibitor",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 30,
+      "minute": 34.3,
+      "winrate": 51.8
+     },
+     {
+      "nom": "Boundless Spirit",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 23,
+      "minute": 34.9,
+      "winrate": 50.9
+     },
+     {
+      "nom": "Transcendent Cooldown",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 21,
+      "minute": 35.7,
+      "winrate": 51.3
+     },
+     {
+      "nom": "Silencer",
+      "categorie": "weapon",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 21,
+      "minute": 35.9,
+      "winrate": 54.9
+     }
+    ]
+   },
+   "27": {
+    "parties": 6171,
+    "objets": [
+     {
+      "nom": "Restorative Shot",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 77,
+      "minute": 1.6,
+      "winrate": 50.6
+     },
+     {
+      "nom": "Melee Lifesteal",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 77,
+      "minute": 3.7,
+      "winrate": 50.6
+     },
+     {
+      "nom": "Spirit Strike",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 79,
+      "minute": 6.2,
+      "winrate": 49.8
+     },
+     {
+      "nom": "Stalker",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 68,
+      "minute": 7.3,
+      "winrate": 51.1
+     },
+     {
+      "nom": "Mystic Regeneration",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 46,
+      "minute": 8.7,
+      "winrate": 52.0
+     },
+     {
+      "nom": "Extra Regen",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 57,
+      "minute": 8.7,
+      "winrate": 49.9
+     },
+     {
+      "nom": "Mystic Shot",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 51,
+      "minute": 8.9,
+      "winrate": 49.1
+     },
+     {
+      "nom": "Extra Spirit",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 41,
+      "minute": 9.5,
+      "winrate": 48.2
+     },
+     {
+      "nom": "Close Quarters",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 36,
+      "minute": 10.4,
+      "winrate": 52.6
+     },
+     {
+      "nom": "Mystic Burst",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 26,
+      "minute": 11.9,
+      "winrate": 49.3
+     },
+     {
+      "nom": "Radiant Regeneration",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 52,
+      "minute": 12.9,
+      "winrate": 51.6
+     },
+     {
+      "nom": "Bullet Resist Shredder",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 37,
+      "minute": 13.8,
+      "winrate": 52.8
+     },
+     {
+      "nom": "Improved Spirit",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 48,
+      "minute": 14.2,
+      "winrate": 48.4
+     },
+     {
+      "nom": "Recharging Rush",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 53,
+      "minute": 15.0,
+      "winrate": 52.4
+     },
+     {
+      "nom": "Healing Booster",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 68,
+      "minute": 15.8,
+      "winrate": 50.6
+     },
+     {
+      "nom": "Healbane",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 53,
+      "minute": 15.9,
+      "winrate": 49.5
+     },
+     {
+      "nom": "Lifestrike",
+      "categorie": "vitality",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 58,
+      "minute": 16.7,
+      "winrate": 51.5
+     },
+     {
+      "nom": "Spirit Snatch",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 67,
+      "minute": 17.5,
+      "winrate": 49.9
+     },
+     {
+      "nom": "Torment Pulse",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 35,
+      "minute": 20.0,
+      "winrate": 50.3
+     },
+     {
+      "nom": "Melee Charge",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 20,
+      "minute": 20.6,
+      "winrate": 55.9
+     },
+     {
+      "nom": "Hunter's Aura",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 57,
+      "minute": 20.7,
+      "winrate": 52.9
+     },
+     {
+      "nom": "Dispel Magic",
+      "categorie": "vitality",
+      "tier": 3,
+      "cout": 3200,
+      "actif": true,
+      "achete_par": 21,
+      "minute": 22.5,
+      "winrate": 52.7
+     },
+     {
+      "nom": "Tankbuster",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 31,
+      "minute": 24.5,
+      "winrate": 49.8
+     },
+     {
+      "nom": "Spirit Resilience",
+      "categorie": "vitality",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 25,
+      "minute": 26.5,
+      "winrate": 47.9
+     },
+     {
+      "nom": "Mystic Reverb",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 27,
+      "minute": 27.8,
+      "winrate": 55.6
+     },
+     {
+      "nom": "Boundless Spirit",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 37,
+      "minute": 28.1,
+      "winrate": 51.1
+     },
+     {
+      "nom": "Superior Cooldown",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 31,
+      "minute": 28.4,
+      "winrate": 55.4
+     },
+     {
+      "nom": "Crushing Fists",
+      "categorie": "weapon",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 20,
+      "minute": 28.9,
+      "winrate": 58.7
+     },
+     {
+      "nom": "Witchmail",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 23,
+      "minute": 32.3,
+      "winrate": 58.9
+     },
+     {
+      "nom": "Refresher",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": true,
+      "achete_par": 29,
+      "minute": 34.1,
+      "winrate": 58.7
+     }
+    ]
+   },
+   "4": {
+    "parties": 5184,
+    "objets": [
+     {
+      "nom": "Monster Rounds",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 34,
+      "minute": 2.8,
+      "winrate": 45.2
+     },
+     {
+      "nom": "Extra Regen",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 61,
+      "minute": 3.4,
+      "winrate": 48.1
+     },
+     {
+      "nom": "Mystic Burst",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 80,
+      "minute": 4.0,
+      "winrate": 50.5
+     },
+     {
+      "nom": "Mystic Regeneration",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 92,
+      "minute": 4.6,
+      "winrate": 49.9
+     },
+     {
+      "nom": "Mystic Expansion",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 62,
+      "minute": 6.8,
+      "winrate": 51.7
+     },
+     {
+      "nom": "Sprint Boots",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 47,
+      "minute": 7.8,
+      "winrate": 51.2
+     },
+     {
+      "nom": "Extra Spirit",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 66,
+      "minute": 8.2,
+      "winrate": 51.2
+     },
+     {
+      "nom": "Extra Stamina",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 32,
+      "minute": 11.1,
+      "winrate": 49.3
+     },
+     {
+      "nom": "Radiant Regeneration",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 93,
+      "minute": 11.5,
+      "winrate": 49.9
+     },
+     {
+      "nom": "Kinetic Dash",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 36,
+      "minute": 12.4,
+      "winrate": 47.3
+     },
+     {
+      "nom": "Healing Booster",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 52,
+      "minute": 14.6,
+      "winrate": 47.8
+     },
+     {
+      "nom": "Spirit Lifesteal",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 61,
+      "minute": 14.9,
+      "winrate": 52.3
+     },
+     {
+      "nom": "Enduring Speed",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 45,
+      "minute": 15.5,
+      "winrate": 51.6
+     },
+     {
+      "nom": "Recharging Rush",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 21,
+      "minute": 16.8,
+      "winrate": 46.9
+     },
+     {
+      "nom": "Improved Spirit",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 52,
+      "minute": 17.5,
+      "winrate": 53.0
+     },
+     {
+      "nom": "Compress Cooldown",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 45,
+      "minute": 17.7,
+      "winrate": 52.8
+     },
+     {
+      "nom": "Tankbuster",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 56,
+      "minute": 18.8,
+      "winrate": 52.4
+     },
+     {
+      "nom": "Berserker",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 41,
+      "minute": 20.0,
+      "winrate": 48.3
+     },
+     {
+      "nom": "Mystic Vulnerability",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 50,
+      "minute": 20.6,
+      "winrate": 53.7
+     },
+     {
+      "nom": "Spirit Resilience",
+      "categorie": "vitality",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 59,
+      "minute": 21.8,
+      "winrate": 51.4
+     },
+     {
+      "nom": "Superior Cooldown",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 47,
+      "minute": 23.0,
+      "winrate": 53.5
+     },
+     {
+      "nom": "Mystic Reverb",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 33,
+      "minute": 24.1,
+      "winrate": 55.8
+     },
+     {
+      "nom": "Spellslinger",
+      "categorie": "weapon",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 31,
+      "minute": 26.8,
+      "winrate": 49.5
+     },
+     {
+      "nom": "Greater Expansion",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 40,
+      "minute": 26.9,
+      "winrate": 53.3
+     },
+     {
+      "nom": "Leech",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 30,
+      "minute": 28.2,
+      "winrate": 52.7
+     },
+     {
+      "nom": "Escalating Exposure",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 44,
+      "minute": 28.9,
+      "winrate": 56.5
+     },
+     {
+      "nom": "Spirit Burn",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 37,
+      "minute": 30.6,
+      "winrate": 58.2
+     },
+     {
+      "nom": "Boundless Spirit",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 31,
+      "minute": 32.0,
+      "winrate": 56.1
+     },
+     {
+      "nom": "Transcendent Cooldown",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 24,
+      "minute": 34.0,
+      "winrate": 55.4
+     }
+    ]
+   },
+   "2": {
+    "parties": 7075,
+    "objets": [
+     {
+      "nom": "Monster Rounds",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 78,
+      "minute": 1.9,
+      "winrate": 52.8
+     },
+     {
+      "nom": "Extra Regen",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 38,
+      "minute": 2.9,
+      "winrate": 52.8
+     },
+     {
+      "nom": "Extra Stamina",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 45,
+      "minute": 7.2,
+      "winrate": 52.7
+     },
+     {
+      "nom": "Arcane Surge",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 60,
+      "minute": 8.4,
+      "winrate": 53.2
+     },
+     {
+      "nom": "Extra Spirit",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 55,
+      "minute": 9.2,
+      "winrate": 53.0
+     },
+     {
+      "nom": "Suppressor",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 27,
+      "minute": 9.2,
+      "winrate": 54.1
+     },
+     {
+      "nom": "Grit",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": true,
+      "achete_par": 33,
+      "minute": 9.3,
+      "winrate": 54.3
+     },
+     {
+      "nom": "Enchanter's Emblem",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 42,
+      "minute": 9.8,
+      "winrate": 54.1
+     },
+     {
+      "nom": "Extra Charge",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 28,
+      "minute": 9.9,
+      "winrate": 53.7
+     },
+     {
+      "nom": "Cultist Sacrifice",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": true,
+      "achete_par": 60,
+      "minute": 10.1,
+      "winrate": 52.9
+     },
+     {
+      "nom": "Sprint Boots",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 26,
+      "minute": 11.9,
+      "winrate": 52.4
+     },
+     {
+      "nom": "Spirit Shredder",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 23,
+      "minute": 13.5,
+      "winrate": 53.2
+     },
+     {
+      "nom": "Healbane",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 74,
+      "minute": 14.0,
+      "winrate": 54.1
+     },
+     {
+      "nom": "Surge of Power",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 25,
+      "minute": 14.1,
+      "winrate": 51.5
+     },
+     {
+      "nom": "Mystic Expansion",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 37,
+      "minute": 14.5,
+      "winrate": 53.7
+     },
+     {
+      "nom": "Fleetfoot",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": true,
+      "achete_par": 21,
+      "minute": 15.7,
+      "winrate": 55.3
+     },
+     {
+      "nom": "Mystic Vulnerability",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 88,
+      "minute": 16.2,
+      "winrate": 53.3
+     },
+     {
+      "nom": "Improved Spirit",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 46,
+      "minute": 17.0,
+      "winrate": 53.4
+     },
+     {
+      "nom": "Duration Extender",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 53,
+      "minute": 17.2,
+      "winrate": 53.3
+     },
+     {
+      "nom": "Enduring Speed",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 26,
+      "minute": 17.3,
+      "winrate": 53.8
+     },
+     {
+      "nom": "Spirit Lifesteal",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 80,
+      "minute": 17.8,
+      "winrate": 54.0
+     },
+     {
+      "nom": "Reactive Barrier",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 26,
+      "minute": 20.4,
+      "winrate": 54.9
+     },
+     {
+      "nom": "Compress Cooldown",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 28,
+      "minute": 20.8,
+      "winrate": 55.2
+     },
+     {
+      "nom": "Toxic Bullets",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 33,
+      "minute": 21.5,
+      "winrate": 53.5
+     },
+     {
+      "nom": "Superior Duration",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 65,
+      "minute": 23.0,
+      "winrate": 55.5
+     },
+     {
+      "nom": "Rapid Recharge",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 23,
+      "minute": 23.1,
+      "winrate": 54.7
+     },
+     {
+      "nom": "Escalating Exposure",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 89,
+      "minute": 23.1,
+      "winrate": 54.8
+     },
+     {
+      "nom": "Debuff Reducer",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 37,
+      "minute": 25.4,
+      "winrate": 53.9
+     },
+     {
+      "nom": "Greater Expansion",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 36,
+      "minute": 26.8,
+      "winrate": 56.5
+     },
+     {
+      "nom": "Superior Cooldown",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 31,
+      "minute": 27.2,
+      "winrate": 54.7
+     },
+     {
+      "nom": "Spirit Resilience",
+      "categorie": "vitality",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 21,
+      "minute": 27.8,
+      "winrate": 55.0
+     },
+     {
+      "nom": "Unstoppable",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": true,
+      "achete_par": 52,
+      "minute": 29.0,
+      "winrate": 55.4
+     },
+     {
+      "nom": "Spiritual Overflow",
+      "categorie": "weapon",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 29,
+      "minute": 29.6,
+      "winrate": 57.0
+     },
+     {
+      "nom": "Indomitable",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 26,
+      "minute": 29.8,
+      "winrate": 58.4
+     },
+     {
+      "nom": "Infuser",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": true,
+      "achete_par": 40,
+      "minute": 31.1,
+      "winrate": 56.6
+     },
+     {
+      "nom": "Boundless Spirit",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 38,
+      "minute": 31.9,
+      "winrate": 57.0
+     },
+     {
+      "nom": "Spirit Burn",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 20,
+      "minute": 34.0,
+      "winrate": 61.2
+     }
+    ]
+   },
+   "67": {
+    "parties": 7806,
+    "objets": [
+     {
+      "nom": "High-Velocity Rounds",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 80,
+      "minute": 1.6,
+      "winrate": 56.6
+     },
+     {
+      "nom": "Opening Rounds",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 61,
+      "minute": 5.2,
+      "winrate": 56.9
+     },
+     {
+      "nom": "Grit",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": true,
+      "achete_par": 71,
+      "minute": 5.5,
+      "winrate": 57.3
+     },
+     {
+      "nom": "Healing Rite",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": true,
+      "achete_par": 37,
+      "minute": 6.2,
+      "winrate": 55.0
+     },
+     {
+      "nom": "Sprint Boots",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 63,
+      "minute": 7.1,
+      "winrate": 57.2
+     },
+     {
+      "nom": "Trophy Collector",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 77,
+      "minute": 8.2,
+      "winrate": 57.4
+     },
+     {
+      "nom": "Guardian Ward",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": true,
+      "achete_par": 78,
+      "minute": 8.6,
+      "winrate": 57.2
+     },
+     {
+      "nom": "Extra Charge",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 69,
+      "minute": 9.7,
+      "winrate": 55.7
+     },
+     {
+      "nom": "Extra Spirit",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 57,
+      "minute": 11.8,
+      "winrate": 56.5
+     },
+     {
+      "nom": "Mystic Expansion",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 84,
+      "minute": 13.0,
+      "winrate": 56.9
+     },
+     {
+      "nom": "Extra Stamina",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 30,
+      "minute": 14.4,
+      "winrate": 56.6
+     },
+     {
+      "nom": "Slowing Hex",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": true,
+      "achete_par": 45,
+      "minute": 14.9,
+      "winrate": 56.6
+     },
+     {
+      "nom": "Arcane Surge",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 28,
+      "minute": 16.4,
+      "winrate": 58.7
+     },
+     {
+      "nom": "Knockdown",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": true,
+      "achete_par": 50,
+      "minute": 17.4,
+      "winrate": 55.7
+     },
+     {
+      "nom": "Rescue Beam",
+      "categorie": "vitality",
+      "tier": 3,
+      "cout": 3200,
+      "actif": true,
+      "achete_par": 27,
+      "minute": 18.2,
+      "winrate": 56.1
+     },
+     {
+      "nom": "Healbane",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 24,
+      "minute": 18.2,
+      "winrate": 54.9
+     },
+     {
+      "nom": "Improved Spirit",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 53,
+      "minute": 19.1,
+      "winrate": 56.2
+     },
+     {
+      "nom": "Compress Cooldown",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 58,
+      "minute": 19.4,
+      "winrate": 57.9
+     },
+     {
+      "nom": "Duration Extender",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 39,
+      "minute": 22.5,
+      "winrate": 59.5
+     },
+     {
+      "nom": "Rapid Recharge",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 54,
+      "minute": 22.9,
+      "winrate": 55.7
+     },
+     {
+      "nom": "Superior Cooldown",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 67,
+      "minute": 23.5,
+      "winrate": 57.8
+     },
+     {
+      "nom": "Vortex Web",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": true,
+      "achete_par": 32,
+      "minute": 25.7,
+      "winrate": 58.3
+     },
+     {
+      "nom": "Greater Expansion",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 73,
+      "minute": 25.9,
+      "winrate": 58.6
+     },
+     {
+      "nom": "Divine Barrier",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": true,
+      "achete_par": 56,
+      "minute": 26.5,
+      "winrate": 59.8
+     },
+     {
+      "nom": "Superior Duration",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 52,
+      "minute": 27.9,
+      "winrate": 60.5
+     },
+     {
+      "nom": "Cursed Relic",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": true,
+      "achete_par": 26,
+      "minute": 29.6,
+      "winrate": 56.6
+     },
+     {
+      "nom": "Transcendent Cooldown",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 52,
+      "minute": 31.4,
+      "winrate": 60.6
+     },
+     {
+      "nom": "Boundless Spirit",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 36,
+      "minute": 32.2,
+      "winrate": 59.5
+     },
+     {
+      "nom": "Spirit Burn",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 24,
+      "minute": 33.2,
+      "winrate": 60.1
+     }
+    ]
+   },
+   "6": {
+    "parties": 7178,
+    "objets": [
+     {
+      "nom": "Restorative Shot",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 29,
+      "minute": 1.9,
+      "winrate": 53.5
+     },
+     {
+      "nom": "Extra Regen",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 67,
+      "minute": 3.1,
+      "winrate": 51.7
+     },
+     {
+      "nom": "Monster Rounds",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 34,
+      "minute": 3.8,
+      "winrate": 52.0
+     },
+     {
+      "nom": "Close Quarters",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 80,
+      "minute": 4.3,
+      "winrate": 51.7
+     },
+     {
+      "nom": "Melee Lifesteal",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 73,
+      "minute": 5.9,
+      "winrate": 51.7
+     },
+     {
+      "nom": "Stalker",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 65,
+      "minute": 8.4,
+      "winrate": 53.4
+     },
+     {
+      "nom": "Melee Charge",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 91,
+      "minute": 8.9,
+      "winrate": 52.4
+     },
+     {
+      "nom": "Spirit Strike",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 39,
+      "minute": 10.1,
+      "winrate": 52.0
+     },
+     {
+      "nom": "Bullet Resist Shredder",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 58,
+      "minute": 11.9,
+      "winrate": 53.5
+     },
+     {
+      "nom": "Healing Booster",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 40,
+      "minute": 14.9,
+      "winrate": 51.8
+     },
+     {
+      "nom": "Hunter's Aura",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 66,
+      "minute": 18.0,
+      "winrate": 54.5
+     },
+     {
+      "nom": "Extra Health",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 24,
+      "minute": 18.1,
+      "winrate": 52.7
+     },
+     {
+      "nom": "Warp Stone",
+      "categorie": "vitality",
+      "tier": 3,
+      "cout": 3200,
+      "actif": true,
+      "achete_par": 35,
+      "minute": 18.4,
+      "winrate": 52.6
+     },
+     {
+      "nom": "Duration Extender",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 45,
+      "minute": 18.9,
+      "winrate": 54.6
+     },
+     {
+      "nom": "Lifestrike",
+      "categorie": "vitality",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 51,
+      "minute": 20.2,
+      "winrate": 52.7
+     },
+     {
+      "nom": "Spirit Snatch",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 43,
+      "minute": 20.4,
+      "winrate": 52.7
+     },
+     {
+      "nom": "Point Blank",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 41,
+      "minute": 23.4,
+      "winrate": 52.1
+     },
+     {
+      "nom": "Superior Duration",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 68,
+      "minute": 23.4,
+      "winrate": 54.9
+     },
+     {
+      "nom": "Debuff Reducer",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 23,
+      "minute": 24.1,
+      "winrate": 54.6
+     },
+     {
+      "nom": "Spirit Resilience",
+      "categorie": "vitality",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 51,
+      "minute": 24.9,
+      "winrate": 53.0
+     },
+     {
+      "nom": "Phantom Strike",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": true,
+      "achete_par": 52,
+      "minute": 26.3,
+      "winrate": 58.2
+     },
+     {
+      "nom": "Berserker",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 22,
+      "minute": 28.0,
+      "winrate": 60.8
+     },
+     {
+      "nom": "Crushing Fists",
+      "categorie": "weapon",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 56,
+      "minute": 29.0,
+      "winrate": 57.8
+     },
+     {
+      "nom": "Colossus",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": true,
+      "achete_par": 23,
+      "minute": 33.4,
+      "winrate": 60.3
+     }
+    ]
+   }
+  },
+  "phantom_eternus": {
+   "13": {
+    "parties": 5576,
+    "objets": [
+     {
+      "nom": "Extra Spirit",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 78,
+      "minute": 2.9,
+      "winrate": 51.7
+     },
+     {
+      "nom": "Rapid Rounds",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 93,
+      "minute": 4.4,
+      "winrate": 51.8
+     },
+     {
+      "nom": "Extra Regen",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 24,
+      "minute": 4.8,
+      "winrate": 51.5
+     },
+     {
+      "nom": "Active Reload",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 78,
+      "minute": 6.8,
+      "winrate": 51.6
+     },
+     {
+      "nom": "Swift Striker",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 97,
+      "minute": 7.1,
+      "winrate": 52.1
+     },
+     {
+      "nom": "Extra Health",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 57,
+      "minute": 8.3,
+      "winrate": 52.9
+     },
+     {
+      "nom": "Extended Magazine",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 31,
+      "minute": 8.8,
+      "winrate": 53.1
+     },
+     {
+      "nom": "Battle Vest",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 29,
+      "minute": 9.6,
+      "winrate": 54.2
+     },
+     {
+      "nom": "Titanic Magazine",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 26,
+      "minute": 11.2,
+      "winrate": 52.8
+     },
+     {
+      "nom": "Sprint Boots",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 37,
+      "minute": 12.2,
+      "winrate": 51.8
+     },
+     {
+      "nom": "Slowing Hex",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": true,
+      "achete_par": 43,
+      "minute": 13.2,
+      "winrate": 52.6
+     },
+     {
+      "nom": "Fleetfoot",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": true,
+      "achete_par": 26,
+      "minute": 14.0,
+      "winrate": 51.8
+     },
+     {
+      "nom": "Enduring Speed",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 46,
+      "minute": 14.6,
+      "winrate": 52.5
+     },
+     {
+      "nom": "Weakening Headshot",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 39,
+      "minute": 14.8,
+      "winrate": 56.5
+     },
+     {
+      "nom": "Bullet Lifesteal",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 31,
+      "minute": 15.0,
+      "winrate": 50.7
+     },
+     {
+      "nom": "Bullet Resist Shredder",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 49,
+      "minute": 15.0,
+      "winrate": 53.9
+     },
+     {
+      "nom": "Fortitude",
+      "categorie": "vitality",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 48,
+      "minute": 15.4,
+      "winrate": 54.2
+     },
+     {
+      "nom": "Surge of Power",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 64,
+      "minute": 15.6,
+      "winrate": 52.8
+     },
+     {
+      "nom": "Extra Charge",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 20,
+      "minute": 18.7,
+      "winrate": 54.9
+     },
+     {
+      "nom": "Burst Fire",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 85,
+      "minute": 19.5,
+      "winrate": 53.3
+     },
+     {
+      "nom": "Ricochet",
+      "categorie": "weapon",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 72,
+      "minute": 21.5,
+      "winrate": 54.3
+     },
+     {
+      "nom": "Recharging Rush",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 21,
+      "minute": 21.9,
+      "winrate": 54.8
+     },
+     {
+      "nom": "Spirit Resilience",
+      "categorie": "vitality",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 32,
+      "minute": 23.3,
+      "winrate": 54.4
+     },
+     {
+      "nom": "Debuff Reducer",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 20,
+      "minute": 28.0,
+      "winrate": 56.4
+     },
+     {
+      "nom": "Siphon Bullets",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 34,
+      "minute": 28.8,
+      "winrate": 58.8
+     },
+     {
+      "nom": "Lucky Shot",
+      "categorie": "weapon",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 23,
+      "minute": 28.9,
+      "winrate": 60.7
+     },
+     {
+      "nom": "Silencer",
+      "categorie": "weapon",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 39,
+      "minute": 29.1,
+      "winrate": 62.2
+     },
+     {
+      "nom": "Unstoppable",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": true,
+      "achete_par": 27,
+      "minute": 31.4,
+      "winrate": 57.6
+     }
+    ]
+   },
+   "52": {
+    "parties": 1224,
+    "objets": [
+     {
+      "nom": "Mystic Regeneration",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 93,
+      "minute": 1.8,
+      "winrate": 45.4
+     },
+     {
+      "nom": "Monster Rounds",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 38,
+      "minute": 3.2,
+      "winrate": 45.6
+     },
+     {
+      "nom": "Headshot Booster",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 36,
+      "minute": 4.2,
+      "winrate": 42.9
+     },
+     {
+      "nom": "Spirit Sap",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": true,
+      "achete_par": 22,
+      "minute": 6.8,
+      "winrate": 49.2
+     },
+     {
+      "nom": "Suppressor",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 55,
+      "minute": 6.9,
+      "winrate": 44.5
+     },
+     {
+      "nom": "Healbane",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 90,
+      "minute": 8.4,
+      "winrate": 45.6
+     },
+     {
+      "nom": "Headhunter",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 29,
+      "minute": 11.8,
+      "winrate": 43.1
+     },
+     {
+      "nom": "Compress Cooldown",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 82,
+      "minute": 12.1,
+      "winrate": 45.0
+     },
+     {
+      "nom": "Extra Stamina",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 22,
+      "minute": 12.5,
+      "winrate": 48.3
+     },
+     {
+      "nom": "Extra Spirit",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 29,
+      "minute": 12.8,
+      "winrate": 53.5
+     },
+     {
+      "nom": "Extended Magazine",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 51,
+      "minute": 12.9,
+      "winrate": 46.3
+     },
+     {
+      "nom": "Kinetic Dash",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 26,
+      "minute": 13.1,
+      "winrate": 47.2
+     },
+     {
+      "nom": "Recharging Rush",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 23,
+      "minute": 13.2,
+      "winrate": 42.8
+     },
+     {
+      "nom": "Mystic Vulnerability",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 89,
+      "minute": 15.9,
+      "winrate": 45.9
+     },
+     {
+      "nom": "Dispel Magic",
+      "categorie": "vitality",
+      "tier": 3,
+      "cout": 3200,
+      "actif": true,
+      "achete_par": 77,
+      "minute": 17.0,
+      "winrate": 47.4
+     },
+     {
+      "nom": "Toxic Bullets",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 93,
+      "minute": 18.0,
+      "winrate": 46.6
+     },
+     {
+      "nom": "Titanic Magazine",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 66,
+      "minute": 18.9,
+      "winrate": 46.5
+     },
+     {
+      "nom": "Improved Spirit",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 25,
+      "minute": 21.0,
+      "winrate": 52.3
+     },
+     {
+      "nom": "Ricochet",
+      "categorie": "weapon",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 83,
+      "minute": 23.9,
+      "winrate": 47.7
+     },
+     {
+      "nom": "Escalating Exposure",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 79,
+      "minute": 25.3,
+      "winrate": 48.3
+     },
+     {
+      "nom": "Superior Cooldown",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 58,
+      "minute": 26.3,
+      "winrate": 47.6
+     },
+     {
+      "nom": "Spirit Lifesteal",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 26,
+      "minute": 28.6,
+      "winrate": 52.5
+     },
+     {
+      "nom": "Spiritual Overflow",
+      "categorie": "weapon",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 27,
+      "minute": 32.3,
+      "winrate": 55.7
+     },
+     {
+      "nom": "Silencer",
+      "categorie": "weapon",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 22,
+      "minute": 33.1,
+      "winrate": 53.8
+     },
+     {
+      "nom": "Inhibitor",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 28,
+      "minute": 33.5,
+      "winrate": 49.3
+     }
+    ]
+   },
+   "27": {
+    "parties": 3650,
+    "objets": [
+     {
+      "nom": "Restorative Shot",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 90,
+      "minute": 1.3,
+      "winrate": 52.7
+     },
+     {
+      "nom": "Melee Lifesteal",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 85,
+      "minute": 3.6,
+      "winrate": 52.9
+     },
+     {
+      "nom": "Spirit Strike",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 61,
+      "minute": 6.4,
+      "winrate": 51.8
+     },
+     {
+      "nom": "Stalker",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 83,
+      "minute": 6.7,
+      "winrate": 52.9
+     },
+     {
+      "nom": "Mystic Regeneration",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 64,
+      "minute": 7.9,
+      "winrate": 53.3
+     },
+     {
+      "nom": "Mystic Shot",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 43,
+      "minute": 9.0,
+      "winrate": 52.2
+     },
+     {
+      "nom": "Extra Regen",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 62,
+      "minute": 9.5,
+      "winrate": 53.1
+     },
+     {
+      "nom": "Extra Spirit",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 24,
+      "minute": 10.6,
+      "winrate": 51.9
+     },
+     {
+      "nom": "Close Quarters",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 53,
+      "minute": 11.4,
+      "winrate": 53.1
+     },
+     {
+      "nom": "Radiant Regeneration",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 70,
+      "minute": 11.6,
+      "winrate": 52.6
+     },
+     {
+      "nom": "Bullet Resist Shredder",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 59,
+      "minute": 13.1,
+      "winrate": 54.3
+     },
+     {
+      "nom": "Recharging Rush",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 64,
+      "minute": 15.3,
+      "winrate": 53.4
+     },
+     {
+      "nom": "Healing Booster",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 75,
+      "minute": 15.3,
+      "winrate": 53.6
+     },
+     {
+      "nom": "Lifestrike",
+      "categorie": "vitality",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 73,
+      "minute": 15.6,
+      "winrate": 53.8
+     },
+     {
+      "nom": "Improved Spirit",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 26,
+      "minute": 16.5,
+      "winrate": 52.8
+     },
+     {
+      "nom": "Healbane",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 40,
+      "minute": 16.7,
+      "winrate": 51.7
+     },
+     {
+      "nom": "Spirit Snatch",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 50,
+      "minute": 17.4,
+      "winrate": 51.7
+     },
+     {
+      "nom": "High-Velocity Rounds",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 24,
+      "minute": 19.3,
+      "winrate": 57.1
+     },
+     {
+      "nom": "Hunter's Aura",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 69,
+      "minute": 20.2,
+      "winrate": 55.5
+     },
+     {
+      "nom": "Extra Health",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 24,
+      "minute": 20.3,
+      "winrate": 58.5
+     },
+     {
+      "nom": "Melee Charge",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 25,
+      "minute": 20.4,
+      "winrate": 57.1
+     },
+     {
+      "nom": "Torment Pulse",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 22,
+      "minute": 20.6,
+      "winrate": 53.3
+     },
+     {
+      "nom": "Express Shot",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 35,
+      "minute": 23.4,
+      "winrate": 57.0
+     },
+     {
+      "nom": "Berserker",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 34,
+      "minute": 23.7,
+      "winrate": 57.3
+     },
+     {
+      "nom": "Spirit Resilience",
+      "categorie": "vitality",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 22,
+      "minute": 25.8,
+      "winrate": 51.5
+     },
+     {
+      "nom": "Crushing Fists",
+      "categorie": "weapon",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 22,
+      "minute": 28.8,
+      "winrate": 61.2
+     },
+     {
+      "nom": "Colossus",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": true,
+      "achete_par": 25,
+      "minute": 29.0,
+      "winrate": 61.1
+     },
+     {
+      "nom": "Superior Cooldown",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 22,
+      "minute": 29.1,
+      "winrate": 57.7
+     },
+     {
+      "nom": "Refresher",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": true,
+      "achete_par": 26,
+      "minute": 32.4,
+      "winrate": 62.0
+     }
+    ]
+   },
+   "4": {
+    "parties": 1654,
+    "objets": [
+     {
+      "nom": "Monster Rounds",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 64,
+      "minute": 2.5,
+      "winrate": 48.8
+     },
+     {
+      "nom": "Extra Regen",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 85,
+      "minute": 2.9,
+      "winrate": 49.4
+     },
+     {
+      "nom": "Mystic Burst",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 71,
+      "minute": 3.9,
+      "winrate": 48.9
+     },
+     {
+      "nom": "Mystic Regeneration",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 93,
+      "minute": 5.3,
+      "winrate": 49.8
+     },
+     {
+      "nom": "Mystic Expansion",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 37,
+      "minute": 6.0,
+      "winrate": 50.6
+     },
+     {
+      "nom": "Extra Spirit",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 56,
+      "minute": 9.5,
+      "winrate": 49.8
+     },
+     {
+      "nom": "Radiant Regeneration",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 93,
+      "minute": 9.6,
+      "winrate": 49.6
+     },
+     {
+      "nom": "Extra Stamina",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 50,
+      "minute": 10.2,
+      "winrate": 49.1
+     },
+     {
+      "nom": "Sprint Boots",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 20,
+      "minute": 11.3,
+      "winrate": 50.0
+     },
+     {
+      "nom": "Kinetic Dash",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 65,
+      "minute": 11.7,
+      "winrate": 48.6
+     },
+     {
+      "nom": "Healing Booster",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 79,
+      "minute": 13.2,
+      "winrate": 49.5
+     },
+     {
+      "nom": "Improved Spirit",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 24,
+      "minute": 14.6,
+      "winrate": 49.6
+     },
+     {
+      "nom": "Fleetfoot",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": true,
+      "achete_par": 48,
+      "minute": 16.0,
+      "winrate": 48.2
+     },
+     {
+      "nom": "Enduring Speed",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 24,
+      "minute": 16.1,
+      "winrate": 50.6
+     },
+     {
+      "nom": "Recharging Rush",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 44,
+      "minute": 16.3,
+      "winrate": 49.9
+     },
+     {
+      "nom": "Spirit Lifesteal",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 35,
+      "minute": 16.9,
+      "winrate": 53.2
+     },
+     {
+      "nom": "Surge of Power",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 33,
+      "minute": 17.0,
+      "winrate": 48.1
+     },
+     {
+      "nom": "Compress Cooldown",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 20,
+      "minute": 17.8,
+      "winrate": 50.4
+     },
+     {
+      "nom": "Mystic Vulnerability",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 26,
+      "minute": 18.8,
+      "winrate": 54.1
+     },
+     {
+      "nom": "Spirit Resilience",
+      "categorie": "vitality",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 76,
+      "minute": 19.0,
+      "winrate": 50.9
+     },
+     {
+      "nom": "Berserker",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 66,
+      "minute": 19.1,
+      "winrate": 49.3
+     },
+     {
+      "nom": "Tankbuster",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 27,
+      "minute": 19.2,
+      "winrate": 49.0
+     },
+     {
+      "nom": "Superior Cooldown",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 21,
+      "minute": 22.9,
+      "winrate": 52.4
+     },
+     {
+      "nom": "Spellslinger",
+      "categorie": "weapon",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 54,
+      "minute": 25.3,
+      "winrate": 51.5
+     },
+     {
+      "nom": "Escalating Exposure",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 22,
+      "minute": 26.0,
+      "winrate": 53.7
+     },
+     {
+      "nom": "Warp Stone",
+      "categorie": "vitality",
+      "tier": 3,
+      "cout": 3200,
+      "actif": true,
+      "achete_par": 25,
+      "minute": 26.7,
+      "winrate": 53.4
+     }
+    ]
+   },
+   "2": {
+    "parties": 2294,
+    "objets": [
+     {
+      "nom": "Monster Rounds",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 89,
+      "minute": 1.8,
+      "winrate": 55.1
+     },
+     {
+      "nom": "Extra Regen",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 35,
+      "minute": 2.8,
+      "winrate": 54.5
+     },
+     {
+      "nom": "Extra Stamina",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 55,
+      "minute": 7.4,
+      "winrate": 57.1
+     },
+     {
+      "nom": "Suppressor",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 39,
+      "minute": 7.6,
+      "winrate": 53.1
+     },
+     {
+      "nom": "Arcane Surge",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 71,
+      "minute": 8.7,
+      "winrate": 56.1
+     },
+     {
+      "nom": "Grit",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": true,
+      "achete_par": 41,
+      "minute": 8.8,
+      "winrate": 58.9
+     },
+     {
+      "nom": "Cultist Sacrifice",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": true,
+      "achete_par": 74,
+      "minute": 9.2,
+      "winrate": 54.8
+     },
+     {
+      "nom": "Enchanter's Emblem",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 46,
+      "minute": 9.6,
+      "winrate": 56.2
+     },
+     {
+      "nom": "Extra Spirit",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 42,
+      "minute": 11.4,
+      "winrate": 55.6
+     },
+     {
+      "nom": "Extra Charge",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 20,
+      "minute": 11.8,
+      "winrate": 54.7
+     },
+     {
+      "nom": "Spirit Shredder",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 26,
+      "minute": 12.5,
+      "winrate": 57.1
+     },
+     {
+      "nom": "Spirit Shielding",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 23,
+      "minute": 12.8,
+      "winrate": 59.0
+     },
+     {
+      "nom": "Sprint Boots",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 24,
+      "minute": 12.8,
+      "winrate": 54.5
+     },
+     {
+      "nom": "Healbane",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 82,
+      "minute": 13.3,
+      "winrate": 55.3
+     },
+     {
+      "nom": "Fleetfoot",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": true,
+      "achete_par": 34,
+      "minute": 14.7,
+      "winrate": 54.2
+     },
+     {
+      "nom": "Mystic Vulnerability",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 91,
+      "minute": 15.2,
+      "winrate": 55.3
+     },
+     {
+      "nom": "Enduring Speed",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 28,
+      "minute": 16.0,
+      "winrate": 56.2
+     },
+     {
+      "nom": "Duration Extender",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 45,
+      "minute": 17.4,
+      "winrate": 55.2
+     },
+     {
+      "nom": "Spirit Lifesteal",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 78,
+      "minute": 17.5,
+      "winrate": 56.0
+     },
+     {
+      "nom": "Mystic Expansion",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 29,
+      "minute": 17.7,
+      "winrate": 54.0
+     },
+     {
+      "nom": "Improved Spirit",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 33,
+      "minute": 18.5,
+      "winrate": 56.4
+     },
+     {
+      "nom": "Reactive Barrier",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 30,
+      "minute": 18.9,
+      "winrate": 60.4
+     },
+     {
+      "nom": "Compress Cooldown",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 27,
+      "minute": 21.0,
+      "winrate": 55.9
+     },
+     {
+      "nom": "Escalating Exposure",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 92,
+      "minute": 21.3,
+      "winrate": 56.3
+     },
+     {
+      "nom": "Toxic Bullets",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 29,
+      "minute": 22.1,
+      "winrate": 56.3
+     },
+     {
+      "nom": "Superior Duration",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 59,
+      "minute": 22.6,
+      "winrate": 56.6
+     },
+     {
+      "nom": "Debuff Reducer",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 47,
+      "minute": 23.8,
+      "winrate": 56.2
+     },
+     {
+      "nom": "Indomitable",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 26,
+      "minute": 26.9,
+      "winrate": 61.6
+     },
+     {
+      "nom": "Greater Expansion",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 28,
+      "minute": 27.2,
+      "winrate": 61.0
+     },
+     {
+      "nom": "Unstoppable",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": true,
+      "achete_par": 60,
+      "minute": 27.2,
+      "winrate": 55.6
+     },
+     {
+      "nom": "Superior Cooldown",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 25,
+      "minute": 27.3,
+      "winrate": 57.9
+     },
+     {
+      "nom": "Spiritual Overflow",
+      "categorie": "weapon",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 24,
+      "minute": 28.8,
+      "winrate": 62.7
+     },
+     {
+      "nom": "Infuser",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": true,
+      "achete_par": 36,
+      "minute": 29.8,
+      "winrate": 58.9
+     },
+     {
+      "nom": "Boundless Spirit",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 26,
+      "minute": 31.3,
+      "winrate": 60.0
+     }
+    ]
+   },
+   "67": {
+    "parties": 3192,
+    "objets": [
+     {
+      "nom": "High-Velocity Rounds",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 93,
+      "minute": 1.3,
+      "winrate": 53.3
+     },
+     {
+      "nom": "Opening Rounds",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 76,
+      "minute": 4.9,
+      "winrate": 54.2
+     },
+     {
+      "nom": "Grit",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": true,
+      "achete_par": 79,
+      "minute": 5.4,
+      "winrate": 53.8
+     },
+     {
+      "nom": "Healing Rite",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": true,
+      "achete_par": 26,
+      "minute": 7.0,
+      "winrate": 54.2
+     },
+     {
+      "nom": "Sprint Boots",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 59,
+      "minute": 7.0,
+      "winrate": 54.8
+     },
+     {
+      "nom": "Trophy Collector",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 72,
+      "minute": 8.1,
+      "winrate": 54.2
+     },
+     {
+      "nom": "Guardian Ward",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": true,
+      "achete_par": 82,
+      "minute": 8.9,
+      "winrate": 54.4
+     },
+     {
+      "nom": "Express Shot",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 21,
+      "minute": 9.7,
+      "winrate": 52.2
+     },
+     {
+      "nom": "Extra Charge",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 61,
+      "minute": 11.8,
+      "winrate": 53.4
+     },
+     {
+      "nom": "Mystic Expansion",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 86,
+      "minute": 13.1,
+      "winrate": 53.9
+     },
+     {
+      "nom": "Slowing Hex",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": true,
+      "achete_par": 61,
+      "minute": 13.6,
+      "winrate": 52.4
+     },
+     {
+      "nom": "Extra Stamina",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 30,
+      "minute": 13.9,
+      "winrate": 56.1
+     },
+     {
+      "nom": "Extra Spirit",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 41,
+      "minute": 14.3,
+      "winrate": 54.4
+     },
+     {
+      "nom": "Spirit Shielding",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 21,
+      "minute": 14.4,
+      "winrate": 52.8
+     },
+     {
+      "nom": "Arcane Surge",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 29,
+      "minute": 15.7,
+      "winrate": 56.0
+     },
+     {
+      "nom": "Knockdown",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": true,
+      "achete_par": 48,
+      "minute": 16.2,
+      "winrate": 53.8
+     },
+     {
+      "nom": "Healbane",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 25,
+      "minute": 18.0,
+      "winrate": 53.4
+     },
+     {
+      "nom": "Improved Spirit",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 41,
+      "minute": 20.8,
+      "winrate": 56.1
+     },
+     {
+      "nom": "Compress Cooldown",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 48,
+      "minute": 21.9,
+      "winrate": 55.8
+     },
+     {
+      "nom": "Rapid Recharge",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 45,
+      "minute": 23.2,
+      "winrate": 55.1
+     },
+     {
+      "nom": "Duration Extender",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 37,
+      "minute": 23.2,
+      "winrate": 57.4
+     },
+     {
+      "nom": "Vortex Web",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": true,
+      "achete_par": 39,
+      "minute": 24.3,
+      "winrate": 55.8
+     },
+     {
+      "nom": "Divine Barrier",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": true,
+      "achete_par": 58,
+      "minute": 24.9,
+      "winrate": 57.5
+     },
+     {
+      "nom": "Superior Cooldown",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 57,
+      "minute": 25.1,
+      "winrate": 56.1
+     },
+     {
+      "nom": "Greater Expansion",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 67,
+      "minute": 25.7,
+      "winrate": 56.7
+     },
+     {
+      "nom": "Superior Duration",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 50,
+      "minute": 26.9,
+      "winrate": 58.5
+     },
+     {
+      "nom": "Cursed Relic",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": true,
+      "achete_par": 29,
+      "minute": 27.6,
+      "winrate": 53.9
+     },
+     {
+      "nom": "Transcendent Cooldown",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 40,
+      "minute": 31.5,
+      "winrate": 58.7
+     },
+     {
+      "nom": "Boundless Spirit",
+      "categorie": "spirit",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 23,
+      "minute": 31.6,
+      "winrate": 59.9
+     }
+    ]
+   },
+   "6": {
+    "parties": 2945,
+    "objets": [
+     {
+      "nom": "Restorative Shot",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 29,
+      "minute": 1.8,
+      "winrate": 55.3
+     },
+     {
+      "nom": "Extra Regen",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 66,
+      "minute": 3.0,
+      "winrate": 52.2
+     },
+     {
+      "nom": "Monster Rounds",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 49,
+      "minute": 3.8,
+      "winrate": 51.5
+     },
+     {
+      "nom": "Close Quarters",
+      "categorie": "weapon",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 87,
+      "minute": 3.9,
+      "winrate": 52.5
+     },
+     {
+      "nom": "Melee Lifesteal",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 70,
+      "minute": 6.7,
+      "winrate": 53.3
+     },
+     {
+      "nom": "Stalker",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 75,
+      "minute": 8.4,
+      "winrate": 53.1
+     },
+     {
+      "nom": "Melee Charge",
+      "categorie": "weapon",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 91,
+      "minute": 8.8,
+      "winrate": 52.6
+     },
+     {
+      "nom": "Bullet Resist Shredder",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 72,
+      "minute": 11.1,
+      "winrate": 53.7
+     },
+     {
+      "nom": "Spirit Strike",
+      "categorie": "spirit",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 24,
+      "minute": 11.3,
+      "winrate": 52.2
+     },
+     {
+      "nom": "Healing Booster",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 34,
+      "minute": 15.1,
+      "winrate": 53.5
+     },
+     {
+      "nom": "Warp Stone",
+      "categorie": "vitality",
+      "tier": 3,
+      "cout": 3200,
+      "actif": true,
+      "achete_par": 48,
+      "minute": 16.9,
+      "winrate": 51.6
+     },
+     {
+      "nom": "Hunter's Aura",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 76,
+      "minute": 17.0,
+      "winrate": 54.2
+     },
+     {
+      "nom": "Lifestrike",
+      "categorie": "vitality",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 41,
+      "minute": 19.0,
+      "winrate": 55.1
+     },
+     {
+      "nom": "Duration Extender",
+      "categorie": "spirit",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 44,
+      "minute": 19.6,
+      "winrate": 54.6
+     },
+     {
+      "nom": "Spirit Snatch",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 26,
+      "minute": 19.6,
+      "winrate": 52.4
+     },
+     {
+      "nom": "Extra Health",
+      "categorie": "vitality",
+      "tier": 1,
+      "cout": 800,
+      "actif": false,
+      "achete_par": 20,
+      "minute": 19.6,
+      "winrate": 59.3
+     },
+     {
+      "nom": "Superior Duration",
+      "categorie": "spirit",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 72,
+      "minute": 23.1,
+      "winrate": 55.3
+     },
+     {
+      "nom": "Point Blank",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 33,
+      "minute": 24.1,
+      "winrate": 56.0
+     },
+     {
+      "nom": "Debuff Reducer",
+      "categorie": "vitality",
+      "tier": 2,
+      "cout": 1600,
+      "actif": false,
+      "achete_par": 21,
+      "minute": 24.4,
+      "winrate": 60.4
+     },
+     {
+      "nom": "Spirit Resilience",
+      "categorie": "vitality",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 55,
+      "minute": 24.4,
+      "winrate": 55.1
+     },
+     {
+      "nom": "Phantom Strike",
+      "categorie": "vitality",
+      "tier": 4,
+      "cout": 6400,
+      "actif": true,
+      "achete_par": 58,
+      "minute": 25.2,
+      "winrate": 59.7
+     },
+     {
+      "nom": "Berserker",
+      "categorie": "weapon",
+      "tier": 3,
+      "cout": 3200,
+      "actif": false,
+      "achete_par": 22,
+      "minute": 28.0,
+      "winrate": 62.2
+     },
+     {
+      "nom": "Crushing Fists",
+      "categorie": "weapon",
+      "tier": 4,
+      "cout": 6400,
+      "actif": false,
+      "achete_par": 40,
+      "minute": 30.0,
+      "winrate": 61.6
+     }
+    ]
+   }
+  }
+ }
+}

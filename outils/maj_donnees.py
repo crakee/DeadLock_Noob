@@ -271,6 +271,101 @@ def construire_stats(depuis_ts):
     return tranches
 
 
+def proba_attendue(pa, pb):
+    """Winrate attendu de A contre B d'après leurs winrates globaux (méthode log5)."""
+    return pa * (1 - pb) / (pa * (1 - pb) + (1 - pa) * pb)
+
+
+def construire_matchups(depuis_ts, stats):
+    """Pour chaque héros et chaque tranche : les adversaires contre qui il fait mieux ou moins bien
+    que prévu, une fois corrigé de la force des deux héros. Écart et marge en points de winrate."""
+    tranches = {}
+    for nom, (mini, maxi) in TRANCHES.items():
+        globaux = stats[nom]["heros"]
+        lignes = get("/v1/analytics/hero-counter-stats", min_unix_timestamp=depuis_ts,
+                     min_average_badge=mini, max_average_badge=maxi)
+        par_heros = {}
+        for l in lignes:
+            a, b, n = str(l["hero_id"]), str(l["enemy_hero_id"]), l["matches_played"]
+            if a == b or n < 30 or a not in globaux or b not in globaux:
+                continue
+            attendu = proba_attendue(globaux[a]["winrate"] / 100, globaux[b]["winrate"] / 100)
+            par_heros.setdefault(a, []).append({
+                "contre": int(b),
+                "parties": n,
+                "winrate": round(100 * l["wins"] / n, 1),
+                "ecart": round(100 * (l["wins"] / n - attendu), 1),
+                "marge": round(98 / n ** 0.5, 1),
+            })
+        tranches[nom] = {
+            h: {
+                # Ceux qu'il bat le plus, puis ceux qui le battent le plus.
+                "bat": sorted(m, key=lambda x: -x["ecart"])[:5],
+                "perd": sorted(m, key=lambda x: x["ecart"])[:5],
+                "signaux": sum(1 for x in m if abs(x["ecart"]) > x["marge"]),
+                "adversaires": len(m),
+            }
+            for h, m in par_heros.items()
+        }
+    return tranches
+
+
+def construire_fiches(heros_api, armes):
+    """Statistiques de base de chaque héros et de son arme, au niveau 1 sans objet."""
+    armes = {a["class_name"]: a for a in armes}
+    fiches = {}
+    for h in heros_api:
+        if not h.get("player_selectable") or h.get("disabled") or h.get("in_development"):
+            continue
+        st = {k: (v or {}).get("value") for k, v in (h.get("starting_stats") or {}).items()}
+        arme = (armes.get((h.get("items") or {}).get("weapon_primary")) or {}).get("weapon_info") or {}
+        arrondi = lambda v, n=1: round(v, n) if isinstance(v, (int, float)) else None
+        fiches[str(h["id"])] = {
+            "pv": st.get("max_health"),
+            "regen_pv_s": st.get("base_health_regen"),
+            "vitesse_m_s": st.get("max_move_speed"),
+            "stamina": st.get("stamina"),
+            "melee_leger": st.get("light_melee_damage"),
+            "melee_lourd": st.get("heavy_melee_damage"),
+            "arme": {
+                "degats_balle": arrondi(arme.get("bullet_damage"), 2),
+                "balles_par_tir": arme.get("bullets"),
+                "tirs_par_s": arrondi(arme.get("shots_per_second"), 2),
+                "chargeur": arme.get("clip_size"),
+                "rechargement_s": arme.get("reload_duration"),
+                "dps": arrondi(arme.get("damage_per_second")),
+                "dps_avec_rechargement": arrondi(arme.get("damage_per_second_with_reload")),
+            },
+        }
+    return fiches
+
+
+def construire_achats(depuis_ts, stats, objets, heros_ids):
+    """Objets achetés par au moins 20 % des joueurs d'un héros, rangés par moment moyen d'achat."""
+    par_id = {o["id"]: o for o in objets}
+    sortie = {}
+    for nom, (mini, maxi) in TRANCHES.items():
+        sortie[nom] = {}
+        for hid in heros_ids:
+            joueurs = (stats[nom]["heros"].get(str(hid)) or {}).get("parties") or 0
+            if not joueurs:
+                continue
+            lignes = get("/v1/analytics/item-stats", hero_id=hid, min_unix_timestamp=depuis_ts,
+                         min_average_badge=mini, max_average_badge=maxi)
+            liste = []
+            for l in lignes:
+                o = par_id.get(l["item_id"])
+                taux = l["matches"] / joueurs
+                if not o or taux < 0.2 or l.get("avg_buy_time_s") is None:
+                    continue
+                liste.append({"nom": o["nom"], "categorie": o["categorie"], "tier": o["tier"], "cout": o["cout"],
+                              "actif": o["actif"], "achete_par": round(100 * taux),
+                              "minute": round(l["avg_buy_time_s"] / 60, 1),
+                              "winrate": round(100 * l["wins"] / l["matches"], 1)})
+            sortie[nom][str(hid)] = {"parties": joueurs, "objets": sorted(liste, key=lambda x: x["minute"])}
+    return sortie
+
+
 def ecrire(nom, meta, contenu):
     DATA.mkdir(exist_ok=True)
     chemin = DATA / nom
@@ -282,7 +377,10 @@ def main():
     parseur = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parseur.add_argument("--patch", required=True, help="nom ou date du patch en cours")
     parseur.add_argument("--depuis", required=True, help="date du patch, AAAA-MM-JJ (UTC)")
+    parseur.add_argument("--seulement", default="", help="fichiers à régénérer, séparés par des virgules "
+                         "(heroes,items,stats,map,details,achats) ; tous par défaut")
     args = parseur.parse_args()
+    voulu = lambda nom: not args.seulement or nom in args.seulement.split(",")
 
     depuis = dt.datetime.strptime(args.depuis, "%Y-%m-%d").replace(tzinfo=dt.timezone.utc)
     # Le lendemain du patch : on écarte les parties de la journée de déploiement.
@@ -294,23 +392,47 @@ def main():
         "genere_par": "outils/maj_donnees.py",
     }
 
-    heros = construire_heros(get("/v1/assets/heroes", only_active="true"),
-                             get("/v1/assets/items/by-type/ability"))
-    ecrire("heroes.json", {**meta, "note": "`mecaniques` est déduit par mots-clés : à relire. `video` est à remplir à la main."},
+    heros_api = get("/v1/assets/heroes", only_active="true")
+    heros = construire_heros(heros_api, get("/v1/assets/items/by-type/ability"))
+    if voulu("heroes"):
+        ecrire("heroes.json", {**meta, "note": "`mecaniques` est déduit par mots-clés : à relire. `video` est à remplir à la main."},
            {"heros": heros})
 
     objets = construire_objets(get("/v1/assets/items/by-type/upgrade"))
-    ecrire("items.json", {**meta, "note": "`contre` est déduit par mots-clés : à relire."}, {"objets": objets})
+    if voulu("items"):
+        ecrire("items.json", {**meta, "note": "`contre` est déduit par mots-clés : à relire."}, {"objets": objets})
 
-    ecrire("hero-stats.json",
+    stats = construire_stats(depuis_ts)
+    depuis_texte = (depuis + dt.timedelta(days=1)).date().isoformat()
+    if voulu("stats"):
+        ecrire("hero-stats.json",
            {**meta, "depuis": (depuis + dt.timedelta(days=1)).date().isoformat(),
             "note": "Winrate en %, marge = intervalle à 95 % en points. Un écart inférieur à la marge n'est pas un signal. "
                     "Les tranches de rang ne couvrent que les parties dont le rang moyen est connu (environ un quart le 2026-10-02) ; "
                     "`tous` les inclut toutes."},
-           {"tranches": construire_stats(depuis_ts)})
+           {"tranches": stats})
+
+    if voulu("details"):
+        ecrire("heros-details.json",
+               {**meta, "depuis": depuis_texte,
+                "note": "`fiches` : stats de base au niveau 1 sans objet (vitesse en m/s, arme : dégâts par balle et par seconde). "
+                        "`matchups` : par tranche de rang, écart = winrate réel contre cet adversaire moins le winrate attendu "
+                        "d'après la force globale des deux héros (log5), en points. Un écart inférieur à la marge (95 %) n'est pas un signal."},
+               {"fiches": construire_fiches(heros_api, get("/v1/assets/items/by-type/weapon")),
+                "matchups": construire_matchups(depuis_ts, stats)})
+
+    if voulu("achats"):
+        profil = json.loads((DATA / "profil.json").read_text(encoding="utf-8"))
+        ids = profil["heros_joues"] + profil["heros_a_essayer"]
+        ecrire("achats.json",
+               {**meta, "depuis": depuis_texte,
+                "note": "Objets achetés par au moins 20 % des joueurs du héros depuis le patch, par tranche de rang, "
+                        "rangés par minute moyenne d'achat. `achete_par` en % des parties du héros. Héros de data/profil.json."},
+               {"tranches": construire_achats(depuis_ts, stats, objets, ids)})
 
     carte = construire_carte(get("/v1/assets/map"))
-    ecrire("map.json", {**meta, "note": "Positions en fraction de l'image (x depuis la gauche, y depuis le haut). "
+    if voulu("map"):
+        ecrire("map.json", {**meta, "note": "Positions en fraction de l'image (x depuis la gauche, y depuis le haut). "
                                         "Le Mid-Boss n'a pas de position dans l'API : il est sous le centre de la carte. "
                                         "`niveau` : 1 débutant, 2 intermédiaire, 3 détail."}, carte)
 

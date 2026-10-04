@@ -3,7 +3,8 @@
   "patch": "City Never Sleeps (2026-09-29)",
   "verifie_le": "2026-10-02",
   "methode": "Chaque héros est classé à la main d'après le texte de ses compétences (data/heroes.json) ; chaque objet d'après sa description (data/items.json). Aucun classement de winrates : un counter est justifié par une mécanique.",
-  "limites": "Lecture des descriptions, pas expérience de jeu : à corriger à l'usage. Les 17 objets sans description dans l'API et les objets de tier 5 sont ignorés. Les six héros du patch du 29/09 ne sont pas encore couverts."
+  "limites": "Lecture des descriptions, pas expérience de jeu : à corriger à l'usage. Les 17 objets sans description dans l'API et les objets de tier 5 sont ignorés. Les six héros du patch du 29/09 ne sont pas encore couverts.",
+  "objets": "`objets` : ce que fait chaque objet cité, reformulé depuis sa description dans data/items.json (patch du fichier)."
  },
  "menaces": {
   "soin": {
@@ -216,8 +217,8 @@
   },
   "canalisation": {
    "nom": "Ultimate à canaliser",
-   "niveau": 2,
-   "explication": "Sa compétence la plus dangereuse demande de rester concentré plusieurs secondes : elle peut être interrompue.",
+   "niveau": 1,
+   "explication": "Sa compétence la plus dangereuse (souvent l'ultimate) l'oblige à rester sur place plusieurs secondes : un stun l'interrompt et annule l'effet.",
    "reponse": "Garder un stun pour ce moment-là. Attention : un Silence n'interrompt pas une canalisation.",
    "objets": [
     {
@@ -1015,6 +1016,122 @@
     "Pendant Shadow Transformation, les stuns et les effets négatifs ne marchent pas : reculer et attendre la fin.",
     "Power Slash se charge 1,4 s : c'est le moment de s'écarter."
    ]
+  }
+ },
+ "objets": {
+  "Healbane": {
+   "explication": "Tes dégâts spirit réduisent les soins que reçoit l'ennemi. S'il meurt sous l'effet, tu te soignes beaucoup."
+  },
+  "Toxic Bullets": {
+   "explication": "Tes balles font saigner : l'ennemi perd un pourcentage de sa vie max au fil du temps et reçoit moins de soins."
+  },
+  "Inhibitor": {
+   "explication": "Tes balles finissent par réduire les dégâts que fait la cible et les soins qu'elle reçoit."
+  },
+  "Crippling Headshot": {
+   "explication": "Un tir dans la tête baisse sa résistance aux balles, sa résistance spirit et les soins qu'il reçoit."
+  },
+  "Spirit Burn": {
+   "explication": "Après de gros dégâts spirit sur un ennemi, il explose puis brûle : dégâts sur la durée et soins réduits. Une fois par ennemi par recharge."
+  },
+  "Battle Vest": {
+   "explication": "Bullet Resist en plus. Tant que tu es au-dessus de 65 % de vie : plus de dégâts d'arme et de cadence de tir."
+  },
+  "Weapon Shielding": {
+   "explication": "Bullet Resist en plus, et une barrière apparaît quand tu prends beaucoup de dégâts d'arme d'un coup."
+  },
+  "Bullet Resilience": {
+   "explication": "Bullet Resist en plus, encore davantage quand tu passes sous 50 % de vie."
+  },
+  "Metal Skin": {
+   "explication": "Actif : tu deviens insensible aux balles un court instant. À lancer quand un tireur te vise."
+  },
+  "Rusted Barrel": {
+   "explication": "Actif : vise un ennemi pour baisser sa cadence de tir et sa résistance aux balles."
+  },
+  "Suppressor": {
+   "explication": "Tes dégâts spirit baissent la cadence de tir de l'ennemi touché."
+  },
+  "Disarming Hex": {
+   "explication": "Actif : désarme la cible (elle ne peut plus tirer) et baisse sa résistance aux balles."
+  },
+  "Juggernaut": {
+   "explication": "Les ennemis qui te tirent dessus voient leur cadence de tir ralentie."
+  },
+  "Spirit Shielding": {
+   "explication": "Spirit Resist en plus, et une barrière apparaît quand tu prends beaucoup de dégâts spirit d'un coup."
+  },
+  "Enchanter's Emblem": {
+   "explication": "Spirit Resist en plus. Au-dessus de 65 % de vie : plus de spirit et des recharges plus courtes."
+  },
+  "Spirit Resilience": {
+   "explication": "Spirit Resist en plus, encore davantage quand tu passes sous 50 % de vie."
+  },
+  "Spirit Sap": {
+   "explication": "Actif : vise un ennemi pour baisser sa résistance spirit et la puissance de ses compétences."
+  },
+  "Silence Wave": {
+   "explication": "Actif : une onde qui réduit au silence (plus de compétences) les ennemis touchés. N'interrompt pas une canalisation."
+  },
+  "Silencer": {
+   "explication": "Tes balles finissent par réduire la cible au silence, et réduisent ses dégâts spirit."
+  },
+  "Focus Lens": {
+   "explication": "Actif : réduit la cible au silence ; une partie des dégâts qu'elle subit pendant ce temps retombe à la fin."
+  },
+  "Reactive Barrier": {
+   "explication": "Une barrière apparaît quand tu es stun, enchaîné, immobilisé, endormi ou réduit au silence."
+  },
+  "Dispel Magic": {
+   "explication": "Actif : retire tes effets négatifs (sauf ceux d'une ultimate), te soigne et t'accélère. Inutilisable pendant un stun ou un sommeil."
+  },
+  "Indomitable": {
+   "explication": "Le prochain stun, sommeil, immobilisation ou silence est annulé tout seul ; tu gagnes une barrière et tes recharges baissent."
+  },
+  "Unstoppable": {
+   "explication": "Actif : immunité aux stuns, silences, sommeils, immobilisations et désarmements pendant un moment. À lancer avant le contrôle, pas pendant."
+  },
+  "Divine Barrier": {
+   "explication": "Actif : sur un allié ou toi-même, retire les effets négatifs (sauf stun) et donne une barrière et de la vitesse."
+  },
+  "Fleetfoot": {
+   "explication": "Actif : plus de ralentissement en tirant, vitesse en plus et résistance aux ralentissements."
+  },
+  "Cheat Death": {
+   "explication": "Quand un coup devrait te tuer, tu deviens immortel un court instant et tes effets négatifs (sauf stun) disparaissent."
+  },
+  "Slowing Hex": {
+   "explication": "Actif : ralentit la cible, alourdit sa gravité et bloque ses objets et compétences de déplacement."
+  },
+  "Slowing Bullets": {
+   "explication": "Tes balles finissent par ralentir les ennemis touchés."
+  },
+  "Knockdown": {
+   "explication": "Actif : stun la cible 2 s après l'avoir lancé, plus longtemps si elle est en l'air. C'est l'objet pour couper une ultimate canalisée : le lancer dès qu'elle commence."
+  },
+  "Capacitor": {
+   "explication": "Actif : projectile qui ralentit fort, empêche d'utiliser la stamina et bloque les déplacements. Tes balles peuvent aussi électrocuter."
+  },
+  "Phantom Strike": {
+   "explication": "Actif : tu te téléportes sur la cible et la plaques au sol : dégâts, ralentissement, désarmement."
+  },
+  "Cursed Relic": {
+   "explication": "Actif : maudit un ennemi — l'interrompt, le réduit au silence, le désarme, bloque ses objets et retire ses bonus (sauf ultimate). Tes dégâts baissent pendant ce temps."
+  },
+  "Bullet Resist Shredder": {
+   "explication": "Tes dégâts spirit baissent la résistance aux balles des ennemis touchés."
+  },
+  "Mystic Vulnerability": {
+   "explication": "Quand un ennemi prend des dégâts spirit, sa résistance spirit baisse."
+  },
+  "Weakening Headshot": {
+   "explication": "Un tir dans la tête baisse sa résistance aux balles."
+  },
+  "Spirit Rend": {
+   "explication": "Tes balles baissent la résistance spirit de la cible et toute ton équipe vole de la vie avec ses dégâts spirit sur elle."
+  },
+  "Siphon Bullets": {
+   "explication": "Tes balles volent temporairement de la vie max aux ennemis ; ils la récupèrent quand l'effet se termine."
   }
  }
 }

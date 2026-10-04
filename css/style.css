@@ -702,3 +702,50 @@ main.page p { margin: .3rem 0; }
 @media (max-width: 1000px), (orientation: portrait) {
   .page-counters, .page-patch { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* ---------- counters : grille par rôle, stats, matchups, objets actifs ---------- */
+
+.grille-role { margin: .6rem 0 .25rem; font-size: .75rem; text-transform: uppercase; letter-spacing: .08em; color: var(--doux); }
+.grille-role:first-child { margin-top: 0; }
+.objet-explication { font-size: .9rem; }
+.stats-bande { display: flex; flex-wrap: wrap; gap: .3rem 1.4rem; margin: .4rem 0 .2rem; }
+.stat { display: flex; flex-direction: column; }
+.stat-valeur { font-size: 1.35rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.stat-nom { font-size: .75rem; color: var(--doux); }
+.puce.fort { color: var(--texte); border-color: var(--doux); }
+details.matchups, details.counters-actifs { margin-top: .6rem; }
+details.matchups { padding: .4rem .7rem; background: var(--fond); border: 1px solid var(--bord); border-radius: .4rem; }
+details > summary { cursor: pointer; font-weight: 700; padding: .2rem 0; }
+details.matchups > summary { color: var(--cat-lane); }
+details.counters-actifs > summary { font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: var(--doux); }
+.actifs-grille { display: grid; grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr)); gap: .5rem; }
+.matchups-colonnes { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: .5rem 1.2rem; }
+.matchups-colonnes h4 { margin: .4rem 0 .2rem; }
+.matchups-liste { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .35rem; }
+.matchup { display: flex; gap: .5rem; align-items: flex-start; opacity: .75; }
+.matchup.signal { opacity: 1; }
+.matchup-tete { display: flex; flex-wrap: wrap; align-items: baseline; gap: .1rem .5rem; }
+.matchup-ecart { font-weight: 700; font-variant-numeric: tabular-nums; }
+.matchup-pourquoi { display: block; font-size: .85rem; color: var(--doux); }
+.marque.signal { border-style: solid; color: var(--cat-jungle); opacity: 1; }
+.avertissement { padding: .35rem .6rem; border-left: .25rem solid var(--alerte); background: var(--alerte-fond); border-radius: .3rem; font-size: .9rem; }
+
+/* ---------- mémo : achats réels par héros ---------- */
+
+.memo-achats { margin-top: .8rem; }
+.memo-achats-tete { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem 1rem; }
+.memo-achats-tete h3 { margin: 0; }
+.memo-achats-phases { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: .5rem 1rem; }
+.memo-achats-phase h4 { margin: .3rem 0; }
+.memo-achats-liste { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .2rem; }
+.memo-achats-liste li { display: grid; grid-template-columns: 1.8rem minmax(0, 1fr); column-gap: .5rem; align-items: center; padding-left: .4rem; border-left: .2rem solid var(--doux); }
+.memo-achats-liste li.cat-weapon { border-left-color: #e8a33d; }
+.memo-achats-liste li.cat-vitality { border-left-color: #6fd66f; }
+.memo-achats-liste li.cat-spirit { border-left-color: #b58cff; }
+.memo-achats-liste img { grid-row: span 2; width: 1.8rem; height: 1.8rem; }
+.memo-achats-nom { font-weight: 600; }
+.memo-achats-nom .objet-actif { margin-left: .4rem; }
+.memo-achats-liste .aide { font-size: .8rem; }
+.memo-achats .filtre { --cat: var(--texte); }
+.memo-achats .filtre[aria-pressed="false"] { text-decoration: none; }
+.memo-achats .filtre[aria-pressed="true"] { background: var(--texte); color: var(--fond); }

@@ -20,6 +20,9 @@
       <a class="onglet" href="patch.html">Patch</a>
     </nav>
     <div class="reglages">
+      <label class="reglage">Rang
+        <select id="opt-tranche"></select>
+      </label>
       <label class="reglage">Niveau
         <select id="opt-niveau">
           <option value="1">1 · débutant</option>
@@ -41,7 +44,7 @@
     <section class="panneau" aria-label="Héros adverses">
       <h2>En face <span id="compte" class="note"></span>
         <button id="btn-vider" class="btn discret" type="button">Vider</button></h2>
-      <div id="grille" class="heros-grille"></div>
+      <div id="grille" class="heros-grille-roles"></div>
     </section>
     <div id="resultat" class="counters-resultat"></div>
   </main>

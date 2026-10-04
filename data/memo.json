@@ -309,6 +309,67 @@
    "note_objets": "Objets dont la résistance est la fonction principale, valeur en % lue dans l'API. Certaines valeurs peuvent être conditionnelles (bouclier, effet temporaire) : lire la description en jeu. Liste complète dans data/items.json."
   },
   {
+   "id": "achats",
+   "titre": "Les achats et les builds",
+   "achats_par_heros": true,
+   "fiches": [
+    {
+     "niveau": 1,
+     "titre": "Quatre prix seulement",
+     "texte": "Chaque objet coûte 800, 1 600, 3 200 ou 6 400 souls selon son tier (1 à 4). Trois catégories : Weapon (ton arme), Vitality (survie, défense, déplacement), Spirit (tes compétences).",
+     "source": "donnees"
+    },
+    {
+     "niveau": 1,
+     "titre": "Le build prédéfini",
+     "texte": "Chaque héros a un build par défaut choisi par les développeurs, rangé en sections early, mid et late. Tu peux aussi choisir un build créé par d'autres joueurs, ou faire le tien.",
+     "source": "wiki"
+    },
+    {
+     "niveau": 1,
+     "titre": "Faut-il finir l'early avant le mid ?",
+     "texte": "D'après les achats réels sur tes héros depuis le patch : avant 10 minutes, 5 à 7 objets à 800 et un ou deux à 1 600 ; entre 10 et 20 minutes, surtout des objets à 1 600 et un à trois à 3 200 ; après 20 minutes, les 3 200 et 6 400. Donc oui : on remplit d'abord avec des petits objets, puis on monte en gamme. Un objet early n'est pas perdu : beaucoup servent de composant à un objet plus cher. Détail par héros plus bas.",
+     "source": "donnees"
+    },
+    {
+     "niveau": 1,
+     "titre": "Composants : rien n'est gaspillé",
+     "texte": "Certains objets à partir du tier 2 ont un composant du tier d'avant. En achetant le gros objet, le composant est consommé et son prix est déduit.",
+     "source": "wiki"
+    },
+    {
+     "niveau": 1,
+     "titre": "Les emplacements",
+     "texte": "9 emplacements d'objets au départ, et 3 Extra Slots débloqués à la destruction du 1er, 2e et 3e Walker adverse. Au maximum 4 objets actifs (ceux qu'on déclenche avec une touche).",
+     "source": "wiki"
+    },
+    {
+     "niveau": 1,
+     "titre": "Revendre",
+     "texte": "Un objet se revend à moitié prix. Remboursement complet si tu le revends sans avoir quitté la zone du shop (le rectangle jaune au sol) : pratique en cas d'erreur.",
+     "source": "wiki"
+    },
+    {
+     "niveau": 1,
+     "titre": "Où acheter",
+     "texte": "Le shop de ta base, le side shop de chaque lane (fermé pour le reste de la partie quand le Guardian de cette lane tombe) et deux secret shops souterrains ouverts aux deux équipes.",
+     "source": "wiki"
+    },
+    {
+     "niveau": 2,
+     "titre": "Le bonus d'investissement",
+     "texte": "Chaque catégorie donne un bonus qui grandit avec le total dépensé dedans, jusqu'à 28 800 souls : dégâts d'arme pour Weapon, vie pour Vitality, spirit power pour Spirit. Gros palier à 4 800 souls dans une même catégorie (le « 4.8k spike ») : en Weapon, on passe de +18 % de dégâts à 3 200 à +46 % à 4 800. Revendre fait perdre le bonus.",
+     "source": "wiki"
+    },
+    {
+     "niveau": 2,
+     "titre": "Exemple de palier",
+     "texte": "Un objet à 1 600 et un à 3 200 dans la même catégorie font 4 800 : palier atteint. Les mêmes souls réparties dans trois catégories ne l'atteignent dans aucune.",
+     "source": "wiki"
+    }
+   ]
+  },
+  {
    "id": "mort",
    "titre": "Mourir coûte de plus en plus cher",
    "fiches": [
