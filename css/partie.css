@@ -123,21 +123,90 @@ body.mode-compact .col-gauche { flex: 0 1 46rem; }
 .alertes-liste .aide { margin: .3rem 0 0; max-width: 22rem; white-space: normal; }
 .alerte-flash {
   position: fixed; inset: 0; z-index: 50;
-  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem;
-  padding: 2rem; text-align: center; cursor: pointer;
-  background: rgba(59, 42, 12, .92);
-  border: 1.2rem solid var(--alerte);
+  display: grid; place-items: center; padding: 1.5rem; cursor: pointer;
+  background: rgba(8, 6, 4, .78);
 }
 .alerte-flash[hidden] { display: none; }
-.alerte-flash.anime { animation: alerte-clignote .5s ease-in-out 4 alternate; }
-@keyframes alerte-clignote { from { border-color: var(--alerte); background: rgba(59, 42, 12, .92); } to { border-color: #fff; background: rgba(120, 80, 10, .95); } }
-@media (prefers-reduced-motion: reduce) { .alerte-flash.anime { animation: none; } }
-.alerte-flash-titre { font-family: var(--titre); font-size: clamp(2.5rem, 9vw, 7rem); line-height: 1; text-transform: uppercase; color: #fff; }
-.alerte-flash-texte { font-size: clamp(1.1rem, 2.4vw, 2rem); max-width: 50rem; color: var(--texte); }
-.alerte-flash-aide { font-size: .9rem; color: var(--doux); }
+.alerte-carte {
+  width: min(92vw, 60rem); padding: 2.2rem 2.6rem; text-align: center;
+  background: var(--panneau); border: 3px solid var(--cat); border-top-width: 1rem; border-radius: 1rem;
+  box-shadow: 0 0 0 0 var(--cat), 0 30px 80px rgba(0, 0, 0, .6);
+  display: flex; flex-direction: column; gap: .6rem;
+}
+.alerte-flash.anime .alerte-carte { animation: alerte-pulse .7s ease-out 3; }
+@keyframes alerte-pulse { 0% { box-shadow: 0 0 0 0 var(--cat), 0 30px 80px rgba(0, 0, 0, .6); } 100% { box-shadow: 0 0 0 2.5rem transparent, 0 30px 80px rgba(0, 0, 0, .6); } }
+@media (prefers-reduced-motion: reduce) { .alerte-flash.anime .alerte-carte { animation: none; } }
+.alerte-nom { font-family: var(--titre); font-size: clamp(3rem, 9vw, 7.5rem); line-height: 1; text-transform: uppercase; color: var(--texte); }
+.alerte-delai { font-family: var(--titre); font-size: clamp(2.2rem, 6vw, 5rem); line-height: 1; color: var(--cat); }
+.alerte-texte { font-size: clamp(1.2rem, 2.4vw, 1.9rem); line-height: 1.35; color: var(--texte); }
+.alerte-aide { font-size: .9rem; color: var(--doux); }
 .choix-son { display: flex; flex-direction: column; gap: .3rem; padding-bottom: .4rem; margin-bottom: .2rem; border-bottom: 1px solid var(--bord); }
 .choix-son-profils, .choix-son-ecoute { display: flex; flex-wrap: wrap; gap: .25rem; }
 .son-profil.choisi { background: var(--or); color: #14100a; border-color: var(--or); }
 .choix-son .aide { margin: 0; font-size: .82rem; }
 .choix-son-volume { display: flex; align-items: center; gap: .5rem; font-size: .88rem; }
 .choix-son-volume input { flex: 1; }
+
+
+/* ====================================================================
+   Modes épurés (Normal, Compact) : le minimum, en grand
+   ==================================================================== */
+
+/* Barre du haut : « ⚙ Ma partie » regroupe rôle, équipe, panneaux, installation. */
+.plus-liste { grid-template-columns: 1fr; gap: .6rem; min-width: 20rem; right: .7rem; }
+.plus-ligne { display: flex; flex-direction: column; gap: .25rem; }
+.plus-ligne .contexte-panneaux-liste { position: static; box-shadow: none; padding: .3rem 0 0; background: none; border: 0; }
+.contexte-plus { margin-left: auto; }
+
+/* Chrono minimal : heure et état ; les commandes se déplient au survol, au focus ou au toucher. */
+body.mode-normal .horloge, body.mode-compact .horloge { padding: .5rem .8rem; }
+body.mode-normal .horloge-temps, body.mode-compact .horloge-temps { font-size: 3.4rem; }
+body.mode-normal .horloge-ligne, body.mode-compact .horloge-ligne { cursor: pointer; }
+body.mode-normal .horloge .commandes, body.mode-normal .horloge .chrono-reglages,
+body.mode-compact .horloge .commandes, body.mode-compact .horloge .chrono-reglages {
+  max-height: 0; overflow: hidden; opacity: 0; margin: 0; transition: max-height .2s, opacity .2s;
+}
+body.mode-normal .horloge:hover .commandes, body.mode-normal .horloge:focus-within .commandes, body.mode-normal .horloge.ouvert .commandes,
+body.mode-compact .horloge:hover .commandes, body.mode-compact .horloge:focus-within .commandes, body.mode-compact .horloge.ouvert .commandes {
+  max-height: 12rem; opacity: 1; margin-top: .4rem;
+}
+body.mode-normal .horloge:hover .chrono-reglages, body.mode-normal .horloge.ouvert .chrono-reglages, body.mode-normal .horloge:focus-within .chrono-reglages,
+body.mode-compact .horloge:hover .chrono-reglages, body.mode-compact .horloge.ouvert .chrono-reglages, body.mode-compact .horloge:focus-within .chrono-reglages {
+  max-height: 20rem; opacity: 1; overflow: visible;
+}
+/* Le rappel « regarde ta map » devient une ligne discrète. */
+body.mode-normal .rappel, body.mode-compact .rappel { font-size: 1rem; padding: .25rem .6rem; margin-top: .3rem; }
+
+/* À venir : un objectif à la fois, en grand, avec des points pour passer d'un à l'autre. */
+body.mode-normal .avenir, body.mode-compact .avenir { display: flex; flex-direction: column; }
+body.mode-normal #avenir > li:not([data-vue]), body.mode-compact #avenir > li:not([data-vue]) { display: none; }
+body.mode-normal #avenir, body.mode-compact #avenir { flex: 1; display: flex; }
+body.mode-normal #avenir > li[data-vue], body.mode-compact #avenir > li[data-vue] {
+  flex: 1; max-height: none; display: flex; flex-direction: column; justify-content: center; gap: .6rem;
+  padding: 1.6rem 1.8rem; border-left-width: .8rem;
+}
+body.mode-normal #avenir { flex-direction: column; }
+body.mode-normal #avenir .carte-nom, body.mode-compact #avenir .carte-nom { font-size: 3rem; white-space: normal; line-height: 1.05; }
+body.mode-normal #avenir .carte-droite, body.mode-compact #avenir .carte-droite { text-align: left; }
+body.mode-normal #avenir .carte-compte, body.mode-compact #avenir .carte-compte { font-size: 7rem; }
+body.mode-normal #avenir .carte.maintenant .carte-compte, body.mode-normal #avenir .carte.ouverte .carte-compte,
+body.mode-compact #avenir .carte.maintenant .carte-compte, body.mode-compact #avenir .carte.ouverte .carte-compte { font-size: 4.5rem; }
+body.mode-normal #avenir .carte-heure, body.mode-compact #avenir .carte-heure { font-size: 1.2rem; }
+body.mode-normal #avenir .carte-conseil, body.mode-compact #avenir .carte-conseil { font-size: 1.5rem; line-height: 1.35; }
+.avenir-points { display: flex; justify-content: center; gap: .5rem; padding-top: .6rem; }
+.avenir-points[hidden] { display: none; }
+.avenir-point { width: .85rem; height: .85rem; padding: 0; border-radius: 50%; border: 2px solid var(--bord-fort); background: transparent; cursor: pointer; }
+.avenir-point[aria-selected="true"] { background: var(--or); border-color: var(--or); }
+
+/* Ton plan : la phrase de conseil et la portée ; la liste d'actions fait doublon avec « À venir ». */
+body.mode-normal .plan .plan-actions, body.mode-normal .plan h3,
+body.mode-compact .plan .plan-actions, body.mode-compact .plan h3, body.mode-compact .plan .plan-ouverts,
+body.mode-normal .plan .plan-ouverts, body.mode-normal .plan-portee .aide, body.mode-compact .plan-portee .aide { display: none; }
+body.mode-normal .plan-conseil, body.mode-compact .plan-conseil { font-size: 1.3rem; }
+body.mode-normal .plan-portee, body.mode-compact .plan-portee { margin-top: .6rem; font-size: .95rem; color: var(--doux); }
+
+/* Compact : une colonne centrée, chrono + objectif + conseil. */
+body.mode-compact .partie-colonnes { flex-direction: column; align-items: center; }
+body.mode-compact .col { width: min(100%, 46rem); flex: none; }
+body.mode-compact .col-avenir { order: -1; flex: 1 1 auto; }
+body.mode-compact .col-gauche { order: -2; }

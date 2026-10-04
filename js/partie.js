@@ -17,7 +17,7 @@
     ['carte', 'Carte'], ['enface', 'En face'], ['maintenant', 'Maintenant'], ['checklist', 'Priorités'], ['frise', 'Frise']
   ];
   const MODES = {
-    compact: { nom: 'Compact', aide: 'Chrono, ton plan, minuteurs', panneaux: ['horloge', 'plan', 'declenches'] },
+    compact: { nom: 'Compact', aide: 'Chrono, le prochain objectif et ton conseil', panneaux: ['horloge', 'avenir', 'plan'] },
     normal: { nom: 'Normal', aide: 'Plus « À venir » et la carte', panneaux: ['horloge', 'plan', 'declenches', 'avenir', 'carte'] },
     complet: { nom: 'Complet', aide: 'Tout', panneaux: PANNEAUX.map((p) => p[0]) }
   };
@@ -85,12 +85,20 @@
         const s = document.querySelector('[data-panneau="' + id + '"]');
         if (s && s.parentNode !== cible) cible.append(s);
       });
+      // En mode Compact : chrono, puis l'objectif, puis le conseil (« Ton plan » passe sous « À venir »).
+      const plan = document.querySelector('[data-panneau="plan"]');
+      const horloge = document.querySelector('[data-panneau="horloge"]');
+      if (plan && horloge) {
+        if (affichage.mode === 'compact') { if (plan.parentNode !== centre) centre.append(plan); }
+        else if (plan.parentNode !== gauche || plan.previousElementSibling !== horloge) horloge.after(plan);
+      }
     }
     // Une colonne sans panneau visible disparaît (secours si :has n'est pas pris en charge).
     document.querySelectorAll('.partie-colonnes > .col').forEach((c) => {
       c.hidden = !Array.prototype.some.call(c.children, (x) => !x.hidden);
     });
     window.dispatchEvent(new Event('resize'));
+    tourner(true);
   }
 
   // ---------- barre de contexte ----------
@@ -183,8 +191,19 @@
     liste.append(bouton('Revenir au réglage du mode', 'discret', () => { delete affichage.perso[affichage.mode]; ecrire(CLE_AFFICHAGE, affichage); appliquerAffichage(); dessinerContexte(); }));
     perso.append(liste);
 
-    zone.append(choixHeros, role, lanes, equipe, modes, perso, menuAlertes());
-    if (installation) zone.append(bouton('📲 Installer', 'discret', installer, 'Installer le site comme une application (écran d\'accueil, plein écran)'));
+    // Visible : héros, lane, affichage, alertes. Le reste dans « ⚙ Ma partie ».
+    const plus = el('details', 'contexte-panneaux contexte-plus');
+    plus.append(el('summary', null, '⚙ Ma partie'));
+    const contenu = el('div', 'contexte-panneaux-liste plus-liste');
+    const ligne = (titre, noeud) => { const d = el('div', 'plus-ligne'); d.append(el('span', 'doux petit', titre), noeud); contenu.append(d); };
+    ligne('Rôle', role);
+    ligne('Équipe (oriente la carte)', equipe);
+    perso.open = true;
+    perso.classList.add('plus-panneaux');
+    ligne('Panneaux affichés', liste);
+    if (installation) ligne('Application', bouton('📲 Installer sur cet appareil', '', installer, 'Installer le site comme une application (écran d\'accueil, plein écran)'));
+    plus.append(contenu);
+    zone.append(choixHeros, lanes, modes, menuAlertes(), plus);
   }
 
   // Choix de mon héros : une fenêtre avec la grille, mes étiquettes d'abord.
@@ -348,6 +367,72 @@
     }
   }
 
+  // ---------- « À venir » en un objectif à la fois (modes épurés) ----------
+  // Les cartes restent celles du chrono (js/timeline.js) ; ici on n'en montre qu'une, en grand,
+  // qui tourne toutes les ROTATION_S secondes. Un objectif en alerte ou en cours reste affiché.
+
+  const ROTATION_S = 6;
+  let indexVue = 0, prochaineRotation = 0, pauseJusqua = 0;
+
+  function points(cartes, active) {
+    let z = document.getElementById('avenir-points');
+    if (!z) {
+      z = el('div', 'avenir-points');
+      z.id = 'avenir-points';
+      z.setAttribute('role', 'tablist');
+      const liste = document.getElementById('avenir');
+      if (liste) liste.after(z);
+    }
+    if (z.childElementCount !== cartes.length) {
+      z.textContent = '';
+      cartes.forEach((c, i) => {
+        const b = el('button', 'avenir-point');
+        b.type = 'button';
+        b.setAttribute('role', 'tab');
+        b.addEventListener('click', () => { indexVue = i; pauseJusqua = Date.now() + 15000; tourner(true); b.blur(); });
+        z.append(b);
+      });
+    }
+    Array.prototype.forEach.call(z.children, (b, i) => {
+      b.setAttribute('aria-selected', String(i === active));
+      const nom = cartes[i] && cartes[i].querySelector('.carte-nom');
+      b.title = nom ? nom.textContent : '';
+    });
+  }
+
+  function tourner(force) {
+    const epure = affichage.mode !== 'complet';
+    const toutes = Array.prototype.slice.call(document.querySelectorAll('#avenir > li'));
+    if (!epure) { toutes.forEach((c) => { delete c.dataset.vue; }); const z = document.getElementById('avenir-points'); if (z) z.hidden = true; return; }
+    const cartes = toutes.filter((c) => !c.hidden);
+    if (!cartes.length) return;
+    const urgente = cartes.findIndex((c) => /\b(alerte|maintenant|ouverte)\b/.test(c.className));
+    const maintenant = Date.now();
+    if (urgente !== -1 && maintenant > pauseJusqua) indexVue = urgente;
+    else if (force !== true && maintenant >= prochaineRotation && maintenant > pauseJusqua) {
+      indexVue = (indexVue + 1) % cartes.length;
+      prochaineRotation = maintenant + ROTATION_S * 1000;
+    }
+    if (indexVue >= cartes.length) indexVue = 0;
+    if (force === true) prochaineRotation = maintenant + ROTATION_S * 1000;
+    toutes.forEach((c) => { if (c === cartes[indexVue]) c.dataset.vue = '1'; else delete c.dataset.vue; });
+    const z = document.getElementById('avenir-points');
+    points(cartes, indexVue);
+    if (z) z.hidden = cartes.length < 2;
+  }
+
+  // Chrono minimal : les commandes se déplient au survol ; au toucher, un appui sur l'heure les ouvre.
+  function preparerHorloge() {
+    const h = document.querySelector('.horloge');
+    if (!h || h.dataset.pret) return;
+    h.dataset.pret = '1';
+    const temps = h.querySelector('.horloge-ligne');
+    if (temps) {
+      temps.setAttribute('title', 'Survoler (ou toucher) pour régler le chrono');
+      temps.addEventListener('click', () => h.classList.toggle('ouvert'));
+    }
+  }
+
   // ---------- alertes : flash plein écran, notification système, vibration ----------
   // Le son et la voix restent ceux du chrono (js/timeline.js, cases #opt-son et #opt-voix) :
   // le menu « Alertes » les regroupe ici.
@@ -404,7 +489,7 @@
     const nom = ev.nom.split(' (')[0];
     const titre = restant > 1 ? nom + ' dans ' + Math.round(restant) + ' s' : nom + ' : maintenant';
     const texte = ev.conseil || ev.detail || '';
-    if (alertes.flash) flash(titre, texte);
+    if (alertes.flash) flash(ev, restant, texte);
     // Le préavis sonne déjà via le chrono ; l'apparition a son propre son, si le son est activé.
     const son = document.getElementById('opt-son');
     if (restant <= 1 && son && son.checked && DLN.sons) DLN.sons.jouer('maintenant');
@@ -412,7 +497,8 @@
     if (alertes.notif) notifier(titre, texte, ev.id);
   }
 
-  function flash(titre, texte) {
+  // Carte plein écran : couleur de la catégorie, nom et délai en très grand, le conseil dessous.
+  function flash(ev, restant, texte) {
     let z = document.getElementById('alerte-flash');
     if (!z) {
       z = el('div', 'alerte-flash');
@@ -422,13 +508,19 @@
       document.body.append(z);
     }
     z.textContent = '';
-    z.append(el('div', 'alerte-flash-titre', titre), el('div', 'alerte-flash-texte', texte), el('div', 'alerte-flash-aide', 'clic pour fermer'));
+    z.style.setProperty('--cat', 'var(--cat-' + (ev.categorie || 'objectif') + ', var(--alerte))');
+    const carte = el('div', 'alerte-carte');
+    carte.append(el('div', 'alerte-nom', ev.nom.split(' (')[0]),
+      el('div', 'alerte-delai', restant > 1 ? 'dans ' + Math.round(restant) + ' s' : 'maintenant'));
+    if (texte) carte.append(el('div', 'alerte-texte', texte));
+    carte.append(el('div', 'alerte-aide', 'toucher pour fermer'));
+    z.append(carte);
     z.hidden = false;
     z.classList.remove('anime');
     void z.offsetWidth;                // relance l'animation
     z.classList.add('anime');
     clearTimeout(flash.minuteur);
-    flash.minuteur = setTimeout(() => { z.hidden = true; }, 7000);
+    flash.minuteur = setTimeout(() => { z.hidden = true; }, 6000);
   }
 
   function notifier(titre, texte, tag) {
@@ -554,6 +646,8 @@
     ecouteurs.forEach((f) => f());
     setInterval(dessinerPlan, 1000);
     setInterval(surveiller, 500);
+    setInterval(tourner, 500);
+    preparerHorloge();
     DLN.surNiveau(dessinerPlan);
     if (DLN.orientationCarte) DLN.orientationCarte.surChange(dessinerContexte);
     window.addEventListener('storage', (e) => { if (e.key === CLE_ENFACE || e.key === CLE_CHRONO) dessinerPlan(); });
