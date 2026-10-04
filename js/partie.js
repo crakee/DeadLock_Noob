@@ -357,15 +357,17 @@
   try { premiereFois = localStorage.getItem(CLE_ALERTES) == null; } catch (e) { /* stockage indisponible */ }
   let alertes = lire(CLE_ALERTES, { flash: true, notif: false, vibre: true });
   // Premier passage : son et voix du chrono activés (on ne regarde pas le second écran en partie).
-  function activerSonEtVoix() {
-    if (!premiereFois) return;
-    premiereFois = false;
+  // On écrit directement les réglages du chrono, avant qu'il ne les lise.
+  if (premiereFois) {
+    try {
+      const r = JSON.parse(localStorage.getItem('dln.timeline.reglages.v1')) || {};
+      r.son = true;
+      r.voix = true;
+      localStorage.setItem('dln.timeline.reglages.v1', JSON.stringify(r));
+    } catch (e) { /* stockage indisponible */ }
     ecrire(CLE_ALERTES, alertes);
-    ['opt-son', 'opt-voix'].forEach((id) => {
-      const c = document.getElementById(id);
-      if (c && !c.checked) { c.checked = true; c.dispatchEvent(new Event('change')); }
-    });
   }
+  function activerSonEtVoix() { /* fait au chargement, voir ci-dessus */ }
   const declenchees = new Set();
   let premierPassage = true;
 
@@ -413,6 +415,9 @@
     const titre = restant > 1 ? nom + ' dans ' + Math.round(restant) + ' s' : nom + ' : maintenant';
     const texte = ev.conseil || ev.detail || '';
     if (alertes.flash) flash(titre, texte);
+    // Le préavis sonne déjà via le chrono ; l'apparition a son propre son, si le son est activé.
+    const son = document.getElementById('opt-son');
+    if (restant <= 1 && son && son.checked && DLN.sons) DLN.sons.jouer('maintenant');
     if (alertes.vibre && navigator.vibrate) { try { navigator.vibrate([250, 120, 250, 120, 400]); } catch (e) { /* pas de vibration */ } }
     if (alertes.notif) notifier(titre, texte, ev.id);
   }
@@ -445,6 +450,37 @@
     } else repli();
   }
 
+  // Ambiance sonore : un profil à choisir, deux sons à écouter, le volume.
+  function choixSon() {
+    const z = el('div', 'choix-son');
+    if (!DLN.sons) return z;
+    const ligne = el('div', 'choix-son-profils');
+    Object.keys(DLN.sons.PROFILS).forEach((id) => {
+      const p = DLN.sons.PROFILS[id];
+      const b = bouton(p.nom, 'son-profil' + (DLN.sons.profil() === id ? ' choisi' : ''), () => {
+        DLN.sons.reglerProfil(id);
+        DLN.sons.jouer('preavis');
+        z.querySelectorAll('.son-profil').forEach((x) => x.classList.toggle('choisi', x === b));
+        aide.textContent = p.aide;
+      }, p.aide);
+      ligne.append(b);
+    });
+    const aide = el('p', 'aide', DLN.sons.PROFILS[DLN.sons.profil()].aide);
+    const ecoute = el('div', 'choix-son-ecoute');
+    ecoute.append(bouton('▶ Bientôt', 'discret', () => DLN.sons.jouer('preavis'), 'Le son du préavis'),
+      bouton('▶ Maintenant', 'discret', () => DLN.sons.jouer('maintenant'), 'Le son quand l\'objectif apparaît'));
+    const vol = el('label', 'choix-son-volume');
+    const r = el('input');
+    r.type = 'range';
+    r.min = '0';
+    r.max = '100';
+    r.value = String(Math.round(DLN.sons.volume() * 100));
+    r.addEventListener('change', () => { DLN.sons.reglerVolume(Number(r.value) / 100); DLN.sons.jouer('preavis'); r.blur(); });
+    vol.append('Volume ', r);
+    z.append(el('strong', null, 'Son des alertes'), ligne, aide, ecoute, vol);
+    return z;
+  }
+
   function menuAlertes() {
     const d = el('details', 'contexte-panneaux contexte-alertes');
     const resume = el('summary', null, '🔔 Alertes');
@@ -464,8 +500,11 @@
     // Son et voix : on pilote les cases du chrono pour garder un seul réglage.
     const relais = (id) => () => { const c = document.getElementById(id); return !!(c && c.checked); };
     const relaisEcrire = (id) => (v) => { const c = document.getElementById(id); if (c && c.checked !== v) { c.checked = v; c.dispatchEvent(new Event('change')); } };
-    caseAlerte('Son (bip)', 'Un bip au début du préavis', relais('opt-son'), relaisEcrire('opt-son'));
-    caseAlerte('Voix (« Soul Urn dans 30 secondes »)', 'Annonce vocale du navigateur', relais('opt-voix'), relaisEcrire('opt-voix'));
+    const caseSon = caseAlerte('Son', 'Un son au début du préavis et à l\'apparition', relais('opt-son'), relaisEcrire('opt-son'));
+    liste.append(choixSon());
+    const caseVoix = caseAlerte('Voix (« Soul Urn dans 30 secondes »)', 'Annonce vocale du navigateur', relais('opt-voix'), relaisEcrire('opt-voix'));
+    // À l'ouverture du menu, les cases reprennent l'état réel des réglages du chrono.
+    d.addEventListener('toggle', () => { if (d.open) { caseSon.checked = relais('opt-son')(); caseVoix.checked = relais('opt-voix')(); } });
     caseAlerte('Flash plein écran', 'Un grand bandeau sur toute la page', () => alertes.flash, (v) => { alertes.flash = v; ecrire(CLE_ALERTES, alertes); });
     caseAlerte('Vibration (téléphone)', null, () => alertes.vibre, (v) => { alertes.vibre = v; ecrire(CLE_ALERTES, alertes); });
     const notif = caseAlerte('Notifications du système', 'Elles s\'affichent par-dessus les autres fenêtres, sur ton écran principal', () => alertes.notif && 'Notification' in window && Notification.permission === 'granted', (v) => {

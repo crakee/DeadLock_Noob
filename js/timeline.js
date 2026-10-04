@@ -232,6 +232,8 @@
   }
 
   function bip() {
+    // Son choisi dans « Alertes » (js/sons.js) s'il est chargé, sinon le bip d'origine.
+    if (window.DLN && DLN.sons) { DLN.sons.jouer('preavis'); return; }
     if (!audio) return;
     try {
       [880, 1175].forEach((frequence, i) => {
@@ -265,7 +267,10 @@
     if (premierPassage || !enMarche()) return;
     if (reglages.son) bip();
     if (reglages.voix) {
-      dire(restant_s > 1 ? nom + ' dans ' + Math.round(restant_s) + ' secondes' : nom + ' maintenant');
+      const texte = restant_s > 1 ? nom + ' dans ' + Math.round(restant_s) + ' secondes' : nom + ' maintenant';
+      // La voix attend la fin du son pour ne pas le couvrir.
+      const attente = reglages.son && window.DLN && DLN.sons ? DLN.sons.duree('preavis') * 1000 : 0;
+      setTimeout(() => dire(texte), attente);
     }
   }
 

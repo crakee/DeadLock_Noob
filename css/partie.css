@@ -135,3 +135,9 @@ body.mode-compact .col-gauche { flex: 0 1 46rem; }
 .alerte-flash-titre { font-family: var(--titre); font-size: clamp(2.5rem, 9vw, 7rem); line-height: 1; text-transform: uppercase; color: #fff; }
 .alerte-flash-texte { font-size: clamp(1.1rem, 2.4vw, 2rem); max-width: 50rem; color: var(--texte); }
 .alerte-flash-aide { font-size: .9rem; color: var(--doux); }
+.choix-son { display: flex; flex-direction: column; gap: .3rem; padding-bottom: .4rem; margin-bottom: .2rem; border-bottom: 1px solid var(--bord); }
+.choix-son-profils, .choix-son-ecoute { display: flex; flex-wrap: wrap; gap: .25rem; }
+.son-profil.choisi { background: var(--or); color: #14100a; border-color: var(--or); }
+.choix-son .aide { margin: 0; font-size: .82rem; }
+.choix-son-volume { display: flex; align-items: center; gap: .5rem; font-size: .88rem; }
+.choix-son-volume input { flex: 1; }
