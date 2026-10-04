@@ -2,17 +2,19 @@
 
 Aide-mémoire personnel pour progresser sur Deadlock (Valve) : les timings de la partie à suivre sur un second écran, et les infos à retenir sur les héros et les objets (counters, faiblesses).
 
-> **Statut : onglet Timeline en place** (`index.html`, `css/`, `js/`). Héros et Objets restent à faire.
+## 👉 Ouvrir l'app : **https://crakee.github.io/DeadLock_Noob/**
 
-## Lancer le chrono
+Rien à installer : le lien s'ouvre dans n'importe quel navigateur (PC ou téléphone pour le second écran). Onglets : Timeline, Carte, Mémo, Héros, Rôles, Counters, Patch.
+
+### Lancer en local (seulement pour modifier le projet)
 
 ```
 python -m http.server
 ```
 
-puis ouvrir `http://localhost:8000` dans le navigateur du second écran. L'ouverture par double-clic de `index.html` ne peut pas lire `data/timeline.json` : la page propose alors de choisir le fichier à la main.
+puis ouvrir `http://localhost:8000`. L'ouverture par double-clic de `index.html` ne peut pas lire les fichiers `data/*.json` : la page propose alors de choisir le fichier à la main.
 
-Raccourcis (fenêtre du navigateur active) : `Espace` démarrer / pause, `1` `2` `3` minuteurs, `←` `→` ±1 s, `Maj` + flèche ±10 s.
+Raccourcis de la Timeline (fenêtre du navigateur active) : `Espace` démarrer / pause, `1` `2` `3` minuteurs, `←` `→` ±1 s, `Maj` + flèche ±10 s.
 
 ## Besoin
 
