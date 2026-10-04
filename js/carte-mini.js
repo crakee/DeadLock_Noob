@@ -131,7 +131,9 @@
     timeline.evenements.forEach((e) => { evParId[e.id] = e; });
 
     const tete = el('div', 'carte-partie-tete');
-    tete.append(el('h2', null, 'Carte'), boutonEquipe());
+    tete.append(el('h2', null, 'Carte'));
+    // Sur En partie, le bouton d'équipe est dans la barre de contexte : pas de doublon ici.
+    if (!DLN.partieContexte) tete.append(boutonEquipe());
     const zone = el('div', 'carte-partie-zone');
     const image = el('img');
     image.src = carte.image;
@@ -181,7 +183,9 @@
       const lignes = [];
       entrees.filter((x) => x.ev && x.elements.length).forEach((x) => { if (lignes.every((l) => l.ev !== x.ev)) lignes.push(x); });
       lignes.sort((a, b) => ordre[a.st.etat] - ordre[b.st.etat] || (a.st.dans || 0) - (b.st.dans || 0));
-      lignes.forEach((l, i) => { l.numero = i + 1; });
+      // Numéros pour les objectifs seulement : les camps se reconnaissent à leur couleur et leur forme.
+      let num = 0;
+      lignes.forEach((l) => { if (l.ev.categorie !== 'jungle') l.numero = ++num; });
       const numeroDe = (ev) => (lignes.find((l) => l.ev === ev) || {}).numero;
 
       // 3. Dessin
@@ -221,7 +225,7 @@
       if (!chrono.lance) return;
       lignes.forEach((l) => {
         const li = el('li', 'etat-' + l.st.etat);
-        const p = el('span', 'mini-pastille', String(l.numero));
+        const p = el('span', 'mini-pastille', l.numero ? String(l.numero) : '');
         p.style.background = l.c.couleur;
         let texte;
         if (l.st.etat === 'maintenant') texte = 'maintenant';

@@ -322,6 +322,8 @@
       }
       const autres = enFace.map((id) => ({ h: herosDe(id), p: portee(fiches[String(id)]) })).filter((x) => x.h && x.p).sort((a, b) => b.p.m - a.p.m);
       if (autres.length) {
+        d.append(el('p', 'plan-ennemis-titre', 'En face, pleins dégâts jusqu\'à : (reste plus loin pour prendre beaucoup moins' +
+          (moi ? ' ; en rouge, ceux qui te touchent de plus loin que toi' : '') + ')'));
         const ul = el('ul', 'plan-ennemis');
         autres.forEach((x) => {
           const li = el('li', moi && x.p.m > moi.m ? 'plus-loin' : '');

@@ -111,3 +111,4 @@ body.mode-compact .col-gauche { flex: 0 1 46rem; }
   .carte-partie-zone { width: 100%; }
 }
 .plan-ouverts { margin: .4rem 0 0; font-size: .92rem; color: var(--doux); }
+.plan-ennemis-titre { margin: .4rem 0 .1rem; font-size: .9rem; }
