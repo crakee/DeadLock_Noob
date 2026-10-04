@@ -749,3 +749,16 @@ details.counters-actifs > summary { font-size: .8rem; text-transform: uppercase;
 .memo-achats .filtre { --cat: var(--texte); }
 .memo-achats .filtre[aria-pressed="false"] { text-decoration: none; }
 .memo-achats .filtre[aria-pressed="true"] { background: var(--texte); color: var(--fond); }
+.actifs-titre { margin: .5rem 0 .2rem; font-size: .85rem; }
+.actifs-cibles { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .25rem; }
+.actifs-cibles li { display: flex; align-items: baseline; gap: .5rem; }
+.actifs-cibles .cible { flex: none; }
+.cible {
+  display: inline-flex; align-items: center; gap: .3rem;
+  padding: .1rem .5rem .1rem .15rem;
+  font: inherit; font-size: .85rem; color: var(--texte);
+  background: var(--panneau); border: 1px solid var(--bord); border-radius: 1rem; cursor: pointer;
+}
+.cible img { width: 1.4rem; height: 1.4rem; object-fit: cover; border-radius: 50%; }
+.cible:hover { border-color: var(--texte); }
+.cible.choisi { border-color: var(--alerte); background: var(--alerte-fond); }

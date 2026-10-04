@@ -50,6 +50,18 @@
     afficher();
   }
 
+  // Ajoute un héros à « En face » s'il n'y est pas, puis amène sa fiche à l'écran.
+  function ouvrir(id) {
+    if (choisis.indexOf(id) === -1) {
+      if (choisis.length >= MAX_ADVERSAIRES) choisis.shift();
+      choisis.push(id);
+      sauver();
+      afficher();
+    }
+    const fiche = document.querySelector('.counters-heros[data-heros="' + id + '"]');
+    if (fiche) fiche.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
   // ---------- grille des héros, par rôle ----------
 
   // Rôle principal : le premier rôle où le héros figure en titulaire, sinon en « aussi ».
@@ -166,6 +178,23 @@
       const ul = el('ul', 'objets');
       actifs.sort(parPrix).forEach((o) => ul.append(ligneObjet(o)));
       carte.append(ul);
+      // Les héros concernés : un clic les ajoute à « En face » et ouvre leur fiche.
+      const cibles = heros.heros.filter((h) => toutesMenacesDe(h.id).some((x) => x.id === id));
+      if (cibles.length) {
+        carte.append(el('h4', 'actifs-titre', 'À utiliser contre (' + cibles.length + ')'));
+        const zone = el('ul', 'actifs-cibles');
+        cibles.forEach((h) => {
+          const li = el('li');
+          const b = el('button', 'cible' + (choisis.indexOf(h.id) !== -1 ? ' choisi' : ''));
+          b.type = 'button';
+          b.title = 'Ajouter ' + h.nom + ' à « En face » et ouvrir sa fiche';
+          b.append(icone(h), el('span', null, h.nom));
+          b.addEventListener('click', () => ouvrir(h.id));
+          li.append(b, el('span', 'doux petit', (toutesMenacesDe(h.id).find((x) => x.id === id) || {}).pourquoi || ''));
+          zone.append(li);
+        });
+        carte.append(zone);
+      }
       grille.append(carte);
     });
     bloc.append(grille);
@@ -332,6 +361,7 @@
     const h = herosDe(id);
     if (!h) return;
     const bloc = el('section', 'panneau counters-heros');
+    bloc.dataset.heros = String(id);
     const tete = el('div', 'counters-tete');
     const retirer = el('button', 'btn discret', '×');
     retirer.type = 'button';
