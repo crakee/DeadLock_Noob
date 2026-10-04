@@ -36,11 +36,15 @@ Pour les valeurs : les pages de deadlock.wiki sont des gabarits, les chiffres so
 | `data/patch.json` | Résumés reformulés des derniers patchs, changements des héros de l'utilisateur | à la main, depuis l'API `/v2/patches` et le wiki |
 | `data/heros-details.json` | Stats de base de chaque héros (PV, vitesse, arme) et matchups par tranche de rang : écart au winrate attendu (log5) et marge | `outils/maj_donnees.py --seulement details` |
 | `data/achats.json` | Objets achetés par au moins 20 % des joueurs des héros du profil, par tranche, avec minute moyenne d'achat | `outils/maj_donnees.py --seulement achats` |
+| `data/builds.json` | 3 builds publics du jeu par héros (les plus mis en favori parmi ceux mis à jour depuis le patch) | `outils/maj_donnees.py --seulement builds` |
+| `data/tempo.json` | Winrate par durée de partie et objets clés (minute d'achat) par héros et tranche | `outils/maj_donnees.py --seulement tempo` |
 | `data/profil.json` | Héros joués et à essayer, tranche de rang par défaut (préférences, pas données de jeu) | à la main |
 
 **Réglage de niveau unique** (demande de l'utilisateur) : un seul curseur 1 débutant / 2 intermédiaire / 3 avancé filtre la Timeline, le Mémo et les couches de la carte, plutôt qu'une version par rang. Le champ s'appelle `niveau` partout. Le rappel minimap doit pouvoir être désactivé.
 
 Dans `heroes.json` et `items.json`, les étiquettes `mecaniques` et `contre` sont déduites par mots-clés et peu fiables : à relire à la main avant de construire l'onglet Counters. Le champ `video` des héros est vide.
+
+**Étiquettes perso** : `js/etiquettes.js` (clé `dln.etiquettes.v1`, initialisée depuis `profil.json`) gère les étiquettes que l'utilisateur pose sur les héros (« joué », « me casse »…), utilisées par Héros et Counters. Les compétences ont leurs textes officiels FR (`nom_fr`, `description_fr`… via `language=french` de l'API) ; aucune vidéo de compétence n'existe dans l'API ni sur le wiki (vérifié le 2026-10-04) : la fiche renvoie à une recherche YouTube. CSS propres par page : `css/counters.css`, `css/heros.css`, `css/apprendre.css`, `css/etiquettes.css` (style.css reste commun).
 
 ## Règles du projet
 
