@@ -85,3 +85,10 @@
 .objets-ligne > summary { text-align: left; justify-items: start; }
 .objets-ligne > summary .objets-apercu, .objets-ligne > summary .objets-visages { justify-self: end; }
 @media (max-width: 700px) { .objets-ligne > summary .objets-apercu, .objets-ligne > summary .objets-visages { justify-self: start; } }
+
+/* Apprendre › Carte : carte retournée quand on joue The Archmother (base en haut). */
+.carte-zone { transition: transform .3s; }
+.carte-zone.retournee { transform: rotate(180deg); }
+.carte-orientation { display: flex; justify-content: flex-end; margin-bottom: .4rem; }
+.bouton-equipe { display: inline-flex; align-items: center; gap: .4rem; font-size: .85rem; padding: .2rem .6rem; }
+.pastille-equipe { width: .7rem; height: .7rem; border-radius: 50%; display: inline-block; }

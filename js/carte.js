@@ -191,6 +191,16 @@
     carte = r[0];
     fiches = r[1];
     document.getElementById('carte-image').src = carte.image;
+    // Bouton d'orientation (js/carte-mini.js) : base en bas quelle que soit l'équipe.
+    const zone = document.querySelector('.carte-zone');
+    if (DLN.orientationCarte && zone) {
+      const barre = DLN.el('div', 'carte-orientation');
+      barre.append(DLN.orientationCarte.bouton());
+      zone.parentNode.insertBefore(barre, zone);
+      const orienter = () => zone.classList.toggle('retournee', DLN.orientationCarte.equipe() === 1);
+      DLN.orientationCarte.surChange(orienter);
+      orienter();
+    }
     document.getElementById('app').hidden = false;
     document.getElementById('meta').textContent = 'Patch ' + carte.meta.patch + ' · positions : ' + carte.meta.source +
       ' · descriptions : deadlock.wiki, pas encore confirmées en jeu';
