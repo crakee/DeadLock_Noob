@@ -267,6 +267,17 @@
     return null;
   }
 
+  // Distance de tir : pleins dégâts jusqu'à une distance, puis baisse linéaire jusqu'à un minimum.
+  function porteeTexte(a) {
+    if (!a.chute_degats_pct) {
+      return 'Portée : pas de baisse des dégâts avec la distance' +
+        (a.portee_max_m && a.portee_max_m < 100 ? ', mais ne touche plus au-delà de ' + a.portee_max_m + ' m.' : '.');
+    }
+    return 'Portée : pleins dégâts jusqu\'à ' + a.degats_pleins_jusqu_a_m + ' m, puis les dégâts baissent jusqu\'à ' +
+      a.chute_degats_pct + ' % à ' + a.degats_minimum_des_m + ' m et au-delà. Rester plus loin que ' + a.degats_minimum_des_m +
+      ' m, c\'est ne prendre que ' + (100 + a.chute_degats_pct) + ' % de ses dégâts d\'arme.';
+  }
+
   function stat(libelle, valeur, aide) {
     const d = el('div', 'stat');
     d.append(el('span', 'stat-valeur', valeur), el('span', 'stat-nom', libelle));
@@ -287,6 +298,9 @@
           (f.arme.balles_par_tir > 1 ? ' × ' + f.arme.balles_par_tir + ' balles par tir' : '') + ', ' + f.arme.tirs_par_s + ' tirs/s'));
         bande.append(stat('Chargeur', String(f.arme.chargeur), 'Rechargement : ' + f.arme.rechargement_s + ' s'));
       }
+      if (f.arme && f.arme.degats_pleins_jusqu_a_m != null) {
+        bande.append(stat('Pleins dégâts', 'jusqu\'à ' + f.arme.degats_pleins_jusqu_a_m + ' m'));
+      }
       bande.append(stat('Vitesse', f.vitesse_m_s + ' m/s'));
     }
     if (s && s.winrate != null) bande.append(stat('Winrate', s.winrate.toFixed(1) + ' %', '± ' + s.marge.toFixed(1) + ' points, ' + LIBELLES_TRANCHE[tranche]));
@@ -297,6 +311,7 @@
     if (h && h.complexite) infos.append(el('span', 'puce', 'complexité ' + h.complexite + '/3'));
     const boite = el('div');
     boite.append(bande, infos);
+    if (f && f.arme && f.arme.degats_pleins_jusqu_a_m != null) boite.append(el('p', 'portee', porteeTexte(f.arme)));
     return boite;
   }
 

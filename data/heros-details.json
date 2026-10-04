@@ -22,7 +22,11 @@
     "chargeur": 27,
     "rechargement_s": 2.25,
     "dps": 52.4,
-    "dps_avec_rechargement": 27.8
+    "dps_avec_rechargement": 27.8,
+    "degats_pleins_jusqu_a_m": 18.0,
+    "degats_minimum_des_m": 55.0,
+    "chute_degats_pct": -90.0,
+    "portee_max_m": 177.8
    }
   },
   "2": {
@@ -39,7 +43,11 @@
     "chargeur": 29,
     "rechargement_s": 2.35,
     "dps": 63.0,
-    "dps_avec_rechargement": 42.8
+    "dps_avec_rechargement": 42.8,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 57.5,
+    "chute_degats_pct": -90.0,
+    "portee_max_m": 177.8
    }
   },
   "3": {
@@ -56,7 +64,11 @@
     "chargeur": 19,
     "rechargement_s": 2.914,
     "dps": 53.4,
-    "dps_avec_rechargement": 31.0
+    "dps_avec_rechargement": 31.0,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 64.0,
+    "chute_degats_pct": -90.0,
+    "portee_max_m": 177.8
    }
   },
   "4": {
@@ -73,7 +85,11 @@
     "chargeur": 9,
     "rechargement_s": 2.585,
     "dps": 43.8,
-    "dps_avec_rechargement": 26.3
+    "dps_avec_rechargement": 26.3,
+    "degats_pleins_jusqu_a_m": 17.0,
+    "degats_minimum_des_m": 48.0,
+    "chute_degats_pct": -90.0,
+    "portee_max_m": 177.8
    }
   },
   "6": {
@@ -90,7 +106,11 @@
     "chargeur": 9,
     "rechargement_s": 0.3525,
     "dps": 51.4,
-    "dps_avec_rechargement": 46.5
+    "dps_avec_rechargement": 46.5,
+    "degats_pleins_jusqu_a_m": 17.0,
+    "degats_minimum_des_m": 40.0,
+    "chute_degats_pct": -90.0,
+    "portee_max_m": 177.8
    }
   },
   "7": {
@@ -107,7 +127,11 @@
     "chargeur": 52,
     "rechargement_s": 2.82,
     "dps": 59.7,
-    "dps_avec_rechargement": 36.7
+    "dps_avec_rechargement": 36.7,
+    "degats_pleins_jusqu_a_m": 18.0,
+    "degats_minimum_des_m": 52.0,
+    "chute_degats_pct": -90.0,
+    "portee_max_m": 177.8
    }
   },
   "8": {
@@ -124,7 +148,11 @@
     "chargeur": 66,
     "rechargement_s": 3.29,
     "dps": 29.0,
-    "dps_avec_rechargement": 23.1
+    "dps_avec_rechargement": 23.1,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 57.5,
+    "chute_degats_pct": -90.0,
+    "portee_max_m": 177.8
    }
   },
   "10": {
@@ -141,7 +169,11 @@
     "chargeur": 40,
     "rechargement_s": 2.585,
     "dps": 51.4,
-    "dps_avec_rechargement": 33.8
+    "dps_avec_rechargement": 33.8,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 57.5,
+    "chute_degats_pct": -90.0,
+    "portee_max_m": 177.8
    }
   },
   "11": {
@@ -158,7 +190,11 @@
     "chargeur": 20,
     "rechargement_s": 2.35,
     "dps": 48.0,
-    "dps_avec_rechargement": 32.1
+    "dps_avec_rechargement": 32.1,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 57.5,
+    "chute_degats_pct": -90.0,
+    "portee_max_m": 177.8
    }
   },
   "12": {
@@ -175,7 +211,11 @@
     "chargeur": 14,
     "rechargement_s": 2.585,
     "dps": 70.9,
-    "dps_avec_rechargement": 40.0
+    "dps_avec_rechargement": 40.0,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 57.5,
+    "chute_degats_pct": -90.0,
+    "portee_max_m": 177.8
    }
   },
   "13": {
@@ -192,7 +232,11 @@
     "chargeur": 25,
     "rechargement_s": 2.35,
     "dps": 50.1,
-    "dps_avec_rechargement": 25.2
+    "dps_avec_rechargement": 25.2,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 46.0,
+    "chute_degats_pct": -90.0,
+    "portee_max_m": 177.8
    }
   },
   "14": {
@@ -209,7 +253,11 @@
     "chargeur": 10,
     "rechargement_s": 2.75,
     "dps": 41.7,
-    "dps_avec_rechargement": 25.5
+    "dps_avec_rechargement": 25.5,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 57.5,
+    "chute_degats_pct": -90.0,
+    "portee_max_m": 177.8
    }
   },
   "15": {
@@ -226,7 +274,11 @@
     "chargeur": 66,
     "rechargement_s": 2.35,
     "dps": 59.3,
-    "dps_avec_rechargement": 40.4
+    "dps_avec_rechargement": 40.4,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 50.8,
+    "chute_degats_pct": -90.0,
+    "portee_max_m": 32.0
    }
   },
   "16": {
@@ -243,7 +295,11 @@
     "chargeur": 12,
     "rechargement_s": 2.6,
     "dps": 78.9,
-    "dps_avec_rechargement": 37.0
+    "dps_avec_rechargement": 37.0,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 57.5,
+    "chute_degats_pct": -90.0,
+    "portee_max_m": 177.8
    }
   },
   "17": {
@@ -260,7 +316,11 @@
     "chargeur": 17,
     "rechargement_s": 2.35,
     "dps": 39.2,
-    "dps_avec_rechargement": 31.2
+    "dps_avec_rechargement": 31.2,
+    "degats_pleins_jusqu_a_m": 18.0,
+    "degats_minimum_des_m": 54.0,
+    "chute_degats_pct": -90.0,
+    "portee_max_m": 177.8
    }
   },
   "18": {
@@ -277,7 +337,11 @@
     "chargeur": 20,
     "rechargement_s": 2.82,
     "dps": 59.7,
-    "dps_avec_rechargement": 32.9
+    "dps_avec_rechargement": 32.9,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 57.5,
+    "chute_degats_pct": -90.0,
+    "portee_max_m": 177.8
    }
   },
   "19": {
@@ -294,7 +358,11 @@
     "chargeur": 10,
     "rechargement_s": 2.8,
     "dps": 52.2,
-    "dps_avec_rechargement": 33.6
+    "dps_avec_rechargement": 33.6,
+    "degats_pleins_jusqu_a_m": 19.8,
+    "degats_minimum_des_m": 41.1,
+    "chute_degats_pct": -90.0,
+    "portee_max_m": 177.8
    }
   },
   "20": {
@@ -311,7 +379,11 @@
     "chargeur": 33,
     "rechargement_s": 2.444,
     "dps": 60.5,
-    "dps_avec_rechargement": 28.7
+    "dps_avec_rechargement": 28.7,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 57.5,
+    "chute_degats_pct": -90.0,
+    "portee_max_m": 177.8
    }
   },
   "25": {
@@ -328,7 +400,11 @@
     "chargeur": 17,
     "rechargement_s": 2.914,
     "dps": 66.1,
-    "dps_avec_rechargement": 38.7
+    "dps_avec_rechargement": 38.7,
+    "degats_pleins_jusqu_a_m": 18.0,
+    "degats_minimum_des_m": 47.0,
+    "chute_degats_pct": -90.0,
+    "portee_max_m": 177.8
    }
   },
   "27": {
@@ -345,7 +421,11 @@
     "chargeur": 12,
     "rechargement_s": 2.444,
     "dps": 63.2,
-    "dps_avec_rechargement": 41.2
+    "dps_avec_rechargement": 41.2,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 45.7,
+    "chute_degats_pct": -90.0,
+    "portee_max_m": 177.8
    }
   },
   "31": {
@@ -362,7 +442,11 @@
     "chargeur": 29,
     "rechargement_s": 2.35,
     "dps": 49.3,
-    "dps_avec_rechargement": 33.5
+    "dps_avec_rechargement": 33.5,
+    "degats_pleins_jusqu_a_m": 16.0,
+    "degats_minimum_des_m": 48.0,
+    "chute_degats_pct": -90.0,
+    "portee_max_m": 177.8
    }
   },
   "35": {
@@ -379,7 +463,11 @@
     "chargeur": 20,
     "rechargement_s": 2.5,
     "dps": 49.2,
-    "dps_avec_rechargement": 29.8
+    "dps_avec_rechargement": 29.8,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 57.5,
+    "chute_degats_pct": -90.0,
+    "portee_max_m": 177.8
    }
   },
   "50": {
@@ -396,7 +484,11 @@
     "chargeur": 11,
     "rechargement_s": 2.82,
     "dps": 57.1,
-    "dps_avec_rechargement": 37.3
+    "dps_avec_rechargement": 37.3,
+    "degats_pleins_jusqu_a_m": 16.0,
+    "degats_minimum_des_m": 45.7,
+    "chute_degats_pct": -90.0,
+    "portee_max_m": 177.8
    }
   },
   "52": {
@@ -413,7 +505,11 @@
     "chargeur": 16,
     "rechargement_s": 2.6,
     "dps": 40.3,
-    "dps_avec_rechargement": 27.1
+    "dps_avec_rechargement": 27.1,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 57.5,
+    "chute_degats_pct": -90.0,
+    "portee_max_m": 177.8
    }
   },
   "58": {
@@ -430,7 +526,11 @@
     "chargeur": 24,
     "rechargement_s": 1.6,
     "dps": 94.0,
-    "dps_avec_rechargement": 44.7
+    "dps_avec_rechargement": 44.7,
+    "degats_pleins_jusqu_a_m": 15.0,
+    "degats_minimum_des_m": 33.0,
+    "chute_degats_pct": -90.0,
+    "portee_max_m": 177.8
    }
   },
   "60": {
@@ -447,7 +547,11 @@
     "chargeur": 16,
     "rechargement_s": 2.5,
     "dps": 48.3,
-    "dps_avec_rechargement": 33.3
+    "dps_avec_rechargement": 33.3,
+    "degats_pleins_jusqu_a_m": 25.4,
+    "degats_minimum_des_m": 61.0,
+    "chute_degats_pct": -70.0,
+    "portee_max_m": 177.8
    }
   },
   "63": {
@@ -464,7 +568,11 @@
     "chargeur": 12,
     "rechargement_s": 1.7,
     "dps": 29.0,
-    "dps_avec_rechargement": 17.6
+    "dps_avec_rechargement": 17.6,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 46.0,
+    "chute_degats_pct": -90.0,
+    "portee_max_m": 177.8
    }
   },
   "64": {
@@ -481,7 +589,11 @@
     "chargeur": 12,
     "rechargement_s": 2.444,
     "dps": 132.7,
-    "dps_avec_rechargement": 87.9
+    "dps_avec_rechargement": 87.9,
+    "degats_pleins_jusqu_a_m": 22.0,
+    "degats_minimum_des_m": 27.0,
+    "chute_degats_pct": -40.0,
+    "portee_max_m": 177.8
    }
   },
   "65": {
@@ -498,7 +610,11 @@
     "chargeur": 33,
     "rechargement_s": 2.8,
     "dps": 63.5,
-    "dps_avec_rechargement": 36.6
+    "dps_avec_rechargement": 36.6,
+    "degats_pleins_jusqu_a_m": 18.0,
+    "degats_minimum_des_m": 47.0,
+    "chute_degats_pct": -90.0,
+    "portee_max_m": 177.8
    }
   },
   "66": {
@@ -515,7 +631,11 @@
     "chargeur": 24,
     "rechargement_s": 2.4,
     "dps": 60.6,
-    "dps_avec_rechargement": 38.9
+    "dps_avec_rechargement": 38.9,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 57.5,
+    "chute_degats_pct": -90.0,
+    "portee_max_m": 177.8
    }
   },
   "67": {
@@ -532,7 +652,11 @@
     "chargeur": 14,
     "rechargement_s": 2.5,
     "dps": 58.3,
-    "dps_avec_rechargement": 44.3
+    "dps_avec_rechargement": 44.3,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 57.5,
+    "chute_degats_pct": -90.0,
+    "portee_max_m": 177.8
    }
   },
   "69": {
@@ -549,7 +673,11 @@
     "chargeur": 8,
     "rechargement_s": 2.4,
     "dps": 35.3,
-    "dps_avec_rechargement": 23.9
+    "dps_avec_rechargement": 23.9,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 57.5,
+    "chute_degats_pct": -90.0,
+    "portee_max_m": 177.8
    }
   },
   "72": {
@@ -566,7 +694,11 @@
     "chargeur": 30,
     "rechargement_s": 2.9,
     "dps": 74.1,
-    "dps_avec_rechargement": 33.2
+    "dps_avec_rechargement": 33.2,
+    "degats_pleins_jusqu_a_m": 14.0,
+    "degats_minimum_des_m": 31.8,
+    "chute_degats_pct": -90.0,
+    "portee_max_m": 177.8
    }
   },
   "76": {
@@ -583,7 +715,11 @@
     "chargeur": 40,
     "rechargement_s": 2.8,
     "dps": 35.3,
-    "dps_avec_rechargement": 20.2
+    "dps_avec_rechargement": 20.2,
+    "degats_pleins_jusqu_a_m": 7.6,
+    "degats_minimum_des_m": 17.0,
+    "chute_degats_pct": -50.0,
+    "portee_max_m": 177.8
    }
   },
   "77": {
@@ -600,7 +736,11 @@
     "chargeur": 15,
     "rechargement_s": 2.5,
     "dps": 48.7,
-    "dps_avec_rechargement": 32.8
+    "dps_avec_rechargement": 32.8,
+    "degats_pleins_jusqu_a_m": 25.4,
+    "degats_minimum_des_m": 25.4,
+    "chute_degats_pct": 0.0,
+    "portee_max_m": 25.4
    }
   },
   "79": {
@@ -617,7 +757,11 @@
     "chargeur": 13,
     "rechargement_s": 2.0,
     "dps": 61.5,
-    "dps_avec_rechargement": 36.9
+    "dps_avec_rechargement": 36.9,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 57.5,
+    "chute_degats_pct": -90.0,
+    "portee_max_m": 76.2
    }
   },
   "80": {
@@ -634,7 +778,11 @@
     "chargeur": 7,
     "rechargement_s": 0.3,
     "dps": 42.0,
-    "dps_avec_rechargement": 38.4
+    "dps_avec_rechargement": 38.4,
+    "degats_pleins_jusqu_a_m": 17.0,
+    "degats_minimum_des_m": 42.0,
+    "chute_degats_pct": -90.0,
+    "portee_max_m": 177.8
    }
   },
   "81": {
@@ -651,7 +799,11 @@
     "chargeur": 8,
     "rechargement_s": 2.0,
     "dps": 31.0,
-    "dps_avec_rechargement": 20.9
+    "dps_avec_rechargement": 20.9,
+    "degats_pleins_jusqu_a_m": 22.0,
+    "degats_minimum_des_m": 60.0,
+    "chute_degats_pct": -90.0,
+    "portee_max_m": 177.8
    }
   },
   "84": {
@@ -668,7 +820,11 @@
     "chargeur": 24,
     "rechargement_s": 2.8,
     "dps": 40.0,
-    "dps_avec_rechargement": 28.4
+    "dps_avec_rechargement": 28.4,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 50.0,
+    "chute_degats_pct": -90.0,
+    "portee_max_m": 177.8
    }
   }
  },

@@ -310,6 +310,13 @@ def construire_matchups(depuis_ts, stats):
     return tranches
 
 
+UNITES_PAR_METRE = 39.37
+
+
+def metres(unites):
+    return unites / UNITES_PAR_METRE if isinstance(unites, (int, float)) else None
+
+
 def construire_fiches(heros_api, armes):
     """Statistiques de base de chaque héros et de son arme, au niveau 1 sans objet."""
     armes = {a["class_name"]: a for a in armes}
@@ -335,6 +342,13 @@ def construire_fiches(heros_api, armes):
                 "rechargement_s": arme.get("reload_duration"),
                 "dps": arrondi(arme.get("damage_per_second")),
                 "dps_avec_rechargement": arrondi(arme.get("damage_per_second_with_reload")),
+                # Distances en mètres : 1 m = 39,37 unités du moteur (recoupé avec le tableau
+                # « Base Falloff Range » de deadlock.wiki, page Falloff Range, le 2026-10-04).
+                "degats_pleins_jusqu_a_m": arrondi(metres(arme.get("damage_falloff_start_range"))),
+                "degats_minimum_des_m": arrondi(metres(arme.get("damage_falloff_end_range"))),
+                "chute_degats_pct": arrondi(-100 + 100 * arme["damage_falloff_end_scale"], 0)
+                if isinstance(arme.get("damage_falloff_end_scale"), (int, float)) else None,
+                "portee_max_m": arrondi(metres(arme.get("range"))),
             },
         }
     return fiches

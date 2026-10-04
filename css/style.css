@@ -762,3 +762,4 @@ details.counters-actifs > summary { font-size: .8rem; text-transform: uppercase;
 .cible img { width: 1.4rem; height: 1.4rem; object-fit: cover; border-radius: 50%; }
 .cible:hover { border-color: var(--texte); }
 .cible.choisi { border-color: var(--alerte); background: var(--alerte-fond); }
+.portee { margin: .2rem 0; font-size: .9rem; }
