@@ -37,7 +37,8 @@
      "texte": "Laning (0 à 8 min) : on reste sur sa lane. Milieu de partie (8 à 20-25 min) : la carte s'ouvre, c'est là que tout se décide. Fin de partie : les morts durent longtemps, on reste groupé.",
      "source": "conseil"
     }
-   ]
+   ],
+   "schema": "phases"
   },
   {
    "id": "waves",
@@ -175,7 +176,8 @@
      "texte": "Quand j'ai la priorité, leur jungle est sûre : ils sont occupés à repousser. Sinner's Sacrifice d'abord, camps ensuite. Ce que je prends chez eux leur manque aussi.",
      "source": "conseil"
     }
-   ]
+   ],
+   "schema": "camps"
   },
   {
    "id": "objectifs",
@@ -217,7 +219,8 @@
      "texte": "Avant 15 min environ, l'échange peut valoir le coup. Après, la mort coûte trop cher à l'équipe.",
      "source": "conseil"
     }
-   ]
+   ],
+   "schema": "objectifs"
   },
   {
    "id": "gun_spirit",
@@ -367,7 +370,63 @@
      "texte": "Un objet à 1 600 et un à 3 200 dans la même catégorie font 4 800 : palier atteint. Les mêmes souls réparties dans trois catégories ne l'atteignent dans aucune.",
      "source": "wiki"
     }
-   ]
+   ],
+   "schema": "investissement",
+   "investissement": {
+    "source": "deadlock.wiki, page Items (tableau des bonus d'investissement), relevé le 2026-10-04",
+    "souls": [
+     800,
+     1600,
+     2400,
+     3200,
+     4800,
+     6400,
+     8000,
+     11200,
+     16000,
+     22400,
+     28800
+    ],
+    "weapon_pct": [
+     9,
+     12,
+     15,
+     18,
+     46,
+     54,
+     62,
+     74,
+     86,
+     100,
+     115
+    ],
+    "vitality_pct": [
+     9,
+     12,
+     15,
+     20,
+     38,
+     42,
+     46,
+     50,
+     54,
+     60,
+     66
+    ],
+    "spirit": [
+     7,
+     11,
+     15,
+     19,
+     38,
+     45,
+     52,
+     59,
+     66,
+     75,
+     100
+    ]
+   }
   },
   {
    "id": "mort",
@@ -397,7 +456,8 @@
      "texte": "Si un allié part dans un combat perdu d'avance, lui dire de reculer plutôt que le suivre.",
      "source": "conseil"
     }
-   ]
+   ],
+   "schema": "respawn"
   },
   {
    "id": "deplacements",
@@ -511,6 +571,49 @@
      "texte": "On se bat quand tout est réuni pour gagner sans rien sacrifier. Chercher le combat en premier n'est pas la solution.",
      "source": "conseil"
     }
+   ],
+   "schema": "etapes"
+  }
+ ],
+ "categories": [
+  {
+   "id": "partie",
+   "titre": "Comprendre la partie",
+   "resume": "Le but, les phases, ce que coûte une mort.",
+   "sections": [
+    "but",
+    "mort"
+   ]
+  },
+  {
+   "id": "souls",
+   "titre": "Gagner des souls",
+   "resume": "Les waves d'abord, la jungle ensuite, et quoi en faire à la boutique.",
+   "sections": [
+    "waves",
+    "jungle",
+    "achats"
+   ]
+  },
+  {
+   "id": "carte",
+   "titre": "Lire la carte",
+   "resume": "La minimap, les objectifs, quand bouger et comment.",
+   "sections": [
+    "minimap",
+    "objectifs",
+    "deplacements",
+    "rotations"
+   ]
+  },
+  {
+   "id": "combat",
+   "titre": "Se battre",
+   "resume": "Les types de dégâts, ton rôle, et que faire à chaque instant.",
+   "sections": [
+    "gun_spirit",
+    "roles",
+    "priorites"
    ]
   }
  ]

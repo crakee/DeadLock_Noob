@@ -1,0 +1,87 @@
+/* Apprendre › Les bases : mise en page article (js/memo.js). */
+
+.page-memo { grid-template-columns: minmax(12rem, 15rem) minmax(0, 46rem); justify-content: center; gap: 2rem; }
+.page-memo .sommaire { position: sticky; top: 7.6rem; align-self: start; max-height: calc(100vh - 8.6rem); overflow: auto; display: flex; flex-direction: column; gap: .8rem; }
+.ap-sommaire-groupe { display: flex; flex-direction: column; gap: .15rem; }
+.ap-sommaire-categorie { font-family: var(--titre); text-transform: uppercase; letter-spacing: .05em; font-size: .9rem; color: var(--or); text-decoration: none; }
+.ap-sommaire-lien { padding: .1rem 0 .1rem .7rem; font-size: .9rem; color: var(--doux); text-decoration: none; border-left: 2px solid var(--bord); }
+.ap-sommaire-lien:hover { color: var(--texte); }
+.ap-sommaire-lien.actif { color: var(--texte); border-left-color: var(--or); }
+
+.memo-sections { display: flex; flex-direction: column; gap: 2.2rem; }
+.ap-intro p { margin: 0 0 .4rem; color: var(--doux); }
+.ap-legende { display: flex; flex-wrap: wrap; gap: .4rem 1.2rem; font-size: .82rem; }
+.ap-legende-item { display: inline-flex; align-items: center; gap: .4rem; }
+
+.ap-categorie { display: flex; flex-direction: column; gap: 1.6rem; scroll-margin-top: 8rem; }
+.ap-categorie-tete { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: .8rem; align-items: baseline; padding-bottom: .4rem; border-bottom: 1px solid var(--bord-fort); }
+.ap-categorie-numero { grid-row: span 2; font-family: var(--titre); font-size: 2.4rem; line-height: 1; color: var(--or); }
+.ap-categorie-tete h1 { margin: 0; font-family: var(--titre); font-size: 1.8rem; letter-spacing: .03em; text-transform: uppercase; }
+.ap-categorie-tete p { margin: .1rem 0 0; color: var(--doux); }
+
+.ap-section { scroll-margin-top: 8rem; }
+.ap-section h2 { margin: 0 0 .6rem; }
+.ap-point { position: relative; margin: 0 0 .7rem; padding-left: 1rem; font-size: 1.04rem; line-height: 1.6; }
+.ap-point strong { color: var(--texte); }
+.ap-source { display: inline-block; width: .5rem; height: .5rem; border-radius: 50%; background: var(--doux); flex: none; }
+.ap-point > .ap-source { position: absolute; left: 0; top: .62em; }
+.ap-source-donnees { background: var(--bon); }
+.ap-source-conseil { background: var(--or); }
+.ap-source-wiki { background: var(--doux); }
+.ap-suite { margin: .2rem 0 .6rem; }
+.ap-suite > summary { margin-bottom: .6rem; color: var(--or-clair); font-size: .92rem; }
+
+.ap-figure { margin: .2rem 0 1rem; padding: .7rem .8rem .5rem; background: var(--fond-2); border: 1px solid var(--bord); border-radius: .5rem; }
+.ap-figure figcaption { margin-top: .3rem; font-size: .8rem; color: var(--doux); }
+.ap-frise, .ap-courbe { display: block; width: 100%; height: auto; }
+.ap-bande { fill: var(--panneau-2); stroke: var(--bord-fort); }
+.ap-bande-1 { fill: #2a2117; }
+.ap-bande-2 { fill: #33271a; }
+.ap-bande-texte { fill: var(--or); font-size: 12px; text-anchor: middle; font-family: var(--titre); letter-spacing: .05em; }
+.ap-repere { stroke: var(--bord-fort); }
+.ap-repere-point { fill: var(--or-clair); }
+.ap-repere-texte { fill: var(--texte); font-size: 10.5px; text-anchor: middle; }
+.ap-axe { stroke: var(--bord-fort); }
+.ap-trait { fill: none; stroke: var(--or); stroke-width: 2.5; }
+.ap-courbe .ap-pt { fill: var(--or-clair); }
+.ap-valeur { fill: var(--texte); font-size: 10.5px; text-anchor: middle; }
+.ap-graduation { fill: var(--doux); font-size: 10px; text-anchor: middle; }
+.ap-legende-axe { fill: var(--doux); font-size: 10px; }
+.ap-marque { stroke: var(--danger); stroke-dasharray: 4 4; }
+.ap-marque-texte { fill: var(--danger); font-size: 10.5px; }
+
+.ap-etapes { counter-reset: etape; list-style: none; margin: 0 0 1rem; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr)); gap: .5rem; }
+.ap-etapes li { counter-increment: etape; position: relative; padding: .6rem .7rem .6rem 2.4rem; background: var(--fond-2); border: 1px solid var(--bord); border-radius: .5rem; display: flex; flex-direction: column; gap: .2rem; font-size: .9rem; }
+.ap-etapes li::before { content: counter(etape); position: absolute; left: .6rem; top: .45rem; font-family: var(--titre); font-size: 1.4rem; color: var(--or); }
+.ap-etapes li strong { font-family: var(--titre); letter-spacing: .03em; }
+
+.ap-resist { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1rem; }
+.ap-resist h4 { margin: 0 0 .3rem; }
+.ap-barre { display: grid; grid-template-columns: 11rem minmax(0, 1fr) 3.2rem; align-items: center; gap: .5rem; margin: .2rem 0; font-size: .85rem; }
+.ap-barre > span:nth-child(2) { height: .5rem; border-radius: .25rem; }
+.ap-barre-valeur { text-align: right; font-variant-numeric: tabular-nums; }
+.ap-raccourcis { display: flex; flex-wrap: wrap; align-items: center; gap: .3rem; margin-top: .4rem; }
+
+@media (max-width: 900px) {
+  .page-memo { grid-template-columns: minmax(0, 1fr); }
+  .page-memo .sommaire { position: static; max-height: none; flex-direction: row; flex-wrap: wrap; }
+  .ap-sommaire-groupe { flex-direction: row; flex-wrap: wrap; gap: .3rem .6rem; }
+  .ap-sommaire-lien { border-left: 0; padding-left: 0; }
+}
+
+/* Apprendre › Objets clés : une ligne par problème, dépliable */
+.page-objets .objets-menaces { grid-template-columns: minmax(0, 1fr); max-width: 60rem; gap: .5rem; }
+.objets-ligne > summary { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "titre apercu" "pourquoi visages"; gap: .2rem 1rem; align-items: center; }
+.objets-ligne .menace-titre { grid-area: titre; }
+.objets-ligne .menace-pourquoi { grid-area: pourquoi; font-size: .9rem; }
+.objets-apercu { grid-area: apercu; display: flex; gap: .2rem; justify-content: flex-end; }
+.objets-apercu img { width: 1.6rem; height: 1.6rem; border-radius: .25rem; }
+.objets-visages { grid-area: visages; display: flex; gap: .1rem; justify-content: flex-end; align-items: center; }
+.objets-visages img { width: 1.4rem; height: 1.4rem; border-radius: 50%; object-fit: cover; }
+@media (max-width: 700px) {
+  .objets-ligne > summary { grid-template-columns: minmax(0, 1fr); grid-template-areas: "titre" "pourquoi" "apercu" "visages"; }
+  .objets-apercu, .objets-visages { justify-content: flex-start; }
+}
+.objets-ligne > summary { text-align: left; justify-items: start; }
+.objets-ligne > summary .objets-apercu, .objets-ligne > summary .objets-visages { justify-self: end; }
+@media (max-width: 700px) { .objets-ligne > summary .objets-apercu, .objets-ligne > summary .objets-visages { justify-self: start; } }

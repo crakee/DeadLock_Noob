@@ -37,8 +37,17 @@
     const m = counters.menaces[id];
     const liste = m.objets.filter(garde).sort(parPrix);
     const cibles = heros.heros.filter((h) => ((counters.heros[String(h.id)] || {}).menaces || []).some((x) => x.id === id));
-    const bloc = el('section', 'menace');
-    bloc.append(el('h3', null, m.nom), el('p', 'menace-pourquoi', m.explication));
+    // Replié par défaut : le titre dit le problème, montre les objets en icônes et les héros concernés.
+    const bloc = el('details', 'menace objets-ligne');
+    bloc.id = 'menace-' + id;
+    const resume = el('summary');
+    const apercu = el('span', 'objets-apercu');
+    liste.slice(0, 6).forEach((o) => { const f = objets[o.nom]; if (f && f.image) { const i = DLN.img(f.image); i.title = o.nom; apercu.append(i); } });
+    const visages = el('span', 'objets-visages');
+    cibles.slice(0, 8).forEach((h) => { const i = DLN.img(h.icone || h.image); i.title = h.nom; visages.append(i); });
+    if (cibles.length > 8) visages.append(el('span', 'aide', '+' + (cibles.length - 8)));
+    resume.append(el('span', 'menace-titre', m.nom), el('span', 'menace-pourquoi', m.explication), apercu, visages);
+    bloc.append(resume);
     const rep = el('p', 'menace-reponse');
     rep.append(el('strong', null, 'Réponse : '), m.reponse);
     bloc.append(rep);
