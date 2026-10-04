@@ -270,7 +270,8 @@
       const texte = restant_s > 1 ? nom + ' dans ' + Math.round(restant_s) + ' secondes' : nom + ' maintenant';
       // La voix attend la fin du son pour ne pas le couvrir.
       const attente = reglages.son && window.DLN && DLN.sons ? DLN.sons.duree('preavis') * 1000 : 0;
-      setTimeout(() => dire(texte), attente);
+      // Clips de voix d'IA s'ils existent (js/voix.js), sinon la voix du navigateur.
+      setTimeout(() => (window.DLN && DLN.voix ? DLN.voix.annoncer(nom, restant_s) : dire(texte)), attente);
     }
   }
 

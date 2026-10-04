@@ -511,7 +511,7 @@
       const ev = evenementsSurveilles()[0] || { id: 'test', nom: 'Soul Urn', conseil: 'Exemple d\'alerte.' };
       alerter(ev, 30);
       const c = document.getElementById('opt-voix');
-      if (c && c.checked && 'speechSynthesis' in window) { const u = new SpeechSynthesisUtterance(ev.nom.split(' (')[0] + ' dans 30 secondes'); u.lang = 'fr-FR'; speechSynthesis.speak(u); }
+      if (c && c.checked) setTimeout(() => (DLN.voix ? DLN.voix.annoncer(ev.nom, 30) : null), DLN.sons ? DLN.sons.duree('preavis') * 1000 : 0);
     }));
     liste.append(el('p', 'aide', 'Conseil : active la voix et les notifications. En jeu plein écran exclusif, Windows peut masquer les notifications : préfère le mode « plein écran fenêtré » du jeu.'));
     d.append(liste);

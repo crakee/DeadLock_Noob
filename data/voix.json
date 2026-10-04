@@ -1,0 +1,76 @@
+{
+ "meta": {
+  "note": "Clips des annonces vocales : nom puis fin, assemblés par js/voix.js. Liste produite par outils/generer_voix.py.",
+  "voix": null
+ },
+ "clips": {
+  "nom-small-camps": {
+   "texte": "Small camps",
+   "fichier": null
+  },
+  "nom-medium-camps": {
+   "texte": "Medium camps",
+   "fichier": null
+  },
+  "nom-powerups": {
+   "texte": "Powerups",
+   "fichier": null
+  },
+  "nom-large-camps": {
+   "texte": "Large camps",
+   "fichier": null
+  },
+  "nom-sinner-s-sacrifice": {
+   "texte": "Sinner's Sacrifice",
+   "fichier": null
+  },
+  "nom-soul-urn": {
+   "texte": "Soul Urn",
+   "fichier": null
+  },
+  "nom-unstable-rift": {
+   "texte": "Unstable Rift",
+   "fichier": null
+  },
+  "nom-mid-boss": {
+   "texte": "Mid-Boss",
+   "fichier": null
+  },
+  "nom-rejuvenator-actif": {
+   "texte": "Rejuvenator actif",
+   "fichier": null
+  },
+  "nom-unstable-rift-suivant": {
+   "texte": "Unstable Rift suivant",
+   "fichier": null
+  },
+  "fin-15": {
+   "texte": "dans quinze secondes",
+   "fichier": null
+  },
+  "fin-30": {
+   "texte": "dans trente secondes",
+   "fichier": null
+  },
+  "fin-45": {
+   "texte": "dans quarante-cinq secondes",
+   "fichier": null
+  },
+  "fin-60": {
+   "texte": "dans une minute",
+   "fichier": null
+  },
+  "fin-75": {
+   "texte": "dans une minute quinze",
+   "fichier": null
+  },
+  "fin-90": {
+   "texte": "dans une minute trente",
+   "fichier": null
+  },
+  "fin-maintenant": {
+   "texte": "maintenant",
+   "fichier": null
+  }
+ }
+}

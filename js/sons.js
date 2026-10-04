@@ -53,7 +53,29 @@
     g.connect(sortie);
     const o = ctx.createOscillator();
     o.type = opts.forme || 'sine';
-    o.frequency.setValueAtTime(freq, debut);
+    if (opts.glisse) {
+      // « Bloop » : la note part un peu plus bas et glisse vers sa hauteur.
+      o.frequency.setValueAtTime(freq / opts.glisse, debut);
+      o.frequency.exponentialRampToValueAtTime(freq, debut + 0.06);
+    } else {
+      o.frequency.setValueAtTime(freq, debut);
+    }
+    if (opts.clic) {
+      // Clic : un très court bruit filtré juste avant la note.
+      const n = Math.floor(ctx.sampleRate * 0.012);
+      const tampon = ctx.createBuffer(1, n, ctx.sampleRate);
+      const d = tampon.getChannelData(0);
+      for (let i = 0; i < n; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / n);
+      const bruit = ctx.createBufferSource();
+      bruit.buffer = tampon;
+      const filtre = ctx.createBiquadFilter();
+      filtre.type = 'highpass';
+      filtre.frequency.value = 2500;
+      const gc = ctx.createGain();
+      gc.gain.value = 0.5;
+      bruit.connect(filtre).connect(gc).connect(sortie);
+      bruit.start(Math.max(ctx.currentTime, debut - 0.02));
+    }
     if (opts.fm) {
       // Cloche : modulation de fréquence qui s'éteint, timbre métallique doux.
       const m = ctx.createOscillator();
@@ -107,6 +129,24 @@
       opts: { forme: 'square', niveau: 0.12, attaque: 0.004 },
       preavis: [[1200, 0, 0.12], [1200, 0.18, 0.12]],
       maintenant: [[1200, 0, 0.1], [1200, 0.14, 0.1], [1600, 0.28, 0.25]]
+    },
+    menu: {
+      nom: 'Menu console', aide: 'Petits « bloop » ronds et doux, dans l\'esprit des menus de console (son original)',
+      opts: { niveau: 0.32, glisse: 1.25, attaque: 0.006 },
+      preavis: [[740, 0, 0.18], [988, 0.09, 0.28]],
+      maintenant: [[740, 0, 0.14], [988, 0.08, 0.14], [1480, 0.16, 0.4]]
+    },
+    clic: {
+      nom: 'Clic net', aide: 'Un clic sec suivi d\'un « ping » clair, très lisible (son original)',
+      opts: { niveau: 0.3, clic: true, harmonique: 0.15, attaque: 0.003 },
+      preavis: [[1568, 0.02, 0.35]],
+      maintenant: [[1568, 0.02, 0.25], [2093, 0.12, 0.5]]
+    },
+    retro: {
+      nom: 'Rétro 8-bit', aide: 'Arpèges de console rétro, façon « pièce » (son original)',
+      opts: { forme: 'square', niveau: 0.1, attaque: 0.002 },
+      preavis: [[988, 0, 0.08], [1319, 0.08, 0.25]],
+      maintenant: [[523, 0, 0.07], [659, 0.07, 0.07], [784, 0.14, 0.07], [1047, 0.21, 0.07], [1319, 0.28, 0.3]]
     },
     discret: {
       nom: 'Discret', aide: 'Une seule note douce, pour qui joue avec de la musique',
