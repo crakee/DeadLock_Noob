@@ -345,6 +345,9 @@ def construire_fiches(heros_api, armes):
             "pv": st.get("max_health"),
             "regen_pv_s": st.get("base_health_regen"),
             "vitesse_m_s": st.get("max_move_speed"),
+            # Règles de distance utilisables en jeu : la longueur d'un dash (en mètres, données du jeu).
+            "dash_sol_m": st.get("ground_dash_distance_in_meters"),
+            "dash_air_m": st.get("air_dash_distance_in_meters"),
             "stamina": st.get("stamina"),
             "melee_leger": st.get("light_melee_damage"),
             "melee_lourd": st.get("heavy_melee_damage"),

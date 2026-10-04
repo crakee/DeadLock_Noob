@@ -286,11 +286,13 @@
 
   // Distance de tir : pleins dégâts jusqu'à une distance, puis baisse linéaire jusqu'à un minimum.
   function porteeTexte(a) {
+    // Repère en jeu : un dash au sol fait 10 m (data/heros-details.json, dash_sol_m).
+    const dash = (m) => ' (≈ ' + (Math.round(m / 10 * 10) / 10).toLocaleString('fr-FR') + ' dash' + (m >= 20 ? 'es' : '') + ')';
     if (!a.chute_degats_pct) {
       return 'Portée : pas de baisse des dégâts avec la distance' +
         (a.portee_max_m && a.portee_max_m < 100 ? ', mais ne touche plus au-delà de ' + a.portee_max_m + ' m.' : '.');
     }
-    return 'Portée : pleins dégâts jusqu\'à ' + a.degats_pleins_jusqu_a_m + ' m, puis les dégâts baissent jusqu\'à ' +
+    return 'Portée : pleins dégâts jusqu\'à ' + a.degats_pleins_jusqu_a_m + ' m' + dash(a.degats_pleins_jusqu_a_m) + ', puis les dégâts baissent jusqu\'à ' +
       a.chute_degats_pct + ' % à ' + a.degats_minimum_des_m + ' m et au-delà. Rester plus loin que ' + a.degats_minimum_des_m +
       ' m, c\'est ne prendre que ' + (100 + a.chute_degats_pct) + ' % de ses dégâts d\'arme.';
   }

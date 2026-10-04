@@ -1,0 +1,17 @@
+{
+  "name": "Deadlock Noob — chrono et aide-mémoire",
+  "short_name": "Deadlock Noob",
+  "description": "Chrono de partie Deadlock pour débutant : ce qu'il faut faire et quand, selon ton rôle et ta lane.",
+  "lang": "fr",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0c0a08",
+  "theme_color": "#0c0a08",
+  "icons": [
+    { "src": "icones/icone-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icones/icone-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icones/icone-masquable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

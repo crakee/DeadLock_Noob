@@ -1,0 +1,71 @@
+{
+ "meta": {
+  "nature": "Avis de joueur, pas une donnée du jeu : le jeu n'attribue aucun rôle. Reformulé d'après data/roles.json (vidéo sur les rôles de Wouks – Deadlock Academy) et data/memo.json (guide macro du même auteur).",
+  "source": "data/roles.json, data/memo.json",
+  "verifie_le": "2026-10-04",
+  "phases": "Les phases suivent data/timeline.json (Laning, Mid-game, Late-game).",
+  "evenements": "`priorites` : identifiants d'événements de data/timeline.json, du plus utile au moins utile pour ce rôle. Ils règlent ce que la carte et « Ton plan » mettent en avant.",
+  "cote": "`cote` : « lane » = surtout la jungle proche de sa lane (side lane) ; « centre » = surtout les objectifs du centre de la carte."
+ },
+ "commun": {
+  "Laning": "Wave d'abord : chaque Trooper au dernier coup, au corps à corps pour garder toutes ses souls. Ne meurs pas.",
+  "Mid-game": "Avant chaque déplacement : ma wave est-elle poussée ? Si non, c'est là que je vais.",
+  "Late-game": "Les respawns sont longs : reste avec ton équipe, la sécurité avant le farm."
+ },
+ "roles": {
+  "main_carry": {
+   "cote": "lane",
+   "phases": {
+    "Laning": "Farme ta lane sans prendre de risque : tu es faible au début et c'est normal.",
+    "Mid-game": "Alterne les waves de ta side lane et ta jungle (camps, Sinner's Sacrifice). Pas d'urne ni de combat, sauf si ta lane est poussée.",
+    "Late-game": "Tu deviens le plus fort : suis ton équipe pour les gros combats et ne meurs pas avec beaucoup de souls sur toi."
+   },
+   "priorites": ["sinners", "large_camps", "medium_camps", "small_camps", "powerups"]
+  },
+  "off_carry": {
+   "cote": "lane",
+   "phases": {
+    "Laning": "Farme ta lane et garde de la vie : ton moment arrive juste après.",
+    "Mid-game": "Repousse ta side lane puis rejoins le centre : combats, ganks, urnes. C'est ta fenêtre, sois actif.",
+    "Late-game": "Reste avec ton équipe et frappe dans les combats ; ne farme pas seul dans ton coin."
+   },
+   "priorites": ["urn", "powerups", "rift", "sinners", "medium_camps"]
+  },
+  "tank": {
+   "cote": "centre",
+   "phases": {
+    "Laning": "Tiens ta lane : tu es solide tôt, profite-en pour gêner l'adversaire.",
+    "Mid-game": "Repousse la mid lane, puis va avec le groupe : accompagne l'urne, engage quand l'équipe est prête et proche.",
+    "Late-game": "Encaisse à la place des autres et protège tes carries. N'engage jamais seul."
+   },
+   "priorites": ["urn", "powerups", "rift", "sinners"]
+  },
+  "catch": {
+   "cote": "centre",
+   "phases": {
+    "Laning": "Farme ta lane ; regarde la minimap pour repérer qui se déplace.",
+    "Mid-game": "Bouge beaucoup : attrape un adversaire isolé (idéal : leur main carry dans sa jungle) pour lancer un combat en surnombre.",
+    "Late-game": "Reste près du groupe et attrape la cible qui sort de position."
+   },
+   "priorites": ["powerups", "urn", "rift", "sinners"]
+  },
+  "assassin": {
+   "cote": "centre",
+   "phases": {
+    "Laning": "Farme ta lane ; tu es fort en 1 contre 1, mais vérifie où sont les autres.",
+    "Mid-game": "Cherche les cibles isolées sur les flancs et punis-les ; avant d'engager, compte les ennemis sur la minimap.",
+    "Late-game": "Pendant les combats, attaque par le côté pour diviser leur équipe."
+   },
+   "priorites": ["powerups", "urn", "rift", "sinners"]
+  },
+  "support": {
+   "cote": "centre",
+   "phases": {
+    "Laning": "Aide ta lane et garde tes compétences pour sauver un allié.",
+    "Mid-game": "Va là où l'équipe a besoin de toi ; porte l'urne pour laisser les autres se battre.",
+    "Late-game": "Reste derrière tes alliés, garde tes objets actifs pour le combat décisif."
+   },
+   "priorites": ["urn", "powerups", "rift"]
+  }
+ }
+}

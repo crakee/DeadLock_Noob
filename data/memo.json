@@ -245,6 +245,12 @@
      "source": "donnees"
     },
     {
+     "niveau": 1,
+     "titre": "Estimer une distance",
+     "texte": "Les dégâts d'arme baissent avec la distance : chaque héros a une distance de pleins dégâts (20 m pour la plupart, de 8 à 25 m selon le héros), puis ils chutent fortement. Pour l'estimer en jeu, compte en dashes : un dash au sol fait 10 m pour tous les héros, un dash en l'air 8 m. « Pleins dégâts jusqu'à 20 m » = deux dashes. La distance de chaque héros est dans sa fiche (Héros) et dans Ton plan (En partie).",
+     "source": "donnees"
+    },
+    {
      "niveau": 2,
      "titre": "Savoir ce qui me tue",
      "texte": "À ma mort, regarder le détail des dégâts reçus : si l'essentiel vient de balles, il me faut du Bullet Resist ; si ce sont des compétences, du Spirit Resist. Le fil des kills indique aussi quel sort ou objet a tué.",

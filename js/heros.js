@@ -367,11 +367,13 @@
   }
 
   function porteeTexte(a) {
+    // Repère en jeu : un dash au sol fait 10 m (data/heros-details.json, dash_sol_m).
+    const dash = (m) => ' (≈ ' + (Math.round(m / 10 * 10) / 10).toLocaleString('fr-FR') + ' dash' + (m >= 20 ? 'es' : '') + ')';
     if (!a.chute_degats_pct) {
       return 'Ses dégâts d\'arme ne baissent pas avec la distance' +
         (a.portee_max_m && a.portee_max_m < 100 ? ', mais ne touchent plus au-delà de ' + a.portee_max_m + ' m.' : '.');
     }
-    return 'Pleins dégâts jusqu\'à ' + a.degats_pleins_jusqu_a_m + ' m, puis ils baissent jusqu\'à perdre ' + (-a.chute_degats_pct) +
+    return 'Pleins dégâts jusqu\'à ' + a.degats_pleins_jusqu_a_m + ' m' + dash(a.degats_pleins_jusqu_a_m) + ', puis ils baissent jusqu\'à perdre ' + (-a.chute_degats_pct) +
       ' % à ' + a.degats_minimum_des_m + ' m. Plus loin que ' + a.degats_minimum_des_m + ' m, tu ne prends que ' +
       (100 + a.chute_degats_pct) + ' % de ses dégâts d\'arme.';
   }

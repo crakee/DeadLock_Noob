@@ -1,0 +1,113 @@
+/* En partie : contexte (héros, rôle, lane, équipe), modes Compact / Normal / Complet, colonnes souples.
+   Chargé après style.css. Les panneaux se masquent un par un (attribut hidden, js/partie.js). */
+
+main.partie {
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+  grid-template-areas: none;
+}
+.partie-colonnes { flex: 1 1 auto; min-height: 0; display: flex; gap: .7rem; }
+.col { display: flex; flex-direction: column; gap: .7rem; min-width: 0; min-height: 0; }
+.col[hidden], [data-panneau][hidden] { display: none !important; }
+.col-gauche { flex: 4 1 0; }
+.col-avenir { flex: 5 1 0; }
+.col-carte { flex: 5 1 0; }
+.col-enface { flex: 4 1 0; }
+.col > section { min-height: 0; }
+.col-avenir .avenir, .col-enface .enface, .col-carte .carte-partie { flex: 1 1 auto; }
+.col-gauche .plan { flex: 1 1 auto; overflow-y: auto; }
+.col-gauche .checklist { overflow-y: auto; flex: 0 1 auto; }
+main.partie .frise { flex: none; }
+.horloge-etat { white-space: nowrap; }
+
+/* ---------- barre de contexte ---------- */
+.contexte { flex: none; display: flex; flex-wrap: wrap; align-items: center; gap: .45rem .8rem; padding: .45rem .7rem; position: relative; z-index: 2; }
+.contexte .btn { padding: .25rem .65rem; font-size: .9rem; }
+.contexte-heros { display: inline-flex; align-items: center; gap: .45rem; font-weight: 600; }
+.contexte-heros img { width: 1.6rem; height: 1.6rem; border-radius: .3rem; object-fit: cover; }
+.contexte-role { font: inherit; font-size: .9rem; color: var(--texte); background: var(--fond-2); border: 1px solid var(--bord); border-radius: .4rem; padding: .25rem .4rem; }
+.contexte-lanes, .segments-modes { display: inline-flex; align-items: center; gap: .25rem; }
+.lane-bouton { border-color: var(--lane) !important; color: var(--texte); }
+.lane-bouton.choisi { background: var(--lane) !important; color: #14100a !important; font-weight: 700; }
+.mode-bouton[aria-pressed="true"] { background: var(--or); color: #14100a; border-color: var(--or); }
+.contexte-panneaux > summary { list-style: none; cursor: pointer; padding: .25rem .65rem; font-size: .9rem; border: 1px solid var(--bord); border-radius: .4rem; color: var(--doux); }
+.contexte-panneaux > summary::-webkit-details-marker { display: none; }
+.contexte-panneaux[open] > summary { color: var(--texte); border-color: var(--or); }
+.contexte-panneaux-liste { position: absolute; margin-top: .3rem; padding: .6rem .8rem; display: grid; grid-template-columns: repeat(3, auto); gap: .3rem 1rem; background: var(--panneau-2); border: 1px solid var(--bord-fort); border-radius: .5rem; box-shadow: 0 8px 24px rgba(0, 0, 0, .5); }
+.contexte-panneaux-liste label { white-space: nowrap; font-size: .9rem; }
+.contexte-panneaux-liste .btn { grid-column: 1 / -1; justify-self: start; }
+.bouton-equipe { display: inline-flex; align-items: center; gap: .4rem; font-size: .85rem; padding: .2rem .6rem; }
+.pastille-equipe { width: .7rem; height: .7rem; border-radius: 50%; display: inline-block; }
+
+/* ---------- chrono plus discret hors mode Complet ---------- */
+body.mode-normal .horloge-temps, body.mode-compact .horloge-temps { font-size: 4.6rem; }
+body.mode-normal .horloge .commandes, body.mode-compact .horloge .commandes { margin-top: .3rem; }
+body.mode-compact .partie-colonnes { justify-content: center; }
+body.mode-compact .col-gauche { flex: 0 1 46rem; }
+
+/* ---------- Ton plan ---------- */
+.plan h2 { display: flex; align-items: center; gap: .5rem; margin: 0; }
+.plan h3 { margin: .7rem 0 .3rem; font-size: .95rem; }
+.plan-tete { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .3rem .6rem; }
+.plan-qui { display: inline-flex; flex-wrap: wrap; align-items: center; gap: .35rem; font-weight: 600; }
+.plan-qui img { width: 1.6rem; height: 1.6rem; border-radius: .3rem; object-fit: cover; }
+.lane-puce { border-color: var(--lane) !important; color: var(--texte) !important; }
+.plan-conseil { margin: .5rem 0 0; font-size: 1.12rem; line-height: 1.45; }
+.plan-conseil strong { color: var(--or); }
+.plan-actions { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .3rem; }
+.plan-actions li { display: grid; grid-template-columns: 1.5rem minmax(0, 1fr) auto; align-items: baseline; column-gap: .5rem; font-size: 1.02rem; }
+.plan-num { display: inline-grid; place-items: center; width: 1.3rem; height: 1.3rem; border-radius: 50%; background: var(--panneau-2); border: 1px solid var(--bord-fort); font-size: .75rem; }
+.plan-quand { font-variant-numeric: tabular-nums; color: var(--doux); white-space: nowrap; }
+.plan-detail { grid-column: 2 / -1; font-size: .88rem; color: var(--doux); }
+.plan-actions li .marque { grid-column: 2 / -1; justify-self: start; }
+.plan-actions li.bientot strong, .plan-actions li.bientot .plan-quand { color: var(--or-clair); }
+.plan-actions li.maintenant strong, .plan-actions li.maintenant .plan-quand { color: var(--alerte); font-weight: 700; }
+.plan-portee p { margin: .2rem 0; }
+.plan-ennemis { list-style: none; margin: .2rem 0; padding: 0; display: flex; flex-wrap: wrap; gap: .3rem .9rem; }
+.plan-ennemis li { display: inline-flex; align-items: center; gap: .3rem; }
+.plan-ennemis img { width: 1.3rem; height: 1.3rem; border-radius: 50%; object-fit: cover; }
+.plan-ennemis li.plus-loin .plan-quand { color: var(--danger); font-weight: 700; }
+
+/* ---------- carte ---------- */
+.carte-partie { display: flex; flex-direction: column; gap: .5rem; overflow: hidden; }
+.carte-partie-tete { display: flex; align-items: center; justify-content: space-between; gap: .5rem; }
+.carte-partie-tete h2 { margin: 0; }
+.carte-partie-zone { position: relative; width: min(100%, 58vh); aspect-ratio: 1 / 1; align-self: center; flex: none; transition: transform .3s; }
+.carte-partie-zone img, .carte-partie-zone svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.carte-partie-zone img { object-fit: fill; opacity: .8; }
+.carte-partie-zone.retournee { transform: rotate(180deg); }
+.mini-couche.etat-ferme { opacity: .25; }
+.mini-couche.etat-attente { opacity: .55; }
+.mini-decor { opacity: .45; }
+.mini-halo { fill: none; stroke-width: 4; animation: mini-pulse 1.4s ease-in-out infinite; }
+.mini-numero { fill: #fff; font: 700 30px var(--corps); text-anchor: middle; stroke: #0c0a08; stroke-width: 6px; paint-order: stroke; }
+@keyframes mini-pulse { 0%, 100% { opacity: .9; } 50% { opacity: .25; } }
+@media (prefers-reduced-motion: reduce) { .mini-halo { animation: none; } .carte-partie-zone { transition: none; } }
+.carte-partie-liste { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .25rem; overflow-y: auto; font-size: .92rem; }
+.carte-partie-liste li { display: grid; grid-template-columns: 1.2rem minmax(0, 1fr) auto; align-items: center; column-gap: .5rem; }
+.mini-pastille { display: inline-grid; place-items: center; width: 1.2rem; height: 1.2rem; border-radius: 50%; font-size: .7rem; font-weight: 700; color: #14100a; }
+.mini-nom { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mini-quand { font-variant-numeric: tabular-nums; color: var(--doux); }
+.mini-conseil { grid-column: 2 / -1; font-size: .82rem; color: var(--doux); }
+.carte-partie-liste li.etat-maintenant .mini-quand, .carte-partie-liste li.etat-maintenant .mini-nom { color: var(--alerte); font-weight: 700; }
+.carte-partie-liste li.etat-bientot .mini-quand { color: var(--or-clair); font-weight: 600; }
+.carte-partie-liste li.etat-ferme, .carte-partie-liste li.etat-attente { opacity: .7; }
+.carte-partie-liste li.aide { display: block; }
+
+/* ---------- écrans plus petits : on empile, le défilement est permis ---------- */
+@media (max-width: 1300px), (orientation: portrait), (max-height: 700px) {
+  body[data-page="partie"] { height: auto; }
+  .partie-colonnes { flex-wrap: wrap; }
+  .col { flex: 1 1 22rem; }
+  .carte-partie-zone { width: min(100%, 34rem); }
+}
+@media (max-width: 800px) {
+  .partie-colonnes { flex-direction: column; }
+  .col { flex: none; }
+  .contexte { gap: .4rem; }
+  .contexte-panneaux-liste { grid-template-columns: repeat(2, auto); right: .5rem; }
+  body.mode-normal .horloge-temps, body.mode-compact .horloge-temps { font-size: 3.6rem; }
+  .carte-partie-zone { width: 100%; }
+}
+.plan-ouverts { margin: .4rem 0 0; font-size: .92rem; color: var(--doux); }

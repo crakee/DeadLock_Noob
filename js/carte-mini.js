@@ -145,43 +145,83 @@
     ecouteursEquipe.push(orienter);
     orienter();
 
+    // Lanes : couleur → position moyenne (gauche → droite sur la carte non retournée).
+    const lanesX = ((parId.lanes || {}).lignes || []).map((l) => ({
+      couleur: l.couleur.toLowerCase(), x: l.trace.reduce((s, p) => s + p[0], 0) / l.trace.length
+    }));
+    const LANES_ID = { '#f1cc30': 'yellow', '#29b1cc': 'blue', '#59b247': 'green' };
+    const laneProche = (x) => lanesX.reduce((m, l) => (!m || Math.abs(l.x - x) < Math.abs(m.x - x) ? l : m), null);
+    const COTE_LANE = ['camps_small', 'camps_medium', 'camps_large', 'sinners'];
+
     function dessiner() {
       const chrono = tempsChrono();
       const t = chrono.t;
+      const ctx = DLN.partieContexte ? DLN.partieContexte.get() : {};
+      const retournee = equipe() === 1;
       svg.textContent = '';
       liste.textContent = '';
-      const lignes = [];
+
+      // 1. Ce qui est montré : couches du niveau, filtrées par le rôle ; pour un rôle de side lane,
+      //    seulement la jungle la plus proche de sa lane.
+      const entrees = [];
       COUCHES.forEach((c) => {
         const couche = parId[c.id];
         if (!couche || !montre(c, couche)) return;
+        if (ctx.priorites && c.evenement && ctx.priorites.indexOf(c.evenement) === -1) return;
+        let elements = couche.elements || [];
+        if (ctx.cote === 'lane' && ctx.lane && COTE_LANE.indexOf(c.id) !== -1) {
+          elements = elements.filter((e) => { const l = laneProche(e.xy[0]); return l && LANES_ID[l.couleur] === ctx.lane; });
+        }
         const ev = c.evenement ? evParId[c.evenement] : null;
-        const st = etatEvenement(ev, t);
-        const g = svgEl('g', { class: 'mini-couche etat-' + st.etat });
-        (couche.lignes || []).forEach((l) => {
-          g.append(svgEl('polyline', { points: l.trace.map((p) => (p[0] * T) + ',' + (p[1] * T)).join(' '), fill: 'none', stroke: l.couleur, 'stroke-width': 6, 'stroke-opacity': 0.5 }));
-        });
-        (couche.elements || []).forEach((e) => {
-          const couleur = c.couleur || EQUIPES[e.equipe] && EQUIPES[e.equipe].couleur || '#ffffff';
-          const m = forme(c, e.xy[0] * T, e.xy[1] * T, couleur);
-          const titre = svgEl('title');
-          titre.textContent = couche.nom;
-          m.append(titre);
-          g.append(m);
-          if (st.etat === 'maintenant' || st.etat === 'bientot') g.append(svgEl('circle', { cx: e.xy[0] * T, cy: e.xy[1] * T, r: (c.r || 8) + 9, class: 'mini-halo', stroke: couleur }));
-        });
-        svg.append(g);
-        if (ev && chrono.lance && lignes.every((x) => x.ev !== ev)) lignes.push({ ev: ev, c: c, couche: couche, st: st });
+        entrees.push({ c: c, couche: couche, ev: ev, st: etatEvenement(ev, t), elements: elements });
       });
 
-      // À côté : ce qui se passe ou va se passer, dans l'ordre d'urgence.
+      // 2. Numéros : les objectifs du chrono, dans l'ordre d'urgence.
       const ordre = { maintenant: 0, bientot: 1, attente: 2, ferme: 3, ouvert: 4 };
+      const lignes = [];
+      entrees.filter((x) => x.ev && x.elements.length).forEach((x) => { if (lignes.every((l) => l.ev !== x.ev)) lignes.push(x); });
       lignes.sort((a, b) => ordre[a.st.etat] - ordre[b.st.etat] || (a.st.dans || 0) - (b.st.dans || 0));
-      if (!chrono.lance) {
-        liste.append(el('li', 'aide', 'Lance le chrono : la carte montrera ce qui est ouvert et ce qui arrive.'));
-      }
+      lignes.forEach((l, i) => { l.numero = i + 1; });
+      const numeroDe = (ev) => (lignes.find((l) => l.ev === ev) || {}).numero;
+
+      // 3. Dessin
+      entrees.forEach((x) => {
+        const c = x.c;
+        const g = svgEl('g', { class: 'mini-couche etat-' + x.st.etat + (c.evenement || c.id === 'lanes' ? '' : ' mini-decor') });
+        (x.couche.lignes || []).forEach((l) => {
+          const mienne = ctx.lane && LANES_ID[l.couleur.toLowerCase()] === ctx.lane;
+          g.append(svgEl('polyline', {
+            points: l.trace.map((p) => (p[0] * T) + ',' + (p[1] * T)).join(' '), fill: 'none', stroke: l.couleur,
+            'stroke-width': mienne ? 12 : 6, 'stroke-opacity': ctx.lane ? (mienne ? 0.95 : 0.15) : 0.5, 'stroke-linejoin': 'round'
+          }));
+        });
+        const n = x.ev ? numeroDe(x.ev) : null;
+        x.elements.forEach((e) => {
+          const px = e.xy[0] * T, py = e.xy[1] * T;
+          const couleur = c.couleur || (EQUIPES[e.equipe] && EQUIPES[e.equipe].couleur) || '#ffffff';
+          if (x.st.etat === 'maintenant' || x.st.etat === 'bientot') g.append(svgEl('circle', { cx: px, cy: py, r: (c.r || 8) + 9, class: 'mini-halo', stroke: couleur }));
+          const m = forme(c, px, py, couleur);
+          const titre = svgEl('title');
+          titre.textContent = x.couche.nom;
+          m.append(titre);
+          g.append(m);
+          if (n && chrono.lance) {
+            // Le numéro reste à l'endroit même quand la carte est retournée.
+            const txt = svgEl('text', { x: px, y: py - (c.r || 8) - 6, class: 'mini-numero', transform: retournee ? 'rotate(180 ' + px + ' ' + (py - (c.r || 8) - 10) + ')' : '' });
+            txt.textContent = String(n);
+            g.append(txt);
+          }
+        });
+        svg.append(g);
+      });
+
+      // 4. Légende : ce qui se passe ou va se passer, numérotée comme la carte.
+      if (!chrono.lance) liste.append(el('li', 'aide', 'Lance le chrono : la carte montrera ce qui est ouvert et ce qui arrive.'));
+      if (ctx.priorites) liste.append(el('li', 'aide', 'Points utiles à ton rôle' + (ctx.cote === 'lane' && ctx.lane ? ', jungle de ton côté' : '') + '.'));
+      if (!chrono.lance) return;
       lignes.forEach((l) => {
         const li = el('li', 'etat-' + l.st.etat);
-        const p = el('span', 'mini-pastille');
+        const p = el('span', 'mini-pastille', String(l.numero));
         p.style.background = l.c.couleur;
         let texte;
         if (l.st.etat === 'maintenant') texte = 'maintenant';
@@ -201,6 +241,8 @@
     setInterval(dessiner, 1000);
     DLN.surNiveau(dessiner);
     window.addEventListener('storage', (e) => { if (e.key === CLE_CHRONO) dessiner(); });
+    if (DLN.partieContexte) DLN.partieContexte.surChange(dessiner);
+    ecouteursEquipe.push(dessiner);
     return { redessiner: dessiner };
   }
 
