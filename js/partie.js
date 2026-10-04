@@ -356,18 +356,8 @@
   let premiereFois = false;
   try { premiereFois = localStorage.getItem(CLE_ALERTES) == null; } catch (e) { /* stockage indisponible */ }
   let alertes = lire(CLE_ALERTES, { flash: true, notif: false, vibre: true });
-  // Premier passage : son et voix du chrono activés (on ne regarde pas le second écran en partie).
-  // On écrit directement les réglages du chrono, avant qu'il ne les lise.
-  if (premiereFois) {
-    try {
-      const r = JSON.parse(localStorage.getItem('dln.timeline.reglages.v1')) || {};
-      r.son = true;
-      r.voix = true;
-      localStorage.setItem('dln.timeline.reglages.v1', JSON.stringify(r));
-    } catch (e) { /* stockage indisponible */ }
-    ecrire(CLE_ALERTES, alertes);
-  }
-  function activerSonEtVoix() { /* fait au chargement, voir ci-dessus */ }
+  // Premier passage : son et voix du chrono sont activés par js/sons.js (chargé avant le chrono).
+  if (premiereFois) ecrire(CLE_ALERTES, alertes);
   const declenchees = new Set();
   let premierPassage = true;
 
@@ -564,7 +554,6 @@
     ecouteurs.forEach((f) => f());
     setInterval(dessinerPlan, 1000);
     setInterval(surveiller, 500);
-    activerSonEtVoix();
     DLN.surNiveau(dessinerPlan);
     if (DLN.orientationCarte) DLN.orientationCarte.surChange(dessinerContexte);
     window.addEventListener('storage', (e) => { if (e.key === CLE_ENFACE || e.key === CLE_CHRONO) dessinerPlan(); });

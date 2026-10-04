@@ -5,6 +5,18 @@
 (function () {
   'use strict';
 
+  // Premier lancement de la page En partie (aucun réglage d'alertes encore enregistré) : son et voix
+  // du chrono activés par défaut, car on ne regarde pas le second écran en partie. Ce script est
+  // chargé avant js/timeline.js : les réglages sont écrits avant que le chrono ne les lise.
+  try {
+    if (localStorage.getItem('dln.partie.alertes.v1') == null) {
+      const r = JSON.parse(localStorage.getItem('dln.timeline.reglages.v1')) || {};
+      r.son = true;
+      r.voix = true;
+      localStorage.setItem('dln.timeline.reglages.v1', JSON.stringify(r));
+    }
+  } catch (e) { /* stockage indisponible */ }
+
   const CLE = 'dln.sons.v1';
   let reglages = { profil: 'carillon', volume: 0.7 };
   try { Object.assign(reglages, JSON.parse(localStorage.getItem(CLE)) || {}); } catch (e) { /* stockage indisponible */ }
