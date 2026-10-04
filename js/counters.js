@@ -7,24 +7,28 @@
 
   const el = DLN.el;
   const CLE = 'dln.counters.choisis.v1';
-  const CLE_TRANCHE = 'dln.counters.tranche.v1';
   const MAX_ADVERSAIRES = 6;
   const NB_MATCHUPS = 3;
   const LIBELLES_CATEGORIE = { weapon: 'Weapon', vitality: 'Vitality', spirit: 'Spirit' };
   const ORDRE_CATEGORIES = ['weapon', 'vitality', 'spirit', 'autre'];
-  const LIBELLES_TRANCHE = {
-    tous: 'Tous rangs', initiate_sentinel: 'Initiate → Sentinel',
-    mystic_oracle: 'Mystic → Oracle', phantom_eternus: 'Phantom → Eternus'
-  };
+  const LIBELLES_TRANCHE = DLN.LIBELLES_TRANCHE;
 
-  let counters = null, heros = null, details = null, stats = null, roles = null, profil = null;
+  let counters = null, heros = null, details = null, stats = null, roles = null, profil = null, tempo = null;
   let objets = {};
   let choisis = [];
   let tranche = null;
   let filtre = 'tous';   // filtre de la liste d'achats : tous, passifs, actifs
+  let mode = 'adversaires';   // adversaires : fiche par héros d'en face ; compo : les deux équipes
+  let allies = [];            // mon équipe, en mode compo
+  let cible = 'face';         // équipe que remplit la grille en mode compo : face ou moi
+  let courant = null;         // adversaire affiché en mode adversaires
+  let minute = 15;            // moment de la partie regardé en mode compo
+  const CLE_COMPO = 'dln.counters.compo.v1';
+  try { const c = JSON.parse(localStorage.getItem(CLE_COMPO)) || {};
+    mode = c.mode || mode; allies = c.allies || []; minute = c.minute != null ? c.minute : minute; } catch (e) { /* stockage indisponible */ }
+  const sauverCompo = () => { try { localStorage.setItem(CLE_COMPO, JSON.stringify({ mode: mode, allies: allies, minute: minute })); } catch (e) { /* idem */ } };
 
   try { choisis = JSON.parse(localStorage.getItem(CLE)) || []; } catch (e) { choisis = []; }
-  try { tranche = localStorage.getItem(CLE_TRANCHE); } catch (e) { /* stockage indisponible */ }
   const sauver = () => { try { localStorage.setItem(CLE, JSON.stringify(choisis)); } catch (e) { /* stockage indisponible */ } };
 
   const herosDe = (id) => heros.heros.find((x) => x.id === id);
@@ -43,10 +47,18 @@
   }
 
   function basculer(id) {
-    const i = choisis.indexOf(id);
-    if (i !== -1) choisis.splice(i, 1);
-    else if (choisis.length < MAX_ADVERSAIRES) choisis.push(id);
+    const liste = mode === 'compo' && cible === 'moi' ? allies : choisis;
+    const autre = liste === allies ? choisis : allies;
+    const i = liste.indexOf(id);
+    if (i !== -1) liste.splice(i, 1);
+    else if (liste.length < MAX_ADVERSAIRES) {
+      liste.push(id);
+      // Un héros n'est que dans une équipe à la fois.
+      if (mode === 'compo' && autre.indexOf(id) !== -1) autre.splice(autre.indexOf(id), 1);
+      if (liste === choisis) courant = id;
+    }
     sauver();
+    sauverCompo();
     afficher();
   }
 
@@ -56,8 +68,10 @@
       if (choisis.length >= MAX_ADVERSAIRES) choisis.shift();
       choisis.push(id);
       sauver();
-      afficher();
     }
+    courant = id;
+    if (mode !== 'adversaires') { mode = 'adversaires'; sauverCompo(); }
+    afficher();
     const fiche = document.querySelector('.counters-heros[data-heros="' + id + '"]');
     if (fiche) fiche.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
@@ -84,7 +98,8 @@
       zone.append(el('h3', 'grille-role', g.nom));
       const grille = el('div', 'heros-grille');
       g.heros.forEach((h) => {
-        const b = el('button', 'heros-case' + (choisis.indexOf(h.id) !== -1 ? ' choisi' : ''));
+        const b = el('button', 'heros-case' + (choisis.indexOf(h.id) !== -1 ? ' choisi' : '') +
+          (mode === 'compo' && allies.indexOf(h.id) !== -1 ? ' allie' : ''));
         b.type = 'button';
         b.title = h.nom + (rolesDe(h.id).length > 1 ? ' · ' + rolesDe(h.id).map((r) => r.nom).join(', ') : '');
         b.append(icone(h), el('span', null, h.nom));
@@ -93,7 +108,9 @@
       });
       zone.append(grille);
     });
-    document.getElementById('compte').textContent = choisis.length + ' / ' + MAX_ADVERSAIRES;
+    const liste = mode === 'compo' && cible === 'moi' ? allies : choisis;
+    document.getElementById('titre-grille').textContent = mode === 'compo' && cible === 'moi' ? 'Mon équipe' : 'En face';
+    document.getElementById('compte').textContent = liste.length + ' / ' + MAX_ADVERSAIRES;
   }
 
   // ---------- objets ----------
@@ -371,6 +388,89 @@
     return bloc;
   }
 
+  // ---------- profil : tempo, pics de puissance, compétences ----------
+
+  const tempoDe = (id) => ((tempo.tranches[tranche] || {})[String(id)]) || null;
+  const objetsClesDe = (id) => {
+    const t = tempoDe(id);
+    if (t && t.objets_cles.length) return t.objets_cles;
+    return (((tempo.tranches.tous || {})[String(id)]) || {}).objets_cles || [];
+  };
+
+  // Tendance : winrate dans les parties longues moins celui des parties courtes, comparé à la marge.
+  function tendance(id) {
+    const t = tempoDe(id);
+    if (!t || t.durees.length < 3) return null;
+    const court = t.durees[0], long = t.durees[t.durees.length - 1];
+    if (court.winrate == null || long.winrate == null) return null;
+    const ecart = long.winrate - court.winrate;
+    const marge = Math.sqrt(court.marge * court.marge + long.marge * long.marge);
+    let sens = 'stable';
+    if (ecart > marge) sens = 'tard';
+    else if (ecart < -marge) sens = 'tot';
+    return { sens: sens, ecart: ecart, marge: marge };
+  }
+  const LIBELLES_TENDANCE = {
+    tard: 'plus fort quand la partie dure',
+    tot: 'plus fort quand la partie est courte',
+    stable: 'pas de tendance nette selon la durée'
+  };
+
+  function blocTempo(id) {
+    const t = tempoDe(id);
+    const bloc = el('div', 'tempo');
+    if (!t) return bloc;
+    const td = tendance(id);
+    const titre = el('h3', null, 'Quand il est fort ');
+    if (td) titre.append(el('span', 'puce fort tendance-' + td.sens, LIBELLES_TENDANCE[td.sens]));
+    bloc.append(titre);
+    const table = el('table', 'tempo-table');
+    const tr1 = el('tr'), tr2 = el('tr');
+    t.durees.forEach((d) => {
+      tr1.append(el('th', null, d.a_min ? d.de_min + '–' + d.a_min + ' min' : 'plus de ' + d.de_min + ' min'));
+      tr2.append(el('td', 'nombre', d.winrate != null ? d.winrate.toFixed(1) + ' % ± ' + d.marge.toFixed(1) : '—'));
+    });
+    table.append(tr1, tr2);
+    bloc.append(table, el('p', 'doux petit', 'Winrate selon la durée de la partie (' + LIBELLES_TRANCHE[tranche] +
+      '). Si le chiffre monte vers la droite, ses parties longues lui réussissent : le laisser farmer est dangereux.'));
+    const cles = objetsClesDe(id);
+    if (cles.length) {
+      bloc.append(el('h3', null, 'Ses pics de puissance (objets clés)'));
+      const ul = el('ul', 'objets');
+      cles.forEach((o) => ul.append(ligneObjet({ nom: o.nom, quand: 'vers ' + Math.round(o.minute) + ' min · ' + o.achete_par + ' % de ses joueurs l\'achètent' })));
+      bloc.append(ul);
+    }
+    return bloc;
+  }
+
+  function blocCompetences(h) {
+    const bloc = el('div');
+    bloc.append(el('h3', null, 'Compétences'));
+    const liste = el('div', 'competences');
+    (h.competences || []).forEach((c) => {
+      const carte = el('article', 'competence');
+      const img = el('img', 'competence-icone');
+      img.src = c.image || '';
+      img.alt = '';
+      img.loading = 'lazy';
+      const corps = el('div');
+      const nom = el('h4', null, (c.touche === 4 ? 'Ultimate · ' : c.touche + ' · ') + c.nom);
+      if (c.recharge_s) nom.append(el('span', 'competence-recharge', c.recharge_s + ' s'));
+      if (c.canalisee) nom.append(el('span', 'marque', 'canalisée : un stun l\'interrompt'));
+      corps.append(nom, el('p', 'competence-resume', c.resume), el('p', null, c.description));
+      if (c.valeurs && c.valeurs.length) corps.append(el('p', 'doux petit', c.valeurs.map((v) => v.nom + ' ' + v.valeur).join(' · ')));
+      if (DLN.niveau() >= 2 && c.ameliorations && c.ameliorations.length) {
+        const ol = el('ol', 'ameliorations');
+        c.ameliorations.forEach((a) => ol.append(el('li', null, a)));
+        corps.append(ol);
+      }
+      carte.append(img, corps);
+      liste.append(carte);
+    });
+    bloc.append(liste);
+    return bloc;
+  }
+
   function afficherHeros(zone, id) {
     const fiche = counters.heros[String(id)];
     const h = herosDe(id);
@@ -384,13 +484,16 @@
     retirer.addEventListener('click', () => basculer(id));
     tete.append(icone(h, 'heros-icone'), el('h2', null, h.nom), el('span', 'doux', h.role || ''), retirer);
     bloc.append(tete, bandeStats(id));
+    if (h.style_de_jeu) bloc.append(el('p', 'heros-style', h.style_de_jeu));
+    bloc.append(blocTempo(id), blocCompetences(h));
+    bloc.append(el('h3', 'section-titre', 'Ce qui le rend dangereux, et quoi acheter'));
 
     if (!fiche) bloc.append(el('p', 'vide', 'Héros pas encore classé dans data/counters.json (sorti après le 2 octobre).'));
     menacesDe(id).forEach((m) => {
       const menace = counters.menaces[m.id];
       const carte = el('div', 'menace');
       carte.append(el('h3', null, menace.nom), el('p', 'menace-pourquoi', m.pourquoi + '.'));
-      if (choisis.length === 1 || DLN.niveau() >= 2) {
+      {
         carte.append(el('p', null, menace.reponse));
         if (menace.objets.length) carte.append(listeObjets(menace));
       }
@@ -405,47 +508,198 @@
     zone.append(bloc);
   }
 
+  // ---------- mode compo ----------
+
+  function degatsEquipe(ids) {
+    let arme = 0, sorts = 0;
+    ids.forEach((id) => {
+      const m = toutesMenacesDe(id).map((x) => x.id);
+      if (m.indexOf('tir') !== -1) arme++;
+      if (m.indexOf('sorts') !== -1) sorts++;
+    });
+    return { arme: arme, sorts: sorts };
+  }
+
+  // Bucket de durée qui contient la minute regardée.
+  function dureeA(id, m) {
+    const t = tempoDe(id);
+    if (!t) return null;
+    return t.durees.find((d) => m >= d.de_min && (d.a_min == null || m < d.a_min)) || null;
+  }
+
+  function ligneCompo(id, face) {
+    const h = herosDe(id);
+    const tr = el('tr');
+    const nom = el('td', 'compo-nom');
+    const lien = el('button', 'cible');
+    lien.type = 'button';
+    lien.append(icone(h), el('span', null, h.nom));
+    lien.title = 'Ouvrir sa fiche';
+    lien.addEventListener('click', () => { if (face) ouvrir(id); else { courant = null; ouvrirAllie(id); } });
+    nom.append(lien);
+    const s = (stats.tranches[tranche] || {}).heros ? stats.tranches[tranche].heros[String(id)] : null;
+    const td = tendance(id);
+    const d = dureeA(id, minute);
+    const deja = objetsClesDe(id).filter((o) => o.minute <= minute);
+    const prochain = objetsClesDe(id).find((o) => o.minute > minute);
+    tr.append(nom,
+      el('td', null, rolesDe(id).map((r) => r.nom).join(', ') || '—'),
+      el('td', null, typeDegats(id) || '—'),
+      el('td', 'nombre', s && s.winrate != null ? s.winrate.toFixed(1) + ' %' : '—'),
+      el('td', td ? 'tendance-' + td.sens : null, td ? LIBELLES_TENDANCE[td.sens] : '—'),
+      el('td', null, deja.length ? deja.map((o) => o.nom).join(', ') : 'rien de majeur'),
+      el('td', null, prochain ? prochain.nom + ' vers ' + Math.round(prochain.minute) + ' min' : '—'));
+    if (face) {
+      const m = toutesMenacesDe(id).map((x) => counters.menaces[x.id].nom.toLowerCase());
+      tr.append(el('td', 'petit', m.join(', ') || '—'));
+    }
+    if (d && s && d.winrate != null && s.winrate != null) tr.title = 'Winrate dans les parties de cette durée : ' + d.winrate + ' % (moyenne ' + s.winrate + ' %)';
+    return tr;
+  }
+
+  function ouvrirAllie(id) {
+    // Ma propre équipe : la fiche complète est dans l'onglet Héros.
+    location.href = DLN.lienHeros ? DLN.lienHeros(id, 'apercu') : 'heros.html#h=' + id;
+  }
+
+  function tableCompo(titre, ids, face) {
+    const bloc = el('section', 'panneau');
+    bloc.append(el('h2', null, titre + ' (' + ids.length + ')'));
+    if (!ids.length) {
+      bloc.append(el('p', 'vide', 'Choisir les héros dans la grille (bouton « Remplir : ' + (face ? 'en face' : 'mon équipe') + ' »).'));
+      return bloc;
+    }
+    const table = el('table', 'compo-table');
+    const tete = el('tr');
+    ['Héros', 'Rôle', 'Dégâts', 'Winrate', 'Quand il est fort', 'Objets clés déjà achetés à ' + minute + ' min', 'Prochain pic']
+      .concat(face ? ['Ce qu\'il fait'] : []).forEach((t) => tete.append(el('th', null, t)));
+    table.append(tete);
+    ids.forEach((id) => table.append(ligneCompo(id, face)));
+    bloc.append(table);
+    const dg = degatsEquipe(ids);
+    bloc.append(el('p', 'petit', 'Dégâts de l\'équipe : ' + dg.arme + ' héros surtout à l\'arme, ' + dg.sorts + ' surtout aux compétences.' +
+      (face && dg.arme >= dg.sorts + 2 ? ' → Bullet Resist (Vitality) en priorité.' : '') +
+      (face && dg.sorts >= dg.arme + 2 ? ' → Spirit Resist (Vitality) en priorité.' : '')));
+    const tard = ids.filter((id) => (tendance(id) || {}).sens === 'tard').map(nomDe);
+    const tot = ids.filter((id) => (tendance(id) || {}).sens === 'tot').map(nomDe);
+    if (tard.length) bloc.append(el('p', 'petit', 'Plus forts quand la partie dure : ' + tard.join(', ') + '.'));
+    if (tot.length) bloc.append(el('p', 'petit', 'Plus forts dans les parties courtes : ' + tot.join(', ') + '.'));
+    return bloc;
+  }
+
+  function afficherCompo(zone) {
+    const reglage = el('section', 'panneau');
+    const label = el('label', 'reglage');
+    const curseur = el('input');
+    curseur.type = 'range';
+    curseur.min = '0';
+    curseur.max = '45';
+    curseur.step = '1';
+    curseur.value = String(minute);
+    const valeur = el('strong', null, minute + ' min');
+    curseur.addEventListener('input', () => { valeur.textContent = curseur.value + ' min'; });
+    curseur.addEventListener('change', () => { minute = Number(curseur.value); sauverCompo(); afficher(); });
+    label.append('Moment de la partie regardé : ', curseur, valeur);
+    reglage.append(label, el('p', 'doux petit', 'Les objets clés sont ceux de tier 3 ou plus que la plupart des joueurs de ce héros achètent, à leur minute moyenne d\'achat. ' +
+      '« Quand il est fort » compare son winrate dans les parties courtes (moins de 25 min) et longues (plus de 35 min) ; ' +
+      'en ' + LIBELLES_TRANCHE[tranche] + ', peu de héros ont une tendance qui dépasse la marge d\'erreur.'));
+    zone.append(reglage);
+
+    // Pics de puissance d'en face, dans l'ordre chronologique.
+    const pics = [];
+    choisis.forEach((id) => objetsClesDe(id).forEach((o) => pics.push({ id: id, o: o })));
+    pics.sort((a, b) => a.o.minute - b.o.minute);
+    if (pics.length) {
+      const bloc = el('section', 'panneau');
+      bloc.append(el('h2', null, 'Leurs pics de puissance, dans l\'ordre'));
+      const ul = el('ul', 'pics');
+      pics.forEach((p) => {
+        const li = el('li', p.o.minute <= minute ? 'passe' : (p.o.minute <= minute + 5 ? 'bientot' : null));
+        li.append(el('span', 'nombre', '~' + Math.round(p.o.minute) + ' min'), ' ', el('strong', null, nomDe(p.id)), ' : ' + p.o.nom +
+          ' (' + p.o.cout.toLocaleString('fr-FR') + ', ' + p.o.achete_par + ' %)' +
+          (p.o.minute <= minute ? ' — probablement déjà acheté' : p.o.minute <= minute + 5 ? ' — dans les 5 prochaines minutes' : ''));
+        ul.append(li);
+      });
+      bloc.append(ul);
+      zone.append(bloc);
+    }
+
+    zone.append(tableCompo('En face', choisis, true), tableCompo('Mon équipe', allies, false));
+    if (choisis.length) {
+      afficherResume(zone);
+      afficherAchats(zone);
+    }
+  }
+
+  function afficherModes() {
+    const modes = document.getElementById('modes');
+    modes.textContent = '';
+    [['adversaires', 'Adversaires'], ['compo', 'Compo (les deux équipes)']].forEach((m) => {
+      const b = el('button', 'filtre', m[1]);
+      b.type = 'button';
+      b.setAttribute('aria-pressed', String(mode === m[0]));
+      b.addEventListener('click', () => { mode = m[0]; cible = 'face'; sauverCompo(); afficher(); });
+      modes.append(b);
+    });
+    const cibles = document.getElementById('cibles');
+    cibles.textContent = '';
+    cibles.hidden = mode !== 'compo';
+    [['moi', 'Remplir : mon équipe'], ['face', 'Remplir : en face']].forEach((c) => {
+      const b = el('button', 'filtre', c[1]);
+      b.type = 'button';
+      b.setAttribute('aria-pressed', String(cible === c[0]));
+      b.addEventListener('click', () => { cible = c[0]; afficher(); });
+      cibles.append(b);
+    });
+  }
+
+  function ongletsAdversaires(zone) {
+    const barre = el('div', 'filtres onglets-adversaires');
+    choisis.forEach((id) => {
+      const h = herosDe(id);
+      const b = el('button', 'cible' + (id === courant ? ' choisi' : ''));
+      b.type = 'button';
+      b.append(icone(h), el('span', null, h.nom));
+      b.addEventListener('click', () => { courant = id; afficher(); });
+      barre.append(b);
+    });
+    zone.append(barre);
+  }
+
   function afficher() {
     choisis = choisis.filter((id) => herosDe(id));
+    allies = allies.filter((id) => herosDe(id) && choisis.indexOf(id) === -1);
+    if (choisis.indexOf(courant) === -1) courant = choisis[choisis.length - 1] || null;
+    afficherModes();
     afficherGrille();
     const zone = document.getElementById('resultat');
     zone.textContent = '';
+    if (mode === 'compo') { afficherCompo(zone); return; }
     if (!choisis.length) {
       zone.append(el('p', 'vide', 'Choisir un ou plusieurs héros adverses (jusqu\'à ' + MAX_ADVERSAIRES + ').'));
       zone.append(panneauActifs(true));
       return;
     }
+    ongletsAdversaires(zone);
+    afficherHeros(zone, courant);
     if (choisis.length > 1) afficherResume(zone);
     afficherAchats(zone);
-    choisis.forEach((id) => afficherHeros(zone, id));
     zone.append(panneauActifs(false));
   }
 
-  function construireTranche() {
-    const choix = document.getElementById('opt-tranche');
-    Object.keys(stats.tranches).forEach((cle) => {
-      const o = el('option', null, LIBELLES_TRANCHE[cle] || cle);
-      o.value = cle;
-      choix.append(o);
-    });
-    if (!stats.tranches[tranche]) tranche = profil.tranche_par_defaut;
-    choix.value = tranche;
-    choix.addEventListener('change', () => {
-      tranche = choix.value;
-      try { localStorage.setItem(CLE_TRANCHE, tranche); } catch (e) { /* stockage indisponible */ }
-      afficher();
-    });
-  }
-
   Promise.all(['data/counters.json', 'data/heroes.json', 'data/items.json', 'data/heros-details.json',
-    'data/hero-stats.json', 'data/roles.json', 'data/profil.json'].map(DLN.charger)).then((r) => {
-    counters = r[0]; heros = r[1]; details = r[3]; stats = r[4]; roles = r[5]; profil = r[6];
+    'data/hero-stats.json', 'data/roles.json', 'data/profil.json', 'data/tempo.json'].map(DLN.charger).concat([DLN.profil])).then((r) => {
+    counters = r[0]; heros = r[1]; details = r[3]; stats = r[4]; roles = r[5]; profil = r[6]; tempo = r[7];
     r[2].objets.forEach((o) => { objets[o.nom] = o; });
     document.getElementById('app').hidden = false;
     document.getElementById('meta').textContent = 'Patch ' + counters.meta.patch + ' · counters déduits du texte des compétences et des objets ' +
       '(pas d\'un classement de winrates) · stats et matchups depuis le ' + details.meta.depuis + ' · rôles : avis de joueur';
-    document.getElementById('btn-vider').addEventListener('click', () => { choisis = []; sauver(); afficher(); });
-    construireTranche();
+    document.getElementById('btn-vider').addEventListener('click', () => {
+      if (mode === 'compo' && cible === 'moi') allies = []; else choisis = [];
+      sauver(); sauverCompo(); afficher();
+    });
+    tranche = DLN.tranche();
+    DLN.surTranche(() => { tranche = DLN.tranche(); afficher(); });
     afficher();
     DLN.surNiveau(afficher);
   }, DLN.echec);

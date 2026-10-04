@@ -1,0 +1,7802 @@
+{
+ "meta": {
+  "patch": "City Never Sleeps (2026-09-29)",
+  "verifie_le": "2026-10-04",
+  "source": "https://api.deadlock-api.com",
+  "genere_par": "outils/maj_donnees.py",
+  "depuis": "2026-09-30",
+  "note": "Par tranche de rang : `durees` = winrate du héros selon la durée de la partie (en minutes, marge à 95 % en points) ; un héros dont le winrate monte avec la durée est fort en fin de partie. `objets_cles` (tranches tous et initiate_sentinel seulement) = objets de tier 3 ou plus achetés par au moins 35 % de ses joueurs, avec la minute moyenne d'achat : les moments où il devient plus fort."
+ },
+ "tranches": {
+  "tous": {
+   "1": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 4633,
+      "winrate": 49.2,
+      "marge": 1.4
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 30854,
+      "winrate": 48.3,
+      "marge": 0.6
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 75476,
+      "winrate": 48.3,
+      "marge": 0.4
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Rapid Recharge",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 37,
+      "minute": 19.5
+     },
+     {
+      "nom": "Toxic Bullets",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 73,
+      "minute": 20.7
+     },
+     {
+      "nom": "Superior Duration",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 84,
+      "minute": 22.4
+     },
+     {
+      "nom": "Escalating Exposure",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 74,
+      "minute": 28.0
+     },
+     {
+      "nom": "Ricochet",
+      "cout": 6400,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 55,
+      "minute": 28.8
+     },
+     {
+      "nom": "Spiritual Overflow",
+      "cout": 6400,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 58,
+      "minute": 29.1
+     }
+    ]
+   },
+   "2": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 3701,
+      "winrate": 52.3,
+      "marge": 1.6
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 25503,
+      "winrate": 58.7,
+      "marge": 0.6
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 62346,
+      "winrate": 53.9,
+      "marge": 0.4
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Cultist Sacrifice",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": true,
+      "achete_par": 51,
+      "minute": 11.7
+     },
+     {
+      "nom": "Toxic Bullets",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 37,
+      "minute": 22.9
+     },
+     {
+      "nom": "Superior Duration",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 68,
+      "minute": 23.9
+     },
+     {
+      "nom": "Escalating Exposure",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 84,
+      "minute": 25.3
+     },
+     {
+      "nom": "Greater Expansion",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 47,
+      "minute": 25.7
+     },
+     {
+      "nom": "Superior Cooldown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 38,
+      "minute": 26.8
+     }
+    ]
+   },
+   "3": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 3660,
+      "winrate": 52.2,
+      "marge": 1.6
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 24324,
+      "winrate": 51.1,
+      "marge": 0.6
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 54829,
+      "winrate": 50.0,
+      "marge": 0.4
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Rapid Recharge",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 92,
+      "minute": 13.3
+     },
+     {
+      "nom": "Sharpshooter",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 89,
+      "minute": 18.9
+     },
+     {
+      "nom": "Counterspell",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 57,
+      "minute": 21.0
+     },
+     {
+      "nom": "Burst Fire",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 73,
+      "minute": 23.2
+     },
+     {
+      "nom": "Spiritual Overflow",
+      "cout": 6400,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 41,
+      "minute": 31.3
+     },
+     {
+      "nom": "Mercurial Magnum",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 47,
+      "minute": 32.2
+     }
+    ]
+   },
+   "4": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 3109,
+      "winrate": 53.4,
+      "marge": 1.8
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 20342,
+      "winrate": 52.7,
+      "marge": 0.7
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 52735,
+      "winrate": 50.0,
+      "marge": 0.4
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Radiant Regeneration",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 94,
+      "minute": 13.1
+     },
+     {
+      "nom": "Tankbuster",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 65,
+      "minute": 19.1
+     },
+     {
+      "nom": "Berserker",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 36,
+      "minute": 21.9
+     },
+     {
+      "nom": "Superior Cooldown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 55,
+      "minute": 23.6
+     },
+     {
+      "nom": "Spirit Resilience",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 51,
+      "minute": 23.9
+     },
+     {
+      "nom": "Greater Expansion",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 48,
+      "minute": 27.0
+     }
+    ]
+   },
+   "6": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 3556,
+      "winrate": 47.9,
+      "marge": 1.6
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 24676,
+      "winrate": 50.9,
+      "marge": 0.6
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 55484,
+      "winrate": 52.0,
+      "marge": 0.4
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Hunter's Aura",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 58,
+      "minute": 19.7
+     },
+     {
+      "nom": "Lifestrike",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 60,
+      "minute": 20.3
+     },
+     {
+      "nom": "Spirit Snatch",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 51,
+      "minute": 21.6
+     },
+     {
+      "nom": "Point Blank",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 49,
+      "minute": 23.5
+     },
+     {
+      "nom": "Superior Duration",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 66,
+      "minute": 23.8
+     },
+     {
+      "nom": "Spirit Resilience",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 46,
+      "minute": 26.3
+     }
+    ]
+   },
+   "7": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 3623,
+      "winrate": 49.3,
+      "marge": 1.6
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 25650,
+      "winrate": 51.8,
+      "marge": 0.6
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 53894,
+      "winrate": 50.2,
+      "marge": 0.4
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Tesla Bullets",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 68,
+      "minute": 14.1
+     },
+     {
+      "nom": "Surge of Power",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 84,
+      "minute": 16.9
+     },
+     {
+      "nom": "Dispel Magic",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": true,
+      "achete_par": 42,
+      "minute": 20.6
+     },
+     {
+      "nom": "Ricochet",
+      "cout": 6400,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 83,
+      "minute": 23.8
+     },
+     {
+      "nom": "Mercurial Magnum",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 85,
+      "minute": 25.2
+     },
+     {
+      "nom": "Capacitor",
+      "cout": 6400,
+      "categorie": "weapon",
+      "actif": true,
+      "achete_par": 35,
+      "minute": 29.7
+     }
+    ]
+   },
+   "8": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 1683,
+      "winrate": 45.0,
+      "marge": 2.4
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 10958,
+      "winrate": 47.2,
+      "marge": 0.9
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 25815,
+      "winrate": 48.1,
+      "marge": 0.6
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Heroic Aura",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": true,
+      "achete_par": 49,
+      "minute": 19.8
+     },
+     {
+      "nom": "Rapid Recharge",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 64,
+      "minute": 22.2
+     },
+     {
+      "nom": "Superior Cooldown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 53,
+      "minute": 26.4
+     },
+     {
+      "nom": "Escalating Exposure",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 61,
+      "minute": 26.6
+     },
+     {
+      "nom": "Greater Expansion",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 50,
+      "minute": 27.0
+     }
+    ]
+   },
+   "10": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 3246,
+      "winrate": 41.4,
+      "marge": 1.7
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 22879,
+      "winrate": 42.8,
+      "marge": 0.6
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 53923,
+      "winrate": 47.0,
+      "marge": 0.4
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Headhunter",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 45,
+      "minute": 13.3
+     },
+     {
+      "nom": "Sharpshooter",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 77,
+      "minute": 14.7
+     },
+     {
+      "nom": "Fortitude",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 36,
+      "minute": 18.4
+     },
+     {
+      "nom": "Tankbuster",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 77,
+      "minute": 19.7
+     },
+     {
+      "nom": "Express Shot",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 72,
+      "minute": 20.0
+     },
+     {
+      "nom": "Stamina Mastery",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 59,
+      "minute": 24.2
+     }
+    ]
+   },
+   "11": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 2866,
+      "winrate": 53.1,
+      "marge": 1.8
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 20901,
+      "winrate": 54.2,
+      "marge": 0.7
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 50421,
+      "winrate": 52.2,
+      "marge": 0.4
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Headhunter",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 42,
+      "minute": 13.4
+     },
+     {
+      "nom": "Rapid Recharge",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 74,
+      "minute": 17.3
+     },
+     {
+      "nom": "Warp Stone",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": true,
+      "achete_par": 44,
+      "minute": 20.8
+     },
+     {
+      "nom": "Tankbuster",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 40,
+      "minute": 22.3
+     },
+     {
+      "nom": "Superior Cooldown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 73,
+      "minute": 24.4
+     },
+     {
+      "nom": "Greater Expansion",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 77,
+      "minute": 25.1
+     }
+    ]
+   },
+   "12": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 1854,
+      "winrate": 48.4,
+      "marge": 2.3
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 13650,
+      "winrate": 53.9,
+      "marge": 0.8
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 30202,
+      "winrate": 54.4,
+      "marge": 0.6
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Rapid Recharge",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 73,
+      "minute": 20.6
+     },
+     {
+      "nom": "Superior Cooldown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 62,
+      "minute": 25.4
+     },
+     {
+      "nom": "Escalating Exposure",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 65,
+      "minute": 27.2
+     },
+     {
+      "nom": "Greater Expansion",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 56,
+      "minute": 28.1
+     },
+     {
+      "nom": "Boundless Spirit",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 73,
+      "minute": 28.4
+     },
+     {
+      "nom": "Superior Duration",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 49,
+      "minute": 29.0
+     }
+    ]
+   },
+   "13": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 5715,
+      "winrate": 49.6,
+      "marge": 1.3
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 40425,
+      "winrate": 52.7,
+      "marge": 0.5
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 86807,
+      "winrate": 55.1,
+      "marge": 0.3
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Surge of Power",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 64,
+      "minute": 17.4
+     },
+     {
+      "nom": "Fortitude",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 43,
+      "minute": 17.6
+     },
+     {
+      "nom": "Burst Fire",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 82,
+      "minute": 20.4
+     },
+     {
+      "nom": "Ricochet",
+      "cout": 6400,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 78,
+      "minute": 23.8
+     },
+     {
+      "nom": "Silencer",
+      "cout": 6400,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 47,
+      "minute": 31.9
+     }
+    ]
+   },
+   "14": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 2306,
+      "winrate": 50.0,
+      "marge": 2.0
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 15987,
+      "winrate": 48.1,
+      "marge": 0.8
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 38742,
+      "winrate": 47.5,
+      "marge": 0.5
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Headhunter",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 50,
+      "minute": 14.5
+     },
+     {
+      "nom": "Rapid Recharge",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 94,
+      "minute": 15.0
+     },
+     {
+      "nom": "Surge of Power",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 39,
+      "minute": 19.5
+     },
+     {
+      "nom": "Stamina Mastery",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 85,
+      "minute": 21.2
+     },
+     {
+      "nom": "Tankbuster",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 58,
+      "minute": 23.6
+     },
+     {
+      "nom": "Superior Duration",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 44,
+      "minute": 26.4
+     }
+    ]
+   },
+   "15": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 4646,
+      "winrate": 51.9,
+      "marge": 1.4
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 32072,
+      "winrate": 46.9,
+      "marge": 0.5
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 72716,
+      "winrate": 47.4,
+      "marge": 0.4
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Spirit Snatch",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 57,
+      "minute": 20.0
+     },
+     {
+      "nom": "Tankbuster",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 52,
+      "minute": 22.4
+     },
+     {
+      "nom": "Echo Shard",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": true,
+      "achete_par": 36,
+      "minute": 23.8
+     },
+     {
+      "nom": "Superior Cooldown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 37,
+      "minute": 26.4
+     },
+     {
+      "nom": "Boundless Spirit",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 45,
+      "minute": 30.1
+     },
+     {
+      "nom": "Mystic Reverb",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 36,
+      "minute": 30.9
+     }
+    ]
+   },
+   "16": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 2531,
+      "winrate": 47.1,
+      "marge": 1.9
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 18064,
+      "winrate": 48.2,
+      "marge": 0.7
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 39546,
+      "winrate": 49.3,
+      "marge": 0.5
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Spirit Snatch",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 94,
+      "minute": 13.8
+     },
+     {
+      "nom": "Hunter's Aura",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 50,
+      "minute": 19.0
+     },
+     {
+      "nom": "Torment Pulse",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 47,
+      "minute": 22.0
+     },
+     {
+      "nom": "Dispel Magic",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": true,
+      "achete_par": 41,
+      "minute": 22.4
+     },
+     {
+      "nom": "Arctic Blast",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": true,
+      "achete_par": 87,
+      "minute": 22.4
+     },
+     {
+      "nom": "Boundless Spirit",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 65,
+      "minute": 28.9
+     }
+    ]
+   },
+   "17": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 1904,
+      "winrate": 44.8,
+      "marge": 2.2
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 12526,
+      "winrate": 43.7,
+      "marge": 0.9
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 30754,
+      "winrate": 48.8,
+      "marge": 0.6
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Sharpshooter",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 48,
+      "minute": 17.6
+     },
+     {
+      "nom": "Tankbuster",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 89,
+      "minute": 19.1
+     },
+     {
+      "nom": "Rapid Recharge",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 87,
+      "minute": 20.5
+     },
+     {
+      "nom": "Stamina Mastery",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 70,
+      "minute": 21.9
+     },
+     {
+      "nom": "Superior Cooldown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 68,
+      "minute": 24.4
+     },
+     {
+      "nom": "Boundless Spirit",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 78,
+      "minute": 27.0
+     }
+    ]
+   },
+   "18": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 3242,
+      "winrate": 53.0,
+      "marge": 1.7
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 23637,
+      "winrate": 50.1,
+      "marge": 0.6
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 53525,
+      "winrate": 50.2,
+      "marge": 0.4
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Torment Pulse",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 92,
+      "minute": 15.1
+     },
+     {
+      "nom": "Warp Stone",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": true,
+      "achete_par": 39,
+      "minute": 19.9
+     },
+     {
+      "nom": "Tankbuster",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 77,
+      "minute": 23.0
+     },
+     {
+      "nom": "Superior Duration",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 60,
+      "minute": 24.2
+     },
+     {
+      "nom": "Superior Cooldown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 71,
+      "minute": 24.4
+     },
+     {
+      "nom": "Spirit Resilience",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 37,
+      "minute": 25.1
+     }
+    ]
+   },
+   "19": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 2990,
+      "winrate": 44.8,
+      "marge": 1.8
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 21477,
+      "winrate": 40.9,
+      "marge": 0.7
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 52228,
+      "winrate": 45.5,
+      "marge": 0.4
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Radiant Regeneration",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 96,
+      "minute": 11.6
+     },
+     {
+      "nom": "Hunter's Aura",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 36,
+      "minute": 17.2
+     },
+     {
+      "nom": "Dispel Magic",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": true,
+      "achete_par": 50,
+      "minute": 20.6
+     },
+     {
+      "nom": "Torment Pulse",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 46,
+      "minute": 21.0
+     },
+     {
+      "nom": "Superior Cooldown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 46,
+      "minute": 26.5
+     },
+     {
+      "nom": "Escalating Exposure",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 44,
+      "minute": 29.0
+     }
+    ]
+   },
+   "20": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 3044,
+      "winrate": 49.8,
+      "marge": 1.8
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 21519,
+      "winrate": 54.9,
+      "marge": 0.7
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 47871,
+      "winrate": 52.7,
+      "marge": 0.4
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Tesla Bullets",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 70,
+      "minute": 11.3
+     },
+     {
+      "nom": "Capacitor",
+      "cout": 6400,
+      "categorie": "weapon",
+      "actif": true,
+      "achete_par": 55,
+      "minute": 21.0
+     },
+     {
+      "nom": "Rapid Recharge",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 43,
+      "minute": 23.8
+     },
+     {
+      "nom": "Greater Expansion",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 56,
+      "minute": 26.4
+     },
+     {
+      "nom": "Superior Duration",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 35,
+      "minute": 27.9
+     },
+     {
+      "nom": "Healing Tempo",
+      "cout": 6400,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 35,
+      "minute": 28.7
+     }
+    ]
+   },
+   "25": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 1554,
+      "winrate": 49.9,
+      "marge": 2.5
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 10490,
+      "winrate": 43.6,
+      "marge": 1.0
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 25299,
+      "winrate": 45.6,
+      "marge": 0.6
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Mercurial Magnum",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 84,
+      "minute": 22.9
+     },
+     {
+      "nom": "Spirit Resilience",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 46,
+      "minute": 23.4
+     },
+     {
+      "nom": "Spiritual Overflow",
+      "cout": 6400,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 63,
+      "minute": 28.3
+     }
+    ]
+   },
+   "27": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 3392,
+      "winrate": 48.3,
+      "marge": 1.7
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 22511,
+      "winrate": 48.0,
+      "marge": 0.7
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 47761,
+      "winrate": 48.3,
+      "marge": 0.4
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Radiant Regeneration",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 45,
+      "minute": 13.9
+     },
+     {
+      "nom": "Spirit Snatch",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 71,
+      "minute": 17.7
+     },
+     {
+      "nom": "Lifestrike",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 51,
+      "minute": 17.8
+     },
+     {
+      "nom": "Torment Pulse",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 43,
+      "minute": 20.3
+     },
+     {
+      "nom": "Hunter's Aura",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 47,
+      "minute": 21.8
+     },
+     {
+      "nom": "Tankbuster",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 43,
+      "minute": 24.3
+     }
+    ]
+   },
+   "31": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 4591,
+      "winrate": 49.7,
+      "marge": 1.4
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 33983,
+      "winrate": 51.6,
+      "marge": 0.5
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 80700,
+      "winrate": 50.4,
+      "marge": 0.3
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Headhunter",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 72,
+      "minute": 16.9
+     },
+     {
+      "nom": "Stamina Mastery",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 84,
+      "minute": 20.0
+     },
+     {
+      "nom": "Tankbuster",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 95,
+      "minute": 20.3
+     },
+     {
+      "nom": "Superior Cooldown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 63,
+      "minute": 25.8
+     },
+     {
+      "nom": "Greater Expansion",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 73,
+      "minute": 26.7
+     },
+     {
+      "nom": "Boundless Spirit",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 70,
+      "minute": 28.7
+     }
+    ]
+   },
+   "35": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 1759,
+      "winrate": 44.5,
+      "marge": 2.3
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 12152,
+      "winrate": 43.1,
+      "marge": 0.9
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 30035,
+      "winrate": 47.0,
+      "marge": 0.6
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Express Shot",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 38,
+      "minute": 12.0
+     },
+     {
+      "nom": "Lifestrike",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 42,
+      "minute": 19.1
+     },
+     {
+      "nom": "Spirit Snatch",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 67,
+      "minute": 20.4
+     },
+     {
+      "nom": "Tankbuster",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 68,
+      "minute": 23.4
+     },
+     {
+      "nom": "Rapid Recharge",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 46,
+      "minute": 23.9
+     },
+     {
+      "nom": "Superior Cooldown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 58,
+      "minute": 26.7
+     }
+    ]
+   },
+   "50": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 2603,
+      "winrate": 46.2,
+      "marge": 1.9
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 18337,
+      "winrate": 40.9,
+      "marge": 0.7
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 46376,
+      "winrate": 46.7,
+      "marge": 0.5
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Cultist Sacrifice",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": true,
+      "achete_par": 77,
+      "minute": 11.0
+     },
+     {
+      "nom": "Tankbuster",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 93,
+      "minute": 19.6
+     },
+     {
+      "nom": "Majestic Leap",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": true,
+      "achete_par": 66,
+      "minute": 19.9
+     },
+     {
+      "nom": "Dispel Magic",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": true,
+      "achete_par": 37,
+      "minute": 21.2
+     },
+     {
+      "nom": "Superior Cooldown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 85,
+      "minute": 22.3
+     },
+     {
+      "nom": "Superior Duration",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 78,
+      "minute": 25.4
+     }
+    ]
+   },
+   "52": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 1640,
+      "winrate": 47.9,
+      "marge": 2.4
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 10619,
+      "winrate": 42.1,
+      "marge": 1.0
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 28133,
+      "winrate": 45.5,
+      "marge": 0.6
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Dispel Magic",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": true,
+      "achete_par": 41,
+      "minute": 20.5
+     },
+     {
+      "nom": "Toxic Bullets",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 85,
+      "minute": 21.2
+     },
+     {
+      "nom": "Ricochet",
+      "cout": 6400,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 87,
+      "minute": 24.3
+     },
+     {
+      "nom": "Superior Cooldown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 60,
+      "minute": 27.2
+     },
+     {
+      "nom": "Escalating Exposure",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 77,
+      "minute": 28.0
+     },
+     {
+      "nom": "Spiritual Overflow",
+      "cout": 6400,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 39,
+      "minute": 34.5
+     }
+    ]
+   },
+   "58": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 2220,
+      "winrate": 45.0,
+      "marge": 2.1
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 14970,
+      "winrate": 47.8,
+      "marge": 0.8
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 32390,
+      "winrate": 49.4,
+      "marge": 0.5
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Tesla Bullets",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 45,
+      "minute": 16.1
+     },
+     {
+      "nom": "Burst Fire",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 94,
+      "minute": 17.4
+     },
+     {
+      "nom": "Stamina Mastery",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 47,
+      "minute": 22.2
+     },
+     {
+      "nom": "Mercurial Magnum",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 77,
+      "minute": 25.0
+     },
+     {
+      "nom": "Ricochet",
+      "cout": 6400,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 45,
+      "minute": 28.9
+     }
+    ]
+   },
+   "60": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 1989,
+      "winrate": 47.8,
+      "marge": 2.2
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 14386,
+      "winrate": 46.8,
+      "marge": 0.8
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 33964,
+      "winrate": 48.3,
+      "marge": 0.5
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Rapid Recharge",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 75,
+      "minute": 12.6
+     },
+     {
+      "nom": "Greater Expansion",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 86,
+      "minute": 23.0
+     },
+     {
+      "nom": "Superior Duration",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 77,
+      "minute": 24.7
+     },
+     {
+      "nom": "Boundless Spirit",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 65,
+      "minute": 26.4
+     },
+     {
+      "nom": "Superior Cooldown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 58,
+      "minute": 27.3
+     },
+     {
+      "nom": "Transcendent Cooldown",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 37,
+      "minute": 34.5
+     }
+    ]
+   },
+   "63": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 4771,
+      "winrate": 47.1,
+      "marge": 1.4
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 32075,
+      "winrate": 44.8,
+      "marge": 0.5
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 77967,
+      "winrate": 47.9,
+      "marge": 0.4
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Dispel Magic",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": true,
+      "achete_par": 61,
+      "minute": 16.6
+     },
+     {
+      "nom": "Stamina Mastery",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 93,
+      "minute": 18.2
+     },
+     {
+      "nom": "Tankbuster",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 95,
+      "minute": 19.1
+     },
+     {
+      "nom": "Boundless Spirit",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 88,
+      "minute": 25.0
+     },
+     {
+      "nom": "Superior Cooldown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 55,
+      "minute": 28.0
+     },
+     {
+      "nom": "Spirit Rend",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 49,
+      "minute": 28.6
+     }
+    ]
+   },
+   "64": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 5042,
+      "winrate": 47.7,
+      "marge": 1.4
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 35161,
+      "winrate": 48.7,
+      "marge": 0.5
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 81014,
+      "winrate": 49.8,
+      "marge": 0.3
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Spirit Snatch",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 60,
+      "minute": 15.0
+     },
+     {
+      "nom": "Fortitude",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 46,
+      "minute": 17.6
+     },
+     {
+      "nom": "Point Blank",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 42,
+      "minute": 19.0
+     },
+     {
+      "nom": "Tankbuster",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 49,
+      "minute": 21.6
+     },
+     {
+      "nom": "Hunter's Aura",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 60,
+      "minute": 22.6
+     },
+     {
+      "nom": "Burst Fire",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 48,
+      "minute": 23.6
+     }
+    ]
+   },
+   "65": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 5135,
+      "winrate": 51.8,
+      "marge": 1.4
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 34913,
+      "winrate": 47.1,
+      "marge": 0.5
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 81952,
+      "winrate": 46.1,
+      "marge": 0.3
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Fortitude",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 46,
+      "minute": 16.3
+     },
+     {
+      "nom": "Hollow Point",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 54,
+      "minute": 19.7
+     },
+     {
+      "nom": "Point Blank",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 37,
+      "minute": 20.8
+     },
+     {
+      "nom": "Spirit Resilience",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 41,
+      "minute": 24.7
+     },
+     {
+      "nom": "Ballistic Enchantment",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 35,
+      "minute": 24.8
+     },
+     {
+      "nom": "Rapid Recharge",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 43,
+      "minute": 26.0
+     }
+    ]
+   },
+   "66": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 3316,
+      "winrate": 47.5,
+      "marge": 1.7
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 23389,
+      "winrate": 52.8,
+      "marge": 0.6
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 56019,
+      "winrate": 56.1,
+      "marge": 0.4
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Torment Pulse",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 78,
+      "minute": 12.1
+     },
+     {
+      "nom": "Infuser",
+      "cout": 6400,
+      "categorie": "vitality",
+      "actif": true,
+      "achete_par": 80,
+      "minute": 22.4
+     },
+     {
+      "nom": "Warp Stone",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": true,
+      "achete_par": 37,
+      "minute": 25.5
+     },
+     {
+      "nom": "Escalating Exposure",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 80,
+      "minute": 25.7
+     },
+     {
+      "nom": "Greater Expansion",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 70,
+      "minute": 26.6
+     },
+     {
+      "nom": "Superior Cooldown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 48,
+      "minute": 28.3
+     }
+    ]
+   },
+   "67": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 3978,
+      "winrate": 58.3,
+      "marge": 1.6
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 28689,
+      "winrate": 59.4,
+      "marge": 0.6
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 68683,
+      "winrate": 55.6,
+      "marge": 0.4
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Knockdown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": true,
+      "achete_par": 41,
+      "minute": 19.9
+     },
+     {
+      "nom": "Rapid Recharge",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 65,
+      "minute": 22.6
+     },
+     {
+      "nom": "Superior Cooldown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 68,
+      "minute": 23.4
+     },
+     {
+      "nom": "Greater Expansion",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 74,
+      "minute": 25.5
+     },
+     {
+      "nom": "Divine Barrier",
+      "cout": 6400,
+      "categorie": "vitality",
+      "actif": true,
+      "achete_par": 53,
+      "minute": 27.8
+     },
+     {
+      "nom": "Superior Duration",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 56,
+      "minute": 28.0
+     }
+    ]
+   },
+   "69": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 2002,
+      "winrate": 43.5,
+      "marge": 2.2
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 13746,
+      "winrate": 41.5,
+      "marge": 0.8
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 37792,
+      "winrate": 46.1,
+      "marge": 0.5
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Rapid Recharge",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 82,
+      "minute": 18.0
+     },
+     {
+      "nom": "Fortitude",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 36,
+      "minute": 19.0
+     },
+     {
+      "nom": "Tankbuster",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 79,
+      "minute": 22.2
+     },
+     {
+      "nom": "Greater Expansion",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 77,
+      "minute": 23.6
+     },
+     {
+      "nom": "Vortex Web",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": true,
+      "achete_par": 46,
+      "minute": 26.2
+     },
+     {
+      "nom": "Superior Cooldown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 53,
+      "minute": 27.4
+     }
+    ]
+   },
+   "72": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 3767,
+      "winrate": 42.7,
+      "marge": 1.6
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 24963,
+      "winrate": 46.5,
+      "marge": 0.6
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 58814,
+      "winrate": 48.4,
+      "marge": 0.4
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Cultist Sacrifice",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": true,
+      "achete_par": 37,
+      "minute": 12.6
+     },
+     {
+      "nom": "Lifestrike",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 75,
+      "minute": 17.6
+     },
+     {
+      "nom": "Spirit Snatch",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 86,
+      "minute": 18.9
+     },
+     {
+      "nom": "Point Blank",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 57,
+      "minute": 21.2
+     },
+     {
+      "nom": "Rapid Recharge",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 55,
+      "minute": 24.9
+     },
+     {
+      "nom": "Spirit Resilience",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 51,
+      "minute": 26.4
+     }
+    ]
+   },
+   "76": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 4815,
+      "winrate": 57.5,
+      "marge": 1.4
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 31477,
+      "winrate": 60.8,
+      "marge": 0.6
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 73668,
+      "winrate": 54.6,
+      "marge": 0.4
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Heroic Aura",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": true,
+      "achete_par": 46,
+      "minute": 18.4
+     },
+     {
+      "nom": "Toxic Bullets",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 51,
+      "minute": 21.3
+     },
+     {
+      "nom": "Stamina Mastery",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 45,
+      "minute": 21.7
+     },
+     {
+      "nom": "Superior Duration",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 54,
+      "minute": 22.3
+     },
+     {
+      "nom": "Superior Cooldown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 38,
+      "minute": 25.0
+     },
+     {
+      "nom": "Echo Shard",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": true,
+      "achete_par": 39,
+      "minute": 26.1
+     }
+    ]
+   },
+   "77": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 3285,
+      "winrate": 51.1,
+      "marge": 1.7
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 21087,
+      "winrate": 51.4,
+      "marge": 0.7
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 50137,
+      "winrate": 49.4,
+      "marge": 0.4
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Radiant Regeneration",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 44,
+      "minute": 15.6
+     },
+     {
+      "nom": "Torment Pulse",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 41,
+      "minute": 20.3
+     },
+     {
+      "nom": "Spirit Snatch",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 44,
+      "minute": 20.5
+     },
+     {
+      "nom": "Stamina Mastery",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 51,
+      "minute": 22.7
+     },
+     {
+      "nom": "Tankbuster",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 82,
+      "minute": 23.0
+     },
+     {
+      "nom": "Boundless Spirit",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 79,
+      "minute": 25.1
+     }
+    ]
+   },
+   "79": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 4825,
+      "winrate": 44.4,
+      "marge": 1.4
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 33852,
+      "winrate": 44.3,
+      "marge": 0.5
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 77058,
+      "winrate": 47.2,
+      "marge": 0.4
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Rapid Recharge",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 67,
+      "minute": 20.4
+     },
+     {
+      "nom": "Tankbuster",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 43,
+      "minute": 21.5
+     },
+     {
+      "nom": "Superior Cooldown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 57,
+      "minute": 24.5
+     },
+     {
+      "nom": "Greater Expansion",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 44,
+      "minute": 27.0
+     },
+     {
+      "nom": "Superior Duration",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 44,
+      "minute": 27.0
+     },
+     {
+      "nom": "Boundless Spirit",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 48,
+      "minute": 31.4
+     }
+    ]
+   },
+   "80": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 3663,
+      "winrate": 48.7,
+      "marge": 1.6
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 23298,
+      "winrate": 44.6,
+      "marge": 0.6
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 55298,
+      "winrate": 46.7,
+      "marge": 0.4
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Lifestrike",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 67,
+      "minute": 16.8
+     },
+     {
+      "nom": "Hunter's Aura",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 71,
+      "minute": 17.6
+     },
+     {
+      "nom": "Weighted Shots",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 67,
+      "minute": 19.5
+     },
+     {
+      "nom": "Point Blank",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 42,
+      "minute": 21.5
+     },
+     {
+      "nom": "Spirit Resilience",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 51,
+      "minute": 26.1
+     },
+     {
+      "nom": "Berserker",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 64,
+      "minute": 26.4
+     }
+    ]
+   },
+   "81": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 3534,
+      "winrate": 50.1,
+      "marge": 1.6
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 23052,
+      "winrate": 49.9,
+      "marge": 0.6
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 55821,
+      "winrate": 48.6,
+      "marge": 0.4
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Radiant Regeneration",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 86,
+      "minute": 11.8
+     },
+     {
+      "nom": "Torment Pulse",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 78,
+      "minute": 18.5
+     },
+     {
+      "nom": "Stamina Mastery",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 54,
+      "minute": 22.9
+     },
+     {
+      "nom": "Greater Expansion",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 78,
+      "minute": 23.2
+     },
+     {
+      "nom": "Superior Cooldown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 38,
+      "minute": 26.7
+     },
+     {
+      "nom": "Witchmail",
+      "cout": 6400,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 46,
+      "minute": 28.6
+     }
+    ]
+   },
+   "84": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 4370,
+      "winrate": 62.9,
+      "marge": 1.5
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 33985,
+      "winrate": 66.6,
+      "marge": 0.5
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 65135,
+      "winrate": 57.7,
+      "marge": 0.4
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Cultist Sacrifice",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": true,
+      "achete_par": 44,
+      "minute": 12.0
+     },
+     {
+      "nom": "Fortitude",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 77,
+      "minute": 17.3
+     },
+     {
+      "nom": "Ballistic Enchantment",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 41,
+      "minute": 21.8
+     },
+     {
+      "nom": "Berserker",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 59,
+      "minute": 24.1
+     },
+     {
+      "nom": "Spirit Resilience",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 48,
+      "minute": 24.8
+     },
+     {
+      "nom": "Siphon Bullets",
+      "cout": 6400,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 37,
+      "minute": 31.7
+     }
+    ]
+   }
+  },
+  "initiate_sentinel": {
+   "1": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 448,
+      "winrate": 47.8,
+      "marge": 4.6
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 3430,
+      "winrate": 48.6,
+      "marge": 1.7
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 9059,
+      "winrate": 47.3,
+      "marge": 1.0
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Rapid Recharge",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 38,
+      "minute": 19.3
+     },
+     {
+      "nom": "Toxic Bullets",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 70,
+      "minute": 20.8
+     },
+     {
+      "nom": "Superior Duration",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 83,
+      "minute": 22.2
+     },
+     {
+      "nom": "Ricochet",
+      "cout": 6400,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 56,
+      "minute": 28.1
+     },
+     {
+      "nom": "Escalating Exposure",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 74,
+      "minute": 28.3
+     },
+     {
+      "nom": "Spiritual Overflow",
+      "cout": 6400,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 55,
+      "minute": 29.5
+     }
+    ]
+   },
+   "2": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 339,
+      "winrate": 49.6,
+      "marge": 5.3
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 2662,
+      "winrate": 56.7,
+      "marge": 1.9
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 7113,
+      "winrate": 52.5,
+      "marge": 1.2
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Cultist Sacrifice",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": true,
+      "achete_par": 45,
+      "minute": 11.3
+     },
+     {
+      "nom": "Rapid Recharge",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 35,
+      "minute": 23.0
+     },
+     {
+      "nom": "Superior Duration",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 68,
+      "minute": 23.8
+     },
+     {
+      "nom": "Greater Expansion",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 49,
+      "minute": 25.5
+     },
+     {
+      "nom": "Escalating Exposure",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 85,
+      "minute": 25.5
+     },
+     {
+      "nom": "Superior Cooldown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 40,
+      "minute": 26.3
+     }
+    ]
+   },
+   "3": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 256,
+      "winrate": 54.7,
+      "marge": 6.1
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 2059,
+      "winrate": 50.7,
+      "marge": 2.2
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 5151,
+      "winrate": 51.1,
+      "marge": 1.4
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Rapid Recharge",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 89,
+      "minute": 13.5
+     },
+     {
+      "nom": "Sharpshooter",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 88,
+      "minute": 19.0
+     },
+     {
+      "nom": "Counterspell",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 58,
+      "minute": 21.3
+     },
+     {
+      "nom": "Burst Fire",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 73,
+      "minute": 22.8
+     },
+     {
+      "nom": "Spiritual Overflow",
+      "cout": 6400,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 43,
+      "minute": 30.7
+     },
+     {
+      "nom": "Mercurial Magnum",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 48,
+      "minute": 32.3
+     }
+    ]
+   },
+   "4": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 296,
+      "winrate": 51.4,
+      "marge": 5.7
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 2240,
+      "winrate": 52.8,
+      "marge": 2.1
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 6173,
+      "winrate": 50.3,
+      "marge": 1.2
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Radiant Regeneration",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 89,
+      "minute": 13.5
+     },
+     {
+      "nom": "Tankbuster",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 73,
+      "minute": 18.9
+     },
+     {
+      "nom": "Superior Cooldown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 62,
+      "minute": 23.4
+     },
+     {
+      "nom": "Spirit Resilience",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 47,
+      "minute": 24.3
+     },
+     {
+      "nom": "Mystic Reverb",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 42,
+      "minute": 26.2
+     },
+     {
+      "nom": "Greater Expansion",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 56,
+      "minute": 27.0
+     }
+    ]
+   },
+   "6": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 239,
+      "winrate": 46.9,
+      "marge": 6.3
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1913,
+      "winrate": 52.1,
+      "marge": 2.2
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 4786,
+      "winrate": 52.1,
+      "marge": 1.4
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Hunter's Aura",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 54,
+      "minute": 19.7
+     },
+     {
+      "nom": "Lifestrike",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 61,
+      "minute": 20.5
+     },
+     {
+      "nom": "Spirit Snatch",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 53,
+      "minute": 21.4
+     },
+     {
+      "nom": "Point Blank",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 49,
+      "minute": 23.3
+     },
+     {
+      "nom": "Superior Duration",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 64,
+      "minute": 23.9
+     },
+     {
+      "nom": "Spirit Resilience",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 46,
+      "minute": 25.9
+     }
+    ]
+   },
+   "7": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 298,
+      "winrate": 48.0,
+      "marge": 5.7
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 2438,
+      "winrate": 51.1,
+      "marge": 2.0
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 5723,
+      "winrate": 48.6,
+      "marge": 1.3
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Tesla Bullets",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 71,
+      "minute": 13.9
+     },
+     {
+      "nom": "Surge of Power",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 83,
+      "minute": 17.0
+     },
+     {
+      "nom": "Dispel Magic",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": true,
+      "achete_par": 40,
+      "minute": 21.5
+     },
+     {
+      "nom": "Ricochet",
+      "cout": 6400,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 83,
+      "minute": 23.8
+     },
+     {
+      "nom": "Mercurial Magnum",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 85,
+      "minute": 25.3
+     },
+     {
+      "nom": "Spiritual Overflow",
+      "cout": 6400,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 54,
+      "minute": 31.2
+     }
+    ]
+   },
+   "8": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 131,
+      "winrate": 47.3,
+      "marge": 8.6
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1072,
+      "winrate": 44.7,
+      "marge": 3.0
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 2971,
+      "winrate": 48.2,
+      "marge": 1.8
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Heroic Aura",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": true,
+      "achete_par": 48,
+      "minute": 19.4
+     },
+     {
+      "nom": "Rapid Recharge",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 67,
+      "minute": 22.2
+     },
+     {
+      "nom": "Superior Cooldown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 53,
+      "minute": 26.4
+     },
+     {
+      "nom": "Escalating Exposure",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 65,
+      "minute": 26.6
+     },
+     {
+      "nom": "Greater Expansion",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 51,
+      "minute": 27.1
+     },
+     {
+      "nom": "Boundless Spirit",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 38,
+      "minute": 32.7
+     }
+    ]
+   },
+   "10": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 201,
+      "winrate": 38.8,
+      "marge": 6.9
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1610,
+      "winrate": 41.0,
+      "marge": 2.4
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 4318,
+      "winrate": 46.0,
+      "marge": 1.5
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Headhunter",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 43,
+      "minute": 13.7
+     },
+     {
+      "nom": "Sharpshooter",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 75,
+      "minute": 14.9
+     },
+     {
+      "nom": "Tankbuster",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 76,
+      "minute": 19.8
+     },
+     {
+      "nom": "Express Shot",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 70,
+      "minute": 20.0
+     },
+     {
+      "nom": "Stamina Mastery",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 56,
+      "minute": 24.7
+     },
+     {
+      "nom": "Hollow Point",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 39,
+      "minute": 25.0
+     }
+    ]
+   },
+   "11": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 248,
+      "winrate": 52.8,
+      "marge": 6.2
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 2022,
+      "winrate": 53.9,
+      "marge": 2.2
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 5235,
+      "winrate": 50.7,
+      "marge": 1.4
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Headhunter",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 40,
+      "minute": 13.1
+     },
+     {
+      "nom": "Rapid Recharge",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 77,
+      "minute": 17.2
+     },
+     {
+      "nom": "Warp Stone",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": true,
+      "achete_par": 38,
+      "minute": 20.4
+     },
+     {
+      "nom": "Tankbuster",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 45,
+      "minute": 21.9
+     },
+     {
+      "nom": "Superior Cooldown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 71,
+      "minute": 24.5
+     },
+     {
+      "nom": "Greater Expansion",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 75,
+      "minute": 25.3
+     }
+    ]
+   },
+   "12": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 160,
+      "winrate": 48.1,
+      "marge": 7.7
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1196,
+      "winrate": 52.9,
+      "marge": 2.8
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 3032,
+      "winrate": 52.8,
+      "marge": 1.8
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Rapid Recharge",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 74,
+      "minute": 20.4
+     },
+     {
+      "nom": "Superior Cooldown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 63,
+      "minute": 25.3
+     },
+     {
+      "nom": "Escalating Exposure",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 69,
+      "minute": 26.9
+     },
+     {
+      "nom": "Greater Expansion",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 57,
+      "minute": 28.0
+     },
+     {
+      "nom": "Boundless Spirit",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 74,
+      "minute": 28.5
+     },
+     {
+      "nom": "Superior Duration",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 46,
+      "minute": 28.6
+     }
+    ]
+   },
+   "13": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 480,
+      "winrate": 50.8,
+      "marge": 4.5
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 3861,
+      "winrate": 51.2,
+      "marge": 1.6
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 9580,
+      "winrate": 54.2,
+      "marge": 1.0
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Surge of Power",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 62,
+      "minute": 17.7
+     },
+     {
+      "nom": "Fortitude",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 39,
+      "minute": 18.1
+     },
+     {
+      "nom": "Burst Fire",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 77,
+      "minute": 20.4
+     },
+     {
+      "nom": "Ricochet",
+      "cout": 6400,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 80,
+      "minute": 23.3
+     },
+     {
+      "nom": "Silencer",
+      "cout": 6400,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 48,
+      "minute": 31.9
+     }
+    ]
+   },
+   "14": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 149,
+      "winrate": 46.3,
+      "marge": 8.0
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1246,
+      "winrate": 49.1,
+      "marge": 2.8
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 3285,
+      "winrate": 49.0,
+      "marge": 1.7
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Rapid Recharge",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 94,
+      "minute": 14.4
+     },
+     {
+      "nom": "Headhunter",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 46,
+      "minute": 14.7
+     },
+     {
+      "nom": "Surge of Power",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 41,
+      "minute": 19.6
+     },
+     {
+      "nom": "Stamina Mastery",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 83,
+      "minute": 21.2
+     },
+     {
+      "nom": "Tankbuster",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 60,
+      "minute": 23.7
+     },
+     {
+      "nom": "Superior Duration",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 43,
+      "minute": 26.5
+     }
+    ]
+   },
+   "15": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 363,
+      "winrate": 49.6,
+      "marge": 5.1
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 2757,
+      "winrate": 44.6,
+      "marge": 1.9
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 6801,
+      "winrate": 47.0,
+      "marge": 1.2
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Spirit Snatch",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 50,
+      "minute": 20.7
+     },
+     {
+      "nom": "Tankbuster",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 55,
+      "minute": 22.5
+     },
+     {
+      "nom": "Echo Shard",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": true,
+      "achete_par": 43,
+      "minute": 23.0
+     },
+     {
+      "nom": "Superior Cooldown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 38,
+      "minute": 26.5
+     },
+     {
+      "nom": "Boundless Spirit",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 50,
+      "minute": 29.7
+     },
+     {
+      "nom": "Mystic Reverb",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 40,
+      "minute": 30.6
+     }
+    ]
+   },
+   "16": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 168,
+      "winrate": 50.6,
+      "marge": 7.6
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1419,
+      "winrate": 49.9,
+      "marge": 2.6
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 3571,
+      "winrate": 50.4,
+      "marge": 1.6
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Spirit Snatch",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 93,
+      "minute": 14.5
+     },
+     {
+      "nom": "Hunter's Aura",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 48,
+      "minute": 19.2
+     },
+     {
+      "nom": "Torment Pulse",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 54,
+      "minute": 21.3
+     },
+     {
+      "nom": "Arctic Blast",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": true,
+      "achete_par": 88,
+      "minute": 22.4
+     },
+     {
+      "nom": "Boundless Spirit",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 65,
+      "minute": 29.1
+     },
+     {
+      "nom": "Superior Cooldown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 46,
+      "minute": 29.5
+     }
+    ]
+   },
+   "17": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 122,
+      "winrate": 45.9,
+      "marge": 8.9
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1001,
+      "winrate": 42.2,
+      "marge": 3.1
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 2625,
+      "winrate": 48.3,
+      "marge": 1.9
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Sharpshooter",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 45,
+      "minute": 18.1
+     },
+     {
+      "nom": "Tankbuster",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 84,
+      "minute": 19.2
+     },
+     {
+      "nom": "Rapid Recharge",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 84,
+      "minute": 19.9
+     },
+     {
+      "nom": "Stamina Mastery",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 63,
+      "minute": 22.5
+     },
+     {
+      "nom": "Superior Cooldown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 65,
+      "minute": 24.3
+     },
+     {
+      "nom": "Boundless Spirit",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 75,
+      "minute": 26.8
+     }
+    ]
+   },
+   "18": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 244,
+      "winrate": 57.0,
+      "marge": 6.3
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 2108,
+      "winrate": 49.1,
+      "marge": 2.1
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 5427,
+      "winrate": 50.5,
+      "marge": 1.3
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Torment Pulse",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 92,
+      "minute": 14.9
+     },
+     {
+      "nom": "Tankbuster",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 78,
+      "minute": 23.1
+     },
+     {
+      "nom": "Superior Duration",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 54,
+      "minute": 24.3
+     },
+     {
+      "nom": "Superior Cooldown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 70,
+      "minute": 24.6
+     },
+     {
+      "nom": "Spirit Resilience",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 37,
+      "minute": 25.2
+     },
+     {
+      "nom": "Scourge",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": true,
+      "achete_par": 38,
+      "minute": 30.4
+     }
+    ]
+   },
+   "19": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 213,
+      "winrate": 52.1,
+      "marge": 6.7
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1667,
+      "winrate": 38.6,
+      "marge": 2.4
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 4789,
+      "winrate": 44.9,
+      "marge": 1.4
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Radiant Regeneration",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 95,
+      "minute": 11.9
+     },
+     {
+      "nom": "Torment Pulse",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 52,
+      "minute": 20.1
+     },
+     {
+      "nom": "Dispel Magic",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": true,
+      "achete_par": 46,
+      "minute": 21.4
+     },
+     {
+      "nom": "Superior Cooldown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 49,
+      "minute": 26.5
+     },
+     {
+      "nom": "Escalating Exposure",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 48,
+      "minute": 28.9
+     }
+    ]
+   },
+   "20": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 227,
+      "winrate": 52.4,
+      "marge": 6.5
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1800,
+      "winrate": 55.9,
+      "marge": 2.3
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 4524,
+      "winrate": 53.7,
+      "marge": 1.5
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Tesla Bullets",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 64,
+      "minute": 11.2
+     },
+     {
+      "nom": "Capacitor",
+      "cout": 6400,
+      "categorie": "weapon",
+      "actif": true,
+      "achete_par": 48,
+      "minute": 21.4
+     },
+     {
+      "nom": "Rapid Recharge",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 48,
+      "minute": 23.6
+     },
+     {
+      "nom": "Greater Expansion",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 58,
+      "minute": 26.5
+     },
+     {
+      "nom": "Superior Duration",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 37,
+      "minute": 27.7
+     },
+     {
+      "nom": "Healing Tempo",
+      "cout": 6400,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 35,
+      "minute": 28.6
+     }
+    ]
+   },
+   "25": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 120,
+      "winrate": 44.2,
+      "marge": 8.9
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 969,
+      "winrate": 40.6,
+      "marge": 3.1
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 2586,
+      "winrate": 45.0,
+      "marge": 1.9
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Mercurial Magnum",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 84,
+      "minute": 23.2
+     },
+     {
+      "nom": "Spirit Resilience",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 45,
+      "minute": 23.8
+     },
+     {
+      "nom": "Spiritual Overflow",
+      "cout": 6400,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 60,
+      "minute": 28.5
+     }
+    ]
+   },
+   "27": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 228,
+      "winrate": 48.7,
+      "marge": 6.5
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1861,
+      "winrate": 47.4,
+      "marge": 2.3
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 4561,
+      "winrate": 48.8,
+      "marge": 1.5
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Radiant Regeneration",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 36,
+      "minute": 15.2
+     },
+     {
+      "nom": "Spirit Snatch",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 76,
+      "minute": 17.3
+     },
+     {
+      "nom": "Lifestrike",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 47,
+      "minute": 17.9
+     },
+     {
+      "nom": "Torment Pulse",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 46,
+      "minute": 19.3
+     },
+     {
+      "nom": "Hunter's Aura",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 39,
+      "minute": 21.7
+     },
+     {
+      "nom": "Tankbuster",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 47,
+      "minute": 24.2
+     }
+    ]
+   },
+   "31": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 382,
+      "winrate": 46.9,
+      "marge": 5.0
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 2832,
+      "winrate": 52.6,
+      "marge": 1.8
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 7626,
+      "winrate": 50.9,
+      "marge": 1.1
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Headhunter",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 64,
+      "minute": 17.4
+     },
+     {
+      "nom": "Tankbuster",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 94,
+      "minute": 20.1
+     },
+     {
+      "nom": "Stamina Mastery",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 83,
+      "minute": 20.2
+     },
+     {
+      "nom": "Superior Cooldown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 62,
+      "minute": 25.5
+     },
+     {
+      "nom": "Greater Expansion",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 71,
+      "minute": 26.6
+     },
+     {
+      "nom": "Boundless Spirit",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 68,
+      "minute": 28.7
+     }
+    ]
+   },
+   "35": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 129,
+      "winrate": 45.0,
+      "marge": 8.6
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 980,
+      "winrate": 43.7,
+      "marge": 3.1
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 2665,
+      "winrate": 48.5,
+      "marge": 1.9
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Lifestrike",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 52,
+      "minute": 19.2
+     },
+     {
+      "nom": "Spirit Snatch",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 66,
+      "minute": 20.7
+     },
+     {
+      "nom": "Rapid Recharge",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 54,
+      "minute": 23.7
+     },
+     {
+      "nom": "Tankbuster",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 63,
+      "minute": 24.2
+     },
+     {
+      "nom": "Crushing Fists",
+      "cout": 6400,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 48,
+      "minute": 26.2
+     },
+     {
+      "nom": "Superior Cooldown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 54,
+      "minute": 27.1
+     }
+    ]
+   },
+   "50": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 157,
+      "winrate": 47.1,
+      "marge": 7.8
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1193,
+      "winrate": 42.2,
+      "marge": 2.8
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 3727,
+      "winrate": 45.6,
+      "marge": 1.6
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Cultist Sacrifice",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": true,
+      "achete_par": 73,
+      "minute": 10.8
+     },
+     {
+      "nom": "Majestic Leap",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": true,
+      "achete_par": 69,
+      "minute": 19.6
+     },
+     {
+      "nom": "Tankbuster",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 92,
+      "minute": 19.7
+     },
+     {
+      "nom": "Superior Cooldown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 84,
+      "minute": 22.3
+     },
+     {
+      "nom": "Superior Duration",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 75,
+      "minute": 25.8
+     },
+     {
+      "nom": "Spirit Burn",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 80,
+      "minute": 27.5
+     }
+    ]
+   },
+   "52": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 74,
+      "winrate": 48.6,
+      "marge": 11.4
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 653,
+      "winrate": 43.2,
+      "marge": 3.8
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 1887,
+      "winrate": 44.9,
+      "marge": 2.3
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Toxic Bullets",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 84,
+      "minute": 21.6
+     },
+     {
+      "nom": "Dispel Magic",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": true,
+      "achete_par": 37,
+      "minute": 21.9
+     },
+     {
+      "nom": "Ricochet",
+      "cout": 6400,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 89,
+      "minute": 23.3
+     },
+     {
+      "nom": "Superior Cooldown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 55,
+      "minute": 27.3
+     },
+     {
+      "nom": "Escalating Exposure",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 77,
+      "minute": 28.6
+     },
+     {
+      "nom": "Spiritual Overflow",
+      "cout": 6400,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 40,
+      "minute": 34.7
+     }
+    ]
+   },
+   "58": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 121,
+      "winrate": 49.6,
+      "marge": 8.9
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1069,
+      "winrate": 50.2,
+      "marge": 3.0
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 2583,
+      "winrate": 50.2,
+      "marge": 1.9
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Tesla Bullets",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 46,
+      "minute": 15.9
+     },
+     {
+      "nom": "Burst Fire",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 94,
+      "minute": 17.2
+     },
+     {
+      "nom": "Stamina Mastery",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 40,
+      "minute": 22.8
+     },
+     {
+      "nom": "Point Blank",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 40,
+      "minute": 23.0
+     },
+     {
+      "nom": "Mercurial Magnum",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 78,
+      "minute": 24.8
+     },
+     {
+      "nom": "Ricochet",
+      "cout": 6400,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 45,
+      "minute": 29.2
+     }
+    ]
+   },
+   "60": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 100,
+      "winrate": 50.0,
+      "marge": 9.8
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 934,
+      "winrate": 50.6,
+      "marge": 3.2
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 2403,
+      "winrate": 47.8,
+      "marge": 2.0
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Rapid Recharge",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 78,
+      "minute": 12.6
+     },
+     {
+      "nom": "Greater Expansion",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 82,
+      "minute": 24.0
+     },
+     {
+      "nom": "Superior Duration",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 70,
+      "minute": 25.2
+     },
+     {
+      "nom": "Boundless Spirit",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 71,
+      "minute": 25.9
+     },
+     {
+      "nom": "Superior Cooldown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 55,
+      "minute": 27.5
+     }
+    ]
+   },
+   "63": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 324,
+      "winrate": 52.2,
+      "marge": 5.4
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 2458,
+      "winrate": 44.2,
+      "marge": 2.0
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 6775,
+      "winrate": 48.0,
+      "marge": 1.2
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Dispel Magic",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": true,
+      "achete_par": 62,
+      "minute": 17.4
+     },
+     {
+      "nom": "Stamina Mastery",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 90,
+      "minute": 18.5
+     },
+     {
+      "nom": "Tankbuster",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 94,
+      "minute": 19.0
+     },
+     {
+      "nom": "Boundless Spirit",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 87,
+      "minute": 25.1
+     },
+     {
+      "nom": "Superior Cooldown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 56,
+      "minute": 27.9
+     },
+     {
+      "nom": "Spirit Rend",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 47,
+      "minute": 28.6
+     }
+    ]
+   },
+   "64": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 355,
+      "winrate": 50.7,
+      "marge": 5.2
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 2881,
+      "winrate": 48.1,
+      "marge": 1.8
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 7411,
+      "winrate": 50.5,
+      "marge": 1.1
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Spirit Snatch",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 51,
+      "minute": 15.9
+     },
+     {
+      "nom": "Fortitude",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 47,
+      "minute": 17.3
+     },
+     {
+      "nom": "Point Blank",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 49,
+      "minute": 19.0
+     },
+     {
+      "nom": "Tankbuster",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 43,
+      "minute": 21.6
+     },
+     {
+      "nom": "Hunter's Aura",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 56,
+      "minute": 22.4
+     },
+     {
+      "nom": "Burst Fire",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 54,
+      "minute": 23.0
+     }
+    ]
+   },
+   "65": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 269,
+      "winrate": 51.3,
+      "marge": 6.0
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 2148,
+      "winrate": 48.5,
+      "marge": 2.1
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 5540,
+      "winrate": 45.9,
+      "marge": 1.3
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Fortitude",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 38,
+      "minute": 16.4
+     },
+     {
+      "nom": "Hollow Point",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 54,
+      "minute": 19.9
+     },
+     {
+      "nom": "Point Blank",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 43,
+      "minute": 20.2
+     },
+     {
+      "nom": "Spirit Resilience",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 46,
+      "minute": 24.1
+     },
+     {
+      "nom": "Rapid Recharge",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 39,
+      "minute": 26.4
+     },
+     {
+      "nom": "Vampiric Burst",
+      "cout": 6400,
+      "categorie": "vitality",
+      "actif": true,
+      "achete_par": 61,
+      "minute": 29.2
+     }
+    ]
+   },
+   "66": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 242,
+      "winrate": 46.3,
+      "marge": 6.3
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 2289,
+      "winrate": 53.4,
+      "marge": 2.0
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 5947,
+      "winrate": 56.3,
+      "marge": 1.3
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Torment Pulse",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 78,
+      "minute": 12.0
+     },
+     {
+      "nom": "Infuser",
+      "cout": 6400,
+      "categorie": "vitality",
+      "actif": true,
+      "achete_par": 80,
+      "minute": 22.3
+     },
+     {
+      "nom": "Escalating Exposure",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 81,
+      "minute": 25.7
+     },
+     {
+      "nom": "Warp Stone",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": true,
+      "achete_par": 36,
+      "minute": 25.7
+     },
+     {
+      "nom": "Greater Expansion",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 71,
+      "minute": 27.0
+     },
+     {
+      "nom": "Superior Cooldown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 48,
+      "minute": 28.5
+     }
+    ]
+   },
+   "67": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 346,
+      "winrate": 59.2,
+      "marge": 5.3
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 2797,
+      "winrate": 58.1,
+      "marge": 1.9
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 7764,
+      "winrate": 55.9,
+      "marge": 1.1
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Knockdown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": true,
+      "achete_par": 45,
+      "minute": 19.6
+     },
+     {
+      "nom": "Rapid Recharge",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 68,
+      "minute": 22.2
+     },
+     {
+      "nom": "Superior Cooldown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 69,
+      "minute": 23.6
+     },
+     {
+      "nom": "Greater Expansion",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 74,
+      "minute": 25.5
+     },
+     {
+      "nom": "Superior Duration",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 50,
+      "minute": 28.2
+     },
+     {
+      "nom": "Divine Barrier",
+      "cout": 6400,
+      "categorie": "vitality",
+      "actif": true,
+      "achete_par": 48,
+      "minute": 28.4
+     }
+    ]
+   },
+   "69": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 137,
+      "winrate": 40.9,
+      "marge": 8.4
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1119,
+      "winrate": 38.6,
+      "marge": 2.9
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 3292,
+      "winrate": 45.3,
+      "marge": 1.7
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Rapid Recharge",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 82,
+      "minute": 18.6
+     },
+     {
+      "nom": "Tankbuster",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 79,
+      "minute": 21.8
+     },
+     {
+      "nom": "Greater Expansion",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 77,
+      "minute": 23.2
+     },
+     {
+      "nom": "Vortex Web",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": true,
+      "achete_par": 46,
+      "minute": 26.0
+     },
+     {
+      "nom": "Superior Cooldown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 53,
+      "minute": 27.3
+     },
+     {
+      "nom": "Boundless Spirit",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 61,
+      "minute": 29.5
+     }
+    ]
+   },
+   "72": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 274,
+      "winrate": 47.1,
+      "marge": 5.9
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1969,
+      "winrate": 48.8,
+      "marge": 2.2
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 5378,
+      "winrate": 47.6,
+      "marge": 1.3
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Lifestrike",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 74,
+      "minute": 18.4
+     },
+     {
+      "nom": "Spirit Snatch",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 89,
+      "minute": 18.8
+     },
+     {
+      "nom": "Point Blank",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 59,
+      "minute": 20.9
+     },
+     {
+      "nom": "Rapid Recharge",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 52,
+      "minute": 25.5
+     },
+     {
+      "nom": "Spirit Resilience",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 54,
+      "minute": 26.0
+     },
+     {
+      "nom": "Crushing Fists",
+      "cout": 6400,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 68,
+      "minute": 28.5
+     }
+    ]
+   },
+   "76": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 363,
+      "winrate": 55.1,
+      "marge": 5.1
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 3070,
+      "winrate": 59.0,
+      "marge": 1.8
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 7781,
+      "winrate": 53.9,
+      "marge": 1.1
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Heroic Aura",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": true,
+      "achete_par": 49,
+      "minute": 18.3
+     },
+     {
+      "nom": "Toxic Bullets",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 49,
+      "minute": 21.2
+     },
+     {
+      "nom": "Stamina Mastery",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 42,
+      "minute": 22.1
+     },
+     {
+      "nom": "Superior Duration",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 49,
+      "minute": 22.6
+     },
+     {
+      "nom": "Superior Cooldown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 37,
+      "minute": 25.2
+     },
+     {
+      "nom": "Echo Shard",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": true,
+      "achete_par": 39,
+      "minute": 25.8
+     }
+    ]
+   },
+   "77": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 199,
+      "winrate": 58.3,
+      "marge": 6.9
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1394,
+      "winrate": 55.5,
+      "marge": 2.6
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 3724,
+      "winrate": 51.3,
+      "marge": 1.6
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Radiant Regeneration",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 45,
+      "minute": 15.9
+     },
+     {
+      "nom": "Torment Pulse",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 46,
+      "minute": 19.8
+     },
+     {
+      "nom": "Stamina Mastery",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 51,
+      "minute": 22.5
+     },
+     {
+      "nom": "Tankbuster",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 81,
+      "minute": 22.8
+     },
+     {
+      "nom": "Boundless Spirit",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 80,
+      "minute": 24.7
+     },
+     {
+      "nom": "Superior Cooldown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 69,
+      "minute": 25.1
+     }
+    ]
+   },
+   "79": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 354,
+      "winrate": 39.0,
+      "marge": 5.2
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 2871,
+      "winrate": 43.1,
+      "marge": 1.8
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 6913,
+      "winrate": 45.6,
+      "marge": 1.2
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Rapid Recharge",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 69,
+      "minute": 20.3
+     },
+     {
+      "nom": "Tankbuster",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 46,
+      "minute": 21.0
+     },
+     {
+      "nom": "Superior Cooldown",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 54,
+      "minute": 24.8
+     },
+     {
+      "nom": "Greater Expansion",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 45,
+      "minute": 26.9
+     },
+     {
+      "nom": "Superior Duration",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 37,
+      "minute": 27.2
+     },
+     {
+      "nom": "Healing Tempo",
+      "cout": 6400,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 47,
+      "minute": 30.5
+     }
+    ]
+   },
+   "80": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 180,
+      "winrate": 45.6,
+      "marge": 7.3
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1451,
+      "winrate": 44.7,
+      "marge": 2.6
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 3817,
+      "winrate": 47.3,
+      "marge": 1.6
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Lifestrike",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 66,
+      "minute": 17.0
+     },
+     {
+      "nom": "Hunter's Aura",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 68,
+      "minute": 17.8
+     },
+     {
+      "nom": "Weighted Shots",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 64,
+      "minute": 19.8
+     },
+     {
+      "nom": "Point Blank",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 43,
+      "minute": 20.5
+     },
+     {
+      "nom": "Spirit Resilience",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 53,
+      "minute": 25.7
+     },
+     {
+      "nom": "Berserker",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 60,
+      "minute": 26.1
+     }
+    ]
+   },
+   "81": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 215,
+      "winrate": 46.5,
+      "marge": 6.7
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1542,
+      "winrate": 48.8,
+      "marge": 2.5
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 4436,
+      "winrate": 47.5,
+      "marge": 1.5
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Radiant Regeneration",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 87,
+      "minute": 11.9
+     },
+     {
+      "nom": "Torment Pulse",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 77,
+      "minute": 18.2
+     },
+     {
+      "nom": "Stamina Mastery",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 52,
+      "minute": 22.5
+     },
+     {
+      "nom": "Greater Expansion",
+      "cout": 3200,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 76,
+      "minute": 23.6
+     },
+     {
+      "nom": "Witchmail",
+      "cout": 6400,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 48,
+      "minute": 28.5
+     },
+     {
+      "nom": "Escalating Exposure",
+      "cout": 6400,
+      "categorie": "spirit",
+      "actif": false,
+      "achete_par": 56,
+      "minute": 31.2
+     }
+    ]
+   },
+   "84": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 293,
+      "winrate": 56.7,
+      "marge": 5.7
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 2571,
+      "winrate": 65.0,
+      "marge": 1.9
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 5473,
+      "winrate": 57.4,
+      "marge": 1.3
+     }
+    ],
+    "objets_cles": [
+     {
+      "nom": "Cultist Sacrifice",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": true,
+      "achete_par": 42,
+      "minute": 12.2
+     },
+     {
+      "nom": "Fortitude",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 73,
+      "minute": 17.7
+     },
+     {
+      "nom": "Ballistic Enchantment",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 41,
+      "minute": 22.1
+     },
+     {
+      "nom": "Berserker",
+      "cout": 3200,
+      "categorie": "weapon",
+      "actif": false,
+      "achete_par": 57,
+      "minute": 24.2
+     },
+     {
+      "nom": "Spirit Resilience",
+      "cout": 3200,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 48,
+      "minute": 24.8
+     },
+     {
+      "nom": "Siphon Bullets",
+      "cout": 6400,
+      "categorie": "vitality",
+      "actif": false,
+      "achete_par": 35,
+      "minute": 32.0
+     }
+    ]
+   }
+  },
+  "mystic_oracle": {
+   "1": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 479,
+      "winrate": 48.0,
+      "marge": 4.5
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 4221,
+      "winrate": 45.7,
+      "marge": 1.5
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 7116,
+      "winrate": 46.7,
+      "marge": 1.2
+     }
+    ],
+    "objets_cles": []
+   },
+   "2": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 361,
+      "winrate": 44.6,
+      "marge": 5.2
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 3139,
+      "winrate": 56.4,
+      "marge": 1.7
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 5089,
+      "winrate": 51.5,
+      "marge": 1.4
+     }
+    ],
+    "objets_cles": []
+   },
+   "3": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 362,
+      "winrate": 51.1,
+      "marge": 5.2
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 3050,
+      "winrate": 51.5,
+      "marge": 1.8
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 4729,
+      "winrate": 50.2,
+      "marge": 1.4
+     }
+    ],
+    "objets_cles": []
+   },
+   "4": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 261,
+      "winrate": 51.3,
+      "marge": 6.1
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 2137,
+      "winrate": 50.3,
+      "marge": 2.1
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 3747,
+      "winrate": 48.2,
+      "marge": 1.6
+     }
+    ],
+    "objets_cles": []
+   },
+   "6": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 352,
+      "winrate": 46.9,
+      "marge": 5.2
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 3175,
+      "winrate": 52.3,
+      "marge": 1.7
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 4917,
+      "winrate": 51.6,
+      "marge": 1.4
+     }
+    ],
+    "objets_cles": []
+   },
+   "7": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 435,
+      "winrate": 53.6,
+      "marge": 4.7
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 3778,
+      "winrate": 53.2,
+      "marge": 1.6
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 5459,
+      "winrate": 49.9,
+      "marge": 1.3
+     }
+    ],
+    "objets_cles": []
+   },
+   "8": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 134,
+      "winrate": 48.5,
+      "marge": 8.5
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1171,
+      "winrate": 48.9,
+      "marge": 2.9
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 1978,
+      "winrate": 48.4,
+      "marge": 2.2
+     }
+    ],
+    "objets_cles": []
+   },
+   "10": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 359,
+      "winrate": 44.8,
+      "marge": 5.2
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 3024,
+      "winrate": 43.4,
+      "marge": 1.8
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 4930,
+      "winrate": 48.2,
+      "marge": 1.4
+     }
+    ],
+    "objets_cles": []
+   },
+   "11": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 315,
+      "winrate": 53.7,
+      "marge": 5.5
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 2647,
+      "winrate": 54.4,
+      "marge": 1.9
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 4170,
+      "winrate": 51.9,
+      "marge": 1.5
+     }
+    ],
+    "objets_cles": []
+   },
+   "12": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 227,
+      "winrate": 54.6,
+      "marge": 6.5
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1993,
+      "winrate": 51.8,
+      "marge": 2.2
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 3164,
+      "winrate": 54.8,
+      "marge": 1.7
+     }
+    ],
+    "objets_cles": []
+   },
+   "13": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 699,
+      "winrate": 48.1,
+      "marge": 3.7
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 5893,
+      "winrate": 50.7,
+      "marge": 1.3
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 8990,
+      "winrate": 54.8,
+      "marge": 1.0
+     }
+    ],
+    "objets_cles": []
+   },
+   "14": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 241,
+      "winrate": 46.9,
+      "marge": 6.3
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 2037,
+      "winrate": 47.9,
+      "marge": 2.2
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 3384,
+      "winrate": 47.6,
+      "marge": 1.7
+     }
+    ],
+    "objets_cles": []
+   },
+   "15": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 504,
+      "winrate": 47.8,
+      "marge": 4.4
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 4379,
+      "winrate": 45.4,
+      "marge": 1.5
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 7011,
+      "winrate": 46.7,
+      "marge": 1.2
+     }
+    ],
+    "objets_cles": []
+   },
+   "16": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 330,
+      "winrate": 49.4,
+      "marge": 5.4
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 2858,
+      "winrate": 51.0,
+      "marge": 1.8
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 4424,
+      "winrate": 50.8,
+      "marge": 1.5
+     }
+    ],
+    "objets_cles": []
+   },
+   "17": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 187,
+      "winrate": 33.7,
+      "marge": 7.2
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1517,
+      "winrate": 40.7,
+      "marge": 2.5
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 2545,
+      "winrate": 48.3,
+      "marge": 1.9
+     }
+    ],
+    "objets_cles": []
+   },
+   "18": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 366,
+      "winrate": 50.8,
+      "marge": 5.1
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 3358,
+      "winrate": 50.8,
+      "marge": 1.7
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 5323,
+      "winrate": 50.1,
+      "marge": 1.3
+     }
+    ],
+    "objets_cles": []
+   },
+   "19": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 329,
+      "winrate": 46.8,
+      "marge": 5.4
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 2951,
+      "winrate": 39.2,
+      "marge": 1.8
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 5045,
+      "winrate": 45.6,
+      "marge": 1.4
+     }
+    ],
+    "objets_cles": []
+   },
+   "20": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 338,
+      "winrate": 43.5,
+      "marge": 5.3
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 2710,
+      "winrate": 55.2,
+      "marge": 1.9
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 4191,
+      "winrate": 52.0,
+      "marge": 1.5
+     }
+    ],
+    "objets_cles": []
+   },
+   "25": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 126,
+      "winrate": 43.7,
+      "marge": 8.7
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 999,
+      "winrate": 38.9,
+      "marge": 3.1
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 1659,
+      "winrate": 45.0,
+      "marge": 2.4
+     }
+    ],
+    "objets_cles": []
+   },
+   "27": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 334,
+      "winrate": 52.7,
+      "marge": 5.4
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 2798,
+      "winrate": 50.0,
+      "marge": 1.9
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 4263,
+      "winrate": 48.6,
+      "marge": 1.5
+     }
+    ],
+    "objets_cles": []
+   },
+   "31": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 572,
+      "winrate": 51.0,
+      "marge": 4.1
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 5061,
+      "winrate": 50.8,
+      "marge": 1.4
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 8186,
+      "winrate": 49.5,
+      "marge": 1.1
+     }
+    ],
+    "objets_cles": []
+   },
+   "35": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 155,
+      "winrate": 45.2,
+      "marge": 7.9
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1445,
+      "winrate": 42.4,
+      "marge": 2.6
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 2359,
+      "winrate": 48.2,
+      "marge": 2.0
+     }
+    ],
+    "objets_cles": []
+   },
+   "50": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 279,
+      "winrate": 50.2,
+      "marge": 5.9
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 2553,
+      "winrate": 42.7,
+      "marge": 1.9
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 4399,
+      "winrate": 47.6,
+      "marge": 1.5
+     }
+    ],
+    "objets_cles": []
+   },
+   "52": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 136,
+      "winrate": 44.9,
+      "marge": 8.4
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1084,
+      "winrate": 42.6,
+      "marge": 3.0
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 1903,
+      "winrate": 43.6,
+      "marge": 2.2
+     }
+    ],
+    "objets_cles": []
+   },
+   "58": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 170,
+      "winrate": 51.2,
+      "marge": 7.5
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1445,
+      "winrate": 51.7,
+      "marge": 2.6
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 2109,
+      "winrate": 50.6,
+      "marge": 2.1
+     }
+    ],
+    "objets_cles": []
+   },
+   "60": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 163,
+      "winrate": 49.1,
+      "marge": 7.7
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1557,
+      "winrate": 47.6,
+      "marge": 2.5
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 2589,
+      "winrate": 50.3,
+      "marge": 1.9
+     }
+    ],
+    "objets_cles": []
+   },
+   "63": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 414,
+      "winrate": 50.7,
+      "marge": 4.8
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 3515,
+      "winrate": 46.5,
+      "marge": 1.7
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 5983,
+      "winrate": 49.9,
+      "marge": 1.3
+     }
+    ],
+    "objets_cles": []
+   },
+   "64": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 514,
+      "winrate": 47.5,
+      "marge": 4.3
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 4405,
+      "winrate": 49.4,
+      "marge": 1.5
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 6872,
+      "winrate": 49.9,
+      "marge": 1.2
+     }
+    ],
+    "objets_cles": []
+   },
+   "65": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 377,
+      "winrate": 50.4,
+      "marge": 5.0
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 3423,
+      "winrate": 48.2,
+      "marge": 1.7
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 5510,
+      "winrate": 47.4,
+      "marge": 1.3
+     }
+    ],
+    "objets_cles": []
+   },
+   "66": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 270,
+      "winrate": 44.1,
+      "marge": 6.0
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 2568,
+      "winrate": 51.8,
+      "marge": 1.9
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 3955,
+      "winrate": 53.9,
+      "marge": 1.6
+     }
+    ],
+    "objets_cles": []
+   },
+   "67": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 376,
+      "winrate": 57.4,
+      "marge": 5.1
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 3471,
+      "winrate": 57.6,
+      "marge": 1.7
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 5650,
+      "winrate": 54.7,
+      "marge": 1.3
+     }
+    ],
+    "objets_cles": []
+   },
+   "69": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 157,
+      "winrate": 41.4,
+      "marge": 7.8
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1378,
+      "winrate": 43.8,
+      "marge": 2.6
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 2750,
+      "winrate": 45.6,
+      "marge": 1.9
+     }
+    ],
+    "objets_cles": []
+   },
+   "72": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 275,
+      "winrate": 47.6,
+      "marge": 5.9
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 2497,
+      "winrate": 47.2,
+      "marge": 2.0
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 3984,
+      "winrate": 49.7,
+      "marge": 1.6
+     }
+    ],
+    "objets_cles": []
+   },
+   "76": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 326,
+      "winrate": 56.4,
+      "marge": 5.4
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 2730,
+      "winrate": 58.8,
+      "marge": 1.9
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 4437,
+      "winrate": 53.0,
+      "marge": 1.5
+     }
+    ],
+    "objets_cles": []
+   },
+   "77": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 225,
+      "winrate": 60.4,
+      "marge": 6.5
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1849,
+      "winrate": 53.2,
+      "marge": 2.3
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 2978,
+      "winrate": 51.2,
+      "marge": 1.8
+     }
+    ],
+    "objets_cles": []
+   },
+   "79": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 337,
+      "winrate": 42.4,
+      "marge": 5.3
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 3006,
+      "winrate": 44.3,
+      "marge": 1.8
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 4414,
+      "winrate": 45.7,
+      "marge": 1.5
+     }
+    ],
+    "objets_cles": []
+   },
+   "80": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 223,
+      "winrate": 52.5,
+      "marge": 6.6
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1960,
+      "winrate": 48.7,
+      "marge": 2.2
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 3258,
+      "winrate": 49.2,
+      "marge": 1.7
+     }
+    ],
+    "objets_cles": []
+   },
+   "81": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 219,
+      "winrate": 47.9,
+      "marge": 6.6
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1891,
+      "winrate": 53.1,
+      "marge": 2.3
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 3153,
+      "winrate": 50.1,
+      "marge": 1.7
+     }
+    ],
+    "objets_cles": []
+   },
+   "84": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 356,
+      "winrate": 62.1,
+      "marge": 5.2
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 3811,
+      "winrate": 66.1,
+      "marge": 1.6
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 4773,
+      "winrate": 58.2,
+      "marge": 1.4
+     }
+    ],
+    "objets_cles": []
+   }
+  },
+  "phantom_eternus": {
+   "1": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 240,
+      "winrate": 50.8,
+      "marge": 6.3
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1680,
+      "winrate": 47.0,
+      "marge": 2.4
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 1649,
+      "winrate": 46.8,
+      "marge": 2.4
+     }
+    ],
+    "objets_cles": []
+   },
+   "2": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 196,
+      "winrate": 51.5,
+      "marge": 7.0
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1305,
+      "winrate": 56.6,
+      "marge": 2.7
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 1253,
+      "winrate": 53.2,
+      "marge": 2.8
+     }
+    ],
+    "objets_cles": []
+   },
+   "3": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 217,
+      "winrate": 52.5,
+      "marge": 6.7
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1610,
+      "winrate": 48.6,
+      "marge": 2.4
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 1554,
+      "winrate": 49.5,
+      "marge": 2.5
+     }
+    ],
+    "objets_cles": []
+   },
+   "4": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 149,
+      "winrate": 49.0,
+      "marge": 8.0
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 943,
+      "winrate": 48.3,
+      "marge": 3.2
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 838,
+      "winrate": 49.3,
+      "marge": 3.4
+     }
+    ],
+    "objets_cles": []
+   },
+   "6": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 254,
+      "winrate": 46.1,
+      "marge": 6.1
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1702,
+      "winrate": 51.7,
+      "marge": 2.4
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 1474,
+      "winrate": 53.0,
+      "marge": 2.6
+     }
+    ],
+    "objets_cles": []
+   },
+   "7": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 378,
+      "winrate": 53.4,
+      "marge": 5.0
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 2229,
+      "winrate": 53.1,
+      "marge": 2.1
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 1869,
+      "winrate": 51.2,
+      "marge": 2.3
+     }
+    ],
+    "objets_cles": []
+   },
+   "8": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 99,
+      "winrate": 42.4,
+      "marge": 9.8
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 781,
+      "winrate": 49.0,
+      "marge": 3.5
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 722,
+      "winrate": 47.4,
+      "marge": 3.6
+     }
+    ],
+    "objets_cles": []
+   },
+   "10": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 249,
+      "winrate": 46.6,
+      "marge": 6.2
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1760,
+      "winrate": 44.0,
+      "marge": 2.3
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 1620,
+      "winrate": 49.3,
+      "marge": 2.4
+     }
+    ],
+    "objets_cles": []
+   },
+   "11": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 165,
+      "winrate": 55.8,
+      "marge": 7.6
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1199,
+      "winrate": 56.0,
+      "marge": 2.8
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 990,
+      "winrate": 54.8,
+      "marge": 3.1
+     }
+    ],
+    "objets_cles": []
+   },
+   "12": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 142,
+      "winrate": 45.8,
+      "marge": 8.2
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1129,
+      "winrate": 52.9,
+      "marge": 2.9
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 1005,
+      "winrate": 53.4,
+      "marge": 3.1
+     }
+    ],
+    "objets_cles": []
+   },
+   "13": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 507,
+      "winrate": 48.9,
+      "marge": 4.4
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 3365,
+      "winrate": 51.3,
+      "marge": 1.7
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 2834,
+      "winrate": 53.0,
+      "marge": 1.8
+     }
+    ],
+    "objets_cles": []
+   },
+   "14": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 181,
+      "winrate": 55.8,
+      "marge": 7.3
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1141,
+      "winrate": 54.5,
+      "marge": 2.9
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 1009,
+      "winrate": 47.1,
+      "marge": 3.1
+     }
+    ],
+    "objets_cles": []
+   },
+   "15": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 330,
+      "winrate": 56.7,
+      "marge": 5.4
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 2335,
+      "winrate": 47.7,
+      "marge": 2.0
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 2124,
+      "winrate": 46.6,
+      "marge": 2.1
+     }
+    ],
+    "objets_cles": []
+   },
+   "16": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 279,
+      "winrate": 40.5,
+      "marge": 5.9
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1971,
+      "winrate": 48.3,
+      "marge": 2.2
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 1822,
+      "winrate": 49.5,
+      "marge": 2.3
+     }
+    ],
+    "objets_cles": []
+   },
+   "17": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 152,
+      "winrate": 43.4,
+      "marge": 7.9
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 985,
+      "winrate": 43.2,
+      "marge": 3.1
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 885,
+      "winrate": 49.2,
+      "marge": 3.3
+     }
+    ],
+    "objets_cles": []
+   },
+   "18": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 277,
+      "winrate": 52.3,
+      "marge": 5.9
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1999,
+      "winrate": 48.0,
+      "marge": 2.2
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 1750,
+      "winrate": 49.9,
+      "marge": 2.3
+     }
+    ],
+    "objets_cles": []
+   },
+   "19": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 223,
+      "winrate": 48.9,
+      "marge": 6.6
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1703,
+      "winrate": 45.9,
+      "marge": 2.4
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 1557,
+      "winrate": 46.4,
+      "marge": 2.5
+     }
+    ],
+    "objets_cles": []
+   },
+   "20": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 257,
+      "winrate": 49.0,
+      "marge": 6.1
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1607,
+      "winrate": 53.1,
+      "marge": 2.4
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 1350,
+      "winrate": 49.9,
+      "marge": 2.7
+     }
+    ],
+    "objets_cles": []
+   },
+   "25": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 51,
+      "winrate": 41.2,
+      "marge": 13.7
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 397,
+      "winrate": 41.8,
+      "marge": 4.9
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 335,
+      "winrate": 44.5,
+      "marge": 5.4
+     }
+    ],
+    "objets_cles": []
+   },
+   "27": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 353,
+      "winrate": 58.4,
+      "marge": 5.2
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 2195,
+      "winrate": 52.0,
+      "marge": 2.1
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 1769,
+      "winrate": 50.3,
+      "marge": 2.3
+     }
+    ],
+    "objets_cles": []
+   },
+   "31": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 385,
+      "winrate": 47.5,
+      "marge": 5.0
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 2710,
+      "winrate": 52.0,
+      "marge": 1.9
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 2549,
+      "winrate": 48.4,
+      "marge": 1.9
+     }
+    ],
+    "objets_cles": []
+   },
+   "35": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 102,
+      "winrate": 46.1,
+      "marge": 9.7
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 682,
+      "winrate": 45.2,
+      "marge": 3.8
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 714,
+      "winrate": 48.2,
+      "marge": 3.7
+     }
+    ],
+    "objets_cles": []
+   },
+   "50": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 200,
+      "winrate": 45.5,
+      "marge": 6.9
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1580,
+      "winrate": 43.2,
+      "marge": 2.5
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 1554,
+      "winrate": 48.5,
+      "marge": 2.5
+     }
+    ],
+    "objets_cles": []
+   },
+   "52": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 111,
+      "winrate": 49.5,
+      "marge": 9.3
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 686,
+      "winrate": 45.6,
+      "marge": 3.7
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 677,
+      "winrate": 44.3,
+      "marge": 3.8
+     }
+    ],
+    "objets_cles": []
+   },
+   "58": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 145,
+      "winrate": 44.8,
+      "marge": 8.1
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 909,
+      "winrate": 55.3,
+      "marge": 3.3
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 735,
+      "winrate": 52.7,
+      "marge": 3.6
+     }
+    ],
+    "objets_cles": []
+   },
+   "60": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 179,
+      "winrate": 63.7,
+      "marge": 7.3
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1074,
+      "winrate": 53.9,
+      "marge": 3.0
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 949,
+      "winrate": 49.0,
+      "marge": 3.2
+     }
+    ],
+    "objets_cles": []
+   },
+   "63": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 278,
+      "winrate": 49.3,
+      "marge": 5.9
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 2072,
+      "winrate": 45.4,
+      "marge": 2.2
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 1915,
+      "winrate": 49.9,
+      "marge": 2.2
+     }
+    ],
+    "objets_cles": []
+   },
+   "64": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 375,
+      "winrate": 41.1,
+      "marge": 5.1
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 2527,
+      "winrate": 48.1,
+      "marge": 1.9
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 2328,
+      "winrate": 50.0,
+      "marge": 2.0
+     }
+    ],
+    "objets_cles": []
+   },
+   "65": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 362,
+      "winrate": 54.1,
+      "marge": 5.2
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 2282,
+      "winrate": 47.1,
+      "marge": 2.1
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 2052,
+      "winrate": 49.5,
+      "marge": 2.2
+     }
+    ],
+    "objets_cles": []
+   },
+   "66": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 191,
+      "winrate": 39.8,
+      "marge": 7.1
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1267,
+      "winrate": 49.4,
+      "marge": 2.8
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 1177,
+      "winrate": 52.8,
+      "marge": 2.9
+     }
+    ],
+    "objets_cles": []
+   },
+   "67": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 293,
+      "winrate": 53.2,
+      "marge": 5.7
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1810,
+      "winrate": 53.4,
+      "marge": 2.3
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 1685,
+      "winrate": 52.8,
+      "marge": 2.4
+     }
+    ],
+    "objets_cles": []
+   },
+   "69": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 110,
+      "winrate": 39.1,
+      "marge": 9.3
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 758,
+      "winrate": 43.4,
+      "marge": 3.6
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 853,
+      "winrate": 47.2,
+      "marge": 3.4
+     }
+    ],
+    "objets_cles": []
+   },
+   "72": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 207,
+      "winrate": 45.9,
+      "marge": 6.8
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1375,
+      "winrate": 48.6,
+      "marge": 2.6
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 1241,
+      "winrate": 49.0,
+      "marge": 2.8
+     }
+    ],
+    "objets_cles": []
+   },
+   "76": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 187,
+      "winrate": 46.5,
+      "marge": 7.2
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1132,
+      "winrate": 52.3,
+      "marge": 2.9
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 1144,
+      "winrate": 51.6,
+      "marge": 2.9
+     }
+    ],
+    "objets_cles": []
+   },
+   "77": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 198,
+      "winrate": 53.0,
+      "marge": 7.0
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1164,
+      "winrate": 53.4,
+      "marge": 2.9
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 1095,
+      "winrate": 48.7,
+      "marge": 3.0
+     }
+    ],
+    "objets_cles": []
+   },
+   "79": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 231,
+      "winrate": 35.9,
+      "marge": 6.4
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1444,
+      "winrate": 44.9,
+      "marge": 2.6
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 1093,
+      "winrate": 50.9,
+      "marge": 3.0
+     }
+    ],
+    "objets_cles": []
+   },
+   "80": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 165,
+      "winrate": 55.8,
+      "marge": 7.6
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1180,
+      "winrate": 47.9,
+      "marge": 2.9
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 1091,
+      "winrate": 47.3,
+      "marge": 3.0
+     }
+    ],
+    "objets_cles": []
+   },
+   "81": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 180,
+      "winrate": 60.6,
+      "marge": 7.3
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 1190,
+      "winrate": 56.0,
+      "marge": 2.8
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 1031,
+      "winrate": 48.9,
+      "marge": 3.1
+     }
+    ],
+    "objets_cles": []
+   },
+   "84": {
+    "durees": [
+     {
+      "de_min": 0,
+      "a_min": 25,
+      "parties": 297,
+      "winrate": 62.6,
+      "marge": 5.7
+     },
+     {
+      "de_min": 25,
+      "a_min": 35,
+      "parties": 2062,
+      "winrate": 61.4,
+      "marge": 2.2
+     },
+     {
+      "de_min": 35,
+      "a_min": null,
+      "parties": 1576,
+      "winrate": 57.2,
+      "marge": 2.5
+     }
+    ],
+    "objets_cles": []
+   }
+  }
+ }
+}

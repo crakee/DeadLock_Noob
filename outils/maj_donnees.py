@@ -380,6 +380,45 @@ def construire_achats(depuis_ts, stats, objets, heros_ids):
     return sortie
 
 
+# Durées de partie (secondes) pour lire quand un héros est fort : parties courtes, moyennes, longues.
+DUREES = [(0, 25 * 60), (25 * 60, 35 * 60), (35 * 60, 7000)]
+# Tranches pour lesquelles on calcule les objets clés de chaque héros (39 appels par tranche).
+TRANCHES_OBJETS_CLES = ("tous", "initiate_sentinel")
+
+
+def construire_tempo(depuis_ts, stats, objets):
+    """Par tranche et par héros : winrate selon la durée de la partie, et objets clés
+    (tier 3 et plus, achetés par au moins 35 % des joueurs) avec leur minute moyenne d'achat."""
+    par_id = {o["id"]: o for o in objets}
+    sortie = {}
+    for nom, (mini, maxi) in TRANCHES.items():
+        tranche = {}
+        for de, a in DUREES:
+            for l in get("/v1/analytics/hero-stats", min_unix_timestamp=depuis_ts, min_duration_s=de, max_duration_s=a,
+                         min_average_badge=mini, max_average_badge=maxi):
+                n = l["matches"]
+                tranche.setdefault(str(l["hero_id"]), {"durees": [], "objets_cles": []})["durees"].append({
+                    "de_min": de // 60, "a_min": a // 60 if a < 7000 else None, "parties": n,
+                    "winrate": round(100 * l["wins"] / n, 1) if n else None,
+                    "marge": round(98 / n ** 0.5, 1) if n else None})
+        if nom in TRANCHES_OBJETS_CLES:
+            for hid, h in tranche.items():
+                joueurs = (stats[nom]["heros"].get(hid) or {}).get("parties") or 0
+                if not joueurs:
+                    continue
+                cles = []
+                for l in get("/v1/analytics/item-stats", hero_id=int(hid), min_unix_timestamp=depuis_ts,
+                             min_average_badge=mini, max_average_badge=maxi):
+                    o = par_id.get(l["item_id"])
+                    if o and (o["tier"] or 0) >= 3 and l["matches"] / joueurs >= 0.35 and l.get("avg_buy_time_s"):
+                        cles.append({"nom": o["nom"], "cout": o["cout"], "categorie": o["categorie"], "actif": o["actif"],
+                                     "achete_par": round(100 * l["matches"] / joueurs),
+                                     "minute": round(l["avg_buy_time_s"] / 60, 1)})
+                h["objets_cles"] = sorted(cles, key=lambda x: x["minute"])[:6]
+        sortie[nom] = tranche
+    return sortie
+
+
 def ecrire(nom, meta, contenu):
     DATA.mkdir(exist_ok=True)
     chemin = DATA / nom
@@ -392,7 +431,7 @@ def main():
     parseur.add_argument("--patch", required=True, help="nom ou date du patch en cours")
     parseur.add_argument("--depuis", required=True, help="date du patch, AAAA-MM-JJ (UTC)")
     parseur.add_argument("--seulement", default="", help="fichiers à régénérer, séparés par des virgules "
-                         "(heroes,items,stats,map,details,achats) ; tous par défaut")
+                         "(heroes,items,stats,map,details,achats,tempo) ; tous par défaut")
     args = parseur.parse_args()
     voulu = lambda nom: not args.seulement or nom in args.seulement.split(",")
 
@@ -434,6 +473,15 @@ def main():
                         "d'après la force globale des deux héros (log5), en points. Un écart inférieur à la marge (95 %) n'est pas un signal."},
                {"fiches": construire_fiches(heros_api, get("/v1/assets/items/by-type/weapon")),
                 "matchups": construire_matchups(depuis_ts, stats)})
+
+    if voulu("tempo"):
+        ecrire("tempo.json",
+               {**meta, "depuis": depuis_texte,
+                "note": "Par tranche de rang : `durees` = winrate du héros selon la durée de la partie (en minutes, marge à 95 % en points) ; "
+                        "un héros dont le winrate monte avec la durée est fort en fin de partie. `objets_cles` (tranches tous et "
+                        "initiate_sentinel seulement) = objets de tier 3 ou plus achetés par au moins 35 % de ses joueurs, avec la "
+                        "minute moyenne d'achat : les moments où il devient plus fort."},
+               {"tranches": construire_tempo(depuis_ts, stats, objets)})
 
     if voulu("achats"):
         profil = json.loads((DATA / "profil.json").read_text(encoding="utf-8"))
