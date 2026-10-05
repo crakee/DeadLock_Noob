@@ -15,7 +15,7 @@
   const TRANCHES = { tous: [null, null], initiate_sentinel: [11, 46], mystic_oracle: [51, 86], phantom_eternus: [91, 116] };
   const NB_DETAILLEES = 8;     // parties analysées en détail (le détail d'une partie pèse environ 1 Mo)
 
-  let heros = null, objets = {}, statsHeros = null, tempo = null, carte = null;
+  let heros = null, objets = {}, statsHeros = null, tempo = null, carte = null, lecons = null;
   let moi = null;              // { id, nom, avatar, rang }
   let parties = [], details = {}, metriques = {}, courbes = {};
 
@@ -231,6 +231,8 @@
     const f = DLN.lobby.MESURES[k].fmt;
     if (f === 'pct') return Math.round(v * 100) + ' %';
     if (f === 'min') return un(v) + ' min';
+    if (f === 'signe') return (v > 0 ? '+' : v < 0 ? '−' : '') + DLN.fmtNombre(Math.abs(Math.round(v)));
+    if (f === 'x') return un(v).replace(/^/, '×');
     return Number.isInteger(v) ? String(v) : DLN.fmtNombre(Math.round(v));
   }
 
@@ -306,6 +308,149 @@
     return b;
   }
 
+  // ---------- le coach : un focus, une leçon, un exercice vérifié partie après partie ----------
+
+  const CLE_COACH = 'dln.coach.v1';          // { focus: id de leçon, depuis: start_time de la dernière partie au moment du choix, acquises: [] }
+  const CLE_FOCUS_PARTIE = 'dln.coach.focus.v1';   // lu par la page En partie
+  const POIDS = { 1: 1, 2: 0.85, 3: 0.7 };
+  const lireCoach = () => { try { return JSON.parse(localStorage.getItem(CLE_COACH)) || {}; } catch (e) { return {}; } };
+  function ecrireCoach(etat) {
+    try {
+      localStorage.setItem(CLE_COACH, JSON.stringify(etat));
+      const l = etat.focus && lecons.lecons.find((x) => x.id === etat.focus);
+      if (l) localStorage.setItem(CLE_FOCUS_PARTIE, JSON.stringify({ id: l.id, titre: l.titre, rappel: l.en_partie.rappel, phase: l.en_partie.phase, exercice: l.exercice.texte }));
+      else localStorage.removeItem(CLE_FOCUS_PARTIE);
+    } catch (e) { /* stockage indisponible */ }
+  }
+
+  // Score moyen (0 à 1) sur une mesure, sur les parties analysées.
+  const scoreMoyen = (lues, k) => DLN.lobby.moyenne(lues.map((l) => l.lobby.scores[k]).filter((v) => v != null));
+
+  function besoins(lues) {
+    const acquises = lireCoach().acquises || [];
+    return lecons.lecons.map((le) => {
+      const s = scoreMoyen(lues, le.declencheur);
+      return { le: le, s: s, besoin: s == null ? -1 : (1 - s) * (POIDS[le.priorite] || 0.7) };
+    }).filter((x) => x.s != null && x.s < 0.45 && acquises.indexOf(x.le.id) === -1).sort((a, b) => b.besoin - a.besoin);
+  }
+
+  function exerciceReussi(le, l) {
+    const ex = le.exercice;
+    if (ex.score != null) { const s = l.lobby.scores[ex.mesure]; return s == null ? null : s >= ex.score; }
+    const v = l.lobby.moi[ex.mesure];
+    if (v == null) return null;
+    return ex.sens === 'max' ? v <= ex.cible : v >= ex.cible;
+  }
+
+  function constat(le, lues) {
+    const k = le.declencheur;
+    const toi = DLN.lobby.moyenne(lues.map((l) => l.lobby.moi[k]).filter((v) => v != null));
+    const med = DLN.lobby.moyenne(lues.map((l) => l.lobby.mediane[k]).filter((v) => v != null));
+    return DLN.lobby.MESURES[k].nom + ' : ' + valeur(k, toi) + ' pour toi, ' + valeur(k, med) + ' pour la médiane de tes parties (' + lues.length + ' parties).';
+  }
+
+  function carteLecon(le, lues) {
+    const c = el('article', 'mp-lecon');
+    c.append(el('h3', null, le.titre), el('p', 'mp-constat', constat(le, lues)), el('p', null, le.pourquoi));
+    const h = el('p', 'mp-conseils-titre', 'Comment ');
+    h.append(el('span', 'marque', 'conseil'));
+    const ul = el('ul', 'mp-conseils');
+    le.comment.forEach((x) => ul.append(el('li', null, x)));
+    c.append(h, ul);
+    if (le.memo) {
+      const a = el('a', 'mp-lien-memo', 'Relire la fiche du Mémo →');
+      a.href = 'memo.html#' + le.memo;
+      c.append(a);
+    }
+    return c;
+  }
+
+  function blocCoach(lues) {
+    const b = bloc('Ton coach', 'mp-coach');
+    const etat = lireCoach();
+    const le = etat.focus && lecons.lecons.find((x) => x.id === etat.focus);
+    const recentes = lues.slice().sort((a, b2) => b2.p.start_time - a.p.start_time);
+
+    if (!le) {
+      const props = besoins(recentes.slice(0, 10)).slice(0, 3);
+      b.append(el('p', 'aide', 'Un seul point à travailler à la fois : c\'est ce qui fait progresser le plus vite. Voici ce que tes parties suggèrent, ' +
+        'du plus utile au moins utile pour toi. Choisis-en un : la page vérifiera l\'exercice sur tes prochaines parties.'));
+      if (!props.length) b.append(el('p', 'doux', 'Rien de net ne ressort pour l\'instant : continue de jouer, le coach s\'affinera avec plus de parties.'));
+      props.forEach((x, i) => {
+        const d = el('details', 'mp-proposition');
+        if (i === 0) d.open = true;
+        const s = el('summary');
+        s.append(el('span', 'mp-prop-rang', String(i + 1)), el('strong', null, x.le.titre), el('span', 'aide', 'Exercice : ' + x.le.exercice.texte));
+        d.append(s, carteLecon(x.le, recentes.slice(0, 10)));
+        const go = el('button', 'btn principal', 'Je travaille ça');
+        go.type = 'button';
+        go.addEventListener('click', () => {
+          ecrireCoach(Object.assign(lireCoach(), { focus: x.le.id, depuis: recentes[0].p.start_time }));
+          afficherBilan(lues);
+        });
+        d.append(go);
+        b.append(d);
+      });
+      return b;
+    }
+
+    // Focus en cours
+    const tete = el('div', 'mp-focus-tete');
+    tete.append(el('span', 'marque', 'focus'), el('strong', 'mp-focus-titre', le.titre));
+    b.append(tete);
+    const ex = el('div', 'mp-exercice');
+    ex.append(el('p', null, 'Exercice à chaque partie : '), el('strong', null, le.exercice.texte));
+    const apres = recentes.filter((l) => l.p.start_time > etat.depuis).reverse();
+    const suivi = el('ol', 'mp-suivi');
+    let serie = 0;
+    apres.forEach((l) => {
+      const r = exerciceReussi(le, l);
+      const v = l.lobby.moi[le.exercice.mesure];
+      const li = el('li', r ? 'ok' : r === false ? 'rate' : '');
+      li.append(el('span', 'mp-suivi-marque', r ? '✓' : r === false ? '✗' : '?'),
+        el('span', null, nomHeros(l.p.hero_id) + ' · ' + new Date(l.p.start_time * 1000).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' }) + ' · ' + valeur(le.exercice.mesure, v)));
+      suivi.append(li);
+      serie = r ? serie + 1 : 0;
+    });
+    if (!apres.length) ex.append(el('p', 'aide', 'Pas encore de partie depuis le choix de ce focus. Joue, puis reviens et clique sur « ↻ Actualiser ».'));
+    else ex.append(suivi, el('p', 'aide', serie + ' réussite' + (serie > 1 ? 's' : '') + ' d\'affilée sur ' + le.exercice.reussites + ' pour valider.'));
+    b.append(ex);
+    if (serie >= le.exercice.reussites) {
+      const bravo = el('p', 'mp-bravo', 'Acquis : ' + le.exercice.reussites + ' parties réussies d\'affilée. Passe au point suivant.');
+      const suivant = el('button', 'btn principal', 'Choisir le prochain point');
+      suivant.type = 'button';
+      suivant.addEventListener('click', () => {
+        const e2 = lireCoach();
+        e2.acquises = (e2.acquises || []).concat([le.id]);
+        delete e2.focus;
+        ecrireCoach(e2);
+        afficherBilan(lues);
+      });
+      b.append(bravo, suivant);
+    }
+    const det = el('details', 'mp-lecon-det');
+    det.append(el('summary', null, 'La leçon'), carteLecon(le, recentes.slice(0, 10)));
+    b.append(det);
+    const changer = el('button', 'btn discret', 'Changer de focus');
+    changer.type = 'button';
+    changer.addEventListener('click', () => { const e2 = lireCoach(); delete e2.focus; ecrireCoach(e2); afficherBilan(lues); });
+    b.append(changer);
+    b.append(el('p', 'aide', 'Ce focus s\'affiche aussi sur la page En partie, pour l\'avoir en tête pendant la partie.'));
+    return b;
+  }
+
+  // ---------- revue des morts, comme en review avec un coach ----------
+
+  function verdictMort(m) {
+    if (m.inferiorite) return { cls: 'grave', txt: m.ennemis + ' ennemis contre ' + (m.allies + 1) + ' : combat perdu d\'avance.' };
+    if (m.isole) return { cls: 'grave', txt: 'Seul, aucun allié à moins de ~50 m.' };
+    if (m.engage_bas) return { cls: 'moyen', txt: 'Combat engagé avec ' + m.vie_debut + ' % de vie.' };
+    if (m.cote_adverse) return { cls: 'moyen', txt: 'Dans leur moitié de carte.' };
+    if (m.surpris) return { cls: 'moyen', txt: 'Tué en moins de 3 s : pris par surprise.' };
+    if (m.allies + 1 > m.ennemis) return { cls: 'neutre', txt: 'Ton équipe était en surnombre (' + (m.allies + 1) + ' contre ' + m.ennemis + ') : regarde ce qui a coincé.' };
+    return { cls: 'neutre', txt: 'Combat à égalité (' + (m.allies + 1) + ' contre ' + m.ennemis + ').' };
+  }
+
   async function afficherBilan(lues) {
     const z = contenu();
     z.textContent = '';
@@ -315,6 +460,7 @@
     // --- 1. Résumé, ton profil par domaine, carte de tes morts ---
     z.append(resume(victoires, n));
     const analysees = lues.filter((l) => l.lobby);
+    if (analysees.length && lecons) z.append(blocCoach(analysees));
     if (analysees.length) {
       const ligne = el('div', 'mp-duo');
       ligne.append(profilDomaines(analysees), carteMorts(analysees));
@@ -340,7 +486,12 @@
       }
       blocAxes.append(c);
     });
-    z.append(blocAxes);
+    // Replié : à ton niveau, la comparaison avec ta propre partie (Ton coach) est la plus juste.
+    const pli = el('details', 'mp-pli');
+    pli.append(el('summary', null, 'Comparaison avec tous les joueurs de tes héros (rang choisi dans ⚙)'));
+    blocAxes.querySelector('h2').remove();
+    pli.append(blocAxes);
+    z.append(pli);
 
     // --- 4. Partie par partie ---
     const blocParties = bloc('Partie par partie', 'mp-parties');
@@ -543,9 +694,15 @@
     morts.append(el('h4', null, 'Tes morts'));
     if (!l.morts.length) morts.append(el('p', 'doux', 'Aucune.'));
     else {
-      const ul = el('ul', 'mp-liste');
-      l.morts.forEach((x) => ul.append(el('li', null, fmtMin(x.t) + (x.tueur ? ' · tué par ' + nomHeros(x.tueur) : ''))));
+      const ul = el('ul', 'mp-liste mp-revue');
+      (l.lobby ? l.lobby.morts : l.morts).forEach((x) => {
+        const li = el('li');
+        li.append(el('span', 'mp-revue-t', fmtMin(x.t)), el('span', null, x.tueur ? 'par ' + nomHeros(x.tueur) : ''));
+        if (l.lobby) { const v = verdictMort(x); li.className = 'mp-v-' + v.cls; li.append(el('span', 'mp-revue-v', v.txt)); }
+        ul.append(li);
+      });
       morts.append(ul);
+      if (l.lobby) morts.append(el('p', 'aide', 'Revue : pour chaque mort, la cause la plus probable d\'après les positions des 12 joueurs et ta vie à la seconde.'));
     }
     corps.append(morts);
     // Achats
@@ -614,8 +771,9 @@
   }
 
   Promise.all(['data/heroes.json', 'data/items.json', 'data/hero-stats.json'].map(DLN.charger)
-    .concat([DLN.charger('data/tempo.json').catch(() => null), DLN.profil, DLN.charger('data/map.json').catch(() => null)])).then((r) => {
+    .concat([DLN.charger('data/tempo.json').catch(() => null), DLN.profil, DLN.charger('data/map.json').catch(() => null), DLN.charger('data/lecons.json').catch(() => null)])).then((r) => {
     carte = r[5];
+    lecons = r[6];
     heros = r[0];
     r[1].objets.forEach((o) => { objets[o.id] = o; });
     statsHeros = r[2];

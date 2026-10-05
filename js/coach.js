@@ -149,7 +149,22 @@
 
   // ---------- affichage ----------
 
-  let zoneAction = null, zonePourquoi = null, zoneEnsuite = null, zoneEtats = null;
+  let zoneAction = null, zonePourquoi = null, zoneEnsuite = null, zoneEtats = null, zoneFocus = null;
+
+  // Focus choisi sur la page Parties (dln.coach.focus.v1) : son rappel s'affiche pendant la phase qu'il concerne.
+  const PHASES_FOCUS = { lane: 'Laning', milieu: 'Mid-game', fin: 'Late-game' };
+  function dessinerFocus(s) {
+    let f = null;
+    try { f = JSON.parse(localStorage.getItem('dln.coach.focus.v1')); } catch (e) { f = null; }
+    zoneFocus.hidden = !f;
+    if (!f) return;
+    const actif = f.phase === 'toujours' || PHASES_FOCUS[f.phase] === s.phase.nom;
+    zoneFocus.textContent = '';
+    zoneFocus.classList.toggle('actif', actif);
+    const lien = el('a', 'coach-focus-titre', 'Ton focus · ' + f.titre);
+    lien.href = 'mes-parties.html';
+    zoneFocus.append(lien, el('span', 'coach-focus-rappel', actif ? f.rappel : f.exercice));
+  }
 
   function construire(zone) {
     zone.textContent = '';
@@ -190,7 +205,8 @@
       ligne.append(groupe);
       zoneEtats.append(ligne);
     });
-    zone.append(tete, carte, zoneEnsuite, zoneEtats);
+    zoneFocus = el('div', 'coach-focus');
+    zone.append(tete, zoneFocus, carte, zoneEnsuite, zoneEtats);
   }
 
   function dessiner() {
@@ -201,6 +217,7 @@
     zoneAction.textContent = r.action;
     zoneAction.classList.toggle('long', r.action.length > 55);
     zonePourquoi.textContent = r.pourquoi;
+    dessinerFocus(r.s);
     zoneEnsuite.textContent = '';
     if (r.ensuite) {
       zoneEnsuite.append(el('strong', null, 'Ensuite · ' + r.ensuite.nom + ' ' + r.ensuite.quand + ' : '), r.ensuite.texte);

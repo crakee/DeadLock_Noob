@@ -1,0 +1,240 @@
+{
+  "meta": {
+    "patch": "City Never Sleeps (2026-09-29)",
+    "verifie_le": "2026-10-05",
+    "nature": "conseil : avis de joueur (Mémo, guides de Wouks) déclenché par une mesure de tes parties",
+    "sources": "Faits de jeu repris de data/memo.json (vérifiés le 2026-10-02). Méthode : un seul axe à la fois, un exercice mesurable par partie, revue des morts (pratique courante des coachs de MOBA).",
+    "schema": "declencheur = mesure de js/mes-parties-lobby.js ; la leçon est proposée quand ton score sur cette mesure (0 = le pire de la partie, 1 = le meilleur) est bas. priorite : 1 = à travailler d'abord pour un débutant. exercice.cible + exercice.sens (min ou max) : réussi si la mesure de la partie respecte la cible. exercice.reussites : nombre de parties réussies d'affilée pour considérer la leçon acquise."
+  },
+  "lecons": [
+    {
+      "id": "last-hit",
+      "domaine": "lane",
+      "priorite": 1,
+      "declencheur": "creeps_9",
+      "titre": "Le dernier coup sur chaque Trooper",
+      "pourquoi": "En lane, les souls viennent du dernier coup porté à chaque Trooper. Chaque Trooper raté, c'est des souls que tu n'auras jamais, et l'adversaire, lui, les prend. C'est la base de tout : moins de souls, c'est moins d'objets et moins de niveaux pour le reste de la partie.",
+      "comment": [
+        "Ne tire pas en continu sur la wave : attends qu'un Trooper soit bas, puis achève-le.",
+        "Tue au corps à corps quand c'est sûr : tu prends toutes les souls d'un coup, l'adversaire ne peut pas voler l'orbe.",
+        "Sinon, tire tout de suite sur l'orbe qui flotte après ton dernier coup : c'est l'autre moitié des souls.",
+        "Si tu dois choisir entre frapper l'adversaire et prendre un Trooper, prends le Trooper."
+      ],
+      "exercice": { "texte": "Tuer au moins 45 % des Troopers à portée avant 9:00", "mesure": "creeps_9", "cible": 0.45, "sens": "min", "reussites": 3 },
+      "en_partie": { "phase": "lane", "rappel": "Dernier coup sur chaque Trooper, puis l'orbe." },
+      "memo": "waves"
+    },
+    {
+      "id": "points-competence",
+      "domaine": "build",
+      "priorite": 1,
+      "declencheur": "points_dormants",
+      "titre": "Dépenser ses points de compétence tout de suite",
+      "pourquoi": "Un point de compétence non dépensé ne fait rien : ta compétence reste au niveau d'avant, parfois pendant plusieurs minutes. C'est de la puissance gratuite que tu laisses de côté.",
+      "comment": [
+        "Chaque fois que tu montes de niveau, regarde si un point est disponible et dépense-le avant de reprendre le combat.",
+        "Prends l'habitude de vérifier à chaque mort et à chaque passage au shop.",
+        "Dans le doute, suis l'ordre de montée de ton build (onglet Builds de la fiche héros)."
+      ],
+      "exercice": { "texte": "Moins de 30 points × minutes non dépensés sur la partie", "mesure": "points_dormants", "cible": 30, "sens": "max", "reussites": 3 },
+      "en_partie": { "phase": "toujours", "rappel": "Point de compétence dispo ? Dépense-le." },
+      "memo": "achats"
+    },
+    {
+      "id": "souls-dormantes",
+      "domaine": "build",
+      "priorite": 2,
+      "declencheur": "souls_dormantes",
+      "titre": "Ne pas se promener avec ses souls",
+      "pourquoi": "Des souls dans la poche ne donnent aucune stat. Tant qu'elles ne sont pas dépensées, tu te bats avec les objets d'il y a plusieurs minutes. Tu gardes en moyenne plus de souls non dépensées que les autres joueurs de tes parties.",
+      "comment": [
+        "Dès que tu peux payer l'objet suivant de ton build (800, 1 600, 3 200 ou 6 400), achète-le.",
+        "Pas besoin de rentrer en base : le side shop de ta lane et les deux secret shops souterrains vendent tout.",
+        "Après un kill ou un objectif, va dépenser avant de chercher autre chose.",
+        "Vise le palier des 4 800 souls dans une même catégorie : un objet à 1 600 et un à 3 200 du même type."
+      ],
+      "exercice": { "texte": "Garder en moyenne moins de 2 000 souls non dépensées", "mesure": "souls_dormantes", "cible": 2000, "sens": "max", "reussites": 3 },
+      "en_partie": { "phase": "toujours", "rappel": "Souls en poche = 0 stat. Va dépenser." },
+      "memo": "achats"
+    },
+    {
+      "id": "inferiorite",
+      "domaine": "survie",
+      "priorite": 1,
+      "declencheur": "inferiorite",
+      "titre": "Ne pas se battre à un contre plusieurs",
+      "pourquoi": "Une bonne partie de tes morts arrive quand il y a au moins deux ennemis de plus que d'alliés autour de toi. Dans ce cas, le combat est perdu avant de commencer, quel que soit ton héros. Et plus la partie avance, plus la mort coûte cher : 8 s de respawn jusqu'à 5:00, 38 s à 20:00, 70 s à 30:00.",
+      "comment": [
+        "Avant d'engager, compte : combien d'ennemis visibles, combien d'alliés proches ? Si tu es en dessous, n'y va pas.",
+        "Un ennemi qui n'est pas sur la minimap n'est pas forcément loin : un ennemi invisible peut être juste à côté.",
+        "Si un allié part dans un combat perdu d'avance, dis-lui de reculer plutôt que de le suivre.",
+        "On se bat seulement quand c'est proche, gagnable, et que ta wave est poussée."
+      ],
+      "exercice": { "texte": "Au plus 1 mort en infériorité numérique", "mesure": "inferiorite", "cible": 1, "sens": "max", "reussites": 3 },
+      "en_partie": { "phase": "milieu", "rappel": "Avant d'engager : on est combien, ils sont combien ?" },
+      "memo": "priorites"
+    },
+    {
+      "id": "mort-isolee",
+      "domaine": "survie",
+      "priorite": 2,
+      "declencheur": "isoles",
+      "titre": "Ne pas mourir seul",
+      "pourquoi": "Mourir loin de ton équipe, c'est souvent te faire prendre seul sans que personne puisse t'aider ni venger ta mort. L'adversaire gagne des souls sans rien risquer.",
+      "comment": [
+        "Hors de ta lane, regarde la minimap avant de t'avancer : où sont tes alliés ?",
+        "La jungle adverse n'est sûre que quand tu as la priorité (tes lanes poussées, eux occupés à repousser).",
+        "Si plusieurs ennemis ont disparu de la minimap, recule vers ton équipe ou ta lane."
+      ],
+      "exercice": { "texte": "Au plus 1 mort sans allié à moins de ~50 m", "mesure": "isoles", "cible": 1, "sens": "max", "reussites": 3 },
+      "en_partie": { "phase": "milieu", "rappel": "Ennemis disparus de la minimap ? Recule." },
+      "memo": "minimap"
+    },
+    {
+      "id": "engager-vie-basse",
+      "domaine": "survie",
+      "priorite": 2,
+      "declencheur": "engage_bas",
+      "titre": "Ne pas engager avec peu de vie",
+      "pourquoi": "Engager un combat avec moins de la moitié de ta vie te donne très peu de marge : le premier sort ou la première rafale te tue.",
+      "comment": [
+        "Vie basse : recule, ne prends pas le combat.",
+        "Avec des souls sur toi, rentre te soigner et dépenser en même temps.",
+        "Ne va pas en jungle avec peu de vie quand tu portes beaucoup de souls de jungle : elles se perdent à la mort tant qu'elles ne sont pas sécurisées."
+      ],
+      "exercice": { "texte": "Aucune mort après avoir engagé sous 50 % de vie", "mesure": "engage_bas", "cible": 0, "sens": "max", "reussites": 3 },
+      "en_partie": { "phase": "toujours", "rappel": "Moins de 50 % de vie : pas de combat." },
+      "memo": "mort"
+    },
+    {
+      "id": "temps-mort",
+      "domaine": "survie",
+      "priorite": 3,
+      "declencheur": "temps_mort",
+      "titre": "Rester en vie plus longtemps",
+      "pourquoi": "Pendant que tu es mort, tu ne farmes pas, ta wave avance sans toi et ton équipe joue à quatre. Le respawn monte jusqu'à 90 s : une mort en fin de partie peut décider du match.",
+      "comment": [
+        "Après un bon coup (un kill, un objectif), va dépenser tes souls et te soigner plutôt que de rester.",
+        "En fin de partie, reste groupé : les morts durent longtemps.",
+        "À chaque mort, ouvre le détail des dégâts reçus : balles ou compétences ? Achète la résistance qui correspond."
+      ],
+      "exercice": { "texte": "Passer moins de 12 % de la partie mort", "mesure": "temps_mort", "cible": 0.12, "sens": "max", "reussites": 3 },
+      "en_partie": { "phase": "fin", "rappel": "Fin de partie : reste groupé, une mort = jusqu'à 90 s." },
+      "memo": "mort"
+    },
+    {
+      "id": "rester-en-lane",
+      "domaine": "lane",
+      "priorite": 2,
+      "declencheur": "presence_lane",
+      "titre": "Rester dans sa lane jusqu'à 8:00",
+      "pourquoi": "De 0 à 8 minutes, c'est la phase de lane : chaque wave que tu manques, ce sont des souls perdues et ton Guardian qui prend des dégâts.",
+      "comment": [
+        "Avant de quitter ta lane : ma wave est-elle poussée ? Si non, reste.",
+        "Les seules bonnes raisons de partir : wave poussée, objectif qui apparaît, surnombre qu'apporte ton arrivée, allié attrapé tout près.",
+        "Une wave toutes les 30 s : repousse deux waves, puis fais autre chose."
+      ],
+      "exercice": { "texte": "Être dans ta lane au moins 85 % du temps entre 1:30 et 9:00", "mesure": "presence_lane", "cible": 0.85, "sens": "min", "reussites": 3 },
+      "en_partie": { "phase": "lane", "rappel": "Ta wave est-elle poussée ? Sinon, reste." },
+      "memo": "rotations"
+    },
+    {
+      "id": "ecart-lane",
+      "domaine": "lane",
+      "priorite": 3,
+      "declencheur": "ecart_lane_9",
+      "titre": "Gagner sa lane aux souls, pas aux kills",
+      "pourquoi": "À 9:00, tu as souvent moins de souls que tes adversaires de lane. Un kill rapporte, mais les Troopers rapportent à chaque wave : c'est là que se fait l'écart.",
+      "comment": [
+        "Prends tous tes derniers coups et tes orbes avant de chercher l'adversaire.",
+        "Tire sur les orbes de l'adversaire quand tu peux : c'est un deny, il perd la moitié de ses souls.",
+        "Pousse ta wave vers sa tour avant de partir en jungle : il doit la repousser, toi tu farmes."
+      ],
+      "exercice": { "texte": "Avoir au moins autant de souls que tes adversaires de lane à 9:00", "mesure": "ecart_lane_9", "cible": 0, "sens": "min", "reussites": 3 },
+      "en_partie": { "phase": "lane", "rappel": "Souls d'abord : Troopers, orbes, denies." },
+      "memo": "waves"
+    },
+    {
+      "id": "jungle",
+      "domaine": "farm",
+      "priorite": 3,
+      "declencheur": "jungle_min",
+      "titre": "Un camp entre deux waves",
+      "pourquoi": "Entre deux waves, il y a du temps libre. Un camp sur ton chemin, ce sont des souls en plus sans rien perdre, à condition de ne jamais le prendre à la place d'une wave.",
+      "comment": [
+        "Small camps dès 2:00, Medium dès 5:00, Large dès 8:00.",
+        "Vise l'œil des Haunts : sur le corps, ils réduisent de 50 à 60 % les dégâts reçus.",
+        "Dès 8:00, Sinner's Sacrifice en priorité : au corps à corps, et finis d'un heavy melee quand toutes les ampoules sont allumées pour 4 buffs permanents.",
+        "Casse les caisses et statues sur ton trajet (dès 3:00), jamais en détour."
+      ],
+      "exercice": { "texte": "Plus de souls de jungle par minute que la moitié des joueurs de ta partie", "mesure": "jungle_min", "score": 0.5, "reussites": 3 },
+      "en_partie": { "phase": "lane", "rappel": "Wave poussée ? Un camp sur ton chemin." },
+      "memo": "jungle"
+    },
+    {
+      "id": "objectifs",
+      "domaine": "objectifs",
+      "priorite": 2,
+      "declencheur": "boss_min",
+      "titre": "Transformer une wave poussée en dégâts sur les objectifs",
+      "pourquoi": "Tu fais beaucoup moins de dégâts aux Guardians et Walkers que les autres joueurs de tes parties. Pourtant, ce sont eux qui gagnent la partie : chaque Walker détruit donne un emplacement d'objet à toute ton équipe.",
+      "comment": [
+        "Règle des deux waves : tue deux waves, laisse tes Troopers avancer sur leur Walker, et tape avec eux.",
+        "Un Guardian n'a plus de résistance à 6:00, un Walker à 9:00 : c'est le moment d'insister.",
+        "Si personne en face ne peut venir défendre avant 15 à 20 s, attaque le Walker.",
+        "Avant 15 min environ, mourir pour un Walker peut valoir le coup ; après, non."
+      ],
+      "exercice": { "texte": "Faire plus de dégâts aux objectifs que la moitié des joueurs de ta partie", "mesure": "boss_min", "score": 0.5, "reussites": 3 },
+      "en_partie": { "phase": "milieu", "rappel": "Wave poussée sur leur Walker : tape avec elle." },
+      "memo": "objectifs"
+    },
+    {
+      "id": "participation",
+      "domaine": "combat",
+      "priorite": 3,
+      "declencheur": "participation",
+      "titre": "Être là quand ton équipe se bat",
+      "pourquoi": "Tu participes à une part plus faible des kills de ton équipe que les autres joueurs. En milieu de partie, la carte s'ouvre et c'est là que tout se décide : il faut savoir rejoindre le bon combat.",
+      "comment": [
+        "Regarde la minimap : un combat près de toi, que ton arrivée rend gagnable ? Vas-y.",
+        "Un combat trop loin pour arriver à temps : n'y va pas, profite-en pour pousser.",
+        "Ton ultimate est prêt et peut décider d'un combat : c'est une bonne raison de rotate."
+      ],
+      "exercice": { "texte": "Participer à au moins 45 % des kills de ton équipe", "mesure": "participation", "cible": 0.45, "sens": "min", "reussites": 3 },
+      "en_partie": { "phase": "milieu", "rappel": "Combat proche et gagnable ? Rejoins-le." },
+      "memo": "rotations"
+    },
+    {
+      "id": "portee",
+      "domaine": "tir",
+      "priorite": 3,
+      "declencheur": "portee",
+      "titre": "Tirer à la bonne distance",
+      "pourquoi": "Les dégâts d'arme chutent fortement au-delà de la distance de pleins dégâts du héros (20 m pour la plupart, de 8 à 25 m selon le héros). Tirer de trop loin, c'est beaucoup de balles pour peu de dégâts.",
+      "comment": [
+        "Compte en dashes : un dash au sol fait 10 m pour tous les héros.",
+        "Regarde la distance de ton héros dans sa fiche (onglet Aperçu) et celle des héros d'en face sur la page En partie.",
+        "Si tu dois te rapprocher pour faire mal, fais-le seulement quand le combat est gagnable."
+      ],
+      "exercice": { "texte": "Mieux que la moitié de ta partie en tirs sans perte de dégâts", "mesure": "portee", "score": 0.5, "reussites": 3 },
+      "en_partie": { "phase": "toujours", "rappel": "Trop loin = peu de dégâts. Compte en dashes." },
+      "memo": "gun_spirit"
+    },
+    {
+      "id": "powerups",
+      "domaine": "objectifs",
+      "priorite": 3,
+      "declencheur": "powerups",
+      "titre": "Ramasser les bonus de la carte",
+      "pourquoi": "Statues, caisses, Powerups et Sinner's Sacrifice donnent des bonus gratuits. Tu en ramasses moins que les autres joueurs de tes parties.",
+      "comment": [
+        "Powerups : sur les deux ponts, à 5:00 puis toutes les 5 min. Heavy melee pour les prendre ; ils durent 2:40 et se perdent à la mort.",
+        "Caisses et statues dès 3:00, sur ton trajet.",
+        "Sinner's Sacrifice dès 8:00 : finis d'un heavy melee quand toutes les ampoules sont allumées."
+      ],
+      "exercice": { "texte": "Ramasser plus de bonus que la moitié des joueurs de ta partie", "mesure": "powerups", "score": 0.5, "reussites": 3 },
+      "en_partie": { "phase": "lane", "rappel": "5:00 : Powerups sur les ponts." },
+      "memo": "jungle"
+    }
+  ]
+}

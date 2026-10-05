@@ -122,3 +122,35 @@ svg .mp-axe { fill: var(--doux); font-size: 9px; text-anchor: middle; }
 @media (max-width: 500px) {
   .mp-match-corps { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* Coach */
+.mp-coach { border-left: .35rem solid var(--or); }
+.mp-proposition { background: var(--fond-2); border: 1px solid var(--bord); border-radius: .4rem; padding: .5rem .8rem; margin-top: .5rem; }
+.mp-proposition > summary { cursor: pointer; display: flex; flex-wrap: wrap; align-items: baseline; gap: .3rem .7rem; }
+.mp-prop-rang { display: inline-grid; place-items: center; width: 1.5rem; height: 1.5rem; border-radius: 50%; background: var(--or); color: #111; font-weight: 700; }
+.mp-proposition .btn { margin-top: .5rem; }
+.mp-lecon { margin-top: .5rem; max-width: 60rem; }
+.mp-lecon h3 { margin: 0 0 .3rem; font-size: 1.15rem; }
+.mp-lien-memo { display: inline-block; margin-top: .4rem; color: var(--lien); }
+.mp-focus-tete { display: flex; align-items: center; gap: .6rem; }
+.mp-focus-titre { font-family: var(--titre); font-size: 1.5rem; }
+.mp-exercice { margin: .5rem 0; padding: .6rem .8rem; background: var(--fond-2); border: 1px solid var(--bord); border-radius: .4rem; }
+.mp-exercice p { margin: 0 0 .3rem; }
+.mp-suivi { list-style: none; margin: .3rem 0; padding: 0; display: flex; flex-wrap: wrap; gap: .3rem; }
+.mp-suivi li { display: inline-flex; gap: .4rem; align-items: center; padding: .15rem .5rem; border-radius: .3rem; border: 1px solid var(--bord); font-size: .9rem; }
+.mp-suivi li.ok { border-color: var(--bon); }
+.mp-suivi li.rate { border-color: var(--danger); }
+.mp-suivi li.ok .mp-suivi-marque { color: var(--bon); font-weight: 700; }
+.mp-suivi li.rate .mp-suivi-marque { color: var(--danger); font-weight: 700; }
+.mp-bravo { color: var(--bon); font-weight: 700; }
+.mp-lecon-det > summary { cursor: pointer; color: var(--or-clair); margin: .3rem 0; }
+.mp-coach > .btn.discret { margin-top: .4rem; }
+.mp-pli > summary { cursor: pointer; color: var(--doux); padding: .4rem .2rem; }
+
+/* Revue des morts */
+.mp-revue { list-style: none; padding: 0; display: flex; flex-direction: column; gap: .2rem; }
+.mp-revue li { display: grid; grid-template-columns: 3rem 7rem 1fr; gap: .4rem; font-size: .9rem; padding-left: .4rem; border-left: 3px solid var(--bord); }
+.mp-revue-t { font-variant-numeric: tabular-nums; color: var(--doux); }
+.mp-v-grave { border-left-color: var(--danger) !important; }
+.mp-v-moyen { border-left-color: var(--alerte) !important; }
+.mp-proposition .mp-lecon h3 { display: none; }
