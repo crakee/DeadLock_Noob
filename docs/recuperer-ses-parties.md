@@ -63,6 +63,16 @@ Dépôt : https://github.com/deadlock-api/deadlock-api-ingest (licence MIT, orga
 2. **`public-ingest`** (https://github.com/deadlock-api/public-ingest) : même principe en ligne de commande pour une liste de numéros de parties. Il demande l'identifiant et le mot de passe Steam : à éviter.
 3. **Si deadlock-api disparaît** : le site ne peut plus analyser les parties. Il faudrait lire les replays localement (fichiers `.dem`) avec un analyseur de démos Source 2, ce qui n'est pas prévu aujourd'hui.
 
+## Constaté dans les journaux (5–6 octobre 2026)
+
+- `--own-matches` : 58 parties dans l'historique du compte, 51 inconnues de l'API ; 7 envoyées en 2 min, puis Steam coupe la connexion (`Received close frame`).
+- **Après la coupure, l'outil continue de demander chaque partie sur la connexion fermée** (`salt fetch failed … Trying to work with closed connection`, une toutes les 20 s) ; 15 min plus tard, Steam répond `rate-limited` et l'outil marque **le quota du compte épuisé pour 24 h**. Les essais ratés semblent donc compter. Comportement à signaler aux auteurs de l'outil (Discord de deadlock-api) si ça se reproduit.
+- Le service démarré ensuite passe bien toutes les 30 min, mais saute le compte (`24h quota spent`) jusqu'à la fin des 24 h.
+- Un second compte Steam mémorisé sur le PC échoue à chaque fois (`GC handshake: timed out`) puis est mis de côté pour 24 h (`GC backed off`) : sans effet sur le compte principal.
+
+Commande pour lire l'essentiel du dernier journal (PowerShell) :
+`Get-Content (Get-ChildItem "$env:APPDATA\deadlock-api-ingest\logs" | Sort-Object LastWriteTime | Select-Object -Last 1).FullName | Select-String "ingested|GC unavailable|skipping|quota|Deadlock is running"`
+
 ## À vérifier
 
 - Le service récupère-t-il les parties avec le client Steam ouvert, ou faut-il fermer Steam ?
