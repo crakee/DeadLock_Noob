@@ -36,7 +36,7 @@
     try {
       if (!('speechSynthesis' in window)) return;
       const u = new SpeechSynthesisUtterance(texte);
-      u.lang = 'fr-FR';
+      u.lang = 'en-US';
       window.speechSynthesis.speak(u);
     } catch (e) { /* pas de voix */ }
   }
@@ -44,7 +44,7 @@
   // Annonce « nom » + « fin ». Les annonces s'enchaînent sans se couper.
   function annoncer(nom, restant) {
     const kNom = 'nom-' + cle(nom), kFin = finPour(restant);
-    const texte = restant > 1 ? nom.split(' (')[0] + ' dans ' + Math.round(restant) + ' secondes' : nom.split(' (')[0] + ' maintenant';
+    const texte = restant > 1 ? nom.split(' (')[0] + ' in ' + Math.round(restant) + ' seconds' : nom.split(' (')[0] + ' now';
     if (!fichier(kNom) || !fichier(kFin)) { synthese(texte); return; }
     file = file.then(() => jouerFichier(fichier(kNom))).then(() => jouerFichier(fichier(kFin)));
   }

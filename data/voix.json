@@ -39,39 +39,39 @@
    "fichier": null
   },
   "nom-rejuvenator-actif": {
-   "texte": "Rejuvenator actif",
+   "texte": "Rejuvenator active",
    "fichier": null
   },
   "nom-unstable-rift-suivant": {
-   "texte": "Unstable Rift suivant",
+   "texte": "Next Unstable Rift",
    "fichier": null
   },
   "fin-15": {
-   "texte": "dans quinze secondes",
+   "texte": "in fifteen seconds",
    "fichier": null
   },
   "fin-30": {
-   "texte": "dans trente secondes",
+   "texte": "in thirty seconds",
    "fichier": null
   },
   "fin-45": {
-   "texte": "dans quarante-cinq secondes",
+   "texte": "in forty-five seconds",
    "fichier": null
   },
   "fin-60": {
-   "texte": "dans une minute",
+   "texte": "in one minute",
    "fichier": null
   },
   "fin-75": {
-   "texte": "dans une minute quinze",
+   "texte": "in one minute fifteen",
    "fichier": null
   },
   "fin-90": {
-   "texte": "dans une minute trente",
+   "texte": "in one minute thirty",
    "fichier": null
   },
   "fin-maintenant": {
-   "texte": "maintenant",
+   "texte": "now!",
    "fichier": null
   }
  }

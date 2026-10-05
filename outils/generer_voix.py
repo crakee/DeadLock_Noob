@@ -11,6 +11,8 @@ Usage :
   python3 outils/generer_voix.py                         # liste seulement (pour générer à la main)
   python3 outils/generer_voix.py --script                # texte à coller dans l'outil de voix, en une prise
   python3 outils/generer_voix.py --depuis                # prépare les fichiers bruts de medias/voix-brut/
+  python3 outils/generer_voix.py --concevoir "description" --nom-essai arene   # 3 voix d'essai (Voice Design)
+  python3 outils/generer_voix.py --garder ID_APERCU --nom-voix "Nom"         # enregistre une voix d'essai dans le compte
   python3 outils/generer_voix.py --elevenlabs ID_VOIX    # génère avec l'API
   python3 outils/generer_voix.py --elevenlabs ID_VOIX --refaire   # régénère tout
   ... --outil "Fish Audio" --nom-voix "…" --licence "…"  # noté dans le meta de data/voix.json (gardé ensuite)
@@ -34,6 +36,7 @@ import re
 import shutil
 import subprocess
 import unicodedata
+import urllib.error
 import urllib.request
 from pathlib import Path
 
@@ -45,14 +48,15 @@ FORMATS = (".wav", ".mp3", ".ogg", ".flac", ".m4a", ".webm", ".aac", ".opus")
 TAUX = 44100
 CIBLE_DB = -18.0   # RMS des passages parlés, en dBFS : proche de -16 LUFS pour une voix
 
-# Fins d'annonce : préavis possibles (15 à 60 s dans data/timeline.json, + 0/15/30 s de réglage) et « maintenant ».
+# Fins d'annonce : préavis possibles (15 à 60 s dans data/timeline.json, + 0/15/30 s de réglage) et « now ».
+# Voix en anglais (choix de l'utilisateur, 5 octobre 2026) : noms du jeu et fins dans la même langue.
 FINS = {
-    "15": "dans quinze secondes", "30": "dans trente secondes", "45": "dans quarante-cinq secondes",
-    "60": "dans une minute", "75": "dans une minute quinze", "90": "dans une minute trente",
-    "maintenant": "maintenant",
+    "15": "in fifteen seconds", "30": "in thirty seconds", "45": "in forty-five seconds",
+    "60": "in one minute", "75": "in one minute fifteen", "90": "in one minute thirty",
+    "maintenant": "now!",
 }
-# Prononciation : les noms anglais du jeu, écrits pour être bien dits par une voix française si besoin.
-PRONONCIATION = {}
+# Texte dit pour les noms du chrono qui ne sont pas des noms du jeu (les clés de fichier ne changent pas).
+PRONONCIATION = {"Rejuvenator actif": "Rejuvenator active", "Unstable Rift suivant": "Next Unstable Rift"}
 
 
 def cle(nom):
@@ -210,6 +214,38 @@ def depuis_brut(dossier, clips, pause_s):
         print(f"préparé voix/{k}.mp3  {duree:.2f} s  crête {db(max(abs(x) for x in e)):.1f} dBFS  ({origine}){alerte}")
 
 
+ESSAIS_VOIX = RACINE / "medias/voix-essais"
+# Texte dit par chaque voix d'essai : de vraies annonces du chrono (l'API demande au moins 100 caractères).
+TEXTE_ESSAI = ("Mid-Boss... in thirty seconds. Soul Urn... now! Powerups... in fifteen seconds. "
+               "Sinner's Sacrifice... in one minute. Unstable Rift... now!")
+
+
+def appel(chemin, corps, cle_secrete):
+    req = urllib.request.Request("https://api.elevenlabs.io" + chemin, data=json.dumps(corps).encode(), method="POST",
+                                 headers={"xi-api-key": cle_secrete, "Content-Type": "application/json"})
+    try:
+        with urllib.request.urlopen(req, timeout=180) as r:
+            return json.load(r)
+    except urllib.error.HTTPError as e:
+        raise SystemExit(f"ElevenLabs a refusé ({e.code}) : {e.read().decode(errors='replace')[:400]}")
+
+
+def concevoir(description, nom, cle_secrete):
+    """Voice Design : 3 aperçus d'une voix décrite en texte, rangés dans medias/voix-essais/ avec un index."""
+    import base64
+    r = appel("/v1/text-to-voice/design", {"voice_description": description, "text": TEXTE_ESSAI,
+                                            "model_id": "eleven_ttv_v3", "loudness": 0.5}, cle_secrete)
+    ESSAIS_VOIX.mkdir(parents=True, exist_ok=True)
+    index = ESSAIS_VOIX / "index.json"
+    essais = json.loads(index.read_text(encoding="utf-8")) if index.exists() else {}
+    for i, a in enumerate(r["previews"], 1):
+        f = ESSAIS_VOIX / f"{nom}-{i}.mp3"
+        f.write_bytes(base64.b64decode(a["audio_base_64"]))
+        essais[f.name] = {"description": description, "apercu": a["generated_voice_id"], "duree": a.get("duration_secs")}
+        print(f"{f.relative_to(RACINE)}  {a.get('duration_secs', 0):.1f} s  aperçu {a['generated_voice_id']}")
+    index.write_text(json.dumps(essais, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     p.add_argument("--elevenlabs", metavar="ID_VOIX", help="identifiant de la voix ElevenLabs à utiliser")
@@ -218,15 +254,31 @@ def main():
     p.add_argument("--depuis", nargs="?", const=str(BRUT), metavar="DOSSIER",
                    help="prépare les clips bruts de ce dossier (par défaut medias/voix-brut)")
     p.add_argument("--pause", type=float, default=0.35, help="silence minimal entre deux clips d'une prise, en s")
+    p.add_argument("--concevoir", metavar="DESCRIPTION", help="crée 3 voix d'essai d'après une description (Voice Design)")
+    p.add_argument("--nom-essai", default="essai", help="préfixe des fichiers d'essai de voix")
+    p.add_argument("--garder", metavar="ID_APERCU", help="enregistre une voix d'essai dans le compte (avec --nom-voix)")
     p.add_argument("--outil", help="outil de voix utilisé (noté dans data/voix.json)")
     p.add_argument("--nom-voix", help="nom de la voix utilisée")
     p.add_argument("--licence", help="conditions d'usage de la voix et des clips")
     a = p.parse_args()
 
+    if a.concevoir or a.garder:
+        secret = cle_api()
+        if not secret:
+            raise SystemExit("Clé absente : variable ELEVENLABS_API_KEY ou fichier outils/.cle_elevenlabs")
+        if a.concevoir:
+            concevoir(a.concevoir, a.nom_essai, secret)
+        else:
+            idx = json.loads((ESSAIS_VOIX / "index.json").read_text(encoding="utf-8"))
+            desc = next((v["description"] for v in idx.values() if v["apercu"] == a.garder), "")
+            r = appel("/v1/text-to-voice", {"voice_name": a.nom_voix or "Annonces chrono", "voice_description": desc,
+                                            "generated_voice_id": a.garder}, secret)
+            print("Voix enregistrée, identifiant :", r.get("voice_id"))
+        return
     clips = liste_clips()
     if a.script:
         print("À dire dans cet ordre, une ligne par clip, avec une pause nette (au moins une demi-seconde) entre chaque :\n")
-        print("\n".join(t + ("…" if k.startswith("nom-") else ".") for k, t in clips.items()))
+        print("\n".join(t + ("…" if k.startswith("nom-") else "" if t.endswith("!") else ".") for k, t in clips.items()))
         print("\nEnregistrer la prise sous medias/voix-brut/prise.<ext>, puis : python3 outils/generer_voix.py --depuis")
         return
     VOIX.mkdir(exist_ok=True)
