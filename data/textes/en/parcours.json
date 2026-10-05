@@ -1,0 +1,60 @@
+{
+ "meta": {
+  "langue": "en"
+ },
+ "chapitres": {
+  "bases": {
+   "titre": "The basics",
+   "but": "Know what wins games, what kills you, and pick your hero."
+  },
+  "lane": {
+   "titre": "The lane",
+   "but": "Win your first 8 minutes on souls, not kills."
+  },
+  "depenser": {
+   "titre": "Spending",
+   "but": "Turn your souls and points into power, right away."
+  },
+  "survivre": {
+   "titre": "Staying alive",
+   "but": "Die less, and never for nothing."
+  },
+  "carte": {
+   "titre": "The map",
+   "but": "Read the minimap and take what the map gives you."
+  },
+  "macro": {
+   "titre": "Mid game",
+   "but": "Know where to go once laning ends, and take objectives down."
+  },
+  "combat": {
+   "titre": "Fighting",
+   "but": "Deal more damage with the same bullets."
+  }
+ },
+ "ui": {
+  "titre": "Your path",
+  "intro": "A step-by-step path to learn Deadlock. One lesson at a time: read it, try the drill in a game, then mark it done. Your focus shows on the In game page while you play.",
+  "focus": "Your focus",
+  "aucun_focus": "No focus yet: start with the first lesson below.",
+  "commencer": "Work on this",
+  "valider": "I did the drill",
+  "annuler_validation": "Mark as to do",
+  "arreter": "Stop this focus",
+  "acquise": "Done",
+  "en_cours": "In progress",
+  "a_faire": "To do",
+  "recommandee": "Recommended for you",
+  "progression": "{n} of {total} lessons done",
+  "exercice": "In-game drill",
+  "pourquoi": "Why",
+  "comment": "How",
+  "conseil": "advice",
+  "memo": "Read the basics sheet →",
+  "auto": "Checked automatically on your games if you link your Steam account (Progress page).",
+  "manuel": "No automatic check: mark it done yourself.",
+  "suivi": "{serie} success(es) in a row out of {cible} at the last analysis",
+  "lier": "Link your Steam account on the Progress page: the coach will check your drills and recommend the lessons you need most.",
+  "lier_bouton": "Link my account →"
+ }
+}

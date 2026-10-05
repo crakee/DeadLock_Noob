@@ -1,0 +1,60 @@
+{
+ "meta": {
+  "langue": "fr"
+ },
+ "chapitres": {
+  "bases": {
+   "titre": "Les bases",
+   "but": "Savoir ce qui fait gagner, ce qui te tue, et choisir ton héros."
+  },
+  "lane": {
+   "titre": "La lane",
+   "but": "Gagner tes 8 premières minutes aux souls, pas aux kills."
+  },
+  "depenser": {
+   "titre": "Dépenser",
+   "but": "Transformer tes souls et tes points en puissance, tout de suite."
+  },
+  "survivre": {
+   "titre": "Survivre",
+   "but": "Mourir moins, et jamais pour rien."
+  },
+  "carte": {
+   "titre": "La carte",
+   "but": "Lire la minimap et prendre ce que la carte offre."
+  },
+  "macro": {
+   "titre": "Le milieu de partie",
+   "but": "Savoir où aller une fois la lane finie, et faire tomber les objectifs."
+  },
+  "combat": {
+   "titre": "Le combat",
+   "but": "Faire plus de dégâts avec les mêmes balles."
+  }
+ },
+ "ui": {
+  "titre": "Ton parcours",
+  "intro": "Un chemin pas à pas pour apprendre Deadlock. Une leçon à la fois : lis-la, essaie l'exercice en partie, puis valide-la. Ton focus s'affiche sur la page En partie pendant que tu joues.",
+  "focus": "Ton focus",
+  "aucun_focus": "Pas encore de focus : commence par la première leçon ci-dessous.",
+  "commencer": "Je travaille ça",
+  "valider": "J'ai réussi l'exercice",
+  "annuler_validation": "Remettre à faire",
+  "arreter": "Arrêter ce focus",
+  "acquise": "Acquise",
+  "en_cours": "En cours",
+  "a_faire": "À faire",
+  "recommandee": "Conseillée pour toi",
+  "progression": "{n} leçons acquises sur {total}",
+  "exercice": "Exercice en partie",
+  "pourquoi": "Pourquoi",
+  "comment": "Comment",
+  "conseil": "conseil",
+  "memo": "Relire la fiche des bases →",
+  "auto": "Vérifié automatiquement sur tes parties si tu as lié ton compte Steam (page Progression).",
+  "manuel": "Pas de mesure automatique : valide toi-même quand c'est fait.",
+  "suivi": "{serie} réussite(s) d'affilée sur {cible} à la dernière analyse",
+  "lier": "Lie ton compte Steam sur la page Progression : le coach vérifiera tes exercices et te conseillera les leçons dont tu as le plus besoin.",
+  "lier_bouton": "Lier mon compte →"
+ }
+}

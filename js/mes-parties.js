@@ -310,25 +310,16 @@
 
   // ---------- le coach : un focus, une leçon, un exercice vérifié partie après partie ----------
 
-  const CLE_COACH = 'dln.coach.v1';          // { focus: id de leçon, depuis: start_time de la dernière partie au moment du choix, acquises: [] }
-  const CLE_FOCUS_PARTIE = 'dln.coach.focus.v1';   // lu par la page En partie
   const POIDS = { 1: 1, 2: 0.85, 3: 0.7 };
-  const lireCoach = () => { try { return JSON.parse(localStorage.getItem(CLE_COACH)) || {}; } catch (e) { return {}; } };
-  function ecrireCoach(etat) {
-    try {
-      localStorage.setItem(CLE_COACH, JSON.stringify(etat));
-      const l = etat.focus && lecons.lecons.find((x) => x.id === etat.focus);
-      if (l) localStorage.setItem(CLE_FOCUS_PARTIE, JSON.stringify({ id: l.id, titre: l.titre, rappel: l.en_partie.rappel, phase: l.en_partie.phase, exercice: l.exercice.texte }));
-      else localStorage.removeItem(CLE_FOCUS_PARTIE);
-    } catch (e) { /* stockage indisponible */ }
-  }
+  const lireCoach = () => DLN.coachEtat.lire();
+  const ecrireCoach = (etat) => DLN.coachEtat.ecrire(etat, lecons.lecons);
 
   // Score moyen (0 à 1) sur une mesure, sur les parties analysées.
   const scoreMoyen = (lues, k) => DLN.lobby.moyenne(lues.map((l) => l.lobby.scores[k]).filter((v) => v != null));
 
   function besoins(lues) {
     const acquises = lireCoach().acquises || [];
-    return lecons.lecons.map((le) => {
+    return lecons.lecons.filter((le) => le.declencheur).map((le) => {
       const s = scoreMoyen(lues, le.declencheur);
       return { le: le, s: s, besoin: s == null ? -1 : (1 - s) * (POIDS[le.priorite] || 0.7) };
     }).filter((x) => x.s != null && x.s < 0.45 && acquises.indexOf(x.le.id) === -1).sort((a, b) => b.besoin - a.besoin);
@@ -365,7 +356,26 @@
     return c;
   }
 
+  // Pour la page Parcours : leçons conseillées et série de réussites de chaque exercice mesurable.
+  function enregistrerSuivi(lues) {
+    const etat = lireCoach();
+    const recentes = lues.slice().sort((a, b2) => b2.p.start_time - a.p.start_time);
+    etat.recommandees = besoins(recentes.slice(0, 10)).slice(0, 3).map((x) => x.le.id);
+    etat.suivi = {};
+    lecons.lecons.filter((le) => le.declencheur).forEach((le) => {
+      let serie = 0;
+      // Pour le focus en cours, seules comptent les parties jouées depuis son choix.
+      const prises = le.id === etat.focus ? recentes.filter((l) => l.p.start_time > (etat.depuis || 0)) : recentes;
+      for (const l of prises) { if (exerciceReussi(le, l)) serie++; else break; }
+      etat.suivi[le.id] = { serie: serie, cible: le.exercice.reussites };
+      if (serie >= le.exercice.reussites && le.id === etat.focus) etat.acquises = (etat.acquises || []).concat([le.id]).filter((v, i, a) => a.indexOf(v) === i);
+    });
+    etat.maj = Date.now();
+    ecrireCoach(etat);
+  }
+
   function blocCoach(lues) {
+    enregistrerSuivi(lues);
     const b = bloc('Ton coach', 'mp-coach');
     const etat = lireCoach();
     const le = etat.focus && lecons.lecons.find((x) => x.id === etat.focus);
@@ -771,7 +781,7 @@
   }
 
   Promise.all(['data/heroes.json', 'data/items.json', 'data/hero-stats.json'].map(DLN.charger)
-    .concat([DLN.charger('data/tempo.json').catch(() => null), DLN.profil, DLN.charger('data/map.json').catch(() => null), DLN.charger('data/lecons.json').catch(() => null)])).then((r) => {
+    .concat([DLN.charger('data/tempo.json').catch(() => null), DLN.profil, DLN.charger('data/map.json').catch(() => null), DLN.coachEtat.lecons().catch(() => null)])).then((r) => {
     carte = r[5];
     lecons = r[6];
     heros = r[0];

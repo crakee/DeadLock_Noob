@@ -161,8 +161,8 @@
     const actif = f.phase === 'toujours' || PHASES_FOCUS[f.phase] === s.phase.nom;
     zoneFocus.textContent = '';
     zoneFocus.classList.toggle('actif', actif);
-    const lien = el('a', 'coach-focus-titre', 'Ton focus · ' + f.titre);
-    lien.href = 'mes-parties.html';
+    const lien = el('a', 'coach-focus-titre', DLN.tr({ fr: 'Ton focus · ', en: 'Your focus · ' }) + f.titre);
+    lien.href = 'parcours.html#l=' + encodeURIComponent(f.id);
     zoneFocus.append(lien, el('span', 'coach-focus-rappel', actif ? f.rappel : f.exercice));
   }
 

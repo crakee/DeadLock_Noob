@@ -1,0 +1,223 @@
+{
+ "meta": { "langue": "en", "note": "Lesson texts by id (see data/lecons.json). Translated from data/textes/fr/lecons.json." },
+ "lecons": {
+  "last-hit": {
+   "titre": "The last hit on every Trooper",
+   "pourquoi": "In lane, souls come from the last hit on each Trooper. Every missed Trooper is souls you will never get, and your opponent takes them instead. This is the foundation: fewer souls means fewer items and fewer levels for the rest of the game.",
+   "comment": [
+    "Don't shoot the wave nonstop: wait until a Trooper is low, then finish it.",
+    "Kill with melee when it's safe: you get all the souls at once, and the enemy can't steal the orb.",
+    "Otherwise, shoot the orb that floats up after your last hit right away: it's the other half of the souls.",
+    "If you must choose between hitting the enemy and taking a Trooper, take the Trooper."
+   ],
+   "exercice": { "texte": "Kill at least 45% of the Troopers in range before 9:00" },
+   "en_partie": { "rappel": "Last hit every Trooper, then the orb." }
+  },
+  "points-competence": {
+   "titre": "Spend your ability points right away",
+   "pourquoi": "An unspent ability point does nothing: your ability stays at its previous level, sometimes for several minutes. It's free power you are leaving on the table.",
+   "comment": [
+    "Every time you level up, check whether a point is available and spend it before fighting again.",
+    "Make it a habit to check on every death and every shop visit.",
+    "If unsure, follow the upgrade order of your build (Builds tab on the hero page)."
+   ],
+   "exercice": { "texte": "Less than 30 point-minutes left unspent over the game" },
+   "en_partie": { "rappel": "Ability point available? Spend it." }
+  },
+  "souls-dormantes": {
+   "titre": "Don't walk around with your souls",
+   "pourquoi": "Souls in your pocket give no stats. Until you spend them, you are fighting with the items you had minutes ago. On average you keep more unspent souls than the other players in your games.",
+   "comment": [
+    "As soon as you can afford the next item of your build (800, 1,600, 3,200 or 6,400), buy it.",
+    "No need to go back to base: your lane's side shop and the two underground secret shops sell everything.",
+    "After a kill or an objective, go spend before looking for anything else.",
+    "Aim for the 4,800-soul threshold in a single category: one 1,600 item and one 3,200 item of the same type."
+   ],
+   "exercice": { "texte": "Keep less than 2,000 unspent souls on average" },
+   "en_partie": { "rappel": "Souls in pocket = 0 stats. Go spend." }
+  },
+  "inferiorite": {
+   "titre": "Don't fight one against many",
+   "pourquoi": "Many of your deaths happen when there are at least two more enemies than allies around you. Then the fight is lost before it starts, whatever your hero. And the later the game, the more a death costs: 8 s respawn until 5:00, 38 s at 20:00, 70 s at 30:00.",
+   "comment": [
+    "Before engaging, count: how many visible enemies, how many allies nearby? If you are outnumbered, don't go.",
+    "An enemy missing from the minimap is not necessarily far away: an unseen enemy can be right next to you.",
+    "If an ally runs into a hopeless fight, tell them to back off rather than following them.",
+    "Only fight when it's close, winnable, and your wave is pushed."
+   ],
+   "exercice": { "texte": "At most 1 death while outnumbered" },
+   "en_partie": { "rappel": "Before engaging: how many of us, how many of them?" }
+  },
+  "mort-isolee": {
+   "titre": "Don't die alone",
+   "pourquoi": "Dying far from your team often means getting caught alone, with nobody able to help or trade back. The enemy gets souls without any risk.",
+   "comment": [
+    "Outside your lane, check the minimap before moving forward: where are your allies?",
+    "The enemy jungle is only safe when you have priority (your lanes pushed, them busy defending).",
+    "If several enemies have disappeared from the minimap, fall back toward your team or your lane."
+   ],
+   "exercice": { "texte": "At most 1 death with no ally within ~50 m" },
+   "en_partie": { "rappel": "Enemies missing from the minimap? Back off." }
+  },
+  "engager-vie-basse": {
+   "titre": "Don't engage with low health",
+   "pourquoi": "Starting a fight below half health leaves you almost no margin: the first ability or burst kills you.",
+   "comment": [
+    "Low health: back off, don't take the fight.",
+    "With souls on you, go back to heal and spend at the same time.",
+    "Don't go into the jungle with low health while carrying a lot of jungle souls: they are lost on death until they are secured."
+   ],
+   "exercice": { "texte": "No death after engaging below 50% health" },
+   "en_partie": { "rappel": "Below 50% health: no fight." }
+  },
+  "temps-mort": {
+   "titre": "Stay alive longer",
+   "pourquoi": "While you are dead, you don't farm, your wave moves on without you and your team plays four against five. Respawn goes up to 90 s: one death late in the game can decide the match.",
+   "comment": [
+    "After a good play (a kill, an objective), go spend your souls and heal rather than staying.",
+    "Late game, stay grouped: deaths last a long time.",
+    "On each death, open the damage received breakdown: bullets or abilities? Buy the matching resistance."
+   ],
+   "exercice": { "texte": "Spend less than 12% of the game dead" },
+   "en_partie": { "rappel": "Late game: stay grouped, one death = up to 90 s." }
+  },
+  "rester-en-lane": {
+   "titre": "Stay in your lane until 8:00",
+   "pourquoi": "From 0 to 8 minutes is the laning phase: every wave you miss is lost souls and damage on your Guardian.",
+   "comment": [
+    "Before leaving your lane: is my wave pushed? If not, stay.",
+    "The only good reasons to leave: wave pushed, an objective spawning, your arrival creates a numbers advantage, an ally caught right next to you.",
+    "A wave every 30 s: clear two waves, then do something else."
+   ],
+   "exercice": { "texte": "Be in your lane at least 85% of the time between 1:30 and 9:00" },
+   "en_partie": { "rappel": "Is your wave pushed? If not, stay." }
+  },
+  "ecart-lane": {
+   "titre": "Win your lane on souls, not kills",
+   "pourquoi": "At 9:00, you often have fewer souls than your lane opponents. A kill pays, but Troopers pay every wave: that's where the gap is made.",
+   "comment": [
+    "Take all your last hits and orbs before going after the enemy.",
+    "Shoot the enemy's orbs when you can: that's a deny, they lose half of the souls.",
+    "Push your wave toward their tower before going to the jungle: they must clear it, you farm."
+   ],
+   "exercice": { "texte": "Have at least as many souls as your lane opponents at 9:00" },
+   "en_partie": { "rappel": "Souls first: Troopers, orbs, denies." }
+  },
+  "jungle": {
+   "titre": "One camp between two waves",
+   "pourquoi": "Between two waves there is free time. A camp on your way is extra souls at no cost, as long as you never take it instead of a wave.",
+   "comment": [
+    "Small camps from 2:00, Medium from 5:00, Large from 8:00.",
+    "Aim at the Haunts' eye: on the body, they take 50 to 60% less damage.",
+    "From 8:00, Sinner's Sacrifice first: melee only, and finish with a heavy melee when all the bulbs are lit for 4 permanent buffs.",
+    "Break crates and statues on your way (from 3:00), never as a detour."
+   ],
+   "exercice": { "texte": "More jungle souls per minute than half of the players in your game" },
+   "en_partie": { "rappel": "Wave pushed? A camp on your way." }
+  },
+  "objectifs": {
+   "titre": "Turn a pushed wave into objective damage",
+   "pourquoi": "You deal much less damage to Guardians and Walkers than the other players in your games. Yet they are what wins the game: each Walker destroyed gives an item slot to your whole team.",
+   "comment": [
+    "Two-wave rule: clear two waves, let your Troopers walk onto their Walker, and hit it with them.",
+    "A Guardian has no resistance left at 6:00, a Walker at 9:00: that's the time to push on.",
+    "If nobody on their side can come defend within 15 to 20 s, hit the Walker.",
+    "Before roughly 15 min, dying for a Walker can be worth it; after that, no."
+   ],
+   "exercice": { "texte": "Deal more objective damage than half of the players in your game" },
+   "en_partie": { "rappel": "Wave pushed onto their Walker: hit it with them." }
+  },
+  "participation": {
+   "titre": "Be there when your team fights",
+   "pourquoi": "You take part in a smaller share of your team's kills than the other players. In mid game the map opens up and that's where everything is decided: you need to join the right fight.",
+   "comment": [
+    "Check the minimap: a fight near you that your arrival makes winnable? Go.",
+    "A fight too far to reach in time: don't go, push instead.",
+    "Your ultimate is ready and can decide a fight: that's a good reason to rotate."
+   ],
+   "exercice": { "texte": "Take part in at least 45% of your team's kills" },
+   "en_partie": { "rappel": "Close, winnable fight? Join it." }
+  },
+  "portee": {
+   "titre": "Shoot from the right distance",
+   "pourquoi": "Weapon damage drops sharply beyond the hero's full-damage range (20 m for most heroes, 8 to 25 m depending on the hero). Shooting from too far means many bullets for little damage.",
+   "comment": [
+    "Count in dashes: a ground dash covers 10 m for every hero.",
+    "Check your hero's range on its page (Overview tab) and the enemy heroes' ranges on the In game page.",
+    "If you must get closer to deal damage, only do it when the fight is winnable."
+   ],
+   "exercice": { "texte": "Better than half of your game at hits with no damage falloff" },
+   "en_partie": { "rappel": "Too far = little damage. Count in dashes." }
+  },
+  "powerups": {
+   "titre": "Pick up the map's bonuses",
+   "pourquoi": "Statues, crates, Powerups and Sinner's Sacrifice give free bonuses. You pick up fewer of them than the other players in your games.",
+   "comment": [
+    "Powerups: on the two bridges, at 5:00 then every 5 min. Heavy melee to take them; they last 2:40 and are lost on death.",
+    "Crates and statues from 3:00, on your way.",
+    "Sinner's Sacrifice from 8:00: finish with a heavy melee when all the bulbs are lit."
+   ],
+   "exercice": { "texte": "Pick up more bonuses than half of the players in your game" },
+   "en_partie": { "rappel": "5:00: Powerups on the bridges." }
+  },
+  "but-du-jeu": {
+   "titre": "The goal of the game and souls",
+   "pourquoi": "Before anything else, you need to know what wins. You don't win on kills: you win by destroying enemy structures, and souls make you stronger to get there.",
+   "comment": [
+    "Each team pushes three lanes. On each: a Guardian, then a Walker, then two Base Guardians. Then the two Shrines, then the Patron. Destroying the enemy Patron wins the game.",
+    "Souls are both money and experience. They come from Troopers, the jungle, kills and objectives.",
+    "Three phases: laning (0 to 8 min), mid game (8 to 20-25 min, where everything is decided), late game (deaths last long, stay grouped)."
+   ],
+   "exercice": { "texte": "During a game, check the scoreboard: which team has destroyed more structures? Is it the one winning?" },
+   "en_partie": { "rappel": "You win on structures, not kills." }
+  },
+  "gun-spirit": {
+   "titre": "Gun vs Spirit: know what kills you",
+   "pourquoi": "There are two main damage types, and each resistance only protects against its own. Buying the wrong resistance is paying for nothing.",
+   "comment": [
+    "Weapon Damage: your gun's bullets. Spirit Damage: most abilities.",
+    "Bullet Resist reduces bullet damage, Spirit Resist reduces ability damage.",
+    "When you die, check the damage received breakdown: mostly bullets → Bullet Resist; mostly abilities → Spirit Resist.",
+    "Buy the resistance against whoever kills you most, not against their whole team."
+   ],
+   "exercice": { "texte": "On each death, open the damage received breakdown and ask yourself: bullets or abilities?" },
+   "en_partie": { "rappel": "Dead? Bullets or abilities: buy the right resistance." }
+  },
+  "minimap": {
+   "titre": "Watch the minimap",
+   "pourquoi": "The minimap shows where your allies are, the visible enemies and the state of the lanes. Without it, you discover danger when it's already on you.",
+   "comment": [
+    "Force yourself to look at it every few seconds until it becomes automatic.",
+    "Just one question at first: is my wave pushed?",
+    "An enemy only shows up if an ally sees them. Not seeing them doesn't mean they aren't there.",
+    "An opponent left their lane: ping it to your team, then follow them or use their absence to push."
+   ],
+   "exercice": { "texte": "During laning, glance at the minimap every wave (every 30 s)." },
+   "en_partie": { "rappel": "Glance at the minimap: where are they?" }
+  },
+  "deux-waves": {
+   "titre": "The two-wave rule",
+   "pourquoi": "After laning, you need to know when to go do something else. Clearing two waves sends your Troopers onto their Walker: the enemy has to come defend, and you get free time.",
+   "comment": [
+    "Clear two waves so your Troopers crash into their Walker, then leave. No \"just one more\".",
+    "If an enemy comes to defend: 30 to 45 s of freedom for a camp, a purchase or a gank.",
+    "If nobody can come within 15 to 20 s: hit the Walker.",
+    "Before every move: is my wave pushed?"
+   ],
+   "exercice": { "texte": "After 8:00, push two waves before every move." },
+   "en_partie": { "rappel": "Two waves pushed, then I move." }
+  },
+  "ton-heros": {
+   "titre": "Understand your hero",
+   "pourquoi": "Each hero has a role, a moment when it's strong and a way to win. Knowing it tells you where to stand, what to buy and when to fight.",
+   "comment": [
+    "Pick one or two heroes and stick with them: fewer things to remember, more progress.",
+    "Read its page: its role, abilities, full-damage range, how to counter it.",
+    "Look at its build: which items, in what order, and why.",
+    "Read its role sheet: where to stand and which farm to take."
+   ],
+   "exercice": { "texte": "Play 5 games in a row with the same hero." },
+   "en_partie": { "rappel": "Your hero: when are you strong, when should you fight?" }
+  }
+ }
+}

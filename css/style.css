@@ -1136,3 +1136,9 @@ main.partie {
   .table, .meta-table { font-size: .85rem; }
   .table td.nombre:last-child, .meta-table td.nombre:last-child { white-space: normal; }
 }
+
+/* Sous-navigation : une seule ligne qui défile sur petit écran. */
+@media (max-width: 500px) {
+  .sous-nav { overflow-x: auto; scrollbar-width: none; }
+  .sous-onglet { white-space: nowrap; }
+}

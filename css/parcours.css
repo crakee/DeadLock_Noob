@@ -1,0 +1,48 @@
+/* Parcours d'apprentissage (js/parcours.js). */
+
+.page-parcours { display: flex; flex-direction: column; gap: .8rem; max-width: 60rem; margin: 0 auto; padding: 1rem; }
+.pc-tete h1 { margin: 0 0 .3rem; font-family: var(--titre); font-size: 2rem; color: var(--or-clair); }
+.pc-intro { margin: 0 0 .6rem; font-size: 1.05rem; }
+.pc-barre { height: .6rem; border-radius: 1rem; background: var(--fond-2); border: 1px solid var(--bord); overflow: hidden; }
+.pc-barre span { display: block; height: 100%; background: var(--or); border-radius: 1rem; }
+
+.pc-focus { border-left: .4rem solid var(--or); }
+.pc-focus-titre { font-family: var(--titre); font-size: 1.6rem; margin: 0; }
+.pc-focus-rappel { margin: .2rem 0 .6rem; color: var(--or-clair); font-size: 1.1rem; }
+.pc-lier { margin: 0; padding: .6rem .9rem; border: 1px dashed var(--bord-fort); border-radius: .5rem; color: var(--doux); }
+.pc-lier a { color: var(--lien); }
+
+.pc-chapitre h2 { display: flex; align-items: center; gap: .6rem; }
+.pc-num { display: inline-grid; place-items: center; width: 1.8rem; height: 1.8rem; border-radius: 50%; background: var(--or); color: #111; font-size: 1rem; }
+.pc-compte { margin-left: auto; font-family: var(--corps); font-size: .85rem; color: var(--doux); letter-spacing: 0; }
+
+.pc-lecon { border-top: 1px solid var(--bord); }
+.pc-lecon > summary { cursor: pointer; display: grid; grid-template-columns: 1rem 1fr auto; align-items: center; gap: .7rem; padding: .55rem .2rem; list-style: none; }
+.pc-lecon > summary::-webkit-details-marker { display: none; }
+.pc-puce { width: .8rem; height: .8rem; border-radius: 50%; border: 2px solid var(--bord-fort); }
+.pc-lecon-titre { font-weight: 600; }
+.pc-statut { font-size: .8rem; padding: .05rem .5rem; border-radius: 1rem; border: 1px solid var(--bord); color: var(--doux); white-space: nowrap; }
+.st-acquise .pc-puce { background: var(--bon); border-color: var(--bon); }
+.st-acquise .pc-statut { color: var(--bon); border-color: var(--bon); }
+.st-acquise .pc-lecon-titre { color: var(--doux); }
+.st-en_cours .pc-puce { background: var(--or); border-color: var(--or); }
+.st-en_cours .pc-statut { color: #111; background: var(--or); border-color: var(--or); }
+.st-recommandee .pc-puce { border-color: var(--alerte); }
+.st-recommandee .pc-statut { color: var(--alerte); border-color: var(--alerte); }
+
+.pc-lecon-corps { padding: .2rem 0 .8rem 1.7rem; }
+.pc-focus .pc-lecon-corps { padding-left: 0; }
+.pc-lecon-corps h4 { margin: .5rem 0 .2rem; display: flex; align-items: center; gap: .4rem; color: var(--or-clair); }
+.pc-lecon-corps p { margin: 0; }
+.pc-comment { margin: 0; padding-left: 1.2rem; display: flex; flex-direction: column; gap: .25rem; }
+.pc-exercice { display: flex; flex-direction: column; gap: .15rem; margin-top: .7rem; padding: .6rem .8rem; background: var(--fond-2); border: 1px solid var(--bord); border-left: .3rem solid var(--or); border-radius: .4rem; }
+.pc-ex-label { font-family: var(--titre); text-transform: uppercase; letter-spacing: .05em; font-size: .8rem; color: var(--or); }
+.pc-suivi { color: var(--texte); }
+.pc-memo { display: inline-block; margin-top: .5rem; color: var(--lien); }
+.pc-actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .7rem; }
+
+@media (max-width: 500px) {
+  .pc-lecon-corps { padding-left: 0; }
+  .pc-tete h1 { font-size: 1.6rem; }
+}
+.pc-focus-rappel { font-style: italic; }

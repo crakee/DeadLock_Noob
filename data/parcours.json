@@ -1,0 +1,61 @@
+{
+ "meta": {
+  "note": "Ordre du parcours débutant. Les textes sont dans data/textes/<langue>/parcours.json."
+ },
+ "chapitres": [
+  {
+   "id": "bases",
+   "lecons": [
+    "but-du-jeu",
+    "gun-spirit",
+    "ton-heros"
+   ]
+  },
+  {
+   "id": "lane",
+   "lecons": [
+    "last-hit",
+    "rester-en-lane",
+    "ecart-lane"
+   ]
+  },
+  {
+   "id": "depenser",
+   "lecons": [
+    "points-competence",
+    "souls-dormantes"
+   ]
+  },
+  {
+   "id": "survivre",
+   "lecons": [
+    "engager-vie-basse",
+    "inferiorite",
+    "mort-isolee",
+    "temps-mort"
+   ]
+  },
+  {
+   "id": "carte",
+   "lecons": [
+    "minimap",
+    "jungle",
+    "powerups"
+   ]
+  },
+  {
+   "id": "macro",
+   "lecons": [
+    "deux-waves",
+    "objectifs",
+    "participation"
+   ]
+  },
+  {
+   "id": "combat",
+   "lecons": [
+    "portee"
+   ]
+  }
+ ]
+}
