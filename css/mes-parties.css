@@ -154,3 +154,25 @@ svg .mp-axe { fill: var(--doux); font-size: 9px; text-anchor: middle; }
 .mp-v-grave { border-left-color: var(--danger) !important; }
 .mp-v-moyen { border-left-color: var(--alerte) !important; }
 .mp-proposition .mp-lecon h3 { display: none; }
+
+/* Débrief de la dernière partie */
+.mp-debrief { border-left: .35rem solid var(--or-clair); }
+.mp-debrief-tete { display: flex; align-items: center; gap: .9rem; }
+.mp-debrief-tete h2 { margin: 0 0 .1rem; }
+.mp-debrief-note { margin-left: auto; display: flex; flex-direction: column; align-items: center; gap: .1rem; }
+.mp-note.grande { min-width: 2.8rem; height: 2.8rem; font-size: 1.6rem; }
+.mp-tuiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: .6rem; margin-top: .7rem; }
+.mp-tuile { padding: .6rem .8rem; background: var(--fond-2); border: 1px solid var(--bord); border-top: .25rem solid var(--bord-fort); border-radius: .4rem; }
+.mp-tuile.bon { border-top-color: var(--bon); }
+.mp-tuile.mauvais { border-top-color: var(--danger); }
+.mp-tuile p { margin: .2rem 0; }
+.mp-tuile-titre { font-family: var(--titre); text-transform: uppercase; letter-spacing: .04em; color: var(--or-clair); }
+.mp-ex-res { font-weight: 700; }
+.mp-evol { margin: .6rem 0 0; }
+.mp-evol .haut { color: var(--bon); font-weight: 700; }
+.mp-evol .bas { color: var(--danger); font-weight: 700; }
+.mp-ajout { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; width: 100%; margin-top: .4rem; padding-top: .6rem; border-top: 1px solid var(--bord); }
+.mp-ajout label { font-weight: 600; }
+.mp-ajout input { width: 12rem; font: inherit; color: var(--texte); background: var(--fond-2); border: 1px solid var(--bord-fort); border-radius: .4rem; padding: .35rem .6rem; }
+.mp-ajout-msg { flex-basis: 100%; margin: 0; }
+.mp-profil .mp-ajout .btn { margin-left: 0; }

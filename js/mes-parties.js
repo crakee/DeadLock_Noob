@@ -158,7 +158,7 @@
     const oublier = el('button', 'btn discret', 'Changer de compte');
     oublier.type = 'button';
     oublier.addEventListener('click', () => { try { localStorage.removeItem(CLE); } catch (e) { /* idem */ } moi = null; parties = []; contenu().textContent = ''; afficherProfil(); document.getElementById('mp-saisie').focus(); });
-    z.append(oublier);
+    z.append(oublier, formulaireAjout());
   }
 
   // ---------- résumé façon op.gg ----------
@@ -249,7 +249,7 @@
       const remp = el('span', 'mp-dom-plein note-' + L.lettre(x.s));
       remp.style.width = x.s == null ? '0' : Math.max(4, Math.round(x.s * 100)) + '%';
       barre.append(remp);
-      sum.append(el('span', 'mp-dom-nom', x.d.nom), barre, el('span', 'mp-note note-' + L.lettre(x.s), L.lettre(x.s)));
+      sum.append(el('span', 'mp-dom-nom', DLN.tr(x.d.nom)), barre, el('span', 'mp-note note-' + L.lettre(x.s), L.lettre(x.s)));
       det.append(sum);
       const t = el('table', 'table mp-dom-table');
       const th = el('tr');
@@ -260,7 +260,7 @@
         const med = lues.map((l) => l.lobby.mediane[k]).filter((v) => v != null);
         const sc = L.moyenne(lues.map((l) => l.lobby.scores[k]).filter((v) => v != null));
         const tr = el('tr');
-        tr.append(el('td', null, L.MESURES[k].nom), el('td', 'nombre ' + (sc == null ? '' : sc < 0.3 ? 'bas' : sc > 0.7 ? 'haut' : ''), valeur(k, L.moyenne(toi))),
+        tr.append(el('td', null, DLN.tr(L.MESURES[k].nom)), el('td', 'nombre ' + (sc == null ? '' : sc < 0.3 ? 'bas' : sc > 0.7 ? 'haut' : ''), valeur(k, L.moyenne(toi))),
           el('td', 'nombre doux', valeur(k, L.moyenne(med))));
         t.append(tr);
       });
@@ -271,7 +271,7 @@
     const fort = tri.filter((x) => x.s != null).sort((p, q) => q.s - p.s)[0];
     if (faible && fort) {
       const p = el('p', 'mp-focus');
-      p.append('Point fort : ', el('strong', null, fort.d.nom), ' · à travailler en premier : ', el('strong', 'mp-focus-faible', faible.d.nom));
+      p.append('Point fort : ', el('strong', null, DLN.tr(fort.d.nom)), ' · à travailler en premier : ', el('strong', 'mp-focus-faible', DLN.tr(faible.d.nom)));
       b.append(p);
     }
     return b;
@@ -337,7 +337,7 @@
     const k = le.declencheur;
     const toi = DLN.lobby.moyenne(lues.map((l) => l.lobby.moi[k]).filter((v) => v != null));
     const med = DLN.lobby.moyenne(lues.map((l) => l.lobby.mediane[k]).filter((v) => v != null));
-    return DLN.lobby.MESURES[k].nom + ' : ' + valeur(k, toi) + ' pour toi, ' + valeur(k, med) + ' pour la médiane de tes parties (' + lues.length + ' parties).';
+    return DLN.tr(DLN.lobby.MESURES[k].nom) + ' : ' + valeur(k, toi) + ' pour toi, ' + valeur(k, med) + ' pour la médiane de tes parties (' + lues.length + ' parties).';
   }
 
   function carteLecon(le, lues) {
@@ -461,6 +461,103 @@
     return { cls: 'neutre', txt: 'Combat à égalité (' + (m.allies + 1) + ' contre ' + m.ennemis + ').' };
   }
 
+  // ---------- débrief de la dernière partie ----------
+  // Ce qu'un coach dit juste après une partie : un point réussi, un point à corriger, l'exercice du focus,
+  // la mort la plus évitable, et ce qui a bougé par rapport aux parties d'avant.
+
+  const GRAVITE = (m) => (m.inferiorite ? 4 : m.isole ? 3 : m.engage_bas ? 2 : m.cote_adverse ? 1.5 : m.surpris ? 1 : 0);
+  const T = (fr, en) => DLN.tr({ fr: fr, en: en });
+
+  function tuile(classe, titre, contenu) {
+    const t = el('div', 'mp-tuile ' + classe);
+    t.append(el('div', 'mp-tuile-titre', titre));
+    contenu.forEach((c) => { if (c) t.append(c); });
+    return t;
+  }
+
+  function lienLecon(k) {
+    const le = lecons && lecons.lecons.find((x) => x.declencheur === k);
+    if (!le) return null;
+    const a = el('a', 'mp-lien-memo', T('Leçon : ', 'Lesson: ') + le.titre + ' →');
+    a.href = 'parcours.html#l=' + le.id;
+    return a;
+  }
+
+  function debrief(lues) {
+    const L = DLN.lobby;
+    const tri = lues.slice().sort((a, b) => b.p.start_time - a.p.start_time);
+    const l = tri[0], avant = tri.slice(1, 11);
+    const b = bloc(null, 'mp-debrief');
+    const p = l.p, victoire = p.match_result === p.player_team;
+    const tete = el('div', 'mp-debrief-tete');
+    const h = herosDe(p.hero_id);
+    if (h) tete.append(DLN.img(h.icone || h.image, 'mp-portrait'));
+    const titre = el('div');
+    titre.append(el('h2', null, T('Débrief de ta dernière partie', 'Debrief of your last game')),
+      el('div', null, nomHeros(p.hero_id) + ' · ' + (victoire ? T('Victoire', 'Win') : T('Défaite', 'Loss')) + ' · ' +
+        new Date(p.start_time * 1000).toLocaleDateString(DLN.langue === 'fr' ? 'fr-FR' : 'en-US', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) +
+        ' · ' + Math.round(p.match_duration_s / 60) + ' min · ' + p.player_kills + ' / ' + p.player_deaths + ' / ' + p.player_assists));
+    const g = L.lettre(l.lobby.global);
+    const note = el('div', 'mp-debrief-note');
+    note.append(el('span', 'mp-note grande note-' + g, g), el('span', 'aide', l.lobby.place + (l.lobby.place === 1 ? T('er', 'st') : T('e', 'th')) + ' / ' + l.lobby.n));
+    tete.append(titre, note);
+    b.append(tete);
+
+    const grille = el('div', 'mp-tuiles');
+    // Point fort et point à corriger : meilleure et pire mesure de la partie (face aux 11 autres).
+    const sc = Object.keys(l.lobby.scores).map((k) => ({ k: k, s: l.lobby.scores[k] })).sort((x, y) => y.s - x.s);
+    const ligne = (k) => el('p', null, DLN.tr(L.MESURES[k].nom) + ' : ' + valeur(k, l.lobby.moi[k]) + T(' (médiane de la partie : ', ' (game median: ') + valeur(k, l.lobby.mediane[k]) + ')');
+    if (sc.length) {
+      grille.append(tuile('bon', T('✓ Ton point fort', '✓ Your strong point'), [ligne(sc[0].k), el('p', 'aide', T('Garde ça.', 'Keep it up.'))]));
+      const pire = sc[sc.length - 1];
+      grille.append(tuile('mauvais', T('✗ À corriger', '✗ To fix'), [ligne(pire.k), lienLecon(pire.k)]));
+    }
+    // Exercice du focus
+    const etat = lireCoach();
+    const le = etat.focus && lecons && lecons.lecons.find((x) => x.id === etat.focus);
+    if (le && !le.exercice.manuel) {
+      const r = exerciceReussi(le, l);
+      const apres = p.start_time > (etat.depuis || 0);
+      grille.append(tuile(r ? 'bon' : r === false ? 'mauvais' : '', T('🎯 Exercice : ', '🎯 Drill: ') + le.titre, [
+        el('p', null, le.exercice.texte), el('p', 'mp-ex-res', (r ? T('Réussi', 'Done') : r === false ? T('Raté', 'Missed') : '?') + ' · ' + valeur(le.exercice.mesure, l.lobby.moi[le.exercice.mesure])),
+        apres ? null : el('p', 'aide', T('Partie jouée avant le choix de ce focus : elle ne compte pas.', 'Game played before this focus was chosen: it does not count.'))]));
+    } else {
+      const a = el('a', 'mp-lien-memo', T('Choisir un focus dans le parcours →', 'Pick a focus in the path →'));
+      a.href = 'parcours.html';
+      grille.append(tuile('', T('🎯 Pas de focus', '🎯 No focus'), [el('p', null, T('Un point à travailler à la fois : c\'est ce qui fait progresser.', 'One thing at a time: that\'s how you improve.')), a]));
+    }
+    // Mort la plus évitable : la plus grave, et la plus tardive à gravité égale (respawn plus long).
+    const morts = l.lobby.morts.slice().sort((x, y) => GRAVITE(y) - GRAVITE(x) || y.t - x.t);
+    if (morts.length && GRAVITE(morts[0]) > 0) {
+      const m = morts[0];
+      grille.append(tuile('mauvais', T('💀 Ta mort la plus évitable', '💀 Your most avoidable death'), [
+        el('p', null, fmtMin(m.t) + (m.tueur ? T(' · tué par ', ' · killed by ') + nomHeros(m.tueur) : '') + (m.duree ? ' · ' + m.duree + T(' s à attendre', ' s respawn') : '')),
+        el('p', null, verdictMort(m).txt),
+        lienLecon(m.inferiorite ? 'inferiorite' : m.isole ? 'isoles' : m.engage_bas ? 'engage_bas' : null)]));
+    } else {
+      grille.append(tuile('bon', T('💀 Tes morts', '💀 Your deaths'), [el('p', null, morts.length ? T('Aucune mort évitable repérée.', 'No avoidable death spotted.') : T('Aucune mort. Bravo.', 'No deaths. Well done.'))]));
+    }
+    b.append(grille);
+
+    // Ce qui a bougé par rapport aux parties d'avant (domaines qui changent nettement).
+    if (avant.length >= 2) {
+      const evol = L.DOMAINES.map((d) => {
+        const v = l.lobby.domaines[d.id], ref = L.moyenne(avant.map((x) => x.lobby.domaines[d.id]).filter((x) => x != null));
+        return { d: d, ecart: v != null && ref != null ? v - ref : null };
+      }).filter((x) => x.ecart != null && Math.abs(x.ecart) >= 0.15).sort((x, y) => y.ecart - x.ecart);
+      if (evol.length) {
+        const e = el('p', 'mp-evol');
+        e.append(T('Par rapport à tes ' + avant.length + ' parties d\'avant : ', 'Compared with your previous ' + avant.length + ' games: '));
+        evol.forEach((x, i) => {
+          if (i) e.append(' · ');
+          e.append(el('span', x.ecart > 0 ? 'haut' : 'bas', (x.ecart > 0 ? '↑ ' : '↓ ') + DLN.tr(x.d.nom)));
+        });
+        b.append(e);
+      }
+    }
+    return b;
+  }
+
   async function afficherBilan(lues) {
     const z = contenu();
     z.textContent = '';
@@ -470,6 +567,7 @@
     // --- 1. Résumé, ton profil par domaine, carte de tes morts ---
     z.append(resume(victoires, n));
     const analysees = lues.filter((l) => l.lobby);
+    if (analysees.length) z.append(debrief(analysees));
     if (analysees.length && lecons) z.append(blocCoach(analysees));
     if (analysees.length) {
       const ligne = el('div', 'mp-duo');
@@ -737,6 +835,75 @@
     return d;
   }
 
+  // ---------- parties ajoutées par leur numéro (Match ID) ----------
+  // L'API ne voit pas toutes les parties ; avec le numéro, elle va chercher la partie chez Steam
+  // (3 demandes par heure et par adresse IP). Les numéros sont gardés dans ce navigateur, par compte.
+  const CLE_AJOUTEES = 'dln.parties.ajoutees.v1';
+  const lireAjoutees = () => { try { return (JSON.parse(localStorage.getItem(CLE_AJOUTEES)) || {})[moi.id] || []; } catch (e) { return []; } };
+  function ecrireAjoutees(liste) {
+    try {
+      const tout = JSON.parse(localStorage.getItem(CLE_AJOUTEES)) || {};
+      tout[moi.id] = liste;
+      localStorage.setItem(CLE_AJOUTEES, JSON.stringify(tout));
+    } catch (e) { /* stockage indisponible */ }
+  }
+
+  // Entrée d'historique (même forme que /match-history) reconstruite depuis le détail d'une partie.
+  function entreeDepuisDetail(d) {
+    const info = d.match_info || d;
+    const me = info.players.find((x) => x.account_id === moi.id);
+    if (!me) return null;
+    const fin = (me.stats || [])[me.stats.length - 1] || {};
+    return {
+      match_id: info.match_id, hero_id: me.hero_id, start_time: info.start_time, match_duration_s: info.duration_s,
+      match_result: info.winning_team, player_team: me.team, player_kills: me.kills, player_deaths: me.deaths,
+      player_assists: me.assists, net_worth: me.net_worth || fin.net_worth || 0, last_hits: me.last_hits, denies: me.denies,
+      game_mode: info.game_mode, ajoutee: true
+    };
+  }
+
+  async function detailPartie(matchId) {
+    if (!details[matchId]) details[matchId] = await api('/v1/matches/' + matchId + '/metadata');
+    return details[matchId];
+  }
+
+  async function ajouterPartie(texte, message) {
+    const m = /(\d{6,12})/.exec(texte || '');
+    if (!m) { message.textContent = DLN.tr({ fr: 'Colle le numéro de la partie (Match ID), que des chiffres.', en: 'Paste the match number (Match ID), digits only.' }); return; }
+    const id = Number(m[1]);
+    if (parties.some((p) => p.match_id === id)) { message.textContent = DLN.tr({ fr: 'Cette partie est déjà dans ta liste.', en: 'This match is already in your list.' }); return; }
+    message.textContent = DLN.tr({ fr: 'Recherche de la partie chez Steam…', en: 'Fetching the match from Steam…' });
+    try {
+      const d = await detailPartie(id);
+      if (!entreeDepuisDetail(d)) { delete details[id]; message.textContent = DLN.tr({ fr: 'Tu n\'es pas dans cette partie : vérifie le numéro ou le compte.', en: 'You are not in this match: check the number or the account.' }); return; }
+      ecrireAjoutees(lireAjoutees().filter((x) => x !== id).concat([id]));
+      await charger(moi.id);
+    } catch (e) {
+      const limite = /429/.test(e.message);
+      message.textContent = limite
+        ? DLN.tr({ fr: 'Limite atteinte : 3 parties par heure peuvent être cherchées chez Steam. Réessaie plus tard.', en: 'Limit reached: 3 matches per hour can be fetched from Steam. Try again later.' })
+        : DLN.tr({ fr: 'Partie introuvable pour l\'instant (', en: 'Match not found for now (' }) + e.message + DLN.tr({ fr: '). Si elle vient de finir, réessaie dans quelques minutes.', en: '). If it just ended, try again in a few minutes.' });
+    }
+  }
+
+  function formulaireAjout() {
+    const f = el('form', 'mp-ajout');
+    const lab = el('label', null, DLN.tr({ fr: 'Ajouter une partie par son numéro', en: 'Add a match by its number' }));
+    lab.htmlFor = 'mp-ajout-id';
+    const input = el('input');
+    input.id = 'mp-ajout-id';
+    input.inputMode = 'numeric';
+    input.autocomplete = 'off';
+    input.placeholder = 'Match ID';
+    const b = el('button', 'btn', DLN.tr({ fr: 'Ajouter', en: 'Add' }));
+    b.type = 'submit';
+    const msg = el('p', 'aide mp-ajout-msg', DLN.tr({ fr: 'Le Match ID est dans l\'historique des parties du jeu. Utile juste après une partie : l\'API ne les voit pas toutes.',
+      en: 'The Match ID is in the in-game match history. Useful right after a game: the API does not see them all.' }));
+    f.append(lab, input, b, msg);
+    f.addEventListener('submit', (e) => { e.preventDefault(); ajouterPartie(input.value, msg); });
+    return f;
+  }
+
   // ---------- chargement ----------
 
   async function charger(id, frais) {
@@ -754,7 +921,13 @@
       majA: new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }) };
     try { localStorage.setItem(CLE, String(id)); } catch (e) { /* stockage indisponible */ }
     afficherProfil();
-    parties = histo.filter((p) => p.game_mode === 1).sort((a, b) => b.start_time - a.start_time);
+    parties = histo.filter((p) => p.game_mode === 1);
+    // Parties ajoutées par leur numéro et absentes de l'historique de l'API.
+    for (const mid of lireAjoutees()) {
+      if (parties.some((p) => p.match_id === mid)) continue;
+      try { const e = entreeDepuisDetail(await detailPartie(mid)); if (e) parties.push(e); } catch (e) { /* indisponible pour l'instant */ }
+    }
+    parties.sort((a, b) => b.start_time - a.start_time);
     if (!parties.length) { z.textContent = ''; z.append(el('p', 'vide', 'Aucune partie trouvée pour ce compte sur deadlock-api.com.')); return; }
     const lues = [];
     let i = 0;
