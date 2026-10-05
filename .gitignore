@@ -12,7 +12,8 @@ __pycache__/
 # Captures de vidéos de tiers : sources de travail, reprises en données dans data/roles.json
 docs/Capture*.png
 
-# Clips des annonces vocales : à publier
+# Clips des annonces vocales et sons d'alerte : à publier
 !voix/*.mp3
+!sons/*.mp3
 # Clé d'API ElevenLabs : jamais dans git
 outils/.cle_elevenlabs

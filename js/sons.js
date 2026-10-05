@@ -1,4 +1,5 @@
-// Sons des alertes, synthétisés dans le navigateur (Web Audio, aucun fichier audio).
+// Sons des alertes : fichiers retenus par l'utilisateur (sons/*.mp3, générés avec ElevenLabs puis retouchés)
+// ou sons synthétisés dans le navigateur (Web Audio).
 // Deux moments : « preavis » (un objectif arrive bientôt) et « maintenant » (il est là).
 // Plusieurs ambiances au choix, volume réglable ; réglages gardés dans dln.sons.v1.
 // À charger après js/commun.js : expose DLN.sons (utilisé par js/timeline.js et js/partie.js).
@@ -18,7 +19,7 @@
   } catch (e) { /* stockage indisponible */ }
 
   const CLE = 'dln.sons.v1';
-  let reglages = { profil: 'carillon', volume: 0.7 };
+  let reglages = { profil: 'bois', volume: 0.7 };
   try { Object.assign(reglages, JSON.parse(localStorage.getItem(CLE)) || {}); } catch (e) { /* stockage indisponible */ }
   const sauver = () => { try { localStorage.setItem(CLE, JSON.stringify(reglages)); } catch (e) { /* idem */ } };
 
@@ -104,8 +105,22 @@
     }
   }
 
-  // Profils : pour chaque moment, une liste de [fréquence Hz, décalage s, durée s].
+  // Profils en fichiers : un son par moment (le même pour l'instant, premier tri de l'utilisateur), et le temps
+  // après lequel la voix peut parler (attente_s : la fin de l'écho peut passer sous la voix).
+  // Profils synthétisés : pour chaque moment, une liste de [fréquence Hz, décalage s, durée s].
   const PROFILS = {
+    bois: {
+      nom: 'Bois grave', aide: 'Un bloc de bois japonais grave, avec un écho doux (son retenu)',
+      fichier: { preavis: 'sons/tic-bois-grave.mp3', maintenant: 'sons/tic-bois-grave.mp3' }, attente_s: 0.45
+    },
+    clavier: {
+      nom: 'Clavier grave', aide: 'Une touche de clavier mécanique feutrée, grave, avec écho (son retenu)',
+      fichier: { preavis: 'sons/tic-clavier-grave.mp3', maintenant: 'sons/tic-clavier-grave.mp3' }, attente_s: 0.45
+    },
+    ludique: {
+      nom: 'Bloop grave', aide: 'Un petit « bloop » de marimba, grave et très court (son retenu)',
+      fichier: { preavis: 'sons/tic-ludique-grave.mp3', maintenant: 'sons/tic-ludique-grave.mp3' }, attente_s: 0.25
+    },
     carillon: {
       nom: 'Carillon', aide: 'Deux notes rondes, agréable et bien audible (conseillé)',
       opts: { harmonique: 0.25 },
@@ -156,12 +171,31 @@
     }
   };
 
+  // Fichiers : décodés une fois, puis joués par la même sortie (volume et compresseur) que les sons synthétisés.
+  const tampons = {};
+  function tampon(src) {
+    if (!tampons[src]) {
+      tampons[src] = fetch(src).then((r) => r.arrayBuffer()).then((b) => ctx.decodeAudioData(b));
+      tampons[src].catch(() => { delete tampons[src]; });
+    }
+    return tampons[src];
+  }
+
   function jouer(moment, profil) {
     preparer();
     if (!ctx || !sortie) return;
-    const p = PROFILS[profil || reglages.profil] || PROFILS.carillon;
+    const p = PROFILS[profil || reglages.profil] || PROFILS.bois;
     try {
       sortie.gain.setValueAtTime(Math.max(0.0001, reglages.volume), ctx.currentTime);
+      if (p.fichier) {
+        tampon(p.fichier[moment] || p.fichier.preavis).then((b) => {
+          const src = ctx.createBufferSource();
+          src.buffer = b;
+          src.connect(sortie);
+          src.start();
+        }).catch(() => { /* fichier indisponible : pas de son */ });
+        return;
+      }
       const t0 = ctx.currentTime + 0.03;
       (p[moment] || p.preavis).forEach((n) => note(n[0], t0 + n[1], n[2], p.opts));
     } catch (e) { /* pas de son */ }
@@ -169,7 +203,8 @@
 
   // Durée approximative d'un son, pour que la voix parle après lui.
   function duree(moment) {
-    const p = PROFILS[reglages.profil] || PROFILS.carillon;
+    const p = PROFILS[reglages.profil] || PROFILS.bois;
+    if (p.fichier) return p.attente_s;
     return Math.max.apply(null, (p[moment] || p.preavis).map((n) => n[1] + n[2] * 0.6));
   }
 

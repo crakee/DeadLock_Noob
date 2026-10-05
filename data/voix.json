@@ -1,78 +1,68 @@
 {
  "meta": {
   "note": "Clips des annonces vocales : nom puis fin, assemblés par js/voix.js. Liste produite par outils/generer_voix.py.",
-  "outil": null,
-  "voix": null,
-  "licence": null
+  "outil": "ElevenLabs (eleven_v3)",
+  "voix": "Bella (voix de base ElevenLabs, hpp4J3VqNfWAUOO0d1Us)",
+  "licence": "Offre gratuite ElevenLabs : usage non commercial ; à régénérer avec une offre payante avant tout usage commercial",
+  "sans_voix": [
+   "nom-mid-boss",
+   "nom-rejuvenator-actif",
+   "nom-unstable-rift",
+   "nom-unstable-rift-suivant"
+  ]
  },
  "clips": {
   "nom-small-camps": {
    "texte": "Small camps",
-   "fichier": null
+   "fichier": "voix/nom-small-camps.mp3"
   },
   "nom-medium-camps": {
    "texte": "Medium camps",
-   "fichier": null
+   "fichier": "voix/nom-medium-camps.mp3"
   },
   "nom-powerups": {
    "texte": "Powerups",
-   "fichier": null
+   "fichier": "voix/nom-powerups.mp3"
   },
   "nom-large-camps": {
    "texte": "Large camps",
-   "fichier": null
+   "fichier": "voix/nom-large-camps.mp3"
   },
   "nom-sinner-s-sacrifice": {
    "texte": "Sinner's Sacrifice",
-   "fichier": null
+   "fichier": "voix/nom-sinner-s-sacrifice.mp3"
   },
   "nom-soul-urn": {
    "texte": "Soul Urn",
-   "fichier": null
-  },
-  "nom-unstable-rift": {
-   "texte": "Unstable Rift",
-   "fichier": null
-  },
-  "nom-mid-boss": {
-   "texte": "Mid-Boss",
-   "fichier": null
-  },
-  "nom-rejuvenator-actif": {
-   "texte": "Rejuvenator active",
-   "fichier": null
-  },
-  "nom-unstable-rift-suivant": {
-   "texte": "Next Unstable Rift",
-   "fichier": null
+   "fichier": "voix/nom-soul-urn.mp3"
   },
   "fin-15": {
    "texte": "in fifteen seconds",
-   "fichier": null
+   "fichier": "voix/fin-15.mp3"
   },
   "fin-30": {
    "texte": "in thirty seconds",
-   "fichier": null
+   "fichier": "voix/fin-30.mp3"
   },
   "fin-45": {
    "texte": "in forty-five seconds",
-   "fichier": null
+   "fichier": "voix/fin-45.mp3"
   },
   "fin-60": {
    "texte": "in one minute",
-   "fichier": null
+   "fichier": "voix/fin-60.mp3"
   },
   "fin-75": {
    "texte": "in one minute fifteen",
-   "fichier": null
+   "fichier": "voix/fin-75.mp3"
   },
   "fin-90": {
    "texte": "in one minute thirty",
-   "fichier": null
+   "fichier": "voix/fin-90.mp3"
   },
   "fin-maintenant": {
    "texte": "now!",
-   "fichier": null
+   "fichier": "voix/fin-maintenant.mp3"
   }
  }
 }

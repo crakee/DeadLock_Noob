@@ -13,7 +13,8 @@ Usage :
   python3 outils/generer_voix.py --depuis                # prépare les fichiers bruts de medias/voix-brut/
   python3 outils/generer_voix.py --concevoir "description" --nom-essai arene   # 3 voix d'essai (Voice Design)
   python3 outils/generer_voix.py --garder ID_APERCU --nom-voix "Nom"         # enregistre une voix d'essai dans le compte
-  python3 outils/generer_voix.py --elevenlabs ID_VOIX    # génère avec l'API
+  python3 outils/generer_voix.py --prise ID_VOIX --nom-voix Bella   # une prise ElevenLabs, découpée et préparée
+  python3 outils/generer_voix.py --elevenlabs ID_VOIX    # génère clip par clip avec l'API
   python3 outils/generer_voix.py --elevenlabs ID_VOIX --refaire   # régénère tout
   ... --outil "Fish Audio" --nom-voix "…" --licence "…"  # noté dans le meta de data/voix.json (gardé ensuite)
 
@@ -46,7 +47,7 @@ API = "https://api.elevenlabs.io/v1/text-to-speech/"
 BRUT = RACINE / "medias/voix-brut"
 FORMATS = (".wav", ".mp3", ".ogg", ".flac", ".m4a", ".webm", ".aac", ".opus")
 TAUX = 44100
-CIBLE_DB = -18.0   # RMS des passages parlés, en dBFS : proche de -16 LUFS pour une voix
+CIBLE_DB = -15.5   # RMS des passages parlés, en dBFS : mesuré à environ -16 LUFS sur une vraie voix (Bella)
 
 # Fins d'annonce : préavis possibles (15 à 60 s dans data/timeline.json, + 0/15/30 s de réglage) et « now ».
 # Voix en anglais (choix de l'utilisateur, 5 octobre 2026) : noms du jeu et fins dans la même langue.
@@ -56,6 +57,9 @@ FINS = {
     "maintenant": "now!",
 }
 # Texte dit pour les noms du chrono qui ne sont pas des noms du jeu (les clés de fichier ne changent pas).
+# Sans voix (demande de l'utilisateur, 5 octobre 2026) : les événements dont l'heure n'est pas fixe (fenêtre incertaine,
+# ou déclenchés par un clic sur le chrono). Ils gardent le son d'alerte. Retirer un identifiant ici pour lui rendre la voix.
+SANS_VOIX = {"rift", "midboss", "rejuv", "rift_suivant"}
 PRONONCIATION = {"Rejuvenator actif": "Rejuvenator active", "Unstable Rift suivant": "Next Unstable Rift"}
 
 
@@ -67,7 +71,8 @@ def cle(nom):
 
 def liste_clips():
     timeline = json.loads((RACINE / "data/timeline.json").read_text(encoding="utf-8"))
-    noms = [e["nom"] for e in timeline["evenements"] if e.get("annonce_avant_s")] + [d["nom"] for d in timeline["declenches"]]
+    tous = [e for e in timeline["evenements"] if e.get("annonce_avant_s")] + timeline["declenches"]
+    noms = [e["nom"] for e in tous if e["id"] not in SANS_VOIX]
     clips = {}
     for nom in noms:
         court = nom.split(" (")[0]
@@ -84,9 +89,13 @@ def cle_api():
     return f.read_text().strip() if f.exists() else None
 
 
+def texte_prise(clips):
+    """Les clips à la suite, une ligne vide entre deux : une seule prise garde le même timbre partout."""
+    return "[confident]\n\n" + "\n\n".join(t + ("..." if k.startswith("nom-") else "" if t.endswith("!") else ".") for k, t in clips.items())
+
+
 def generer(texte, voix, cle_secrete, chemin):
-    corps = json.dumps({"text": texte, "model_id": "eleven_multilingual_v2",
-                        "voice_settings": {"stability": 0.5, "similarity_boost": 0.75}}).encode()
+    corps = json.dumps({"text": texte, "model_id": "eleven_v3"}).encode()
     req = urllib.request.Request(API + voix + "?output_format=mp3_44100_128", data=corps, method="POST",
                                  headers={"xi-api-key": cle_secrete, "Content-Type": "application/json", "Accept": "audio/mpeg"})
     with urllib.request.urlopen(req, timeout=60) as r:
@@ -254,6 +263,7 @@ def main():
     p.add_argument("--depuis", nargs="?", const=str(BRUT), metavar="DOSSIER",
                    help="prépare les clips bruts de ce dossier (par défaut medias/voix-brut)")
     p.add_argument("--pause", type=float, default=0.35, help="silence minimal entre deux clips d'une prise, en s")
+    p.add_argument("--prise", metavar="ID_VOIX", help="fait dire tous les clips en une prise par une voix ElevenLabs, puis la découpe")
     p.add_argument("--concevoir", metavar="DESCRIPTION", help="crée 3 voix d'essai d'après une description (Voice Design)")
     p.add_argument("--nom-essai", default="essai", help="préfixe des fichiers d'essai de voix")
     p.add_argument("--garder", metavar="ID_APERCU", help="enregistre une voix d'essai dans le compte (avec --nom-voix)")
@@ -282,6 +292,18 @@ def main():
         print("\nEnregistrer la prise sous medias/voix-brut/prise.<ext>, puis : python3 outils/generer_voix.py --depuis")
         return
     VOIX.mkdir(exist_ok=True)
+    if a.prise:
+        secret = cle_api()
+        if not secret:
+            raise SystemExit("Clé absente : variable ELEVENLABS_API_KEY ou fichier outils/.cle_elevenlabs")
+        BRUT.mkdir(parents=True, exist_ok=True)
+        for vieux in BRUT.glob("prise.*"):
+            vieux.unlink()
+        generer(texte_prise(clips), a.prise, secret, BRUT / "prise.mp3")
+        print("prise enregistrée :", (BRUT / "prise.mp3").relative_to(RACINE))
+        a.depuis = str(BRUT)
+        a.outil = a.outil or "ElevenLabs (eleven_v3)"
+        a.nom_voix = a.nom_voix or a.prise
     if a.depuis:
         dossier = Path(a.depuis)
         depuis_brut(dossier if dossier.is_absolute() else Path.cwd() / dossier, clips, a.pause)
@@ -305,6 +327,8 @@ def main():
     for champ, valeur in (("outil", a.outil or ("ElevenLabs" if a.elevenlabs else None)),
                           ("voix", a.nom_voix or a.elevenlabs), ("licence", a.licence)):
         meta[champ] = valeur or ancien.get(champ)
+    timeline = json.loads((RACINE / "data/timeline.json").read_text(encoding="utf-8"))
+    meta["sans_voix"] = sorted("nom-" + cle(e["nom"]) for e in timeline["evenements"] + timeline["declenches"] if e["id"] in SANS_VOIX)
     manifeste = {
         "meta": meta,
         "clips": {k: {"texte": t, "fichier": presents.get(k)} for k, t in clips.items()},

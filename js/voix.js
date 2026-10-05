@@ -5,11 +5,11 @@
 (function () {
   'use strict';
 
-  let clips = {};
+  let clips = {}, sansVoix = [];
   let file = Promise.resolve();
   const audio = {};
 
-  DLN.charger('data/voix.json').then((v) => { clips = v.clips || {}; }).catch(() => { /* pas de clips : voix du navigateur */ });
+  DLN.charger('data/voix.json').then((v) => { clips = v.clips || {}; sansVoix = (v.meta && v.meta.sans_voix) || []; }).catch(() => { /* pas de clips : voix du navigateur */ });
 
   // Même règle que outils/generer_voix.py.
   const cle = (nom) => nom.split(' (')[0].normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
@@ -44,6 +44,8 @@
   // Annonce « nom » + « fin ». Les annonces s'enchaînent sans se couper.
   function annoncer(nom, restant) {
     const kNom = 'nom-' + cle(nom), kFin = finPour(restant);
+    // Événements à l'heure non fixe (fenêtre, déclenchés au clic) : le son d'alerte seulement, pas de voix.
+    if (sansVoix.includes(kNom)) return;
     const texte = restant > 1 ? nom.split(' (')[0] + ' in ' + Math.round(restant) + ' seconds' : nom.split(' (')[0] + ' now';
     if (!fichier(kNom) || !fichier(kFin)) { synthese(texte); return; }
     file = file.then(() => jouerFichier(fichier(kNom))).then(() => jouerFichier(fichier(kFin)));
