@@ -643,12 +643,12 @@
         'install the API\'s free tool, deadlock-api-ingest, on your PC: it sends your games while you play.' })));
     const etapes = el('ol', 'mp-etapes');
     [
-      { fr: 'Dans PowerShell (Windows) : irm https://raw.githubusercontent.com/deadlock-api/deadlock-api-ingest/master/install-windows.ps1 | iex',
-        en: 'In PowerShell (Windows): irm https://raw.githubusercontent.com/deadlock-api/deadlock-api-ingest/master/install-windows.ps1 | iex' },
-      { fr: 'Une fois, pour récupérer tes parties passées : deadlock-api-ingest.exe --own-matches',
-        en: 'Once, to recover your past games: deadlock-api-ingest.exe --own-matches' },
-      { fr: 'Pour qu\'il tourne seulement pendant le jeu : Steam → clic droit sur Deadlock → Propriétés → Options de lancement : "C:\\Users\\TON_NOM\\AppData\\Local\\deadlock-api-ingest\\deadlock-api-ingest.exe" -- %command%',
-        en: 'To run it only while playing: Steam → right-click Deadlock → Properties → Launch options: "C:\\Users\\YOUR_NAME\\AppData\\Local\\deadlock-api-ingest\\deadlock-api-ingest.exe" -- %command%' }
+      { fr: 'Dans PowerShell lancé en administrateur (Windows), pour qu\'il démarre avec ton PC : irm https://raw.githubusercontent.com/deadlock-api/deadlock-api-ingest/master/install-windows.ps1 | iex',
+        en: 'In PowerShell run as administrator (Windows), so it starts with your PC: irm https://raw.githubusercontent.com/deadlock-api/deadlock-api-ingest/master/install-windows.ps1 | iex' },
+      { fr: 'Une fois, jeu fermé, pour récupérer tes parties passées : & "$env:LOCALAPPDATA\\deadlock-api-ingest\\deadlock-api-ingest.exe" --own-matches',
+        en: 'Once, with the game closed, to recover your past games: & "$env:LOCALAPPDATA\\deadlock-api-ingest\\deadlock-api-ingest.exe" --own-matches' },
+      { fr: 'Ensuite, rien à faire : il récupère tes nouvelles parties toutes les 30 minutes quand le jeu est fermé. Elles apparaissent ici peu après.',
+        en: 'Then nothing to do: it fetches your new games every 30 minutes while the game is closed. They show up here shortly after.' }
     ].forEach((x) => etapes.append(el('li', null, DLN.tr(x))));
     aide.append(etapes);
     aide.append(el('p', 'aide', DLN.tr({

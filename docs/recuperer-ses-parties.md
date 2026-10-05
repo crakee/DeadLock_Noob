@@ -25,14 +25,18 @@ Dépôt : https://github.com/deadlock-api/deadlock-api-ingest (licence MIT, orga
 - Par défaut, demande aussi au Game Coordinator de Steam les « salts » des parties du joueur, avec la session Steam enregistrée sur le PC.
 - Envoie à deadlock-api le numéro de chaque partie et ses salts (la clé qui permet de télécharger ses données). L'API va ensuite chercher la partie, qui apparaît dans `match-history`. La page Progression la voit alors à l'ouverture ou avec « ↻ Actualiser ».
 
+**Les deux modes** (vérifié dans `src/main.rs` et `src/gc/mod.rs` le 6 octobre 2026)
+- **Service en arrière-plan** (tâche planifiée créée par l'installateur lancé en administrateur, ou `deadlock-api-ingest.exe` sans argument) : lit le cache, **et toutes les 30 min récupère les nouvelles parties du joueur auprès du Game Coordinator** (`BACKGROUND_PASS_INTERVAL`). Ce passage est sauté tant que Deadlock tourne (le trafic du Game Coordinator va alors au jeu). **C'est le seul mode vraiment automatique** : les parties arrivent dans les 30 min qui suivent la fermeture du jeu, plus le temps de traitement de l'API.
+- **Option de lancement Steam** (`… -- %command%`) : **lit seulement le cache**, sans Game Coordinator. Constaté le 5 octobre : 4 parties jouées dans ce mode, aucune envoyée. Inutile seul ; à retirer si le service tourne.
+- **`--own-matches`** : passage manuel, jeu fermé ; utile pour rattraper l'historique (58 parties trouvées, 51 manquantes à l'API le 5 octobre, 7 envoyées avant une coupure).
+
 **Mise en place conseillée** (Windows)
-1. Installer, sans être administrateur :
+1. Installer **dans un PowerShell lancé en administrateur** (pour que la tâche au démarrage soit créée ; le programme lui-même tourne sans droits admin) :
    `irm https://raw.githubusercontent.com/deadlock-api/deadlock-api-ingest/master/install-windows.ps1 | iex`
-   L'installateur télécharge la dernière version publiée sur GitHub et peut créer une tâche planifiée au démarrage.
-2. Une fois, pour récupérer l'historique passé : `deadlock-api-ingest.exe --own-matches`.
-3. Pour qu'il ne tourne que pendant le jeu : Steam → clic droit sur Deadlock → Propriétés → Options de lancement :
-   `"C:\Users\<nom>\AppData\Local\deadlock-api-ingest\deadlock-api-ingest.exe" -- %command%`
-   Il démarre avec le jeu et s'arrête quand on le quitte. Dans ce cas, désactiver la tâche planifiée pour ne pas avoir deux copies.
+2. Retirer l'option de lancement dans Steam si elle avait été mise.
+3. Une fois, jeu fermé, pour rattraper l'historique : `& "$env:LOCALAPPDATA\deadlock-api-ingest\deadlock-api-ingest.exe" --own-matches` (40 parties par 24 h au plus).
+
+**Steam ouvert ?** Non tranché. Le 5 octobre, un passage `--own-matches` a été coupé par Steam juste après la connexion, puis un autre a envoyé 7 parties avant d'être coupé au bout de deux minutes (message de déconnexion venu de Steam). Hypothèse : le client Steam ouvert sur le même compte reprend la session. À vérifier dans les journaux du service (`%APPDATA%\deadlock-api-ingest\logs`) : chercher `gc: ingested match` ou `GC unavailable`.
 
 **Options utiles** : `--no-gc` (ne pas utiliser la session Steam, lire seulement le cache), `--once` (une passe puis quitter), `--own-matches` (récupérer son historique via le Game Coordinator puis quitter).
 
@@ -51,7 +55,7 @@ Dépôt : https://github.com/deadlock-api/deadlock-api-ingest (licence MIT, orga
 - **Plafond** de 40 récupérations par 24 h via le Game Coordinator (`FETCH_QUOTA_LIMIT`), largement assez pour une soirée de jeu.
 - **Délai** : entre la fin d'une partie et son arrivée dans `match-history`, l'API doit la télécharger et la traiter. Délai non documenté ; à mesurer.
 - **Dépendance** à un service tiers gratuit (deadlock-api.com) : s'il ferme ou change ses règles, la page Progression ne reçoit plus rien.
-- **Lancement hors Steam** : l'option de lancement n'agit que si le jeu est lancé depuis Steam.
+- **Délai** : jusqu'à 30 min après la fermeture du jeu pour le service, plus le traitement de l'API.
 
 ## Plan de secours
 
@@ -60,6 +64,8 @@ Dépôt : https://github.com/deadlock-api/deadlock-api-ingest (licence MIT, orga
 3. **Si deadlock-api disparaît** : le site ne peut plus analyser les parties. Il faudrait lire les replays localement (fichiers `.dem`) avec un analyseur de démos Source 2, ce qui n'est pas prévu aujourd'hui.
 
 ## À vérifier
+
+- Le service récupère-t-il les parties avec le client Steam ouvert, ou faut-il fermer Steam ?
 
 - Après installation : délai réel entre la fin d'une partie et son apparition sur la page Progression.
 - En mode `--no-gc` : les parties arrivent-elles sans les ouvrir dans l'historique du jeu ?
