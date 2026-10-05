@@ -153,7 +153,7 @@ def decouper(e, pause_s):
     return [e[max(0, (a - 15) * 441):(b + 15) * 441] for a, b in morceaux if (b - a) >= 8]
 
 
-def preparer(e, cible=CIBLE_DB):
+def preparer(e, cible=CIBLE_DB, crete_max=None):
     """Coupe les silences, ramène le volume parlé à la cible (dBFS), limite les crêtes, adoucit les bords."""
     env = enveloppe(e)
     s = seuil(env)
@@ -165,6 +165,8 @@ def preparer(e, cible=CIBLE_DB):
     e = e[debut:fin]
     parle = [v for v in env[actifs[0]:actifs[-1] + 1] if v >= s]
     gain = 10 ** ((cible - db(math.sqrt(sum(v * v for v in parle) / len(parle)))) / 20)
+    if crete_max is not None:                        # sons percussifs : ne pas écraser les attaques
+        gain = min(gain, 10 ** (crete_max / 20) / max(abs(x) for x in e))
     k = 0.7                                          # limiteur doux au-dessus de -3 dBFS
     def limiter(x):
         x *= gain

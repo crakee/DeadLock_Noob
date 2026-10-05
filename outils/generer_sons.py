@@ -48,6 +48,17 @@ PROMPTS = {
         "notif": "Short magical chime with low warm horn underneath, fantasy strategy game objective alert, clear and noble",
         "epique": "Deep war horn swelling into a heavy cinematic boom, low brass and timpani, magical sparkle on top, ominous epic fantasy objective spawn",
     },
+    # Doux et satisfaisant (retour de l'utilisateur, 5 octobre 2026) : clavier mécanique feutré, ambiance japonaise.
+    "clavier": {
+        "tic": "Single deep thocky mechanical keyboard keystroke, lubed linear switch, creamy and muffled, warm low click, close-up, very satisfying ASMR",
+        "notif": "Two quick deep thocky mechanical keyboard keystrokes, lubed switches, creamy muffled warm clicks, satisfying ASMR typing",
+        "epique": "Satisfying cascade of deep thocky mechanical keyboard keystrokes ending with a soft heavy spacebar thock, creamy muffled warm sound, ASMR",
+    },
+    "japon": {
+        "tic": "Single soft wooden block knock, small hollow Japanese temple wood block, warm and round, gentle, close-up",
+        "notif": "Two gentle koto plucks rising, warm Japanese pentatonic, soft and calm, cozy notification",
+        "epique": "Soft deep taiko drum hit followed by a gentle rising koto and kalimba pentatonic phrase and a light glass wind chime, warm, calm and satisfying, Japanese zen",
+    },
 }
 
 
@@ -90,10 +101,10 @@ def main():
             i = 1
             while (SORTIE / f"{nom}-{i}.mp3").exists():
                 i += 1
-            brut = SORTIE / f"{nom}-{i}.brut.mp3"
+            brut = SORTIE / "brut" / f"{nom}-{i}.mp3"      # gardé : on peut repréparer sans repayer
+            brut.parent.mkdir(exist_ok=True)
             brut.write_bytes(generer(texte, niveau, secret))
-            e = preparer(decoder(brut), NIVEAUX[niveau]["cible"])
-            brut.unlink()
+            e = preparer(decoder(brut), NIVEAUX[niveau]["cible"], crete_max=-3.0)
             fichier = SORTIE / f"{nom}-{i}.mp3"
             encoder(e, fichier)
             essais[fichier.name] = {"niveau": niveau, "prompt": texte, "duree": round(len(e) / TAUX, 2)}
