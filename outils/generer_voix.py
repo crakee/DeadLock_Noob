@@ -153,8 +153,8 @@ def decouper(e, pause_s):
     return [e[max(0, (a - 15) * 441):(b + 15) * 441] for a, b in morceaux if (b - a) >= 8]
 
 
-def preparer(e):
-    """Coupe les silences, ramène le volume parlé à CIBLE_DB, limite les crêtes, adoucit les bords."""
+def preparer(e, cible=CIBLE_DB):
+    """Coupe les silences, ramène le volume parlé à la cible (dBFS), limite les crêtes, adoucit les bords."""
     env = enveloppe(e)
     s = seuil(env)
     actifs = [i for i, v in enumerate(env) if v >= s]
@@ -164,7 +164,7 @@ def preparer(e):
     fin = min(len(e), (actifs[-1] + 5) * 441)        # 40 ms après : fin de souffle, sans trou
     e = e[debut:fin]
     parle = [v for v in env[actifs[0]:actifs[-1] + 1] if v >= s]
-    gain = 10 ** ((CIBLE_DB - db(math.sqrt(sum(v * v for v in parle) / len(parle)))) / 20)
+    gain = 10 ** ((cible - db(math.sqrt(sum(v * v for v in parle) / len(parle)))) / 20)
     k = 0.7                                          # limiteur doux au-dessus de -3 dBFS
     def limiter(x):
         x *= gain
