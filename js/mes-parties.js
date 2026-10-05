@@ -15,7 +15,7 @@
   const TRANCHES = { tous: [null, null], initiate_sentinel: [11, 46], mystic_oracle: [51, 86], phantom_eternus: [91, 116] };
   const NB_DETAILLEES = 8;     // parties analysées en détail (le détail d'une partie pèse environ 1 Mo)
 
-  let heros = null, objets = {}, statsHeros = null, tempo = null;
+  let heros = null, objets = {}, statsHeros = null, tempo = null, carte = null;
   let moi = null;              // { id, nom, avatar, rang }
   let parties = [], details = {}, metriques = {}, courbes = {};
 
@@ -125,7 +125,8 @@
       achats: (me.items || []).filter((x) => objets[x.item_id])
         .map((x) => ({ t: x.game_time_s, o: objets[x.item_id], vendu: x.sold_time_s || null })).filter((x) => x.o),
       courbe: (me.stats || []).map((s) => ({ t: s.time_stamp_s / 60, nw: s.net_worth })),
-      ennemis: info.players.filter((x) => x.team !== me.team).map((x) => x.hero_id)
+      ennemis: info.players.filter((x) => x.team !== me.team).map((x) => x.hero_id),
+      lobby: DLN.lobby.analyser(info, moi.id, objets)
     };
   }
 
@@ -149,10 +150,160 @@
     const rang = moi.rang && moi.rang.badge ? 'Rang : badge ' + moi.rang.badge : 'Pas encore de partie classée';
     t.append(el('span', 'aide', rang + ' · comparé aux joueurs « ' + DLN.LIBELLES_TRANCHE[tranche()] + ' » depuis le patch (' + statsHeros.meta.depuis + ')'));
     z.append(t);
+    const maj = el('button', 'btn', '↻ Actualiser');
+    maj.type = 'button';
+    maj.title = 'Recharge tes parties depuis deadlock-api.com' + (moi.majA ? ' (dernière mise à jour à ' + moi.majA + ')' : '');
+    maj.addEventListener('click', () => charger(moi.id, true));
+    z.append(maj);
     const oublier = el('button', 'btn discret', 'Changer de compte');
     oublier.type = 'button';
     oublier.addEventListener('click', () => { try { localStorage.removeItem(CLE); } catch (e) { /* idem */ } moi = null; parties = []; contenu().textContent = ''; afficherProfil(); document.getElementById('mp-saisie').focus(); });
     z.append(oublier);
+  }
+
+  // ---------- résumé façon op.gg ----------
+
+  const SVGNS = 'http://www.w3.org/2000/svg';
+  function svg(nom, attrs) {
+    const e = document.createElementNS(SVGNS, nom);
+    Object.keys(attrs || {}).forEach((k) => e.setAttribute(k, attrs[k]));
+    return e;
+  }
+  const kdaRatio = (k, d, a) => ((k + a) / Math.max(1, d)).toFixed(2).replace('.', ',');
+  const un = (v) => (Math.round(v * 10) / 10).toLocaleString('fr-FR');
+
+  function anneau(wr) {
+    const s = svg('svg', { viewBox: '0 0 100 100', class: 'mp-anneau' });
+    const R = 40, C = 2 * Math.PI * R;
+    s.append(svg('circle', { cx: 50, cy: 50, r: R, class: 'mp-anneau-fond' }));
+    s.append(svg('circle', { cx: 50, cy: 50, r: R, class: 'mp-anneau-plein', 'stroke-dasharray': (C * wr).toFixed(1) + ' ' + C.toFixed(1), transform: 'rotate(-90 50 50)' }));
+    const t = svg('text', { x: 50, y: 56, class: 'mp-anneau-texte' });
+    t.textContent = Math.round(wr * 100) + ' %';
+    s.append(t);
+    return s;
+  }
+
+  function resume(victoires, n) {
+    const b = bloc(null, 'mp-resume');
+    const wr = n ? victoires / n : 0;
+    const m95 = n ? Math.round(196 * Math.sqrt(wr * (1 - wr) / n)) : 0;
+    const k = parties.reduce((s, p) => s + p.player_kills, 0) / n;
+    const d = parties.reduce((s, p) => s + p.player_deaths, 0) / n;
+    const a = parties.reduce((s, p) => s + p.player_assists, 0) / n;
+    const nwm = parties.reduce((s, p) => s + p.net_worth / (p.match_duration_s / 60), 0) / n;
+
+    const g = el('div', 'mp-resume-wr');
+    g.append(anneau(wr));
+    const tg = el('div');
+    tg.append(el('div', 'mp-resume-titre', n + ' parties · ' + victoires + ' V ' + (n - victoires) + ' D'),
+      el('div', 'aide', 'Winrate ± ' + m95 + ' points' + (n < 20 ? ' : trop peu de parties pour conclure' : '')));
+    g.append(tg);
+
+    const c = el('div', 'mp-resume-kda');
+    c.append(el('div', 'mp-kda-ligne', un(k) + ' / '), el('div', 'mp-kda-ligne'));
+    c.firstChild.append(el('span', 'mp-mort-txt', un(d)), ' / ' + un(a));
+    c.lastChild.append(el('strong', 'mp-kda-ratio', kdaRatio(k, d, a) + ':1 KDA'));
+    c.append(el('div', 'aide', DLN.fmtNombre(Math.round(nwm)) + ' souls / min en moyenne'));
+
+    const h = el('ul', 'mp-resume-heros');
+    const parHeros = {};
+    parties.forEach((p) => { (parHeros[p.hero_id] = parHeros[p.hero_id] || []).push(p); });
+    Object.keys(parHeros).sort((x, y) => parHeros[y].length - parHeros[x].length).slice(0, 4).forEach((hid) => {
+      const ps = parHeros[hid];
+      const v = ps.filter((p) => p.match_result === p.player_team).length;
+      const sk = ps.reduce((s, p) => s + p.player_kills, 0), sd = ps.reduce((s, p) => s + p.player_deaths, 0), sa = ps.reduce((s, p) => s + p.player_assists, 0);
+      const li = el('li');
+      const hh = herosDe(Number(hid));
+      if (hh) li.append(DLN.img(hh.icone || hh.image, 'mp-icone'));
+      li.append(el('strong', null, nomHeros(Number(hid))),
+        el('span', 'nombre ' + (v / ps.length >= 0.5 ? 'haut' : 'doux'), Math.round(100 * v / ps.length) + ' %'),
+        el('span', 'aide', ps.length + ' partie' + (ps.length > 1 ? 's' : '') + ' · ' + kdaRatio(sk, sd, sa) + ' KDA'));
+      h.append(li);
+    });
+    b.append(g, c, h);
+    return b;
+  }
+
+  // ---------- ton profil : notes par domaine face aux 11 autres joueurs de tes parties ----------
+
+  function valeur(k, v) {
+    if (v == null) return '—';
+    const f = DLN.lobby.MESURES[k].fmt;
+    if (f === 'pct') return Math.round(v * 100) + ' %';
+    if (f === 'min') return un(v) + ' min';
+    return Number.isInteger(v) ? String(v) : DLN.fmtNombre(Math.round(v));
+  }
+
+  function profilDomaines(lues) {
+    const L = DLN.lobby;
+    const b = bloc('Ton profil', 'mp-profil-domaines');
+    b.append(el('p', 'aide', 'Ta note dans chaque domaine face aux 11 autres joueurs de tes ' + lues.length + ' dernières parties (même niveau que toi). ' +
+      'A = parmi les meilleurs de la partie, E = parmi les derniers. Clique pour le détail.'));
+    const tri = L.DOMAINES.map((d) => ({ d: d, s: L.moyenne(lues.map((l) => l.lobby.domaines[d.id]).filter((x) => x != null)) }));
+    tri.forEach((x) => {
+      const det = el('details', 'mp-domaine');
+      const sum = el('summary');
+      const barre = el('span', 'mp-dom-barre');
+      const remp = el('span', 'mp-dom-plein note-' + L.lettre(x.s));
+      remp.style.width = x.s == null ? '0' : Math.max(4, Math.round(x.s * 100)) + '%';
+      barre.append(remp);
+      sum.append(el('span', 'mp-dom-nom', x.d.nom), barre, el('span', 'mp-note note-' + L.lettre(x.s), L.lettre(x.s)));
+      det.append(sum);
+      const t = el('table', 'table mp-dom-table');
+      const th = el('tr');
+      ['', 'Toi', 'Médiane de tes parties'].forEach((c) => th.append(el('th', null, c)));
+      t.append(th);
+      x.d.mesures.forEach((k) => {
+        const toi = lues.map((l) => l.lobby.moi[k]).filter((v) => v != null);
+        const med = lues.map((l) => l.lobby.mediane[k]).filter((v) => v != null);
+        const sc = L.moyenne(lues.map((l) => l.lobby.scores[k]).filter((v) => v != null));
+        const tr = el('tr');
+        tr.append(el('td', null, L.MESURES[k].nom), el('td', 'nombre ' + (sc == null ? '' : sc < 0.3 ? 'bas' : sc > 0.7 ? 'haut' : ''), valeur(k, L.moyenne(toi))),
+          el('td', 'nombre doux', valeur(k, L.moyenne(med))));
+        t.append(tr);
+      });
+      det.append(t);
+      b.append(det);
+    });
+    const faible = tri.filter((x) => x.s != null).sort((p, q) => p.s - q.s)[0];
+    const fort = tri.filter((x) => x.s != null).sort((p, q) => q.s - p.s)[0];
+    if (faible && fort) {
+      const p = el('p', 'mp-focus');
+      p.append('Point fort : ', el('strong', null, fort.d.nom), ' · à travailler en premier : ', el('strong', 'mp-focus-faible', faible.d.nom));
+      b.append(p);
+    }
+    return b;
+  }
+
+  // ---------- carte de tes morts ----------
+
+  function carteMorts(lues) {
+    const b = bloc('Où tu meurs', 'mp-carte-morts');
+    const cadre = el('div', 'mp-carte-cadre');
+    if (carte && carte.image) cadre.append(DLN.img(carte.image, 'mp-carte-img'));
+    const s = svg('svg', { viewBox: '0 0 100 100', class: 'mp-carte-svg' });
+    let total = 0, surpris = 0, isoles = 0;
+    lues.forEach((l) => {
+      const retourner = l.lobby.monEquipe === 1;   // ta base toujours en bas
+      l.lobby.morts.forEach((m) => {
+        total++;
+        if (m.surpris) surpris++;
+        if (m.isole) isoles++;
+        const x = (retourner ? 1 - m.xy[0] : m.xy[0]) * 100, y = (retourner ? 1 - m.xy[1] : m.xy[1]) * 100;
+        const c = svg('circle', { cx: x.toFixed(1), cy: y.toFixed(1), r: 1.8, class: 'mp-point ' + (m.isole ? 'isole' : 'groupe') + (m.surpris ? ' surpris' : '') });
+        const titre = svg('title');
+        titre.textContent = nomHeros(l.p.hero_id) + ' · ' + fmtMin(m.t) + (m.tueur ? ' · tué par ' + nomHeros(m.tueur) : '') + (m.isole ? ' · seul' : '') + (m.surpris ? ' · en moins de 3 s' : '');
+        c.append(titre);
+        s.append(c);
+      });
+    });
+    cadre.append(s);
+    b.append(cadre);
+    const leg = el('p', 'aide mp-carte-legende');
+    leg.append(el('span', 'mp-pastille isole'), 'seul, aucun allié à moins de ~50 m (' + isoles + '/' + total + ')  ',
+      el('span', 'mp-pastille groupe'), 'avec ton équipe  ', el('span', 'mp-pastille surpris'), 'tué en moins de 3 s (' + surpris + ')');
+    b.append(leg, el('p', 'aide', 'Ta base est en bas. Survole un point pour le détail.'));
+    return b;
   }
 
   async function afficherBilan(lues) {
@@ -161,19 +312,20 @@
     const n = parties.length;
     const victoires = parties.filter((p) => p.match_result === p.player_team).length;
 
-    // --- 1. Ce qu'on voit sur l'ensemble ---
-    const synthese = bloc('En bref', 'mp-synthese');
-    const wr = n ? victoires / n : 0;
-    const m95 = n ? Math.round(196 * Math.sqrt(wr * (1 - wr) / n)) : 0;
-    synthese.append(el('p', 'mp-grand', victoires + ' victoire' + (victoires > 1 ? 's' : '') + ' sur ' + n + ' partie' + (n > 1 ? 's' : '') +
-      (n ? ' (' + Math.round(wr * 100) + ' % ± ' + m95 + ' points)' : '')));
-    if (n < 20) synthese.append(el('p', 'avertissement', n + ' parties seulement : les tendances ci-dessous sont des pistes, pas des certitudes. ' +
-      'Elles se préciseront avec plus de parties (voir « Pourquoi si peu de parties ? » en bas).'));
-    z.append(synthese);
+    // --- 1. Résumé, ton profil par domaine, carte de tes morts ---
+    z.append(resume(victoires, n));
+    const analysees = lues.filter((l) => l.lobby);
+    if (analysees.length) {
+      const ligne = el('div', 'mp-duo');
+      ligne.append(profilDomaines(analysees), carteMorts(analysees));
+      z.append(ligne);
+    }
 
     // --- 2. Les axes de progression ---
     const axes = await calculerAxes(lues);
-    const blocAxes = bloc('Où progresser en premier', 'mp-axes');
+    const blocAxes = bloc('Comparé à tous les joueurs de tes héros', 'mp-axes');
+    blocAxes.append(el('p', 'aide', 'Ici, la comparaison se fait avec tous les joueurs des mêmes héros, au rang choisi dans ⚙, depuis le patch. « Ton profil », plus haut, ' +
+      'te compare aux joueurs de tes propres parties : les deux peuvent différer.'))
     if (!axes.length) blocAxes.append(el('p', 'aide', 'Pas assez de données pour un diagnostic.'));
     axes.forEach((a, i) => {
       const c = el('article', 'mp-axe mp-' + a.niveau);
@@ -189,33 +341,6 @@
       blocAxes.append(c);
     });
     z.append(blocAxes);
-
-    // --- 3. Par héros ---
-    const parHeros = {};
-    parties.forEach((p) => { (parHeros[p.hero_id] = parHeros[p.hero_id] || []).push(p); });
-    const blocHeros = bloc('Par héros', 'mp-heros');
-    const table = el('table', 'table mp-table');
-    const th = el('tr');
-    ['Héros', 'Parties', 'Victoires', 'Souls / min', 'Ton niveau (médiane)', 'Morts / partie', 'Médiane'].forEach((x) => th.append(el('th', null, x)));
-    table.append(th);
-    for (const hid of Object.keys(parHeros)) {
-      const ps = parHeros[hid];
-      const m = await metrique(hid);
-      const nwm = ps.reduce((s, p) => s + p.net_worth / (p.match_duration_s / 60), 0) / ps.length;
-      const morts = ps.reduce((s, p) => s + p.player_deaths, 0) / ps.length;
-      const tr = el('tr');
-      const td = el('td');
-      const h = herosDe(Number(hid));
-      if (h) td.append(DLN.img(h.icone || h.image, 'mp-icone'));
-      td.append(nomHeros(Number(hid)));
-      const posNw = m && position(nwm, m.net_worth_per_min);
-      tr.append(td, el('td', 'nombre', String(ps.length)), el('td', 'nombre', String(ps.filter((p) => p.match_result === p.player_team).length)),
-        el('td', 'nombre ' + (posNw ? posNw.cls : ''), nombre(nwm)), el('td', 'nombre doux', m ? nombre(m.net_worth_per_min.percentile50) : '—'),
-        el('td', 'nombre', (Math.round(morts * 10) / 10).toLocaleString('fr-FR')), el('td', 'nombre doux', m ? (Math.round(m.deaths.percentile50 * 10) / 10).toLocaleString('fr-FR') : '—'));
-      table.append(tr);
-    }
-    blocHeros.append(table, el('p', 'aide', 'Médiane = la moitié des joueurs de ce héros, à ton niveau, fait mieux, l\'autre moitié moins bien. En rouge : dans le quart le plus bas.'));
-    z.append(blocHeros);
 
     // --- 4. Partie par partie ---
     const blocParties = bloc('Partie par partie', 'mp-parties');
@@ -340,13 +465,51 @@
   async function carteMatch(p, l) {
     const victoire = p.match_result === p.player_team;
     const d = el('details', 'mp-match ' + (victoire ? 'victoire' : 'defaite'));
-    const s = el('summary');
+    const s = el('summary', 'mp-ligne');
     const h = herosDe(p.hero_id);
-    if (h) s.append(DLN.img(h.icone || h.image, 'mp-icone'));
     const date = new Date(p.start_time * 1000).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
-    s.append(el('strong', null, nomHeros(p.hero_id)), el('span', 'mp-resultat', victoire ? 'Victoire' : 'Défaite'),
-      el('span', 'aide', date + ' · ' + Math.round(p.match_duration_s / 60) + ' min · ' + p.player_kills + ' / ' + p.player_deaths + ' / ' + p.player_assists +
-        ' · ' + nombre(p.net_worth / (p.match_duration_s / 60)) + ' souls/min'));
+    const duree = p.match_duration_s / 60;
+    const c1 = el('div', 'mp-l-res');
+    c1.append(el('strong', 'mp-resultat', victoire ? 'Victoire' : 'Défaite'), el('span', 'aide', date), el('span', 'aide', Math.round(duree) + ' min'));
+    const c2 = el('div', 'mp-l-heros');
+    if (h) c2.append(DLN.img(h.icone || h.image, 'mp-portrait'));
+    c2.append(el('span', null, nomHeros(p.hero_id)));
+    const c3 = el('div', 'mp-l-kda');
+    const k = el('div', 'mp-kda-ligne', p.player_kills + ' / ');
+    k.append(el('span', 'mp-mort-txt', String(p.player_deaths)), ' / ' + p.player_assists);
+    c3.append(k, el('span', 'aide', kdaRatio(p.player_kills, p.player_deaths, p.player_assists) + ':1 KDA'));
+    const c4 = el('div', 'mp-l-stats aide');
+    c4.append(el('span', null, nombre(p.net_worth / duree) + ' souls/min'));
+    if (l && l.lobby) {
+      const m = l.lobby.moi;
+      if (m.creeps_9 != null) c4.append(el('span', null, Math.round(m.creeps_9 * 100) + ' % troopers à 9 min'));
+      c4.append(el('span', null, nombre(m.degats_min) + ' dégâts/min'));
+    }
+    const c5 = el('div', 'mp-l-objets');
+    if (l) l.achats.filter((x) => !x.vendu && x.o.tier >= 2).slice(-8).forEach((x) => {
+      const i = DLN.img(x.o.image, 'mp-obj obj-' + x.o.categorie);
+      i.title = x.o.nom + ' · ' + fmtMin(x.t);
+      c5.append(i);
+    });
+    const c6 = el('div', 'mp-l-note');
+    if (l && l.lobby) {
+      const g = DLN.lobby.lettre(l.lobby.global);
+      c6.append(el('span', 'mp-note note-' + g, g), el('span', 'aide', l.lobby.place + (l.lobby.place === 1 ? 'er' : 'e') + ' / ' + l.lobby.n));
+      if (l.lobby.mvp) c6.append(el('span', 'mp-mvp', 'MVP'));
+      c6.title = 'Note de la partie : ta place parmi les ' + l.lobby.n + ' joueurs, toutes mesures confondues. MVP = le meilleur de ton équipe.';
+    }
+    const c7 = el('div', 'mp-l-equipes');
+    if (l && l.lobby) l.lobby.equipes.forEach((eq, t) => {
+      const col = el('div', 'mp-eq' + (t === l.lobby.monEquipe ? ' mienne' : ''));
+      eq.forEach((x) => {
+        const hh = herosDe(x.hero);
+        const i = hh ? DLN.img(hh.icone || hh.image, 'mp-mini' + (x.moi ? ' moi' : '')) : el('span');
+        i.title = nomHeros(x.hero);
+        col.append(i);
+      });
+      c7.append(col);
+    });
+    s.append(c1, c2, c3, c4, c5, c6, c7);
     d.append(s);
     if (!l) {
       d.append(el('p', 'aide', 'Détail non chargé (seules les ' + NB_DETAILLEES + ' dernières parties sont analysées en détail).'));
@@ -409,7 +572,8 @@
 
   // ---------- chargement ----------
 
-  async function charger(id) {
+  async function charger(id, frais) {
+    if (frais) { details = {}; metriques = {}; courbes = {}; }
     const z = contenu();
     z.textContent = '';
     z.append(el('p', 'aide', 'Chargement de tes parties…'));
@@ -419,7 +583,8 @@
       api('/v1/players/' + id + '/match-history')
     ]);
     const s = steam[0] || {};
-    moi = { id: id, nom: s.personaname, avatar: s.avatarmedium || s.avatar, rang: rang };
+    moi = { id: id, nom: s.personaname, avatar: s.avatarmedium || s.avatar, rang: rang,
+      majA: new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }) };
     try { localStorage.setItem(CLE, String(id)); } catch (e) { /* stockage indisponible */ }
     afficherProfil();
     parties = histo.filter((p) => p.game_mode === 1).sort((a, b) => b.start_time - a.start_time);
@@ -449,7 +614,8 @@
   }
 
   Promise.all(['data/heroes.json', 'data/items.json', 'data/hero-stats.json'].map(DLN.charger)
-    .concat([DLN.charger('data/tempo.json').catch(() => null), DLN.profil])).then((r) => {
+    .concat([DLN.charger('data/tempo.json').catch(() => null), DLN.profil, DLN.charger('data/map.json').catch(() => null)])).then((r) => {
+    carte = r[5];
     heros = r[0];
     r[1].objets.forEach((o) => { objets[o.id] = o; });
     statsHeros = r[2];

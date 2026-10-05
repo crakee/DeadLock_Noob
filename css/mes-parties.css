@@ -52,6 +52,73 @@ svg .mp-axe { fill: var(--doux); font-size: 9px; text-anchor: middle; }
 .mp-achats .obj-vitality { --obj: var(--vitality); }
 .mp-achats .obj-spirit { --obj: var(--spirit); }
 
+/* Résumé façon op.gg */
+.mp-resume { display: grid; grid-template-columns: auto auto 1fr; align-items: center; gap: 1rem 2rem; }
+.mp-resume-wr { display: flex; align-items: center; gap: .8rem; }
+.mp-anneau { width: 5.5rem; height: 5.5rem; }
+.mp-anneau-fond { fill: none; stroke: var(--danger); stroke-width: 10; opacity: .55; }
+.mp-anneau-plein { fill: none; stroke: var(--bon); stroke-width: 10; }
+.mp-anneau-texte { fill: var(--texte); font-family: var(--titre); font-size: 20px; text-anchor: middle; }
+.mp-resume-titre { font-family: var(--titre); font-size: 1.2rem; }
+.mp-resume-kda { text-align: center; }
+.mp-kda-ligne { font-family: var(--titre); font-size: 1.35rem; font-variant-numeric: tabular-nums; }
+.mp-mort-txt { color: var(--danger); }
+.mp-kda-ratio { color: var(--or-clair); font-size: 1rem; }
+.mp-resume-heros { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .3rem; }
+.mp-resume-heros li { display: grid; grid-template-columns: auto 7rem 3.5rem 1fr; align-items: center; gap: .5rem; }
+.mp-resume-heros .haut { color: var(--bon); font-weight: 700; }
+
+/* Profil par domaine et carte des morts */
+.mp-duo { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: .8rem; }
+.mp-domaine > summary { cursor: pointer; display: grid; grid-template-columns: 6rem 1fr 2rem; align-items: center; gap: .7rem; padding: .3rem 0; list-style: none; }
+.mp-domaine > summary::-webkit-details-marker { display: none; }
+.mp-dom-nom { font-family: var(--titre); text-transform: uppercase; letter-spacing: .05em; }
+.mp-dom-barre { height: .7rem; background: var(--fond-2); border: 1px solid var(--bord); border-radius: 1rem; overflow: hidden; }
+.mp-dom-plein { display: block; height: 100%; border-radius: 1rem; background: var(--note); }
+.mp-note { display: inline-grid; place-items: center; min-width: 1.8rem; height: 1.8rem; border-radius: .35rem; font-family: var(--titre); font-weight: 600; color: #111; background: var(--note); }
+.note-A { --note: #4fc37a; } .note-B { --note: #9fcf5a; } .note-C { --note: #d9b25b; } .note-D { --note: #e98b3f; } .note-E { --note: #e0524a; } .note-— { --note: var(--bord); }
+.mp-dom-table { margin: .2rem 0 .6rem 6.7rem; font-size: .9rem; }
+.mp-dom-table td, .mp-dom-table th { padding: .15rem .6rem; text-align: left; }
+.mp-focus { margin: .6rem 0 0; font-size: 1.05rem; }
+.mp-focus-faible { color: var(--alerte); }
+.mp-carte-cadre { position: relative; aspect-ratio: 1; max-width: 26rem; margin: 0 auto; }
+.mp-carte-img, .mp-carte-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.mp-carte-img { opacity: .75; }
+.mp-point { stroke: #000; stroke-width: .3; }
+.mp-point.isole, .mp-pastille.isole { fill: var(--danger); background: var(--danger); }
+.mp-point.groupe, .mp-pastille.groupe { fill: var(--or-clair); background: var(--or-clair); }
+.mp-point.surpris { stroke: #fff; stroke-width: .7; }
+.mp-pastille { display: inline-block; width: .7rem; height: .7rem; border-radius: 50%; margin: 0 .3rem 0 .6rem; vertical-align: middle; }
+.mp-pastille.surpris { background: transparent; border: 2px solid #fff; }
+
+/* Ligne de partie */
+.mp-ligne { display: grid !important; grid-template-columns: 5.5rem 7.5rem 6rem 9.5rem 1fr 4rem auto; align-items: center; gap: .4rem .9rem; list-style: none; }
+.mp-ligne::-webkit-details-marker { display: none; }
+.mp-match { padding: .5rem .8rem; }
+.mp-match.victoire { background: linear-gradient(90deg, rgba(79, 195, 122, .10), var(--fond-2) 40%); }
+.mp-match.defaite { background: linear-gradient(90deg, rgba(224, 82, 74, .10), var(--fond-2) 40%); }
+.mp-l-res, .mp-l-kda, .mp-l-stats, .mp-l-note { display: flex; flex-direction: column; gap: .05rem; }
+.mp-l-heros { display: flex; flex-direction: column; align-items: flex-start; gap: .15rem; font-weight: 600; }
+.mp-portrait { width: 2.8rem; height: 2.8rem; border-radius: .4rem; object-fit: cover; }
+.mp-l-objets { display: flex; flex-wrap: wrap; gap: .2rem; }
+.mp-obj { width: 1.9rem; height: 1.9rem; padding: .15rem; border-radius: .3rem; background: var(--panneau-2); border: 1px solid var(--obj, var(--bord)); }
+.mp-obj.obj-weapon { --obj: var(--weapon); } .mp-obj.obj-vitality { --obj: var(--vitality); } .mp-obj.obj-spirit { --obj: var(--spirit); }
+.mp-l-note { align-items: center; }
+.mp-mvp { font-size: .7rem; font-weight: 700; color: #111; background: var(--or); border-radius: .2rem; padding: 0 .3rem; }
+.mp-l-equipes { display: flex; gap: .4rem; }
+.mp-eq { display: grid; grid-template-columns: repeat(2, 1.2rem); gap: .1rem; opacity: .8; }
+.mp-eq.mienne { opacity: 1; }
+.mp-mini { width: 1.2rem; height: 1.2rem; border-radius: .2rem; object-fit: cover; }
+.mp-mini.moi { outline: 2px solid var(--or); }
+
+@media (max-width: 1000px) {
+  .mp-duo, .mp-resume { grid-template-columns: minmax(0, 1fr); }
+  .mp-ligne { grid-template-columns: 5rem 1fr 5.5rem 3.5rem; }
+  .mp-l-stats, .mp-l-equipes { display: none !important; }
+  .mp-l-objets { grid-column: 1 / -1; }
+  .mp-dom-table { margin-left: 0; }
+}
+
 @media (max-width: 500px) {
   .mp-match-corps { grid-template-columns: minmax(0, 1fr); }
 }
