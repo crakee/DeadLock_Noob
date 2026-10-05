@@ -1,0 +1,261 @@
+{
+ "meta": {
+  "nature": "Avis de joueur, pas une donnée du jeu. Règles reformulées d'après data/memo.json (guide macro de Wouks – Deadlock Academy), data/roles.json (vidéo sur les rôles du même auteur) et les conseils de data/timeline.json.",
+  "verifie_le": "2026-10-05",
+  "fonctionnement": "js/coach.js lit l'état que le joueur indique (boutons), le contexte (rôle, lane, phase, objectifs proches) et prend la première règle de `regles` dont toutes les conditions sont vraies. Les textes peuvent contenir {objectif}, {dans}, {camps}, {lane}, {objet}, {role_objectif}, {role_phase}.",
+  "conditions": "Clés possibles dans `si` : un état (wave, pv, souls, score, style) avec une valeur ou une liste de valeurs ; `phase` (Laning, Mid-game, Late-game) ; `cote` (lane ou centre, d'après data/conseils-roles.json) ; `objectif_proche` (true si un objectif qui compte pour le rôle apparaît dans moins de `proche_s`) ; `camps_ouverts` (true si des camps sont déjà ouverts) ; `role` (identifiant ou liste) ; `style_pas` (style à exclure)."
+ },
+ "proche_s": 75,
+ "etats": [
+  {
+   "id": "wave",
+   "nom": "Ma wave",
+   "defaut": "milieu",
+   "options": [
+    [
+     "poussee",
+     "Poussée chez eux"
+    ],
+    [
+     "milieu",
+     "Au milieu"
+    ],
+    [
+     "danger",
+     "Chez moi"
+    ]
+   ]
+  },
+  {
+   "id": "pv",
+   "nom": "Ma vie",
+   "defaut": "ok",
+   "options": [
+    [
+     "ok",
+     "OK"
+    ],
+    [
+     "bas",
+     "Basse"
+    ]
+   ]
+  },
+  {
+   "id": "souls",
+   "nom": "Souls",
+   "defaut": "non",
+   "options": [
+    [
+     "non",
+     "Rien à acheter"
+    ],
+    [
+     "oui",
+     "À dépenser"
+    ]
+   ]
+  },
+  {
+   "id": "score",
+   "nom": "La partie",
+   "defaut": "egal",
+   "options": [
+    [
+     "mene",
+     "On mène"
+    ],
+    [
+     "egal",
+     "Égal"
+    ],
+    [
+     "perd",
+     "On perd"
+    ]
+   ]
+  }
+ ],
+ "styles": [
+  [
+   "prudent",
+   "Prudent"
+  ],
+  [
+   "equilibre",
+   "Équilibré"
+  ],
+  [
+   "agressif",
+   "Agressif"
+  ]
+ ],
+ "regles": [
+  {
+   "si": {
+    "pv": "bas",
+    "souls": "oui"
+   },
+   "action": "Rentre te soigner et dépense tes souls",
+   "pourquoi": "Vie basse avec des souls sur toi : mourir maintenant, c'est tout perdre. Après un bon coup, on va dépenser et se soigner plutôt que rester.",
+   "source": "memo"
+  },
+  {
+   "si": {
+    "pv": "bas"
+   },
+   "action": "Recule vers ta tour ou un soin, pas de combat",
+   "pourquoi": "Avec peu de vie, le moindre échange te tue, et les souls non sécurisées se perdent à la mort.",
+   "source": "memo"
+  },
+  {
+   "si": {
+    "wave": "danger"
+   },
+   "action": "Retourne repousser ta wave",
+   "pourquoi": "Règle numéro un : une wave perdue, ce sont des souls perdues et ton Walker qui prend des dégâts. Avant tout le reste.",
+   "source": "memo"
+  },
+  {
+   "si": {
+    "objectif_proche": true,
+    "wave": "poussee"
+   },
+   "action": "{objectif} {dans}",
+   "pourquoi": "{role_objectif}",
+   "source": "roles"
+  },
+  {
+   "si": {
+    "objectif_proche": true
+   },
+   "action": "Pousse ta wave d'abord · {objectif} {dans}",
+   "pourquoi": "Wave d'abord, objectif ensuite : en poussant maintenant, tu as le temps d'y être. {role_objectif}",
+   "source": "memo"
+  },
+  {
+   "si": {
+    "souls": "oui"
+   },
+   "action": "Dépense tes souls au shop le plus proche",
+   "pourquoi": "Des souls non dépensées ne t'aident pas en combat. Préfère un shop de la carte si tu as de la vie. {objet}",
+   "source": "memo"
+  },
+  {
+   "si": {
+    "phase": "Laning",
+    "wave": "milieu"
+   },
+   "action": "Last-hit les Troopers, au corps à corps si tu peux",
+   "pourquoi": "Le dernier coup donne les souls ; au corps à corps tu prends tout d'un coup, l'adversaire ne peut pas voler l'orbe.",
+   "source": "memo"
+  },
+  {
+   "si": {
+    "phase": "Laning",
+    "wave": "poussee",
+    "camps_ouverts": true
+   },
+   "action": "Prends un camp proche ({camps}), reviens pour la wave suivante",
+   "pourquoi": "Entre deux waves, wave poussée : c'est le seul bon moment pour la jungle. Jamais à la place d'une wave.",
+   "source": "memo"
+  },
+  {
+   "si": {
+    "phase": "Laning",
+    "wave": "poussee"
+   },
+   "action": "Wave poussée : casse les caisses sur ton chemin, reste près de ta lane",
+   "pourquoi": "Les camps n'ont pas encore ouvert. Les caisses se prennent sur le trajet, jamais en détour.",
+   "source": "memo"
+  },
+  {
+   "si": {
+    "wave": "poussee",
+    "score": "mene",
+    "style_pas": "prudent"
+   },
+   "action": "Pression : menace un Walker avec ton équipe",
+   "pourquoi": "Vous menez et ta wave est poussée : menacer un Walker force une réaction. Si personne ne peut venir défendre à temps, attaque-le.",
+   "source": "memo"
+  },
+  {
+   "si": {
+    "wave": "poussee",
+    "score": "perd"
+   },
+   "action": "Farme en sécurité près de chez toi, évite les combats",
+   "pourquoi": "Quand on perd, on se bat seulement si tout est réuni pour gagner. Ton temps de farm rattrape l'écart, une mort le creuse.",
+   "source": "memo"
+  },
+  {
+   "si": {
+    "wave": "poussee",
+    "cote": "lane",
+    "camps_ouverts": true
+   },
+   "action": "Prends ta jungle : {camps}",
+   "pourquoi": "{role_phase} La jungle se prend wave poussée, puis on revient pour la suivante.",
+   "source": "roles"
+  },
+  {
+   "si": {
+    "wave": "poussee",
+    "style": "agressif",
+    "cote": "centre"
+   },
+   "action": "Montre-toi dans leur jungle",
+   "pourquoi": "Ta wave occupe un adversaire : leur jungle est plus sûre. Sinner's Sacrifice d'abord, camps ensuite ; ce que tu prends chez eux leur manque.",
+   "source": "memo"
+  },
+  {
+   "si": {
+    "wave": "poussee"
+   },
+   "action": "{role_phase}",
+   "pourquoi": "Ta wave est poussée : tu as 30 à 45 s de liberté avant qu'elle ait besoin de toi.",
+   "source": "roles"
+  },
+  {
+   "si": {},
+   "action": "{role_phase}",
+   "pourquoi": "Pense à ta wave : poussée, au milieu, ou chez toi ? Indique-le avec les boutons, le conseil s'adapte.",
+   "source": "roles"
+  }
+ ],
+ "objectifs_roles": {
+  "powerups": {
+   "lane": "Seulement si ta wave est poussée et que le pont est sur ton chemin ; sinon, continue de farmer.",
+   "centre": "Prends-le wave poussée : il aide pour le prochain combat ou objectif. Perdu à la mort."
+  },
+  "urn": {
+   "main_carry": "Pas pour toi : farme ta lane et ta jungle pendant que l'équipe la prend, sauf si ta lane est poussée.",
+   "off_carry": "Sois-y : l'équipe a besoin de tes dégâts pour la gagner.",
+   "tank": "Accompagne le porteur et protège-le.",
+   "support": "Porte-la : les autres peuvent se battre pendant ce temps.",
+   "catch": "Rôde autour : attrape celui qui vient la contester.",
+   "assassin": "Rôde autour : punis celui qui vient la contester seul."
+  },
+  "rift": {
+   "main_carry": "Seulement si l'équipe y va groupée et que ta lane est poussée.",
+   "lane": "Objectif d'équipe : y aller groupés, wave poussée.",
+   "centre": "Objectif d'équipe : y aller groupés, wave poussée."
+  },
+  "small_camps": {
+   "lane": "Ton farm : wave poussée, puis le camp de ton côté.",
+   "centre": "Laisse-les à tes carries, sauf s'ils sont sur ton chemin."
+  },
+  "medium_camps": {
+   "lane": "Ton farm : wave poussée, puis le camp de ton côté.",
+   "centre": "Laisse-les à tes carries, sauf s'ils sont sur ton chemin."
+  },
+  "large_camps": {
+   "lane": "Résistants : wave poussée, et seulement si tu nettoies vite.",
+   "centre": "Laisse-les à tes carries."
+  },
+  "sinners": {
+   "lane": "Prioritaire sur les camps : finis au heavy melee sur le jackpot.",
+   "centre": "Laisse-le à ton carry, sauf s'il est absent ou loin."
+  }
+ }
+}

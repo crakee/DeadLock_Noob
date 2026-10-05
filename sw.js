@@ -1,11 +1,11 @@
 // Service worker : rend le site installable et utilisable hors ligne.
 // Réseau d'abord pour tout (pages, CSS, JS, données) : le site change à chaque patch, on ne sert le
 // cache que si le réseau est indisponible. Changer VERSION vide les anciens caches à l'activation.
-const VERSION = 'dln-v5';
+const VERSION = 'dln-v6';
 const ESSENTIEL = [
   './', './index.html', './manifest.webmanifest',
   './css/style.css', './css/partie.css', './css/etiquettes.css',
-  './js/commun.js', './js/sons.js', './js/voix.js', './data/voix.json', './js/timeline.js', './js/enface.js', './js/etiquettes.js', './js/partie.js', './js/carte-mini.js',
+  './js/commun.js', './js/sons.js', './js/voix.js', './data/voix.json', './js/timeline.js', './js/enface.js', './js/etiquettes.js', './js/partie.js', './js/coach.js', './data/coach.json', './data/achats.json', './js/carte-mini.js',
   './data/timeline.json', './data/niveaux.json', './data/profil.json', './data/heroes.json', './data/roles.json',
   './data/conseils-roles.json', './data/heros-details.json', './data/map.json', './data/counters.json', './data/items.json',
   './data/tempo.json', './icones/icone-192.png',

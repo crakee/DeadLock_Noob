@@ -38,6 +38,7 @@ Pour les valeurs : les pages de deadlock.wiki sont des gabarits, les chiffres so
 | `data/achats.json` | Objets achetés par au moins 20 % des joueurs des héros du profil, par tranche, avec minute moyenne d'achat | `outils/maj_donnees.py --seulement achats` |
 | `data/builds.json` | 3 builds publics du jeu par héros (les plus mis en favori parmi ceux mis à jour depuis le patch) | `outils/maj_donnees.py --seulement builds` |
 | `data/tempo.json` | Winrate par durée de partie et objets clés (minute d'achat) par héros et tranche | `outils/maj_donnees.py --seulement tempo` |
+| `data/coach.json` | Règles du coach de la page En partie (état indiqué par le joueur → « à faire maintenant », pourquoi) et ce que chaque rôle fait pour chaque objectif : jugement (guides de Wouks) | à la main |
 | `data/profil.json` | Héros joués et à essayer, tranche de rang par défaut (préférences, pas données de jeu) | à la main |
 
 **Réglage de niveau unique** (demande de l'utilisateur) : un seul curseur 1 débutant / 2 intermédiaire / 3 avancé filtre la Timeline, le Mémo et les couches de la carte, plutôt qu'une version par rang. Le champ s'appelle `niveau` partout. Le rappel minimap doit pouvoir être désactivé.

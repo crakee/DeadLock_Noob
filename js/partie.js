@@ -14,7 +14,7 @@
 
   // Chaque onglet range ses panneaux en colonnes (de gauche à droite) ; les autres sont masqués.
   const ONGLETS = {
-    jeu: { nom: '🎮 En jeu', touche: 'J', aide: 'Le prochain objectif en grand : à regarder en jouant', colonnes: [['horloge', 'avenir', 'plan', 'declenches']] },
+    jeu: { nom: '🎮 En jeu', touche: 'J', aide: 'Le coach et le prochain objectif : à regarder en jouant', colonnes: [['horloge', 'coach'], ['avenir', 'declenches']] },
     objectifs: { nom: '🗺 Objectifs', touche: 'O', aide: 'Ce qu\'il faut faire et quand, la carte', colonnes: [['objectifs'], ['carte']], bas: ['frise'] },
     mort: { nom: '💀 Mort · compo', touche: 'M', aide: 'Quand tu es mort : leur compo, comment la jouer, tes notes', colonnes: [['maintenant', 'compo', 'checklist'], ['enface'], ['notes']] }
   };
@@ -402,7 +402,11 @@
       const quand = !chrono.lance ? '' : passe ? 'passé' : l.t <= t ? 'maintenant' : 'dans ' + fmt(l.t - t);
       const nom = el('strong', 'obj-nom', (mien ? '★ ' : '') + l.e.nom.split(' (')[0]);
       li.append(el('span', 'obj-heure', heure), nom, el('span', 'obj-quand', quand));
-      if (l.e.conseil || l.e.detail) li.append(el('span', 'obj-texte', l.e.conseil || l.e.detail));
+      // Ce que TU fais (coach, selon ton rôle), sinon le conseil général de l'objectif.
+      const cote = r && D.conseils.roles[r] ? D.conseils.roles[r].cote : null;
+      const pourMoi = DLN.coach && r ? DLN.coach.texteObjectif(l.e.id, r, cote) : null;
+      if (pourMoi) li.append(el('span', 'obj-texte obj-moi', 'Toi : ' + pourMoi));
+      else if (l.e.conseil || l.e.detail) li.append(el('span', 'obj-texte', l.e.conseil || l.e.detail));
       ul.append(li);
     });
     zone.append(ul);
