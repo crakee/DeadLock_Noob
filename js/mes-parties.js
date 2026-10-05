@@ -607,10 +607,32 @@
     z.append(blocParties);
 
     // --- 5. Données manquantes ---
-    const aide = bloc('Pourquoi si peu de parties ?', 'mp-aide');
-    aide.append(el('p', null, 'deadlock-api.com ne voit pas toutes les parties du jeu : elle en récupère une partie chaque jour. Ton historique complet ' +
-      's\'obtient si ton compte Steam est ami avec un des robots de l\'API (elle lit alors l\'historique officiel). Les nouvelles parties qu\'elle voit ' +
-      'apparaissent ici automatiquement.'));
+    const aide = bloc(DLN.tr({ fr: 'Pourquoi il manque des parties ?', en: 'Why are games missing?' }), 'mp-aide');
+    aide.append(el('p', null, DLN.tr({
+      fr: 'deadlock-api.com ne voit pas toutes les parties : elle en récupère une partie chaque jour, au hasard. Pour que toutes les tiennes arrivent automatiquement, ' +
+        'installe sur ton PC l\'outil gratuit de l\'API, deadlock-api-ingest : il envoie tes parties pendant que tu joues.',
+      en: 'deadlock-api.com does not see every game: it collects a share of them each day, at random. To get all of yours automatically, ' +
+        'install the API\'s free tool, deadlock-api-ingest, on your PC: it sends your games while you play.' })));
+    const etapes = el('ol', 'mp-etapes');
+    [
+      { fr: 'Dans PowerShell (Windows) : irm https://raw.githubusercontent.com/deadlock-api/deadlock-api-ingest/master/install-windows.ps1 | iex',
+        en: 'In PowerShell (Windows): irm https://raw.githubusercontent.com/deadlock-api/deadlock-api-ingest/master/install-windows.ps1 | iex' },
+      { fr: 'Une fois, pour récupérer tes parties passées : deadlock-api-ingest.exe --own-matches',
+        en: 'Once, to recover your past games: deadlock-api-ingest.exe --own-matches' },
+      { fr: 'Pour qu\'il tourne seulement pendant le jeu : Steam → clic droit sur Deadlock → Propriétés → Options de lancement : "C:\\Users\\TON_NOM\\AppData\\Local\\deadlock-api-ingest\\deadlock-api-ingest.exe" -- %command%',
+        en: 'To run it only while playing: Steam → right-click Deadlock → Properties → Launch options: "C:\\Users\\YOUR_NAME\\AppData\\Local\\deadlock-api-ingest\\deadlock-api-ingest.exe" -- %command%' }
+    ].forEach((x) => etapes.append(el('li', null, DLN.tr(x))));
+    aide.append(etapes);
+    aide.append(el('p', 'aide', DLN.tr({
+      fr: 'À savoir : par défaut, l\'outil utilise la session Steam enregistrée sur ton PC pour retrouver tes parties (le jeton reste sur ton PC d\'après son code). ' +
+        'L\'option --no-gc évite ça, en ne lisant que le cache de Steam. Sans rien installer, colle le numéro d\'une partie plus haut (3 par heure).',
+      en: 'Good to know: by default the tool uses the Steam session saved on your PC to find your games (according to its code, the token stays on your PC). ' +
+        'The --no-gc option avoids that by reading only Steam\'s cache. Without installing anything, paste a match number above (3 per hour).' })));
+    const lien = el('a', 'mp-lien-memo', 'github.com/deadlock-api/deadlock-api-ingest →');
+    lien.href = 'https://github.com/deadlock-api/deadlock-api-ingest';
+    lien.target = '_blank';
+    lien.rel = 'noopener';
+    aide.append(lien);
     z.append(aide);
   }
 

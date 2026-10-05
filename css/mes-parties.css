@@ -176,3 +176,4 @@ svg .mp-axe { fill: var(--doux); font-size: 9px; text-anchor: middle; }
 .mp-ajout input { width: 12rem; font: inherit; color: var(--texte); background: var(--fond-2); border: 1px solid var(--bord-fort); border-radius: .4rem; padding: .35rem .6rem; }
 .mp-ajout-msg { flex-basis: 100%; margin: 0; }
 .mp-profil .mp-ajout .btn { margin-left: 0; }
+.mp-etapes { margin: .4rem 0; padding-left: 1.3rem; display: flex; flex-direction: column; gap: .3rem; font-size: .92rem; word-break: break-word; }

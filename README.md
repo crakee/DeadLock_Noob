@@ -67,6 +67,10 @@ Règles :
 5. **Langue** — noms de héros, d'objets et de mécaniques en anglais, comme en jeu et dans les sources. Langue du reste du contenu : à confirmer.
 6. **Rang** — les statistiques sont ajustables selon le rang de la personne : l'outil propose un sélecteur de tranche de rang, et les données sont récupérées par tranche (`min_average_badge` / `max_average_badge`).
 
+7. **Positionnement** (5 octobre 2026) — site public pour apprendre Deadlock (parcours, coach, leçons, aide en partie), pas un site de statistiques : d'autres le font déjà.
+8. **Langues** (5 octobre 2026) — site multilingue, français et anglais d'abord (`data/textes/<langue>/`) ; les noms du jeu restent en anglais.
+9. **Récupérer ses parties** (5 octobre 2026) — l'outil gratuit deadlock-api-ingest sur le PC du joueur, le numéro de partie en secours. Comparatif, avantages, risques et plan de secours : [`docs/recuperer-ses-parties.md`](docs/recuperer-ses-parties.md).
+
 ## Ce que l'API permet (vérifié le 2 octobre 2026)
 
 Pas de scraping nécessaire : `api.deadlock-api.com` expose des endpoints JSON publics, sans clé, sous licence MIT, avec une spécification OpenAPI (`/openapi.json`).
@@ -97,7 +101,7 @@ Limites constatées :
 
 1. **Automatisation** — quelles données récupérer par script et à quelle fréquence : à déterminer une fois la première version en place.
 2. **Tranches de rang** — quel découpage proposer, sachant que plus la tranche est étroite, plus l'échantillon est petit et la marge d'erreur grande.
-3. **Langue du contenu** — français ou anglais pour les textes hors noms propres du jeu.
+3. ~~**Langue du contenu**~~ — tranché le 5 octobre 2026 : multilingue (décision 8).
 
 ## Étapes envisagées
 
