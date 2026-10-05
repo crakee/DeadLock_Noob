@@ -789,7 +789,7 @@ main.partie {
 .fiche-onglet .compte { margin-left: .35rem; font-family: var(--corps); font-size: .75rem; color: var(--doux); }
 
 .fiche-contenu { display: flex; flex-direction: column; gap: 1rem; }
-.deux-colonnes { display: grid; grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr)); gap: 1rem; align-items: start; }
+.deux-colonnes { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(22rem, 100%), 1fr)); gap: 1rem; align-items: start; }
 .texte-anglais { font-size: 1.02rem; line-height: 1.55; color: var(--texte); }
 
 .encadre { padding: .7rem .9rem; background: var(--fond-2); border: 1px solid var(--bord); border-left: .25rem solid var(--or); border-radius: .4rem; }
@@ -1127,4 +1127,12 @@ main.partie {
 @media (max-width: 500px) {
   .logo { display: none; }
   .barre { gap: .3rem; }
+  /* Cinq espaces ne tiennent pas : la liste défile, le ⚙ reste visible. */
+  .espaces { flex: 1; min-width: 0; overflow-x: auto; scrollbar-width: none; }
+  .espace { padding: 0 .4rem; }
+  /* Patch : sans la jauge, le tableau des winrates tient sur un téléphone. */
+  .meta-table td:first-child { width: auto; }
+  .meta-table td:nth-child(2) { display: none; }
+  .table, .meta-table { font-size: .85rem; }
+  .table td.nombre:last-child, .meta-table td.nombre:last-child { white-space: normal; }
 }
