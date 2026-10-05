@@ -802,7 +802,7 @@ main.partie {
 .liste-points li { margin: .3rem 0; }
 
 /* compétences */
-.competences { display: grid; grid-template-columns: repeat(auto-fit, minmax(max(24rem, calc(50% - .5rem)), 1fr)); gap: .8rem; }
+.competences { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, max(24rem, calc(50% - .5rem))), 1fr)); gap: .8rem; }
 .competence { display: grid; grid-template-columns: 3.6rem minmax(0, 1fr); gap: .3rem .9rem; padding: .8rem .9rem; background: var(--fond-2); border: 1px solid var(--bord); border-radius: .5rem; }
 .competence-icone { width: 3.6rem; height: 3.6rem; padding: .35rem; background: var(--panneau-2); border: 1px solid var(--bord-fort); border-radius: 50%; }
 .competence h4 { margin: 0; font-size: 1.15rem; display: flex; flex-wrap: wrap; align-items: baseline; gap: .2rem .6rem; }

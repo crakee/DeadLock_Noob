@@ -1,7 +1,7 @@
 {
  "meta": {
   "patch": "City Never Sleeps (2026-09-29)",
-  "verifie_le": "2026-10-04",
+  "verifie_le": "2026-10-06",
   "source": "https://api.deadlock-api.com",
   "genere_par": "outils/maj_donnees.py",
   "note": "`mecaniques` est déduit par mots-clés : à relire. `video` est à remplir à la main."
@@ -241,7 +241,7 @@
      "nom": "Riposte",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/fencer/fencer_riposte.webp",
      "resume": "",
-     "description": "Prepare to deflect the next incoming attack. On a successful deflection, briefly become invulnerable and target an enemy hero to dash towards them, stunning them and reducing their Melee Resist. · · Press Ability 2 to select a target. · Does not trigger against trooper or neutral damage.",
+     "description": "Prepare to deflect the next incoming attack. On a successful deflection, briefly become invulnerable and target an enemy hero to dash towards them, stunning them and reducing their Melee Resist. · Press Ability 2 to select a target. · Does not trigger against trooper or neutral damage.",
      "recharge_s": 22.0,
      "canalisee": true,
      "valeurs": [
@@ -264,7 +264,7 @@
      ],
      "nom_fr": "Riposte",
      "resume_fr": "",
-     "description_fr": "Apollon se prépare à parer la prochaine attaque dont il est la cible. En cas de parade réussie, Apollon devient invulnérable et s'élance vers une cible ennemie. La cible est étourdie et sa résistance aux attaques de mêlée est affaiblie. · · Appuyez sur Capacité 2 pour sélectionner une cible. · Ne se déclenche pas en cas de dégâts infligés par des troupiers ou des créatures neutres.",
+     "description_fr": "Apollon se prépare à parer la prochaine attaque dont il est la cible. En cas de parade réussie, Apollon devient invulnérable et s'élance vers une cible ennemie. La cible est étourdie et sa résistance aux attaques de mêlée est affaiblie. · Appuyez sur Capacité 2 pour sélectionner une cible. · Ne se déclenche pas en cas de dégâts infligés par des troupiers ou des créatures neutres.",
      "ameliorations_fr": [
       "-25 % de résist. aux atq. de mêlée et +0.4 s de durée d'étourdissement",
       "Apollon gagne 75 % de vol de vie des balles, spirituel et de mêlée contre la cible de Riposte pendant 13 s"
@@ -275,7 +275,7 @@
      "nom": "Flawless Advance",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/fencer/fencer_lungingstab.webp",
      "resume": "",
-     "description": "Perform a series of lunges in any direction, delivering piercing stabs ahead of you. Hold your ability key to time your attacks, dealing more damage the longer it's held. Releasing your attack during the perfect window deals maximum damage. · · Press Ability 3 to re-cast.",
+     "description": "Perform a series of lunges in any direction, delivering piercing stabs ahead of you. Hold your ability key to time your attacks, dealing more damage the longer it's held. Releasing your attack during the perfect window deals maximum damage. · Press Ability 3 to re-cast.",
      "recharge_s": 26.0,
      "canalisee": false,
      "valeurs": [
@@ -303,7 +303,7 @@
      ],
      "nom_fr": "Attaque en flèche",
      "resume_fr": "",
-     "description_fr": "Apollon effectue une série d'estocades devant lui. Maintenez la touche de la capacité pour synchroniser les attaques et infliger des dégâts plus importants en fonction de la durée d'appui sur la touche. Si la touche est relâchée pendant l'intervalle parfait, l'estocade inflige le maximum de dégâts. · · Appuyez sur Capacité 3 pour relancer l'attaque.",
+     "description_fr": "Apollon effectue une série d'estocades devant lui. Maintenez la touche de la capacité pour synchroniser les attaques et infliger des dégâts plus importants en fonction de la durée d'appui sur la touche. Si la touche est relâchée pendant l'intervalle parfait, l'estocade inflige le maximum de dégâts. · Appuyez sur Capacité 3 pour relancer l'attaque.",
      "ameliorations_fr": [
       "Estocade parfaite sur une unité occultiste : soigne de 35",
       "-12 s de temps de récupération. Accorde +60 % de résistance aux balles pendant l'estocade",
@@ -315,7 +315,7 @@
      "nom": "Itani Lo Sahn",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/fencer/fencer_ult.webp",
      "resume": "",
-     "description": "Charge up and perform a long range slash. Struck enemies cannot take action or heal and are stuck in slow motion. When this effect expires, they suffer devastating damage, dealing bonus damage against half-health enemies. · · While in slow motion, Apollo is invulnerable and enemies take reduced damage. · · Hold Ability 4 or to delay the cast.",
+     "description": "Charge up and perform a long range slash. Struck enemies cannot take action or heal and are stuck in slow motion. When this effect expires, they suffer devastating damage, dealing bonus damage against half-health enemies. · While in slow motion, Apollo is invulnerable and enemies take reduced damage. · Hold Ability 4 or to delay the cast.",
      "recharge_s": 145.0,
      "canalisee": true,
      "valeurs": [
@@ -335,7 +335,7 @@
      "ameliorations": [],
      "nom_fr": "Itani Lo Sahn",
      "resume_fr": "",
-     "description_fr": "Après un temps de recharge, Apollon donne un grand coup d'épée loin devant lui. Les unités ennemies touchées ne peuvent ni agir ni se soigner et sont ralenties. À l'expiration de l'effet, elles subissent des dégâts dévastateurs et les unités qui avaient moins de la moitié de leurs PV subissent des dégâts supplémentaires. · · Pendant la phase de ralentissement, Apollon est invulnérable et les unités ennemies subissent des dégâts réduits. · · Maintenez Capacité 4 ou pour retarder l'incantation.",
+     "description_fr": "Après un temps de recharge, Apollon donne un grand coup d'épée loin devant lui. Les unités ennemies touchées ne peuvent ni agir ni se soigner et sont ralenties. À l'expiration de l'effet, elles subissent des dégâts dévastateurs et les unités qui avaient moins de la moitié de leurs PV subissent des dégâts supplémentaires. · Pendant la phase de ralentissement, Apollon est invulnérable et les unités ennemies subissent des dégâts réduits. · Maintenez Capacité 4 ou pour retarder l'incantation.",
      "ameliorations_fr": []
     }
    ]
@@ -371,7 +371,7 @@
      "nom": "Exploding Uppercut",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/bebop/bebop_uppercut.webp",
      "resume": "Punch someone away from you",
-     "description": "Deal melee damage to nearby enemies and apply knockback. · · When they land, they deal spirit damage and apply reduced fire rate to other nearby enemies. · · Exploding Uppercut can be used on allies.",
+     "description": "Deal melee damage to nearby enemies and apply knockback. · When they land, they deal spirit damage and apply reduced fire rate to other nearby enemies. · Exploding Uppercut can be used on allies.",
      "recharge_s": 22.0,
      "canalisee": false,
      "valeurs": [
@@ -398,7 +398,7 @@
      ],
      "nom_fr": "Uppercut explosif",
      "resume_fr": "Projette les unités à proximité dans les airs",
-     "description_fr": "Bebop repousse et inflige des dégâts de mêlée aux adversaires à proximité et inflige du recul. · · À l'atterrissage, les cibles infligent des dégâts spirituels et appliquent une cadence de tir diminuée aux autres adversaires proches. · · Uppercut explosif peut être lancée sur les unités alliées.",
+     "description_fr": "Bebop repousse et inflige des dégâts de mêlée aux adversaires à proximité et inflige du recul. · À l'atterrissage, les cibles infligent des dégâts spirituels et appliquent une cadence de tir diminuée aux autres adversaires proches. · Uppercut explosif peut être lancée sur les unités alliées.",
      "ameliorations_fr": [
       "Unité occultiste adverse touchée : accélère le temps de réarmement, double la portée des armes et gagne 30 % de dég. des armes pendant 9 s",
       "À l'impact (unité occultiste) : recharge Bras mécanique et restaure +18 % des PV manquants"
@@ -409,7 +409,7 @@
      "nom": "Sticky Bomb",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/bebop/bebop_sticky_bomb.webp",
      "resume": "Plant a bomb on an enemy",
-     "description": "Attach a bomb that explodes after a delay, dealing spirit damage to nearby enemies. · · If the bomb hits or kills a hero, you gain permanent bonus damage on Sticky Bomb. · · Stacks diminish by half after 60 hits and 7 kills",
+     "description": "Attach a bomb that explodes after a delay, dealing spirit damage to nearby enemies. · If the bomb hits or kills a hero, you gain permanent bonus damage on Sticky Bomb. · Stacks diminish by half after 60 hits and 7 kills",
      "recharge_s": 18.0,
      "canalisee": false,
      "valeurs": [
@@ -439,7 +439,7 @@
      ],
      "nom_fr": "Bombe collante",
      "resume_fr": "Pose une bombe sur une unité",
-     "description_fr": "Bebop colle une bombe à retardement. L'explosion inflige des dégâts spirituels aux adversaires à proximité. · · Si la bombe touche ou tue une unité occultiste, Bombe collante obtient un bonus permanent de dégâts. · · Les charges sont réduites de moitié après 60 attaques réussies et 7 victimes.",
+     "description_fr": "Bebop colle une bombe à retardement. L'explosion inflige des dégâts spirituels aux adversaires à proximité. · Si la bombe touche ou tue une unité occultiste, Bombe collante obtient un bonus permanent de dégâts. · Les charges sont réduites de moitié après 60 attaques réussies et 7 victimes.",
      "ameliorations_fr": [
       "Au lancement : +5 m/s de vitesse de déplacement et +25 % de résistance aux effets négatifs pendant 6 s"
      ]
@@ -449,7 +449,7 @@
      "nom": "Grapple Arm",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/bebop/bebop_hook.webp",
      "resume": "Pull in a target to you",
-     "description": "Launch out a mechanical hand that pulls the first character it hits, reeling them in. · · Grapple Arm can be used on allies.",
+     "description": "Launch out a mechanical hand that pulls the first character it hits, reeling them in. · Grapple Arm can be used on allies.",
      "recharge_s": 23.0,
      "canalisee": false,
      "valeurs": [
@@ -467,7 +467,7 @@
      ],
      "nom_fr": "Bras mécanique",
      "resume_fr": "Tire une cible vers soi",
-     "description_fr": "Bebop lance une main mécanique qui entraine la première cible sur sa trajectoire et la ramène. · · Bras mécanique peut être utilisé sur les unités alliées.",
+     "description_fr": "Bebop lance une main mécanique qui entraine la première cible sur sa trajectoire et la ramène. · Bras mécanique peut être utilisé sur les unités alliées.",
      "ameliorations_fr": [
       "+20 % de dégâts des armes aux unités ennemies accrochées pendant 6 s"
      ]
@@ -533,7 +533,7 @@
      "nom": "Bashdown",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/punkgoat/goat_sigilslam.webp",
      "resume": "",
-     "description": "Slam your bat into the ground, pulling enemies down and dealing melee damage. · · The slam creates a shockwave that deals spirit damage and applies knockup.",
+     "description": "Slam your bat into the ground, pulling enemies down and dealing melee damage. · The slam creates a shockwave that deals spirit damage and applies knockup.",
      "recharge_s": 35.0,
      "canalisee": true,
      "valeurs": [
@@ -561,7 +561,7 @@
      ],
      "nom_fr": "Matraquage",
      "resume_fr": "",
-     "description_fr": "Billy frappe sa batte au sol et entraine l'adversaire à terre, infligeant des dégâts de mêlée. · · L'impact crée une onde de choc qui inflige des dégâts spirituels et applique une projection aérienne.",
+     "description_fr": "Billy frappe sa batte au sol et entraine l'adversaire à terre, infligeant des dégâts de mêlée. · L'impact crée une onde de choc qui inflige des dégâts spirituels et applique une projection aérienne.",
      "ameliorations_fr": [
       "-10 s de temps de récupération",
       "+1 charge et +2 m de rayon",
@@ -573,7 +573,7 @@
      "nom": "Rising Ram",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/punkgoat/goat_risingram.webp",
      "resume": "",
-     "description": "Charge head-first into an enemy and send them into the air along with Billy. · · Cooldown reduced by 50% on impact.",
+     "description": "Charge head-first into an enemy and send them into the air along with Billy. · Cooldown reduced by 50% on impact.",
      "recharge_s": 32.0,
      "canalisee": false,
      "valeurs": [
@@ -591,7 +591,7 @@
      ],
      "nom_fr": "Bélier de tête",
      "resume_fr": "",
-     "description_fr": "Billy fonce tête la première sur une unité ennemie. Billy et sa cible sont projetées dans les airs. · · Réduit de moitié le temps de récupération à l'impact.",
+     "description_fr": "Billy fonce tête la première sur une unité ennemie. Billy et sa cible sont projetées dans les airs. · Réduit de moitié le temps de récupération à l'impact.",
      "ameliorations_fr": [
       "À l'impact : +25.0 % de dégâts des armes pendant 5 s"
      ]
@@ -601,7 +601,7 @@
      "nom": "Blasted",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/punkgoat/goat_blasted.webp",
      "resume": "",
-     "description": "Passive: Melee hits restore ammo and inflict wrecked on the victim for 7.0s.",
+     "description": "Active: Bullets are amplified against wrecked enemies. Using melee boosts max health and extends duration. · Passive: Melee hits restore ammo and inflict wrecked on the victim for 7.0s.",
      "recharge_s": 27.0,
      "canalisee": false,
      "valeurs": [
@@ -625,7 +625,7 @@
      ],
      "nom_fr": "Cul sec",
      "resume_fr": "",
-     "description_fr": "Effet passif : les attaques de mêlée restaurent des munitions et infligent Démolition sur l'unité ciblée pendant 7.0 s.",
+     "description_fr": "Effet actif : les balles sont amplifiées contre les cibles démolies. Les attaques de mêlée augmentent les PV max. et la durée. · Effet passif : les attaques de mêlée restaurent des munitions et infligent Démolition sur l'unité ciblée pendant 7.0 s.",
      "ameliorations_fr": [
       "Avec Cul Sec : +2.25 m/s de bonus move speed",
       "+1 charge de Coup de boule après utilisation et +7 % d'amplification balistique pendant Démolition",
@@ -637,7 +637,7 @@
      "nom": "Chain Gang",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/punkgoat/goat_chaingang.webp",
      "resume": "",
-     "description": "Chain nearby enemies to you. Chained enemies cannot use movement abilities and receive a heavy slow when they pull on the chain. · · After a delay, yank everyone towards Billy and deal spirit damage. · · The chain breaks if you lose line of sight for a short while.",
+     "description": "Chain nearby enemies to you. Chained enemies cannot use movement abilities and receive a heavy slow when they pull on the chain. · After a delay, yank everyone towards Billy and deal spirit damage. · The chain breaks if you lose line of sight for a short while.",
      "recharge_s": 175.0,
      "canalisee": false,
      "valeurs": [
@@ -656,7 +656,7 @@
      ],
      "nom_fr": "Chaine de forçats",
      "resume_fr": "",
-     "description_fr": "Billy enchaine les adversaires à proximité. Les unités enchainées ne peuvent pas utiliser leurs capacités de déplacement et reçoivent un ralentissement considérable lorsqu'elles tirent sur la chaine. · · Après un certain temps, tire tout le monde vers Billy et inflige des dégâts spirituels. · · La chaine se brise si Billy perd la ligne de mire pendant un court instant.",
+     "description_fr": "Billy enchaine les adversaires à proximité. Les unités enchainées ne peuvent pas utiliser leurs capacités de déplacement et reçoivent un ralentissement considérable lorsqu'elles tirent sur la chaine. · Après un certain temps, tire tout le monde vers Billy et inflige des dégâts spirituels. · La chaine se brise si Billy perd la ligne de mire pendant un court instant.",
      "ameliorations_fr": [
       "+40 % de résistance spirituelle et de résistance aux balles",
       "+5 m de portée · +1.3 s d'Intouchabilité par unité occultiste attrapée"
@@ -695,7 +695,7 @@
      "nom": "Gloom Bombs",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/nano/nano_clustergrenade.webp",
      "resume": "Throw out cluster bombs",
-     "description": "Throw a cluster of bombs that detonate after a delay, dealing spirit damage. · · Enemies hit by multiple bombs take 65% damage.",
+     "description": "Throw a cluster of bombs that detonate after a delay, dealing spirit damage. · Enemies hit by multiple bombs take 65% damage.",
      "recharge_s": 14.0,
      "canalisee": false,
      "valeurs": [
@@ -717,7 +717,7 @@
      ],
      "nom_fr": "Bombes moroses",
      "resume_fr": "Lance une grappe de bombes",
-     "description_fr": "Calico lance une grappe de bombes qui explosent après un certain temps et infligent des dégâts spirituels. · · Les cibles touchées par plusieurs bombes subissent 65 % de dégâts.",
+     "description_fr": "Calico lance une grappe de bombes qui explosent après un certain temps et infligent des dégâts spirituels. · Les cibles touchées par plusieurs bombes subissent 65 % de dégâts.",
      "ameliorations_fr": [
       "Par impact de bombe : -6 % de résistance aux attaques de mêlée pendant 6 s"
      ]
@@ -727,7 +727,7 @@
      "nom": "Leaping Slash",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/nano/nano_dash.webp",
      "resume": "Dash forward and slash enemies",
-     "description": "Dash forward before slashing all enemies in a circle, dealing melee damage. · · If the ability hits at least one hero, heal a small amount of health.",
+     "description": "Dash forward before slashing all enemies in a circle, dealing melee damage. · If the ability hits at least one hero, heal a small amount of health.",
      "recharge_s": 13.0,
      "canalisee": false,
      "valeurs": [
@@ -750,7 +750,7 @@
      ],
      "nom_fr": "Bond lacérant",
      "resume_fr": "S'élance vers l'avant et lacère ses adversaires",
-     "description_fr": "Calico fonce vers l'avant puis lacère les adversaires autour d'elle, infligeant des dégâts de mêlée. · · Si la compétence touche au moins une unité occultiste, elle obtient un faible montant de soins.",
+     "description_fr": "Calico fonce vers l'avant puis lacère les adversaires autour d'elle, infligeant des dégâts de mêlée. · Si la compétence touche au moins une unité occultiste, elle obtient un faible montant de soins.",
      "ameliorations_fr": [
       "Les unités occultistes tuées dans les 3 s accordent +200 âmes",
       "+60 de dégâts. À l'impact (unité occultiste) : réinitialise 50 % du temps de récupération"
@@ -761,7 +761,7 @@
      "nom": "Ava",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/nano/nano_catform.webp",
      "resume": "Take control of Ava",
-     "description": "Turn to shadows and possess Ava. You gain bonus move speed that increases over time, and become hidden on the minimap. · · Taking damage from an enemy hero resets your bonus move speed and puts Ava on a brief cooldown.",
+     "description": "Turn to shadows and possess Ava. You gain bonus move speed that increases over time, and become hidden on the minimap. · Taking damage from an enemy hero resets your bonus move speed and puts Ava on a brief cooldown.",
      "recharge_s": 30.0,
      "canalisee": false,
      "valeurs": [
@@ -784,7 +784,7 @@
      ],
      "nom_fr": "Ava",
      "resume_fr": "Prend le contrôle d'Ava",
-     "description_fr": "Calico rejoint le royaume des ombres et prend possession d'Ava. Elle gagne en bonus move speed qui augmente avec le temps, et devient invisible sur la minicarte. · · Après avoir subi des dégâts d'une unité occultiste ennemie, Calico perd son bonus de vitesse de déplacement et ne peut plus prendre possession d'Ava pendant un court instant.",
+     "description_fr": "Calico rejoint le royaume des ombres et prend possession d'Ava. Elle gagne en bonus move speed qui augmente avec le temps, et devient invisible sur la minicarte. · Après avoir subi des dégâts d'une unité occultiste ennemie, Calico perd son bonus de vitesse de déplacement et ne peut plus prendre possession d'Ava pendant un court instant.",
      "ameliorations_fr": [
       "+15 de régénération de PV et +40 % de vitesse de déplacement max.",
       "Amplifie les dégâts au fil du temps, jusqu'à un maximum de 18 %. Durée : 6 s"
@@ -795,7 +795,7 @@
      "nom": "Return to Shadows",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/nano/nano_shadow_pulse.webp",
      "resume": "Turn to Shadows, gaining movespeed and dealing delayed damage",
-     "description": "Instantly turn to shadows, becoming untargetable, gaining bonus move speed, and dealing spirit damage. · · After a delay, return from the shadows, dealing spirit damage again.",
+     "description": "Instantly turn to shadows, becoming untargetable, gaining bonus move speed, and dealing spirit damage. · After a delay, return from the shadows, dealing spirit damage again.",
      "recharge_s": 115.0,
      "canalisee": true,
      "valeurs": [
@@ -814,7 +814,7 @@
      ],
      "nom_fr": "Retour aux ombres",
      "resume_fr": "Se transforme en ombre, gagne en vitesse de déplacement et inflige des dégâts à retardement",
-     "description_fr": "Calico rejoint le royaume des ombres. Elle devient intouchable, gagne de la bonus move speed, et inflige des dégâts spirituels. · · Après un délai, elle reprend sa forme humaine et inflige à nouveau des dégâts spirituels.",
+     "description_fr": "Calico rejoint le royaume des ombres. Elle devient intouchable, gagne de la bonus move speed, et inflige des dégâts spirituels. · Après un délai, elle reprend sa forme humaine et inflige à nouveau des dégâts spirituels.",
      "ameliorations_fr": [
       "+75 de dégâts et +20 % de vitesse de déplacement",
       "À la fin de la capacité : soigne 450 PV et réinitialise tous les temps de récupération"
@@ -929,7 +929,7 @@
      "nom": "Radiant Daggers",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/unicorn/unicorn_luminousflux.webp",
      "resume": "",
-     "description": "Call down a beam of light from the sky. After a short duration, the beam will fully form, causing an explosion that deals spirit damage to all targets in the area. · · Celeste will receive a stacking buff that increases her spirit damage anytime this hits an enemy hero.",
+     "description": "Call down a beam of light from the sky. After a short duration, the beam will fully form, causing an explosion that deals spirit damage to all targets in the area. · Celeste will receive a stacking buff that increases her spirit damage anytime this hits an enemy hero.",
      "recharge_s": 33.0,
      "canalisee": false,
      "valeurs": [
@@ -949,7 +949,7 @@
      "ameliorations": [],
      "nom_fr": "Dagues rayonnantes",
      "resume_fr": "",
-     "description_fr": "Un faisceau de lumière tombe du ciel. Après un court laps de temps, le faisceau se forme complètement et provoque une explosion qui inflige des dégâts spirituels à toutes les cibles de la zone. · · Céleste reçoit un bonus cumulable de dégâts spirituels à chaque fois qu'une unité occultiste est touchée.",
+     "description_fr": "Un faisceau de lumière tombe du ciel. Après un court laps de temps, le faisceau se forme complètement et provoque une explosion qui inflige des dégâts spirituels à toutes les cibles de la zone. · Céleste reçoit un bonus cumulable de dégâts spirituels à chaque fois qu'une unité occultiste est touchée.",
      "ameliorations_fr": []
     },
     {
@@ -957,7 +957,7 @@
      "nom": "Shining Wonder",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/unicorn/unicorn_orb.webp",
      "resume": "",
-     "description": "Launch a deadly orb of light that deals spirit damage and applies slow and reduces Dash Distance on impact. The orb then bounces to the enemies within range. If no target is found, the orb will linger for a short duration while continuing to look for targets. · · Prioritizes enemy heroes when picking targets.",
+     "description": "Launch a deadly orb of light that deals spirit damage and applies slow and reduces Dash Distance on impact. The orb then bounces to the enemies within range. If no target is found, the orb will linger for a short duration while continuing to look for targets. · Prioritizes enemy heroes when picking targets.",
      "recharge_s": 160.0,
      "canalisee": true,
      "valeurs": [
@@ -977,7 +977,7 @@
      ],
      "nom_fr": "Astre prodigieux",
      "resume_fr": "",
-     "description_fr": "Céleste lance un globe de lumière mortel qui inflige des dégâts spirituels, applique un ralentissement et réduit la distance d'élan à l'impact. Le globe rebondit ensuite sur les unités ennemies proches. En l'absence de cible, le globe persistera un instant en continuant à chercher des cibles. · · Les occultistes adverses sont prioritaires lors de la sélection des cibles.",
+     "description_fr": "Céleste lance un globe de lumière mortel qui inflige des dégâts spirituels, applique un ralentissement et réduit la distance d'élan à l'impact. Le globe rebondit ensuite sur les unités ennemies proches. En l'absence de cible, le globe persistera un instant en continuant à chercher des cibles. · Les occultistes adverses sont prioritaires lors de la sélection des cibles.",
      "ameliorations_fr": [
       "−16 % de vitesse de déplacement et -14 % de distance d'élan",
       "+90 de dégâts et multiplicateur spirituel augmenté",
@@ -1053,7 +1053,7 @@
      "nom": "Stalker's Mark",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/drifter/drifter_stalkersmark.webp",
      "resume": "",
-     "description": "Send out a mark that bleeds the first target it hits, dealing spirit damage over time. · · While the enemy is bleeding you can re-activate Stalker's Mark to instantly appear behind their back.",
+     "description": "Send out a mark that bleeds the first target it hits, dealing spirit damage over time. · While the enemy is bleeding you can re-activate Stalker's Mark to instantly appear behind their back.",
      "recharge_s": 26.0,
      "canalisee": false,
      "valeurs": [
@@ -1081,7 +1081,7 @@
      ],
      "nom_fr": "Marque du rôdeur",
      "resume_fr": "",
-     "description_fr": "Rôdeur envoie une marque qui fait saigner la première cible touchée, infligeant des dégâts spirituels au fil du temps. · · Tant que l'unité adverse saigne, vous pouvez réactiver la Marque du rôdeur pour apparaitre instantanément derrière elle.",
+     "description_fr": "Rôdeur envoie une marque qui fait saigner la première cible touchée, infligeant des dégâts spirituels au fil du temps. · Tant que l'unité adverse saigne, vous pouvez réactiver la Marque du rôdeur pour apparaitre instantanément derrière elle.",
      "ameliorations_fr": [
       "-8 % de résistance aux balles",
       "-10 s de temps de récupération et +3 s de durée",
@@ -1093,7 +1093,7 @@
      "nom": "Bloodscent",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/drifter/drifter_thehunger.webp",
      "resume": "",
-     "description": "",
+     "description": "Isolated heroes leave a trail as they move, and emit their heartbeat from afar. · You deal amplified damage against isolated heroes, and when isolated heroes die nearby you gain permanent weapon damage. · Active: Accentuate your senses, revealing a trail that leads to nearby heroes.",
      "recharge_s": null,
      "canalisee": false,
      "valeurs": [
@@ -1120,7 +1120,7 @@
      ],
      "nom_fr": "Odeur du sang",
      "resume_fr": "",
-     "description_fr": "",
+     "description_fr": "Les unités occultistes isolées laissent une trace derrière elles et leurs battements de cœur sont amplifiés. · Rôdeur inflige des dégâts amplifiés contre les unités isolées. Quand celles-ci meurent à proximité de Rôdeur, il reçoit un bonus permanent de dégâts des armes. · Actif : aiguisez vos sens en révélant une trainée qui mène aux occultistes les plus proches.",
      "ameliorations_fr": [
       "+3 m/s de vitesse de déplacement quand une unité adverse est isolée",
       "En cas de victime occultiste isolée : soigne 24 % des PV manquants et restaure 2 d'endurance"
@@ -1131,7 +1131,7 @@
      "nom": "Eternal Night",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/drifter/darkness.webp",
      "resume": "",
-     "description": "Surround nearby enemy heroes in darkness, severely limiting their vision of other units. Affected enemies are briefly revealed to you and are considered isolated for the duration. · · You gain bonus sprint speed.",
+     "description": "Surround nearby enemy heroes in darkness, severely limiting their vision of other units. Affected enemies are briefly revealed to you and are considered isolated for the duration. · You gain bonus sprint speed.",
      "recharge_s": 145.0,
      "canalisee": false,
      "valeurs": [
@@ -1149,7 +1149,7 @@
      ],
      "nom_fr": "Nuit éternelle",
      "resume_fr": "",
-     "description_fr": "Rôdeur plonge les unités ennemies proches dans l'obscurité, réduisant considérablement leur champ de vision. Les unités affectées sont brièvement révélées à Rôdeur et sont considérées comme étant isolées pendant la durée de la capacité. · · Rôdeur reçoit de la bonus sprint speed.",
+     "description_fr": "Rôdeur plonge les unités ennemies proches dans l'obscurité, réduisant considérablement leur champ de vision. Les unités affectées sont brièvement révélées à Rôdeur et sont considérées comme étant isolées pendant la durée de la capacité. · Rôdeur reçoit de la bonus sprint speed.",
      "ameliorations_fr": [
       "+2.5 s de durée et +1 cibles max."
      ]
@@ -1230,7 +1230,7 @@
      "nom": "Quantum Entanglement",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/sumo/sumo_quantum.webp",
      "resume": "Blink in and out of existence",
-     "description": "Briefly become untargetable while teleporting to the target location. Restores stamina upon use. · · : Bring nearby allies with you.",
+     "description": "Briefly become untargetable while teleporting to the target location. Restores stamina upon use. · : Bring nearby allies with you.",
      "recharge_s": 20.0,
      "canalisee": false,
      "valeurs": [
@@ -1248,7 +1248,7 @@
      ],
      "nom_fr": "Intrication quantique",
      "resume_fr": "Disparait brièvement pour se téléporter",
-     "description_fr": "Dynamo devient brièvement intouchable et se téléporte vers l'endroit ciblé. Son endurance est restaurée. · · : téléporte également les unités alliées proches.",
+     "description_fr": "Dynamo devient brièvement intouchable et se téléporte vers l'endroit ciblé. Son endurance est restaurée. · : téléporte également les unités alliées proches.",
      "ameliorations_fr": [
       "Réduit les effets négatifs (hors capacités ultimes) de 50 % · Restaure 1 charge"
      ]
@@ -1342,7 +1342,7 @@
      "nom": "Jar of Dead",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/necro/necro_skull.webp",
      "resume": "",
-     "description": "Passive: Collect death when anything dies nearby and store it in your Jar of Dead. · · Active: Throw a jar to summon Deadheads that repeatedly deal spirit damage to enemies. · · Deadheads follow you instead if there's no nearby enemies, and prioritize the target of your weapon.",
+     "description": "Passive: Collect death when anything dies nearby and store it in your Jar of Dead. · Active: Throw a jar to summon Deadheads that repeatedly deal spirit damage to enemies. · Deadheads follow you instead if there's no nearby enemies, and prioritize the target of your weapon.",
      "recharge_s": null,
      "canalisee": false,
      "valeurs": [
@@ -1362,7 +1362,7 @@
      ],
      "nom_fr": "Mort en bocal",
      "resume_fr": "",
-     "description_fr": "Effet passif : Tombale prélève l'essence mortelle de toutes les unités qui succombent à proximité et la conserve dans son bocal. · · Effet actif : Tombale lance le bocal pour invoquer des têtes de mort qui infligent des dégâts spirituels aux adversaires de manière répétée. · · En cas d'absence d'unités ennemies à proximité, les têtes de mort suivent Tombale et se concentrent sur la cible de son arme.",
+     "description_fr": "Effet passif : Tombale prélève l'essence mortelle de toutes les unités qui succombent à proximité et la conserve dans son bocal. · Effet actif : Tombale lance le bocal pour invoquer des têtes de mort qui infligent des dégâts spirituels aux adversaires de manière répétée. · En cas d'absence d'unités ennemies à proximité, les têtes de mort suivent Tombale et se concentrent sur la cible de son arme.",
      "ameliorations_fr": [
       "Le prélèvement d'essence mortelle soigne de 5 PV sur le moment.",
       "À l'impact : applique 24 % de ralentissement pendant 1 s",
@@ -1374,7 +1374,7 @@
      "nom": "Grasping Hands",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/necro/necro_hands.webp",
      "resume": "",
-     "description": "Unearth a line of grasping hands, summoning a Ghoul and leaving behind a rift. Enemies who pass through take spirit damage and receive immobilize. · · Alt-Cast rotates the orientation of the wall.",
+     "description": "Unearth a line of grasping hands, summoning a Ghoul and leaving behind a rift. Enemies who pass through take spirit damage and receive immobilize. · Alt-Cast rotates the orientation of the wall.",
      "recharge_s": 34.0,
      "canalisee": false,
      "valeurs": [
@@ -1397,7 +1397,7 @@
      ],
      "nom_fr": "Mains d'outre-tombe",
      "resume_fr": "",
-     "description_fr": "Tombale déterre un mur de mains d'outre-tombe, ce qui invoque une goule et laisse une fissure qui inflige des dégâts spirituels et une immobilisation aux unités ennemies qui la traversent. · · L'utilisation secondaire fait pivoter le mur.",
+     "description_fr": "Tombale déterre un mur de mains d'outre-tombe, ce qui invoque une goule et laisse une fissure qui inflige des dégâts spirituels et une immobilisation aux unités ennemies qui la traversent. · L'utilisation secondaire fait pivoter le mur.",
      "ameliorations_fr": [
       "+90 de dégâts et +10 de longueur du mur",
       "+1 goules invoquées · -14 s de temps de récupération · +0.75 s de durée d'immobilisation"
@@ -1440,7 +1440,7 @@
      "nom": "Borrowed Decree",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/necro/necro_gravestone.webp",
      "resume": "",
-     "description": "",
+     "description": "Innate: Abilities can summon Ghouls that shamble toward the enemy base, dealing melee damage. They explode when they approach a hero or objective, dealing spirit damage in an area and applying a brief slow · Active: Create a gravestone at a target location that summons Ghouls over time. Enemies can destroy the gravestone with two heavy melees.",
      "recharge_s": 140.0,
      "canalisee": true,
      "valeurs": [
@@ -1460,7 +1460,7 @@
      ],
      "nom_fr": "Clause mortuaire",
      "resume_fr": "",
-     "description_fr": "",
+     "description_fr": "Passive : les capacités peuvent invoquer des goules qui se trainent vers la base ennemie et infligent des dégâts de mêlée. Elles explosent à l'approche des occultistes ou des objectifs, infligeant des dégâts spirituels de zone et un bref ralentissement. · Active : Tombale érige une pierre tombale à l'emplacement ciblé qui invoque des goules au fil du temps. Les adversaires peuvent détruire la pierre tombale avec 2 attaques de mêlée lourde.",
      "ameliorations_fr": [
       "+25 % de vitesse des goules · -15 s de temps de récupération",
       "+10 s de durée · -0.3 s de temps d'apparition",
@@ -1809,7 +1809,7 @@
      "nom": "Powder Keg",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/astro/holliday_powder_keg.webp",
      "resume": "Throw a barrel that explodes when shot",
-     "description": "Throw a barrel that explodes after a delay, dealing spirit damage, setting enemies on fire and applying knockup. · · The barrel can be detonated early by being shot, melee'd, or detonated by another barrel. · · The burn stacks, so overlapping barrels burn for their combined damage. · Can be Alt-Cast to place the barrel in front of Holliday.",
+     "description": "Throw a barrel that explodes after a delay, dealing spirit damage, setting enemies on fire and applying knockup. · The barrel can be detonated early by being shot, melee'd, or detonated by another barrel. · The burn stacks, so overlapping barrels burn for their combined damage. · Can be Alt-Cast to place the barrel in front of Holliday.",
      "recharge_s": 28.0,
      "canalisee": false,
      "valeurs": [
@@ -1827,7 +1827,7 @@
      ],
      "nom_fr": "Baril de poudre",
      "resume_fr": "Lance un baril qui explose si l'on tire dessus",
-     "description_fr": "Holliday lance un baril qui explose après un certain temps et inflige des dégâts spirituels, met le feu aux adversaires et applique une projection aérienne. · · Le baril peut exploser prématurément s'il reçoit une balle, une attaque de mêlée, ou un autre baril. · · Les brulures se cumulent, les barils successifs appliquent donc des dégâts de brulure combinés. · Le mode alternatif permet de placer le baril devant Holliday.",
+     "description_fr": "Holliday lance un baril qui explose après un certain temps et inflige des dégâts spirituels, met le feu aux adversaires et applique une projection aérienne. · Le baril peut exploser prématurément s'il reçoit une balle, une attaque de mêlée, ou un autre baril. · Les brulures se cumulent, les barils successifs appliquent donc des dégâts de brulure combinés. · Le mode alternatif permet de placer le baril devant Holliday.",
      "ameliorations_fr": [
       "+40 de dégâts d'impact · +13.3333 de dégâts de brulure par seconde · -5 s de délai entre les charges · pouvoir spirituel amélioré"
      ]
@@ -1837,7 +1837,7 @@
      "nom": "Bounce Pad",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/astro/holliday_bounce_pad.webp",
      "resume": "Send yourself and others flying",
-     "description": "Drop a bounce pad in the world that launches any hero. · · You explode on landing, dealing Damage to any nearby enemies. · · The explosion can only occur once per person per Bounce Pad.",
+     "description": "Drop a bounce pad in the world that launches any hero. · You explode on landing, dealing Damage to any nearby enemies. · The explosion can only occur once per person per Bounce Pad.",
      "recharge_s": 41.0,
      "canalisee": false,
      "valeurs": [
@@ -1857,7 +1857,7 @@
      ],
      "nom_fr": "Trampoline",
      "resume_fr": "Tout le monde peut voler",
-     "description_fr": "Holliday déploie un trampoline qui propulse les occultistes dans les airs. · · L'atterrissage provoque une explosion qui inflige des dégâts aux adversaires à proximité. · · Il ne peut y avoir qu'une explosion par personne et par trampoline.",
+     "description_fr": "Holliday déploie un trampoline qui propulse les occultistes dans les airs. · L'atterrissage provoque une explosion qui inflige des dégâts aux adversaires à proximité. · Il ne peut y avoir qu'une explosion par personne et par trampoline.",
      "ameliorations_fr": [
       "-10 s de temps de récupération",
       "+4 m/s de vit. de déplacement pour Holliday et ses unités alliées pendant 4 s à l'atterrissage",
@@ -1869,7 +1869,7 @@
      "nom": "Crackshot",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/astro/holliday_crackshot.webp",
      "resume": "Deal bonus damage with headshots",
-     "description": "Headshots deal bonus Damage and applies a Fading Move Speed penalty. This effect can only occur when off cooldown. · · Cooldown is reduced by 50% on NPC hits. · Crackshot ignores range damage fall-off and does not apply to objectives.",
+     "description": "Headshots deal bonus Damage and applies a Fading Move Speed penalty. This effect can only occur when off cooldown. · Cooldown is reduced by 50% on NPC hits. · Crackshot ignores range damage fall-off and does not apply to objectives.",
      "recharge_s": 20.0,
      "canalisee": false,
      "valeurs": [
@@ -1897,7 +1897,7 @@
      ],
      "nom_fr": "As de la gâchette",
      "resume_fr": "Augmente les dégâts des tirs en pleine tête",
-     "description_fr": "Les tirs en pleine tête de Holliday infligent des dégâts bonus et appliquent un ralentissement qui s'estompe. Cet effet n'est appliqué que quand la capacité n'est pas en cours de récupération. · · Le temps de récupération est réduit de 50 % par PNJ touché. · As de la gâchette outrepasse la diminution des dégâts avec la distance, mais ne s'applique pas aux objectifs.",
+     "description_fr": "Les tirs en pleine tête de Holliday infligent des dégâts bonus et appliquent un ralentissement qui s'estompe. Cet effet n'est appliqué que quand la capacité n'est pas en cours de récupération. · Le temps de récupération est réduit de 50 % par PNJ touché. · As de la gâchette outrepasse la diminution des dégâts avec la distance, mais ne s'applique pas aux objectifs.",
      "ameliorations_fr": [
       "−20 % de ralentissement graduel",
       "+49.5 de dégâts et -6 %de résistance aux balles pendant 5 s",
@@ -2008,7 +2008,7 @@
      "nom": "Flame Dash",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/inferno_dash.webp",
      "resume": "Blaze forward, leaving a flame trail in your wake",
-     "description": "Dash forward, gaining slow resistance while leaving a flaming trail that deals spirit damage over time. · · Hold [W] while active to dash farther.",
+     "description": "Dash forward, gaining slow resistance while leaving a flaming trail that deals spirit damage over time. · Hold [W] while active to dash farther.",
      "recharge_s": 38.0,
      "canalisee": false,
      "valeurs": [
@@ -2031,7 +2031,7 @@
      ],
      "nom_fr": "Élanflammé",
      "resume_fr": "S'élance vers l'avant et laisse une trainée de flammes derrière lui",
-     "description_fr": "Infernus s'élance vers l'avant, obtient de la slow resistance et laisse une trainée de flammes qui inflige des dégâts spirituels au fil du temps. · · Maintenez [W] pendant l'élan pour augmenter la distance parcourue.",
+     "description_fr": "Infernus s'élance vers l'avant, obtient de la slow resistance et laisse une trainée de flammes qui inflige des dégâts spirituels au fil du temps. · Maintenez [W] pendant l'élan pour augmenter la distance parcourue.",
      "ameliorations_fr": [
       "+1.0 s de durée de trainée et +20.0 de DPS",
       "Active 2 charges pour la capacité avec 14 s de temps de récupération"
@@ -2042,7 +2042,7 @@
      "nom": "Afterburn",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/inferno_deflect.webp",
      "resume": "Shoot enemies to set them on fire",
-     "description": "Weapon hits build up a burning effect, dealing spirit damage over time. · · Abilities refresh to the base burn duration and weapon hits extend it.",
+     "description": "Weapon hits build up a burning effect, dealing spirit damage over time. · Abilities refresh to the base burn duration and weapon hits extend it.",
      "recharge_s": null,
      "canalisee": false,
      "valeurs": [
@@ -2069,7 +2069,7 @@
      ],
      "nom_fr": "Ignition persistante",
      "resume_fr": "Enflamme les cibles ennemies de ses tirs",
-     "description_fr": "Les impacts des balles accumulent de la brulure et infligent des dégâts spirituels au fil du temps. · · Les capacités se réinitialisent à la durée de brulure de base et les coups infligés allongent celle-ci.",
+     "description_fr": "Les impacts des balles accumulent de la brulure et infligent des dégâts spirituels au fil du temps. · Les capacités se réinitialisent à la durée de brulure de base et les coups infligés allongent celle-ci.",
      "ameliorations_fr": [
       "Effet de brulure : -35 % de dégâts spirituels",
       "+3.0 s de durée de brulure max."
@@ -2080,7 +2080,7 @@
      "nom": "Concussive Combustion",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/inferno_bomb.webp",
      "resume": "Stun all nearby enemies after a short delay",
-     "description": "Become a living bomb, dealing spirit damage and applying stun to all nearby enemies after a delay. · · Once cast, Concussive Combustion cannot be interrupted.",
+     "description": "Become a living bomb, dealing spirit damage and applying stun to all nearby enemies after a delay. · Once cast, Concussive Combustion cannot be interrupted.",
      "recharge_s": 190.0,
      "canalisee": false,
      "valeurs": [
@@ -2107,7 +2107,7 @@
      ],
      "nom_fr": "Combustion explosive",
      "resume_fr": "Étourdit les unités ennemies proches après un court délai",
-     "description_fr": "Infernus se transforme en bombe humaine qui inflige des dégâts spirituels et applique un étourdissement à toutes les unités ennemies proches après un délai. · · Une fois lancée, Combustion explosive ne peut pas être interrompue.",
+     "description_fr": "Infernus se transforme en bombe humaine qui inflige des dégâts spirituels et applique un étourdissement à toutes les unités ennemies proches après un délai. · Une fois lancée, Combustion explosive ne peut pas être interrompue.",
      "ameliorations_fr": [
       "-65.0 s de temps récupération et +100.0 % de vol de vie à l'explosion",
       "+0.9 s de durée d'étourdissement et +10 m de rayon"
@@ -2179,7 +2179,7 @@
      "nom": "Kudzu Connection",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/tengu/tengu_tether.webp",
      "resume": "Empower yourself and a nearby ally",
-     "description": "Connect with a nearby ally to gain bonuses, replicated healing, and ignore the move speed penalty while shooting. · · Receive 50% of Bonuses with no connection · Connection requires line of sight.",
+     "description": "Connect with a nearby ally to gain bonuses, replicated healing, and ignore the move speed penalty while shooting. · Receive 50% of Bonuses with no connection · Connection requires line of sight.",
      "recharge_s": 37.0,
      "canalisee": false,
      "valeurs": [
@@ -2202,7 +2202,7 @@
      ],
      "nom_fr": "Liaison épineuse",
      "resume_fr": "Gagne des bonus et les partage avec une unité alliée proche",
-     "description_fr": "Lyanne se lie à une unité alliée proche. Elle obtient des bonus, des soins répliqués, et ignore la pénalité de vitesse de déplacement quand elle tire. · · Lyanne reçoit 50 % des bonus sans liaison. · La liaison ne fonctionne que si l'unité est dans le champ de vision.",
+     "description_fr": "Lyanne se lie à une unité alliée proche. Elle obtient des bonus, des soins répliqués, et ignore la pénalité de vitesse de déplacement quand elle tire. · Lyanne reçoit 50 % des bonus sans liaison. · La liaison ne fonctionne que si l'unité est dans le champ de vision.",
      "ameliorations_fr": [
       "+8 % de cadence de tir et +8 % de vol de vie des balles",
       "La capacité est toujours active"
@@ -2241,7 +2241,7 @@
      "nom": "Air Drop",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/tengu/tengu_lightning_crash.webp",
      "resume": "Death from Above! Fly and drop an ally on enemies",
-     "description": "Grab an ally and take flight with them. Drop your ally to cause an explosion, dealing spirit damage. You and your ally gain increased Outgoing Damage when flying ends. · · Cooldown reduced by 30% when used on allies. · Taking damage briefly disables using the ability. · While lifted, your ally cannot attack and deals -20% damage.",
+     "description": "Grab an ally and take flight with them. Drop your ally to cause an explosion, dealing spirit damage. You and your ally gain increased Outgoing Damage when flying ends. · Cooldown reduced by 30% when used on allies. · Taking damage briefly disables using the ability. · While lifted, your ally cannot attack and deals -20% damage.",
      "recharge_s": 100.0,
      "canalisee": false,
      "valeurs": [
@@ -2265,7 +2265,7 @@
      ],
      "nom_fr": "Largage aérien",
      "resume_fr": "S'envole et largue une unité alliée sur ses adversaires.",
-     "description_fr": "Lyanne attrape une unité alliée et s'envole avec elle. Quand l'unité alliée est lâchée, elle provoque une explosion qui inflige des dégâts spirituels. Lyanne et l'unité alliée infligent des dégâts supplémentaires à la fin du vol. · · Le temps de récupération est réduit de 30 % si la capacité est utilisée sur une cible alliée. · Si Lyanne subit des dégâts, la capacité est brièvement désactivée. · Dans les airs, l'unité alliée ne peut pas attaquer et inflige -20 % de dégâts.",
+     "description_fr": "Lyanne attrape une unité alliée et s'envole avec elle. Quand l'unité alliée est lâchée, elle provoque une explosion qui inflige des dégâts spirituels. Lyanne et l'unité alliée infligent des dégâts supplémentaires à la fin du vol. · Le temps de récupération est réduit de 30 % si la capacité est utilisée sur une cible alliée. · Si Lyanne subit des dégâts, la capacité est brièvement désactivée. · Dans les airs, l'unité alliée ne peut pas attaquer et inflige -20 % de dégâts.",
      "ameliorations_fr": [
       "À la fin du vol : accorde 300 de protection à Lyanne et à l'unité alliée (augmente selon le pouvoir spirituel)",
       "+32 % de ralentissement pendant 3 s sur les cibles touchées",
@@ -2407,7 +2407,7 @@
      "nom": "Frozen Shelter",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/kelvin/frozen_shelter.webp",
      "resume": "Create an impenetrable healing dome",
-     "description": "Target yourself or a Hero to freeze the air and create an impenetrable dome around them. While in the dome, allies gain rapid regeneration and enemies are slowed. · · Objectives become Invulnerable and Frozen under Frozen Shelter",
+     "description": "Target yourself or a Hero to freeze the air and create an impenetrable dome around them. While in the dome, allies gain rapid regeneration and enemies are slowed. · Objectives become Invulnerable and Frozen under Frozen Shelter",
      "recharge_s": 185.0,
      "canalisee": false,
      "valeurs": [
@@ -2425,7 +2425,7 @@
      ],
      "nom_fr": "Dôme gelé",
      "resume_fr": "Crée un dôme de soins impénétrable",
-     "description_fr": "Kelvin se cible lui-même ou une unité alliée et crée un dôme impénétrable. Les unités alliées sous le dôme bénéficient d'une régénération rapide, tandis que les unités ennemies sont ralenties. · · Les objectifs deviennent invulnérables et gèlent sous le Dôme gelé.",
+     "description_fr": "Kelvin se cible lui-même ou une unité alliée et crée un dôme impénétrable. Les unités alliées sous le dôme bénéficient d'une régénération rapide, tandis que les unités ennemies sont ralenties. · Les objectifs deviennent invulnérables et gèlent sous le Dôme gelé.",
      "ameliorations_fr": [
       "Dissipe les effets négatifs (hors capacités ultimes) qui affectent Kelvin ou les unités alliées. · +65 de régénération de PV et multiplicateur spirituel augmenté"
      ]
@@ -2836,7 +2836,7 @@
      "nom": "Spectral Wall",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/engineer_fissure_2.webp",
      "resume": "Conjure a wall to block your foes",
-     "description": "Cast a wall that applies slow on enemies it passes through. Erupt the wall to divide the terrain in half and damage nearby enemies. · After casting, press or Ability 3 to erupt the wall early. · · Can be Destroyed with Melee Attacks",
+     "description": "Cast a wall that applies slow on enemies it passes through. Erupt the wall to divide the terrain in half and damage nearby enemies. · After casting, press or Ability 3 to erupt the wall early. · Can be Destroyed with Melee Attacks",
      "recharge_s": 50.0,
      "canalisee": false,
      "valeurs": [
@@ -2856,7 +2856,7 @@
      ],
      "nom_fr": "Mur spectral",
      "resume_fr": "Invoque un mur pour bloquer les unités ennemies",
-     "description_fr": "McGinnis crée un mur qui applique un ralentissement aux adversaires sur son passage. McGinnis fait exploser le mur pour diviser le terrain en deux et infliger des dégâts aux unités ennemies à proximité. · Après l'incantation, le mur explosera prématurément quand les touches ou Capacité 3 sont enfoncées. · · Le mur peut être détruit avec des attaques de mêlée.",
+     "description_fr": "McGinnis crée un mur qui applique un ralentissement aux adversaires sur son passage. McGinnis fait exploser le mur pour diviser le terrain en deux et infliger des dégâts aux unités ennemies à proximité. · Après l'incantation, le mur explosera prématurément quand les touches ou Capacité 3 sont enfoncées. · Le mur peut être détruit avec des attaques de mêlée.",
      "ameliorations_fr": [
       "Amplifie les dégâts de McGinnis de +20 % à l'impact pendant 7 s.",
       "-20.0 s de temps de récupération et +2.0 s de durée.",
@@ -2868,7 +2868,7 @@
      "nom": "Heavy Barrage",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/engineer_rockets.webp",
      "resume": "Bombard an area with rockets",
-     "description": "Unleashes a volley of rockets that home in on a targeted location. · · McGinnis is slowed and is still able to use stamina.",
+     "description": "Unleashes a volley of rockets that home in on a targeted location. · McGinnis is slowed and is still able to use stamina.",
      "recharge_s": 200.0,
      "canalisee": false,
      "valeurs": [
@@ -2892,7 +2892,7 @@
      ],
      "nom_fr": "Tir de barrage",
      "resume_fr": "Bombarde une zone avec des roquettes",
-     "description_fr": "McGinnis déploie une volée de roquettes à tête chercheuse sur la zone ciblée. · · McGinnis est ralentie, mais elle peut toujours utiliser de l'endurance.",
+     "description_fr": "McGinnis déploie une volée de roquettes à tête chercheuse sur la zone ciblée. · McGinnis est ralentie, mais elle peut toujours utiliser de l'endurance.",
      "ameliorations_fr": [
       "Applique 24 % de ralentissement aux mouvements et aux élans pendant 1 s",
       "-45.0 s de temps de récupération et +6.0 s de durée",
@@ -2965,7 +2965,7 @@
      "nom": "Sanguine Retreat",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/vampirebat/vampirebat_sanguine_retreat.webp",
      "resume": "",
-     "description": "Briefly disperse, becoming untargetable and flying to a target location. · · Can be recast within a brief window.",
+     "description": "Briefly disperse, becoming untargetable and flying to a target location. · Can be recast within a brief window.",
      "recharge_s": 32.0,
      "canalisee": false,
      "valeurs": [
@@ -2992,7 +2992,7 @@
      ],
      "nom_fr": "Retraite sanguine",
      "resume_fr": "",
-     "description_fr": "Mina se disperse brièvement, elle devient intouchable et s'envole vers l'emplacement ciblé. · · La capacité peut être relancée pendant un bref laps de temps.",
+     "description_fr": "Mina se disperse brièvement, elle devient intouchable et s'envole vers l'emplacement ciblé. · La capacité peut être relancée pendant un bref laps de temps.",
      "ameliorations_fr": [
       "Au lancement : obtenez +25 % de cadence de tir pendant 8 s et 8 balles supplémentaires",
       "+1 réutilisations · +4 m de portée"
@@ -3003,7 +3003,7 @@
      "nom": "Love Bites",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/vampirebat/vampirebat_love_bites.webp",
      "resume": "",
-     "description": "Your bullets apply additional spirit damage. Dealing damage with your abilities builds up to a vicious bite, dealing a burst of bonus spirit damage. · · Love Bites has a unique cooldown per target.",
+     "description": "Your bullets apply additional spirit damage. Dealing damage with your abilities builds up to a vicious bite, dealing a burst of bonus spirit damage. · Love Bites has a unique cooldown per target.",
      "recharge_s": null,
      "canalisee": false,
      "valeurs": [
@@ -3027,7 +3027,7 @@
      ],
      "nom_fr": "Morsures passionnelles",
      "resume_fr": "",
-     "description_fr": "Vos balles infligent des dégâts spirituels supplémentaires. Les dégâts infligés par vos capacités prennent la forme d'une vilaine morsure qui inflige une explosion de dégâts spirituels bonus. · · Le temps de récupération de Morsures passionnelles est unique à chaque cible.",
+     "description_fr": "Vos balles infligent des dégâts spirituels supplémentaires. Les dégâts infligés par vos capacités prennent la forme d'une vilaine morsure qui inflige une explosion de dégâts spirituels bonus. · Le temps de récupération de Morsures passionnelles est unique à chaque cible.",
      "ameliorations_fr": [
       "À l'activation : +24 % de ralentissement pendant 3 s",
       "+3.0 de dégâts spirituels par balle et · +45.0 de dégâts bonus",
@@ -3039,7 +3039,7 @@
      "nom": "Nox Nostra",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/vampirebat/vampirebat_nox_nostra.webp",
      "resume": "",
-     "description": "Active: Unleash a cloud of bats that seek out targets, each dealing spirit damage and applying Silence. · · Passive: Triggering Love Bites against heroes permanently increases the number of bats released.",
+     "description": "Active: Unleash a cloud of bats that seek out targets, each dealing spirit damage and applying Silence. · Passive: Triggering Love Bites against heroes permanently increases the number of bats released.",
      "recharge_s": 150.0,
      "canalisee": false,
      "valeurs": [
@@ -3061,7 +3061,7 @@
      ],
      "nom_fr": "Nox Nostra",
      "resume_fr": "",
-     "description_fr": "Active : Mina libère une nuée importante de chauvesouris, chacune infligeant des dégâts spirituels et appliquant Silence. · · Passive : lancer Morsures passionnelles sur une unité occultiste augmente de manière permanente le nombre de chauvesouris libérées.",
+     "description_fr": "Active : Mina libère une nuée importante de chauvesouris, chacune infligeant des dégâts spirituels et appliquant Silence. · Passive : lancer Morsures passionnelles sur une unité occultiste augmente de manière permanente le nombre de chauvesouris libérées.",
      "ameliorations_fr": [
       "À l'impact : inflige 0.5 % de dégâts selon les PV actuels"
      ]
@@ -3166,7 +3166,7 @@
      "nom": "Djinn's Mark",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/mirage/mirage_sand_phantom.webp",
      "resume": "Apply marks of escalating damage",
-     "description": "Active: Consume all Djinn Marks to deal their damage now.",
+     "description": "Passive: Your shots apply a Djinn Mark on the target. When the mark expires or is consumed, it deals spirit damage and the target is briefly revealed on the map. Each added mark doubles the current damage. · There is a per target Cooldown for applying additional marks · Active: Consume all Djinn Marks to deal their damage now.",
      "recharge_s": 2.75,
      "canalisee": false,
      "valeurs": [
@@ -3190,7 +3190,7 @@
      ],
      "nom_fr": "Marque de Djinn",
      "resume_fr": "Applique des marques de dégâts croissants",
-     "description_fr": "Capacité active : consomme toutes les Marques de Djinn pour infliger les dégâts immédiatement.",
+     "description_fr": "Effet passif : les tirs de Mirage appliquent une Marque de Djinn à la cible. Quand la marque expire ou qu'elle est consommée, elle inflige des dégâts spirituels et la cible est brièvement révélée sur la carte. Chaque nouvelle marque double les dégâts actuels. · Il y a un temps de recharge entre les applications de marques par cible. · Capacité active : consomme toutes les Marques de Djinn pour infliger les dégâts immédiatement.",
      "ameliorations_fr": [
       "À l'activation : applique un ralentissement de 48 % pendant 0.8 s",
       "+20 de dégâts de base et +3 s de durée du multiplicateur",
@@ -3300,7 +3300,7 @@
      "nom": "Burrow",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/grappler/grappler_spin.webp",
      "resume": "Travel underground, emerging with spin damage",
-     "description": "Burrow underground, moving faster, and gaining spirit and bullet armor. Damage from enemy heroes will reduce the speed bonus. · · When you jump out, deal spirit damage, slow, and knockup.",
+     "description": "Burrow underground, moving faster, and gaining spirit and bullet armor. Damage from enemy heroes will reduce the speed bonus. · When you jump out, deal spirit damage, slow, and knockup.",
      "recharge_s": 40.0,
      "canalisee": true,
      "valeurs": [
@@ -3324,7 +3324,7 @@
      ],
      "nom_fr": "Forage",
      "resume_fr": "Creusent une galerie souterraine et sortent de terre avec une attaque circulaire",
-     "description_fr": "Miro et Minus creusent une galerie souterraine qui augmente leur vitesse de déplacement et leurs protections spirituelle et balistique. Les dégâts infligés par les occultistes adverses diminuent le bonus de vitesse. · · Quand Miro et Minus sortent de terre, ils infligent des dégâts spirituels, un ralentissement, et une projection aérienne.",
+     "description_fr": "Miro et Minus creusent une galerie souterraine qui augmente leur vitesse de déplacement et leurs protections spirituelle et balistique. Les dégâts infligés par les occultistes adverses diminuent le bonus de vitesse. · Quand Miro et Minus sortent de terre, ils infligent des dégâts spirituels, un ralentissement, et une projection aérienne.",
      "ameliorations_fr": [
       "+50.0 de DPS pendant l'attaque circulaire",
       "+4 s sous la terre et +2 m de rayon",
@@ -3505,7 +3505,7 @@
      "nom": "Captivating Read",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/bookworm/bookworm_blindinglight.webp",
      "resume": "",
-     "description": "Target an area with latent magic, applying slow. · · The magic detonates after a delay, dealing spirit damage and applying immobilize.",
+     "description": "Target an area with latent magic, applying slow. · The magic detonates after a delay, dealing spirit damage and applying immobilize.",
      "recharge_s": 30.0,
      "canalisee": false,
      "valeurs": [
@@ -3523,7 +3523,7 @@
      ],
      "nom_fr": "Récit captivant",
      "resume_fr": "",
-     "description_fr": "Paige ensorcelle une zone, infligeant un ralentissement. · · Les particules de magie explosent après un certain temps, ce qui inflige des dégâts spirituels et une immobilisation.",
+     "description_fr": "Paige ensorcelle une zone, infligeant un ralentissement. · Les particules de magie explosent après un certain temps, ce qui inflige des dégâts spirituels et une immobilisation.",
      "ameliorations_fr": [
       "+2 m de rayon · À l'impact : réduit la résistance spirituelle de -18 % pendant 6 s"
      ]
@@ -3533,7 +3533,7 @@
      "nom": "Rallying Charge",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/bookworm/bookworm_charge.webp",
      "resume": "",
-     "description": "Release a wave of spectral knights and steeds that charge across the entire city, healing allies and dealing spirit damage to enemies. · · The strength of the heal and spirit damage is amplified as the knights travel further.",
+     "description": "Release a wave of spectral knights and steeds that charge across the entire city, healing allies and dealing spirit damage to enemies. · The strength of the heal and spirit damage is amplified as the knights travel further.",
      "recharge_s": 210.0,
      "canalisee": true,
      "valeurs": [
@@ -3556,7 +3556,7 @@
      ],
      "nom_fr": "Charge de ralliement",
      "resume_fr": "",
-     "description_fr": "Paige libère une vague de chevaliers spectraux sur l'ensemble de la carte. La capacité soigne les unités alliées et inflige des dégâts spirituels aux adversaires. · · L'efficacité des soins et des dégâts spirituels augmente en fonction de la distance parcourue par les spectres.",
+     "description_fr": "Paige libère une vague de chevaliers spectraux sur l'ensemble de la carte. La capacité soigne les unités alliées et inflige des dégâts spirituels aux adversaires. · L'efficacité des soins et des dégâts spirituels augmente en fonction de la distance parcourue par les spectres.",
      "ameliorations_fr": [
       "Ajoute +4 chevaliers spectraux · -45 de temps de récupération",
       "+160.0 de dégâts · +0.5 s de durée d'étourdissement · +70 % de charges max."
@@ -3625,7 +3625,7 @@
      "nom": "Time Wall",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/chrono/chrono_time_wall.webp",
      "resume": "Create a wall that greatly slows projectiles",
-     "description": "Create a time warping wall that stops time for all enemy projectiles and bullets that touch it and increases the speed and damage of friendly bullets. · · Enemies that touch the wall will be briefly slowed.",
+     "description": "Create a time warping wall that stops time for all enemy projectiles and bullets that touch it and increases the speed and damage of friendly bullets. · Enemies that touch the wall will be briefly slowed.",
      "recharge_s": 25.0,
      "canalisee": false,
      "valeurs": [
@@ -3653,7 +3653,7 @@
      ],
      "nom_fr": "Écran temporel",
      "resume_fr": "Érige un écran qui ralentit considérablement les projectiles",
-     "description_fr": "Paradox érige un écran de distorsion temporelle qui arrête le temps pour tous les projectiles et balles ennemis qui la touchent et augmente la vitesse et les dégâts des balles tirées par votre équipe. · · Les unités ennemies qui touchent le mur sont brièvement ralenties.",
+     "description_fr": "Paradox érige un écran de distorsion temporelle qui arrête le temps pour tous les projectiles et balles ennemis qui la touchent et augmente la vitesse et les dégâts des balles tirées par votre équipe. · Les unités ennemies qui touchent le mur sont brièvement ralenties.",
      "ameliorations_fr": [
       "+3.5 s de durée · +3 m de longueur · +1 m de hauteur",
       "Réduit les adversaires au silence pendant 2.3 s · +35.0 % de dégâts des armes",
@@ -3665,7 +3665,7 @@
      "nom": "Kinetic Carbine",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/duo/duo_attack.webp",
      "resume": "Charge up your weapon to deal high damage and timestop",
-     "description": "Charge up a powerful shot of time energy, dealing spirit damage and applying a Time-Stop to enemies hit. The damage dealt increases with weapon damage. Move speed is increased while charging. · · While in the air and charging, to timeslow your movement.",
+     "description": "Charge up a powerful shot of time energy, dealing spirit damage and applying a Time-Stop to enemies hit. The damage dealt increases with weapon damage. Move speed is increased while charging. · While in the air and charging, to timeslow your movement.",
      "recharge_s": 28.0,
      "canalisee": false,
      "valeurs": [
@@ -3688,7 +3688,7 @@
      ],
      "nom_fr": "Carabine cinétique",
      "resume_fr": "Charge son arme pour infliger de lourds dégâts et arrêter le temps",
-     "description_fr": "Paradox charge un puissant tir d'énergie temporelle, qui inflige des dégâts spirituels et arrête le temps pour les unités ennemies touchées. Les dégâts infligés augmentent avec le dégâts des armes. La vitesse de déplacement est augmentée pendant la charge. · · Pendant que vous êtes en vol et que vous chargez, appuyez sur pour ralentir vos mouvements.",
+     "description_fr": "Paradox charge un puissant tir d'énergie temporelle, qui inflige des dégâts spirituels et arrête le temps pour les unités ennemies touchées. Les dégâts infligés augmentent avec le dégâts des armes. La vitesse de déplacement est augmentée pendant la charge. · Pendant que vous êtes en vol et que vous chargez, appuyez sur pour ralentir vos mouvements.",
      "ameliorations_fr": [
       "-12.0 s de temps de récupération · Coefficient de vitesse augmentée",
       "+2 s de durée de rétention de charge et +55 % de multiplicateur de dégâts"
@@ -3760,7 +3760,7 @@
      "nom": "Barrage",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/synth/synth_barrage.webp",
      "resume": "Air glide while firing multiple projectiles",
-     "description": "Channel to start launching projectiles that deal spirit damage and apply slow around their impact point. Projectiles that hit a hero grant Pocket increased damage that stacks. · Casting while airborne will cause Pocket to float. · · Casting AirDash or Flying Cloak will not cancel Barrage.",
+     "description": "Channel to start launching projectiles that deal spirit damage and apply slow around their impact point. Projectiles that hit a hero grant Pocket increased damage that stacks. · Casting while airborne will cause Pocket to float. · Casting AirDash or Flying Cloak will not cancel Barrage.",
      "recharge_s": 32.0,
      "canalisee": true,
      "valeurs": [
@@ -3782,7 +3782,7 @@
      ],
      "nom_fr": "Tirs de couverture",
      "resume_fr": "Plane dans les airs et tire une série de projectiles",
-     "description_fr": "Capacité canalisée. Pocket lance des projectiles qui infligent des dégâts spirituels et appliquent un ralentissement près de leur point d'impact. Les projectiles qui touchent une unité occultiste accordent à Pocket des dégâts augmentés cumulables. · Pocket peut utiliser cette capacité dans les airs pour flotter. · · Les sauts élancés ou Redingote Volante n'annulent pas Tirs de couverture.",
+     "description_fr": "Capacité canalisée. Pocket lance des projectiles qui infligent des dégâts spirituels et appliquent un ralentissement près de leur point d'impact. Les projectiles qui touchent une unité occultiste accordent à Pocket des dégâts augmentés cumulables. · Pocket peut utiliser cette capacité dans les airs pour flotter. · Les sauts élancés ou Redingote Volante n'annulent pas Tirs de couverture.",
      "ameliorations_fr": [
       "+4 % d'amp. par charge et 3 m de rayon"
      ]
@@ -3854,7 +3854,7 @@
      "nom": "Affliction",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/synth/synth_affliction.webp",
      "resume": "Apply damage over time to enemies nearby",
-     "description": "Applies damage over time to enemies nearby. · · Affliction's damage is non-lethal and does not apply item procs.",
+     "description": "Applies damage over time to enemies nearby. · Affliction's damage is non-lethal and does not apply item procs.",
      "recharge_s": 170.0,
      "canalisee": false,
      "valeurs": [
@@ -3877,7 +3877,7 @@
      ],
      "nom_fr": "Fléau",
      "resume_fr": "Inflige des dégâts sur la durée aux adversaires proches",
-     "description_fr": "Pocket inflige des dégâts au fil du temps aux adversaires à proximité. · · Les dégâts de Fléau ne sont pas mortels et ne déclenchent pas les effets d'objets.",
+     "description_fr": "Pocket inflige des dégâts au fil du temps aux adversaires à proximité. · Les dégâts de Fléau ne sont pas mortels et ne déclenchent pas les effets d'objets.",
      "ameliorations_fr": [
       "+3 s de durée et +4 m de rayon",
       "Empêche tous les soins · +13.0 de DPS et multiplicateur spirituel augmenté"
@@ -3919,7 +3919,7 @@
      "nom": "Scrap Grenade",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/ratking/ratking_grenade.webp",
      "resume": "",
-     "description": "Throw a grenade of scrap that detonates multiple times, dealing bullet damage and applying slow. · · The grenade can be meleed to knock it away.",
+     "description": "Throw a grenade of scrap that detonates multiple times, dealing bullet damage and applying slow. · The grenade can be meleed to knock it away.",
      "recharge_s": 26.0,
      "canalisee": false,
      "valeurs": [
@@ -3949,7 +3949,7 @@
      ],
      "nom_fr": "Scrap Grenade",
      "resume_fr": "",
-     "description_fr": "Throw a grenade of scrap that detonates multiple times, dealing dégâts balistiques and applying ralentissement. · · The grenade can be meleed to knock it away.",
+     "description_fr": "Throw a grenade of scrap that detonates multiple times, dealing dégâts balistiques and applying ralentissement. · The grenade can be meleed to knock it away.",
      "ameliorations_fr": [
       "Add an additional final Bigger Detonation"
      ]
@@ -3959,7 +3959,7 @@
      "nom": "Rat Swarm",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/ratking/ratking_swarm.webp",
      "resume": "",
-     "description": "Call forth a swarm of rats that leap onto enemies, dealing spirit damage over time and reducing their bullet resist with every bite. The more rats are attached, the faster they will bite the target. · · Enemies can have multiple rats attached, but can shake off a rat early by performing a ground or air dash.",
+     "description": "Call forth a swarm of rats that leap onto enemies, dealing spirit damage over time and reducing their bullet resist with every bite. The more rats are attached, the faster they will bite the target. · Enemies can have multiple rats attached, but can shake off a rat early by performing a ground or air dash.",
      "recharge_s": 28.0,
      "canalisee": false,
      "valeurs": [
@@ -3978,7 +3978,7 @@
      ],
      "nom_fr": "Rat Swarm",
      "resume_fr": "",
-     "description_fr": "Call forth a swarm of rats that leap onto enemies, dealing dégâts spirituels au fil du temps and reducing their résistance aux balles with every bite. The more rats are attached, the faster they will bite the target. · · Enemies can have multiple rats attached, but can shake off a rat early by performing a ground or air dash.",
+     "description_fr": "Call forth a swarm of rats that leap onto enemies, dealing dégâts spirituels au fil du temps and reducing their résistance aux balles with every bite. The more rats are attached, the faster they will bite the target. · Enemies can have multiple rats attached, but can shake off a rat early by performing a ground or air dash.",
      "ameliorations_fr": [
       "Increased Swarm Size · +4s Debuff Duration",
       "+8 Damage and -1% Bullet Resist per Bite"
@@ -3989,7 +3989,7 @@
      "nom": "Royal Pestments",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/ratking/ratking_shield.webp",
      "resume": "",
-     "description": "Adorn scrappy armor, gaining barrier based on your max health. As long as the armor holds, bullets have a chance to be deflected back towards the attacker. · · The barrier does not benefit from resists.",
+     "description": "Adorn scrappy armor, gaining barrier based on your max health. As long as the armor holds, bullets have a chance to be deflected back towards the attacker. · The barrier does not benefit from resists.",
      "recharge_s": 22.0,
      "canalisee": false,
      "valeurs": [
@@ -4008,7 +4008,7 @@
      ],
      "nom_fr": "Royal Pestments",
      "resume_fr": "",
-     "description_fr": "Adorn scrappy armor, gaining protection based on your PV max.. As long as the armor holds, bullets have a chance to be deflected back towards the attacker. · · The barrier does not benefit from resists.",
+     "description_fr": "Adorn scrappy armor, gaining protection based on your PV max.. As long as the armor holds, bullets have a chance to be deflected back towards the attacker. · The barrier does not benefit from resists.",
      "ameliorations_fr": [
       "-8s Cooldown · +15% Bullet Return Chance",
       "Reduce all damage to a max of 250 · +10% Max Health as Barrier"
@@ -4089,7 +4089,7 @@
      "nom": "Pillow Toss",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/familiar/familiar_pillow.webp",
      "resume": "",
-     "description": "Throw your trusty pillow inflicting spirit damage and heavy knockback. · · Landing hits reduces the cooldown of your other abilities.",
+     "description": "Throw your trusty pillow inflicting spirit damage and heavy knockback. · Landing hits reduces the cooldown of your other abilities.",
      "recharge_s": 25.0,
      "canalisee": false,
      "valeurs": [
@@ -4108,7 +4108,7 @@
      ],
      "nom_fr": "Bataille de polochons",
      "resume_fr": "",
-     "description_fr": "Rem lance son fidèle oreiller pour infliger des dégâts spirituels et un recul considérable. · · Chaque coup qui touche sa cible réduit les temps de récupération des autres capacités de Rem.",
+     "description_fr": "Rem lance son fidèle oreiller pour infliger des dégâts spirituels et un recul considérable. · Chaque coup qui touche sa cible réduit les temps de récupération des autres capacités de Rem.",
      "ameliorations_fr": [
       "+2 m de rayon et 35 % de ralentissement de la cadence de tir",
       "+100 de dégâts et +1 charge"
@@ -4119,7 +4119,7 @@
      "nom": "Tag Along",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/familiar/familiar_tag_along.webp",
      "resume": "",
-     "description": "Jump to an ally and nap alongside them. Both you and the ally receive a burst heal based on missing health followed by lingering regeneration. · · Hop between allies with Ability 2 to apply the heal, once per ally. · · You are knocked off if stunned by an ultimate ability. · You can use items and all self-casts target your ally instead.",
+     "description": "Jump to an ally and nap alongside them. Both you and the ally receive a burst heal based on missing health followed by lingering regeneration. · Hop between allies with Ability 2 to apply the heal, once per ally. · You are knocked off if stunned by an ultimate ability. · You can use items and all self-casts target your ally instead.",
      "recharge_s": 40.0,
      "canalisee": false,
      "valeurs": [
@@ -4146,7 +4146,7 @@
      ],
      "nom_fr": "Sieste ambulante",
      "resume_fr": "",
-     "description_fr": "Rem bondit vers une unité alliée et fait une sieste à ses côtés. Rem et l'unité reçoivent des soins instantanés en fonction de leur PV manquants, suivis d'une régénération qui persiste. · · Rem passe d'une unité alliée à l'autre avec Capacité 2 pour leur prodiguer des soins, une fois par unité. · · Rem tombe s'il est étourdi par une capacité ultime. · Rem peut utiliser ses objets, et toutes les incantations qui s'appliquent normalement à lui-même ciblent l'unité alliée à sa place.",
+     "description_fr": "Rem bondit vers une unité alliée et fait une sieste à ses côtés. Rem et l'unité reçoivent des soins instantanés en fonction de leur PV manquants, suivis d'une régénération qui persiste. · Rem passe d'une unité alliée à l'autre avec Capacité 2 pour leur prodiguer des soins, une fois par unité. · Rem tombe s'il est étourdi par une capacité ultime. · Rem peut utiliser ses objets, et toutes les incantations qui s'appliquent normalement à lui-même ciblent l'unité alliée à sa place.",
      "ameliorations_fr": [
       "35 % pour la portée et la durée des objets ainsi que pour l'efficacité de la protection pendant la sieste",
       "+15 % de pouvoir spirituel et +35 de pouvoir spirituel lors de la sieste. Persiste pendant 10 s après le réveil · Augmente le multiplicateur de pouvoir spirituel"
@@ -4157,7 +4157,7 @@
      "nom": "Lil Helpers",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/familiar/familiar_helpers.webp",
      "resume": "",
-     "description": "Signal a Helper to lend a hand. They can collect boxes, do Sinner's Sacrifices, or be sent to support allies and troopers. · · Follow a hero: Provides a short burst of spirit resist and fading move speed. · · Follow a trooper: Provides healing, damage, resists, and allows tagging along. When no hero is around, souls from trooper kills are split amongst the team. · · Can be cast during Tag Along. Helpers will take a nap for 15.1s after following someone.",
+     "description": "Signal a Helper to lend a hand. They can collect boxes, do Sinner's Sacrifices, or be sent to support allies and troopers. · Follow a hero: Provides a short burst of spirit resist and fading move speed. · Follow a trooper: Provides healing, damage, resists, and allows tagging along. When no hero is around, souls from trooper kills are split amongst the team. · Can be cast during Tag Along. Helpers will take a nap for 15.1s after following someone.",
      "recharge_s": null,
      "canalisee": false,
      "valeurs": [
@@ -4193,7 +4193,7 @@
      ],
      "nom_fr": "Petites mains",
      "resume_fr": "",
-     "description_fr": "Rem délègue ses tâches à l'un de ses assistants. Ils peuvent détruire des caisses, utiliser le distributeur d'âmes et accompagner les occultistes et troupiers alliés. · · Suivi d'occultiste : confère un bref bonus de résistance spirituelle et de la vitesse de déplacement qui s'estompe. · · Suivi de troupier : accorde des soins, des dégâts, de la résistance et permet de lancer Sieste ambulante. En l'absence d'unité héroïque, les âmes des troupiers tués sont réparties entre les membres de l'équipe. · · La capacité peut être lancée pendant Sieste ambulante. Après avoir accompagné quelqu'un, les petites mains feront une sieste de 15.1 s.",
+     "description_fr": "Rem délègue ses tâches à l'un de ses assistants. Ils peuvent détruire des caisses, utiliser le distributeur d'âmes et accompagner les occultistes et troupiers alliés. · Suivi d'occultiste : confère un bref bonus de résistance spirituelle et de la vitesse de déplacement qui s'estompe. · Suivi de troupier : accorde des soins, des dégâts, de la résistance et permet de lancer Sieste ambulante. En l'absence d'unité héroïque, les âmes des troupiers tués sont réparties entre les membres de l'équipe. · La capacité peut être lancée pendant Sieste ambulante. Après avoir accompagné quelqu'un, les petites mains feront une sieste de 15.1 s.",
      "ameliorations_fr": [
       "+1 Petites mains · +1.5 m/s de vitesse de déplacement",
       "+1 Petites mains · +15 % de dégâts et de résist. contre les troupiers",
@@ -4205,7 +4205,7 @@
      "nom": "Naptime",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/familiar/familiar_sleep.webp",
      "resume": "",
-     "description": "Cast your gaze forward, piercing walls and floors. Enemies in the gaze are slowed, have reduced dash distance, and cannot use movement abilities. · · When the channel ends they fall asleep before waking up to a splitting headache that deals heavy spirit damage.",
+     "description": "Cast your gaze forward, piercing walls and floors. Enemies in the gaze are slowed, have reduced dash distance, and cannot use movement abilities. · When the channel ends they fall asleep before waking up to a splitting headache that deals heavy spirit damage.",
      "recharge_s": 200.0,
      "canalisee": true,
      "valeurs": [
@@ -4229,7 +4229,7 @@
      ],
      "nom_fr": "Mauvais rêves",
      "resume_fr": "",
-     "description_fr": "Le regard de Rem transperce les murs et le sol. Les unités ennemies dans son champ de vision sont ralenties, y compris dans leurs élans, et ne peuvent plus utiliser leurs capacités de déplacement. · · Une fois la canalisation terminée, elles s'endorment avant de se réveiller avec un affreux mal de tête qui leur inflige des dégâts spirituels considérables.",
+     "description_fr": "Le regard de Rem transperce les murs et le sol. Les unités ennemies dans son champ de vision sont ralenties, y compris dans leurs élans, et ne peuvent plus utiliser leurs capacités de déplacement. · Une fois la canalisation terminée, elles s'endorment avant de se réveiller avec un affreux mal de tête qui leur inflige des dégâts spirituels considérables.",
      "ameliorations_fr": [
       "−1 d'endurance au réveil et aucune régénération d'endurance pendant leur sommeil",
       "+3 m de rayon et +0.75 s de durée de sommeil",
@@ -4541,7 +4541,7 @@
      "nom": "Killing Blow",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/shiv/shiv_killing_blow.webp",
      "resume": "Travel to a low health hero and instantly kill it",
-     "description": "",
+     "description": "Passive: Damaging enemies fills you with rage. While at full rage, Shiv gains increased damage and unlocks special properties on his other abilities. · Active: Leap forward, dealing spirit damage to the first enemy hero. If they are below the kill threshold, execute them instead. · Finishing an enemy with Killing Blow lets you recast for 16s",
      "recharge_s": 145.0,
      "canalisee": false,
      "valeurs": [
@@ -4569,7 +4569,7 @@
      ],
      "nom_fr": "Coup de grâce",
      "resume_fr": "Se déplace vers une unité occultiste faible en PV et la tue instantanément",
-     "description_fr": "",
+     "description_fr": "Effet passif : quand Surin inflige des dégâts aux unités ennemies, sa rage augmente. Quand elle atteint son maximum, les dégâts de Surin augmentent et ses autres capacités obtiennent des propriétés spéciales. · Effet actif : Surin bondit vers l'avant et inflige des dégâts spirituels à la première cible occultiste ennemie rencontrée. Si cette dernière est sous le seuil de PV, elle est exécutée. · Si Coup de grâce fait une victime, Surin peut relancer la capacité pendant 16 s.",
      "ameliorations_fr": [
       "+6 m de portée · +2 m/s quand la barre de rage est pleine",
       "+16 % de dégâts supplémentaires lorsque la barre de rage est pleine · -25 s de temps de récupération",
@@ -4609,7 +4609,7 @@
      "nom": "Slam Fire",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/werewolf/werewolf_slamfire.webp",
      "resume": "",
-     "description": "Instantly reload your gun. You gain bonus fire rate and deal bonus weapon damage based on the target's health for a limited number of shots, but suffer from reduced accuracy. · · Deals bonus Weapon Damage against troopers and neutrals.",
+     "description": "Instantly reload your gun. You gain bonus fire rate and deal bonus weapon damage based on the target's health for a limited number of shots, but suffer from reduced accuracy. · Deals bonus Weapon Damage against troopers and neutrals.",
      "recharge_s": 25.0,
      "canalisee": false,
      "valeurs": [
@@ -4631,7 +4631,7 @@
      ],
      "nom_fr": "Rafale éclair",
      "resume_fr": "",
-     "description_fr": "Silver recharge son arme instantanément. Elle gagne un bonus de cadence de tir et inflige des dégâts des armes bonus en fonction des PV de la cible pendant un nombre limité de tirs dont la précision est réduite. · · Inflige des dégâts bonus aux troupiers et aux créatures neutres.",
+     "description_fr": "Silver recharge son arme instantanément. Elle gagne un bonus de cadence de tir et inflige des dégâts des armes bonus en fonction des PV de la cible pendant un nombre limité de tirs dont la précision est réduite. · Inflige des dégâts bonus aux troupiers et aux créatures neutres.",
      "ameliorations_fr": [
       "Si tous ses tirs font mouche, Silver inflige 7 % de dégâts selon les PV actuels"
      ]
@@ -4641,7 +4641,7 @@
      "nom": "Boot Kick",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/werewolf/werewolf_jumpback.webp",
      "resume": "",
-     "description": "",
+     "description": "Dash forward and kick the first enemy hit, dealing melee damage while pushing yourself off and marking them. · Shooting the marked target deals spirit damage and removes the mark.",
      "recharge_s": 21.0,
      "canalisee": true,
      "valeurs": [
@@ -4660,7 +4660,7 @@
      ],
      "nom_fr": "Coup de botte",
      "resume_fr": "",
-     "description_fr": "",
+     "description_fr": "Silver s'élance vers l'avant et donne un coup de pied à la première unité adverse rencontrée pour infliger des dégâts de mêlée. Après le coup de pied, Silver se repositionne et marque la cible. · Les tirs sur la cible marquée infligent des dégâts spirituels et retirent la marque.",
      "ameliorations_fr": [
       "À l'impact (unité occultiste) : restaure 2 d'endurance",
       "+80 de dégâts bonus et les adversaires qui ont reçu un coup infligent -35 % de dégâts pendant 5 s"
@@ -4707,7 +4707,7 @@
      "nom": "Lycan Curse",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/werewolf/werewolf_lycancurse.webp",
      "resume": "",
-     "description": "Passive: Dealing damage generates bloodlust, increased at low health. At max bloodlust, you automatically cast Lycan Curse. · · Active: Instantly transform, gaining increased max health, and stacking fire rate on enemy heroes, and replacing your abilities and weapon with their ferocious versions.",
+     "description": "Passive: Dealing damage generates bloodlust, increased at low health. At max bloodlust, you automatically cast Lycan Curse. · Active: Instantly transform, gaining increased max health, and stacking fire rate on enemy heroes, and replacing your abilities and weapon with their ferocious versions.",
      "recharge_s": 60.0,
      "canalisee": false,
      "valeurs": [
@@ -4735,7 +4735,7 @@
      ],
      "nom_fr": "Lycanthropie",
      "resume_fr": "",
-     "description_fr": "Effet passif : les dégâts infligés génèrent de la soif de sang qui est augmentée en cas de PV faibles. Au paroxysme de sa soif de sang, Silver lance automatiquement Lycanthropie. · · Effet actif : Silver se transforme instantanément et obtient un bonus de PV max. et de cadence de tir cumulable contre les occultistes adverses. Elle échange également ses capacités et son arme contre des versions plus féroces.",
+     "description_fr": "Effet passif : les dégâts infligés génèrent de la soif de sang qui est augmentée en cas de PV faibles. Au paroxysme de sa soif de sang, Silver lance automatiquement Lycanthropie. · Effet actif : Silver se transforme instantanément et obtient un bonus de PV max. et de cadence de tir cumulable contre les occultistes adverses. Elle échange également ses capacités et son arme contre des versions plus féroces.",
      "ameliorations_fr": [
       "+15 % de résistance aux balles et spirituelle",
       "+4 m/s de vitesse de déplacement et 200 PV bonus",
@@ -4775,7 +4775,7 @@
      "nom": "Vexing Bolt",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/magician/magician_magicbolt.webp",
      "resume": "Launch a guided bolt of magic",
-     "description": "Fire a bolt of magic that deals Damage, increasing as it travels. If you have an Assistant, they also cast Vexing Bolt at reduced damage. · · Press Ability 1 to redirect the bolt towards your crosshairs.",
+     "description": "Fire a bolt of magic that deals Damage, increasing as it travels. If you have an Assistant, they also cast Vexing Bolt at reduced damage. · Press Ability 1 to redirect the bolt towards your crosshairs.",
      "recharge_s": 24.0,
      "canalisee": false,
      "valeurs": [
@@ -4798,7 +4798,7 @@
      ],
      "nom_fr": "Éclair accablant",
      "resume_fr": "Lance un éclair magique dirigeable",
-     "description_fr": "Sinclair lance un éclair magique qui inflige des dégâts qui augmentent avec la distance parcourue. Si l'Assistante spectrale a été invoquée, elle lance une instance d'Éclair accablant, infligeant des dégâts réduits. · · Appuyez sur Capacité 1 pour rediriger l'éclair vers votre viseur.",
+     "description_fr": "Sinclair lance un éclair magique qui inflige des dégâts qui augmentent avec la distance parcourue. Si l'Assistante spectrale a été invoquée, elle lance une instance d'Éclair accablant, infligeant des dégâts réduits. · Appuyez sur Capacité 1 pour rediriger l'éclair vers votre viseur.",
      "ameliorations_fr": [
       "Les éclairs appliquent −25 % sur la cadence de tir pendant 5 s",
       "+126.0 de dégâts max. +50.0 % de dégâts pour l'Assistante"
@@ -4809,7 +4809,7 @@
      "nom": "Spectral Assistant",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/magician/magician_cloneturret.webp",
      "resume": "Summon your faithful assistant",
-     "description": "Summon an Assistant at the targeted location. The Assistant attacks whenever you fire your weapon, dealing Damage. · · While the Assistant is out, you can press Ability 2 to swap positions with your Assistant. · · Casting Spectral Assistant also reloads your weapon.",
+     "description": "Summon an Assistant at the targeted location. The Assistant attacks whenever you fire your weapon, dealing Damage. · While the Assistant is out, you can press Ability 2 to swap positions with your Assistant. · Casting Spectral Assistant also reloads your weapon.",
      "recharge_s": 40.0,
      "canalisee": false,
      "valeurs": [
@@ -4832,7 +4832,7 @@
      ],
      "nom_fr": "Assistante spectrale",
      "resume_fr": "Invoque sa fidèle assistante",
-     "description_fr": "Sinclair invoque son assistante à l'emplacement ciblé. L'Assistante attaque quand Sinclair tire, infligeant des dégâts. · · Quand l'Assistante est invoquée, appuyez sur Capacité 2 pour échanger sa position avec Sinclair. · · Le lancement d'Assistante spectrale recharge également l'arme de Sinclair.",
+     "description_fr": "Sinclair invoque son assistante à l'emplacement ciblé. L'Assistante attaque quand Sinclair tire, infligeant des dégâts. · Quand l'Assistante est invoquée, appuyez sur Capacité 2 pour échanger sa position avec Sinclair. · Le lancement d'Assistante spectrale recharge également l'arme de Sinclair.",
      "ameliorations_fr": [
       "+7 s de durée et +5 m de portée",
       "+60 % de cadence de tir et +12.599999 de dégâts pour l'Assistante"
@@ -4843,7 +4843,7 @@
      "nom": "Rabbit Hex",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/magician/magician_animalcurse.webp",
      "resume": "",
-     "description": "Hex a target area and transform all enemies into a Rabbit for a limited duration. · · Rabbits are small and move faster, but take increased Damage and are unable to perform most actions. · Hex does not interrupt abilities.",
+     "description": "Hex a target area and transform all enemies into a Rabbit for a limited duration. · Rabbits are small and move faster, but take increased Damage and are unable to perform most actions. · Hex does not interrupt abilities.",
      "recharge_s": 26.0,
      "canalisee": false,
      "valeurs": [
@@ -4865,7 +4865,7 @@
      ],
      "nom_fr": "Lagomorphose",
      "resume_fr": "",
-     "description_fr": "Sinclair maudit une zone cible et transforme temporairement les adversaires qui s'y trouvent en lapins. · · Les lapins sont petits et leur vitesse de déplacement est augmentée, mais ils sont plus vulnérables aux dégâts et ils sont incapables d'effectuer la plupart des actions. · La malédiction n'interrompt pas les capacités.",
+     "description_fr": "Sinclair maudit une zone cible et transforme temporairement les adversaires qui s'y trouvent en lapins. · Les lapins sont petits et leur vitesse de déplacement est augmentée, mais ils sont plus vulnérables aux dégâts et ils sont incapables d'effectuer la plupart des actions. · La malédiction n'interrompt pas les capacités.",
      "ameliorations_fr": [
       "+7 % d'amplification des dégâts et +3 m de rayon"
      ]
@@ -4875,7 +4875,7 @@
      "nom": "Audience Participation",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/magician/magician_copyult.webp",
      "resume": "Copy an enemy's Ultimate for a limited time",
-     "description": "Copy the Ultimate of an enemy hero for a limited time. Reactivating the ability will use the Copied Ultimate instead. · · Copies will inherit this ability's upgrade points. · Audience Participation will also copy the cooldown.",
+     "description": "Copy the Ultimate of an enemy hero for a limited time. Reactivating the ability will use the Copied Ultimate instead. · Copies will inherit this ability's upgrade points. · Audience Participation will also copy the cooldown.",
      "recharge_s": 85.0,
      "canalisee": false,
      "valeurs": [
@@ -4895,7 +4895,7 @@
      ],
      "nom_fr": "Participation du public",
      "resume_fr": "Copie la capacité ultime d'une unité ennemie pour une durée limitée",
-     "description_fr": "Sinclair imite la capacité ultime d'une unité occultiste ennemie pendant une durée limitée. La réactivation de la capacité lancera la capacité imitée. · · Le niveau d'amélioration de cette capacité s'applique aux imitations. · La capacité Participation du public imite également le temps de récupération.",
+     "description_fr": "Sinclair imite la capacité ultime d'une unité occultiste ennemie pendant une durée limitée. La réactivation de la capacité lancera la capacité imitée. · Le niveau d'amélioration de cette capacité s'applique aux imitations. · La capacité Participation du public imite également le temps de récupération.",
      "ameliorations_fr": [
       "Améliore l'imitation",
       "Améliore encore l'imitation",
@@ -4935,7 +4935,7 @@
      "nom": "Call Bell",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/doorman/doorman_bell.webp",
      "resume": "",
-     "description": "Throw out a call bell that deals spirit damage on impact. After a short delay it explodes, dealing additional spirit damage and causing affected enemies to suffer reduced weapon accuracy and movement slow. · · Can be shot to detonate early.",
+     "description": "Throw out a call bell that deals spirit damage on impact. After a short delay it explodes, dealing additional spirit damage and causing affected enemies to suffer reduced weapon accuracy and movement slow. · Can be shot to detonate early.",
      "recharge_s": 18.0,
      "canalisee": false,
      "valeurs": [
@@ -4963,7 +4963,7 @@
      ],
      "nom_fr": "Sonnette",
      "resume_fr": "",
-     "description_fr": "Le Portier lance une sonnette qui inflige des dégâts spirituels à l'impact et qui explose après un court délai, infligeant des dégâts spirituels supplémentaires, un ralentissement des déplacements et réduisant temporairement la précision de l'arme des unités ennemies touchées. · · Peut se déclencher plus tôt si on lui tire dessus.",
+     "description_fr": "Le Portier lance une sonnette qui inflige des dégâts spirituels à l'impact et qui explose après un court délai, infligeant des dégâts spirituels supplémentaires, un ralentissement des déplacements et réduisant temporairement la précision de l'arme des unités ennemies touchées. · Peut se déclencher plus tôt si on lui tire dessus.",
      "ameliorations_fr": [
       "+1 charge",
       "+30 de dégâts d'impact · +40 de dégâts d'explosion",
@@ -4975,7 +4975,7 @@
      "nom": "Doorway",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/doorman/doorman_doorway.webp",
      "resume": "",
-     "description": "Place two connected doors in the world. Players and most projectiles entering one door will exit out through the other. The doors will close at the end of the duration. · · The two doors must be placed within the doorway distance of each other.",
+     "description": "Place two connected doors in the world. Players and most projectiles entering one door will exit out through the other. The doors will close at the end of the duration. · The two doors must be placed within the doorway distance of each other.",
      "recharge_s": 45.0,
      "canalisee": false,
      "valeurs": [
@@ -4998,7 +4998,7 @@
      ],
      "nom_fr": "Porte dérobée",
      "resume_fr": "",
-     "description_fr": "Le Portier place deux portes connectées sur la carte. Les occultistes et la plupart des projectiles entrant par une porte sortiront par l'autre. Les portes se fermeront à la fin de la durée. · · Les deux portes peuvent être placées jusqu'à une certaine distance l'une de l'autre.",
+     "description_fr": "Le Portier place deux portes connectées sur la carte. Les occultistes et la plupart des projectiles entrant par une porte sortiront par l'autre. Les portes se fermeront à la fin de la durée. · Les deux portes peuvent être placées jusqu'à une certaine distance l'une de l'autre.",
      "ameliorations_fr": [
       "Accorde une protection à la première traversée",
       "+30 m de portée d'incantation. +40 m de distance entre les portes · (augmente selon le pouvoir spirituel)"
@@ -5009,7 +5009,7 @@
      "nom": "Luggage Cart",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/doorman/doorman_luggagetrolley.webp",
      "resume": "",
-     "description": "Send out a Luggage Cart that deals spirit damage and pulls enemy heroes along its path. · · Can be alt cast with to target friendly heroes instead.",
+     "description": "Send out a Luggage Cart that deals spirit damage and pulls enemy heroes along its path. · Can be alt cast with to target friendly heroes instead.",
      "recharge_s": 30.0,
      "canalisee": false,
      "valeurs": [
@@ -5028,7 +5028,7 @@
      ],
      "nom_fr": "Charriot à bagages",
      "resume_fr": "",
-     "description_fr": "Send out a Luggage Cart that deals dégâts spirituels and entraine enemy heroes along its path. · · Can be alt cast with to target friendly heroes instead.",
+     "description_fr": "Send out a Luggage Cart that deals dégâts spirituels and entraine enemy heroes along its path. · Can be alt cast with to target friendly heroes instead.",
      "ameliorations_fr": [
       "+25 m de portée d'incantation · +75 de dégâts en cas d'impact avec un mur",
       "-15 s de temps de récupération et 1.25 s d' étourdissement en cas d'impact avec un mur"
@@ -5039,7 +5039,7 @@
      "nom": "Hotel Guest",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/doorman/doorman_elevator.webp",
      "resume": "",
-     "description": "Send the target's physical body to be a guest at the Baroness Hotel. The guest is to promptly make their way to the exit elevator, where they'll be sent back to their original position. · · A stay at the Baroness Hotel is paid for in spirit damage. Failure to check-out on time costs additional spirit damage.",
+     "description": "Send the target's physical body to be a guest at the Baroness Hotel. The guest is to promptly make their way to the exit elevator, where they'll be sent back to their original position. · A stay at the Baroness Hotel is paid for in spirit damage. Failure to check-out on time costs additional spirit damage.",
      "recharge_s": 140.0,
      "canalisee": true,
      "valeurs": [
@@ -5067,7 +5067,7 @@
      ],
      "nom_fr": "Clientèle de l'hôtel",
      "resume_fr": "",
-     "description_fr": "Le Portier envoie l'enveloppe corporelle de la cible en séjour au Baroness Hotel. La cible doit se rendre rapidement à l'ascenseur de sortie qui le ramènera à sa position d'origine. · · Un séjour au Baroness Hotel est réglé en dégâts spirituels. Si la cible ne part pas avant l'heure de départ, elle le paiera en dégâts spirituels supplémentaires.",
+     "description_fr": "Le Portier envoie l'enveloppe corporelle de la cible en séjour au Baroness Hotel. La cible doit se rendre rapidement à l'ascenseur de sortie qui le ramènera à sa position d'origine. · Un séjour au Baroness Hotel est réglé en dégâts spirituels. Si la cible ne part pas avant l'heure de départ, elle le paiera en dégâts spirituels supplémentaires.",
      "ameliorations_fr": [
       "1 de vol d'endurance et -20 s de temps de récupération",
       "+150 de dégâts · +1.5 s d'étourdissement en cas de Départ tardif de l'hôtel",
@@ -5108,7 +5108,7 @@
      "nom": "Consecrating Grenade",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/priest/priest_grenade.webp",
      "resume": "",
-     "description": "Fire a grenade that bounces before exploding, dealing weapon damage and setting enemies on fire. · · Burning targets deal pure damage to enemies in the area and suffer from reduced healing.",
+     "description": "Fire a grenade that bounces before exploding, dealing weapon damage and setting enemies on fire. · Burning targets deal pure damage to enemies in the area and suffer from reduced healing.",
      "recharge_s": 25.0,
      "canalisee": false,
      "valeurs": [
@@ -5143,7 +5143,7 @@
      ],
      "nom_fr": "Grenade consécratrice",
      "resume_fr": "",
-     "description_fr": "Venator lance une grenade qui rebondit avant d'exploser. Elle inflige des dégâts des armes et enflamme les adversaires. · · Les cibles en feu infligent des dégâts purs aux unités ennemies proches et subissent une pénalité de soins.",
+     "description_fr": "Venator lance une grenade qui rebondit avant d'exploser. Elle inflige des dégâts des armes et enflamme les adversaires. · Les cibles en feu infligent des dégâts purs aux unités ennemies proches et subissent une pénalité de soins.",
      "ameliorations_fr": [
       "+1.5 m de rayon et +1.0 s de durée de brulure",
       "-20 % de soins reçus et confère des charges"
@@ -5184,7 +5184,7 @@
      "nom": "Hex-Lined Snap Trap",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/priest/priest_trap.webp",
      "resume": "",
-     "description": "Kick a trap that arms after a brief delay. · · The trap springs on the first enemy it touches, dealing spirit damage, applying immobilize, and revealing enemies for a duration afterwards.",
+     "description": "Kick a trap that arms after a brief delay. · The trap springs on the first enemy it touches, dealing spirit damage, applying immobilize, and revealing enemies for a duration afterwards.",
      "recharge_s": 28.0,
      "canalisee": false,
      "valeurs": [
@@ -5198,7 +5198,7 @@
      ],
      "nom_fr": "Souricière sainte",
      "resume_fr": "",
-     "description_fr": "Venator lance un piège qui s'arme après un bref délai. · · Le piège se déclenche au premier contact avec une unité ennemie, ce qui lui inflige des dégâts spirituels et une immobilisation. Les unités piégées sont également temporairement révélées.",
+     "description_fr": "Venator lance un piège qui s'arme après un bref délai. · Le piège se déclenche au premier contact avec une unité ennemie, ce qui lui inflige des dégâts spirituels et une immobilisation. Les unités piégées sont également temporairement révélées.",
      "ameliorations_fr": [
       "+1 charge · Inflige +30 % de dégâts contre les cibles révélées"
      ]
@@ -5208,7 +5208,7 @@
      "nom": "Ira Domini",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/priest/priest_crossbow.webp",
      "resume": "",
-     "description": "Load your crossbow with 3 stakes, dealing massively increased weapon damage. · · The final stake is blessed, dealing bonus pure damage and executing low-health enemies.",
+     "description": "Load your crossbow with 3 stakes, dealing massively increased weapon damage. · The final stake is blessed, dealing bonus pure damage and executing low-health enemies.",
      "recharge_s": 160.0,
      "canalisee": false,
      "valeurs": [
@@ -5232,7 +5232,7 @@
      ],
      "nom_fr": "Ira Domini",
      "resume_fr": "",
-     "description_fr": "Venator arme son arbalète de 3 pieux pour infliger des dégâts des armes dévastateurs. · · Venator bénit le pieu final, qui inflige des dégâts purs supplémentaires et achève les occultistes avec peu de PV.",
+     "description_fr": "Venator arme son arbalète de 3 pieux pour infliger des dégâts des armes dévastateurs. · Venator bénit le pieu final, qui inflige des dégâts purs supplémentaires et achève les occultistes avec peu de PV.",
      "ameliorations_fr": [
       "À l'activation : accorde 1.2 m/s de vitesse de déplacement",
       "-15 s de temps de récupération de la capacité et +65 de dégâts bonus",
@@ -5274,7 +5274,7 @@
      "nom": "Pain Battery",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/frank/frank_pain_battery.webp",
      "resume": "",
-     "description": "Taking any damage passively charges up your Pain Battery. · · Once full, activating the ability fires multiple shocking bolts, dealing spirit damage once per target.",
+     "description": "Taking any damage passively charges up your Pain Battery. · Once full, activating the ability fires multiple shocking bolts, dealing spirit damage once per target.",
      "recharge_s": 2.0,
      "canalisee": false,
      "valeurs": [
@@ -5297,7 +5297,7 @@
      ],
      "nom_fr": "Batterie d'affliction",
      "resume_fr": "",
-     "description_fr": "Subir des dégâts recharge de manière passive la Batterie d'affliction de Victor. · · Une fois rechargée, activer la capacité déclenche une salve de carreaux électriques qui infligent des dégâts spirituels une fois par cible.",
+     "description_fr": "Subir des dégâts recharge de manière passive la Batterie d'affliction de Victor. · Une fois rechargée, activer la capacité déclenche une salve de carreaux électriques qui infligent des dégâts spirituels une fois par cible.",
      "ameliorations_fr": [
       "À l'impact : 32 % de ralentissement pendant 2s s",
       "À l'impact (unité occultiste) : soigne 15 % de vos PV manquants et multiplicateur spirituel augmenté"
@@ -5346,7 +5346,7 @@
      "nom": "Aura of Suffering",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/frank/frank_aura_of_suffering.webp",
      "resume": "",
-     "description": "Unleash pain, dealing spirit damage over time to both enemies and yourself. · · The damage continues to increase the longer the ability is channeled, up to a maximum amount.",
+     "description": "Unleash pain, dealing spirit damage over time to both enemies and yourself. · The damage continues to increase the longer the ability is channeled, up to a maximum amount.",
      "recharge_s": 2.0,
      "canalisee": false,
      "valeurs": [
@@ -5378,7 +5378,7 @@
      ],
      "nom_fr": "Aura de souffrance",
      "resume_fr": "",
-     "description_fr": "Victor déchaine sa douleur en infligeant des dégâts spirituels au fil du temps à la fois à ses adversaires et à lui-même. · · Les dégâts continuent d'augmenter au fur et à mesure que la capacité est canalisée, jusqu'à son maximum.",
+     "description_fr": "Victor déchaine sa douleur en infligeant des dégâts spirituels au fil du temps à la fois à ses adversaires et à lui-même. · Les dégâts continuent d'augmenter au fur et à mesure que la capacité est canalisée, jusqu'à son maximum.",
      "ameliorations_fr": [
       "Les adversaires subissent 20 % de ralentissement de déplacement et d'élan",
       "+6 de DPS min. et +34.0 de DPS max.",
@@ -5390,7 +5390,7 @@
      "nom": "Shocking Reanimation",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/frank/frank_shocking_reanimation.webp",
      "resume": "",
-     "description": "Release a wave after taking lethal damage, applying a diminishing slow. · · After a brief channel you reanimate, dealing spirit damage and applying stun to nearby enemies.",
+     "description": "Release a wave after taking lethal damage, applying a diminishing slow. · After a brief channel you reanimate, dealing spirit damage and applying stun to nearby enemies.",
      "recharge_s": 240.0,
      "canalisee": true,
      "valeurs": [
@@ -5413,7 +5413,7 @@
      ],
      "nom_fr": "Défibrillation",
      "resume_fr": "",
-     "description_fr": "Victor libère une vague après avoir subi des dégâts mortels, qui applique un ralentissement s'estompant au fil du temps. · · Après une brève canalisation, Victor est réanimé, il inflige alors des dégâts spirituels et applique un étourdissement aux unité ennemies proches.",
+     "description_fr": "Victor libère une vague après avoir subi des dégâts mortels, qui applique un ralentissement s'estompant au fil du temps. · Après une brève canalisation, Victor est réanimé, il inflige alors des dégâts spirituels et applique un étourdissement aux unité ennemies proches.",
      "ameliorations_fr": [
       "Pendant la récupération : accorde +15 % de cadence de tir et 6.0 de dégâts spirituels par balle",
       "+175 de dégâts · +1.5 s d'étourdissement · -95.0 s de temps de récupération"
@@ -5688,7 +5688,7 @@
      "nom": "Puddle Punch",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/viscous/viscous_goo_punch.webp",
      "resume": "Punch enemies with a giant fist",
-     "description": "Materialize a fist in the world that punches everyone in the area, applying knockup. · · Punching an enemy deals melee damage and applies slow. Enemies can Parry this attack. · · You and your allies have increased Air Control.",
+     "description": "Materialize a fist in the world that punches everyone in the area, applying knockup. · Punching an enemy deals melee damage and applies slow. Enemies can Parry this attack. · You and your allies have increased Air Control.",
      "recharge_s": 24.0,
      "canalisee": false,
      "valeurs": [
@@ -5712,7 +5712,7 @@
      ],
      "nom_fr": "Poing poisseux",
      "resume_fr": "Donne un coup de poing géant aux adversaires",
-     "description_fr": "Myxo fait apparaitre un poing qui frappe toutes les unités ennemies dans la zone, et applique une projection aérienne. · · Les cibles frappées subissent des dégâts de mêlée et un ralentissement. Les adversaires peuvent parer cette attaque. · · Myxo et ses partenaires} bénéficient du contrôle aérien.",
+     "description_fr": "Myxo fait apparaitre un poing qui frappe toutes les unités ennemies dans la zone, et applique une projection aérienne. · Les cibles frappées subissent des dégâts de mêlée et un ralentissement. Les adversaires peuvent parer cette attaque. · Myxo et ses partenaires} bénéficient du contrôle aérien.",
      "ameliorations_fr": [
       "+1 charge et +20 de dégâts",
       "+1.5 m de rayon et +60 % de vol de vie",
@@ -5786,7 +5786,7 @@
      "nom": "Screwjab Dagger",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/viper/viper_debuffdagger.webp",
      "resume": "Throw a slowing dagger",
-     "description": "Throw a dagger, dealing spirit damage and applying slow. · · Every subsequent dagger against the same target stacks in spirit damage and slow.",
+     "description": "Throw a dagger, dealing spirit damage and applying slow. · Every subsequent dagger against the same target stacks in spirit damage and slow.",
      "recharge_s": 10.0,
      "canalisee": false,
      "valeurs": [
@@ -5821,7 +5821,7 @@
      ],
      "nom_fr": "Lame fulgurante",
      "resume_fr": "Lance une dague ralentissante",
-     "description_fr": "Vypère lance une dague qui inflige des dégâts spirituels et applique un ralentissement. · · Chaque nouvelle dague lancée sur la même cible cumule des dégâts spirituels et du ralentissement.",
+     "description_fr": "Vypère lance une dague qui inflige des dégâts spirituels et applique un ralentissement. · Chaque nouvelle dague lancée sur la même cible cumule des dégâts spirituels et du ralentissement.",
      "ameliorations_fr": [
       "À l'impact : -8 % de résistance aux balles et -6 % de résistance aux balles par charge",
       "+2 charges max. · -2 s de délai entre les charges · À l'impact : accorde 55 % de temps de récupération de charge"
@@ -5832,7 +5832,7 @@
      "nom": "Lethal Venom",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/viper/viper_venom.webp",
      "resume": "Inject your enemies with a deadly venom",
-     "description": "Inject a target with lethal venom. After a delay the venom triggers, dealing Spirit Damage. The damage is increased by the target's missing health. · · Lethal Venom will ignore Petrify's damage block.",
+     "description": "Inject a target with lethal venom. After a delay the venom triggers, dealing Spirit Damage. The damage is increased by the target's missing health. · Lethal Venom will ignore Petrify's damage block.",
      "recharge_s": 28.0,
      "canalisee": false,
      "valeurs": [
@@ -5855,7 +5855,7 @@
      ],
      "nom_fr": "Venin mortel",
      "resume_fr": "Injecte un venin mortel à ses adversaires",
-     "description_fr": "Injecte du venin mortel à une cible. Après un certain temps, le venin se déclenche et inflige des dégâts spirituels proportionnellement aux PV manquants de la cible. · · Venin mortel outrepasse le blocage des dégâts de la pétrification.",
+     "description_fr": "Injecte du venin mortel à une cible. Après un certain temps, le venin se déclenche et inflige des dégâts spirituels proportionnellement aux PV manquants de la cible. · Venin mortel outrepasse le blocage des dégâts de la pétrification.",
      "ameliorations_fr": [
       "-40 % de soins reçus et -12 s de temps de récupération",
       "Les balles accumulent également Venin mortel"
@@ -5894,7 +5894,7 @@
      "nom": "Petrifying Bola",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/viper/viper_petrifybola.webp",
      "resume": "Toss a petrifying bola",
-     "description": "Throw an explosive bola. On exploding, the bola Slows and Damages all enemies in the area. · · Direct hits deal Additional Damage and Petrify instead. Petrified units block all damage, but cannot take actions.",
+     "description": "Throw an explosive bola. On exploding, the bola Slows and Damages all enemies in the area. · Direct hits deal Additional Damage and Petrify instead. Petrified units block all damage, but cannot take actions.",
      "recharge_s": 115.0,
      "canalisee": false,
      "valeurs": [
@@ -5912,7 +5912,7 @@
      ],
      "nom_fr": "Bolas pétrifiants",
      "resume_fr": "Lance des bolas pétrifiants",
-     "description_fr": "Vypère lance des bolas explosifs. En explosant, les bolas ralentissent et infligent des dégâts à toutes les unités ennemies dans la zone. · · Les unités ennemies touchées par un bola subissent des dégâts supplémentaires et sont pétrifiées. Les unités pétrifiées bloquent tous les dégâts, mais ne peuvent effectuer la moindre action.",
+     "description_fr": "Vypère lance des bolas explosifs. En explosant, les bolas ralentissent et infligent des dégâts à toutes les unités ennemies dans la zone. · Les unités ennemies touchées par un bola subissent des dégâts supplémentaires et sont pétrifiées. Les unités pétrifiées bloquent tous les dégâts, mais ne peuvent effectuer la moindre action.",
      "ameliorations_fr": [
       "+1.0 s de pétrification. Pétrifie tous les adversaires dans la zone"
      ]
@@ -6116,7 +6116,7 @@
      "nom": "Card Trick",
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/wraith_card_trick.webp",
      "resume": "Throw homing cards",
-     "description": "Deal weapon damage to summon cards of a random suit. Each card can be thrown, dealing damage and applying a different effect depending on its suit. Cards thrown fly towards the enemy or point under your crosshair. · · Alt-cast to throw first card",
+     "description": "Deal weapon damage to summon cards of a random suit. Each card can be thrown, dealing damage and applying a different effect depending on its suit. Cards thrown fly towards the enemy or point under your crosshair. · Alt-cast to throw first card",
      "recharge_s": 0.6,
      "canalisee": false,
      "valeurs": [
@@ -6147,7 +6147,7 @@
      ],
      "nom_fr": "Tour de cartes",
      "resume_fr": "Lance des cartes à tête chercheuse",
-     "description_fr": "Deal weapon damage to summon cards of a random suit. Each card can be thrown, dealing damage and applying a different effect depending on its suit. Cards thrown fly towards the enemy or point under your crosshair. · · Alt-cast to throw first card",
+     "description_fr": "Deal weapon damage to summon cards of a random suit. Each card can be thrown, dealing damage and applying a different effect depending on its suit. Cards thrown fly towards the enemy or point under your crosshair. · Alt-cast to throw first card",
      "ameliorations_fr": [
       "+40 de dégâts et multiplicateur spirituel augmenté",
       "Toutes les couleurs sont améliorées et les chances d'obtenir des Jokers sont plus élevées"

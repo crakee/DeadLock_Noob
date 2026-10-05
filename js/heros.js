@@ -273,6 +273,181 @@
     return zone;
   }
 
+
+  // ---------- bloc « Son arme » (en tête de l'onglet Compétences) ----------
+  // Chiffres : data/armes.json (fichiers du jeu, via Data:HeroData.json du wiki). Lecture et notes : data/armes-conseils.json (avis).
+
+  const virgule = (x, n) => (x == null ? '—' : Number(x).toLocaleString('fr-FR', { maximumFractionDigits: n == null ? 1 : n }));
+  const LIBELLES_SPIRIT = {
+    ClipSize: 'taille du chargeur', BulletDamage: 'dégâts par balle', DPS: 'DPS', RoundsPerSecond: 'tirs par seconde', FireRate: 'cadence de tir',
+    HeavyMeleeDamage: 'mêlée lourde', MaxMoveSpeed: 'vitesse de course', SprintSpeed: 'vitesse de sprint', BulletResist: 'résistance aux balles',
+    TechResist: 'résistance spirit', BaseHealthRegen: 'régénération de vie'
+  };
+
+  // Rang du héros parmi ceux du site (1 = le plus haut ; `bas` : la plus petite valeur est la meilleure).
+  function rang(id, lire, bas) {
+    const valeurs = D.heros.heros.map((x) => ({ id: x.id, v: D.armes.armes[String(x.id)] ? lire(D.armes.armes[String(x.id)]) : null }))
+      .filter((x) => x.v != null).sort((a, b) => (bas ? a.v - b.v : b.v - a.v));
+    const i = valeurs.findIndex((x) => x.id === id);
+    if (i === -1) return null;
+    // À égalité, même rang : celui du premier de la série.
+    const r = valeurs.findIndex((x) => x.v === valeurs[i].v) + 1;
+    return { r: r, n: valeurs.length };
+  }
+
+  function chiffreArme(libelle, valeur, explication, rg) {
+    const d = el('div', 'arme-chiffre');
+    d.append(el('span', 'arme-chiffre-nom', libelle), el('span', 'arme-chiffre-valeur', valeur));
+    if (explication) d.append(el('span', 'arme-chiffre-aide', explication));
+    if (rg) {
+      const barre = el('span', 'arme-rang');
+      const jauge = el('span', 'arme-rang-jauge');
+      const plein = el('span', 'arme-rang-plein');
+      plein.style.width = Math.round(100 * (rg.n - rg.r + 1) / rg.n) + '%';
+      jauge.append(plein);
+      barre.append(jauge, el('span', 'arme-rang-texte', rg.r + (rg.r === 1 ? 'er' : 'e') + ' sur ' + rg.n));
+      barre.title = 'Classement parmi les ' + rg.n + ' héros (1er = le meilleur)';
+      d.append(barre);
+    }
+    return d;
+  }
+
+  function regleVraie(si, a, p) {
+    const vrai = {
+      peut_crit: (v) => p.peut_crit === v,
+      vitesse_max: (v) => p.vitesse_balle_m_s != null && p.vitesse_balle_m_s < v,
+      gravite_min: (v) => (p.gravite || 0) >= v,
+      plusieurs_balles: (v) => (p.balles_par_tir > 1) === v,
+      touche_une_fois: (v) => p.touche_une_fois === v,
+      vider_max: (v) => p.vider_chargeur_s != null && p.vider_chargeur_s <= v,
+      vider_min: (v) => p.vider_chargeur_s != null && p.vider_chargeur_s >= v,
+      rechargement_min: (v) => p.rechargement_s >= v,
+      balle_par_balle: (v) => p.rechargement_balle_par_balle === v,
+      montee: (v) => Boolean(p.tirs_par_s_max) === v,
+      explosion_min: (v) => (p.rayon_explosion_m || 0) >= v,
+      secondaire: (v) => Boolean(a.secondaire) === v
+    };
+    return Object.keys(si).every((k) => vrai[k] && vrai[k](si[k]));
+  }
+
+  const multCrit = (a) => 1.65 + (a.bonus_crit_pct || 0) / 100;
+
+  function remplirRegle(t, a, p) {
+    return t.replace('{crit}', virgule(multCrit(a), 2)).replace('{vitesse}', virgule(p.vitesse_balle_m_s, 0))
+      .replace('{balles}', String(p.balles_par_tir)).replace('{vider}', virgule(p.vider_chargeur_s))
+      .replace('{rechargement}', virgule(p.rechargement_s, 2)).replace('{montee}', virgule(p.montee_cadence_s))
+      .replace('{explosion}', virgule(p.rayon_explosion_m));
+  }
+
+  // Les chiffres d'un mode de tir ; `rangs` seulement pour le tir principal.
+  function chiffresTir(h, a, p, rangs) {
+    const g = el('div', 'arme-chiffres');
+    const dash = 10;   // dash au sol : 10 m pour tous les héros (data/heros-details.json, données du jeu)
+    const rg = (lire, bas) => (rangs ? rang(h.id, lire, bas) : null);
+    g.append(
+      chiffreArme('DPS', virgule(p.dps), 'dégâts par seconde en tirant sans t\'arrêter, sans objet' + (p.tirs_par_s_max ? ', à pleine cadence' : ''), rg((x) => x.principal.dps)),
+      chiffreArme('DPS en continu', virgule(p.dps_soutenu), 'en comptant les rechargements : ce que tu fais sur un long combat', rg((x) => x.principal.dps_soutenu)),
+      chiffreArme('Dégâts par chargeur', virgule(p.degats_chargeur, 0), 'si toutes les balles touchent, sans tir à la tête', rg((x) => x.principal.degats_chargeur)),
+      chiffreArme('Chargeur', p.chargeur + (p.munitions_par_tir > 1 ? ' munitions' : ' tirs'),
+        'vidé en ' + virgule(p.vider_chargeur_s) + ' s de tir continu' + (p.munitions_par_tir > 1 ? ', ' + p.munitions_par_tir + ' munitions par tir' : ''), rg((x) => x.principal.vider_chargeur_s)),
+      chiffreArme('Rechargement', virgule(p.rechargement_s, 2) + ' s' + (p.rechargement_balle_par_balle ? ' par balle' : ''),
+        p.rechargement_balle_par_balle ? 'recharge une balle à la fois' : 'chargeur complet', p.rechargement_balle_par_balle ? null : rg((x) => (x.principal.rechargement_balle_par_balle ? null : x.principal.rechargement_s), true)),
+      chiffreArme('Portée', '≤ ' + virgule(p.degats_pleins_jusqu_a_m, 0) + ' m',
+        'pleins dégâts jusqu\'à ' + virgule(p.degats_pleins_jusqu_a_m / dash) + ' dash' + (p.degats_pleins_jusqu_a_m / dash >= 2 ? 'es' : '') +
+        ', puis ça baisse jusqu\'à ' + virgule(p.degats_minimum_pct, 0) + ' % des dégâts dès ' + virgule(p.degats_minimum_des_m, 0) + ' m', rg((x) => x.principal.degats_pleins_jusqu_a_m)),
+      chiffreArme('Tir à la tête', p.peut_crit ? '×' + virgule(multCrit(a), 2) : 'aucun bonus',
+        p.peut_crit ? 'dégâts sur la tête des héros et des Troopers' : 'pas de dégâts critiques à la tête', null),
+      chiffreArme('Vitesse des balles', virgule(p.vitesse_balle_m_s, 0) + ' m/s',
+        p.vitesse_balle_m_s < 300 ? 'lente : il faut viser devant une cible qui bouge' : p.vitesse_balle_m_s < 600 ? 'moyenne' : 'rapide : touche presque instantanément', rg((x) => x.principal.vitesse_balle_m_s))
+    );
+    return g;
+  }
+
+  function detailsTir(p) {
+    const ul = el('ul', 'arme-details-liste');
+    const ligne = (nom, valeur) => { const li = el('li'); li.append(el('span', null, nom), el('strong', null, valeur)); ul.append(li); };
+    ligne('Dégâts par balle', virgule(p.degats_balle, 2) + (p.balles_par_tir > 1 ? ' × ' + p.balles_par_tir + ' balles par tir' + (p.touche_une_fois ? ' (comptés une fois)' : '') : ''));
+    ligne('Tirs par seconde', virgule(p.tirs_par_s, 2) + (p.tirs_par_s_max ? ' → ' + virgule(p.tirs_par_s_max, 2) + ' après ' + virgule(p.montee_cadence_s) + ' s de tir' : ''));
+    if (p.tirs_par_rafale > 1) ligne('Rafale', p.tirs_par_rafale + ' balles par pression');
+    if (p.gravite) ligne('Chute des balles', 'gravité ×' + virgule(p.gravite, 2));
+    if (p.rayon_explosion_m) ligne('Explosion', 'rayon ' + virgule(p.rayon_explosion_m) + ' m');
+    if (p.vitesse_en_tirant_pct != null) ligne('Vitesse en tirant', p.vitesse_en_tirant_pct + ' % de ta vitesse');
+    return ul;
+  }
+
+  function blocArme(h) {
+    const a = D.armes && D.armes.armes[String(h.id)];
+    if (!a) return null;
+    const C = D.armesConseils;
+    const p = a.principal;
+    const s = el('section', 'arme');
+    const tete = el('div', 'arme-tete');
+    const titre = el('h3', null, 'Son arme · ');
+    titre.append(nomBilingue(a.nom_fr, a.nom));
+    tete.append(titre);
+    const types = el('div', 'arme-types');
+    a.types.forEach((t) => {
+      const def = C && C.types[t];
+      const puce = el('span', 'puce arme-type', def ? def.nom : t);
+      if (def) puce.title = def.texte;
+      types.append(puce);
+    });
+    tete.append(types);
+    s.append(tete, chiffresTir(h, a, p, true));
+
+    // Comment s'en servir : sens des étiquettes du jeu, règles de lecture, notes du héros.
+    if (C) {
+      const conseils = el('div', 'arme-conseils');
+      const titreC = el('h4', null, 'Comment t\'en servir ');
+      titreC.append(el('span', 'marque', 'avis'));
+      const ul = el('ul');
+      a.types.forEach((t) => { const def = C.types[t]; if (def) { const li = el('li'); li.append(el('strong', null, def.nom + ' : '), def.texte); ul.append(li); } });
+      C.regles.filter((r) => regleVraie(r.si, a, p)).forEach((r) => ul.append(el('li', null, remplirRegle(r.texte, a, p))));
+      const notes = C.notes[String(h.id)] || [];
+      notes.forEach((n) => {
+        const li = el('li', 'arme-note');
+        li.append(el('strong', null, h.nom + ' : '), n.texte, ' ', el('span', 'arme-source', n.source));
+        ul.append(li);
+      });
+      conseils.append(titreC, ul);
+      s.append(conseils);
+    }
+
+    // Tir secondaire : visible, il change la façon de jouer.
+    if (a.secondaire) {
+      const sec = el('div', 'arme-secondaire');
+      sec.append(el('h4', null, 'Tir secondaire' + (a.secondaire.nom && a.secondaire.nom !== a.nom ? ' · ' + a.secondaire.nom : '')));
+      const q = a.secondaire;
+      const ligne = el('p');
+      ligne.append(virgule(q.degats_balle) + ' dégâts par tir' + (q.balles_par_tir > 1 ? ' × ' + q.balles_par_tir : '') + ', ' +
+        virgule(q.tirs_par_s, 2) + ' tir/s, DPS ' + virgule(q.dps) + ' (' + virgule(q.dps_soutenu) + ' en continu), ' +
+        (q.munitions_par_tir > 1 ? q.munitions_par_tir + ' munitions par tir, ' : '') + 'pleins dégâts ≤ ' + virgule(q.degats_pleins_jusqu_a_m, 0) + ' m, balles à ' +
+        virgule(q.vitesse_balle_m_s, 0) + ' m/s' + (q.rayon_explosion_m ? ', explosion de ' + virgule(q.rayon_explosion_m) + ' m' : '') +
+        (q.peut_crit ? '' : ', pas de bonus à la tête') + '.');
+      sec.append(ligne);
+      s.append(sec);
+    }
+
+    // Plus de détails : le reste des chiffres, la progression, la mêlée.
+    const plus = el('details', 'arme-plus');
+    plus.append(el('summary', null, 'Plus de détails : balles, cadence, progression, mêlée'));
+    plus.append(detailsTir(p));
+    const prog = el('ul', 'arme-details-liste');
+    const ligne = (nom, valeur) => { const li = el('li'); li.append(el('span', null, nom), el('strong', null, valeur)); prog.append(li); };
+    const n = a.par_niveau;
+    if (n.degats_balle) ligne('À chaque niveau', '+' + virgule(n.degats_balle, 3) + ' dégât par balle (+' + virgule(n.dps, 2) + ' DPS)');
+    if (n.melee_leger) ligne('Mêlée à chaque niveau', '+' + virgule(n.melee_leger, 2) + ' légère, +' + virgule(n.melee_lourd, 2) + ' lourde');
+    Object.keys(a.par_spirit || {}).forEach((k) => ligne('Grandit avec le Spirit Power', (LIBELLES_SPIRIT[k] || k) + ' (coefficient ' + virgule(a.par_spirit[k], 3) + ' dans les données du jeu)'));
+    if (a.melee.leger) ligne('Mêlée au niveau 1', a.melee.leger + ' légère, ' + a.melee.lourd + ' lourde');
+    plus.append(prog);
+    if (a.secondaire) { plus.append(el('h4', null, 'Tir secondaire')); plus.append(detailsTir(a.secondaire)); }
+    s.append(plus);
+    s.append(el('p', 'aide', 'Chiffres du jeu au niveau 1, sans objet (' + D.armes.meta.source + ', patch ' + D.armes.meta.patch +
+      '). Tir à la tête : ×1,65 pour tous, moins un malus propre à certains héros (page Weapon Damage du wiki). Classements parmi les ' +
+      D.heros.heros.length + ' héros.'));
+    return s;
+  }
+
   // ---------- onglet Compétences ----------
 
   // Nom français du jeu, suivi du nom anglais (celui des guides et vidéos) en italique.
@@ -303,7 +478,9 @@
       nom.append(el('span', 'competence-touche', c.touche === 4 ? 'Ultime' : String(c.touche)), nomBilingue(c.nom_fr, c.nom));
       if (c.recharge_s) nom.append(el('span', 'competence-recharge', '⟳ ' + c.recharge_s + ' s'));
       if (c.canalisee) nom.append(el('span', 'marque', 'canalisée : un stun l\'interrompt'));
-      corps.append(nom, el('p', 'competence-resume', c.resume_fr || c.resume), el('p', null, c.description_fr || c.description));
+      corps.append(nom, el('p', 'competence-resume', c.resume_fr || c.resume));
+      // Quelques compétences n'ont pas de texte dans l'API (Rake de Mina) : pas de paragraphe vide.
+      if (c.description_fr || c.description) corps.append(el('p', null, c.description_fr || c.description));
       if (DLN.niveau() >= 2 && c.valeurs.length) {
         const v = el('div', 'valeurs');
         c.valeurs.forEach((x) => {
@@ -324,6 +501,8 @@
       zone.append(carte);
     });
     const boite = el('div', 'fiche-contenu');
+    const arme = blocArme(h);
+    if (arme) boite.append(arme);
     boite.append(zone);
     boite.append(el('p', 'aide', 'Textes officiels du jeu en français. Noms des valeurs en anglais.' +
       (DLN.niveau() < 2 ? ' Valeurs et améliorations : niveau 2 ou plus (menu ⚙).' : '') +
@@ -679,8 +858,10 @@
     'data/heroes.json', 'data/hero-stats.json', 'data/roles.json', 'data/counters.json', 'data/items.json',
     'data/heros-details.json', 'data/achats.json', 'data/patch.json'
   ].map(DLN.charger).concat([DLN.charger('data/tempo.json').catch(() => null), DLN.profil,
-    DLN.charger('data/builds.json').catch(() => null), DLN.etiquettes.pret])).then((r) => {
-    D = { heros: r[0], stats: r[1], roles: r[2], counters: r[3], details: r[5], achats: r[6], patch: r[7], tempo: r[8], builds: r[10] };
+    DLN.charger('data/builds.json').catch(() => null), DLN.etiquettes.pret,
+    DLN.charger('data/armes.json').catch(() => null), DLN.charger('data/armes-conseils.json').catch(() => null)])).then((r) => {
+    D = { heros: r[0], stats: r[1], roles: r[2], counters: r[3], details: r[5], achats: r[6], patch: r[7], tempo: r[8], builds: r[10],
+      armes: r[12], armesConseils: r[13] };
     r[4].objets.forEach((o) => { objets[o.nom] = o; });
     profil = r[9];
     document.getElementById('app').hidden = false;

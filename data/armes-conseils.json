@@ -1,0 +1,66 @@
+{
+  "meta": {
+    "nature": "Avis de joueur, pas une donnée du jeu : comment lire les chiffres de l'arme (data/armes.json) et s'en servir. Les valeurs citées dans les notes viennent des sources indiquées, vérifiées le 2026-10-05 (patch City Never Sleeps).",
+    "verifie_le": "2026-10-05",
+    "fonctionnement": "js/heros.js affiche le sens de chaque étiquette d'arme du jeu (`types`), applique `regles` (la première phrase dont la condition est vraie, pour chaque règle) et ajoute les `notes` du héros. Conditions : voir `si` de chaque règle, interprétées dans js/heros.js (fonction regleVraie)."
+  },
+  "types": {
+    "CloseRange": { "nom": "Courte portée", "texte": "Faite pour se battre de près : plus tu t'éloignes, plus tu perds de dégâts." },
+    "MediumRange": { "nom": "Moyenne portée", "texte": "Efficace à distance de combat normale, ni collé ni de très loin." },
+    "LongRange": { "nom": "Longue portée", "texte": "Garde de bons dégâts de loin : tu peux te battre en restant en retrait." },
+    "RapidFire": { "nom": "Tir rapide", "texte": "Beaucoup de tirs par seconde, peu de dégâts chacun : reste sur ta cible." },
+    "Spreadshot": { "nom": "Plusieurs balles par tir", "texte": "Chaque tir lâche plusieurs balles qui s'écartent : plus tu es près, plus elles touchent toutes." },
+    "Projectile": { "nom": "Projectiles", "texte": "Les tirs voyagent visiblement : vise là où la cible va être." },
+    "HeavyHitter": { "nom": "Gros coups", "texte": "Peu de tirs, mais chacun compte : un tir raté coûte cher." },
+    "BurstFire": { "nom": "Rafales", "texte": "Chaque tir part en rafale de plusieurs balles : garde la cible dans le viseur pendant toute la rafale." },
+    "BeamWeapon": { "nom": "Rayon", "texte": "Un rayon continu : garde-le sur la cible." },
+    "Bouncy": { "nom": "Rebonds", "texte": "Les tirs rebondissent : utile autour des coins et des murs." }
+  },
+  "regles": [
+    { "id": "pas_crit", "si": { "peut_crit": false }, "texte": "Pas de bonus à la tête : vise le centre du corps, c'est plus sûr." },
+    { "id": "crit", "si": { "peut_crit": true }, "texte": "Tir à la tête : ×{crit} dégâts. Sur les Troopers aussi : entraîne-toi en lane." },
+    { "id": "lentes", "si": { "vitesse_max": 300 }, "texte": "Balles lentes ({vitesse} m/s) : sur une cible qui bouge, vise devant elle." },
+    { "id": "chute", "si": { "gravite_min": 0.5, "vitesse_max": 300 }, "texte": "Tes balles retombent un peu : de loin, vise légèrement au-dessus." },
+    { "id": "plombs", "si": { "plusieurs_balles": true, "touche_une_fois": false }, "texte": "{balles} balles par tir : de près, elles touchent presque toutes ; de loin, beaucoup se perdent." },
+    { "id": "une_fois", "si": { "touche_une_fois": true }, "texte": "Les dégâts comptent une fois par tir, qu'une ou toutes les balles touchent." },
+    { "id": "chargeur_court", "si": { "vider_max": 3 }, "texte": "Chargeur vidé en {vider} s : tire par séquences et recharge avant d'engager, pas au milieu du combat." },
+    { "id": "chargeur_long", "si": { "vider_min": 7 }, "texte": "Chargeur long ({vider} s de tir) : tu peux tenir tout un échange sans recharger." },
+    { "id": "recharge_longue", "si": { "rechargement_min": 3, "balle_par_balle": false }, "texte": "Rechargement long ({rechargement} s) : ne te retrouve pas à recharger face à un ennemi." },
+    { "id": "balle_par_balle", "si": { "balle_par_balle": true }, "texte": "Recharge balle par balle : remets des munitions dès que tu ne tires plus, même chargeur à moitié." },
+    { "id": "montee", "si": { "montee": true }, "texte": "La cadence monte en {montee} s de tir continu : ne relâche pas la gâchette pendant un échange." },
+    { "id": "explosion", "si": { "explosion_min": 1 }, "texte": "Tes tirs explosent (rayon {explosion} m) : tu touches aussi ce qui est autour de l'impact." },
+    { "id": "secondaire", "si": { "secondaire": true }, "texte": "Tu as un tir secondaire : voir ses chiffres plus bas." }
+  ],
+  "notes": {
+    "13": [
+      { "texte": "Fixation : chaque balle sur la même cible augmente tes dégâts contre elle (1 stack par balle, 3 sur un tir à la tête, 40 au maximum). Reste sur une seule cible plutôt que de changer.", "source": "Compétence Fixation (texte et valeurs du jeu)" },
+      { "texte": "Le bonus de Fixation baisse avec la distance, comme tes balles : reste à moins de 20 m pour en profiter.", "source": "deadlock.wiki, page Haze (notes de Fixation)" },
+      { "texte": "Smoke Bomb : tirer te rend visible. Approche-toi invisible à moins de 20 m avant d'ouvrir le feu.", "source": "Compétence Smoke Bomb" },
+      { "texte": "Bullet Dance tire tout seul, avec une précision parfaite, sur les ennemis proches : pendant l'ultime, occupe-toi de ta position, pas de ta visée.", "source": "Compétence Bullet Dance" }
+    ],
+    "52": [
+      { "texte": "Chaque tir pose une Djinn's Mark sur la cible (une nouvelle marque au plus toutes les 2,75 s par cible, 4 au maximum). Chaque marque double les dégâts ; ils tombent quand la marque expire (5 s) ou quand tu la consommes avec l'actif, et la cible est révélée sur la carte.", "source": "Passif de Djinn's Mark (texte et valeurs du jeu, API)" },
+      { "texte": "Garde la même cible sous ton feu pour empiler les marques, puis déclenche l'actif quand elle tente de fuir.", "source": "Conseil" }
+    ],
+    "27": [
+      { "texte": "Tir secondaire : un projectile qui explose à l'impact. Il prend 3 munitions mais part même s'il en reste moins, et ne fait pas de bonus à la tête.", "source": "deadlock.wiki, page Yamato (Weapon)" },
+      { "texte": "Tir principal : 5 balles par tir, pleins dégâts jusqu'à 20 m. Flying Slash te colle à ta cible : enchaîne avec ton arme.", "source": "data/armes.json et compétence Flying Slash" }
+    ],
+    "4": [
+      { "texte": "Malice : chaque stack augmente les dégâts que la cible prend de toi, balles comprises. Pose Malice avant de tirer.", "source": "Compétence Malice" },
+      { "texte": "Life Drain : tu peux tirer pendant le drain, mais tu te déplaces moins vite.", "source": "Compétence Life Drain" }
+    ],
+    "2": [
+      { "texte": "Power Surge : tes balles déclenchent une décharge qui rebondit sur jusqu'à 4 ennemis proches, une fois par rafale. Tire dans un groupe (wave de Troopers, héros serrés).", "source": "Compétence Power Surge" }
+    ],
+    "67": [
+      { "texte": "Tes projectiles traversent les ennemis : aligne Troopers et héros pour en toucher plusieurs d'un tir. Les effets d'objets « à l'impact » ne comptent que sur le premier touché.", "source": "deadlock.wiki, page Paige (Weapon)" },
+      { "texte": "Pas de dégâts critiques à la tête, mais les objets qui se déclenchent sur un tir à la tête fonctionnent quand même.", "source": "deadlock.wiki, page Paige (Weapon)" },
+      { "texte": "Plot Armor donne à un allié une barrière et des dégâts d'arme en plus : mets-la sur l'allié qui tire le plus.", "source": "Compétence Plot Armor" }
+    ],
+    "6": [
+      { "texte": "Recharge cartouche par cartouche : 0,7 s d'attente après un tir, puis 0,35 s par cartouche ; recharger les 9 prend 3,5 s.", "source": "deadlock.wiki, page Abrams (Weapon)" },
+      { "texte": "9 plombs en carré, un au centre ; les autres s'écartent beaucoup. Colle ta cible (Shoulder Charge) avant de tirer.", "source": "deadlock.wiki, page Abrams (Weapon) et compétence Shoulder Charge" }
+    ]
+  }
+}

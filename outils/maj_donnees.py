@@ -86,6 +86,18 @@ def nombre(valeur):
         return None
 
 
+def description(desc):
+    """Texte complet : certaines compétences n'ont leur effet que dans `passive` ou `active` (Djinn's Mark, Killing Blow…)."""
+    complet = " · ".join(t for t in (texte(desc.get(k)) for k in ("passive", "active", "desc")) if t)
+    return re.sub(r"(\s*·\s*){2,}", " · ", complet).strip(" ·")
+
+
+def texte_infobulle(a):
+    """Repli quand `description` est vide : le texte de l'infobulle (sauf les clés de traduction non résolues « #… »)."""
+    morceaux = [sec.get("loc_string") for sec in ((a.get("tooltip_details") or {}).get("info_sections") or [])]
+    return " · ".join(texte(m) for m in morceaux if m and not m.startswith("#"))
+
+
 def competence(a):
     proprietes = a.get("properties") or {}
     desc = a.get("description") or {}
@@ -104,7 +116,8 @@ def competence(a):
         "nom": a["name"],
         "image": a.get("image_webp") or a.get("image"),
         "resume": texte(desc.get("quip")),
-        "description": texte(desc.get("desc")),
+        "description": description(desc) or texte_infobulle(a),
+        "_base": texte(desc.get("desc")),
         "recharge_s": recharge if recharge else None,
         "canalisee": bool(canalisation and canalisation > 0),
         "valeurs": cles,
@@ -131,11 +144,12 @@ def construire_heros(heros, capacites, heros_fr=None, capacites_fr=None):
                     dfr = fr.get("description") or {}
                     c["nom_fr"] = fr.get("name")
                     c["resume_fr"] = texte(dfr.get("quip"))
-                    c["description_fr"] = texte(dfr.get("desc"))
+                    c["description_fr"] = description(dfr) or texte_infobulle(fr)
                     c["ameliorations_fr"] = [texte(dfr.get(k)) for k in ("t1_desc", "t2_desc", "t3_desc") if dfr.get(k)]
                 comps.append(c)
         # Effet de base seulement : les améliorations ajoutent du vol de vie ou un ralentissement à presque tout le monde.
-        corpus = " ".join(f"{c['resume']} {c['description']}" for c in comps)
+        # Étiquettes calculées sur `desc` seul, comme avant l'ajout des textes passifs et actifs.
+        corpus = " ".join(f"{c['resume']} {c.pop('_base')}" for c in comps)
         mecaniques = etiquettes(MECANIQUES, corpus)
         if any(c["canalisee"] for c in comps):
             mecaniques.append("canalisation")
@@ -371,6 +385,119 @@ def construire_fiches(heros_api, armes):
     return fiches
 
 
+WIKI_API = "https://deadlock.wiki/api.php"
+
+
+def page_wiki_json(titre):
+    """Contenu JSON d'une page Data: du wiki, par l'API MediaWiki (les pages ?action=raw sont derrière Cloudflare)."""
+    url = WIKI_API + "?" + urllib.parse.urlencode({"action": "query", "prop": "revisions", "rvprop": "content|timestamp",
+                                                  "rvslots": "main", "titles": titre, "format": "json"})
+    requete = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 DeadLockNoob-personnel"})
+    with urllib.request.urlopen(requete, timeout=120) as reponse:
+        page = next(iter(json.load(reponse)["query"]["pages"].values()))
+    revision = page["revisions"][0]
+    return json.loads(revision["slots"]["main"]["*"]), revision["timestamp"][:10]
+
+
+def tir(w):
+    """Un mode de tir (principal ou secondaire) de Data:HeroData.json, en mètres et secondes."""
+    if not w:
+        return None
+    arrondi = lambda v, n=2: round(v, n) if isinstance(v, (int, float)) else None
+    balles, munitions = w.get("BulletsPerShot") or 1, w.get("AmmoConsumedPerShot") or 1
+    # Armes qui accélèrent en tirant (McGinnis, Victor) : le DPS du jeu est celui à pleine cadence.
+    rps = w.get("RoundsPerSecondAtMaxSpin") or w.get("RoundsPerSecond")
+    tirs_chargeur = (w["ClipSize"] / munitions) if w.get("ClipSize") else None
+    # RoundsPerSecond compte chaque tir, y compris dans une rafale : DPS = dégâts × balles par tir × tirs/s
+    # (vérifié sur les 38 héros, voir `controle_dps`).
+    degats_chargeur = None
+    if tirs_chargeur and w.get("BulletDamage") is not None:
+        degats_chargeur = w["BulletDamage"] * (1 if w.get("HitOnceAcrossAllBullets") else balles) * tirs_chargeur
+    return {
+        "degats_balle": arrondi(w.get("BulletDamage")),
+        "balles_par_tir": balles,
+        "touche_une_fois": bool(w.get("HitOnceAcrossAllBullets")),
+        "tirs_par_rafale": w.get("BulletsPerBurst") or 1,
+        "tirs_par_s": arrondi(w.get("RoundsPerSecond")),
+        "tirs_par_s_max": arrondi(w.get("RoundsPerSecondAtMaxSpin")),
+        "montee_cadence_s": arrondi(1 / w["SpinAcceleration"], 1) if w.get("SpinAcceleration") else None,
+        "chargeur": w.get("ClipSize"),
+        "munitions_par_tir": munitions,
+        "rechargement_s": arrondi(w.get("ReloadTime")),
+        "rechargement_balle_par_balle": bool(w.get("ReloadSingle")),
+        "dps": arrondi(w.get("DPS"), 1),
+        "dps_soutenu": arrondi(w.get("SustainedDPS"), 1),
+        "degats_chargeur": arrondi(degats_chargeur, 0),
+        "vider_chargeur_s": arrondi(tirs_chargeur / rps) if tirs_chargeur and rps else None,
+        "degats_pleins_jusqu_a_m": arrondi(w.get("FalloffStartRange"), 1),
+        "degats_minimum_des_m": arrondi(w.get("FalloffEndRange"), 1),
+        "degats_minimum_pct": arrondi(100 * w["FalloffEndScale"], 0) if isinstance(w.get("FalloffEndScale"), (int, float)) else None,
+        "vitesse_balle_m_s": arrondi(w.get("BulletSpeed"), 0),
+        "gravite": w.get("BulletGravityScale"),
+        "rayon_explosion_m": arrondi(w.get("ExplosionRadius"), 1),
+        "vitesse_en_tirant_pct": arrondi(100 * w["ShootMoveSpeed"], 0) if isinstance(w.get("ShootMoveSpeed"), (int, float)) else None,
+        "peut_crit": w.get("CanCrit", True),
+        "_dps_calcule": (w.get("BulletDamage") or 0) * (1 if w.get("HitOnceAcrossAllBullets") else balles) * (rps or 0),
+    }
+
+
+# Le wiki (page Weapon Damage, section Crit Multiplier, lue le 2026-10-06) liste les héros sans dégâts critiques ;
+# Data:HeroData.json ne le dit pas pour tous (Graves y a CanCrit = true).
+SANS_CRIT = {"Graves", "Paige"}
+# Arme absente de l'API : nom donné par la page du héros sur le wiki (lue le 2026-10-06).
+NOMS_ARMES_WIKI = {"Rem": "Long Night"}
+
+
+def construire_armes(heros_api, armes_api, armes_api_fr):
+    """Arme de base de chaque héros : Data:HeroData.json du wiki (tirés des fichiers du jeu), nom par l'API."""
+    donnees, date_wiki = page_wiki_json("Data:HeroData.json")
+    noms = {a["class_name"]: a["name"] for a in armes_api}
+    noms_fr = {a["class_name"]: a["name"] for a in armes_api_fr}
+    sortie, ecarts = {}, []
+    for h in heros_api:
+        if not h.get("player_selectable") or h.get("disabled") or h.get("in_development"):
+            continue
+        d = donnees.get(h["class_name"])
+        if not d or not d.get("Weapon"):
+            print(f"  arme absente du wiki : {h['name']}")
+            continue
+        w = d["Weapon"]
+        principal, secondaire = tir(w), tir(w.get("AltFire"))
+        if h["name"] in SANS_CRIT:
+            principal["peut_crit"] = False
+        for mode in (principal, secondaire):
+            if mode:
+                calc = mode.pop("_dps_calcule")
+                if mode["dps"] and abs(calc - mode["dps"]) > 0.02 * mode["dps"]:
+                    ecarts.append(f"{h['name']} : DPS {mode['dps']} ≠ {calc:.1f}")
+        # Contrôle croisé avec l'API (mêmes fichiers du jeu, autre extraction).
+        cle_api = (h.get("items") or {}).get("weapon_primary")
+        api = next((a.get("weapon_info") or {} for a in armes_api if a["class_name"] == cle_api), {})
+        for champ_wiki, champ_api in (("chargeur", "clip_size"), ("degats_balle", "bullet_damage")):
+            if api and api.get(champ_api) is not None and abs(api[champ_api] - (principal[champ_wiki] or 0)) > 0.01:
+                ecarts.append(f"{h['name']} : {champ_wiki} wiki {principal[champ_wiki]} ≠ API {api[champ_api]}")
+        niveau, spirit = d.get("LevelScaling") or {}, d.get("SpiritScaling") or {}
+        alt = w.get("AltFire") or {}
+        sortie[str(h["id"])] = {
+            # Nom de l'arme du wiki d'abord : pour Rem, l'API désigne une capacité nommée « Gun Damage ».
+            "nom": NOMS_ARMES_WIKI.get(h["name"]) or noms.get(w.get("NameKey")) or noms.get(cle_api),
+            "nom_fr": None if h["name"] in NOMS_ARMES_WIKI else noms_fr.get(w.get("NameKey")) or noms_fr.get(cle_api),
+            "types": [t.replace("Attribute_EWeaponAttribute_", "") for t in w.get("WeaponTypes") or []],
+            "bonus_crit_pct": d.get("CritDamageBonusPercent") or 0,
+            "principal": principal,
+            "secondaire": dict(secondaire, nom=noms.get(alt.get("NameKey"))) if secondaire else None,
+            # Gain à chaque niveau (boon) et par point de Spirit Power, tel que le jeu le donne.
+            "par_niveau": {k: v for k, v in {"degats_balle": niveau.get("BulletDamage"), "dps": niveau.get("DPS"),
+                                              "melee_leger": niveau.get("LightMeleeDamage"), "melee_lourd": niveau.get("HeavyMeleeDamage"),
+                                              "pv": niveau.get("MaxHealth"), "spirit_power": niveau.get("TechPower")}.items() if v},
+            "par_spirit": {k: v for k, v in spirit.items() if k not in ("SustainedDPS",)},
+            "melee": {"leger": d.get("LightMeleeDamage"), "lourd": d.get("HeavyMeleeDamage")},
+        }
+    for e in ecarts:
+        print("  à vérifier :", e)
+    return sortie, date_wiki
+
+
 def construire_achats(depuis_ts, stats, objets, heros_ids):
     """Objets achetés par au moins 20 % des joueurs d'un héros, rangés par moment moyen d'achat."""
     par_id = {o["id"]: o for o in objets}
@@ -489,7 +616,7 @@ def main():
     parseur.add_argument("--patch", required=True, help="nom ou date du patch en cours")
     parseur.add_argument("--depuis", required=True, help="date du patch, AAAA-MM-JJ (UTC)")
     parseur.add_argument("--seulement", default="", help="fichiers à régénérer, séparés par des virgules "
-                         "(heroes,items,stats,map,details,achats,tempo,builds) ; tous par défaut")
+                         "(heroes,items,stats,map,details,armes,achats,tempo,builds) ; tous par défaut")
     args = parseur.parse_args()
     voulu = lambda nom: not args.seulement or nom in args.seulement.split(",")
 
@@ -510,6 +637,19 @@ def main():
     if voulu("heroes"):
         ecrire("heroes.json", {**meta, "note": "`mecaniques` est déduit par mots-clés : à relire. `video` est à remplir à la main."},
            {"heros": heros})
+
+    if voulu("armes"):
+        armes, date_wiki = construire_armes(heros_api, get("/v1/assets/items/by-type/weapon"),
+                                            get("/v1/assets/items/by-type/weapon", language="french"))
+        ecrire("armes.json",
+               {**meta, "source": "deadlock.wiki Data:HeroData.json (révision du " + date_wiki + ", tirée des fichiers du jeu) ; noms : " + API,
+                "note": "Arme de base au niveau 1 sans objet. Distances en m, vitesse de balle en m/s. `dps_soutenu` compte le rechargement. "
+                        "`degats_chargeur` = dégâts par balle × balles par tir (1 si `touche_une_fois`) × tirs par chargeur. "
+                        "`types` = étiquettes d'arme du jeu. `par_niveau` = gain à chaque niveau (boon) ; `par_spirit` = gain par point de "
+                        "Spirit Power. Le multiplicateur de tir à la tête est ×1,65 pour tous (page Weapon Damage du wiki), plus `bonus_crit_pct`."},
+               {"armes": armes})
+        if args.seulement == "armes":
+            return
 
     objets = construire_objets(get("/v1/assets/items/by-type/upgrade"))
     if voulu("items"):

@@ -51,3 +51,34 @@ details.menace[open] > summary { margin-bottom: .4rem; }
 @media (max-width: 700px) {
   .build-section { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* Son arme : en tête de l'onglet Compétences */
+.arme { margin-bottom: 1rem; padding: .9rem 1rem; background: var(--panneau); border: 1px solid var(--bord); border-left: .3rem solid var(--weapon, var(--or)); border-radius: .5rem; display: flex; flex-direction: column; gap: .8rem; }
+.arme h3 { margin: 0; font-size: 1.2rem; }
+.arme h4 { margin: 0 0 .35rem; font-size: 1rem; display: flex; align-items: center; gap: .5rem; }
+.arme-tete { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .4rem .8rem; }
+.arme-types { display: flex; flex-wrap: wrap; gap: .3rem; }
+.arme-type { cursor: help; }
+.arme-chiffres { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .5rem; }
+@media (max-width: 900px) { .arme-chiffres { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.arme-chiffre { display: flex; flex-direction: column; gap: .15rem; padding: .5rem .65rem; background: var(--fond-2); border: 1px solid var(--bord); border-radius: .4rem; }
+.arme-chiffre-nom { font-family: var(--titre); text-transform: uppercase; letter-spacing: .05em; font-size: .78rem; color: var(--doux); }
+.arme-chiffre-valeur { font-family: var(--titre); font-size: 1.55rem; line-height: 1.1; color: var(--texte); font-variant-numeric: tabular-nums; }
+.arme-chiffre-aide { font-size: .84rem; line-height: 1.35; color: var(--doux); }
+.arme-rang { display: flex; align-items: center; gap: .45rem; margin-top: auto; padding-top: .25rem; font-size: .78rem; color: var(--doux); }
+.arme-rang-jauge { flex: 1; height: .35rem; background: var(--panneau-2); border-radius: .2rem; overflow: hidden; }
+.arme-rang-plein { display: block; height: 100%; background: var(--weapon, var(--or)); }
+.arme-rang-texte { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.arme-conseils ul { margin: 0; padding-left: 1.2rem; display: flex; flex-direction: column; gap: .3rem; line-height: 1.45; }
+.arme-conseils strong { color: var(--or-clair); }
+.arme-note strong { color: var(--or); }
+.arme-source { font-size: .78rem; color: var(--doux); font-style: italic; }
+.arme-source::before { content: '— '; }
+.arme-secondaire { padding: .5rem .7rem; background: var(--fond-2); border: 1px dashed var(--bord-fort); border-radius: .4rem; }
+.arme-secondaire p { margin: 0; line-height: 1.45; }
+.arme-plus > summary { cursor: pointer; color: var(--or-clair); }
+.arme-plus[open] > summary { margin-bottom: .4rem; }
+.arme-details-liste { list-style: none; margin: 0 0 .5rem; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr)); gap: .2rem 1.2rem; font-size: .92rem; }
+.arme-details-liste li { display: flex; justify-content: space-between; gap: .8rem; border-bottom: 1px solid var(--bord); padding: .15rem 0; }
+.arme-details-liste strong { text-align: right; font-weight: 600; }
+.arme .aide { margin: 0; }

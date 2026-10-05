@@ -1,0 +1,1990 @@
+{
+ "meta": {
+  "patch": "City Never Sleeps (2026-09-29)",
+  "verifie_le": "2026-10-06",
+  "source": "deadlock.wiki Data:HeroData.json (révision du 2026-10-02, tirée des fichiers du jeu) ; noms : https://api.deadlock-api.com",
+  "genere_par": "outils/maj_donnees.py",
+  "note": "Arme de base au niveau 1 sans objet. Distances en m, vitesse de balle en m/s. `dps_soutenu` compte le rechargement. `degats_chargeur` = dégâts par balle × balles par tir (1 si `touche_une_fois`) × tirs par chargeur. `types` = étiquettes d'arme du jeu. `par_niveau` = gain à chaque niveau (boon) ; `par_spirit` = gain par point de Spirit Power. Le multiplicateur de tir à la tête est ×1,65 pour tous (page Weapon Damage du wiki), plus `bonus_crit_pct`."
+ },
+ "armes": {
+  "1": {
+   "nom": "Incendiary Remarks",
+   "nom_fr": "Remarques incendiaires",
+   "types": [
+    "RapidFire",
+    "MediumRange"
+   ],
+   "bonus_crit_pct": 0,
+   "principal": {
+    "degats_balle": 5.5,
+    "balles_par_tir": 1,
+    "touche_une_fois": false,
+    "tirs_par_rafale": 1,
+    "tirs_par_s": 9.52,
+    "tirs_par_s_max": null,
+    "montee_cadence_s": null,
+    "chargeur": 27,
+    "munitions_par_tir": 1,
+    "rechargement_s": 2.25,
+    "rechargement_balle_par_balle": false,
+    "dps": 52.4,
+    "dps_soutenu": 29.2,
+    "degats_chargeur": 148.0,
+    "vider_chargeur_s": 2.84,
+    "degats_pleins_jusqu_a_m": 18,
+    "degats_minimum_des_m": 55,
+    "degats_minimum_pct": 10.0,
+    "vitesse_balle_m_s": 660.0,
+    "gravite": 0.8,
+    "rayon_explosion_m": null,
+    "vitesse_en_tirant_pct": 75.0,
+    "peut_crit": true
+   },
+   "secondaire": null,
+   "par_niveau": {
+    "degats_balle": 0.088,
+    "dps": 0.83809,
+    "melee_leger": 1.58,
+    "melee_lourd": 3.6656,
+    "pv": 39,
+    "spirit_power": 1.1
+   },
+   "par_spirit": {},
+   "melee": {
+    "leger": 50,
+    "lourd": 116
+   }
+  },
+  "2": {
+   "nom": "Cold Calculus",
+   "nom_fr": "Calcul placide",
+   "types": [
+    "BurstFire",
+    "MediumRange"
+   ],
+   "bonus_crit_pct": 0,
+   "principal": {
+    "degats_balle": 10.8,
+    "balles_par_tir": 1,
+    "touche_une_fois": false,
+    "tirs_par_rafale": 3,
+    "tirs_par_s": 5.83,
+    "tirs_par_s_max": null,
+    "montee_cadence_s": null,
+    "chargeur": 29,
+    "munitions_par_tir": 1,
+    "rechargement_s": 2.35,
+    "rechargement_balle_par_balle": false,
+    "dps": 63.0,
+    "dps_soutenu": 42.8,
+    "degats_chargeur": 313.0,
+    "vider_chargeur_s": 4.97,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 57.5,
+    "degats_minimum_pct": 10.0,
+    "vitesse_balle_m_s": 635,
+    "gravite": 0.8,
+    "rayon_explosion_m": null,
+    "vitesse_en_tirant_pct": 75.0,
+    "peut_crit": true
+   },
+   "secondaire": null,
+   "par_niveau": {
+    "degats_balle": 0.24,
+    "dps": 1.3994,
+    "melee_leger": 1.58,
+    "melee_lourd": 3.6656,
+    "pv": 41,
+    "spirit_power": 1.1
+   },
+   "par_spirit": {},
+   "melee": {
+    "leger": 50,
+    "lourd": 116
+   }
+  },
+  "3": {
+   "nom": "Wallflower's Revenge",
+   "nom_fr": "La revanche d'une introvertie",
+   "types": [
+    "RapidFire",
+    "LongRange"
+   ],
+   "bonus_crit_pct": 0,
+   "principal": {
+    "degats_balle": 12.33,
+    "balles_par_tir": 1,
+    "touche_une_fois": false,
+    "tirs_par_rafale": 1,
+    "tirs_par_s": 4.33,
+    "tirs_par_s_max": null,
+    "montee_cadence_s": null,
+    "chargeur": 19,
+    "munitions_par_tir": 1,
+    "rechargement_s": 2.91,
+    "rechargement_balle_par_balle": false,
+    "dps": 53.4,
+    "dps_soutenu": 32.1,
+    "degats_chargeur": 234.0,
+    "vider_chargeur_s": 4.39,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 64,
+    "degats_minimum_pct": 10.0,
+    "vitesse_balle_m_s": 660,
+    "gravite": 0.8,
+    "rayon_explosion_m": null,
+    "vitesse_en_tirant_pct": 75.0,
+    "peut_crit": true
+   },
+   "secondaire": null,
+   "par_niveau": {
+    "degats_balle": 0.495,
+    "dps": 2.1429,
+    "melee_leger": 1.58,
+    "melee_lourd": 3.6656,
+    "pv": 28,
+    "spirit_power": 1.1
+   },
+   "par_spirit": {
+    "BulletDamage": 0.022,
+    "DPS": 0.095238
+   },
+   "melee": {
+    "leger": 50,
+    "lourd": 116
+   }
+  },
+  "4": {
+   "nom": "Johann's Gift",
+   "nom_fr": "Le présent de Johann",
+   "types": [
+    "MediumRange",
+    "HeavyHitter"
+   ],
+   "bonus_crit_pct": 0,
+   "principal": {
+    "degats_balle": 20.7,
+    "balles_par_tir": 1,
+    "touche_une_fois": false,
+    "tirs_par_rafale": 1,
+    "tirs_par_s": 2.12,
+    "tirs_par_s_max": null,
+    "montee_cadence_s": null,
+    "chargeur": 9,
+    "munitions_par_tir": 1,
+    "rechargement_s": 2.58,
+    "rechargement_balle_par_balle": false,
+    "dps": 43.8,
+    "dps_soutenu": 27.2,
+    "degats_chargeur": 186.0,
+    "vider_chargeur_s": 4.25,
+    "degats_pleins_jusqu_a_m": 17,
+    "degats_minimum_des_m": 48,
+    "degats_minimum_pct": 10.0,
+    "vitesse_balle_m_s": 828,
+    "gravite": 0.8,
+    "rayon_explosion_m": null,
+    "vitesse_en_tirant_pct": 75.0,
+    "peut_crit": true
+   },
+   "secondaire": null,
+   "par_niveau": {
+    "degats_balle": 1,
+    "dps": 2.1164,
+    "melee_leger": 1.58,
+    "melee_lourd": 3.6656,
+    "pv": 51,
+    "spirit_power": 1.1
+   },
+   "par_spirit": {},
+   "melee": {
+    "leger": 50,
+    "lourd": 116
+   }
+  },
+  "6": {
+   "nom": "Case Closed",
+   "nom_fr": "Affaire classée",
+   "types": [
+    "Spreadshot",
+    "CloseRange"
+   ],
+   "bonus_crit_pct": 0,
+   "principal": {
+    "degats_balle": 3.6,
+    "balles_par_tir": 9,
+    "touche_une_fois": false,
+    "tirs_par_rafale": 1,
+    "tirs_par_s": 1.59,
+    "tirs_par_s_max": null,
+    "montee_cadence_s": null,
+    "chargeur": 9,
+    "munitions_par_tir": 1,
+    "rechargement_s": 0.35,
+    "rechargement_balle_par_balle": true,
+    "dps": 51.4,
+    "dps_soutenu": 30.5,
+    "degats_chargeur": 292.0,
+    "vider_chargeur_s": 5.67,
+    "degats_pleins_jusqu_a_m": 17,
+    "degats_minimum_des_m": 40,
+    "degats_minimum_pct": 10.0,
+    "vitesse_balle_m_s": 610.0,
+    "gravite": 0.8,
+    "rayon_explosion_m": null,
+    "vitesse_en_tirant_pct": 75.0,
+    "peut_crit": true
+   },
+   "secondaire": null,
+   "par_niveau": {
+    "degats_balle": 0.1,
+    "dps": 1.4286,
+    "melee_leger": 1.738,
+    "melee_lourd": 4.0322,
+    "pv": 49,
+    "spirit_power": 1.1
+   },
+   "par_spirit": {},
+   "melee": {
+    "leger": 50,
+    "lourd": 116
+   }
+  },
+  "7": {
+   "nom": "The Rake",
+   "nom_fr": "Le râteau",
+   "types": [
+    "RapidFire",
+    "MediumRange"
+   ],
+   "bonus_crit_pct": 0,
+   "principal": {
+    "degats_balle": 5.64,
+    "balles_par_tir": 1,
+    "touche_une_fois": false,
+    "tirs_par_rafale": 1,
+    "tirs_par_s": 10.58,
+    "tirs_par_s_max": null,
+    "montee_cadence_s": null,
+    "chargeur": 52,
+    "munitions_par_tir": 1,
+    "rechargement_s": 2.82,
+    "rechargement_balle_par_balle": false,
+    "dps": 59.7,
+    "dps_soutenu": 37.9,
+    "degats_chargeur": 293.0,
+    "vider_chargeur_s": 4.91,
+    "degats_pleins_jusqu_a_m": 18,
+    "degats_minimum_des_m": 52,
+    "degats_minimum_pct": 10.0,
+    "vitesse_balle_m_s": 572.0,
+    "gravite": 0,
+    "rayon_explosion_m": null,
+    "vitesse_en_tirant_pct": 75.0,
+    "peut_crit": true
+   },
+   "secondaire": null,
+   "par_niveau": {
+    "degats_balle": 0.14,
+    "dps": 1.4815,
+    "melee_leger": 1.58,
+    "melee_lourd": 3.6656,
+    "pv": 35,
+    "spirit_power": 1.1
+   },
+   "par_spirit": {
+    "SprintSpeed": 0.05
+   },
+   "melee": {
+    "leger": 50,
+    "lourd": 116
+   }
+  },
+  "8": {
+   "nom": "Services Rendered",
+   "nom_fr": "Services rendus",
+   "types": [
+    "RapidFire",
+    "MediumRange"
+   ],
+   "bonus_crit_pct": 0,
+   "principal": {
+    "degats_balle": 6.08,
+    "balles_par_tir": 1,
+    "touche_une_fois": false,
+    "tirs_par_rafale": 1,
+    "tirs_par_s": 4.76,
+    "tirs_par_s_max": 11.9,
+    "montee_cadence_s": 2.0,
+    "chargeur": 66,
+    "munitions_par_tir": 1,
+    "rechargement_s": 3.29,
+    "rechargement_balle_par_balle": false,
+    "dps": 72.4,
+    "dps_soutenu": 45.4,
+    "degats_chargeur": 401.0,
+    "vider_chargeur_s": 5.54,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 57.5,
+    "degats_minimum_pct": 10.0,
+    "vitesse_balle_m_s": 650,
+    "gravite": 0.8,
+    "rayon_explosion_m": null,
+    "vitesse_en_tirant_pct": 75.0,
+    "peut_crit": true
+   },
+   "secondaire": null,
+   "par_niveau": {
+    "degats_balle": 0.171,
+    "dps": 2.0357,
+    "melee_leger": 1.58,
+    "melee_lourd": 3.6656,
+    "pv": 52,
+    "spirit_power": 1.1
+   },
+   "par_spirit": {},
+   "melee": {
+    "leger": 50,
+    "lourd": 116
+   }
+  },
+  "10": {
+   "nom": "Trade Secret",
+   "nom_fr": "Secret de fabrication",
+   "types": [
+    "BurstFire",
+    "MediumRange"
+   ],
+   "bonus_crit_pct": 0,
+   "principal": {
+    "degats_balle": 6.8,
+    "balles_par_tir": 1,
+    "touche_une_fois": false,
+    "tirs_par_rafale": 5,
+    "tirs_par_s": 7.56,
+    "tirs_par_s_max": null,
+    "montee_cadence_s": null,
+    "chargeur": 40,
+    "munitions_par_tir": 1,
+    "rechargement_s": 2.58,
+    "rechargement_balle_par_balle": false,
+    "dps": 51.4,
+    "dps_soutenu": 34.5,
+    "degats_chargeur": 272.0,
+    "vider_chargeur_s": 5.29,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 57.5,
+    "degats_minimum_pct": 10.0,
+    "vitesse_balle_m_s": 525,
+    "gravite": 0.1,
+    "rayon_explosion_m": null,
+    "vitesse_en_tirant_pct": 75.0,
+    "peut_crit": true
+   },
+   "secondaire": null,
+   "par_niveau": {
+    "degats_balle": 0.26,
+    "dps": 1.9652,
+    "melee_leger": 1.58,
+    "melee_lourd": 3.6656,
+    "pv": 46,
+    "spirit_power": 1.1
+   },
+   "par_spirit": {},
+   "melee": {
+    "leger": 50,
+    "lourd": 116
+   }
+  },
+  "11": {
+   "nom": "The Vonnegun",
+   "nom_fr": "Le Vonnegun",
+   "types": [
+    "MediumRange",
+    "HeavyHitter",
+    "Projectile"
+   ],
+   "bonus_crit_pct": 0,
+   "principal": {
+    "degats_balle": 12.6,
+    "balles_par_tir": 1,
+    "touche_une_fois": false,
+    "tirs_par_rafale": 1,
+    "tirs_par_s": 3.81,
+    "tirs_par_s_max": null,
+    "montee_cadence_s": null,
+    "chargeur": 20,
+    "munitions_par_tir": 1,
+    "rechargement_s": 2.35,
+    "rechargement_balle_par_balle": false,
+    "dps": 48,
+    "dps_soutenu": 33.2,
+    "degats_chargeur": 252.0,
+    "vider_chargeur_s": 5.25,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 57.5,
+    "degats_minimum_pct": 10.0,
+    "vitesse_balle_m_s": 320,
+    "gravite": 0.8,
+    "rayon_explosion_m": null,
+    "vitesse_en_tirant_pct": 75.0,
+    "peut_crit": true
+   },
+   "secondaire": null,
+   "par_niveau": {
+    "degats_balle": 0.5,
+    "dps": 1.9047,
+    "melee_leger": 1.58,
+    "melee_lourd": 3.6656,
+    "pv": 61,
+    "spirit_power": 1.1
+   },
+   "par_spirit": {},
+   "melee": {
+    "leger": 50,
+    "lourd": 116
+   }
+  },
+  "12": {
+   "nom": "Expedition's End",
+   "nom_fr": "Au terme de l'expédition",
+   "types": [
+    "MediumRange",
+    "HeavyHitter",
+    "Projectile"
+   ],
+   "bonus_crit_pct": -25,
+   "principal": {
+    "degats_balle": 18.6,
+    "balles_par_tir": 1,
+    "touche_une_fois": false,
+    "tirs_par_rafale": 1,
+    "tirs_par_s": 3.81,
+    "tirs_par_s_max": null,
+    "montee_cadence_s": null,
+    "chargeur": 14,
+    "munitions_par_tir": 1,
+    "rechargement_s": 2.58,
+    "rechargement_balle_par_balle": false,
+    "dps": 70.9,
+    "dps_soutenu": 41.6,
+    "degats_chargeur": 260.0,
+    "vider_chargeur_s": 3.68,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 57.5,
+    "degats_minimum_pct": 10.0,
+    "vitesse_balle_m_s": 160,
+    "gravite": 0.3,
+    "rayon_explosion_m": null,
+    "vitesse_en_tirant_pct": 75.0,
+    "peut_crit": true
+   },
+   "secondaire": null,
+   "par_niveau": {
+    "degats_balle": 0.418,
+    "dps": 1.5924,
+    "melee_leger": 1.58,
+    "melee_lourd": 3.6656,
+    "pv": 60,
+    "spirit_power": 1.3
+   },
+   "par_spirit": {},
+   "melee": {
+    "leger": 50,
+    "lourd": 116
+   }
+  },
+  "13": {
+   "nom": "Censure & Penance",
+   "nom_fr": "Censure et pénitence",
+   "types": [
+    "RapidFire",
+    "CloseRange"
+   ],
+   "bonus_crit_pct": 0,
+   "principal": {
+    "degats_balle": 5.26,
+    "balles_par_tir": 1,
+    "touche_une_fois": false,
+    "tirs_par_rafale": 1,
+    "tirs_par_s": 9.52,
+    "tirs_par_s_max": null,
+    "montee_cadence_s": null,
+    "chargeur": 25,
+    "munitions_par_tir": 1,
+    "rechargement_s": 2.35,
+    "rechargement_balle_par_balle": false,
+    "dps": 50.1,
+    "dps_soutenu": 26.4,
+    "degats_chargeur": 132.0,
+    "vider_chargeur_s": 2.63,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 46,
+    "degats_minimum_pct": 10.0,
+    "vitesse_balle_m_s": 762,
+    "gravite": 1.5,
+    "rayon_explosion_m": null,
+    "vitesse_en_tirant_pct": 75.0,
+    "peut_crit": true
+   },
+   "secondaire": null,
+   "par_niveau": {
+    "degats_balle": 0.143,
+    "dps": 1.3619,
+    "melee_leger": 1.58,
+    "melee_lourd": 3.6656,
+    "pv": 33,
+    "spirit_power": 0.5
+   },
+   "par_spirit": {
+    "ClipSize": 0.5
+   },
+   "melee": {
+    "leger": 50,
+    "lourd": 116
+   }
+  },
+  "14": {
+   "nom": "Doc's Orders",
+   "nom_fr": "Ordonnance",
+   "types": [
+    "MediumRange",
+    "HeavyHitter"
+   ],
+   "bonus_crit_pct": 0,
+   "principal": {
+    "degats_balle": 19.7,
+    "balles_par_tir": 1,
+    "touche_une_fois": false,
+    "tirs_par_rafale": 1,
+    "tirs_par_s": 2.12,
+    "tirs_par_s_max": null,
+    "montee_cadence_s": null,
+    "chargeur": 10,
+    "munitions_par_tir": 1,
+    "rechargement_s": 2.75,
+    "rechargement_balle_par_balle": false,
+    "dps": 41.7,
+    "dps_soutenu": 26.4,
+    "degats_chargeur": 197.0,
+    "vider_chargeur_s": 4.73,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 57.5,
+    "degats_minimum_pct": 10.0,
+    "vitesse_balle_m_s": 1156,
+    "gravite": 0,
+    "rayon_explosion_m": null,
+    "vitesse_en_tirant_pct": 75.0,
+    "peut_crit": true
+   },
+   "secondaire": null,
+   "par_niveau": {
+    "degats_balle": 1.144,
+    "dps": 2.4212,
+    "melee_leger": 1.58,
+    "melee_lourd": 3.6656,
+    "pv": 43,
+    "spirit_power": 1.1
+   },
+   "par_spirit": {},
+   "melee": {
+    "leger": 50,
+    "lourd": 116
+   }
+  },
+  "15": {
+   "nom": "Humble Pie",
+   "nom_fr": "Dose d'humilité",
+   "types": [
+    "BeamWeapon",
+    "MediumRange"
+   ],
+   "bonus_crit_pct": 0,
+   "principal": {
+    "degats_balle": 4.98,
+    "balles_par_tir": 1,
+    "touche_une_fois": false,
+    "tirs_par_rafale": 1,
+    "tirs_par_s": 11.9,
+    "tirs_par_s_max": null,
+    "montee_cadence_s": null,
+    "chargeur": 66,
+    "munitions_par_tir": 1,
+    "rechargement_s": 2.35,
+    "rechargement_balle_par_balle": false,
+    "dps": 59.3,
+    "dps_soutenu": 41.6,
+    "degats_chargeur": 329.0,
+    "vider_chargeur_s": 5.54,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 50.8,
+    "degats_minimum_pct": 10.0,
+    "vitesse_balle_m_s": 508,
+    "gravite": 0.8,
+    "rayon_explosion_m": null,
+    "vitesse_en_tirant_pct": 75.0,
+    "peut_crit": true
+   },
+   "secondaire": null,
+   "par_niveau": {
+    "degats_balle": 0.115,
+    "dps": 1.3691,
+    "melee_leger": 1.58,
+    "melee_lourd": 2.9092,
+    "pv": 52,
+    "spirit_power": 1.1
+   },
+   "par_spirit": {},
+   "melee": {
+    "leger": 63,
+    "lourd": 116
+   }
+  },
+  "16": {
+   "nom": "Sweetest Lie",
+   "nom_fr": "Doux mensonge",
+   "types": [
+    "Spreadshot",
+    "CloseRange"
+   ],
+   "bonus_crit_pct": 0,
+   "principal": {
+    "degats_balle": 1.84,
+    "balles_par_tir": 9,
+    "touche_une_fois": false,
+    "tirs_par_rafale": 1,
+    "tirs_par_s": 4.76,
+    "tirs_par_s_max": null,
+    "montee_cadence_s": null,
+    "chargeur": 12,
+    "munitions_par_tir": 1,
+    "rechargement_s": 2.6,
+    "rechargement_balle_par_balle": false,
+    "dps": 78.9,
+    "dps_soutenu": 38.8,
+    "degats_chargeur": 199.0,
+    "vider_chargeur_s": 2.52,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 57.5,
+    "degats_minimum_pct": 10.0,
+    "vitesse_balle_m_s": 318.0,
+    "gravite": 0,
+    "rayon_explosion_m": null,
+    "vitesse_en_tirant_pct": 75.0,
+    "peut_crit": true
+   },
+   "secondaire": null,
+   "par_niveau": {
+    "degats_balle": 0.043,
+    "dps": 1.8429,
+    "melee_leger": 1.58,
+    "melee_lourd": 2.9092,
+    "pv": 37,
+    "spirit_power": 1.1
+   },
+   "par_spirit": {},
+   "melee": {
+    "leger": 63,
+    "lourd": 116
+   }
+  },
+  "17": {
+   "nom": "The Mourning Comes",
+   "nom_fr": "L'arrivée du deuil",
+   "types": [
+    "MediumRange",
+    "HeavyHitter",
+    "Projectile"
+   ],
+   "bonus_crit_pct": 0,
+   "principal": {
+    "degats_balle": 23.51,
+    "balles_par_tir": 1,
+    "touche_une_fois": true,
+    "tirs_par_rafale": 1,
+    "tirs_par_s": 1.67,
+    "tirs_par_s_max": null,
+    "montee_cadence_s": null,
+    "chargeur": 17,
+    "munitions_par_tir": 1,
+    "rechargement_s": 2.35,
+    "rechargement_balle_par_balle": false,
+    "dps": 39.2,
+    "dps_soutenu": 31.8,
+    "degats_chargeur": 400.0,
+    "vider_chargeur_s": 10.2,
+    "degats_pleins_jusqu_a_m": 18,
+    "degats_minimum_des_m": 54,
+    "degats_minimum_pct": 10.0,
+    "vitesse_balle_m_s": 495.0,
+    "gravite": 0.8,
+    "rayon_explosion_m": null,
+    "vitesse_en_tirant_pct": 75.0,
+    "peut_crit": true
+   },
+   "secondaire": null,
+   "par_niveau": {
+    "degats_balle": 0.85,
+    "dps": 1.4167,
+    "melee_leger": 1.58,
+    "melee_lourd": 3.6656,
+    "pv": 38,
+    "spirit_power": 1.6
+   },
+   "par_spirit": {
+    "MaxMoveSpeed": 0.0084,
+    "BulletDamage": 0.08,
+    "DPS": 0.13334
+   },
+   "melee": {
+    "leger": 50,
+    "lourd": 116
+   }
+  },
+  "18": {
+   "nom": "Yellow Canary",
+   "nom_fr": "Le canari jaune",
+   "types": [
+    "RapidFire",
+    "Spreadshot"
+   ],
+   "bonus_crit_pct": 0,
+   "principal": {
+    "degats_balle": 2.82,
+    "balles_par_tir": 4,
+    "touche_une_fois": false,
+    "tirs_par_rafale": 1,
+    "tirs_par_s": 5.29,
+    "tirs_par_s_max": null,
+    "montee_cadence_s": null,
+    "chargeur": 20,
+    "munitions_par_tir": 1,
+    "rechargement_s": 2.82,
+    "rechargement_balle_par_balle": false,
+    "dps": 59.7,
+    "dps_soutenu": 34.2,
+    "degats_chargeur": 226.0,
+    "vider_chargeur_s": 3.78,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 57.5,
+    "degats_minimum_pct": 10.0,
+    "vitesse_balle_m_s": 320,
+    "gravite": 0.8,
+    "rayon_explosion_m": null,
+    "vitesse_en_tirant_pct": 75.0,
+    "peut_crit": true
+   },
+   "secondaire": null,
+   "par_niveau": {
+    "degats_balle": 0.0847,
+    "dps": 1.7926,
+    "melee_leger": 1.58,
+    "melee_lourd": 3.6656,
+    "pv": 65,
+    "spirit_power": 1.1
+   },
+   "par_spirit": {},
+   "melee": {
+    "leger": 50,
+    "lourd": 116
+   }
+  },
+  "19": {
+   "nom": "Busted Flush",
+   "nom_fr": "Déception",
+   "types": [
+    "Spreadshot",
+    "CloseRange"
+   ],
+   "bonus_crit_pct": 0,
+   "principal": {
+    "degats_balle": 4.8,
+    "balles_par_tir": 6,
+    "touche_une_fois": false,
+    "tirs_par_rafale": 1,
+    "tirs_par_s": 1.81,
+    "tirs_par_s_max": null,
+    "montee_cadence_s": null,
+    "chargeur": 10,
+    "munitions_par_tir": 1,
+    "rechargement_s": 2.8,
+    "rechargement_balle_par_balle": false,
+    "dps": 52.2,
+    "dps_soutenu": 34.6,
+    "degats_chargeur": 288.0,
+    "vider_chargeur_s": 5.51,
+    "degats_pleins_jusqu_a_m": 19.8,
+    "degats_minimum_des_m": 41.1,
+    "degats_minimum_pct": 10.0,
+    "vitesse_balle_m_s": 610.0,
+    "gravite": 0.8,
+    "rayon_explosion_m": null,
+    "vitesse_en_tirant_pct": 75.0,
+    "peut_crit": true
+   },
+   "secondaire": {
+    "degats_balle": 4.53,
+    "balles_par_tir": 12,
+    "touche_une_fois": false,
+    "tirs_par_rafale": 1,
+    "tirs_par_s": 0.79,
+    "tirs_par_s_max": null,
+    "montee_cadence_s": null,
+    "chargeur": 8,
+    "munitions_par_tir": 4,
+    "rechargement_s": 2,
+    "rechargement_balle_par_balle": false,
+    "dps": 43.1,
+    "dps_soutenu": 36,
+    "degats_chargeur": 109.0,
+    "vider_chargeur_s": 2.52,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 57.5,
+    "degats_minimum_pct": 10.0,
+    "vitesse_balle_m_s": 610.0,
+    "gravite": 0.8,
+    "rayon_explosion_m": null,
+    "vitesse_en_tirant_pct": 75.0,
+    "peut_crit": true,
+    "nom": "Busted Flush"
+   },
+   "par_niveau": {
+    "degats_balle": 0.165,
+    "dps": 1.796,
+    "melee_leger": 1.58,
+    "melee_lourd": 3.6656,
+    "pv": 46,
+    "spirit_power": 1.1
+   },
+   "par_spirit": {},
+   "melee": {
+    "leger": 50,
+    "lourd": 116
+   }
+  },
+  "20": {
+   "nom": "Protector's Hand",
+   "nom_fr": "Main tutélaire",
+   "types": [
+    "RapidFire",
+    "MediumRange"
+   ],
+   "bonus_crit_pct": 0,
+   "principal": {
+    "degats_balle": 4.45,
+    "balles_par_tir": 1,
+    "touche_une_fois": false,
+    "tirs_par_rafale": 1,
+    "tirs_par_s": 13.61,
+    "tirs_par_s_max": null,
+    "montee_cadence_s": null,
+    "chargeur": 33,
+    "munitions_par_tir": 1,
+    "rechargement_s": 2.44,
+    "rechargement_balle_par_balle": false,
+    "dps": 60.5,
+    "dps_soutenu": 30.2,
+    "degats_chargeur": 147.0,
+    "vider_chargeur_s": 2.43,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 57.5,
+    "degats_minimum_pct": 10.0,
+    "vitesse_balle_m_s": 572.0,
+    "gravite": 0.8,
+    "rayon_explosion_m": null,
+    "vitesse_en_tirant_pct": 75.0,
+    "peut_crit": true
+   },
+   "secondaire": null,
+   "par_niveau": {
+    "degats_balle": 0.08,
+    "dps": 1.0884,
+    "melee_leger": 1.58,
+    "melee_lourd": 3.6656,
+    "pv": 45,
+    "spirit_power": 1.2
+   },
+   "par_spirit": {},
+   "melee": {
+    "leger": 50,
+    "lourd": 116
+   }
+  },
+  "25": {
+   "nom": "Freedom's Cost",
+   "nom_fr": "Le prix de la liberté",
+   "types": [
+    "MediumRange",
+    "Projectile"
+   ],
+   "bonus_crit_pct": 0,
+   "principal": {
+    "degats_balle": 17.34,
+    "balles_par_tir": 1,
+    "touche_une_fois": false,
+    "tirs_par_rafale": 1,
+    "tirs_par_s": 3.81,
+    "tirs_par_s_max": null,
+    "montee_cadence_s": null,
+    "chargeur": 17,
+    "munitions_par_tir": 1,
+    "rechargement_s": 2.91,
+    "rechargement_balle_par_balle": false,
+    "dps": 66.1,
+    "dps_soutenu": 40.0,
+    "degats_chargeur": 295.0,
+    "vider_chargeur_s": 4.46,
+    "degats_pleins_jusqu_a_m": 18,
+    "degats_minimum_des_m": 47,
+    "degats_minimum_pct": 10.0,
+    "vitesse_balle_m_s": 290,
+    "gravite": 0.25,
+    "rayon_explosion_m": null,
+    "vitesse_en_tirant_pct": 75.0,
+    "peut_crit": true
+   },
+   "secondaire": null,
+   "par_niveau": {
+    "degats_balle": 0.25,
+    "dps": 0.95238,
+    "melee_leger": 1.58,
+    "melee_lourd": 3.6656,
+    "pv": 60,
+    "spirit_power": 1.1
+   },
+   "par_spirit": {
+    "RoundsPerSecond": 0.008,
+    "FireRate": 0.21,
+    "DPS": 0.13872
+   },
+   "melee": {
+    "leger": 50,
+    "lourd": 116
+   }
+  },
+  "27": {
+   "nom": "Sister's Lament",
+   "nom_fr": "La complainte d'une sœur",
+   "types": [
+    "Spreadshot",
+    "CloseRange"
+   ],
+   "bonus_crit_pct": 0,
+   "principal": {
+    "degats_balle": 5.31,
+    "balles_par_tir": 5,
+    "touche_une_fois": false,
+    "tirs_par_rafale": 1,
+    "tirs_par_s": 2.38,
+    "tirs_par_s_max": null,
+    "montee_cadence_s": null,
+    "chargeur": 12,
+    "munitions_par_tir": 1,
+    "rechargement_s": 2.44,
+    "rechargement_balle_par_balle": false,
+    "dps": 63.2,
+    "dps_soutenu": 42.6,
+    "degats_chargeur": 319.0,
+    "vider_chargeur_s": 5.04,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 45.7,
+    "degats_minimum_pct": 10.0,
+    "vitesse_balle_m_s": 254,
+    "gravite": 0,
+    "rayon_explosion_m": null,
+    "vitesse_en_tirant_pct": 75.0,
+    "peut_crit": true
+   },
+   "secondaire": {
+    "degats_balle": 50,
+    "balles_par_tir": 1,
+    "touche_une_fois": false,
+    "tirs_par_rafale": 1,
+    "tirs_par_s": 0.95,
+    "tirs_par_s_max": null,
+    "montee_cadence_s": null,
+    "chargeur": 9,
+    "munitions_par_tir": 3,
+    "rechargement_s": 2.1,
+    "rechargement_balle_par_balle": false,
+    "dps": 47.6,
+    "dps_soutenu": 39.0,
+    "degats_chargeur": 150.0,
+    "vider_chargeur_s": 3.15,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 57.5,
+    "degats_minimum_pct": 10.0,
+    "vitesse_balle_m_s": 76.0,
+    "gravite": 1,
+    "rayon_explosion_m": 3.0,
+    "vitesse_en_tirant_pct": 75.0,
+    "peut_crit": false,
+    "nom": "Sister's Lament"
+   },
+   "par_niveau": {
+    "degats_balle": 0.154,
+    "dps": 1.8334,
+    "melee_leger": 1.58,
+    "melee_lourd": 3.6771,
+    "pv": 45,
+    "spirit_power": 1.1
+   },
+   "par_spirit": {
+    "ClipSize": 0.15
+   },
+   "melee": {
+    "leger": 55,
+    "lourd": 128
+   }
+  },
+  "31": {
+   "nom": "Tale of The Tape",
+   "nom_fr": "Une histoire de bande",
+   "types": [
+    "BurstFire",
+    "MediumRange"
+   ],
+   "bonus_crit_pct": 0,
+   "principal": {
+    "degats_balle": 8.46,
+    "balles_par_tir": 1,
+    "touche_une_fois": false,
+    "tirs_par_rafale": 3,
+    "tirs_par_s": 5.83,
+    "tirs_par_s_max": null,
+    "montee_cadence_s": null,
+    "chargeur": 29,
+    "munitions_par_tir": 1,
+    "rechargement_s": 2.35,
+    "rechargement_balle_par_balle": false,
+    "dps": 49.3,
+    "dps_soutenu": 33.5,
+    "degats_chargeur": 245.0,
+    "vider_chargeur_s": 4.97,
+    "degats_pleins_jusqu_a_m": 16,
+    "degats_minimum_des_m": 48,
+    "degats_minimum_pct": 10.0,
+    "vitesse_balle_m_s": 635,
+    "gravite": 0.8,
+    "rayon_explosion_m": null,
+    "vitesse_en_tirant_pct": 75.0,
+    "peut_crit": true
+   },
+   "secondaire": null,
+   "par_niveau": {
+    "degats_balle": 0.31,
+    "dps": 1.8076,
+    "melee_leger": 1.58,
+    "melee_lourd": 3.6656,
+    "pv": 50,
+    "spirit_power": 1.1
+   },
+   "par_spirit": {},
+   "melee": {
+    "leger": 50,
+    "lourd": 116
+   }
+  },
+  "35": {
+   "nom": "Deep Sea Interpreter",
+   "nom_fr": "Interprète des mers profondes",
+   "types": [
+    "MediumRange",
+    "Projectile"
+   ],
+   "bonus_crit_pct": 0,
+   "principal": {
+    "degats_balle": 10.34,
+    "balles_par_tir": 1,
+    "touche_une_fois": false,
+    "tirs_par_rafale": 1,
+    "tirs_par_s": 4.76,
+    "tirs_par_s_max": null,
+    "montee_cadence_s": null,
+    "chargeur": 20,
+    "munitions_par_tir": 1,
+    "rechargement_s": 2.5,
+    "rechargement_balle_par_balle": false,
+    "dps": 49.2,
+    "dps_soutenu": 30.9,
+    "degats_chargeur": 207.0,
+    "vider_chargeur_s": 4.2,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 57.5,
+    "degats_minimum_pct": 10.0,
+    "vitesse_balle_m_s": 254,
+    "gravite": 0,
+    "rayon_explosion_m": null,
+    "vitesse_en_tirant_pct": 75.0,
+    "peut_crit": true
+   },
+   "secondaire": {
+    "degats_balle": 42,
+    "balles_par_tir": 1,
+    "touche_une_fois": false,
+    "tirs_par_rafale": 1,
+    "tirs_par_s": 0.79,
+    "tirs_par_s_max": null,
+    "montee_cadence_s": null,
+    "chargeur": 10,
+    "munitions_par_tir": 5,
+    "rechargement_s": 2.1,
+    "rechargement_balle_par_balle": false,
+    "dps": 33.3,
+    "dps_soutenu": 28.6,
+    "degats_chargeur": 84.0,
+    "vider_chargeur_s": 2.52,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 57.5,
+    "degats_minimum_pct": 10.0,
+    "vitesse_balle_m_s": 38.0,
+    "gravite": 0.2,
+    "rayon_explosion_m": 3.6,
+    "vitesse_en_tirant_pct": 75.0,
+    "peut_crit": false,
+    "nom": "Deep Sea Interpreter"
+   },
+   "par_niveau": {
+    "degats_balle": 0.36,
+    "dps": 1.7143,
+    "melee_leger": 1.58,
+    "melee_lourd": 2.9092,
+    "pv": 45,
+    "spirit_power": 1.3
+   },
+   "par_spirit": {},
+   "melee": {
+    "leger": 63,
+    "lourd": 116
+   }
+  },
+  "50": {
+   "nom": "The Black Sheep",
+   "nom_fr": "Le mouton noir",
+   "types": [
+    "Spreadshot",
+    "CloseRange"
+   ],
+   "bonus_crit_pct": 0,
+   "principal": {
+    "degats_balle": 4.28,
+    "balles_par_tir": 7,
+    "touche_une_fois": false,
+    "tirs_par_rafale": 1,
+    "tirs_par_s": 1.9,
+    "tirs_par_s_max": null,
+    "montee_cadence_s": null,
+    "chargeur": 11,
+    "munitions_par_tir": 1,
+    "rechargement_s": 2.82,
+    "rechargement_balle_par_balle": false,
+    "dps": 57.1,
+    "dps_soutenu": 38.3,
+    "degats_chargeur": 330.0,
+    "vider_chargeur_s": 5.77,
+    "degats_pleins_jusqu_a_m": 16,
+    "degats_minimum_des_m": 45.7,
+    "degats_minimum_pct": 10.0,
+    "vitesse_balle_m_s": 559.0,
+    "gravite": 0.8,
+    "rayon_explosion_m": null,
+    "vitesse_en_tirant_pct": 75.0,
+    "peut_crit": true
+   },
+   "secondaire": null,
+   "par_niveau": {
+    "degats_balle": 0.14,
+    "dps": 1.8667,
+    "melee_leger": 1.58,
+    "melee_lourd": 3.0547,
+    "pv": 36,
+    "spirit_power": 1.1
+   },
+   "par_spirit": {},
+   "melee": {
+    "leger": 60,
+    "lourd": 116
+   }
+  },
+  "52": {
+   "nom": "Promises Kept",
+   "nom_fr": "Promesses tenues",
+   "types": [
+    "MediumRange",
+    "HeavyHitter"
+   ],
+   "bonus_crit_pct": 0,
+   "principal": {
+    "degats_balle": 14.8,
+    "balles_par_tir": 1,
+    "touche_une_fois": false,
+    "tirs_par_rafale": 1,
+    "tirs_par_s": 2.72,
+    "tirs_par_s_max": null,
+    "montee_cadence_s": null,
+    "chargeur": 16,
+    "munitions_par_tir": 1,
+    "rechargement_s": 2.6,
+    "rechargement_balle_par_balle": false,
+    "dps": 40.3,
+    "dps_soutenu": 27.9,
+    "degats_chargeur": 237.0,
+    "vider_chargeur_s": 5.88,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 57.5,
+    "degats_minimum_pct": 10.0,
+    "vitesse_balle_m_s": 828,
+    "gravite": 0.8,
+    "rayon_explosion_m": null,
+    "vitesse_en_tirant_pct": 75.0,
+    "peut_crit": true
+   },
+   "secondaire": null,
+   "par_niveau": {
+    "degats_balle": 0.3,
+    "dps": 0.81633,
+    "melee_leger": 1.58,
+    "melee_lourd": 3.6656,
+    "pv": 45,
+    "spirit_power": 1.1
+   },
+   "par_spirit": {},
+   "melee": {
+    "leger": 50,
+    "lourd": 116
+   }
+  },
+  "58": {
+   "nom": "The Rattler",
+   "nom_fr": "Le crotale",
+   "types": [
+    "RapidFire",
+    "CloseRange"
+   ],
+   "bonus_crit_pct": -30,
+   "principal": {
+    "degats_balle": 6.58,
+    "balles_par_tir": 1,
+    "touche_une_fois": false,
+    "tirs_par_rafale": 1,
+    "tirs_par_s": 14.29,
+    "tirs_par_s_max": null,
+    "montee_cadence_s": null,
+    "chargeur": 24,
+    "munitions_par_tir": 1,
+    "rechargement_s": 1.6,
+    "rechargement_balle_par_balle": false,
+    "dps": 94.0,
+    "dps_soutenu": 48.1,
+    "degats_chargeur": 158.0,
+    "vider_chargeur_s": 1.68,
+    "degats_pleins_jusqu_a_m": 15.0,
+    "degats_minimum_des_m": 33.0,
+    "degats_minimum_pct": 10.0,
+    "vitesse_balle_m_s": 412.0,
+    "gravite": 0,
+    "rayon_explosion_m": null,
+    "vitesse_en_tirant_pct": 75.0,
+    "peut_crit": true
+   },
+   "secondaire": null,
+   "par_niveau": {
+    "degats_balle": 0.178,
+    "dps": 2.5429,
+    "melee_leger": 1.58,
+    "melee_lourd": 3.6656,
+    "pv": 35,
+    "spirit_power": 1.1
+   },
+   "par_spirit": {
+    "MaxMoveSpeed": 0.0138
+   },
+   "melee": {
+    "leger": 50,
+    "lourd": 116
+   }
+  },
+  "60": {
+   "nom": "The Prestige",
+   "nom_fr": "Le prestige",
+   "types": [
+    "BurstFire",
+    "LongRange",
+    "Projectile"
+   ],
+   "bonus_crit_pct": 0,
+   "principal": {
+    "degats_balle": 17.76,
+    "balles_par_tir": 1,
+    "touche_une_fois": false,
+    "tirs_par_rafale": 2,
+    "tirs_par_s": 2.72,
+    "tirs_par_s_max": null,
+    "montee_cadence_s": null,
+    "chargeur": 16,
+    "munitions_par_tir": 1,
+    "rechargement_s": 2.5,
+    "rechargement_balle_par_balle": false,
+    "dps": 48.3,
+    "dps_soutenu": 33.9,
+    "degats_chargeur": 284.0,
+    "vider_chargeur_s": 5.88,
+    "degats_pleins_jusqu_a_m": 25.4,
+    "degats_minimum_des_m": 61.0,
+    "degats_minimum_pct": 30.0,
+    "vitesse_balle_m_s": 300,
+    "gravite": 0,
+    "rayon_explosion_m": null,
+    "vitesse_en_tirant_pct": 75.0,
+    "peut_crit": true
+   },
+   "secondaire": null,
+   "par_niveau": {
+    "degats_balle": 0.55,
+    "dps": 1.4966,
+    "melee_leger": 1.58,
+    "melee_lourd": 3.6656,
+    "pv": 38,
+    "spirit_power": 1.3
+   },
+   "par_spirit": {
+    "MaxMoveSpeed": 0.0138
+   },
+   "melee": {
+    "leger": 50,
+    "lourd": 116
+   }
+  },
+  "63": {
+   "nom": "New Money",
+   "nom_fr": "Nouveau riche",
+   "types": [
+    "BurstFire",
+    "MediumRange"
+   ],
+   "bonus_crit_pct": 0,
+   "principal": {
+    "degats_balle": 7.31,
+    "balles_par_tir": 1,
+    "touche_une_fois": false,
+    "tirs_par_rafale": 1,
+    "tirs_par_s": 3.97,
+    "tirs_par_s_max": null,
+    "montee_cadence_s": null,
+    "chargeur": 12,
+    "munitions_par_tir": 1,
+    "rechargement_s": 1.7,
+    "rechargement_balle_par_balle": false,
+    "dps": 29.0,
+    "dps_soutenu": 18.6,
+    "degats_chargeur": 88.0,
+    "vider_chargeur_s": 3.02,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 46,
+    "degats_minimum_pct": 10.0,
+    "vitesse_balle_m_s": 762,
+    "gravite": 0,
+    "rayon_explosion_m": null,
+    "vitesse_en_tirant_pct": 75.0,
+    "peut_crit": true
+   },
+   "secondaire": null,
+   "par_niveau": {
+    "degats_balle": 0.275,
+    "dps": 1.0913,
+    "melee_leger": 1.58,
+    "melee_lourd": 3.6656,
+    "pv": 27,
+    "spirit_power": 1.1
+   },
+   "par_spirit": {},
+   "melee": {
+    "leger": 50,
+    "lourd": 116
+   }
+  },
+  "64": {
+   "nom": "Crimson Grasp",
+   "nom_fr": "Poigne écarlate",
+   "types": [
+    "Spreadshot",
+    "CloseRange"
+   ],
+   "bonus_crit_pct": -45,
+   "principal": {
+    "degats_balle": 19.5,
+    "balles_par_tir": 3,
+    "touche_une_fois": true,
+    "tirs_par_rafale": 1,
+    "tirs_par_s": 2.27,
+    "tirs_par_s_max": null,
+    "montee_cadence_s": null,
+    "chargeur": 12,
+    "munitions_par_tir": 1,
+    "rechargement_s": 2.44,
+    "rechargement_balle_par_balle": false,
+    "dps": 44.2,
+    "dps_soutenu": 30.2,
+    "degats_chargeur": 234.0,
+    "vider_chargeur_s": 5.29,
+    "degats_pleins_jusqu_a_m": 22,
+    "degats_minimum_des_m": 27,
+    "degats_minimum_pct": 60.0,
+    "vitesse_balle_m_s": 508,
+    "gravite": 0,
+    "rayon_explosion_m": null,
+    "vitesse_en_tirant_pct": 75.0,
+    "peut_crit": true
+   },
+   "secondaire": null,
+   "par_niveau": {
+    "degats_balle": 0.49,
+    "dps": 1.1111,
+    "melee_leger": 1.58,
+    "melee_lourd": 3.6816,
+    "pv": 41,
+    "spirit_power": 1.1
+   },
+   "par_spirit": {},
+   "melee": {
+    "leger": 51.5,
+    "lourd": 120
+   }
+  },
+  "65": {
+   "nom": "51:20",
+   "nom_fr": "51:20",
+   "types": [
+    "RapidFire",
+    "MediumRange"
+   ],
+   "bonus_crit_pct": 0,
+   "principal": {
+    "degats_balle": 8,
+    "balles_par_tir": 1,
+    "touche_une_fois": false,
+    "tirs_par_rafale": 1,
+    "tirs_par_s": 7.94,
+    "tirs_par_s_max": null,
+    "montee_cadence_s": null,
+    "chargeur": 33,
+    "munitions_par_tir": 1,
+    "rechargement_s": 2.8,
+    "rechargement_balle_par_balle": false,
+    "dps": 63.5,
+    "dps_soutenu": 37.9,
+    "degats_chargeur": 264.0,
+    "vider_chargeur_s": 4.16,
+    "degats_pleins_jusqu_a_m": 18,
+    "degats_minimum_des_m": 47,
+    "degats_minimum_pct": 10.0,
+    "vitesse_balle_m_s": 1588,
+    "gravite": 0,
+    "rayon_explosion_m": null,
+    "vitesse_en_tirant_pct": 75.0,
+    "peut_crit": true
+   },
+   "secondaire": null,
+   "par_niveau": {
+    "degats_balle": 0.27,
+    "dps": 2.1429,
+    "melee_leger": 1.7,
+    "melee_lourd": 4.25,
+    "pv": 43,
+    "spirit_power": 1.1
+   },
+   "par_spirit": {
+    "TechResist": 0.12178,
+    "BulletResist": 0.12178
+   },
+   "melee": {
+    "leger": 50,
+    "lourd": 125
+   }
+  },
+  "66": {
+   "nom": "Memento Mori",
+   "nom_fr": "Memento Mori",
+   "types": [
+    "MediumRange",
+    "Projectile"
+   ],
+   "bonus_crit_pct": 0,
+   "principal": {
+    "degats_balle": 12,
+    "balles_par_tir": 1,
+    "touche_une_fois": false,
+    "tirs_par_rafale": 1,
+    "tirs_par_s": 5.05,
+    "tirs_par_s_max": 5.85,
+    "montee_cadence_s": 1.7,
+    "chargeur": 24,
+    "munitions_par_tir": 1,
+    "rechargement_s": 2.4,
+    "rechargement_balle_par_balle": false,
+    "dps": 70.2,
+    "dps_soutenu": 44.3,
+    "degats_chargeur": 288.0,
+    "vider_chargeur_s": 4.1,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 57.5,
+    "degats_minimum_pct": 10.0,
+    "vitesse_balle_m_s": 203.0,
+    "gravite": 0,
+    "rayon_explosion_m": null,
+    "vitesse_en_tirant_pct": 75.0,
+    "peut_crit": true
+   },
+   "secondaire": null,
+   "par_niveau": {
+    "degats_balle": 0.26,
+    "dps": 1.5205,
+    "melee_leger": 1.58,
+    "melee_lourd": 3.6656,
+    "pv": 34,
+    "spirit_power": 1.1
+   },
+   "par_spirit": {
+    "BaseHealthRegen": 0.08
+   },
+   "melee": {
+    "leger": 50,
+    "lourd": 116
+   }
+  },
+  "67": {
+   "nom": "Chapter's End",
+   "nom_fr": "Fin du chapitre",
+   "types": [
+    "RapidFire",
+    "LongRange"
+   ],
+   "bonus_crit_pct": 0,
+   "principal": {
+    "degats_balle": 35,
+    "balles_par_tir": 1,
+    "touche_une_fois": false,
+    "tirs_par_rafale": 1,
+    "tirs_par_s": 2,
+    "tirs_par_s_max": null,
+    "montee_cadence_s": null,
+    "chargeur": 14,
+    "munitions_par_tir": 1,
+    "rechargement_s": 2.5,
+    "rechargement_balle_par_balle": false,
+    "dps": 70,
+    "dps_soutenu": 51.6,
+    "degats_chargeur": 490.0,
+    "vider_chargeur_s": 7.0,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 57.5,
+    "degats_minimum_pct": 10.0,
+    "vitesse_balle_m_s": 43.0,
+    "gravite": 0,
+    "rayon_explosion_m": 0.6,
+    "vitesse_en_tirant_pct": 75.0,
+    "peut_crit": false
+   },
+   "secondaire": null,
+   "par_niveau": {
+    "degats_balle": 0.52,
+    "dps": 1.04,
+    "melee_leger": 1.2,
+    "melee_lourd": 3.4286,
+    "pv": 31,
+    "spirit_power": 1.1
+   },
+   "par_spirit": {
+    "HeavyMeleeDamage": 0.45
+   },
+   "melee": {
+    "leger": 42,
+    "lourd": 120
+   }
+  },
+  "69": {
+   "nom": "Service With A Smile",
+   "nom_fr": "Toujours serviable",
+   "types": [
+    "HeavyHitter",
+    "MediumRange"
+   ],
+   "bonus_crit_pct": -30,
+   "principal": {
+    "degats_balle": 24,
+    "balles_par_tir": 1,
+    "touche_une_fois": false,
+    "tirs_par_rafale": 1,
+    "tirs_par_s": 1.59,
+    "tirs_par_s_max": null,
+    "montee_cadence_s": null,
+    "chargeur": 8,
+    "munitions_par_tir": 1,
+    "rechargement_s": 2.4,
+    "rechargement_balle_par_balle": false,
+    "dps": 38.1,
+    "dps_soutenu": 25.8,
+    "degats_chargeur": 192.0,
+    "vider_chargeur_s": 5.04,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 57.5,
+    "degats_minimum_pct": 10.0,
+    "vitesse_balle_m_s": 203.0,
+    "gravite": 0,
+    "rayon_explosion_m": null,
+    "vitesse_en_tirant_pct": 75.0,
+    "peut_crit": true
+   },
+   "secondaire": null,
+   "par_niveau": {
+    "degats_balle": 1.25,
+    "dps": 1.9841,
+    "melee_leger": 1.58,
+    "melee_lourd": 3.6656,
+    "pv": 42,
+    "spirit_power": 1.1
+   },
+   "par_spirit": {},
+   "melee": {
+    "leger": 50,
+    "lourd": 116
+   }
+  },
+  "72": {
+   "nom": "Biquette",
+   "nom_fr": "Biquette",
+   "types": [
+    "CloseRange"
+   ],
+   "bonus_crit_pct": -20,
+   "principal": {
+    "degats_balle": 6.3,
+    "balles_par_tir": 1,
+    "touche_une_fois": false,
+    "tirs_par_rafale": 1,
+    "tirs_par_s": 11.77,
+    "tirs_par_s_max": null,
+    "montee_cadence_s": null,
+    "chargeur": 30,
+    "munitions_par_tir": 1,
+    "rechargement_s": 2.9,
+    "rechargement_balle_par_balle": false,
+    "dps": 74.1,
+    "dps_soutenu": 34.7,
+    "degats_chargeur": 189.0,
+    "vider_chargeur_s": 2.55,
+    "degats_pleins_jusqu_a_m": 14.0,
+    "degats_minimum_des_m": 31.8,
+    "degats_minimum_pct": 10.0,
+    "vitesse_balle_m_s": 513.0,
+    "gravite": 0,
+    "rayon_explosion_m": null,
+    "vitesse_en_tirant_pct": 75.0,
+    "peut_crit": true
+   },
+   "secondaire": null,
+   "par_niveau": {
+    "degats_balle": 0.127,
+    "dps": 1.4942,
+    "melee_leger": 1.58,
+    "melee_lourd": 3.6656,
+    "pv": 53,
+    "spirit_power": 1.1
+   },
+   "par_spirit": {},
+   "melee": {
+    "leger": 50,
+    "lourd": 116
+   }
+  },
+  "76": {
+   "nom": "The Teacher",
+   "nom_fr": "La préceptrice",
+   "types": [
+    "BeamWeapon",
+    "CloseRange"
+   ],
+   "bonus_crit_pct": 0,
+   "principal": {
+    "degats_balle": 3.6,
+    "balles_par_tir": 1,
+    "touche_une_fois": false,
+    "tirs_par_rafale": 1,
+    "tirs_par_s": 9.8,
+    "tirs_par_s_max": null,
+    "montee_cadence_s": null,
+    "chargeur": 40,
+    "munitions_par_tir": 1,
+    "rechargement_s": 2.8,
+    "rechargement_balle_par_balle": false,
+    "dps": 35.3,
+    "dps_soutenu": 20.9,
+    "degats_chargeur": 144.0,
+    "vider_chargeur_s": 4.08,
+    "degats_pleins_jusqu_a_m": 7.6,
+    "degats_minimum_des_m": 17.0,
+    "degats_minimum_pct": 50.0,
+    "vitesse_balle_m_s": 635,
+    "gravite": 0,
+    "rayon_explosion_m": null,
+    "vitesse_en_tirant_pct": 75.0,
+    "peut_crit": false
+   },
+   "secondaire": null,
+   "par_niveau": {
+    "degats_balle": 0.054,
+    "dps": 0.52941,
+    "melee_leger": 1.58,
+    "melee_lourd": 3.6656,
+    "pv": 35,
+    "spirit_power": 1.1
+   },
+   "par_spirit": {},
+   "melee": {
+    "leger": 50,
+    "lourd": 116
+   }
+  },
+  "77": {
+   "nom": "Pride of Ixia",
+   "nom_fr": "Fierté d'Ixia",
+   "types": [
+    "MediumRange",
+    "Projectile"
+   ],
+   "bonus_crit_pct": 0,
+   "principal": {
+    "degats_balle": 18.5,
+    "balles_par_tir": 1,
+    "touche_une_fois": true,
+    "tirs_par_rafale": 1,
+    "tirs_par_s": 2.63,
+    "tirs_par_s_max": null,
+    "montee_cadence_s": null,
+    "chargeur": 15,
+    "munitions_par_tir": 1,
+    "rechargement_s": 2.5,
+    "rechargement_balle_par_balle": false,
+    "dps": 48.7,
+    "dps_soutenu": 33.8,
+    "degats_chargeur": 278.0,
+    "vider_chargeur_s": 5.7,
+    "degats_pleins_jusqu_a_m": 25.4,
+    "degats_minimum_des_m": 25.4,
+    "degats_minimum_pct": 100,
+    "vitesse_balle_m_s": 127,
+    "gravite": 0,
+    "rayon_explosion_m": null,
+    "vitesse_en_tirant_pct": 75.0,
+    "peut_crit": true
+   },
+   "secondaire": null,
+   "par_niveau": {
+    "degats_balle": 0.825,
+    "dps": 2.1711,
+    "melee_leger": 1.58,
+    "melee_lourd": 2.9092,
+    "pv": 45,
+    "spirit_power": 1.1
+   },
+   "par_spirit": {},
+   "melee": {
+    "leger": 63,
+    "lourd": 116
+   }
+  },
+  "79": {
+   "nom": "Long Night",
+   "nom_fr": null,
+   "types": [
+    "BurstFire",
+    "MediumRange"
+   ],
+   "bonus_crit_pct": -20,
+   "principal": {
+    "degats_balle": 16,
+    "balles_par_tir": 1,
+    "touche_une_fois": false,
+    "tirs_par_rafale": 1,
+    "tirs_par_s": 3.85,
+    "tirs_par_s_max": null,
+    "montee_cadence_s": null,
+    "chargeur": 13,
+    "munitions_par_tir": 1,
+    "rechargement_s": 2,
+    "rechargement_balle_par_balle": false,
+    "dps": 61.5,
+    "dps_soutenu": 38.7,
+    "degats_chargeur": 208.0,
+    "vider_chargeur_s": 3.38,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 57.5,
+    "degats_minimum_pct": 10.0,
+    "vitesse_balle_m_s": 160,
+    "gravite": 0.8,
+    "rayon_explosion_m": null,
+    "vitesse_en_tirant_pct": 85.0,
+    "peut_crit": true
+   },
+   "secondaire": null,
+   "par_niveau": {
+    "degats_balle": 0.34,
+    "dps": 1.3077,
+    "melee_leger": 1.58,
+    "melee_lourd": 3.16,
+    "pv": 28,
+    "spirit_power": 1.1
+   },
+   "par_spirit": {},
+   "melee": {
+    "leger": 58,
+    "lourd": 116
+   }
+  },
+  "80": {
+   "nom": "Hair of the Dog",
+   "nom_fr": "Chienlit",
+   "types": [
+    "Spreadshot",
+    "MediumRange"
+   ],
+   "bonus_crit_pct": 0,
+   "principal": {
+    "degats_balle": 5.1,
+    "balles_par_tir": 7,
+    "touche_une_fois": false,
+    "tirs_par_rafale": 1,
+    "tirs_par_s": 1.18,
+    "tirs_par_s_max": null,
+    "montee_cadence_s": null,
+    "chargeur": 7,
+    "munitions_par_tir": 1,
+    "rechargement_s": 0.3,
+    "rechargement_balle_par_balle": true,
+    "dps": 42.0,
+    "dps_soutenu": 29.2,
+    "degats_chargeur": 250.0,
+    "vider_chargeur_s": 5.95,
+    "degats_pleins_jusqu_a_m": 17,
+    "degats_minimum_des_m": 42,
+    "degats_minimum_pct": 10.0,
+    "vitesse_balle_m_s": 813.0,
+    "gravite": 0,
+    "rayon_explosion_m": null,
+    "vitesse_en_tirant_pct": 75.0,
+    "peut_crit": true
+   },
+   "secondaire": null,
+   "par_niveau": {
+    "degats_balle": 0.117,
+    "dps": 0.96355,
+    "melee_leger": 1.58,
+    "melee_lourd": 3.6656,
+    "pv": 31,
+    "spirit_power": 1.1
+   },
+   "par_spirit": {},
+   "melee": {
+    "leger": 50,
+    "lourd": 116
+   }
+  },
+  "81": {
+   "nom": "Carny Life",
+   "nom_fr": "La vie foraine",
+   "types": [
+    "MediumRange",
+    "Projectile",
+    "Bouncy"
+   ],
+   "bonus_crit_pct": -25,
+   "principal": {
+    "degats_balle": 18,
+    "balles_par_tir": 1,
+    "touche_une_fois": false,
+    "tirs_par_rafale": 1,
+    "tirs_par_s": 1.72,
+    "tirs_par_s_max": null,
+    "montee_cadence_s": null,
+    "chargeur": 8,
+    "munitions_par_tir": 1,
+    "rechargement_s": 2,
+    "rechargement_balle_par_balle": false,
+    "dps": 31.0,
+    "dps_soutenu": 21.7,
+    "degats_chargeur": 144.0,
+    "vider_chargeur_s": 4.64,
+    "degats_pleins_jusqu_a_m": 22,
+    "degats_minimum_des_m": 60,
+    "degats_minimum_pct": 10.0,
+    "vitesse_balle_m_s": 50,
+    "gravite": 0.2,
+    "rayon_explosion_m": 0,
+    "vitesse_en_tirant_pct": 75.0,
+    "peut_crit": true
+   },
+   "secondaire": null,
+   "par_niveau": {
+    "degats_balle": 0.82,
+    "dps": 1.4138,
+    "melee_leger": 1.58,
+    "melee_lourd": 3.6656,
+    "pv": 33,
+    "spirit_power": 1.1
+   },
+   "par_spirit": {},
+   "melee": {
+    "leger": 50,
+    "lourd": 116
+   }
+  },
+  "84": {
+   "nom": "Sovereign's Decree",
+   "nom_fr": "Sovereign's Decree",
+   "types": [
+    "RapidFire",
+    "Spreadshot"
+   ],
+   "bonus_crit_pct": 0,
+   "principal": {
+    "degats_balle": 6,
+    "balles_par_tir": 2,
+    "touche_une_fois": false,
+    "tirs_par_rafale": 1,
+    "tirs_par_s": 5,
+    "tirs_par_s_max": null,
+    "montee_cadence_s": null,
+    "chargeur": 24,
+    "munitions_par_tir": 1,
+    "rechargement_s": 2.8,
+    "rechargement_balle_par_balle": false,
+    "dps": 60,
+    "dps_soutenu": 37.9,
+    "degats_chargeur": 288.0,
+    "vider_chargeur_s": 4.8,
+    "degats_pleins_jusqu_a_m": 20,
+    "degats_minimum_des_m": 50,
+    "degats_minimum_pct": 10.0,
+    "vitesse_balle_m_s": 203.0,
+    "gravite": 0,
+    "rayon_explosion_m": null,
+    "vitesse_en_tirant_pct": 75.0,
+    "peut_crit": true
+   },
+   "secondaire": null,
+   "par_niveau": {
+    "degats_balle": 0.18,
+    "dps": 1.8,
+    "melee_leger": 1.58,
+    "melee_lourd": 3.6656,
+    "pv": 50,
+    "spirit_power": 1.1
+   },
+   "par_spirit": {},
+   "melee": {
+    "leger": 50,
+    "lourd": 116
+   }
+  }
+ }
+}
