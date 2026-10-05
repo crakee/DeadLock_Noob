@@ -1,7 +1,7 @@
 // Service worker : rend le site installable et utilisable hors ligne.
 // Réseau d'abord pour tout (pages, CSS, JS, données) : le site change à chaque patch, on ne sert le
 // cache que si le réseau est indisponible. Changer VERSION vide les anciens caches à l'activation.
-const VERSION = 'dln-v4';
+const VERSION = 'dln-v5';
 const ESSENTIEL = [
   './', './index.html', './manifest.webmanifest',
   './css/style.css', './css/partie.css', './css/etiquettes.css',

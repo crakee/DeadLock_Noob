@@ -45,11 +45,8 @@ main.partie .frise { flex: none; }
 .pastille-equipe { width: .7rem; height: .7rem; border-radius: 50%; display: inline-block; }
 
 /* ---------- chrono plus discret hors mode Complet ---------- */
-body.mode-normal .horloge-temps, body.mode-compact .horloge-temps { font-size: 4.6rem; }
-body.mode-complet .horloge-temps { font-size: 5.6rem; }
-body.mode-normal .horloge .commandes, body.mode-compact .horloge .commandes { margin-top: .3rem; }
-body.mode-compact .partie-colonnes { justify-content: center; }
-body.mode-compact .col-gauche { flex: 0 1 46rem; }
+body.onglet-jeu .horloge-temps{ font-size: 4.6rem; }
+body.onglet-jeu .horloge .commandes{ margin-top: .3rem; }
 
 /* ---------- Ton plan ---------- */
 .plan h2 { display: flex; align-items: center; gap: .5rem; margin: 0; }
@@ -112,7 +109,7 @@ body.mode-compact .col-gauche { flex: 0 1 46rem; }
   .col { flex: none; }
   .contexte { gap: .4rem; }
   .contexte-panneaux-liste { grid-template-columns: repeat(2, auto); right: .5rem; }
-  body.mode-normal .horloge-temps, body.mode-compact .horloge-temps { font-size: 3.6rem; }
+  body.onglet-jeu .horloge-temps{ font-size: 3.6rem; }
   .carte-partie-zone { width: 100%; }
 }
 .plan-ouverts { margin: .4rem 0 0; font-size: .92rem; color: var(--doux); }
@@ -159,54 +156,123 @@ body.mode-compact .col-gauche { flex: 0 1 46rem; }
 .contexte-plus { margin-left: auto; }
 
 /* Chrono minimal : heure et état ; les commandes se déplient au survol, au focus ou au toucher. */
-body.mode-normal .horloge, body.mode-compact .horloge { padding: .5rem .8rem; }
-body.mode-normal .horloge-temps, body.mode-compact .horloge-temps { font-size: 3.4rem; }
-body.mode-normal .horloge-ligne, body.mode-compact .horloge-ligne { cursor: pointer; }
-body.mode-normal .horloge .commandes, body.mode-normal .horloge .chrono-reglages,
-body.mode-compact .horloge .commandes, body.mode-compact .horloge .chrono-reglages {
+body.onglet-jeu .horloge{ padding: .5rem .8rem; }
+body.onglet-jeu .horloge-temps{ font-size: 3.4rem; }
+body.onglet-jeu .horloge-ligne{ cursor: pointer; }
+body.onglet-jeu .horloge .commandes, body.onglet-jeu .horloge .chrono-reglages{
   max-height: 0; overflow: hidden; opacity: 0; margin: 0; transition: max-height .2s, opacity .2s;
 }
-body.mode-normal .horloge:hover .commandes, body.mode-normal .horloge:focus-within .commandes, body.mode-normal .horloge.ouvert .commandes,
-body.mode-compact .horloge:hover .commandes, body.mode-compact .horloge:focus-within .commandes, body.mode-compact .horloge.ouvert .commandes {
+body.onglet-jeu .horloge:hover .commandes, body.onglet-jeu .horloge:focus-within .commandes, body.onglet-jeu .horloge.ouvert .commandes{
   max-height: 12rem; opacity: 1; margin-top: .4rem;
 }
-body.mode-normal .horloge:hover .chrono-reglages, body.mode-normal .horloge.ouvert .chrono-reglages, body.mode-normal .horloge:focus-within .chrono-reglages,
-body.mode-compact .horloge:hover .chrono-reglages, body.mode-compact .horloge.ouvert .chrono-reglages, body.mode-compact .horloge:focus-within .chrono-reglages {
+body.onglet-jeu .horloge:hover .chrono-reglages, body.onglet-jeu .horloge.ouvert .chrono-reglages, body.onglet-jeu .horloge:focus-within .chrono-reglages{
   max-height: 20rem; opacity: 1; overflow: visible;
 }
 /* Le rappel « regarde ta map » devient une ligne discrète. */
-body.mode-normal .rappel, body.mode-compact .rappel { font-size: 1rem; padding: .25rem .6rem; margin-top: .3rem; }
+body.onglet-jeu .rappel{ font-size: 1rem; padding: .25rem .6rem; margin-top: .3rem; }
 
 /* À venir : un objectif à la fois, en grand, avec des points pour passer d'un à l'autre. */
-body.mode-normal .avenir, body.mode-compact .avenir { display: flex; flex-direction: column; }
-body.mode-normal #avenir > li:not([data-vue]), body.mode-compact #avenir > li:not([data-vue]) { display: none; }
-body.mode-normal #avenir, body.mode-compact #avenir { flex: 1; display: flex; }
-body.mode-normal #avenir > li[data-vue], body.mode-compact #avenir > li[data-vue] {
+body.onglet-jeu .avenir{ display: flex; flex-direction: column; }
+body.onglet-jeu #avenir > li:not([data-vue]){ display: none; }
+body.onglet-jeu #avenir{ flex: 1; display: flex; }
+body.onglet-jeu #avenir > li[data-vue]{
   flex: 1; max-height: none; display: flex; flex-direction: column; justify-content: center; gap: .6rem;
   padding: 1.6rem 1.8rem; border-left-width: .8rem;
 }
-body.mode-normal #avenir { flex-direction: column; }
-body.mode-normal #avenir .carte-nom, body.mode-compact #avenir .carte-nom { font-size: 3rem; white-space: normal; line-height: 1.05; }
-body.mode-normal #avenir .carte-droite, body.mode-compact #avenir .carte-droite { text-align: left; }
-body.mode-normal #avenir .carte-compte, body.mode-compact #avenir .carte-compte { font-size: 7rem; }
-body.mode-normal #avenir .carte.maintenant .carte-compte, body.mode-normal #avenir .carte.ouverte .carte-compte,
-body.mode-compact #avenir .carte.maintenant .carte-compte, body.mode-compact #avenir .carte.ouverte .carte-compte { font-size: 4.5rem; }
-body.mode-normal #avenir .carte-heure, body.mode-compact #avenir .carte-heure { font-size: 1.2rem; }
-body.mode-normal #avenir .carte-conseil, body.mode-compact #avenir .carte-conseil { font-size: 1.5rem; line-height: 1.35; }
+body.onglet-jeu #avenir { flex-direction: column; }
+body.onglet-jeu #avenir .carte-nom{ font-size: 3rem; white-space: normal; line-height: 1.05; }
+body.onglet-jeu #avenir .carte-droite{ text-align: left; }
+body.onglet-jeu #avenir .carte-compte{ font-size: 7rem; }
+body.onglet-jeu #avenir .carte.maintenant .carte-compte, body.onglet-jeu #avenir .carte.ouverte .carte-compte{ font-size: 4.5rem; }
+body.onglet-jeu #avenir .carte-heure{ font-size: 1.2rem; }
+body.onglet-jeu #avenir .carte-conseil{ font-size: 1.5rem; line-height: 1.35; }
 .avenir-points { display: flex; justify-content: center; gap: .5rem; padding-top: .6rem; }
 .avenir-points[hidden] { display: none; }
 .avenir-point { width: .85rem; height: .85rem; padding: 0; border-radius: 50%; border: 2px solid var(--bord-fort); background: transparent; cursor: pointer; }
 .avenir-point[aria-selected="true"] { background: var(--or); border-color: var(--or); }
 
 /* Ton plan : la phrase de conseil et la portée ; la liste d'actions fait doublon avec « À venir ». */
-body.mode-normal .plan .plan-actions, body.mode-normal .plan h3,
-body.mode-compact .plan .plan-actions, body.mode-compact .plan h3, body.mode-compact .plan .plan-ouverts,
-body.mode-normal .plan .plan-ouverts, body.mode-normal .plan-portee .aide, body.mode-compact .plan-portee .aide { display: none; }
-body.mode-normal .plan-conseil, body.mode-compact .plan-conseil { font-size: 1.3rem; }
-body.mode-normal .plan-portee, body.mode-compact .plan-portee { margin-top: .6rem; font-size: .95rem; color: var(--doux); }
+body.onglet-jeu .plan .plan-actions, body.onglet-jeu .plan h3,
+body.onglet-jeu .plan .plan-ouverts, body.onglet-jeu .plan-portee .aide{ display: none; }
+body.onglet-jeu .plan-conseil{ font-size: 1.3rem; }
+body.onglet-jeu .plan-portee{ margin-top: .6rem; font-size: .95rem; color: var(--doux); }
 
 /* Compact : une colonne centrée, chrono + objectif + conseil. */
-body.mode-compact .partie-colonnes { flex-direction: column; align-items: center; }
-body.mode-compact .col { width: min(100%, 46rem); flex: none; }
-body.mode-compact .col-avenir { order: -1; flex: 1 1 auto; }
-body.mode-compact .col-gauche { order: -2; }
+
+
+/* ====================================================================
+   Onglets En jeu / Objectifs / Mort · compo
+   ==================================================================== */
+
+.onglets-partie { display: inline-flex; gap: .3rem; }
+.onglet-partie { font-size: 1rem !important; padding: .35rem .9rem !important; }
+.contexte .btn.onglet-partie[aria-selected="true"] { background: var(--or) !important; color: #14100a !important; border-color: var(--or) !important; opacity: 1; }
+.mini-chrono { font-family: var(--titre); font-size: 1.3rem; letter-spacing: .03em; color: var(--or-clair); font-variant-numeric: tabular-nums; }
+.mini-chrono[hidden] { display: none; }
+
+/* --- En jeu : une seule colonne centrée, tailles qui suivent l'écran --- */
+body.onglet-jeu .partie-colonnes { justify-content: center; }
+body.onglet-jeu .col-gauche { flex: 0 1 min(100%, 64rem); }
+body.onglet-jeu .col-gauche .avenir { flex: 1 1 auto; min-height: 0; }
+body.onglet-jeu .col-gauche .plan { flex: 0 0 auto; }
+body.onglet-jeu .horloge-temps { font-size: clamp(2rem, 6vmin, 4rem); }
+body.onglet-jeu #avenir .carte-nom { font-size: clamp(2rem, 6.5vmin, 5rem); }
+body.onglet-jeu #avenir .carte-compte { font-size: clamp(4rem, 16vmin, 12rem); }
+body.onglet-jeu #avenir .carte.maintenant .carte-compte, body.onglet-jeu #avenir .carte.ouverte .carte-compte { font-size: clamp(3rem, 10vmin, 8rem); }
+body.onglet-jeu #avenir .carte-conseil { font-size: clamp(1.15rem, 3vmin, 2.2rem); }
+body.onglet-jeu #avenir .carte-heure { font-size: clamp(1rem, 2vmin, 1.4rem); }
+body.onglet-jeu .plan-conseil { font-size: clamp(1.1rem, 2.6vmin, 1.8rem); }
+body.onglet-jeu .plan .plan-tete, body.onglet-jeu .plan .plan-portee, body.onglet-jeu .plan .plan-actions, body.onglet-jeu .plan h3, body.onglet-jeu .plan .plan-ouverts { display: none; }
+body.onglet-jeu .plan { padding: .6rem 1rem; }
+body.onglet-jeu .declenches { flex: 0 0 auto; }
+body.onglet-jeu .declenches .minuteur-btn { font-size: clamp(.95rem, 2vmin, 1.3rem); }
+
+/* --- Objectifs : la liste à gauche, la carte à droite, la frise en bas --- */
+body.onglet-objectifs .col-gauche { flex: 6 1 0; }
+body.onglet-objectifs .col-avenir { flex: 5 1 0; }
+.objectifs-vue { display: flex; flex-direction: column; }
+.obj-tete { display: flex; flex-wrap: wrap; align-items: baseline; gap: .3rem 1rem; }
+.obj-tete h2 { margin: 0; }
+.obj-liste { list-style: none; margin: .6rem 0 0; padding: 0; overflow-y: auto; flex: 1; display: flex; flex-direction: column; gap: .35rem; }
+.obj-ligne, .obj-phase { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr) auto; column-gap: .8rem; align-items: baseline; padding: .35rem .6rem; border-left: .3rem solid var(--cat, var(--bord)); border-radius: .3rem; background: var(--fond-2); }
+.obj-heure { font-family: var(--titre); font-size: 1.25rem; font-variant-numeric: tabular-nums; color: var(--or-clair); }
+.obj-nom { font-size: 1.15rem; }
+.obj-quand { font-variant-numeric: tabular-nums; color: var(--doux); white-space: nowrap; }
+.obj-texte { grid-column: 2 / -1; font-size: .95rem; color: var(--doux); }
+.obj-ligne.mien .obj-nom { color: var(--or); }
+.obj-ligne.info { opacity: .7; }
+.obj-ligne.proche { background: var(--alerte-fond); border-color: var(--alerte); }
+.obj-ligne.proche .obj-quand { color: var(--alerte); font-weight: 700; }
+.obj-ligne.passe { opacity: .4; }
+.obj-phase { background: none; border-left-color: var(--or); }
+.obj-phase strong { font-family: var(--titre); text-transform: uppercase; letter-spacing: .05em; color: var(--or); }
+
+/* --- Mort : compo, En face, notes --- */
+body.onglet-mort .col-gauche { flex: 4 1 0; }
+body.onglet-mort .col-avenir { flex: 4 1 0; }
+body.onglet-mort .col-carte { flex: 4 1 0; }
+.compo h2, .notes h2 { display: flex; align-items: center; gap: .5rem; margin: 0 0 .5rem; }
+.compo-points { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .6rem; font-size: 1.05rem; line-height: 1.45; }
+.compo-points strong { color: var(--or); }
+.notes { display: flex; flex-direction: column; gap: .7rem; }
+.note-heros { padding: .5rem .6rem; background: var(--fond-2); border: 1px solid var(--bord); border-radius: .4rem; }
+.note-tete { display: flex; align-items: center; gap: .5rem; font-size: 1.05rem; }
+.note-tete img { width: 1.8rem; height: 1.8rem; border-radius: .3rem; object-fit: cover; }
+.note-form { display: flex; gap: .3rem; margin-top: .3rem; }
+.note-form input { flex: 1; min-width: 0; font: inherit; font-size: .9rem; color: var(--texte); background: var(--fond); border: 1px solid var(--bord); border-radius: .3rem; padding: .3rem .5rem; }
+.note-form .btn { padding: .2rem .7rem; font-size: .9rem; }
+.note-liste { list-style: none; margin: .4rem 0 0; padding: 0; display: flex; flex-direction: column; gap: .2rem; font-size: .92rem; }
+.note-liste li { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: .5rem; align-items: baseline; }
+.note-suppr { padding: 0 .4rem !important; }
+
+/* Écrans étroits : une colonne, défilement permis */
+@media (max-width: 1000px), (orientation: portrait) {
+  body[data-page="partie"] { height: auto; }
+  .partie-colonnes { flex-direction: column; }
+  .col { flex: none !important; width: 100%; }
+  .onglets-partie { order: -1; width: 100%; }
+  .onglet-partie { flex: 1; }
+}
+
+/* En jeu : pas de panneau Minuteurs tant qu'il n'a rien à proposer (niveau débutant). */
+body.onglet-jeu .declenches:has(#declenches-vide:not([hidden])) { display: none !important; }
