@@ -13,7 +13,7 @@
   const OFFSET_STEAM64 = 76561197960265728n;
   // Tranches de rang (badges), mêmes bornes que outils/maj_donnees.py.
   const TRANCHES = { tous: [null, null], initiate_sentinel: [11, 46], mystic_oracle: [51, 86], phantom_eternus: [91, 116] };
-  const NB_DETAILLEES = 8;     // parties analysées en détail (le détail d'une partie pèse environ 1 Mo)
+  const NB_DETAILLEES = 10;     // parties analysées en détail (le détail d'une partie pèse environ 1 Mo)
 
   let heros = null, objets = {}, statsHeros = null, tempo = null, carte = null, lecons = null;
   let moi = null;              // { id, nom, avatar, rang }
@@ -161,7 +161,9 @@
     const oublier = el('button', 'btn discret', 'Changer de compte');
     oublier.type = 'button';
     oublier.addEventListener('click', () => { try { localStorage.removeItem(CLE); } catch (e) { /* idem */ } moi = null; parties = []; contenu().textContent = ''; afficherProfil(); document.getElementById('mp-saisie').focus(); });
-    z.append(oublier, formulaireAjout());
+    const statut = el('p', 'aide mp-statut');
+    statut.id = 'mp-statut';
+    z.append(oublier, statut, formulaireAjout());
   }
 
   // ---------- résumé façon op.gg ----------
@@ -594,6 +596,7 @@
     // --- 1. Résumé, ton profil par domaine, carte de tes morts ---
     z.append(resume(victoires, n));
     const analysees = lues.filter((l) => l.lobby);
+    ecrireProfil(analysees);
     if (analysees.length) z.append(debrief(analysees));
     if (analysees.length && lecons) z.append(blocCoach(analysees));
     if (analysees.length) {
@@ -954,6 +957,100 @@
     return f;
   }
 
+  // ---------- profil, état de synchro et vérification automatique ----------
+  // Lus par la page En partie (docs/brief-front-coach.md) : elle ne recalcule rien, elle lit ces clés.
+  const CLE_PROFIL = 'dln.coach.profil.v1';
+  const CLE_SYNC = 'dln.parties.sync.v1';
+  const NB_PROFIL = 10;            // parties normales prises pour le profil
+  const TRANCHE_MORT_S = 180;      // morts comptées par tranche de 3 min
+  const LONGUE_MIN = 35;           // une partie « longue » dure au moins 35 min
+  const VERIF_MS = 5 * 60 * 1000;  // vérification de l'arrivée des parties, page ouverte
+  const ecrireCle = (cle, v) => { try { localStorage.setItem(cle, JSON.stringify(v)); } catch (e) { /* stockage indisponible */ } };
+  const maintenant = () => Math.floor(Date.now() / 1000);
+
+  function ecrireProfil(analysees) {
+    const L = DLN.lobby;
+    const recentes = analysees.slice().sort((a, b) => b.p.start_time - a.p.start_time).slice(0, NB_PROFIL);
+    if (!recentes.length) return;
+    const arrondi = (v) => (v == null ? null : Math.round(v * 100) / 100);
+    const domaines = {};
+    L.DOMAINES.forEach((d) => { domaines[d.id] = arrondi(L.moyenne(recentes.map((l) => l.lobby.domaines[d.id]).filter((x) => x != null))); });
+    // Score moyen de chaque mesure ; une mesure présente dans trop peu de parties n'est pas retenue.
+    const mesures = Object.keys(L.MESURES).map((k) => {
+      const v = recentes.map((l) => l.lobby.scores[k]).filter((x) => x != null);
+      return { k: k, s: L.moyenne(v), n: v.length };
+    }).filter((x) => x.s != null && x.n >= Math.min(3, recentes.length)).sort((a, b) => a.s - b.s);
+    const morts = recentes.reduce((t, l) => t.concat(l.lobby.morts), []);
+    const parTranche = [];
+    morts.forEach((m) => { const i = Math.floor(m.t / TRANCHE_MORT_S); while (parTranche.length <= i) parTranche.push(0); parTranche[i]++; });
+    const part = (k) => (morts.length ? arrondi(morts.filter((m) => m[k]).length / morts.length) : 0);
+    const longues = recentes.filter((l) => l.p.match_duration_s >= LONGUE_MIN * 60);
+    const engageTard = longues.reduce((t, l) => t + l.lobby.morts.filter((m) => m.engage_bas && m.t >= LONGUE_MIN * 60).length, 0);
+    const parHeros = {};
+    recentes.forEach((l) => { parHeros[l.p.hero_id] = (parHeros[l.p.hero_id] || 0) + 1; });
+    ecrireCle(CLE_PROFIL, {
+      maj: maintenant(),
+      parties: recentes.length,
+      domaines: domaines,
+      faibles: mesures.filter((x) => x.s < 0.4).slice(0, 3).map((x) => x.k),
+      forts: mesures.filter((x) => x.s > 0.6).slice(-2).reverse().map((x) => x.k),
+      scores: mesures.reduce((o, x) => { o[x.k] = arrondi(x.s); return o; }, {}),
+      tranche_s: TRANCHE_MORT_S,
+      morts_par_tranche: parTranche,
+      morts_par_partie: arrondi(morts.length / recentes.length),
+      morts_types: { inferiorite: part('inferiorite'), isole: part('isole'), engage_bas: part('engage_bas'), cote_adverse: part('cote_adverse'), surpris: part('surpris') },
+      parties_longues: { seuil_min: LONGUE_MIN, parties: longues.length, engage_bas_apres: longues.length ? arrondi(engageTard / longues.length) : null },
+      heros: Object.keys(parHeros).map((id) => ({ id: Number(id), parties: parHeros[id] })).sort((a, b) => b.parties - a.parties)
+    });
+  }
+
+  function ecrireSync(histo) {
+    const toutes = histo.slice().sort((a, b) => b.start_time - a.start_time);
+    const d = toutes[0];
+    ecrireCle(CLE_SYNC, {
+      verifie_a: maintenant(),
+      nb_parties: toutes.length,
+      derniere_partie: d ? { match_id: d.match_id, mode: d.game_mode === MODE_BRAWL ? 'street_brawl' : 'normal', fin: d.start_time + d.match_duration_s } : null
+    });
+  }
+
+  // Ligne d'état sous le profil : dernière vérification, dernière partie connue, nouvelle partie arrivée.
+  function majStatut(message) {
+    const z = document.getElementById('mp-statut');
+    if (!z) return;
+    let s = null;
+    try { s = JSON.parse(localStorage.getItem(CLE_SYNC)); } catch (e) { s = null; }
+    const heure = (t) => new Date(t * 1000).toLocaleTimeString(DLN.langue === 'fr' ? 'fr-FR' : 'en-US', { hour: '2-digit', minute: '2-digit' });
+    const depuis = (t) => {
+      const m = Math.round((maintenant() - t) / 60);
+      return m < 60 ? m + ' min' : Math.floor(m / 60) + ' h ' + String(m % 60).padStart(2, '0');
+    };
+    z.textContent = '';
+    if (message) z.append(el('strong', 'mp-statut-nouveau', message + ' '));
+    if (s) z.append(DLN.tr({ fr: 'Vérifié à ', en: 'Checked at ' }) + heure(s.verifie_a) +
+      DLN.tr({ fr: ' · nouvelle vérification toutes les 5 min tant que la page est ouverte', en: ' · checked again every 5 min while this page is open' }) +
+      (s.derniere_partie ? DLN.tr({ fr: ' · dernière partie connue terminée il y a ', en: ' · last known game ended ' }) + depuis(s.derniere_partie.fin) + DLN.tr({ fr: '', en: ' ago' }) : ''));
+  }
+
+  let verifEnCours = false;
+  async function verifier() {
+    if (!moi || document.hidden || verifEnCours) return;
+    verifEnCours = true;
+    try {
+      const histo = await api('/v1/players/' + moi.id + '/match-history');
+      const connues = new Set(parties.concat(brawls).map((p) => p.match_id));
+      const nouvelles = histo.filter((p) => (p.game_mode === MODE_NORMAL || p.game_mode === MODE_BRAWL) && !connues.has(p.match_id));
+      ecrireSync(histo);
+      if (nouvelles.length) {
+        await charger(moi.id);
+        majStatut(DLN.tr({ fr: nouvelles.length + ' nouvelle(s) partie(s) arrivée(s) : débrief à jour.', en: nouvelles.length + ' new game(s) arrived: debrief updated.' }));
+      } else majStatut();
+    } catch (e) { /* réseau ou API indisponible : on réessaiera */ }
+    verifEnCours = false;
+  }
+  setInterval(verifier, VERIF_MS);
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) verifier(); });
+
   // ---------- chargement ----------
 
   async function charger(id, frais) {
@@ -971,6 +1068,8 @@
       majA: new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }) };
     try { localStorage.setItem(CLE, String(id)); } catch (e) { /* stockage indisponible */ }
     afficherProfil();
+    ecrireSync(histo);
+    majStatut();
     parties = histo.filter((p) => p.game_mode === MODE_NORMAL);
     brawls = histo.filter((p) => p.game_mode === MODE_BRAWL);
     // Parties ajoutées par leur numéro et absentes de l'historique de l'API.
