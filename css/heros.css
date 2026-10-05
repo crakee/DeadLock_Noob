@@ -82,3 +82,11 @@ details.menace[open] > summary { margin-bottom: .4rem; }
 .arme-details-liste li { display: flex; justify-content: space-between; gap: .8rem; border-bottom: 1px solid var(--bord); padding: .15rem 0; }
 .arme-details-liste strong { text-align: right; font-weight: 600; }
 .arme .aide { margin: 0; }
+
+/* Corps à corps : même gabarit que l'arme */
+.arme { margin: 1rem 0 0; }
+.melee { border-left-color: var(--vitality, var(--or)); }
+.melee .arme-rang-plein { background: var(--vitality, var(--or)); }
+.melee-verdict.fort { color: var(--or-clair); border-color: var(--or); }
+.melee-preuve { color: var(--doux); font-size: .92rem; }
+.melee-regles { margin: 0; padding-left: 1.2rem; display: flex; flex-direction: column; gap: .3rem; line-height: 1.45; }

@@ -430,21 +430,84 @@
 
     // Plus de détails : le reste des chiffres, la progression, la mêlée.
     const plus = el('details', 'arme-plus');
-    plus.append(el('summary', null, 'Plus de détails : balles, cadence, progression, mêlée'));
+    plus.append(el('summary', null, 'Plus de détails : balles, cadence, progression'));
     plus.append(detailsTir(p));
     const prog = el('ul', 'arme-details-liste');
     const ligne = (nom, valeur) => { const li = el('li'); li.append(el('span', null, nom), el('strong', null, valeur)); prog.append(li); };
     const n = a.par_niveau;
     if (n.degats_balle) ligne('À chaque niveau', '+' + virgule(n.degats_balle, 3) + ' dégât par balle (+' + virgule(n.dps, 2) + ' DPS)');
-    if (n.melee_leger) ligne('Mêlée à chaque niveau', '+' + virgule(n.melee_leger, 2) + ' légère, +' + virgule(n.melee_lourd, 2) + ' lourde');
-    Object.keys(a.par_spirit || {}).forEach((k) => ligne('Grandit avec le Spirit Power', (LIBELLES_SPIRIT[k] || k) + ' (coefficient ' + virgule(a.par_spirit[k], 3) + ' dans les données du jeu)'));
-    if (a.melee.leger) ligne('Mêlée au niveau 1', a.melee.leger + ' légère, ' + a.melee.lourd + ' lourde');
+    Object.keys(a.par_spirit || {}).filter((k) => k !== 'HeavyMeleeDamage').forEach((k) => ligne('Grandit avec le Spirit Power', (LIBELLES_SPIRIT[k] || k) + ' (coefficient ' + virgule(a.par_spirit[k], 3) + ' dans les données du jeu)'));
     plus.append(prog);
     if (a.secondaire) { plus.append(el('h4', null, 'Tir secondaire')); plus.append(detailsTir(a.secondaire)); }
     s.append(plus);
     s.append(el('p', 'aide', 'Chiffres du jeu au niveau 1, sans objet (' + D.armes.meta.source + ', patch ' + D.armes.meta.patch +
       '). Tir à la tête : ×1,65 pour tous, moins un malus propre à certains héros (page Weapon Damage du wiki). Classements parmi les ' +
       D.heros.heros.length + ' héros.'));
+    return s;
+  }
+
+  // ---------- bloc « Corps à corps » (sous l'arme) ----------
+  // Chiffres : data/armes.json. Verdict : builds publics (data/builds.json) et achats (data/achats.json) ;
+  // textes et règles : data/armes-conseils.json, section `melee`.
+
+  function blocMelee(h) {
+    const a = D.armes && D.armes.armes[String(h.id)];
+    const M = D.armesConseils && D.armesConseils.melee;
+    if (!a || !M || !a.melee.lourd) return null;
+    const s = el('section', 'arme melee');
+    const tete = el('div', 'arme-tete');
+    tete.append(el('h3', null, 'Corps à corps'));
+
+    // Builds publics qui prennent au moins 2 objets de mêlée.
+    const builds = ((D.builds && D.builds.heros[String(h.id)]) || []);
+    const nbMelee = builds.filter((b) => b.sections.reduce((n, sec) => n + sec.objets.filter((o) => M.objets.indexOf(o) !== -1).length, 0) >= 2).length;
+    const verdict = builds.length ? M.verdicts.find((v) => nbMelee >= v.min_builds) : null;
+    if (verdict) {
+      const puce = el('span', 'puce melee-verdict' + (verdict.min_builds >= 2 ? ' fort' : ''), verdict.nom);
+      tete.append(puce);
+    }
+    s.append(tete);
+
+    const g = el('div', 'arme-chiffres');
+    const p = a.principal;
+    g.append(
+      chiffreArme('Coup léger', String(a.melee.leger), 'instantané (appui court)', rang(h.id, (x) => x.melee.leger)),
+      chiffreArme('Coup lourd', String(a.melee.lourd), 'touche maintenue : préparation puis bond', rang(h.id, (x) => x.melee.lourd)),
+      chiffreArme('Lourd contre ton arme', '= ' + virgule(a.melee.lourd / p.dps) + ' s de tir', 'un coup lourd vaut autant que ' + virgule(a.melee.lourd / p.dps) + ' s de tir continu de ton arme',
+        rang(h.id, (x) => x.melee.lourd / x.principal.dps)),
+      chiffreArme('À chaque niveau', '+' + virgule(a.par_niveau.melee_lourd, 1), 'au coup lourd (+' + virgule(a.par_niveau.melee_leger, 1) + ' au léger)' +
+        (a.par_spirit && a.par_spirit.HeavyMeleeDamage ? ' ; grandit aussi avec le Spirit Power' : '') + ' ; les bonus de Weapon Damage comptent à moitié', null)
+    );
+    s.append(g);
+
+    // Verdict et ce qui le fonde.
+    if (verdict) {
+      const d = el('div', 'arme-conseils');
+      const t = el('h4', null, verdict.nom + ' ');
+      t.append(el('span', 'marque', 'avis'));
+      const ul = el('ul');
+      ul.append(el('li', null, verdict.texte));
+      ul.append(el('li', 'melee-preuve', nbMelee + ' build' + (nbMelee > 1 ? 's' : '') + ' public' + (nbMelee > 1 ? 's' : '') + ' sur ' + builds.length +
+        ' prennent au moins 2 objets de mêlée (' + M.objets.join(', ') + ').'));
+      const tr = D.achats && (D.achats.tranches.tous || {})[String(h.id)];
+      const achetes = tr ? tr.objets.filter((o) => M.objets.indexOf(o.nom) !== -1) : [];
+      if (achetes.length) ul.append(el('li', 'melee-preuve', 'Ce que ses joueurs achètent : ' + achetes.map((o) => o.nom + ' ' + o.achete_par + ' %').join(', ') + '.'));
+      (M.competences[String(h.id)] || []).forEach((c) => {
+        const li = el('li');
+        li.append(el('strong', null, c.nom + ' : '), c.texte);
+        ul.append(li);
+      });
+      d.append(t, ul);
+      s.append(d);
+    }
+
+    // Règles communes à tous les héros, dépliables.
+    const plus = el('details', 'arme-plus');
+    plus.append(el('summary', null, 'Les règles du corps à corps (léger, lourd, parade)'));
+    const ul = el('ul', 'melee-regles');
+    M.regles.forEach((r) => { const li = el('li'); li.append(r.texte, ' ', el('span', 'arme-source', 'wiki, ' + r.source)); ul.append(li); });
+    plus.append(ul);
+    s.append(plus);
     return s;
   }
 
@@ -501,12 +564,15 @@
       zone.append(carte);
     });
     const boite = el('div', 'fiche-contenu');
-    const arme = blocArme(h);
-    if (arme) boite.append(arme);
     boite.append(zone);
     boite.append(el('p', 'aide', 'Textes officiels du jeu en français. Noms des valeurs en anglais.' +
       (DLN.niveau() < 2 ? ' Valeurs et améliorations : niveau 2 ou plus (menu ⚙).' : '') +
       ' Les démos sont des recherches YouTube : aucune vidéo officielle n\'est disponible par l\'API.'));
+    // L'arme et le corps à corps viennent après les compétences.
+    const arme = blocArme(h);
+    if (arme) boite.append(arme);
+    const melee = blocMelee(h);
+    if (melee) boite.append(melee);
     return boite;
   }
 
