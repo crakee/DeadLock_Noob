@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "nature": "Avis de joueur, pas une donnée du jeu : quand rappeler chaque leçon pendant la partie. Les horaires des objectifs viennent de data/timeline.json, pas d'ici.",
+    "verifie_le": "2026-10-05",
+    "fonctionnement": "js/coach.js affiche le rappel (`en_partie.rappel` de la leçon, data/textes/<langue>/lecons.json) des difficultés choisies par le joueur, de `de_s` à `a_s` (null = jusqu'à la fin), toutes les `toutes_s` secondes. Difficultés = focus et leçons recommandées par la page Parties (dln.coach.v1), ou choix manuel (dln.coach.difficultes.v1) ; à défaut, `defaut`.",
+    "achats": "Les achats conseillés viennent de data/achats.json (héros du profil, objets pris par au moins `achat_min_pct` % des joueurs) ou, à défaut, des objets clés de data/tempo.json. Minute moyenne d'achat des joueurs du héros, pas un ordre imposé."
+  },
+  "defaut": ["last-hit", "souls-dormantes", "minimap"],
+  "achat_min_pct": 30,
+  "lecons": {
+    "last-hit": { "de_s": 20, "a_s": 540, "toutes_s": 60 },
+    "points-competence": { "de_s": 120, "a_s": null, "toutes_s": 180 },
+    "souls-dormantes": { "de_s": 180, "a_s": null, "toutes_s": 150 },
+    "inferiorite": { "de_s": 480, "a_s": null, "toutes_s": 120 },
+    "mort-isolee": { "de_s": 420, "a_s": null, "toutes_s": 90 },
+    "engager-vie-basse": { "de_s": 60, "a_s": null, "toutes_s": 120 },
+    "temps-mort": { "de_s": 1320, "a_s": null, "toutes_s": 120 },
+    "rester-en-lane": { "de_s": 60, "a_s": 480, "toutes_s": 75 },
+    "ecart-lane": { "de_s": 30, "a_s": 540, "toutes_s": 90 },
+    "jungle": { "de_s": 120, "a_s": 1320, "toutes_s": 120 },
+    "objectifs": { "de_s": 480, "a_s": null, "toutes_s": 150 },
+    "participation": { "de_s": 480, "a_s": null, "toutes_s": 120 },
+    "portee": { "de_s": 30, "a_s": null, "toutes_s": 180 },
+    "powerups": { "de_s": 270, "a_s": 1320, "toutes_s": 300 },
+    "but-du-jeu": { "de_s": 600, "a_s": null, "toutes_s": 300 },
+    "gun-spirit": { "de_s": 300, "a_s": null, "toutes_s": 300 },
+    "minimap": { "de_s": 30, "a_s": null, "toutes_s": 45 },
+    "deux-waves": { "de_s": 480, "a_s": null, "toutes_s": 120 },
+    "ton-heros": { "de_s": 0, "a_s": null, "toutes_s": 300 }
+  }
+}

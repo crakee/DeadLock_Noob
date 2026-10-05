@@ -322,3 +322,88 @@ body.onglet-jeu #avenir .carte-conseil { font-size: clamp(1.05rem, 2.4vmin, 1.7r
 .coach-focus.actif { border: 2px solid var(--or); background: rgba(217, 178, 91, .08); color: var(--texte); }
 .coach-focus-titre { font-family: var(--titre); text-transform: uppercase; letter-spacing: .05em; color: var(--or-clair); text-decoration: none; }
 .coach-focus.actif .coach-focus-rappel { font-size: 1.15rem; font-weight: 600; }
+
+
+/* ====================================================================
+   En jeu sur un seul écran (2026-10-05) : chrono + coach | prochain objectif + liste | carte
+   ==================================================================== */
+
+body.onglet-jeu .col-gauche { flex: 5 1 0; }
+body.onglet-jeu .col-avenir { flex: 4 1 0; }
+body.onglet-jeu .col-carte { flex: 5 1 0; }
+body.onglet-jeu .col-avenir .avenir { flex: 0 1 auto; max-height: 42%; }
+body.onglet-jeu .col-avenir .objectifs-vue { flex: 1 1 0; min-height: 10rem; }
+body.onglet-jeu #avenir > li[data-vue] { padding: .9rem 1.1rem; gap: .3rem; }
+body.onglet-jeu #avenir .carte-nom { font-size: clamp(1.4rem, 3.6vmin, 2.6rem); }
+body.onglet-jeu #avenir .carte-compte { font-size: clamp(2.6rem, 8vmin, 5.5rem); }
+body.onglet-jeu #avenir .carte.maintenant .carte-compte, body.onglet-jeu #avenir .carte.ouverte .carte-compte { font-size: clamp(2rem, 6vmin, 4rem); }
+body.onglet-jeu #avenir .carte-conseil { font-size: clamp(.95rem, 1.9vmin, 1.25rem); }
+body.onglet-jeu .avenir h2 { display: none; }
+body.onglet-jeu .objectifs-vue .obj-ligne, body.onglet-jeu .objectifs-vue .obj-phase { grid-template-columns: 4.6rem minmax(0, 1fr) auto; padding: .25rem .5rem; }
+body.onglet-jeu .obj-heure { font-size: 1.05rem; }
+body.onglet-jeu .obj-nom { font-size: 1rem; }
+body.onglet-jeu .obj-texte { font-size: .85rem; }
+body.onglet-jeu .obj-liste { margin-top: .4rem; gap: .25rem; }
+body.onglet-jeu .col-carte .carte-partie { flex: 1 1 auto; }
+
+/* ---------- coach sans clic ---------- */
+.coach { gap: .55rem; }
+.coach-phase { font-family: var(--titre); font-size: 1.1rem; color: var(--or-clair); font-variant-numeric: tabular-nums; }
+.coach-carte { gap: .35rem; }
+.coach.achat .coach-carte { border-left-color: #7cc46a; }
+.coach-action { font-size: clamp(1.5rem, 4.2vmin, 3rem); }
+.coach-action.long { font-size: clamp(1.2rem, 2.9vmin, 2.1rem); }
+.coach-pourquoi { font-size: clamp(1rem, 2vmin, 1.35rem); }
+.coach-rappel { display: flex; flex-direction: column; gap: .15rem; padding: .45rem .8rem; border: 1px dashed var(--bord-fort); border-radius: .5rem; }
+.coach-rappel[hidden] { display: none; }
+.coach-rappel-titre { font-family: var(--titre); text-transform: uppercase; letter-spacing: .05em; font-size: .85rem; color: var(--or-clair); text-decoration: none; }
+.coach-rappel-texte { font-size: clamp(1rem, 2vmin, 1.3rem); font-weight: 600; }
+.coach-rappel.frais { border: 2px solid var(--or); background: rgba(217, 178, 91, .1); }
+@media (prefers-reduced-motion: no-preference) { .coach-rappel.frais { animation: rappel-frais 1.2s ease-out 2; } }
+@keyframes rappel-frais { 0% { box-shadow: 0 0 0 0 rgba(217, 178, 91, .6); } 100% { box-shadow: 0 0 0 .8rem transparent; } }
+.coach-prochains-titre { margin: .2rem 0 0; font-size: .95rem; color: var(--doux); }
+.coach-prochains-titre[hidden] { display: none; }
+.coach-prochains { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .2rem; }
+.coach-prochain { display: grid; grid-template-columns: 3.6rem minmax(0, 1fr) auto; gap: .5rem; align-items: baseline; font-size: 1rem; }
+.coach-prochain-quand { font-family: var(--titre); color: var(--or-clair); font-variant-numeric: tabular-nums; }
+.coach-prochain-pct { color: var(--doux); font-size: .85rem; }
+.coach-difficultes { margin-top: auto; font-size: .92rem; }
+.coach-difficultes > summary { cursor: pointer; color: var(--doux); }
+.coach-difficultes > summary strong { color: var(--texte); }
+.coach-difficultes-corps { display: flex; flex-direction: column; gap: .4rem; padding-top: .4rem; }
+.coach-difficultes-corps .aide { margin: 0; }
+.coach-difficultes-grille { display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: .2rem .8rem; }
+.coach-difficultes-corps .btn { align-self: flex-start; }
+
+/* ---------- carte : outils, légende ---------- */
+.carte-partie { gap: .4rem; }
+.carte-partie-tete { flex-wrap: wrap; }
+.carte-outils { display: inline-flex; flex-wrap: wrap; gap: .25rem; }
+.carte-outils .btn { font-size: .8rem; padding: .15rem .55rem; }
+.carte-outils .btn[aria-pressed="true"] { border-color: var(--or); color: var(--or-clair); }
+.carte-outils .btn[hidden] { display: none; }
+.carte-partie-zone { width: min(100%, 47vh); }
+.mini-couche.etat-attente { opacity: .6; }
+.mini-couche.etat-ferme { opacity: 1; }
+.mini-lettre { fill: #0c0a08; font: 800 18px var(--corps); text-anchor: middle; dominant-baseline: central; pointer-events: none; }
+.mini-lane { font: 700 24px var(--titre); text-transform: uppercase; letter-spacing: .05em; stroke: #0c0a08; stroke-width: 5px; paint-order: stroke; dominant-baseline: central; }
+.mini-base { fill: var(--or-clair); font: 700 24px var(--titre); text-anchor: middle; stroke: #0c0a08; stroke-width: 5px; paint-order: stroke; text-transform: uppercase; }
+.mini-numero { font-size: 26px; text-anchor: start; }
+.carte-legende { flex: 1 1 auto; min-height: 0; overflow-y: auto; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .1rem .8rem; align-content: start; font-size: .86rem; }
+.carte-lecture { grid-column: 1 / -1; margin: 0 0 .2rem; display: flex; flex-wrap: wrap; align-items: center; gap: .25rem; color: var(--doux); font-size: .8rem; }
+.carte-groupe { grid-column: 1 / -1; margin-top: .3rem; font-family: var(--titre); text-transform: uppercase; letter-spacing: .06em; font-size: .78rem; color: var(--or); border-bottom: 1px solid var(--bord); }
+.carte-ligne { display: grid; grid-template-columns: auto auto minmax(0, 1fr) auto; align-items: center; gap: .35rem; padding: 0; line-height: 1.3; cursor: pointer; }
+.carte-ligne input { margin: 0; }
+.carte-ligne.cachee .carte-ligne-nom, .carte-ligne.cachee .carte-symbole { opacity: .45; }
+.carte-ligne-nom { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.carte-ligne-etat { display: inline-flex; align-items: center; gap: .25rem; font-variant-numeric: tabular-nums; color: var(--doux); white-space: nowrap; }
+.carte-ligne.etat-maintenant .carte-ligne-etat, .carte-ligne.etat-maintenant .carte-ligne-nom { color: var(--alerte); font-weight: 700; }
+.carte-ligne.etat-bientot .carte-ligne-etat { color: var(--or-clair); font-weight: 600; }
+.carte-symbole { width: 1.05rem; height: 1.05rem; flex: none; }
+.carte-symboles { display: inline-flex; gap: .1rem; }
+.legende-lettre { font-size: 18px; }
+.carte-halo-ex { display: inline-block; width: .9rem; height: .9rem; border-radius: 50%; border: 2px solid var(--or); margin-left: .4rem; }
+@media (max-width: 1000px), (orientation: portrait) {
+  .carte-partie-zone { width: 100%; }
+  .carte-legende { overflow: visible; }
+}

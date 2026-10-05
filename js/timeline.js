@@ -12,6 +12,7 @@
   const MAINTIEN_S = 10;      // durée du « maintenant » après l'heure d'un événement
   const NB_AVENIR = 4;        // cartes affichées dans « À venir »
   const DUREE_RAPPEL_S = 4;   // durée d'affichage du rappel « regarde ta map »
+  const OUBLI_S = 2 * 3600;   // chrono oublié : remis à zéro après 2 h de partie ou 2 h en pause
   const FRISE_MIN_S = 2400;   // étendue minimale de la frise
   const LIBELLES_CATEGORIE = {
     jungle: 'Jungle', objectif: 'Objectif', lane: 'Lane',
@@ -84,10 +85,12 @@
   function basculer() {
     if (enMarche()) {
       etat.pauseA = temps();
+      etat.pauseLe = Date.now();
       etat.depart = null;
     } else {
       etat.depart = Date.now() - (etat.pauseA || 0) * 1000;
       etat.pauseA = null;
+      delete etat.pauseLe;
     }
     sauverEtat();
     veille();
@@ -105,6 +108,12 @@
     sauverEtat();
     veille();
     rafraichir();
+  }
+
+  // Aucune partie ne dure 2 h : un chrono qui les dépasse (ou en pause depuis 2 h) a été oublié.
+  function oublie() {
+    if (etat.depart != null) return temps() >= OUBLI_S;
+    return etat.pauseA != null && etat.pauseLe != null && Date.now() - etat.pauseLe >= OUBLI_S;
   }
 
   // ---------- lecture des données ----------
@@ -589,6 +598,7 @@
 
   function rafraichir() {
     if (!donnees) return;
+    if (oublie()) { remettreAZero(); return; }
     const t = temps();
     rafraichirHorloge(t);
     rafraichirAvenir(t);
@@ -682,6 +692,7 @@
     $('erreur').hidden = true;
     $('app').hidden = false;
     etat = lire(CLE_ETAT, etat);
+    if (etat.pauseA != null && etat.pauseLe == null) { etat.pauseLe = Date.now(); sauverEtat(); }
     reglages = lire(CLE_REGLAGES, reglages);
     construireFiltres();
     construireCartes();

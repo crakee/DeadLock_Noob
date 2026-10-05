@@ -1,6 +1,6 @@
-// En partie : contexte de la partie (mon héros → rôle → lane de départ, équipe) et trois onglets
-// selon le moment : « En jeu » (le prochain objectif en grand), « Objectifs » (ce qu'il faut faire
-// et quand, carte, frise), « Mort · compo » (compo d'en face, comment la jouer, notes perso).
+// En partie : contexte de la partie (mon héros → rôle → lane de départ, équipe) et deux onglets :
+// « En jeu » (chrono, coach, prochain objectif, objectifs à venir et carte sur un seul écran) et
+// « Mort · compo » (compo d'en face, comment la jouer, notes perso).
 // Les conseils sont du jugement (data/conseils-roles.json) ; les horaires viennent de data/timeline.json.
 // Expose DLN.partieContexte pour la carte (js/carte-mini.js).
 (function () {
@@ -14,8 +14,7 @@
 
   // Chaque onglet range ses panneaux en colonnes (de gauche à droite) ; les autres sont masqués.
   const ONGLETS = {
-    jeu: { nom: '🎮 En jeu', touche: 'J', aide: 'Le coach et le prochain objectif : à regarder en jouant', colonnes: [['horloge', 'coach'], ['avenir', 'declenches']] },
-    objectifs: { nom: '🗺 Objectifs', touche: 'O', aide: 'Ce qu\'il faut faire et quand, la carte', colonnes: [['objectifs'], ['carte']], bas: ['frise'] },
+    jeu: { nom: '🎮 En jeu', touche: 'J', aide: 'Tout ce qui sert en jouant : chrono, coach, prochain objectif, objectifs à venir, carte', colonnes: [['horloge', 'coach', 'declenches'], ['avenir', 'objectifs'], ['carte']] },
     mort: { nom: '💀 Mort · compo', touche: 'M', aide: 'Quand tu es mort : leur compo, comment la jouer, tes notes', colonnes: [['maintenant', 'compo', 'checklist'], ['enface'], ['notes']] }
   };
   // Couleurs des lanes : celles de data/map.json (choix d'affichage pour les nommer).
@@ -82,7 +81,7 @@
     document.querySelectorAll('.onglet-partie').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.onglet === affichage.onglet)));
     window.dispatchEvent(new Event('resize'));
     tourner(true);
-    if (affichage.onglet === 'objectifs') dessinerObjectifs();
+    if (affichage.onglet === 'jeu') dessinerObjectifs();
     if (affichage.onglet === 'mort') { dessinerCompo(); dessinerNotes(); }
   }
 
@@ -93,10 +92,11 @@
     appliquerAffichage();
   }
 
-  // Raccourcis J / O / M (sauf pendant une saisie).
+  // Raccourcis J / M (sauf pendant une saisie) ; O, l'ancien onglet Objectifs, ramène à En jeu.
   document.addEventListener('keydown', (e) => {
     if (e.ctrlKey || e.metaKey || e.altKey || /^(INPUT|SELECT|TEXTAREA)$/.test(e.target.tagName) || document.querySelector('dialog[open]')) return;
     const k = e.key.toUpperCase();
+    if (k === 'O') { e.preventDefault(); changerOnglet('jeu'); return; }
     Object.keys(ONGLETS).forEach((id) => { if (ONGLETS[id].touche === k) { e.preventDefault(); changerOnglet(affichage.onglet === id && id !== 'jeu' ? 'jeu' : id); } });
   });
 
@@ -369,12 +369,12 @@
 
   function dessinerObjectifs() {
     const zone = document.getElementById('objectifs-vue');
-    if (!zone || !D || affichage.onglet !== 'objectifs') return;
+    if (!zone || !D || affichage.onglet !== 'jeu') return;
     const chrono = tempsChrono();
     const t = chrono.t;
     const r = roleCourant();
     const prio = r && D.conseils.roles[r] ? D.conseils.roles[r].priorites : [];
-    const de = Math.max(0, t - 60), a = t + 20 * 60;
+    const de = Math.max(0, t - 30), a = t + 20 * 60;
     const lignes = [];
     D.timeline.evenements.filter((e) => niveauOk(e.id)).forEach((e) => occurrences(e, de, a).forEach((o) => lignes.push({ e: e, t: o.t, fin: o.fin })));
     D.timeline.phases.forEach((p) => { if (p.debut_s > de && p.debut_s <= a) lignes.push({ phase: p, t: p.debut_s }); });
@@ -410,8 +410,9 @@
       ul.append(li);
     });
     zone.append(ul);
+    // La liste démarre à l'objectif en cours (sans faire défiler la page).
     const proche = ul.querySelector('.obj-ligne:not(.passe)');
-    if (proche && !zone.dataset.defile) { zone.dataset.defile = '1'; proche.scrollIntoView({ block: 'center' }); }
+    if (proche) ul.scrollTop = Math.max(0, proche.offsetTop - ul.offsetTop - 4);
   }
 
   // ---------- onglet Mort : la compo d'en face et comment la jouer ----------
