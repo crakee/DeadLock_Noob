@@ -125,11 +125,11 @@ def enveloppe(e, pas=441):
     return [math.sqrt(sum(x * x for x in e[i:i + pas]) / len(e[i:i + pas])) for i in range(0, len(e), pas)]
 
 
-def seuil(env):
-    """Voix = 35 dB sous la fenêtre la plus forte, et au moins 12 dB au-dessus du bruit de fond (10e centile).
+def seuil(env, sous_max=35):
+    """Voix = sous_max dB (35 par défaut) sous la fenêtre la plus forte, et au moins 12 dB au-dessus du bruit de fond (10e centile).
     Sans silence dans le fichier, ce « fond » est déjà de la voix : il ne monte alors pas à moins de 20 dB du maximum."""
     haut, fond = max(env), sorted(env)[len(env) // 10]
-    return max(haut * 10 ** (-35 / 20), min(fond * 10 ** (12 / 20), haut * 10 ** (-20 / 20)), 10 ** (-60 / 20))
+    return max(haut * 10 ** (-sous_max / 20), min(fond * 10 ** (12 / 20), haut * 10 ** (-20 / 20)), 10 ** (-60 / 20))
 
 
 def decouper(e, pause_s):
@@ -153,10 +153,10 @@ def decouper(e, pause_s):
     return [e[max(0, (a - 15) * 441):(b + 15) * 441] for a, b in morceaux if (b - a) >= 8]
 
 
-def preparer(e, cible=CIBLE_DB, crete_max=None):
+def preparer(e, cible=CIBLE_DB, crete_max=None, sous_max=35):
     """Coupe les silences, ramène le volume parlé à la cible (dBFS), limite les crêtes, adoucit les bords."""
     env = enveloppe(e)
-    s = seuil(env)
+    s = seuil(env, sous_max)
     actifs = [i for i, v in enumerate(env) if v >= s]
     if not actifs:
         raise SystemExit("Clip muet ou illisible")

@@ -1,18 +1,20 @@
 """Génère des essais de sons d'alerte avec ElevenLabs (Sound Effects), d'après les prompts de docs/kit-audio-alertes.md.
 
-Chaque essai est préparé comme les voix (silences coupés, volume homogène, MP3 mono 44,1 kHz) et rangé dans
-medias/sons-essais/ (ignoré par git) : <style>-<niveau>-<n>.mp3. On écoute, on choisit, puis on copie le son retenu
-dans sons/.
+Chaque essai est préparé comme les voix (silences coupés, volume homogène, MP3 mono 44,1 kHz) et rangé dans la
+sonothèque medias/sonotheque/ (ignorée par git) : <groupe>-<n>.mp3, l'original non retouché dans brut/, et une fiche
+par son dans index.json (style, niveau, prompt, durée, date, outil, offre et licence). On écoute, on choisit, puis on
+copie le son retenu dans sons/.
 
 Usage :
   python3 outils/generer_sons.py                          # 2 variantes de chaque style et niveau
   python3 outils/generer_sons.py --style fantasy --niveau epique --variantes 4
-  python3 outils/generer_sons.py --prompt "..." --niveau tic --nom essai-perso    # prompt libre
+  python3 outils/generer_sons.py --prompt "..." --niveau notif --nom mix-lame-clavier --style-libre mix   # prompt libre
 
 Coût : 40 crédits par seconde de son (durée fixée). La clé se lit comme pour generer_voix.py.
 """
 
 import argparse
+import datetime
 import json
 import urllib.error
 import urllib.request
@@ -21,7 +23,9 @@ from pathlib import Path
 from generer_voix import cle_api, decoder, encoder, preparer, RACINE, TAUX, db
 
 API = "https://api.elevenlabs.io/v1/sound-generation?output_format=mp3_44100_128"
-SORTIE = RACINE / "medias/sons-essais"
+SORTIE = RACINE / "medias/sonotheque"
+# Coupe des silences : les effets ont des queues et des whooshs faibles, à garder (la voix coupe à 35 dB).
+SOUS_MAX = 50
 FIN = ", no reverb tail, no music bed, clean ending"
 
 # Durée demandée (l'API impose au moins 0,5 s : le tic est raccourci à la préparation), influence du prompt,
@@ -74,6 +78,16 @@ def generer(texte, niveau, cle_secrete):
         raise SystemExit(f"ElevenLabs a refusé ({e.code}) : {e.read().decode(errors='replace')[:300]}")
 
 
+def offre(cle_secrete):
+    """Offre ElevenLabs du compte au moment de générer : la licence en dépend (gratuite = usage non commercial)."""
+    req = urllib.request.Request("https://api.elevenlabs.io/v1/user/subscription", headers={"xi-api-key": cle_secrete})
+    try:
+        with urllib.request.urlopen(req, timeout=30) as r:
+            return json.load(r).get("tier")
+    except (urllib.error.URLError, ValueError):
+        return None
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     p.add_argument("--style", choices=PROMPTS, action="append", help="style(s) à générer (tous par défaut)")
@@ -81,22 +95,37 @@ def main():
     p.add_argument("--variantes", type=int, default=2)
     p.add_argument("--prompt", help="prompt libre (avec --niveau et --nom)")
     p.add_argument("--nom", help="nom des fichiers pour un prompt libre")
+    p.add_argument("--repreparer", action="store_true", help="refait la préparation de tous les sons depuis brut/ (sans générer)")
+    p.add_argument("--style-libre", default="libre", help="style noté dans l'index pour un prompt libre")
     a = p.parse_args()
 
+    if a.repreparer:
+        index = SORTIE / "index.json"
+        donnees = json.loads(index.read_text(encoding="utf-8"))
+        for nom, f in donnees["sons"].items():
+            if not f.get("brut"):
+                continue
+            e = preparer(decoder(SORTIE / f["brut"]), NIVEAUX[f["niveau"]]["cible"], crete_max=-3.0, sous_max=SOUS_MAX)
+            encoder(e, SORTIE / nom)
+            print(f"{nom}  {f['duree']:.2f} → {len(e) / TAUX:.2f} s")
+            f["duree"] = round(len(e) / TAUX, 2)
+        index.write_text(json.dumps(donnees, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+        return
     secret = cle_api()
     if not secret:
         raise SystemExit("Clé absente : variable ELEVENLABS_API_KEY ou fichier outils/.cle_elevenlabs")
     if a.prompt:
         if not (a.niveau and a.nom):
             raise SystemExit("--prompt demande --niveau et --nom")
-        travaux = [(a.nom, a.niveau[0], a.prompt)]
+        travaux = [(a.nom, a.style_libre, a.niveau[0], a.prompt)]
     else:
-        travaux = [(f"{s}-{n}", n, PROMPTS[s][n]) for s in (a.style or PROMPTS) for n in (a.niveau or NIVEAUX)]
+        travaux = [(f"{s}-{n}", s, n, PROMPTS[s][n]) for s in (a.style or PROMPTS) for n in (a.niveau or NIVEAUX)]
 
     SORTIE.mkdir(parents=True, exist_ok=True)
-    index = SORTIE / "essais.json"
-    essais = json.loads(index.read_text(encoding="utf-8")) if index.exists() else {}
-    for nom, niveau, texte in travaux:
+    index = SORTIE / "index.json"
+    sons = json.loads(index.read_text(encoding="utf-8"))["sons"] if index.exists() else {}
+    tier = offre(secret)
+    for nom, style, niveau, texte in travaux:
         for _ in range(a.variantes):
             i = 1
             while (SORTIE / f"{nom}-{i}.mp3").exists():
@@ -104,12 +133,17 @@ def main():
             brut = SORTIE / "brut" / f"{nom}-{i}.mp3"      # gardé : on peut repréparer sans repayer
             brut.parent.mkdir(exist_ok=True)
             brut.write_bytes(generer(texte, niveau, secret))
-            e = preparer(decoder(brut), NIVEAUX[niveau]["cible"], crete_max=-3.0)
+            e = preparer(decoder(brut), NIVEAUX[niveau]["cible"], crete_max=-3.0, sous_max=SOUS_MAX)
             fichier = SORTIE / f"{nom}-{i}.mp3"
             encoder(e, fichier)
-            essais[fichier.name] = {"niveau": niveau, "prompt": texte, "duree": round(len(e) / TAUX, 2)}
+            sons[fichier.name] = {"groupe": nom, "style": style, "niveau": niveau, "prompt": texte,
+                                  "duree": round(len(e) / TAUX, 2), "date": datetime.date.today().isoformat(),
+                                  "outil": "ElevenLabs Sound Effects", "offre": tier,
+                                  "licence": "usage non commercial" if tier == "free" else "commercial (selon l'offre)",
+                                  "brut": "brut/" + brut.name}
             print(f"{fichier.relative_to(RACINE)}  {len(e) / TAUX:.2f} s  crête {db(max(abs(x) for x in e)):.1f} dBFS")
-    index.write_text(json.dumps(essais, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+            index.write_text(json.dumps({"meta": {"note": "Sonothèque des essais de sons d'alerte, produite par outils/generer_sons.py."},
+                                         "sons": sons}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
 
 
 if __name__ == "__main__":
