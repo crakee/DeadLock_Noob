@@ -18,6 +18,9 @@
   let heros = null, objets = {}, statsHeros = null, tempo = null, carte = null, lecons = null;
   let moi = null;              // { id, nom, avatar, rang }
   let parties = [], details = {}, metriques = {}, courbes = {};
+  // Modes de jeu (game_mode de l'API) : 1 = partie normale, 4 = Street Brawl (bagarre de rue, sans waves).
+  const MODE_NORMAL = 1, MODE_BRAWL = 4;
+  let brawls = [];      // parties Street Brawl : gardées et listées, pas analysées pour l'instant
 
   const fmtMin = (s) => Math.floor(s / 60) + ':' + String(Math.round(s % 60)).padStart(2, '0');
   const nomHeros = (id) => (heros.heros.find((h) => h.id === id) || {}).nom || ('#' + id);
@@ -461,6 +464,30 @@
     return { cls: 'neutre', txt: 'Combat à égalité (' + (m.allies + 1) + ' contre ' + m.ennemis + ').' };
   }
 
+  // ---------- Street Brawl : listé à part, pas analysé ----------
+  // Pas de waves ni de lane : les mesures et les leçons ne s'y appliquent pas. Les données restent
+  // disponibles (détail chargé à la demande) pour un traitement plus tard.
+  function blocBrawl() {
+    const d = el('details', 'mp-pli mp-brawl');
+    const v = brawls.filter((p) => p.match_result === p.player_team).length;
+    d.append(el('summary', null, DLN.tr({ fr: 'Street Brawl (bagarre de rue) · ', en: 'Street Brawl · ' }) + brawls.length + ' · ' + v + ' V ' + (brawls.length - v) + ' D'));
+    d.append(el('p', 'aide', DLN.tr({ fr: 'Mode pour s\'amuser, sans waves : gardé à part, pas pris en compte dans tes notes ni dans le coach.',
+      en: 'Fun mode with no waves: kept apart, not counted in your grades or the coach.' })));
+    const ul = el('ul', 'mp-brawl-liste');
+    brawls.forEach((p) => {
+      const li = el('li', p.match_result === p.player_team ? 'victoire' : 'defaite');
+      const h = herosDe(p.hero_id);
+      if (h) li.append(DLN.img(h.icone || h.image, 'mp-icone'));
+      li.append(el('strong', null, nomHeros(p.hero_id)),
+        el('span', null, (p.match_result === p.player_team ? DLN.tr({ fr: 'Victoire', en: 'Win' }) : DLN.tr({ fr: 'Défaite', en: 'Loss' }))),
+        el('span', 'aide', new Date(p.start_time * 1000).toLocaleDateString(DLN.langue === 'fr' ? 'fr-FR' : 'en-US', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) +
+          ' · ' + Math.round(p.match_duration_s / 60) + ' min · ' + p.player_kills + ' / ' + p.player_deaths + ' / ' + p.player_assists));
+      ul.append(li);
+    });
+    d.append(ul);
+    return d;
+  }
+
   // ---------- débrief de la dernière partie ----------
   // Ce qu'un coach dit juste après une partie : un point réussi, un point à corriger, l'exercice du focus,
   // la mort la plus évitable, et ce qui a bougé par rapport aux parties d'avant.
@@ -607,6 +634,7 @@
     z.append(blocParties);
 
     // --- 5. Données manquantes ---
+    if (brawls.length) z.append(blocBrawl());
     const aide = bloc(DLN.tr({ fr: 'Pourquoi il manque des parties ?', en: 'Why are games missing?' }), 'mp-aide');
     aide.append(el('p', null, DLN.tr({
       fr: 'deadlock-api.com ne voit pas toutes les parties : elle en récupère une partie chaque jour, au hasard. Pour que toutes les tiennes arrivent automatiquement, ' +
@@ -893,7 +921,7 @@
     const m = /(\d{6,12})/.exec(texte || '');
     if (!m) { message.textContent = DLN.tr({ fr: 'Colle le numéro de la partie (Match ID), que des chiffres.', en: 'Paste the match number (Match ID), digits only.' }); return; }
     const id = Number(m[1]);
-    if (parties.some((p) => p.match_id === id)) { message.textContent = DLN.tr({ fr: 'Cette partie est déjà dans ta liste.', en: 'This match is already in your list.' }); return; }
+    if (parties.concat(brawls).some((p) => p.match_id === id)) { message.textContent = DLN.tr({ fr: 'Cette partie est déjà dans ta liste.', en: 'This match is already in your list.' }); return; }
     message.textContent = DLN.tr({ fr: 'Recherche de la partie chez Steam…', en: 'Fetching the match from Steam…' });
     try {
       const d = await detailPartie(id);
@@ -943,14 +971,19 @@
       majA: new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }) };
     try { localStorage.setItem(CLE, String(id)); } catch (e) { /* stockage indisponible */ }
     afficherProfil();
-    parties = histo.filter((p) => p.game_mode === 1);
+    parties = histo.filter((p) => p.game_mode === MODE_NORMAL);
+    brawls = histo.filter((p) => p.game_mode === MODE_BRAWL);
     // Parties ajoutées par leur numéro et absentes de l'historique de l'API.
     for (const mid of lireAjoutees()) {
-      if (parties.some((p) => p.match_id === mid)) continue;
-      try { const e = entreeDepuisDetail(await detailPartie(mid)); if (e) parties.push(e); } catch (e) { /* indisponible pour l'instant */ }
+      if (parties.concat(brawls).some((p) => p.match_id === mid)) continue;
+      try {
+        const e = entreeDepuisDetail(await detailPartie(mid));
+        if (e && e.game_mode === MODE_BRAWL) brawls.push(e); else if (e) parties.push(e);
+      } catch (e) { /* indisponible pour l'instant */ }
     }
     parties.sort((a, b) => b.start_time - a.start_time);
-    if (!parties.length) { z.textContent = ''; z.append(el('p', 'vide', 'Aucune partie trouvée pour ce compte sur deadlock-api.com.')); return; }
+    brawls.sort((a, b) => b.start_time - a.start_time);
+    if (!parties.length) { z.textContent = ''; z.append(el('p', 'vide', DLN.tr({ fr: 'Aucune partie normale trouvée pour ce compte sur deadlock-api.com.', en: 'No regular game found for this account on deadlock-api.com.' }))); if (brawls.length) z.append(blocBrawl()); return; }
     const lues = [];
     let i = 0;
     for (const p of parties.slice(0, NB_DETAILLEES)) {
