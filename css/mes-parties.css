@@ -1,0 +1,57 @@
+/* Mes parties : analyse des parties du joueur (js/mes-parties.js). */
+
+.page-parties { grid-template-columns: minmax(0, 1fr); max-width: 72rem; margin: 0 auto; }
+.mp-form { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
+.mp-form label { font-family: var(--titre); text-transform: uppercase; letter-spacing: .05em; color: var(--or); }
+.mp-form input { flex: 1 1 22rem; min-width: 0; font: inherit; color: var(--texte); background: var(--fond-2); border: 1px solid var(--bord-fort); border-radius: .4rem; padding: .5rem .7rem; }
+.mp-profil { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem; margin-top: .6rem; }
+.mp-profil > div { display: flex; flex-direction: column; }
+.mp-profil .btn { margin-left: auto; }
+.mp-avatar { width: 3rem; height: 3rem; border-radius: .4rem; }
+.mp-contenu { display: flex; flex-direction: column; gap: .8rem; }
+.mp-grand { font-family: var(--titre); font-size: 1.6rem; margin: 0 0 .4rem; }
+
+.mp-axes { display: flex; flex-direction: column; gap: .6rem; }
+.mp-axe { padding: .7rem .9rem; background: var(--fond-2); border: 1px solid var(--bord); border-left: .35rem solid var(--or); border-radius: .4rem; }
+.mp-axe h3 { margin: 0 0 .3rem; font-size: 1.2rem; }
+.mp-axe.mp-fort { border-left-color: var(--danger); }
+.mp-axe.mp-moyen { border-left-color: var(--alerte); }
+.mp-axe.mp-bon { border-left-color: var(--bon); }
+.mp-axe.mp-info { border-left-color: var(--cat-lane); }
+.mp-constat { margin: 0 0 .4rem; font-size: 1.05rem; }
+.mp-conseils-titre { margin: .4rem 0 .2rem; display: flex; align-items: center; gap: .4rem; color: var(--doux); font-size: .9rem; }
+.mp-conseils { margin: 0; padding-left: 1.2rem; display: flex; flex-direction: column; gap: .2rem; }
+
+.mp-table td, .mp-table th { padding: .3rem .6rem; text-align: left; }
+.mp-icone { width: 1.6rem; height: 1.6rem; border-radius: .3rem; object-fit: cover; vertical-align: middle; margin-right: .4rem; }
+td.bas { color: var(--danger); font-weight: 700; }
+td.moyen-bas { color: var(--alerte); }
+td.haut { color: var(--bon); font-weight: 700; }
+
+.mp-parties { display: flex; flex-direction: column; gap: .4rem; }
+.mp-match { background: var(--fond-2); border: 1px solid var(--bord); border-left: .35rem solid var(--danger); border-radius: .4rem; padding: .45rem .7rem; }
+.mp-match.victoire { border-left-color: var(--bon); }
+.mp-match > summary { cursor: pointer; display: flex; flex-wrap: wrap; align-items: center; gap: .3rem .7rem; }
+.mp-resultat { font-weight: 700; }
+.mp-match.victoire .mp-resultat { color: var(--bon); }
+.mp-match.defaite .mp-resultat { color: var(--danger); }
+.mp-match-corps { display: grid; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); gap: .8rem 1.2rem; margin-top: .6rem; }
+.mp-bloc h4 { margin: 0 0 .3rem; }
+.mp-graphe { width: 100%; height: auto; }
+.mp-toi { fill: none; stroke: var(--or); stroke-width: 2.5; }
+.mp-ref { fill: none; stroke: var(--doux); stroke-width: 1.5; stroke-dasharray: 5 4; }
+.mp-mort { stroke: var(--danger); stroke-width: 1.5; opacity: .7; }
+svg .mp-axe { fill: var(--doux); font-size: 9px; text-anchor: middle; }
+.mp-sources td { padding: .15rem .5rem; }
+.mp-liste { margin: 0; padding-left: 1.1rem; }
+.mp-achats { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .25rem; }
+.mp-achats li { display: inline-flex; align-items: center; gap: .3rem; padding: .05rem .45rem .05rem .1rem; font-size: .82rem; border: 1px solid var(--obj, var(--bord)); border-radius: .3rem; background: var(--panneau-2); }
+.mp-achats li.gros { font-weight: 700; }
+.mp-achats img { width: 1.3rem; height: 1.3rem; }
+.mp-achats .obj-weapon { --obj: var(--weapon); }
+.mp-achats .obj-vitality { --obj: var(--vitality); }
+.mp-achats .obj-spirit { --obj: var(--spirit); }
+
+@media (max-width: 500px) {
+  .mp-match-corps { grid-template-columns: minmax(0, 1fr); }
+}

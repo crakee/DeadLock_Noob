@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Mes parties · DeadLock_Noob</title>
+  <link rel="icon" href="data:,">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Oswald:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mes-parties.css">
+</head>
+<body data-page="parties" data-rang>
+  <header id="barre"></header>
+
+  <div id="erreur" class="erreur" hidden>
+    <h1>Données introuvables</h1>
+    <p id="erreur-texte"></p>
+    <p>Depuis le dossier du projet, lancer <code>python -m http.server</code> puis ouvrir
+      <code>http://localhost:8000</code>.</p>
+  </div>
+
+  <main id="app" class="page page-parties" hidden>
+    <section class="panneau mp-compte" aria-label="Mon compte">
+      <form id="mp-form" class="mp-form">
+        <label for="mp-saisie">Ton profil Steam</label>
+        <input id="mp-saisie" type="text" autocomplete="off"
+               placeholder="Lien steamcommunity.com/profiles/…, SteamID ou pseudo">
+        <button class="btn principal" type="submit">Analyser</button>
+      </form>
+      <div id="mp-profil" class="mp-profil"></div>
+    </section>
+    <div id="mp-contenu" class="mp-contenu"></div>
+  </main>
+
+  <footer id="meta" class="meta"></footer>
+
+  <script src="js/commun.js"></script>
+  <script src="js/mes-parties.js"></script>
+</body>
+</html>

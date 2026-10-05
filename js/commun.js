@@ -19,6 +19,7 @@ window.DLN = (function () {
   const ESPACES = [
     ['partie', 'En partie', 'index.html'],
     ['heros', 'Héros', 'heros.html'],
+    ['parties', 'Parties', 'mes-parties.html'],
     ['apprendre', 'Apprendre', 'memo.html'],
     ['patch', 'Patch', 'patch.html']
   ];
