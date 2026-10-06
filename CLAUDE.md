@@ -1,5 +1,19 @@
 # DeadLock_Noob
 
+## Démarrage et fin de session (à lire en premier)
+
+1. **Début** : lis `ETAT.md`. Il dit où en est le projet et où trouver chaque
+   info. N'ouvre ensuite que les fichiers qu'il cite pour ta tâche.
+2. **Tâches** : elles vivent dans la fiche Obsidian
+   `/home/crakee/vaults/pixel/20 Projets/En cours/DeadLock Noob/DeadLock Noob.md`,
+   section `## À faire`. Règles d'écriture (format Tasks, pas de doublon,
+   priorité et date seulement si on te les donne) :
+   `/home/agent/projects/homelab-docs/reference/standard-projets.md` §Tâches.
+3. **Fin** : mets à jour `ETAT.md` (tableau, prochaine étape, une ligne de
+   journal, `maj:`), coche les tâches terminées et ajoute les nouvelles dans la
+   fiche. `ETAT.md` est copié automatiquement dans Obsidian (hook Stop de
+   `.claude/settings.local.json`, non versionné).
+
 Aide-mémoire Deadlock personnel : chrono de timings pour second écran + fiches héros/objets avec counters. Le cadrage complet (besoin, découpage, sources, décisions, limites de l'API) est dans `README.md` — le lire en premier.
 
 ## État

@@ -17,3 +17,6 @@ docs/Capture*.png
 !sons/*.mp3
 # Clé d'API ElevenLabs : jamais dans git
 outils/.cle_elevenlabs
+
+# Réglages Claude Code propres à cette machine (hook vers le vault Obsidian)
+.claude/settings.local.json
