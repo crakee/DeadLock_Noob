@@ -110,4 +110,4 @@ Limites constatées :
 3. Timeline : collecter et vérifier les timings, première version consultable.
 4. Héros et objets : schéma de données, puis remplissage.
 5. Outil de sélection de héros.
-6. Procédure de mise à jour par patch (manuelle ou automatisée).
+6. Procédure de mise à jour par patch : voir `docs/maj-patch.md`.

@@ -691,12 +691,12 @@ def main():
                {"tranches": construire_tempo(depuis_ts, stats, objets)})
 
     if voulu("achats"):
-        profil = json.loads((DATA / "profil.json").read_text(encoding="utf-8"))
-        ids = profil["heros_joues"] + profil["heros_a_essayer"]
+        # Tous les héros (4 tranches × 39 héros ≈ 156 appels, 3 à 4 minutes le 2026-10-06).
+        ids = [h["id"] for h in heros]
         ecrire("achats.json",
                {**meta, "depuis": depuis_texte,
                 "note": "Objets achetés par au moins 20 % des joueurs du héros depuis le patch, par tranche de rang, "
-                        "rangés par minute moyenne d'achat. `achete_par` en % des parties du héros. Héros de data/profil.json."},
+                        "rangés par minute moyenne d'achat. `achete_par` en % des parties du héros. Tous les héros."},
                {"tranches": construire_achats(depuis_ts, stats, objets, ids)})
 
     carte = construire_carte(get("/v1/assets/map"))

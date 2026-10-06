@@ -487,8 +487,9 @@
       t.append(el('span', 'marque', 'avis'));
       const ul = el('ul');
       ul.append(el('li', null, verdict.texte));
-      ul.append(el('li', 'melee-preuve', nbMelee + ' build' + (nbMelee > 1 ? 's' : '') + ' public' + (nbMelee > 1 ? 's' : '') + ' sur ' + builds.length +
-        ' prennent au moins 2 objets de mêlée (' + M.objets.join(', ') + ').'));
+      const combien = nbMelee === 0 ? 'Aucun des ' + builds.length + ' builds publics ne prend'
+        : nbMelee === 1 ? '1 build public sur ' + builds.length + ' prend' : nbMelee + ' builds publics sur ' + builds.length + ' prennent';
+      ul.append(el('li', 'melee-preuve', combien + ' au moins 2 objets de mêlée (' + M.objets.join(', ') + ').'));
       const tr = D.achats && (D.achats.tranches.tous || {})[String(h.id)];
       const achetes = tr ? tr.objets.filter((o) => M.objets.indexOf(o.nom) !== -1) : [];
       if (achetes.length) ul.append(el('li', 'melee-preuve', 'Ce que ses joueurs achètent : ' + achetes.map((o) => o.nom + ' ' + o.achete_par + ' %').join(', ') + '.'));
