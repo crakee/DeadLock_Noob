@@ -20,6 +20,8 @@ Tout est poussé et publié ; rien n'a encore été essayé en partie réelle.
 | Progression (analyse des parties, coach perso) | 🟡 | parties visibles par l'API (outil d'ingestion) | `docs/recuperer-ses-parties.md`, `js/mes-parties*.js` |
 | Timings du chrono | 🟡 | horaires `incertain` à vérifier en jeu (Unstable Rift) | `data/timeline.json`, `collecte/timings-brut.md` |
 | Mise à jour de patch | 🟢 | prochain patch | `docs/maj-patch.md` |
+| Données en direct pendant la partie | 🔴 | pas de source légère confirmée (Overwolf = gros chantier ; test `-condebug` à faire) | `docs/coach-donnees.md` |
+| Quiz « Entraînement » (gamifié, lié aux points faibles) | 🔴 | brief à écrire | compte rendu Obsidian du 2026-10-06 |
 | Traduction anglaise | 🟡 | seulement navigation, parcours, leçons | `CLAUDE.md` §Langues |
 
 ## Prochaine étape
@@ -33,6 +35,7 @@ Essayer le site pendant de vraies parties (second écran 1080p et téléphone), 
 - Chrono : `js/timeline.js`, schéma `docs/brief-front-timeline.md`.
 - Carte : `js/carte-mini.js` (En partie), `js/carte.js` (page Carte), `data/map.json`, `data/map-elements.json`.
 - Fiches héros : `js/heros.js` ; arme et mêlée : `data/armes.json` (généré), `data/armes-conseils.json` (jugement).
+- Inventaire des données et propositions pour le coach : `docs/coach-donnees.md`.
 - Progression et récupération des parties : `js/mes-parties.js`, `js/mes-parties-lobby.js`, `docs/recuperer-ses-parties.md`.
 - Sons et voix : `js/sons.js`, `js/voix.js`, `docs/brief-voix-sons.md`, `docs/kit-audio-alertes.md`.
 - Publier : `git push origin main` puis `git push origin main:gh-pages`.
@@ -46,6 +49,8 @@ Essayer le site pendant de vraies parties (second écran 1080p et téléphone), 
 - En partie : un seul écran « En jeu » avec la carte ; la compo à part dans « Mort · compo ».
 - Pas de voix sur les timings non fixes ; sons doux, pas d'orchestral.
 - L'identifiant Steam du joueur reste dans le navigateur, jamais dans le dépôt.
+- Pas d'abonnement Patreon deadlock-api ; parties récupérées par deadlock-api-ingest en service (pas l'option de lancement Steam, qui ne lit que le cache).
+- Positionnement : apprendre (parcours, coach, leçons), pas un site de stats ; site public multilingue.
 
 ## Journal
 - 2026-10-06 — En partie : coach selon le profil du joueur (zones de mort, points faibles), avant/après la partie, version téléphone.
