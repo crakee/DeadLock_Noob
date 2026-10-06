@@ -267,7 +267,14 @@
         lignes[c.id] = { label: label, caseC: caseC, nom: nom, etat: etat };
       });
     });
-    conteneur.append(tete, zone, legende);
+    // Téléphone : la légende (longue) se replie sous la carte ; sur grand écran elle reste ouverte, sans titre.
+    const pli = el('details', 'carte-legende-pli');
+    pli.append(el('summary', null, DLN.tr({ fr: 'Légende et couches à afficher', en: 'Legend and layers to show' })), legende);
+    const etroit = window.matchMedia('(max-width: 600px)');
+    const plier = () => { pli.open = !etroit.matches; };
+    plier();
+    if (etroit.addEventListener) etroit.addEventListener('change', plier);
+    conteneur.append(tete, zone, pli);
 
     function orienter() { zone.classList.toggle('retournee', equipe() === 1); }
     ecouteursEquipe.push(orienter);

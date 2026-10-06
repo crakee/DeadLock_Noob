@@ -110,6 +110,9 @@
     rafraichir();
   }
 
+  // Pour le bouton « Partie finie » du coach (js/coach.js).
+  DLN.chrono = { remettreAZero: () => remettreAZero() };
+
   // Aucune partie ne dure 2 h : un chrono qui les dépasse (ou en pause depuis 2 h) a été oublié.
   function oublie() {
     if (etat.depart != null) return temps() >= OUBLI_S;

@@ -350,7 +350,7 @@ body.onglet-jeu .col-carte .carte-partie { flex: 1 1 auto; }
 .coach { gap: .55rem; }
 .coach-phase { font-family: var(--titre); font-size: 1.1rem; color: var(--or-clair); font-variant-numeric: tabular-nums; }
 .coach-carte { gap: .35rem; }
-.coach.achat .coach-carte { border-left-color: #7cc46a; }
+.coach.coach-achat .coach-carte { border-left-color: #7cc46a; }
 .coach-action { font-size: clamp(1.5rem, 4.2vmin, 3rem); }
 .coach-action.long { font-size: clamp(1.2rem, 2.9vmin, 2.1rem); }
 .coach-pourquoi { font-size: clamp(1rem, 2vmin, 1.35rem); }
@@ -406,4 +406,95 @@ body.onglet-jeu .col-carte .carte-partie { flex: 1 1 auto; }
 @media (max-width: 1000px), (orientation: portrait) {
   .carte-partie-zone { width: 100%; }
   .carte-legende { overflow: visible; }
+}
+
+/* ====================================================================
+   Coach et profil du joueur (2026-10-06) : zones de mort, avant la partie, partie finie, onglet Mort
+   ==================================================================== */
+
+.coach-avant[hidden], .coach-risque[hidden] { display: none; }
+.coach.avant .coach-carte { border-left-color: var(--bord-fort); }
+.coach.avant .coach-action { font-size: clamp(1.3rem, 3.2vmin, 2.3rem); }
+.coach-avant { display: flex; flex-direction: column; gap: .5rem; }
+.coach-avant p { margin: 0; line-height: 1.4; }
+.coach-bloc-titre { font-family: var(--titre); text-transform: uppercase; letter-spacing: .06em; font-size: .85rem; color: var(--or-clair); }
+.coach-profil, .coach-fin { display: flex; flex-direction: column; gap: .35rem; padding: .55rem .8rem; border: 1px solid var(--bord); border-radius: .5rem; background: var(--fond-2); }
+.coach-profil .aide { font-size: .88rem; }
+.coach-faibles strong, .coach-forts strong { color: var(--doux); font-weight: 600; }
+.coach-fin { border-color: var(--bord-fort); }
+.coach-fin.pret { border: 2px solid var(--bon); }
+.coach-fin.pret strong { color: var(--bon); }
+.coach-fin a { color: var(--or-clair); }
+
+/* Bande 0–45 min : zones où le joueur meurt le plus, curseur du chrono. */
+.coach-risque { display: flex; flex-direction: column; gap: .3rem; padding: .35rem .8rem .45rem; border-radius: .5rem; border: 1px solid var(--bord); }
+.coach-risque.actif { border: 2px solid var(--danger); background: rgba(226, 103, 95, .12); }
+.coach-risque-barre { position: relative; height: .55rem; margin-bottom: .85rem; border-radius: .3rem; background: var(--panneau-2); }
+.coach-risque-zone { position: absolute; top: 0; bottom: 0; border-radius: .3rem; background: rgba(226, 103, 95, .7); }
+.coach-risque-graduation { position: absolute; top: .7rem; transform: translateX(-50%); font-size: .68rem; line-height: 1; color: var(--doux); font-variant-numeric: tabular-nums; }
+.coach-risque-curseur { position: absolute; top: -.2rem; bottom: -.2rem; width: 3px; margin-left: -1px; border-radius: 2px; background: var(--or-clair); }
+.coach-risque-texte { font-size: clamp(.95rem, 1.8vmin, 1.2rem); line-height: 1.35; }
+.coach-risque:not(.actif) .coach-risque-texte { color: var(--doux); font-size: .95rem; }
+.coach-risque.actif .coach-risque-texte strong { color: #ff8a7a; }
+.coach-risque-conseil { display: block; font-weight: 700; margin-top: .1rem; }
+.coach-risque-source { color: var(--doux); font-size: .8rem; }
+.coach-profil .coach-risque-barre { margin-top: .2rem; }
+
+/* Onglet Mort : la leçon de ton type de mort le plus fréquent. */
+.attente { display: flex; flex-direction: column; gap: .35rem; flex: none !important; }
+.attente h2 { display: flex; align-items: center; gap: .5rem; margin: 0; }
+.attente p { margin: 0; }
+.attente-pourquoi { color: var(--doux); font-size: .92rem; }
+.attente-titre { font-family: var(--titre); font-size: 1.3rem; color: var(--or-clair); text-decoration: none; }
+.attente-rappel { font-weight: 700; font-size: 1.1rem; }
+.attente-comment { margin: 0; padding-left: 1.1rem; display: flex; flex-direction: column; gap: .2rem; line-height: 1.4; }
+#btn-fin.confirmer { border-color: var(--danger); color: var(--texte); }
+
+/* Légende de la carte : ouverte sur grand écran (défile dans le panneau), repliée sur téléphone. */
+.carte-legende-pli { flex: 1 1 auto; min-height: 0; overflow-y: auto; }
+.carte-legende-pli .carte-legende { overflow: visible; }
+.carte-legende-pli > summary { display: none; }
+
+/* ====================================================================
+   Téléphone (2026-10-06) : une colonne, chrono collé en haut, rien de tronqué
+   ==================================================================== */
+@media (max-width: 1000px), (orientation: portrait) {
+  .col > section { overflow: visible; }
+  body.onglet-jeu .col-avenir .avenir { max-height: none; }
+  body.onglet-jeu .col-avenir .objectifs-vue { flex: none; min-height: 0; }
+  .carte-legende-pli { overflow: visible; }
+}
+@media (max-width: 600px) {
+  main.partie { gap: .5rem; }
+  .partie-colonnes, .col { gap: .5rem; }
+  .panneau { padding: .7rem .75rem; }
+  /* La barre de contexte (mini chrono compris) reste collée sous la navigation pendant le défilement. */
+  .contexte { position: sticky; top: var(--haut-nav, 0); z-index: 6; box-shadow: 0 6px 16px rgba(0, 0, 0, .55); }
+  .mini-chrono { font-size: 1.05rem; white-space: nowrap; }
+  .contexte { gap: .35rem; }
+  .contexte .btn, .contexte-panneaux > summary { font-size: .8rem; padding: .2rem .45rem; min-height: 2.2rem; }
+  .onglet-partie { padding: .25rem .4rem !important; font-size: .9rem !important; min-height: 2.3rem; }
+  .contexte-heros span:not(.doux) { max-width: 5.5rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .contexte-heros img { width: 1.3rem; height: 1.3rem; }
+  .contexte-plus { margin-left: auto; }
+  body.onglet-jeu .horloge-temps { font-size: 2.8rem; }
+  .commandes .btn, .recalage .btn { min-height: 2.6rem; }
+  .saisie input { width: 5.5rem; }
+  .contexte { padding: .4rem .5rem; }
+  .coach-tete h2 { font-size: 1rem; }
+  .coach-carte { padding: .75rem .85rem; border-left-width: .45rem; }
+  .coach-action, .coach.avant .coach-action { font-size: 1.55rem; }
+  .coach-action.long { font-size: 1.3rem; }
+  .coach-pourquoi { font-size: 1rem; }
+  .coach-rappel-texte, .coach-risque-texte { font-size: 1rem; }
+  .coach-difficultes-grille { grid-template-columns: minmax(0, 1fr); }
+  .coach-difficultes-grille label { padding: .25rem 0; }
+  body.onglet-jeu #avenir > li[data-vue] { padding: .8rem .9rem; }
+  body.onglet-jeu .objectifs-vue .obj-ligne, body.onglet-jeu .objectifs-vue .obj-phase { grid-template-columns: 3.6rem minmax(0, 1fr) auto; }
+  .carte-partie-tete { gap: .3rem; }
+  .carte-outils .btn { min-height: 2.2rem; }
+  .carte-legende-pli > summary { display: list-item; cursor: pointer; padding: .5rem 0; color: var(--doux); }
+  .carte-legende { grid-template-columns: minmax(0, 1fr); }
+  .carte-ligne { padding: .2rem 0; }
+  .attente-titre { font-size: 1.15rem; }
 }

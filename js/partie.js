@@ -15,7 +15,7 @@
   // Chaque onglet range ses panneaux en colonnes (de gauche à droite) ; les autres sont masqués.
   const ONGLETS = {
     jeu: { nom: '🎮 En jeu', touche: 'J', aide: 'Tout ce qui sert en jouant : chrono, coach, prochain objectif, objectifs à venir, carte', colonnes: [['horloge', 'coach', 'declenches'], ['avenir', 'objectifs'], ['carte']] },
-    mort: { nom: '💀 Mort · compo', touche: 'M', aide: 'Quand tu es mort : leur compo, comment la jouer, tes notes', colonnes: [['maintenant', 'compo', 'checklist'], ['enface'], ['notes']] }
+    mort: { nom: '💀 Mort · compo', touche: 'M', aide: 'Quand tu es mort : leur compo, comment la jouer, tes notes', colonnes: [['attente', 'compo', 'maintenant', 'checklist'], ['enface'], ['notes']] }
   };
   // Couleurs des lanes : celles de data/map.json (choix d'affichage pour les nommer).
   const LANES = { '#f1cc30': { id: 'yellow', nom: 'Yellow' }, '#29b1cc': { id: 'blue', nom: 'Blue' }, '#59b247': { id: 'green', nom: 'Green' } };
@@ -354,8 +354,17 @@
     if (!z || !D) return;
     const c = tempsChrono();
     z.textContent = c.lance ? fmt(c.t) + ' · ' + phaseA(c.t).nom : '';
-    z.hidden = !c.lance || affichage.onglet === 'jeu';
+    // Sur téléphone, le grand chrono défile avec la page : le mini chrono de la barre (collée en haut) prend le relais.
+    z.hidden = !c.lance || (affichage.onglet === 'jeu' && !ETROIT.matches);
   }
+  const ETROIT = window.matchMedia('(max-width: 600px)');
+  // La barre de contexte se colle juste sous la navigation, dont la hauteur change avec la largeur.
+  function hauteurNavigation() {
+    const nav = document.getElementById('barre');
+    if (nav) document.documentElement.style.setProperty('--haut-nav', nav.offsetHeight + 'px');
+  }
+  window.addEventListener('resize', hauteurNavigation);
+  setTimeout(hauteurNavigation, 0);
 
   // ---------- onglet Objectifs : ce qu'il faut faire, et quand ----------
 
@@ -780,6 +789,22 @@
   if ('serviceWorker' in navigator && location.protocol !== 'file:') {
     navigator.serviceWorker.register('./sw.js', { scope: './' }).catch(() => { /* pas de mode hors ligne */ });
   }
+
+  // ---------- écran allumé ----------
+  // Tant que le chrono tourne, l'écran ne se met pas en veille (téléphone posé à côté du clavier).
+  // Le navigateur relâche le verrou quand la page est cachée : on le redemande au retour.
+  let verrou = null;
+  function garderEcran() {
+    if (!navigator.wakeLock) return;
+    const voulu = tempsChrono().lance && !document.hidden;
+    if (voulu && !verrou) {
+      verrou = 'demande';
+      navigator.wakeLock.request('screen').then((v) => { verrou = v; v.addEventListener('release', () => { verrou = null; }); })
+        .catch(() => { verrou = null; });
+    } else if (!voulu && verrou && verrou !== 'demande') { verrou.release().catch(() => {}); verrou = null; }
+  }
+  setInterval(garderEcran, 3000);
+  document.addEventListener('visibilitychange', garderEcran);
 
   // ---------- démarrage ----------
 

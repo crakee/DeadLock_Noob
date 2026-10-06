@@ -51,6 +51,7 @@
                      aria-label="Régler l'horloge sur (mm:ss)" autocomplete="off">
               <button class="btn" type="submit">Régler</button>
             </form>
+            <button id="btn-fin" class="btn discret" type="button">Partie finie <kbd>F</kbd></button>
             <button id="btn-zero" class="btn discret" type="button">Zéro</button>
           </div>
           <div id="rappel" class="rappel" role="status"></div>
@@ -107,6 +108,7 @@
       <div class="col col-carte">
         <section data-panneau="carte" id="carte-partie" class="panneau carte-partie" aria-label="Carte"></section>
         <section data-panneau="objectifs" id="objectifs-vue" class="panneau objectifs-vue" aria-label="Objectifs à venir"></section>
+        <section data-panneau="attente" id="attente" class="panneau attente" aria-label="Pendant que tu attends"></section>
         <section data-panneau="compo" id="compo" class="panneau compo" aria-label="Comment jouer leur compo"></section>
         <section data-panneau="notes" id="notes" class="panneau notes" aria-label="Mes notes sur eux"></section>
       </div>
@@ -147,6 +149,7 @@
   <script src="js/etiquettes.js"></script>
   <script src="js/partie.js"></script>
   <script src="js/coach-etat.js"></script>
+  <script src="js/mes-parties-lobby.js"></script>
   <script src="js/coach.js"></script>
   <script src="js/carte-mini.js"></script>
 </body>

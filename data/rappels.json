@@ -1,9 +1,10 @@
 {
   "meta": {
     "nature": "Avis de joueur, pas une donnée du jeu : quand rappeler chaque leçon pendant la partie. Les horaires des objectifs viennent de data/timeline.json, pas d'ici.",
-    "verifie_le": "2026-10-05",
+    "verifie_le": "2026-10-06",
     "fonctionnement": "js/coach.js affiche le rappel (`en_partie.rappel` de la leçon, data/textes/<langue>/lecons.json) des difficultés choisies par le joueur, de `de_s` à `a_s` (null = jusqu'à la fin), toutes les `toutes_s` secondes. Difficultés = focus et leçons recommandées par la page Parties (dln.coach.v1), ou choix manuel (dln.coach.difficultes.v1) ; à défaut, `defaut`.",
-    "achats": "Les achats conseillés viennent de data/achats.json (héros du profil, objets pris par au moins `achat_min_pct` % des joueurs) ou, à défaut, des objets clés de data/tempo.json. Minute moyenne d'achat des joueurs du héros, pas un ordre imposé."
+    "achats": "Les achats conseillés viennent de data/achats.json (héros du profil, objets pris par au moins `achat_min_pct` % des joueurs) ou, à défaut, des objets clés de data/tempo.json. Minute moyenne d'achat des joueurs du héros, pas un ordre imposé.",
+    "profil": "Section `profil` : comment En partie se sert de dln.coach.profil.v1 (écrit par la page Progression). Zones de mort = tranches où le joueur meurt au moins `zone_facteur` fois plus qu'en moyenne (tranches jusqu'à `zone_max_min`), rappelées `zone_avant_s` avant. Leçons des points faibles : intervalle × `faible_facteur` (jamais sous `toutes_min_s`) ; leçons des points forts retirées. Parties longues : rappel de `longues_lecon` après `seuil_min` si au moins `longues_min_parties` parties longues et `longues_min_morts` morts par partie longue. Rien sous `min_parties` parties ; « piste » sous `parties_fiables`. `types_lecons` : leçon rappelée pour chaque type de mort. Jugement, pas donnée de jeu."
   },
   "defaut": ["last-hit", "souls-dormantes", "minimap"],
   "achat_min_pct": 30,
@@ -27,5 +28,18 @@
     "minimap": { "de_s": 30, "a_s": null, "toutes_s": 45 },
     "deux-waves": { "de_s": 480, "a_s": null, "toutes_s": 120 },
     "ton-heros": { "de_s": 0, "a_s": null, "toutes_s": 300 }
+  },
+  "profil": {
+    "min_parties": 5,
+    "parties_fiables": 10,
+    "zone_facteur": 1.5,
+    "zone_max_min": 45,
+    "zone_avant_s": 30,
+    "faible_facteur": 0.5,
+    "toutes_min_s": 45,
+    "longues_lecon": "engager-vie-basse",
+    "longues_min_parties": 2,
+    "longues_min_morts": 1,
+    "types_lecons": { "isole": "mort-isolee", "inferiorite": "inferiorite", "engage_bas": "engager-vie-basse", "cote_adverse": "mort-isolee", "surpris": "minimap" }
   }
 }
