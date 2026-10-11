@@ -3,7 +3,7 @@
 // l'écran ; une capture n'est gardée que si le texte affiché a changé (chiffres ignorés, sinon le
 // chrono rendrait chaque image différente). Les sons et les voix déclenchés sont notés au passage.
 // « coupes » : texte qui dépasse de sa boîte (masqué ou à faire défiler), par panneau.
-// Morts simulées : onglet Mort pendant la durée de réapparition de data/reapparition.json.
+// Morts simulées : onglet Attente pendant la durée de réapparition de data/reapparition.json.
 //
 // Usage : node outils/juge/captures.mjs [--parties haze,mirage] [--formats ecran-1080p]
 // Sorties : outils/juge/sorties/<horodatage>/ (non versionné) : captures, journal.json, resume.md.
@@ -127,7 +127,7 @@ async function jouerPartie(navigateur, partie, [idFormat, format], dossier) {
       const d = Math.round(reapparition(t));
       mortJusqua = t + d;
       evenement = `mort (réapparition ${d} s)`;
-      await page.keyboard.press('m');
+      await page.keyboard.press('a');   // onglet Attente (réapparition)
     } else if (mortJusqua >= 0 && t >= mortJusqua) {
       mortJusqua = -1;
       evenement = 'réapparition';
