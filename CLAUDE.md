@@ -76,7 +76,7 @@ Dans `heroes.json` et `items.json`, les étiquettes `mecaniques` et `contre` son
 
 - **Données séparées de l'affichage** : valeurs de jeu dans des fichiers JSON versionnés, chacun marqué du patch auquel il a été vérifié. Site statique HTML par-dessus.
 - **Aucune valeur de jeu de mémoire.** Le jeu change à chaque patch : toute valeur est vérifiée sur une source courante (notes de patch officielles, page actuelle de deadlock.wiki, API) avant d'entrer dans les données. Les résultats de recherche web renvoient souvent d'anciennes révisions du wiki.
-- **Factuel et jugement ne se mélangent pas** : un counter est justifié par une mécanique (ce que fait l'objet ou la compétence), pas par un classement de winrates — le signal statistique des matchups est dans la marge d'erreur (détail dans le README).
+- **Factuel et jugement ne se mélangent pas** : un counter est justifié par une mécanique (ce que fait l'objet ou la compétence), pas par un classement de winrates — le signal statistique des matchups est dans la marge d'erreur (détail dans le README). Exception validée le 2026-10-11 : le **rythme** (winrate par durée de partie, `data/tempo.json`) peut indiquer le pic de puissance d'un héros (« fort tôt », « fort quand ça dure »), présenté comme une statistique de sa tranche de rang, jamais comme un counter.
 - **Statistiques ajustables par rang** : toujours récupérer par tranche de rang et depuis la date du dernier patch.
 - Noms de héros, d'objets et de mécaniques en anglais. Échanges avec l'utilisateur en français.
 

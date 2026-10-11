@@ -711,13 +711,36 @@
       el('p', 'aide', 'Les builds de la communauté visibles dans le navigateur de builds du jeu, les plus mis en favori parmi ceux mis à jour ' +
         'depuis le patch (' + D.builds.meta.depuis + '). Pour en suivre un en partie : le chercher par son nom dans les builds de ' + h.nom + '. ' +
         'Textes des auteurs, souvent en anglais.'));
-    liste.forEach((b, i) => {
+    liste.forEach((b, i) => c.append(detailsBuild(h, b, i === 0)));
+    return c;
+  }
+
+  // Un build (public ou importé) : en-tête, bouton « Suivre en partie », sections et objets.
+  function detailsBuild(h, b, ouvert, retirable) {
       const d = el('details', 'build-public');
-      d.open = i === 0;
+      d.open = ouvert;
       const s = el('summary');
+      const suivi = DLN.builds && DLN.builds.suivi(h.id);
+      const estSuivi = suivi && suivi.id === b.id;
       s.append(el('strong', null, b.nom), el('span', 'aide', ' · ' + DLN.fmtNombre(b.favoris || 0) + ' favoris · mis à jour le ' +
-        new Date(b.mis_a_jour + 'T12:00:00').toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' })));
+        new Date(b.mis_a_jour + 'T12:00:00').toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' }) + ' · n° ' + b.id));
+      if (estSuivi) s.append(el('span', 'puce build-suivi', 'suivi en partie'));
       d.append(s);
+      if (DLN.builds) {
+        const actions = el('div', 'build-actions');
+        const suivre = el('button', 'btn' + (estSuivi ? ' discret' : ' principal'), estSuivi ? 'Ne plus suivre' : 'Suivre en partie');
+        suivre.type = 'button';
+        suivre.title = estSuivi ? 'Le coach reviendra aux achats moyens des joueurs de ' + h.nom : 'Le coach En partie annoncera les objets de ce build, dans son ordre';
+        suivre.addEventListener('click', () => DLN.builds.suivre(h.id, estSuivi ? null : b));
+        actions.append(suivre);
+        if (retirable) {
+          const r = el('button', 'btn discret', 'Retirer');
+          r.type = 'button';
+          r.addEventListener('click', () => DLN.builds.retirer(b.id));
+          actions.append(r);
+        }
+        d.append(actions);
+      }
       if (b.description) d.append(el('p', 'texte-auteur', b.description));
       b.sections.forEach((sec) => {
         const ligne = el('div', 'build-section');
@@ -736,8 +759,50 @@
         ligne.append(t, icones);
         d.append(ligne);
       });
-      c.append(d);
+      return d;
+  }
+
+  // Importer un build du jeu : numéro (navigateur de builds en jeu), lien qui le contient, ou nom.
+  function blocImport(h) {
+    const c = el('section', 'panneau build-import');
+    c.append(el('h2', null, 'Importer un build'),
+      el('p', 'aide', 'Colle le numéro d\'un build (affiché dans le navigateur de builds du jeu) ou un lien qui le contient, ou cherche par nom parmi les builds de ' + h.nom + '. ' +
+        'Le build reste dans ce navigateur ; « Suivre en partie » le donne au coach.'));
+    const f = el('form', 'build-import-form');
+    const champ = el('input');
+    champ.type = 'text';
+    champ.placeholder = 'Ex. : 414186, ou « melee »';
+    champ.setAttribute('aria-label', 'Numéro, lien ou nom du build');
+    const ok = el('button', 'btn principal', 'Chercher');
+    ok.type = 'submit';
+    const res = el('div', 'build-import-resultats');
+    res.setAttribute('aria-live', 'polite');
+    f.append(champ, ok);
+    f.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!champ.value.trim()) return;
+      res.textContent = 'Recherche…';
+      DLN.builds.chercher(champ.value, h.id).then((liste) => {
+        res.textContent = '';
+        if (!liste.length) { res.append(el('p', 'vide', 'Aucun build trouvé.')); return; }
+        liste.forEach((b) => {
+          const autre = b.heros !== h.id ? herosDe(b.heros) : null;
+          const l = el('div', 'build-trouve');
+          l.append(el('strong', null, b.nom), el('span', 'aide', ' · ' + (autre ? autre.nom + ' · ' : '') + DLN.fmtNombre(b.favoris) + ' favoris · n° ' + b.id));
+          const imp = el('button', 'btn', 'Importer');
+          imp.type = 'button';
+          imp.addEventListener('click', () => { DLN.builds.importer(b); res.textContent = ''; champ.value = ''; });
+          l.append(imp);
+          res.append(l);
+        });
+      }).catch((err) => { res.textContent = ''; res.append(el('p', 'erreur', 'Recherche impossible (' + err.message + ').')); });
     });
+    c.append(f, res);
+    const miens = DLN.builds.liste(h.id);
+    if (miens.length) {
+      c.append(el('h3', null, 'Mes builds importés'));
+      miens.forEach((b, i) => c.append(detailsBuild(h, b, i === 0, true)));
+    }
     return c;
   }
 
@@ -782,6 +847,7 @@
     }
     const publics = ((D.builds || {}).heros || {})[String(h.id)] || [];
     if (publics.length) zone.prepend(blocBuildsPublics(h, publics));
+    if (DLN.builds) zone.prepend(blocImport(h));
     if (!a && !cles.length && !publics.length) zone.append(el('p', 'vide', 'Pas de données d\'achats pour ce héros.'));
     else if (!a) zone.append(el('p', 'aide', 'Le build complet par phase n\'est récupéré que pour les héros du profil (joués et à essayer).'));
     return zone;
@@ -946,6 +1012,7 @@
     afficher();
     DLN.surNiveau(afficher);
     DLN.surTranche(afficher);
+    if (DLN.builds) DLN.builds.surChange(afficherFiche);
     DLN.etiquettes.surChange(afficherListe);
   }, DLN.echec);
 })();

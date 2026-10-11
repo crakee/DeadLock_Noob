@@ -185,6 +185,12 @@
     const tr = DLN.tranche();
     const min = (rappels && rappels.achat_min_pct) || 30;
     const a = achats && ((achats.tranches[tr] || achats.tranches.tous || {})[String(idHeros)]);
+    // Build suivi (importé depuis le jeu, js/builds-perso.js) : ses objets dans son ordre, minute estimée.
+    const build = DLN.builds && DLN.builds.suivi(idHeros);
+    if (build) {
+      const moyens = (a && a.objets) || ((achats && (achats.tranches.tous || {})[String(idHeros)]) || {}).objets || [];
+      return DLN.builds.calendrier(build, moyens).map((o) => ({ nom: o.nom, cout: o.cout, t: Math.round(o.minute * 60), build: build.nom, section: o.section, au_choix: o.au_choix }));
+    }
     if (a && a.objets.length) {
       return a.objets.filter((o) => o.achete_par >= min).map((o) => ({ nom: o.nom, cout: o.cout, pct: o.achete_par, t: Math.round(o.minute * 60) }));
     }
@@ -219,10 +225,12 @@
     // Achats : minute moyenne des joueurs du héros ; un rappel en plus si les souls dormantes sont une difficulté.
     const souls = diff.indexOf('souls-dormantes') !== -1;
     const listeAchats = achatsDe(x.heros).filter((o) => o.t >= t - ACHAT_APRES_S).map((o) => ({
-      type: 'achat', t: o.t, cle: 'a:' + o.nom, pct: o.pct, nom: o.nom,
-      titre: T({ fr: 'Acheter ', en: 'Buy ' }) + o.nom + (o.cout ? ' (' + DLN.fmtNombre(o.cout) + ')' : ''),
-      texte: T({ fr: o.pct + ' % des joueurs de ' + nom + ' le prennent, en moyenne vers ' + fmt(o.t) + '.',
-        en: o.pct + '% of ' + nom + ' players buy it, on average around ' + fmt(o.t) + '.' }) +
+      type: 'achat', t: o.t, cle: 'a:' + o.nom, pct: o.pct, nom: o.nom, au_choix: o.au_choix,
+      titre: T({ fr: 'Acheter ', en: 'Buy ' }) + o.nom + (o.cout ? ' (' + DLN.fmtNombre(o.cout) + ')' : '') + (o.au_choix ? T({ fr: ' · au choix', en: ' · optional' }) : ''),
+      texte: (o.build
+        ? T({ fr: 'Ton build « ' + o.build + ' » · ' + o.section + ', vers ' + fmt(o.t) + ' (estimé).', en: 'Your build "' + o.build + '" · ' + o.section + ', around ' + fmt(o.t) + ' (estimate).' })
+        : T({ fr: o.pct + ' % des joueurs de ' + nom + ' le prennent, en moyenne vers ' + fmt(o.t) + '.',
+          en: o.pct + '% of ' + nom + ' players buy it, on average around ' + fmt(o.t) + '.' })) +
         (souls ? T({ fr: ' Dès que tu as les souls, file au shop le plus proche.', en: ' As soon as you have the souls, go to the nearest shop.' }) : '')
     }));
 
@@ -556,11 +564,13 @@
     z.prochains.textContent = '';
     r.prochains.forEach((p) => {
       const li = el('li', 'coach-prochain type-' + p.type);
-      li.append(el('span', 'coach-prochain-quand', '≈ ' + fmt(p.t)), el('strong', null, p.nom), el('span', 'coach-prochain-pct', p.pct + T({ fr: ' %', en: '%' })));
+      li.append(el('span', 'coach-prochain-quand', '≈ ' + fmt(p.t)), el('strong', null, p.nom), el('span', 'coach-prochain-pct', p.pct != null ? p.pct + T({ fr: ' %', en: '%' }) : (p.au_choix ? T({ fr: 'au choix', en: 'optional' }) : '')));
       li.title = p.texte;
       z.prochains.append(li);
     });
     z.prochainsTitre.hidden = !r.prochains.length;
+    const build = r.x.heros && DLN.builds && DLN.builds.suivi(r.x.heros);
+    z.prochainsTitre.textContent = build ? T({ fr: 'Ton build : ', en: 'Your build: ' }) + build.nom : T({ fr: 'Tes prochains achats', en: 'Your next items' });
     if (r.sansAchats) z.prochains.append(el('li', 'aide', T({ fr: 'Pas de données d\'achat pour ce héros : regarde l\'onglet Builds de sa fiche.', en: 'No item data for this hero: see the Builds tab of its page.' })));
     else if (!r.x.heros) z.prochains.append(el('li', 'aide', T({ fr: 'Choisis ton héros en haut : le coach ajoute ses achats habituels, minute par minute.', en: 'Pick your hero at the top: the coach adds its usual items, minute by minute.' })));
   }
@@ -607,6 +617,7 @@
     DLN.surNiveau(dessiner);
     DLN.surTranche(dessiner);
     if (DLN.partieContexte) DLN.partieContexte.surChange(dessiner);
+    if (DLN.builds) DLN.builds.surChange(() => dessiner(true));
     window.addEventListener('storage', (e) => {
       if ([CLE_DIFFICULTES, 'dln.coach.v1', CLE_PROFIL].indexOf(e.key) !== -1) { cleAttente = null; dessiner(true); }
       if (e.key === CLE_SYNC || e.key === CLE_PROFIL) { cleAvant = null; dessiner(); }

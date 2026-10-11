@@ -90,3 +90,11 @@ details.menace[open] > summary { margin-bottom: .4rem; }
 .melee-verdict.fort { color: var(--or-clair); border-color: var(--or); }
 .melee-preuve { color: var(--doux); font-size: .92rem; }
 .melee-regles { margin: 0; padding-left: 1.2rem; display: flex; flex-direction: column; gap: .3rem; line-height: 1.45; }
+
+/* Builds importés (js/builds-perso.js) */
+.build-import-form { display: flex; gap: .5rem; margin: .5rem 0; }
+.build-import-form input { flex: 1 1 auto; min-width: 0; }
+.build-trouve { display: flex; align-items: center; gap: .5rem; padding: .35rem 0; }
+.build-trouve .btn { margin-left: auto; }
+.build-actions { display: flex; gap: .5rem; margin: .4rem 0 .6rem; }
+.build-suivi { margin-left: .5rem; }

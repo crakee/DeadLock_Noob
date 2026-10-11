@@ -2,6 +2,7 @@
 // Horloge simulée (Playwright page.clock) : 40 min en quelques secondes. Toutes les 10 s, on lit
 // l'écran ; une capture n'est gardée que si le texte affiché a changé (chiffres ignorés, sinon le
 // chrono rendrait chaque image différente). Les sons et les voix déclenchés sont notés au passage.
+// « coupes » : texte qui dépasse de sa boîte (masqué ou à faire défiler), par panneau.
 // Morts simulées : onglet Mort pendant la durée de réapparition de data/reapparition.json.
 //
 // Usage : node outils/juge/captures.mjs [--parties haze,mirage] [--formats ecran-1080p]
@@ -55,8 +56,28 @@ const LIRE_ECRAN = () => {
   document.querySelectorAll('[data-panneau], #contexte').forEach((s) => {
     if (vis(s)) panneaux[s.dataset.panneau || s.id] = s.innerText.replace(/\n{2,}/g, '\n').trim();
   });
+  // Texte coupé : un élément visible dont le contenu dépasse sa boîte sans barre de défilement.
+  const coupes = [];
+  const app = document.getElementById('app') || document.body;
+  app.querySelectorAll('*').forEach((e) => {
+    if (!vis(e) || !e.innerText || !e.innerText.trim()) return;
+    const st = getComputedStyle(e);
+    // Masqué (hidden/clip) ou à faire défiler (auto/scroll) : en jouant, on ne fait pas défiler un panneau.
+    const cache = (v) => v !== 'visible';
+    const depasseY = cache(st.overflowY) && e.scrollHeight - e.clientHeight > 4;
+    const depasseX = cache(st.overflowX) && e.scrollWidth - e.clientWidth > 4;
+    const ellipse = st.textOverflow === 'ellipsis' && e.scrollWidth > e.clientWidth + 1;
+    if (depasseY || depasseX || ellipse) {
+      const p = e.closest('[data-panneau]');
+      coupes.push({ panneau: p ? p.dataset.panneau : (e.id || e.className || e.tagName), mode: /auto|scroll/.test(st.overflowY + st.overflowX) ? 'à faire défiler' : 'masqué', cache_px: Math.max(e.scrollHeight - e.clientHeight, e.scrollWidth - e.clientWidth), texte: e.innerText.replace(/\s+/g, ' ').slice(0, 80) });
+    }
+  });
+  const coach = document.querySelector('[data-panneau="coach"]');
   return {
     panneaux,
+    coupes,
+    horloge: (document.getElementById('horloge') || {}).textContent,
+    principal: coach && vis(coach) ? coach.innerText.split('\n').filter(Boolean).slice(0, 4).join(' | ') : null,
     defile: document.documentElement.scrollHeight > window.innerHeight + 2,
     onglet: [...document.body.classList].find((c) => c.startsWith('onglet-')) || ''
   };
@@ -65,7 +86,8 @@ const LIRE_ECRAN = () => {
 // Journal des sons et voix : on enveloppe les fonctions appelées par le site.
 const ESPIONNER = () => {
   window.__journal = [];
-  const note = (type, detail) => window.__journal.push({ type, detail, horloge: (document.getElementById('horloge') || {}).textContent });
+  const appelant = () => (new Error().stack || '').split('\n').filter((l) => /js\/[a-z-]+\.js/.test(l)).slice(0, 2).map((l) => l.trim().replace(/^at /, '').replace(/https?:\/\/[^/]+\//, '')).join(' ← ');
+  const note = (type, detail) => window.__journal.push({ type, detail, source: appelant(), horloge: (document.getElementById('horloge') || {}).textContent });
   if (window.DLN && DLN.sons) { const j = DLN.sons.jouer; DLN.sons.jouer = (m, p) => { note('son', { moment: m, profil: p || DLN.sons.profil() }); return j(m, p); }; }
   if (window.DLN && DLN.voix) { const a = DLN.voix.annoncer; DLN.voix.annoncer = (n, r) => { note('voix', { nom: n, restant_s: r }); return a(n, r); }; }
   if (window.speechSynthesis) { const s = speechSynthesis.speak.bind(speechSynthesis); speechSynthesis.speak = (u) => { note('voix-navigateur', { texte: u.text }); try { s(u); } catch (e) { /* sans voix */ } }; }
@@ -75,7 +97,9 @@ async function jouerPartie(navigateur, partie, [idFormat, format], dossier) {
   const ctx = await navigateur.newContext({ viewport: { width: format.width, height: format.height }, isMobile: !!format.isMobile, hasTouch: !!format.hasTouch, deviceScaleFactor: format.deviceScaleFactor || 1, locale: 'fr-FR' });
   const page = await ctx.newPage();
   const T0 = Date.parse('2026-10-11T20:00:00Z');
-  await page.clock.install({ time: T0 });
+  // Horloge figée : le temps n'avance que par runFor (sinon le temps réel s'ajoute et le chrono dérive).
+  await page.clock.install({ time: T0 - 60000 });
+  await page.clock.pauseAt(T0 - 30000);
   await page.addInitScript(({ partie, T0 }) => {
     if (sessionStorage.getItem('juge.pret')) return;
     sessionStorage.setItem('juge.pret', '1');
@@ -90,11 +114,11 @@ async function jouerPartie(navigateur, partie, [idFormat, format], dossier) {
   const erreurs = [];
   page.on('pageerror', (e) => erreurs.push(e.message));
   await page.goto(`http://127.0.0.1:${PORT}/index.html`);
-  await page.clock.runFor(1500);
+  await page.clock.runFor(30000);
   await page.evaluate(ESPIONNER);
 
   const lignes = [];
-  let derniere = null, nCaptures = 0, mortJusqua = -1;
+  let derniere = null, dernierPrincipal = null, nCaptures = 0, mortJusqua = -1;
   for (let t = 0; t <= S.duree_s; t += S.pas_s) {
     // Mort simulée : on passe sur l'onglet Mort (touche M) le temps de la réapparition.
     const mort = S.morts_s.find((m) => m === t);
@@ -114,14 +138,19 @@ async function jouerPartie(navigateur, partie, [idFormat, format], dossier) {
     const ecran = await page.evaluate(LIRE_ECRAN);
     const sons = await page.evaluate(() => window.__journal.splice(0));
     const empreinte = createHash('sha1').update(JSON.stringify(ecran.panneaux).replace(/\d/g, '#')).digest('hex').slice(0, 12);
+    const nouveauPrincipal = ecran.principal && ecran.principal.replace(/\d/g, '#') !== dernierPrincipal;
+    dernierPrincipal = ecran.principal && ecran.principal.replace(/\d/g, '#');
     let capture = null;
     if (empreinte !== derniere || evenement) {
       capture = `${String(t).padStart(4, '0')}s.png`;
       await page.screenshot({ path: join(dossier, capture), fullPage: true });
+      if (format.isMobile) await page.screenshot({ path: join(dossier, capture.replace('.png', '-ecran.png')) });
       nCaptures++;
     }
     derniere = empreinte;
-    lignes.push({ t, chrono: mmss(t), evenement, onglet: ecran.onglet, defile: ecran.defile, capture, sons, panneaux: capture ? ecran.panneaux : undefined });
+    lignes.push({ t, chrono: mmss(t), affiche: ecran.horloge, evenement, onglet: ecran.onglet, defile: ecran.defile, coupes: ecran.coupes.length ? ecran.coupes : undefined,
+      nouveau_message: nouveauPrincipal || undefined, principal: nouveauPrincipal ? ecran.principal : undefined,
+      capture, identique: capture ? undefined : true, sons, panneaux: capture ? ecran.panneaux : undefined });
   }
   await ctx.close();
   return { partie: partie.id, heros: HEROS[partie.heros], en_face: partie.en_face.map((id) => HEROS[id]), format: idFormat, captures: nCaptures, erreurs, lignes };
@@ -129,11 +158,12 @@ async function jouerPartie(navigateur, partie, [idFormat, format], dossier) {
 
 function resume(r) {
   const out = [`## ${r.heros} contre ${r.en_face.join(', ')} — ${r.format}`, '',
-    `${r.captures} captures gardées sur ${r.lignes.length} instants.` + (r.erreurs.length ? ` **Erreurs JS : ${r.erreurs.length}** (${[...new Set(r.erreurs)].slice(0, 3).join(' | ')})` : ''), ''];
+    `${r.captures} captures gardées sur ${r.lignes.length} instants ; ${r.lignes.filter((l) => l.nouveau_message).length} nouveaux messages du coach ; ci-dessous seulement les nouveaux messages, morts, sons et textes coupés.` + (r.erreurs.length ? ` **Erreurs JS : ${r.erreurs.length}** (${[...new Set(r.erreurs)].slice(0, 3).join(' | ')})` : ''), ''];
   for (const l of r.lignes) {
-    if (!l.capture && !l.sons.length) continue;
-    const s = l.sons.map((x) => x.type === 'son' ? `🔔 ${x.detail.moment}` : `🗣 ${x.detail.nom || x.detail.texte}${x.detail.restant_s != null ? ' (' + Math.round(x.detail.restant_s) + ' s)' : ''}`).join(', ');
-    out.push(`- **${l.chrono}**${l.evenement ? ' · ' + l.evenement : ''} · ${l.onglet}${l.defile ? ' · ⚠ défilement' : ''}${l.capture ? ' · `' + l.capture + '`' : ''}${s ? ' · ' + s : ''}`);
+    if (!l.nouveau_message && !l.evenement && !l.sons.length && !l.coupes) continue;
+    const s = l.sons.map((x) => (x.type === 'son' ? `🔔 ${x.detail.moment}` : `🗣 ${x.detail.nom || x.detail.texte}${x.detail.restant_s != null ? ' (' + Math.round(x.detail.restant_s) + ' s)' : ''}`) + ` [${(x.source || '').split(' ← ')[0]}]`).join(', ');
+    const ecart = l.affiche && l.affiche !== l.chrono ? ` (affiché ${l.affiche})` : '';
+    out.push(`- **${l.chrono}**${ecart}${l.evenement ? ' · ' + l.evenement : ''} · ${l.onglet}${l.defile ? ' · ⚠ défilement' : ''}${l.coupes ? ' · ✂ texte coupé (' + [...new Set(l.coupes.map((c) => c.panneau))].join(', ') + ')' : ''}${l.capture ? ' · `' + l.capture + '`' : ''}${s ? ' · ' + s : ''}${l.principal ? '\n  - 💬 ' + l.principal : ''}`);
   }
   return out.join('\n') + '\n';
 }

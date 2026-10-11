@@ -72,7 +72,9 @@ regarde la capture et compare. C'est l'écart entre les deux que tu notes.
 
 **D. Exactitude** : chaque valeur affichée existe dans un JSON de `data/`
 daté d'un patch ; aucun counter justifié par un winrate ; aucune incohérence
-(ex. un conseil qui cite un héros absent de la partie). Vérifie dans les
+(ex. un conseil qui cite un héros absent de la partie). Le rythme tiré de `data/tempo.json` est permis pour le pic de
+puissance (décision du 2026-10-11), à condition d'être calculé sur la tranche de
+rang choisie et présenté comme une statistique. Vérifie dans les
 fichiers avant d'affirmer.
 
 **F. Sons et voix**
