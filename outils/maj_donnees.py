@@ -8,10 +8,12 @@ des compétences et des objets : c'est une base à relire, pas une vérité.
 """
 
 import argparse
+import time
 import datetime as dt
 import html
 import json
 import re
+import urllib.error
 import urllib.parse
 import urllib.request
 from pathlib import Path
@@ -60,8 +62,16 @@ def get(chemin, **params):
     params = {k: v for k, v in params.items() if v is not None}
     url = f"{API}{chemin}" + ("?" + urllib.parse.urlencode(params) if params else "")
     requete = urllib.request.Request(url, headers={"User-Agent": "DeadLockNoob-personnel"})
-    with urllib.request.urlopen(requete, timeout=120) as reponse:
-        return json.load(reponse)
+    # Coupures réseau passagères (DNS, 429, 5xx) : trois nouvelles tentatives, de plus en plus espacées.
+    for essai in range(4):
+        try:
+            with urllib.request.urlopen(requete, timeout=120) as reponse:
+                return json.load(reponse)
+        except (urllib.error.URLError, TimeoutError) as err:
+            code = getattr(err, "code", None)
+            if essai == 3 or (code is not None and code < 500 and code != 429):
+                raise
+            time.sleep(5 * (essai + 1))
 
 
 def texte(brut):
@@ -604,6 +614,26 @@ def construire_builds(depuis_ts, heros, objets, nombre=3):
     return sortie
 
 
+def construire_souls(depuis_ts, heros_ids):
+    """Par tranche et par héros : valeur nette (souls) moyenne et écart-type à chaque palier de temps
+    (/v1/analytics/player-performance-curve, temps absolu). Sert à l'estimateur de l'onglet Attente :
+    un joueur est « en avance » ou « en retard » par rapport aux joueurs du même héros et du même rang."""
+    sortie = {}
+    for nom, (mini, maxi) in TRANCHES.items():
+        tranche = {}
+        for hid in heros_ids:
+            lignes = get("/v1/analytics/player-performance-curve", hero_ids=hid, min_unix_timestamp=depuis_ts,
+                         min_average_badge=mini, max_average_badge=maxi, resolution=0)
+            # Au-delà d'une heure, trop peu de parties : courbe bruitée.
+            points = [[l["game_time"], round(l["net_worth_avg"]), round(l["net_worth_std"])]
+                      for l in lignes if l.get("net_worth_avg") is not None and l["game_time"] <= 3600]
+            if points:
+                tranche[str(hid)] = points
+            time.sleep(0.35)   # limite partagée de l'API : 200 requêtes par minute
+        sortie[nom] = tranche
+    return sortie
+
+
 def ecrire(nom, meta, contenu):
     DATA.mkdir(exist_ok=True)
     chemin = DATA / nom
@@ -616,7 +646,7 @@ def main():
     parseur.add_argument("--patch", required=True, help="nom ou date du patch en cours")
     parseur.add_argument("--depuis", required=True, help="date du patch, AAAA-MM-JJ (UTC)")
     parseur.add_argument("--seulement", default="", help="fichiers à régénérer, séparés par des virgules "
-                         "(heroes,items,stats,map,details,armes,achats,tempo,builds) ; tous par défaut")
+                         "(heroes,items,stats,map,details,armes,achats,tempo,builds,souls) ; tous par défaut")
     args = parseur.parse_args()
     voulu = lambda nom: not args.seulement or nom in args.seulement.split(",")
 
@@ -681,6 +711,13 @@ def main():
                         "Sections et notes telles que leurs auteurs les ont écrites (souvent en anglais)."},
                {"heros": construire_builds(depuis_ts, heros, objets)})
 
+    if voulu("souls"):
+        ecrire("souls.json",
+               {**meta, "depuis": depuis_texte,
+                "note": "Par tranche de rang puis par héros : [seconde de jeu, valeur nette moyenne, écart-type] "
+                        "(net_worth de /v1/analytics/player-performance-curve, temps absolu, jusqu'à 60 min). "
+                        "Lu par l'estimateur de souls de l'onglet Attente (js/partie.js)."},
+               {"tranches": construire_souls(depuis_ts, [h["id"] for h in heros])})
     if voulu("tempo"):
         ecrire("tempo.json",
                {**meta, "depuis": depuis_texte,

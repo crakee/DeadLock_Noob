@@ -539,6 +539,7 @@
     const d = Math.round(dureeReapparition(t) || 0);
     attente = { fin: t + d, duree: d };
     attenteBip = null;
+    estim = null;
     ecrire(CLE_ATTENTE, attente);
   }
 
@@ -560,6 +561,7 @@
   function dessinerReapparition() {
     const zone = document.getElementById('reapparition');
     if (!zone || !D || affichage.onglet !== 'attente') return;
+    if (zone.contains(document.activeElement) && document.activeElement !== document.body) { majEstimateur(); return; }   // pendant un réglage de souls
     const c = tempsChrono();
     const d = attente.duree || 0;
     zone.textContent = '';
@@ -629,10 +631,167 @@
       }
     }
     zone.append(liste);
+    // Plus de 15 s : estimateur de souls (le seul endroit où le joueur a le temps de saisir quelque chose).
+    if (d > 15 && ids.length && D.souls) { zone.append(estimateur(ids)); majEstimateur(); }
     const R = D.reapparition;
     if (R) zone.append(el('p', 'source', 'Réapparition : ' + d + ' s à ' + fmt(attente.fin - d) + ' (' + R.meta.source.split(',')[0] + ', ' + R.meta.patch.split(' (')[0] + ')'));
     const lecon = document.getElementById('attente');
     if (lecon) lecon.hidden = d <= 30;
+  }
+
+  // ---------- estimateur de souls (onglet Attente) ----------
+  // Mes souls et celles d'un adversaire, réglées au curseur ou tapées, comparées aux joueurs du même héros
+  // et du même rang à cette minute (data/souls.json : moyenne et écart-type de la valeur nette).
+  // Le bloc est construit une fois et garde ses réglages d'une mort à l'autre de la même partie.
+
+  let estim = null;
+
+  function courbe(id) {
+    const T = (D.souls || {}).tranches || {};
+    return (T[DLN.tranche()] || {})[String(id)] || (T.tous || {})[String(id)] || null;
+  }
+
+  // Moyenne et écart-type à la seconde t, interpolés entre deux paliers.
+  function normale(id, t) {
+    const c = courbe(id);
+    if (!c || !c.length) return null;
+    if (t <= c[0][0]) return { moy: c[0][1] * t / c[0][0], et: c[0][2] * t / c[0][0] };
+    for (let i = 1; i < c.length; i++) {
+      if (t <= c[i][0]) {
+        const k = (t - c[i - 1][0]) / (c[i][0] - c[i - 1][0]);
+        return { moy: c[i - 1][1] + k * (c[i][1] - c[i - 1][1]), et: c[i - 1][2] + k * (c[i][2] - c[i - 1][2]) };
+      }
+    }
+    const z = c[c.length - 1];
+    return { moy: z[1], et: z[2] };
+  }
+
+  const arrondi = (v) => Math.round(v / 100) * 100;
+
+  // Un réglage = curseur + champ, liés. Le curseur met à jour une bulle qui suit le pouce.
+  function reglage(id, libelle, portrait) {
+    const r = el('div', 'souls-reglage');
+    const tete = el('label', 'souls-qui');
+    tete.htmlFor = id + '-champ';
+    if (portrait) tete.append(DLN.img(portrait));
+    tete.append(el('span', null, libelle));
+    const piste = el('div', 'souls-piste');
+    const curseur = el('input', 'souls-curseur');
+    curseur.type = 'range';
+    curseur.id = id + '-curseur';
+    curseur.min = '0';
+    curseur.step = '100';
+    curseur.setAttribute('aria-label', libelle + ' : souls');
+    const bulle = el('output', 'souls-bulle');
+    bulle.htmlFor = curseur.id;
+    piste.append(curseur, bulle);
+    const champ = el('input', 'souls-champ');
+    champ.type = 'text';
+    champ.id = id + '-champ';
+    champ.inputMode = 'numeric';
+    champ.autocomplete = 'off';
+    champ.setAttribute('aria-label', libelle + ' : souls, en chiffres');
+    const poser = (v, depuis) => {
+      v = Math.max(0, Math.round(Number(v) || 0));
+      if (Number(curseur.max) < v) curseur.max = String(arrondi(v * 1.2));
+      if (depuis !== curseur) curseur.value = String(v);
+      if (depuis !== champ) champ.value = DLN.fmtNombre(v);
+      bulle.textContent = DLN.fmtNombre(v);
+      const pct = (v / Number(curseur.max)) * 100;
+      piste.style.setProperty('--pct', Math.min(100, pct) + '%');
+      piste.style.setProperty('--p', String(Math.min(1, pct / 100)));
+      r.dataset.valeur = String(v);
+      majEstimateur();
+    };
+    curseur.addEventListener('input', () => poser(curseur.value, curseur));
+    champ.addEventListener('input', () => poser(champ.value.replace(/\D/g, ''), champ));
+    champ.addEventListener('focus', () => champ.select());
+    // Entrée ou fin de saisie : le champ se reformate et rend la main (les raccourcis J / A / M remarchent).
+    champ.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); champ.blur(); } });
+    champ.addEventListener('blur', () => { champ.value = DLN.fmtNombre(Number(r.dataset.valeur) || 0); });
+    curseur.addEventListener('change', () => curseur.blur());
+    r.append(tete, piste, champ);
+    return { noeud: r, poser: poser, curseur: curseur, valeur: () => Number(r.dataset.valeur) || 0, tete: tete };
+  }
+
+  function estimateur(ids) {
+    const c = tempsChrono();
+    // Même mort, même équipe d'en face : on garde le bloc et ses réglages (commencerAttente le remet à zéro).
+    if (estim && estim.idsCle === ids.join(',')) return estim.noeud;
+    const bloc = el('section', 'souls');
+    const tete = el('div', 'souls-tete');
+    tete.append(el('h3', null, 'Souls'), el('span', 'doux', 'règle ou tape, lu sur le tableau des scores'));
+    const choix = el('div', 'souls-cibles');
+    choix.setAttribute('role', 'radiogroup');
+    choix.setAttribute('aria-label', 'Adversaire à comparer');
+    const moi = herosDe(contexte.heros);
+    const rMoi = reglage('souls-moi', moi ? 'Moi · ' + moi.nom : 'Moi', moi && (moi.icone || moi.image));
+    const rLui = reglage('souls-lui', 'Lui', null);
+    const verdict = el('p', 'souls-verdict');
+    verdict.setAttribute('aria-live', 'polite');
+    estim = { noeud: bloc, idsCle: ids.join(','), moi: rMoi, lui: rLui, cible: ids[0], verdict: verdict, choix: choix };
+    ids.forEach((id) => {
+      const h = herosDe(id);
+      const b = el('button', 'souls-cible');
+      b.type = 'button';
+      b.setAttribute('role', 'radio');
+      b.title = h.nom;
+      b.append(DLN.img(h.icone || h.image));
+      b.addEventListener('click', () => { estim.cible = id; choisirCible(); b.blur(); });
+      b.dataset.id = String(id);
+      choix.append(b);
+    });
+    bloc.append(tete, choix, rMoi.noeud, rLui.noeud, verdict);
+    // Valeurs de départ : la moyenne de chaque héros à cette minute (on ajuste à partir de là).
+    const t = c.t;
+    const nMoi = moi && normale(moi.id, t);
+    rMoi.curseur.max = String(arrondi(Math.max(10000, nMoi ? nMoi.moy + 3 * nMoi.et : 0)));
+    rMoi.poser(nMoi ? arrondi(nMoi.moy) : 0);
+    choisirCible();
+    return bloc;
+  }
+
+  function choisirCible() {
+    if (!estim) return;
+    const h = herosDe(estim.cible);
+    const t = tempsChrono().t;
+    const n = normale(estim.cible, t);
+    estim.lui.tete.textContent = '';
+    estim.lui.tete.append(DLN.img(h.icone || h.image), el('span', null, h.nom));
+    estim.lui.curseur.setAttribute('aria-label', h.nom + ' : souls');
+    estim.lui.curseur.max = String(arrondi(Math.max(10000, n ? n.moy + 3 * n.et : 0, Number(estim.moi.curseur.max))));
+    estim.moi.curseur.max = estim.lui.curseur.max;
+    estim.lui.poser(n ? arrondi(n.moy) : 0);
+    estim.moi.poser(estim.moi.valeur());
+    estim.choix.querySelectorAll('.souls-cible').forEach((b) => b.setAttribute('aria-checked', String(Number(b.dataset.id) === estim.cible)));
+  }
+
+  // En avance / dans la moyenne / en retard : écart à la moyenne en écarts-types (± 0,5).
+  function situer(id, v, t) {
+    const n = normale(id, t);
+    if (!n || !n.et) return null;
+    const z = (v - n.moy) / n.et;
+    return { z: z, mot: z > 0.5 ? 'en avance' : z < -0.5 ? 'en retard' : 'dans la moyenne', moy: n.moy };
+  }
+
+  function majEstimateur() {
+    if (!estim || !estim.noeud.isConnected) return;
+    const t = tempsChrono().t;
+    const h = herosDe(estim.cible), moi = herosDe(contexte.heros);
+    const vLui = estim.lui.valeur(), vMoi = estim.moi.valeur();
+    const sLui = situer(estim.cible, vLui, t), sMoi = moi ? situer(moi.id, vMoi, t) : null;
+    estim.verdict.textContent = '';
+    if (sLui) {
+      const l = el('span', 'souls-ligne ' + (sLui.z > 0.5 ? 'avance' : sLui.z < -0.5 ? 'retard' : ''));
+      l.append(el('strong', null, h.nom + ' ' + sLui.mot), el('span', 'doux', ' · moyenne ' + DLN.fmtNombre(arrondi(sLui.moy)) + ' à ' + fmt(t)));
+      estim.verdict.append(l);
+    }
+    if (moi) {
+      const ecart = vMoi - vLui;
+      const l = el('span', 'souls-ligne');
+      l.append(el('strong', null, 'Toi ' + (sMoi ? sMoi.mot : '')), el('span', 'doux', ' · ' + (ecart >= 0 ? '+' : '−') + DLN.fmtNombre(Math.abs(ecart)) + ' face à ' + h.nom));
+      estim.verdict.append(l);
+    }
   }
 
   function suivreAttente() {
@@ -954,9 +1113,10 @@
   appliquerAffichage();
   Promise.all(['data/heroes.json', 'data/roles.json', 'data/conseils-roles.json', 'data/timeline.json', 'data/heros-details.json', 'data/map.json', 'data/counters.json']
     .map(DLN.charger).concat([DLN.charger('data/niveaux.json').catch(() => null), DLN.charger('data/tempo.json').catch(() => null),
-      DLN.charger('data/reapparition.json').catch(() => null), DLN.charger('data/items.json').catch(() => ({ objets: [] }))])).then((r) => {
+      DLN.charger('data/reapparition.json').catch(() => null), DLN.charger('data/items.json').catch(() => ({ objets: [] })),
+      DLN.charger('data/souls.json').catch(() => null)])).then((r) => {
     D = { heros: r[0], roles: r[1], conseils: r[2], timeline: r[3], details: r[4], carte: r[5], counters: r[6], niveaux: r[7], tempo: r[8],
-      reapparition: r[9], objets: {} };
+      reapparition: r[9], objets: {}, souls: r[11] };
     r[10].objets.forEach((o) => { D.objets[o.nom] = o; });
     dessinerContexte();
     dessinerPlan();

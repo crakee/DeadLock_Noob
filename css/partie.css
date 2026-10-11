@@ -591,3 +591,45 @@ body.onglet-attente .col-avenir { flex: 2 1 0; }
 .carte-legende-pli .carte-outils { margin: .4rem 0; }
 @media (max-width: 1300px), (orientation: portrait) { .carte-cadre { width: min(100%, 34rem); } }
 @media (max-width: 600px) { .carte-cadre { width: 100%; } }
+
+/* Estimateur de souls (onglet Attente) : compact, un réglage par ligne (qui · curseur · chiffres). */
+.souls { display: flex; flex-direction: column; gap: .55rem; padding-top: .8rem; border-top: 1px solid var(--bord); }
+.souls-tete { display: flex; align-items: baseline; gap: .6rem; }
+.souls-tete h3 { margin: 0; font-size: var(--t-l); }
+.souls-tete .doux { font-size: var(--t-xs); }
+.souls-cibles { display: flex; gap: .35rem; flex-wrap: wrap; }
+.souls-cible { padding: 0; width: 2.4rem; height: 2.4rem; border-radius: var(--r-s); border: 2px solid transparent; background: none; cursor: pointer; opacity: .55;
+  transition: opacity var(--duree), border-color var(--duree), transform var(--duree); }
+.souls-cible img { width: 100%; height: 100%; border-radius: var(--r-s); object-fit: cover; }
+.souls-cible:hover { opacity: .85; }
+.souls-cible[aria-checked="true"] { opacity: 1; border-color: var(--action); transform: translateY(-2px); }
+.souls-reglage { display: grid; grid-template-columns: 9rem minmax(0, 1fr) 6.5rem; align-items: center; gap: .8rem; }
+.souls-qui { display: flex; align-items: center; gap: .4rem; min-width: 0; font-weight: 600; }
+.souls-qui img { width: 1.8rem; height: 1.8rem; border-radius: var(--r-s); flex: none; }
+.souls-qui span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.souls-champ { width: 100%; font: 700 var(--t-l) var(--titre); text-align: right; font-variant-numeric: tabular-nums; padding: .2rem .5rem;
+  color: var(--texte); background: var(--fond); border: 1px solid var(--bord-fort); border-radius: var(--r-s); }
+.souls-champ:focus { border-color: var(--action); outline: none; }
+
+/* Curseur : piste remplie jusqu'à la valeur, pouce qui grossit au toucher, bulle qui suit et rebondit. */
+.souls-piste { position: relative; --pct: 50%; height: 2.2rem; display: flex; align-items: center; }
+.souls-curseur { -webkit-appearance: none; appearance: none; width: 100%; height: 6px; margin: 0; border-radius: var(--r-rond); cursor: pointer;
+  background: linear-gradient(90deg, var(--action) 0 var(--pct), var(--bord-fort) var(--pct) 100%); }
+.souls-curseur::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%; background: var(--texte);
+  border: 3px solid var(--action); box-shadow: 0 0 0 0 rgba(232, 150, 61, .45); transition: transform 160ms cubic-bezier(.3, 1.6, .5, 1), box-shadow 160ms; }
+.souls-curseur::-moz-range-thumb { width: 14px; height: 14px; border-radius: 50%; background: var(--texte); border: 3px solid var(--action);
+  transition: transform 160ms cubic-bezier(.3, 1.6, .5, 1); }
+.souls-curseur:active::-webkit-slider-thumb, .souls-curseur:focus-visible::-webkit-slider-thumb { transform: scale(1.35); box-shadow: 0 0 0 8px rgba(232, 150, 61, .18); }
+.souls-curseur:active::-moz-range-thumb { transform: scale(1.35); }
+.souls-bulle { position: absolute; bottom: 100%; left: calc(var(--p, .5) * (100% - 20px) + 10px); transform: translateX(-50%) scale(.6); opacity: 0;
+  padding: .1rem .45rem; border-radius: var(--r-s); background: var(--action); color: #1a1206; font: 700 var(--t-s) var(--titre); white-space: nowrap; pointer-events: none;
+  transition: transform 180ms cubic-bezier(.3, 1.6, .5, 1), opacity 120ms; }
+.souls-piste:has(.souls-curseur:active) .souls-bulle, .souls-piste:has(.souls-curseur:focus-visible) .souls-bulle { opacity: 1; transform: translateX(-50%) scale(1); }
+.souls-verdict { margin: 0; display: flex; flex-direction: column; gap: .15rem; font-size: var(--t-m); }
+.souls-ligne.avance strong { color: var(--danger); }
+.souls-ligne.retard strong { color: var(--bon); }
+@media (max-width: 600px) {
+  .souls-reglage { grid-template-columns: minmax(0, 1fr) 6rem; }
+  .souls-piste { grid-column: 1 / -1; order: 3; }
+  .souls-curseur::-webkit-slider-thumb { width: 28px; height: 28px; }
+}
