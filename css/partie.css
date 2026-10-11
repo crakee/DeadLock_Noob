@@ -64,7 +64,7 @@ body.onglet-jeu .horloge .commandes{ margin-top: .3rem; }
 .plan-detail { grid-column: 2 / -1; font-size: var(--t-s); color: var(--doux); }
 .plan-actions li .marque { grid-column: 2 / -1; justify-self: start; }
 .plan-actions li.bientot strong, .plan-actions li.bientot .plan-quand { color: var(--or-clair); }
-.plan-actions li.maintenant strong, .plan-actions li.maintenant .plan-quand { color: var(--alerte); font-weight: 700; }
+.plan-actions li.maintenant strong, .plan-actions li.maintenant .plan-quand { color: var(--action); font-weight: 700; }
 .plan-portee p { margin: .2rem 0; }
 .plan-ennemis { list-style: none; margin: .2rem 0; padding: 0; display: flex; flex-wrap: wrap; gap: .3rem .9rem; }
 .plan-ennemis li { display: inline-flex; align-items: center; gap: .3rem; }
@@ -92,7 +92,7 @@ body.onglet-jeu .horloge .commandes{ margin-top: .3rem; }
 .mini-nom { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .mini-quand { font-variant-numeric: tabular-nums; color: var(--doux); }
 .mini-conseil { grid-column: 2 / -1; font-size: var(--t-xs); color: var(--doux); }
-.carte-partie-liste li.etat-maintenant .mini-quand, .carte-partie-liste li.etat-maintenant .mini-nom { color: var(--alerte); font-weight: 700; }
+.carte-partie-liste li.etat-maintenant .mini-quand, .carte-partie-liste li.etat-maintenant .mini-nom { color: var(--action); font-weight: 700; }
 .carte-partie-liste li.etat-bientot .mini-quand { color: var(--or-clair); font-weight: 600; }
 .carte-partie-liste li.etat-ferme, .carte-partie-liste li.etat-attente { opacity: .7; }
 .carte-partie-liste li.aide { display: block; }
@@ -204,7 +204,7 @@ body.onglet-jeu .plan-portee{ margin-top: .6rem; font-size: var(--t-s); color: v
 
 .onglets-partie { display: inline-flex; gap: .3rem; }
 .onglet-partie { font-size: var(--t-m) !important; padding: .35rem .9rem !important; }
-.contexte .btn.onglet-partie[aria-selected="true"] { background: var(--action) !important; color: #14100a !important; border-color: var(--action) !important; opacity: 1; }
+.contexte .btn.onglet-partie[aria-selected="true"] { background: none !important; color: var(--or-clair) !important; border-color: transparent !important; box-shadow: inset 0 -3px 0 var(--or); opacity: 1; }
 .mini-chrono { font-family: var(--titre); font-size: var(--t-l); letter-spacing: .03em; color: var(--or-clair); font-variant-numeric: tabular-nums; }
 .mini-chrono[hidden] { display: none; }
 
@@ -395,7 +395,7 @@ body.onglet-jeu .col-carte .carte-partie { flex: 1 1 auto; }
 .carte-ligne.cachee .carte-ligne-nom, .carte-ligne.cachee .carte-symbole { opacity: .45; }
 .carte-ligne-nom { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .carte-ligne-etat { display: inline-flex; align-items: center; gap: .25rem; font-variant-numeric: tabular-nums; color: var(--doux); white-space: nowrap; }
-.carte-ligne.etat-maintenant .carte-ligne-etat, .carte-ligne.etat-maintenant .carte-ligne-nom { color: var(--alerte); font-weight: 700; }
+.carte-ligne.etat-maintenant .carte-ligne-etat, .carte-ligne.etat-maintenant .carte-ligne-nom { color: var(--action); font-weight: 700; }
 .carte-ligne.etat-bientot .carte-ligne-etat { color: var(--or-clair); font-weight: 600; }
 .carte-symbole { width: 1.05rem; height: 1.05rem; flex: none; }
 .carte-symboles { display: inline-flex; gap: .1rem; }
@@ -542,7 +542,7 @@ body.onglet-jeu #avenir > li[data-vue] { transition: border-color var(--duree), 
 /* Onglets : icône, nom, touche. */
 .onglet-partie { display: inline-flex; align-items: center; gap: .4rem; }
 .onglet-partie kbd { font-size: var(--t-xs); opacity: .7; }
-.onglet-partie[aria-selected="true"] { background: var(--action); border-color: var(--action); color: #1a1206; }
+.onglet-partie[aria-selected="true"] { background: none; color: var(--or-clair); box-shadow: inset 0 -3px 0 var(--or); }
 .contexte-plus > summary, .contexte-alertes > summary { display: inline-flex; align-items: center; gap: .4rem; }
 
 /* Attente : le compte à rebours d'abord, puis une liste courte. */
@@ -633,3 +633,19 @@ body.onglet-attente .col-avenir { flex: 2 1 0; }
   .souls-piste { grid-column: 1 / -1; order: 3; }
   .souls-curseur::-webkit-slider-thumb { width: 28px; height: 28px; }
 }
+/* Avant saisie : curseur grisé sur la moyenne, champ vide avec la moyenne en indication. */
+.souls-reglage:not(.saisi) .souls-curseur { background: var(--bord-fort); }
+.souls-reglage:not(.saisi) .souls-curseur::-webkit-slider-thumb { background: var(--doux); border-color: var(--bord-fort); }
+.souls-champ::placeholder { color: var(--doux); font-family: var(--corps); font-weight: 400; font-size: var(--t-s); }
+.attente-achats { display: flex; flex-direction: column; gap: .4rem; }
+.attente-total { font-size: var(--t-s); }
+
+/* Tour 3 : téléphone, la carte réserve sa hauteur (pas de saut) ; chrono en premier tant qu'il n'est pas lancé. */
+.carte-cadre { aspect-ratio: 1 / 1; max-width: 100%; }
+@media (max-width: 600px) {
+  body.onglet-jeu:has(.horloge.au-repos) [data-panneau="horloge"] { order: 0; }
+  .souls-qui span { white-space: normal; }
+}
+.souls-qui span { white-space: normal; line-height: 1.15; }
+/* À 0:00, un seul appel à l'action orange (Démarrer) : le choix du héros dans le coach reste discret. */
+.coach-carte .btn.principal { background: none; color: var(--or-clair); border-color: var(--bord-fort); font-size: var(--t-m); }

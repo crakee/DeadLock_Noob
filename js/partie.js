@@ -419,6 +419,8 @@
     D.timeline.evenements.filter((e) => niveauOk(e.id)).forEach((e) => occurrences(e, de, a).forEach((o) => lignes.push({ e: e, t: o.t, fin: o.fin })));
     D.timeline.phases.forEach((p) => { if (p.debut_s > de && p.debut_s <= a) lignes.push({ phase: p, t: p.debut_s }); });
     lignes.sort((x, y) => x.t - y.t || (x.phase ? -1 : 1));
+    // Pas de doublon avec « À venir » (grand bloc et lignes compactes).
+    for (let i = lignes.length - 1; i >= 0; i--) if (lignes[i].e && vusAvenir.indexOf(lignes[i].e.id + ':' + lignes[i].t) !== -1) lignes.splice(i, 1);
     lignes.splice(6);
 
     zone.textContent = '';
@@ -521,7 +523,6 @@
 
   const CLE_ATTENTE = 'dln.partie.attente.v1';
   let attente = lire(CLE_ATTENTE, { fin: null, duree: null });
-  let attenteBip = null;
 
   function dureeReapparition(t) {
     const R = D && D.reapparition;
@@ -538,7 +539,6 @@
     const t = tempsChrono().t;
     const d = Math.round(dureeReapparition(t) || 0);
     attente = { fin: t + d, duree: d };
-    attenteBip = null;
     estim = null;
     ecrire(CLE_ATTENTE, attente);
   }
@@ -576,8 +576,16 @@
     const etat = DLN.coach && DLN.coach.etat ? DLN.coach.etat() : null;
 
     // 1. Ce que tu achètes maintenant (celui du coach : build suivi ou achats moyens du héros).
-    const achat = etat && (etat.action.type === 'achat' ? etat.action : etat.prochains[0]);
-    if (achat) ligne('Achète', ligneObjet(achat.nom, achat.au_choix ? 'au choix' : ''));
+    // Achats déjà dus (minute dépassée), 3 au plus avec leur total ; sinon le prochain.
+    const dus = etat ? [etat.action].concat(etat.prochains).filter((a) => a && a.type === 'achat' && a.t <= c.t + 30) : [];
+    const achats = (dus.length ? dus : (etat && etat.prochains[0] ? [etat.prochains[0]] : [])).filter((a, i, l) => l.findIndex((b) => b.nom === a.nom) === i).slice(0, 3);
+    if (achats.length) {
+      const bloc = el('span', 'attente-achats');
+      achats.forEach((a) => bloc.append(ligneObjet(a.nom, a.au_choix ? 'au choix' : '')));
+      const total = achats.reduce((n, a) => n + ((D.objets[a.nom] || {}).cout || 0), 0);
+      if (achats.length > 1 && total) bloc.append(el('span', 'doux attente-total', 'total ' + DLN.fmtNombre(total)));
+      ligne('Achète', bloc);
+    }
 
     // 2. Le prochain objectif après ton retour, et ce que tu y fais.
     const retour = attente.fin || c.t;
@@ -621,7 +629,12 @@
       }
       const compte = {};
       ids.forEach((id) => ((D.counters.heros[String(id)] || {}).menaces || []).forEach((m) => { (compte[m.id] = compte[m.id] || []).push(herosDe(id).nom); }));
-      const top = Object.keys(compte).filter((k) => D.counters.menaces[k]).sort((a, b) => compte[b].length - compte[a].length)[0];
+      // La plus caractéristique de cette compo : présente chez au moins 2 adversaires, et rare chez l'ensemble des
+      // héros (sinon « contrôle », que 27 héros sur 38 ont, sortirait à chaque fois).
+      const tousH = Object.keys(D.counters.heros);
+      const freq = (k) => tousH.filter((id) => (D.counters.heros[id].menaces || []).some((m) => m.id === k)).length / Math.max(1, tousH.length);
+      const top = Object.keys(compte).filter((k) => D.counters.menaces[k] && compte[k].length >= 2)
+        .sort((a, b) => (compte[b].length / ids.length) / freq(b) - (compte[a].length / ids.length) / freq(a))[0];
       if (top && compte[top].length >= 2) {
         const M = D.counters.menaces[top];
         const bloc = el('span');
@@ -645,6 +658,7 @@
   // Le bloc est construit une fois et garde ses réglages d'une mort à l'autre de la même partie.
 
   let estim = null;
+  let cibleSouls = null;   // dernier adversaire comparé (gardé d'une mort à l'autre)
 
   function courbe(id) {
     const T = (D.souls || {}).tranches || {};
@@ -691,7 +705,23 @@
     champ.inputMode = 'numeric';
     champ.autocomplete = 'off';
     champ.setAttribute('aria-label', libelle + ' : souls, en chiffres');
-    const poser = (v, depuis) => {
+    // `saisi` : le joueur a réglé ou tapé une valeur ; avant, le curseur est posé sur la moyenne mais grisé, et
+    // aucun verdict n'est donné (un chiffre qui ne vient pas de lui serait trompeur).
+    const poser = (v, depuis, saisi) => {
+      r.classList.toggle('saisi', Boolean(saisi));
+      r.dataset.saisi = saisi ? '1' : '';
+      if (!saisi && depuis == null) {
+        v = Math.max(0, Math.round(Number(v) || 0));
+        curseur.value = String(v);
+        champ.value = '';
+        champ.placeholder = 'moy. ' + DLN.fmtNombre(v);
+        bulle.textContent = DLN.fmtNombre(v);
+        piste.style.setProperty('--pct', Math.min(100, (v / Number(curseur.max)) * 100) + '%');
+        piste.style.setProperty('--p', String(Math.min(1, v / Number(curseur.max))));
+        r.dataset.valeur = '';
+        majEstimateur();
+        return;
+      }
       v = Math.max(0, Math.round(Number(v) || 0));
       if (Number(curseur.max) < v) curseur.max = String(arrondi(v * 1.2));
       if (depuis !== curseur) curseur.value = String(v);
@@ -703,15 +733,21 @@
       r.dataset.valeur = String(v);
       majEstimateur();
     };
-    curseur.addEventListener('input', () => poser(curseur.value, curseur));
-    champ.addEventListener('input', () => poser(champ.value.replace(/\D/g, ''), champ));
+    curseur.addEventListener('input', () => poser(curseur.value, curseur, true));
+    champ.addEventListener('input', () => { if (champ.value.replace(/\D/g, '')) poser(champ.value.replace(/\D/g, ''), champ, true); });
     champ.addEventListener('focus', () => champ.select());
-    // Entrée ou fin de saisie : le champ se reformate et rend la main (les raccourcis J / A / M remarchent).
-    champ.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); champ.blur(); } });
-    champ.addEventListener('blur', () => { champ.value = DLN.fmtNombre(Number(r.dataset.valeur) || 0); });
+    // Entrée : passe au champ suivant (Moi → Lui), puis rend la main (les raccourcis J / A / M remarchent).
+    champ.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter') return;
+      e.preventDefault();
+      const champs = Array.prototype.slice.call(document.querySelectorAll('.souls-champ'));
+      const suivant = champs[champs.indexOf(champ) + 1];
+      if (suivant) suivant.focus(); else champ.blur();
+    });
+    champ.addEventListener('blur', () => { if (r.dataset.saisi) champ.value = DLN.fmtNombre(Number(r.dataset.valeur) || 0); });
     curseur.addEventListener('change', () => curseur.blur());
     r.append(tete, piste, champ);
-    return { noeud: r, poser: poser, curseur: curseur, valeur: () => Number(r.dataset.valeur) || 0, tete: tete };
+    return { noeud: r, poser: poser, curseur: curseur, valeur: () => Number(r.dataset.valeur) || 0, saisi: () => Boolean(r.dataset.saisi), tete: tete };
   }
 
   function estimateur(ids) {
@@ -729,7 +765,8 @@
     const rLui = reglage('souls-lui', 'Lui', null);
     const verdict = el('p', 'souls-verdict');
     verdict.setAttribute('aria-live', 'polite');
-    estim = { noeud: bloc, idsCle: ids.join(','), moi: rMoi, lui: rLui, cible: ids[0], verdict: verdict, choix: choix };
+    // Adversaire comparé : le dernier choisi dans cette partie s'il est encore en face, sinon le premier.
+    estim = { noeud: bloc, idsCle: ids.join(','), moi: rMoi, lui: rLui, cible: ids.indexOf(cibleSouls) !== -1 ? cibleSouls : ids[0], verdict: verdict, choix: choix };
     ids.forEach((id) => {
       const h = herosDe(id);
       const b = el('button', 'souls-cible');
@@ -737,7 +774,7 @@
       b.setAttribute('role', 'radio');
       b.title = h.nom;
       b.append(DLN.img(h.icone || h.image));
-      b.addEventListener('click', () => { estim.cible = id; choisirCible(); b.blur(); });
+      b.addEventListener('click', () => { estim.cible = id; cibleSouls = id; choisirCible(); b.blur(); });
       b.dataset.id = String(id);
       choix.append(b);
     });
@@ -746,7 +783,7 @@
     const t = c.t;
     const nMoi = moi && normale(moi.id, t);
     rMoi.curseur.max = String(arrondi(Math.max(10000, nMoi ? nMoi.moy + 3 * nMoi.et : 0)));
-    rMoi.poser(nMoi ? arrondi(nMoi.moy) : 0);
+    rMoi.poser(nMoi ? arrondi(nMoi.moy) : 0);   // non saisi : grisé, sans verdict
     choisirCible();
     return bloc;
   }
@@ -762,7 +799,7 @@
     estim.lui.curseur.max = String(arrondi(Math.max(10000, n ? n.moy + 3 * n.et : 0, Number(estim.moi.curseur.max))));
     estim.moi.curseur.max = estim.lui.curseur.max;
     estim.lui.poser(n ? arrondi(n.moy) : 0);
-    estim.moi.poser(estim.moi.valeur());
+    if (estim.moi.saisi()) estim.moi.poser(estim.moi.valeur(), null, true);
     estim.choix.querySelectorAll('.souls-cible').forEach((b) => b.setAttribute('aria-checked', String(Number(b.dataset.id) === estim.cible)));
   }
 
@@ -779,17 +816,18 @@
     const t = tempsChrono().t;
     const h = herosDe(estim.cible), moi = herosDe(contexte.heros);
     const vLui = estim.lui.valeur(), vMoi = estim.moi.valeur();
-    const sLui = situer(estim.cible, vLui, t), sMoi = moi ? situer(moi.id, vMoi, t) : null;
+    const sLui = estim.lui.saisi() ? situer(estim.cible, vLui, t) : null, sMoi = moi && estim.moi.saisi() ? situer(moi.id, vMoi, t) : null;
     estim.verdict.textContent = '';
+    if (!sLui && !sMoi) { estim.verdict.append(el('span', 'doux', 'Règle ou tape au moins un chiffre pour avoir un verdict.')); return; }
     if (sLui) {
       const l = el('span', 'souls-ligne ' + (sLui.z > 0.5 ? 'avance' : sLui.z < -0.5 ? 'retard' : ''));
       l.append(el('strong', null, h.nom + ' ' + sLui.mot), el('span', 'doux', ' · moyenne ' + DLN.fmtNombre(arrondi(sLui.moy)) + ' à ' + fmt(t)));
       estim.verdict.append(l);
     }
-    if (moi) {
+    if (moi && sMoi) {
       const ecart = vMoi - vLui;
       const l = el('span', 'souls-ligne');
-      l.append(el('strong', null, 'Toi ' + (sMoi ? sMoi.mot : '')), el('span', 'doux', ' · ' + (ecart >= 0 ? '+' : '−') + DLN.fmtNombre(Math.abs(ecart)) + ' face à ' + h.nom));
+      l.append(el('strong', null, 'Toi ' + sMoi.mot), el('span', 'doux', sLui ? ' · ' + (ecart >= 0 ? '+' : '−') + DLN.fmtNombre(Math.abs(ecart)) + ' face à ' + h.nom : ' · moyenne ' + DLN.fmtNombre(arrondi(sMoi.moy))));
       estim.verdict.append(l);
     }
   }
@@ -803,10 +841,9 @@
     if (compte) { compte.textContent = String(Math.max(0, Math.ceil(reste))); compte.classList.toggle('bientot', reste <= 10); }
     const son = document.getElementById('opt-son');
     const sonOk = son && son.checked && DLN.sons;
-    if (reste <= 10 && reste > 0 && attenteBip !== 10 && d10(attente)) { attenteBip = 10; if (sonOk) DLN.sons.jouer('preavis'); }
-    if (reste <= 0 && c.lance) { if (sonOk) DLN.sons.jouer('maintenant'); changerOnglet('jeu'); }
+    // Retour en jeu : un seul son, le sien (pas de préavis avant : trop de sons autour de la réapparition).
+    if (reste <= 0 && c.lance) { if (sonOk) DLN.sons.jouer('retour'); DLN.dernierRetour = c.t; changerOnglet('jeu'); }
   }
-  const d10 = (a) => (a.duree || 0) > 12;   // pas de préavis pour une mort de 8 s
 
   // ---------- notes perso sur les adversaires ----------
   // Gardées d'une partie à l'autre dans le navigateur (dln.notes.v1), avec la minute de la partie.
@@ -862,20 +899,30 @@
   }
 
   // ---------- « À venir » (onglet En jeu) ----------
-  // Les cartes restent celles du chrono (js/timeline.js, triées par heure). Ici : la prochaine en grand,
-  // les deux suivantes en lignes compactes. Pas de rotation : un coup d'œil tombe toujours sur la
-  // suivante. Si le coach annonce déjà cet objectif (body[data-coach-objectif]), on montre le suivant.
+  // Les cartes restent celles du chrono (js/timeline.js, triées par heure). Le grand bloc = le prochain objectif
+  // de mon rôle (★) au-delà de la fenêtre du coach (data/coach.json proche_s) : le coach annonce ce qui est
+  // proche, le grand bloc ce qui vient après. Calculé sur l'heure des cartes, pas sur l'état du coach, pour ne pas
+  // changer à chaque message du coach. Sans rôle : la première carte hors fenêtre. Puis deux lignes compactes.
 
   function tourner() {
     const toutes = Array.prototype.slice.call(document.querySelectorAll('#avenir > li'));
     toutes.forEach((c) => { delete c.dataset.vue; delete c.dataset.suite; });
-    if (affichage.onglet !== 'jeu') return;
+    if (affichage.onglet !== 'jeu' || !D) return;
     const cartes = toutes.filter((c) => !c.hidden);
-    const duCoach = document.body.dataset.coachObjectif;
-    const reste = cartes.filter((c, i) => !(i === 0 && duCoach && c.dataset.ev === duCoach));
-    if (reste[0]) reste[0].dataset.vue = '1';
-    reste.slice(1, 3).forEach((c) => { c.dataset.suite = '1'; });
+    const t = tempsChrono().t;
+    const proche = (DLN.coach && DLN.coach.procheS && DLN.coach.procheS()) || 0;
+    const r = roleCourant();
+    const prio = r && D.conseils.roles[r] ? D.conseils.roles[r].priorites : [];
+    const loin = cartes.filter((c) => Number(c.dataset.debut) - t > proche);
+    const grand = loin.find((c) => prio.indexOf(c.dataset.ev) !== -1) || loin[0] || cartes[0];
+    if (!grand) return;
+    grand.dataset.vue = '1';
+    // Lignes compactes : les deux suivantes après le grand bloc (ce qui est plus proche est déjà chez le coach).
+    const apres = cartes.filter((c) => c !== grand && Number(c.dataset.debut) >= Number(grand.dataset.debut));
+    apres.slice(0, 2).forEach((c) => { c.dataset.suite = '1'; });
+    vusAvenir = [grand].concat(apres.slice(0, 2)).map((c) => c.dataset.ev + ':' + c.dataset.debut);
   }
+  let vusAvenir = [];
 
   // Chrono minimal : les commandes se déplient au survol ; au toucher, un appui sur l'heure les ouvre.
   function preparerHorloge() {
@@ -930,22 +977,31 @@
     const chrono = tempsChrono();
     if (!D || !chrono.lance) { premierPassage = true; return; }
     const t = chrono.t;
+    const groupe = [];
     evenementsSurveilles().forEach((ev) => {
       seuils(ev, t).forEach((s) => {
         if (t < s.t) { declenchees.delete(s.cle); return; }       // l'horloge a été reculée
         if (t > s.t + 8 || declenchees.has(s.cle)) { declenchees.add(s.cle); return; }
         declenchees.add(s.cle);
-        if (!premierPassage) alerter(ev, s.avant ? s.debut - t : 0);
+        if (!premierPassage) groupe.push({ ev: ev, restant: s.avant ? s.debut - t : 0 });
       });
     });
     premierPassage = false;
+    if (!groupe.length) return;
+    // Plusieurs événements au même instant : une seule alerte, l'objectif du coach puis ceux de mon rôle d'abord.
+    const r = roleCourant();
+    const prio = r && D.conseils.roles[r] ? D.conseils.roles[r].priorites : [];
+    const duCoach = document.body.dataset.coachObjectif;
+    const rang = (g) => (g.ev.id === duCoach ? 0 : prio.indexOf(g.ev.id) !== -1 ? 1 : 2);
+    groupe.sort((a, b) => rang(a) - rang(b));
+    alerter(groupe[0].ev, groupe[0].restant, groupe.slice(1).map((g) => g.ev.nom.split(' (')[0]));
   }
 
-  function alerter(ev, restant) {
-    const nom = ev.nom.split(' (')[0];
+  function alerter(ev, restant, autres) {
+    const nom = ev.nom.split(' (')[0] + ((autres && autres.length) ? ' + ' + autres.join(' + ') : '');
     const titre = restant > 1 ? nom + ' dans ' + Math.round(restant) + ' s' : nom + ' : maintenant';
-    const texte = ev.conseil || ev.detail || '';
-    if (alertes.flash) flash(ev, restant, texte);
+    const texte = DLN.conseilEvenement(ev) || ev.detail || '';
+    if (alertes.flash) flash(ev, restant, texte, nom);
     // Le préavis sonne déjà via le chrono ; l'apparition a son propre son, si le son est activé.
     const son = document.getElementById('opt-son');
     if (restant <= 1 && son && son.checked && DLN.sons) DLN.sons.jouer('maintenant');
@@ -954,7 +1010,7 @@
   }
 
   // Carte plein écran : couleur de la catégorie, nom et délai en très grand, le conseil dessous.
-  function flash(ev, restant, texte) {
+  function flash(ev, restant, texte, nom) {
     let z = document.getElementById('alerte-flash');
     if (!z) {
       z = el('div', 'alerte-flash');
@@ -966,7 +1022,7 @@
     z.textContent = '';
     z.style.setProperty('--cat', 'var(--cat-' + (ev.categorie || 'objectif') + ', var(--alerte))');
     const carte = el('div', 'alerte-carte');
-    carte.append(el('div', 'alerte-nom', ev.nom.split(' (')[0]),
+    carte.append(el('div', 'alerte-nom', nom || ev.nom.split(' (')[0]),
       el('div', 'alerte-delai', restant > 1 ? 'dans ' + Math.round(restant) + ' s' : 'maintenant'));
     if (texte) carte.append(el('div', 'alerte-texte', texte));
     carte.append(el('div', 'alerte-aide', 'toucher pour fermer'));
@@ -1005,8 +1061,10 @@
     });
     const aide = el('p', 'aide', DLN.sons.PROFILS[DLN.sons.profil()].aide);
     const ecoute = el('div', 'choix-son-ecoute');
-    ecoute.append(bouton('▶ Bientôt', 'discret', () => DLN.sons.jouer('preavis'), 'Le son du préavis'),
-      bouton('▶ Maintenant', 'discret', () => DLN.sons.jouer('maintenant'), 'Le son quand l\'objectif apparaît'));
+    ecoute.append(bouton('▶ Bientôt', 'discret', () => DLN.sons.jouer('preavis', DLN.sons.profil()), 'Le son du préavis'),
+      bouton('▶ Maintenant', 'discret', () => DLN.sons.jouer('maintenant', DLN.sons.profil()), 'Le son quand l\'objectif apparaît'),
+      bouton('▶ Achat', 'discret', () => DLN.sons.jouer('achat', DLN.sons.profil()), 'Le son d\'un achat conseillé'),
+      bouton('▶ Retour', 'discret', () => DLN.sons.jouer('retour', DLN.sons.profil()), 'Le son de la fin de réapparition'));
     const vol = el('label', 'choix-son-volume');
     const r = el('input');
     r.type = 'range';

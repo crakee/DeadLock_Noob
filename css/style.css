@@ -491,7 +491,7 @@ main.partie {
 .carte.alerte { border-color: var(--alerte); border-left-color: var(--cat); background: var(--alerte-fond); }
 .carte.alerte .carte-compte { color: var(--alerte); }
 .carte.alerte .carte-conseil { color: var(--texte); }
-.carte.maintenant, .carte.ouverte { background: var(--alerte); border-color: var(--alerte); border-left-color: var(--cat); color: #17110a; }
+.carte.maintenant, .carte.ouverte { background: var(--action); border-color: var(--action); border-left-color: var(--cat); color: #17110a; }
 .carte.maintenant .carte-conseil, .carte.ouverte .carte-conseil,
 .carte.maintenant .carte-heure, .carte.ouverte .carte-heure { color: #17110a; }
 .carte.maintenant .carte-compte, .carte.ouverte .carte-compte { font-size: var(--t-xxl); }
@@ -515,7 +515,7 @@ main.partie {
 .minuteur-btn.attente { background: var(--fond-2); }
 .minuteur-btn.alerte { border-color: var(--alerte); background: var(--alerte-fond); }
 .minuteur-btn.alerte .minuteur-compte { color: var(--alerte); }
-.minuteur-btn.maintenant, .minuteur-btn.ouverte { background: var(--alerte); border-color: var(--alerte); color: #17110a; }
+.minuteur-btn.maintenant, .minuteur-btn.ouverte { background: var(--action); border-color: var(--action); color: #17110a; }
 .minuteur-annuler { padding: .3rem .7rem; }
 
 /* maintenant */
@@ -1169,3 +1169,7 @@ main.partie {
   .sous-nav { overflow-x: auto; scrollbar-width: none; }
   .sous-onglet { white-space: nowrap; }
 }
+
+/* Pied de page replié : provenance en infobulle (js/commun.js replierMeta). */
+.meta-info { display: inline-flex; align-items: center; gap: .3rem; color: var(--doux); font-size: var(--t-xs); cursor: help; }
+.meta-info:focus-visible { outline: 2px solid var(--or); outline-offset: 2px; }

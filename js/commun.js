@@ -71,6 +71,28 @@ window.DLN = (function () {
     return e;
   }
 
+  // Pied de page : les pages y écrivent la provenance de leurs données (patch, sources, dates). Au lecteur, on
+  // ne montre que le patch et un « sources » ; le détail passe en infobulle (et reste lisible au focus clavier).
+  function replierMeta() {
+    const m = document.getElementById('meta');
+    if (!m || m.dataset.replie === m.textContent) return;
+    const detail = m.textContent.trim();
+    if (!detail) return;
+    const patch = (detail.match(/^Patch ([^·(]+)/) || [])[1];
+    m.textContent = '';
+    const info = el('span', 'meta-info', (patch ? 'Patch ' + patch.trim() + ' · ' : '') + 'sources');
+    info.prepend(icone('info'), ' ');
+    info.title = detail;
+    info.tabIndex = 0;
+    info.setAttribute('aria-label', detail);
+    m.append(info);
+    m.dataset.replie = m.textContent;
+  }
+  document.addEventListener('DOMContentLoaded', () => {
+    const m = document.getElementById('meta');
+    if (m) new MutationObserver(replierMeta).observe(m, { childList: true, characterData: true, subtree: true });
+  });
+
   // Conseil d'un événement du chrono, avec les précisions propres à un héros (conseil_heros) seulement
   // si ce héros est dans la partie : le mien (dln.partie.contexte.v1) ou en face (dln.counters.choisis.v1).
   function conseilEvenement(ev) {

@@ -3,7 +3,8 @@
 // l'écran ; une capture n'est gardée que si le texte affiché a changé (chiffres ignorés, sinon le
 // chrono rendrait chaque image différente). Les sons et les voix déclenchés sont notés au passage.
 // « coupes » : texte qui dépasse de sa boîte (masqué ou à faire défiler), par panneau.
-// Morts simulées : onglet Attente pendant la durée de réapparition de data/reapparition.json.
+// Morts simulées : touche A (onglet Attente), captures 1 s après, après saisie des souls et juste avant le retour
+// (durée de data/reapparition.json) ; la page revient seule sur En jeu.
 //
 // Usage : node outils/juge/captures.mjs [--parties haze,mirage] [--formats ecran-1080p]
 // Sorties : outils/juge/sorties/<horodatage>/ (non versionné) : captures, journal.json, resume.md.
@@ -61,6 +62,8 @@ const LIRE_ECRAN = () => {
   const app = document.getElementById('app') || document.body;
   app.querySelectorAll('*').forEach((e) => {
     if (!vis(e) || !e.innerText || !e.innerText.trim()) return;
+    // Masqué exprès (replié en hauteur 0 ou transparent, comme les réglages du chrono) : pas un texte coupé.
+    for (let a = e; a && a !== app; a = a.parentElement) { const sa = getComputedStyle(a); if (sa.opacity === '0' || sa.maxHeight === '0px') return; }
     const st = getComputedStyle(e);
     // Masqué (hidden/clip) ou à faire défiler (auto/scroll) : en jouant, on ne fait pas défiler un panneau.
     const cache = (v) => v !== 'visible';
@@ -87,7 +90,7 @@ const LIRE_ECRAN = () => {
 const ESPIONNER = () => {
   window.__journal = [];
   const appelant = () => (new Error().stack || '').split('\n').filter((l) => /js\/[a-z-]+\.js/.test(l)).slice(0, 2).map((l) => l.trim().replace(/^at /, '').replace(/https?:\/\/[^/]+\//, '')).join(' ← ');
-  const note = (type, detail) => window.__journal.push({ type, detail, source: appelant(), horloge: (document.getElementById('horloge') || {}).textContent });
+  const note = (type, detail) => window.__journal.push({ type, detail, source: appelant(), horloge: (document.getElementById('horloge') || {}).textContent, ms: Math.round(performance.now()) });
   if (window.DLN && DLN.sons) { const j = DLN.sons.jouer; DLN.sons.jouer = (m, p) => { note('son', { moment: m, profil: p || DLN.sons.profil() }); return j(m, p); }; }
   if (window.DLN && DLN.voix) { const a = DLN.voix.annoncer; DLN.voix.annoncer = (n, r) => { note('voix', { nom: n, restant_s: r }); return a(n, r); }; }
   if (window.speechSynthesis) { const s = speechSynthesis.speak.bind(speechSynthesis); speechSynthesis.speak = (u) => { note('voix-navigateur', { texte: u.text }); try { s(u); } catch (e) { /* sans voix */ } }; }
@@ -119,21 +122,42 @@ async function jouerPartie(navigateur, partie, [idFormat, format], dossier) {
 
   const lignes = [];
   let derniere = null, dernierPrincipal = null, nCaptures = 0, mortJusqua = -1;
+  // Horloge absolue : `ecoule` = secondes de partie affichées par la page. Chaque pas avance jusqu'à t ; une mort
+  // avance plus loin (captures pendant l'attente), et les pas déjà dépassés sont sautés.
+  let ecoule = 0;
   for (let t = 0; t <= S.duree_s; t += S.pas_s) {
-    // Mort simulée : on passe sur l'onglet Mort (touche M) le temps de la réapparition.
+    if (t < ecoule) continue;
+    if (t > ecoule) { await page.clock.runFor((t - ecoule) * 1000); ecoule = t; }
     const mort = S.morts_s.find((m) => m === t);
     let evenement = null;
+    const nom = (suffixe) => join(dossier, `${String(t).padStart(4, '0')}s-${suffixe}.png`);
     if (mort != null) {
+      // Mort simulée : touche A (onglet Attente), le seul geste demandé au joueur.
       const d = Math.round(reapparition(t));
       mortJusqua = t + d;
-      evenement = `mort (réapparition ${d} s)`;
-      await page.keyboard.press('a');   // onglet Attente (réapparition)
-    } else if (mortJusqua >= 0 && t >= mortJusqua) {
+      evenement = `mort à ${mmss(t)} (réapparition ${d} s)`;
+      await page.keyboard.press('a');
+      await page.clock.runFor(1000); ecoule += 1;
+      await page.screenshot({ path: nom('mort+1'), fullPage: true });
+      // Estimateur de souls : on joue le joueur qui saisit (moi : moyenne − 10 %, lui : moyenne + 20 %).
+      const moy = await page.evaluate(() => {
+        const m = (id) => { const c = document.getElementById(id); return c ? Number((c.placeholder || '').replace(/\D/g, '')) : 0; };
+        return { lui: m('souls-lui-champ'), moi: m('souls-moi-champ') };
+      });
+      if (moy.lui) {
+        await page.fill('#souls-moi-champ', String(Math.round(moy.moi * 0.9)));
+        await page.keyboard.press('Enter');
+        await page.fill('#souls-lui-champ', String(Math.round(moy.lui * 1.2)));
+        await page.keyboard.press('Enter');
+        evenement += ' · souls saisies';
+        await page.screenshot({ path: nom('souls'), fullPage: true });
+      }
+      // Juste avant le retour (la page revient seule sur En jeu à l'heure du retour).
+      if (d > 3) { await page.clock.runFor((d - 3) * 1000); ecoule += d - 3; await page.screenshot({ path: nom('avant-retour'), fullPage: true }); }
+    } else if (mortJusqua >= 0 && ecoule >= mortJusqua) {
       mortJusqua = -1;
-      evenement = 'réapparition';
-      await page.keyboard.press('j');
+      evenement = 'après le retour (automatique)';
     }
-    if (t > 0) await page.clock.runFor(S.pas_s * 1000);
 
     const ecran = await page.evaluate(LIRE_ECRAN);
     const sons = await page.evaluate(() => window.__journal.splice(0));
@@ -142,13 +166,13 @@ async function jouerPartie(navigateur, partie, [idFormat, format], dossier) {
     dernierPrincipal = ecran.principal && ecran.principal.replace(/\d/g, '#');
     let capture = null;
     if (empreinte !== derniere || evenement) {
-      capture = `${String(t).padStart(4, '0')}s.png`;
+      capture = `${String(ecoule).padStart(4, '0')}s.png`;
       await page.screenshot({ path: join(dossier, capture), fullPage: true });
       if (format.isMobile) await page.screenshot({ path: join(dossier, capture.replace('.png', '-ecran.png')) });
       nCaptures++;
     }
     derniere = empreinte;
-    lignes.push({ t, chrono: mmss(t), affiche: ecran.horloge, evenement, onglet: ecran.onglet, defile: ecran.defile, coupes: ecran.coupes.length ? ecran.coupes : undefined,
+    lignes.push({ t: ecoule, chrono: mmss(ecoule), affiche: ecran.horloge, evenement, onglet: ecran.onglet, defile: ecran.defile, coupes: ecran.coupes.length ? ecran.coupes : undefined,
       nouveau_message: nouveauPrincipal || undefined, principal: nouveauPrincipal ? ecran.principal : undefined,
       capture, identique: capture ? undefined : true, sons, panneaux: capture ? ecran.panneaux : undefined });
   }

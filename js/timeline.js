@@ -505,6 +505,7 @@
       if (!it) return;
       c.li.className = 'carte ' + it.statut;
       c.li.dataset.ev = it.ev.id;
+      c.li.dataset.debut = String(it.occ.debut);
       c.li.style.setProperty('--cat', 'var(--cat-' + it.ev.categorie + ', var(--doux))');
       c.nom.textContent = it.ev.nom;
       const m = marque(it.ev);

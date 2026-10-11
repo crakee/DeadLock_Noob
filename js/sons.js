@@ -1,6 +1,8 @@
 // Sons des alertes : fichiers retenus par l'utilisateur (sons/*.mp3, générés avec ElevenLabs puis retouchés)
 // ou sons synthétisés dans le navigateur (Web Audio).
-// Deux moments : « preavis » (un objectif arrive bientôt) et « maintenant » (il est là).
+// Quatre moments, chacun reconnaissable : « preavis » (un objectif arrive bientôt), « maintenant » (il est là :
+// le son deux fois), « achat » (un achat conseillé : plus aigu), « retour » (fin de réapparition : grave puis aigu).
+// Un seul son quand plusieurs alertes tombent ensemble (ANTI_RAFALE_MS).
 // Plusieurs ambiances au choix, volume réglable ; réglages gardés dans dln.sons.v1.
 // À charger après js/commun.js : expose DLN.sons (utilisé par js/timeline.js et js/partie.js).
 (function () {
@@ -181,30 +183,50 @@
     return tampons[src];
   }
 
+  // Variantes d'un même son pour les moments : [décalage s, vitesse de lecture (1 = normal, 1.5 = plus aigu)].
+  const VARIANTES = {
+    preavis: [[0, 1]],
+    maintenant: [[0, 1], [0.2, 1]],
+    achat: [[0, 1.5]],
+    retour: [[0, 0.8], [0.18, 1.2]]
+  };
+  const ANTI_RAFALE_MS = 1500;
+  let dernierSon = 0;
+
   function jouer(moment, profil) {
     preparer();
     if (!ctx || !sortie) return;
+    // Plusieurs alertes au même instant : un seul son (le premier demandé), sauf pour un essai de profil.
+    const maintenantMs = Date.now();
+    if (!profil && maintenantMs - dernierSon < ANTI_RAFALE_MS) return;
+    dernierSon = maintenantMs;
     const p = PROFILS[profil || reglages.profil] || PROFILS.bois;
+    const variantes = VARIANTES[moment] || VARIANTES.preavis;
     try {
       sortie.gain.setValueAtTime(Math.max(0.0001, reglages.volume), ctx.currentTime);
       if (p.fichier) {
-        tampon(p.fichier[moment] || p.fichier.preavis).then((b) => {
-          const src = ctx.createBufferSource();
-          src.buffer = b;
-          src.connect(sortie);
-          src.start();
+        tampon(p.fichier.preavis).then((b) => {
+          variantes.forEach((v) => {
+            const src = ctx.createBufferSource();
+            src.buffer = b;
+            src.playbackRate.value = v[1];
+            src.connect(sortie);
+            src.start(ctx.currentTime + v[0]);
+          });
         }).catch(() => { /* fichier indisponible : pas de son */ });
         return;
       }
       const t0 = ctx.currentTime + 0.03;
-      (p[moment] || p.preavis).forEach((n) => note(n[0], t0 + n[1], n[2], p.opts));
+      // Profils synthétisés : leurs notes « maintenant » existent ; achat et retour = notes du préavis transposées.
+      if (moment === 'maintenant' && p.maintenant) { p.maintenant.forEach((n) => note(n[0], t0 + n[1], n[2], p.opts)); return; }
+      variantes.forEach((v) => p.preavis.forEach((n) => note(n[0] * v[1], t0 + v[0] + n[1], n[2], p.opts)));
     } catch (e) { /* pas de son */ }
   }
 
   // Durée approximative d'un son, pour que la voix parle après lui.
   function duree(moment) {
     const p = PROFILS[reglages.profil] || PROFILS.bois;
-    if (p.fichier) return p.attente_s;
+    if (p.fichier) return p.attente_s + (moment === 'maintenant' ? 0.2 : 0);
     return Math.max.apply(null, (p[moment] || p.preavis).map((n) => n[1] + n[2] * 0.6));
   }
 

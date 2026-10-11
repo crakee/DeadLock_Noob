@@ -150,7 +150,9 @@
 
   // Le rappel du moment : parmi les difficultés actives à t, la plus prioritaire, puis celle dont l'heure de
   // rappel est la plus récente. Point faible du profil : intervalle raccourci. Partie longue : passe devant.
-  let tenu = null;   // rappel affiché et depuis quand (secondes de partie)
+  let tenu = null;
+  const ACHAT_SON_ECART_S = 60;
+  let dernierSonAchat = -Infinity;   // secondes de partie   // rappel affiché et depuis quand (secondes de partie)
   function rappelDuMoment(t, pr) {
     const d = difficultes(pr);
     const faibles = pr.ok ? (pr.p.faibles || []) : [];
@@ -499,7 +501,11 @@
     if (!zone || zone.hidden) { cleAttente = null; return; }
     const f = lireCle('dln.coach.focus.v1');
     const idType = pr.ok && pr.type ? pr.R.types_lecons[pr.type.id] : null;
-    const l = lecon(idType) || (f && lecon(f.id)) || lecon(difficultes(pr).ids[0]);
+    // Leçon du type de mort le plus fréquent d'abord ; sinon le focus ; sinon la première difficulté dont la
+    // fenêtre de data/rappels.json (de_s / a_s) contient la minute en cours : pas de leçon de laning à 33 min.
+    const t = tempsChrono().t;
+    const dansFenetre = (id) => { const r = rappels && rappels.lecons[id]; return !r || (t >= r.de_s && (r.a_s == null || t <= r.a_s)); };
+    const l = lecon(idType) || (f && dansFenetre(f.id) && lecon(f.id)) || lecon(difficultes(pr).ids.filter(dansFenetre)[0]);
     const cle = JSON.stringify([l && l.id, pr.p && pr.p.maj, DLN.langue]);
     if (cle === cleAttente) return;
     cleAttente = cle;
@@ -565,10 +571,15 @@
       z.pourquoi.textContent = a.texte;
       zone.classList.toggle('objectif', a.type === 'objectif');
       zone.classList.toggle('coach-achat', a.type === 'achat');
-      // Petit son au moment où un achat devient « à faire » (si le son du chrono est activé).
+      // Son « achat » quand un achat devient « à faire » (si le son du chrono est activé). Les minutes d'achat sont
+      // des moyennes : pas plus d'un son d'achat par ACHAT_SON_ECART_S, et aucun juste après un retour en jeu.
       if (a.type === 'achat' && a.cle !== derniereCle) {
         const son = document.getElementById('opt-son');
-        if (derniereCle !== null && son && son.checked && DLN.sons) DLN.sons.jouer('preavis');
+        const apresRetour = DLN.dernierRetour != null && r.t - DLN.dernierRetour < 20;
+        if (derniereCle !== null && son && son.checked && DLN.sons && r.t - dernierSonAchat >= ACHAT_SON_ECART_S && !apresRetour) {
+          DLN.sons.jouer('achat');
+          dernierSonAchat = r.t;
+        }
       }
       derniereCle = a.cle || null;
     }
@@ -621,7 +632,7 @@
     });
   }
 
-  DLN.coach = { texteObjectif: texteObjectif, redessiner: dessiner, etat: () => (C && timeline && rappels && conseils ? recos() : null) };
+  DLN.coach = { texteObjectif: texteObjectif, redessiner: dessiner, procheS: () => (C ? C.proche_s : null), etat: () => (C && timeline && rappels && conseils ? recos() : null) };
 
   Promise.all(['data/coach.json', 'data/timeline.json', 'data/conseils-roles.json', 'data/heroes.json', 'data/rappels.json'].map(DLN.charger)
     .concat([DLN.charger('data/niveaux.json').catch(() => null), DLN.charger('data/achats.json').catch(() => null),
