@@ -23,6 +23,8 @@ Tout est poussé et publié ; rien n'a encore été essayé en partie réelle.
 | Données en direct pendant la partie | 🔴 | pas de source légère confirmée (Overwolf = gros chantier ; test `-condebug` à faire) | `docs/coach-donnees.md` |
 | Quiz « Entraînement » (gamifié, lié aux points faibles) | 🔴 | brief à écrire | compte rendu Obsidian du 2026-10-06 |
 | Agent juge (boucle constructeur / juge sur En partie) | 🟡 | premier passage à blanc à analyser avec l'utilisateur | `.claude/agents/juge-partie.md`, `docs/brief-juge.md`, `outils/juge/` |
+| Builds importés (numéro, lien ou nom ; suivi par le coach) | 🟢 | à essayer en partie | `js/builds-perso.js`, onglet Builds de la fiche héros |
+| Refonte du front (anti « IA slop », fluide, user first) | 🔴 | audit du juge-slop en cours | `.claude/agents/juge-slop.md`, `outils/juge/pages.mjs` |
 | Traduction anglaise | 🟡 | seulement navigation, parcours, leçons | `CLAUDE.md` §Langues |
 
 ## Prochaine étape
@@ -56,6 +58,7 @@ Ensuite : Essayer le site pendant de vraies parties (second écran 1080p et tél
 - Positionnement : apprendre (parcours, coach, leçons), pas un site de stats ; site public multilingue.
 
 ## Journal
+- 2026-10-11 — Import de builds du jeu (numéro, lien ou nom) suivi par le coach ; juge anti-slop (`juge-slop`) et outil de mesure des pages ; règle : rythme permis pour le pic de puissance.
 - 2026-10-11 — Agent juge branché : parties simulées (4 héros × 1080p et téléphone, captures toutes les 10 s, morts, journal des sons), fiche d'écoute, durées de réapparition du wiki dans `data/reapparition.json`.
 - 2026-10-11 — Brief de l'agent juge (parcours en partie seconde par seconde, coup d'œil / attente de mort) et liste de ressources UI.
 - 2026-10-06 — En partie : coach selon le profil du joueur (zones de mort, points faibles), avant/après la partie, version téléphone.
