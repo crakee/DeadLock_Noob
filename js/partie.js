@@ -202,9 +202,33 @@
     }
     dlg.textContent = '';
     const tete = el('div', 'choix-heros-tete');
-    tete.append(el('h2', null, 'Quel héros joues-tu ?'), bouton('Aucun', 'discret', () => { changer({ heros: null, role: null }); dlg.close(); }),
+    // Recherche en tapant : filtre à chaque lettre, Entrée prend le premier héros affiché.
+    const recherche = el('input', 'recherche');
+    recherche.type = 'search';
+    recherche.id = 'choix-mon-heros-recherche';
+    recherche.placeholder = 'Tape le nom…';
+    recherche.autocomplete = 'off';
+    recherche.setAttribute('aria-label', 'Rechercher un héros');
+    tete.append(el('h2', null, 'Quel héros joues-tu ?'), recherche, bouton('Aucun', 'discret', () => { changer({ heros: null, role: null }); dlg.close(); }),
       bouton('Fermer', '', () => dlg.close()));
     dlg.append(tete);
+    const sansAccent = (t) => t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+    const filtrer = () => {
+      const q = sansAccent(recherche.value.trim());
+      dlg.querySelectorAll('.heros-case').forEach((b) => { b.hidden = q !== '' && sansAccent(b.textContent).indexOf(q) === -1; });
+      dlg.querySelectorAll('.heros-grille').forEach((g) => {
+        const vide = !g.querySelector('.heros-case:not([hidden])');
+        g.hidden = vide;
+        if (g.previousElementSibling && g.previousElementSibling.matches('h3')) g.previousElementSibling.hidden = vide;
+      });
+    };
+    recherche.addEventListener('input', filtrer);
+    recherche.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter') return;
+      e.preventDefault();
+      const premier = dlg.querySelector('.heros-case:not([hidden])');
+      if (premier) premier.click();
+    });
     const groupes = [];
     if (DLN.etiquettes) {
       DLN.etiquettes.enUsage().filter((t) => t === 'joué' || t === 'à essayer').forEach((t) => {
@@ -226,6 +250,7 @@
       dlg.append(grille);
     });
     dlg.showModal();
+    recherche.focus();
   }
 
   // ---------- panneau « Ton plan » ----------
@@ -488,11 +513,11 @@
   }
 
   // ---------- onglet Attente : réapparition ----------
-  // À la mort (touche A) : durée de réapparition à cette minute (data/reapparition.json, wiki), compte à
-  // rebours, puis ce qui sert au retour, du plus court au plus long selon le temps disponible :
+  // À la mort (touche A, seul geste demandé) : durée de réapparition à cette minute (data/reapparition.json,
+  // wiki), heure du retour (pas de compte à rebours : le jeu l'affiche), puis ce qui sert au retour, du plus court au plus long selon le temps disponible :
   // toujours l'achat et le prochain objectif ; au-delà de 15 s, leurs prochains gros achats et leur
   // menace principale ; au-delà de 30 s, la leçon (panneau « Pendant que tu attends »).
-  // Fin du compte : petit son, retour seul sur En jeu.
+  // À l'heure du retour : petit son, retour seul sur En jeu.
 
   const CLE_ATTENTE = 'dln.partie.attente.v1';
   let attente = lire(CLE_ATTENTE, { fin: null, duree: null });
@@ -536,12 +561,12 @@
     const zone = document.getElementById('reapparition');
     if (!zone || !D || affichage.onglet !== 'attente') return;
     const c = tempsChrono();
-    const reste = attente.fin == null ? 0 : Math.max(0, attente.fin - c.t);
     const d = attente.duree || 0;
     zone.textContent = '';
-    const compte = el('div', 'attente-compte' + (reste <= 10 ? ' bientot' : ''), String(Math.ceil(reste)));
-    const sous = el('div', 'attente-sous', 'Tu reviens à ' + fmt(attente.fin || c.t));
-    zone.append(compte, sous);
+    // Pas de grand compte à rebours : le jeu l'affiche déjà. Une ligne pour situer le retour.
+    const sous = el('div', 'attente-sous');
+    sous.append(el('strong', null, 'Retour vers ' + fmt(attente.fin || c.t)), el('span', 'doux', ' · réapparition ' + d + ' s à cette minute'));
+    zone.append(sous);
 
     const liste = el('ol', 'attente-liste');
     const ligne = (titre, contenu) => { const li = el('li'); li.append(el('span', 'attente-titre', titre)); li.append(contenu); liste.append(li); };

@@ -78,8 +78,9 @@ est-elle, et est-ce la chose la plus visible ?
 11. Téléphone : lisible sans zoom, cibles d'au moins 44 px pour le doigt,
     pas de page de 10 écrans de haut.
 
-**E. Décisions du projet (bloquant, oui ou non)** : tes propositions
-respectent « À ne pas reproposer » : HTML/CSS/JS sans framework ni
+**E. Décisions du projet (bloquant, oui ou non)** : sur l'écran En partie,
+aucune action manuelle en jouant à part changer d'onglet (décision du
+2026-10-11) ; tes propositions respectent aussi « À ne pas reproposer » : HTML/CSS/JS sans framework ni
 compilation, données séparées de l'affichage, etc.
 
 ## Rapport (ta réponse finale, en français)

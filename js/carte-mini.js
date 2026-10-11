@@ -218,11 +218,17 @@
     const bTout = btn('Tout', 'Montrer toutes les couches', () => { toutes.forEach((c) => { reglage.manuel[c.id] = true; }); reglage.cote = false; });
     const bCote = btn('Jungle : ma lane', 'Ne montrer que la jungle proche de ta lane, ou toute la jungle', () => { reglage.cote = !jungleDeMaLane(); });
     const bTunnels = btn('Tunnels', 'Montrer le sous-sol (tunnels) sur le fond de carte', () => { reglage.tunnels = !reglage.tunnels; });
-    tete.append(outils);
-    // Sur En partie, le bouton d'équipe est dans la barre de contexte : pas de doublon ici.
+    // Sur la page Carte, le bouton d'équipe reste dans l'en-tête ; En partie, il est posé sur la carte.
     if (!DLN.partieContexte) tete.append(boutonEquipe());
 
+    const cadre = el('div', 'carte-cadre');
     const zone = el('div', 'carte-partie-zone');
+    const retourner = el('button', 'btn carte-retourner');
+    retourner.type = 'button';
+    retourner.append(DLN.icone('flip-vertical-2'), el('span', null, 'Retourner'));
+    retourner.title = 'Mettre ta base en bas : retourne la carte si tu joues de l\'autre côté (' + EQUIPES[0].nom + ' / ' + EQUIPES[1].nom + ')';
+    retourner.addEventListener('click', () => { regleEquipe(1 - equipe()); retourner.blur(); });
+    cadre.append(zone, retourner);
     const image = el('img');
     image.alt = 'Minimap';
     const svg = svgEl('svg', { viewBox: '0 0 ' + T + ' ' + T, preserveAspectRatio: 'none', 'aria-label': 'Carte et objectifs' });
@@ -238,7 +244,7 @@
       return s;
     };
     lecture.append(symbole('cercle', '#d9b25b', 'ouvert'), ' disponible ', symbole('cercle', '#d9b25b', 'ferme'), ' pas encore ',
-      el('span', 'carte-halo-ex'), ' bientôt / maintenant · numéros = ordre d\'arrivée');
+      el('span', 'carte-halo-ex'), ' bientôt / maintenant · pastille = temps restant');
     legende.append(lecture);
     const lignes = {};
     GROUPES.forEach((g) => {
@@ -268,13 +274,12 @@
       });
     });
     // Téléphone : la légende (longue) se replie sous la carte ; sur grand écran elle reste ouverte, sans titre.
+    // Légende repliée : la carte parle d'elle-même (pastilles de temps) ; on l'ouvre pour régler les couches.
     const pli = el('details', 'carte-legende-pli');
-    pli.append(el('summary', null, DLN.tr({ fr: 'Légende et couches à afficher', en: 'Legend and layers to show' })), legende);
-    const etroit = window.matchMedia('(max-width: 600px)');
-    const plier = () => { pli.open = !etroit.matches; };
-    plier();
-    if (etroit.addEventListener) etroit.addEventListener('change', plier);
-    conteneur.append(tete, zone, pli);
+    const resumePli = el('summary');
+    resumePli.append(DLN.icone('layers'), el('span', null, DLN.tr({ fr: 'Légende et couches', en: 'Legend and layers' })));
+    pli.append(resumePli, outils, legende);
+    conteneur.append(tete, cadre, pli);
 
     function orienter() { zone.classList.toggle('retournee', equipe() === 1); }
     ecouteursEquipe.push(orienter);
@@ -312,13 +317,11 @@
         return { c: c, couche: couche, ev: ev, st: etatEvenement(ev, t), elements: elements };
       });
 
-      // 2. Numéros pour les objectifs (pas les camps, reconnaissables à leur forme), par ordre d'urgence.
-      const ordre = { maintenant: 0, bientot: 1, attente: 2, ferme: 3, ouvert: 4 };
-      const objectifs = [];
-      entrees.filter((e) => e.ev && e.ev.categorie !== 'jungle' && e.elements.length).forEach((e) => { if (objectifs.indexOf(e.ev) === -1) objectifs.push(e); });
-      objectifs.sort((a, b) => ordre[a.st.etat] - ordre[b.st.etat] || (a.st.dans || 0) - (b.st.dans || 0));
-      const numeros = {};
-      objectifs.forEach((e, i) => { if (numeros[e.ev.id] == null) numeros[e.ev.id] = Object.keys(numeros).length + 1; });
+      // 2. Pastilles de temps posées sur la carte (dessinées en dernier, par-dessus) : objectifs toujours,
+      // camps de jungle seulement quand ils arrivent (≤ 2 min) ou sont là. L'objectif du coach ressort.
+      const duCoach = document.body.dataset.coachObjectif || '';
+      const pastilles = [];
+      const PROCHE_JUNGLE_S = 120;
 
       // 3. Dessin : lanes d'abord, puis du plus petit au plus important.
       entrees.slice().sort((a, b) => (a.c.id === 'lanes' ? -1 : b.c.id === 'lanes' ? 1 : (a.c.r || 12) - (b.c.r || 12))).forEach((e) => {
@@ -336,7 +339,6 @@
           const p = l.trace.reduce((m, q) => (Math.abs(q[1] - cible) < Math.abs(m[1] - cible) ? q : m), l.trace[0]);
           if (id) g.append(texte(p[0] * T + (p[0] < 0.5 ? 26 : -26), p[1] * T, LANES_NOM[id], 'mini-lane', { fill: l.couleur, 'text-anchor': p[0] < 0.5 === !retournee ? 'start' : 'end' }));
         });
-        const n = e.ev ? numeros[e.ev.id] : null;
         e.elements.forEach((el2) => {
           const px = el2.xy[0] * T, py = el2.xy[1] * T;
           let r = c.r || 8, f = c.forme || 'cercle', lettre = c.lettre, couleur = c.couleur;
@@ -354,11 +356,43 @@
           m.append(titre);
           g.append(m);
           if (lettre && r >= 8) g.append(texte(px, py + 1, lettre, 'mini-lettre', { 'font-size': Math.round(r * 1.3) }));
-          if (n && chrono.lance) g.append(texte(px + r + 4, py - r - 4, String(n), 'mini-numero'));
+          if (e.ev) {
+            const st = e.st, jungle = e.ev.categorie === 'jungle';
+            const montre = !chrono.lance ? !jungle
+              : st.etat === 'maintenant' || st.etat === 'bientot' || (!jungle && st.dans != null) || (jungle && st.dans != null && st.dans <= PROCHE_JUNGLE_S);
+            if (montre) {
+              const txt = !chrono.lance ? fmt(e.ev.temps_s != null ? e.ev.temps_s : e.ev.debut_s)
+                : st.etat === 'maintenant' ? 'OUVERT' : (st.approx ? '≈' : '') + fmt(st.dans);
+              pastilles.push({ ex: px, ey: py, x: px, y: py - r - 22, texte: txt, etat: chrono.lance ? st.etat : 'ferme', coach: e.ev.id === duCoach, nom: e.ev.nom.split(' (')[0] });
+            }
+          }
           if (c.id === 'structures' && el2.type === 'Base' && el2.equipe === mienne) g.append(texte(px, py + r + 32, 'Ta base', 'mini-base'));
         });
         svg.append(g);
       });
+
+      // Pastilles : la plus urgente d'abord ; une pastille trop proche d'une autre déjà posée est sautée.
+      const rang = { maintenant: 0, bientot: 1, attente: 2, ferme: 3, ouvert: 4 };
+      pastilles.sort((a, b) => (b.coach - a.coach) || rang[a.etat] - rang[b.etat]);
+      const posees = [];
+      const couche = svgEl('g', { class: 'mini-pastilles' });
+      pastilles.forEach((p) => {
+        if (posees.some((q) => Math.abs(q.x - p.x) < 95 && Math.abs(q.y - p.y) < 50)) return;
+        posees.push(p);
+        const grand = p.coach;
+        const largeur = (grand ? 26 : 20) * Math.max(3, p.texte.length) + 16, hauteur = grand ? 52 : 40;
+        // Cible autour de l'objectif du coach ; la pastille pivote sur elle-même pour rester lisible carte retournée.
+        if (grand) couche.append(svgEl('circle', { cx: p.ex, cy: p.ey, r: 46, class: 'mini-cible' }));
+        const gp = svgEl('g', { class: 'mini-temps etat-' + p.etat + (grand ? ' coach' : ''), transform: retournee ? 'rotate(180 ' + p.x + ' ' + p.y + ')' : '' });
+        gp.append(svgEl('rect', { x: p.x - largeur / 2, y: p.y - hauteur / 2, width: largeur, height: hauteur, rx: hauteur / 2 }));
+        const tx = svgEl('text', { x: p.x, y: p.y + 1 });
+        tx.textContent = p.texte;
+        const titre = svgEl('title');
+        titre.textContent = p.nom + ' · ' + p.texte;
+        gp.append(tx, titre);
+        couche.append(gp);
+      });
+      svg.append(couche);
 
       // 4. Légende : cases, état de chaque objectif, numéro.
       toutes.forEach((c) => {
@@ -373,7 +407,6 @@
         if (ev) {
           const st = etatEvenement(ev, t);
           L.label.classList.add('etat-' + (chrono.lance ? st.etat : 'ferme'));
-          if (numeros[ev.id] && v && chrono.lance) L.etat.append(el('span', 'mini-pastille', String(numeros[ev.id])));
           L.etat.append(texteEtat(st, ev, t, chrono.lance) + (ev.fiabilite === 'incertain' ? ' ?' : ''));
         }
       });

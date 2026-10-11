@@ -51,6 +51,7 @@ Ensuite : Essayer le site pendant de vraies parties (second écran 1080p et tél
 - Pas de counter justifié par un winrate : seulement par une mécanique.
 - Un seul réglage de niveau (1 à 3) pour tout le site, pas une version par rang.
 - Coach sans boutons d'état à cliquer en jouant (retirés le 2026-10-05).
+- En partie : aucune action manuelle en jouant à part changer d'onglet (J, A, M) ; ne pas doubler ce que le jeu affiche (compte à rebours de réapparition, souls) (2026-10-11).
 - En partie : un seul écran « En jeu » avec la carte ; la compo à part dans « Mort · compo ».
 - Pas de voix sur les timings non fixes ; sons doux, pas d'orchestral.
 - L'identifiant Steam du joueur reste dans le navigateur, jamais dans le dépôt.

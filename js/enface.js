@@ -198,6 +198,13 @@
   dialogue.querySelector('[data-fermer]').addEventListener('click', () => dialogue.close());
   dialogue.addEventListener('click', (e) => { if (e.target === dialogue) dialogue.close(); });
   document.getElementById('choix-recherche').addEventListener('input', remplirChoix);
+  // Entrée : ajoute le premier héros trouvé.
+  document.getElementById('choix-recherche').addEventListener('keydown', (e) => {
+    if (e.key !== 'Enter') return;
+    e.preventDefault();
+    const premier = document.querySelector('#choix-grille .heros-case:not(.choisi)');
+    if (premier) { premier.click(); const r = document.getElementById('choix-recherche'); r.value = ''; remplirChoix(); r.focus(); }
+  });
   document.getElementById('choix-recherche').addEventListener('keydown', (e) => {
     if (e.key !== 'Enter') return;
     const premier = document.querySelector('#choix-grille .heros-case');

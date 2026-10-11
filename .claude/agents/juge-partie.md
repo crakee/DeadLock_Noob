@@ -86,7 +86,12 @@ fichiers avant d'affirmer.
    réapparition, pic de puissance adverse), à décrire précisément (moment,
    texte dit, ton) sans valeur de jeu inventée.
 
-**E. Décisions du projet (bloquant, oui ou non)** : rien de la liste « À ne pas
+**E. Décisions du projet (bloquant, oui ou non)** : en partie, **aucune action
+manuelle** à part changer d'onglet (J, A, M) : pas de bouton à cliquer, pas de
+saisie, pas de chrono à recaler, pas de case à cocher pendant qu'on joue
+(décision de l'utilisateur du 2026-10-11). Toute information qui demande un
+geste de plus, ou qui double ce que le jeu affiche déjà (compte à rebours de
+réapparition, souls, vie), est un défaut. Ni rien de la liste « À ne pas
 reproposer » (pas de framework, pas de bouton à cliquer en jouant, pas de voix
 sur les timings non fixes, sons doux, etc.). Tes propositions aussi doivent la
 respecter.
