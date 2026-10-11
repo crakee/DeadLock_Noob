@@ -135,6 +135,7 @@ body.onglet-jeu .horloge .commandes{ margin-top: .3rem; }
 @media (prefers-reduced-motion: reduce) { .alerte-flash.anime .alerte-carte { animation: none; } }
 .alerte-nom { font-family: var(--titre); font-size: var(--t-chiffre); line-height: 1; text-transform: uppercase; color: var(--texte); }
 .alerte-delai { font-family: var(--titre); font-size: var(--t-xxl); line-height: 1; color: var(--cat); }
+.alerte-delai.maintenant { color: var(--action); }
 .alerte-texte { font-size: var(--t-l); line-height: 1.35; color: var(--texte); }
 .alerte-aide { font-size: var(--t-s); color: var(--doux); }
 .choix-son { display: flex; flex-direction: column; gap: .3rem; padding-bottom: .4rem; margin-bottom: .2rem; border-bottom: 1px solid var(--bord); }
@@ -649,3 +650,24 @@ body.onglet-attente .col-avenir { flex: 2 1 0; }
 .souls-qui span { white-space: normal; line-height: 1.15; }
 /* À 0:00, un seul appel à l'action orange (Démarrer) : le choix du héros dans le coach reste discret. */
 .coach-carte .btn.principal { background: none; color: var(--or-clair); border-color: var(--bord-fort); font-size: var(--t-m); }
+
+/* Tour 3 bis (juges) : « maintenant » toujours orange, bientôt en jaune. */
+.obj-ligne.maintenant .obj-quand { color: var(--action); }
+.coach.objectif.maintenant .coach-carte { border-left-color: var(--action); background: var(--action-fond); }
+body.onglet-jeu #avenir > li[data-vue] { transition: border-color var(--duree), background var(--duree), color var(--duree); }
+#carte-partie { min-height: 0; }
+@media (max-width: 600px) {
+  /* La carte réserve sa place avant d'être dessinée (pas de saut au chargement). */
+  body.onglet-jeu #carte-partie:empty { aspect-ratio: 1 / 1; }
+  /* Cibles de 44 px aussi dans la barre de contexte. */
+  .contexte .btn, .contexte-panneaux > summary, .recalage .btn, .commandes .btn { min-height: 44px; }
+  /* Pas de clavier sur téléphone : touches cachées, « Ma partie » en icône. */
+  .onglet-partie kbd { display: none; }
+  .contexte-plus > summary span { display: none; }
+  .attente-sous-liste li { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; }
+  .attente-sous-liste li > .attente-objet { grid-column: 1 / -1; }
+}
+@media (max-width: 600px) {
+  /* « À venir » réserve sa hauteur avant l'arrivée des objectifs (sinon le coach saute de 240 px au chargement). */
+  body.onglet-jeu [data-panneau="avenir"] { min-height: 16.5rem; }
+}

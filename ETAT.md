@@ -24,11 +24,11 @@ Tout est poussé et publié ; rien n'a encore été essayé en partie réelle.
 | Quiz « Entraînement » (gamifié, lié aux points faibles) | 🔴 | brief à écrire | compte rendu Obsidian du 2026-10-06 |
 | Agent juge (boucle constructeur / juge sur En partie) | 🟡 | premier passage à blanc à analyser avec l'utilisateur | `.claude/agents/juge-partie.md`, `docs/brief-juge.md`, `outils/juge/` |
 | Builds importés (numéro, lien ou nom ; suivi par le coach) | 🟢 | à essayer en partie | `js/builds-perso.js`, onglet Builds de la fiche héros |
-| Refonte du front (anti « IA slop », fluide, user first) | 🟡 | tours 1-2 faits (système, En partie, carte, Attente) ; juges à repasser quand le réseau revient | `.claude/agents/juge-slop.md`, `outils/juge/pages.mjs` |
+| Refonte du front (anti « IA slop », fluide, user first) | 🟡 | En partie terminée (3 tours, validée par les juges) ; prochaine page : fiche héros | `.claude/agents/juge-slop.md`, `outils/juge/pages.mjs` |
 | Traduction anglaise | 🟡 | seulement navigation, parcours, leçons | `CLAUDE.md` §Langues |
 
 ## Prochaine étape
-Relire avec l'utilisateur le rapport du premier passage du juge, puis construire l'onglet « Attente » (réapparition, `data/reapparition.json`) en boucle constructeur / juge (3 tours au plus).
+Essayer En partie en vraie partie (second écran et téléphone), puis refaire la fiche héros en boucle avec les juges (`docs/refonte-front.md` §État au 2026-10-11).
 
 Ensuite : Essayer le site pendant de vraies parties (second écran 1080p et téléphone), puis corriger ce qui gêne : rappels du coach, horaires incertains, lisibilité de la carte.
 
@@ -59,6 +59,7 @@ Ensuite : Essayer le site pendant de vraies parties (second écran 1080p et tél
 - Positionnement : apprendre (parcours, coach, leçons), pas un site de stats ; site public multilingue.
 
 ## Journal
+- 2026-10-11 — Refonte tour 3 : sons audibles et distincts, alertes regroupées, grand bloc stable, Attente figée à la mort, estimateur sans verdict avant saisie ; En partie validée par les deux juges ; site publié.
 - 2026-10-11 — Refonte tours 1-2 : système commun (7 tailles, icônes SVG), En partie (objectif fixe, carte avec les temps dessus et bouton Retourner, recherche de héros), onglet Attente avec estimateur de souls ; `data/souls.json` à générer (`--seulement souls`, DNS en panne le 2026-10-11).
 - 2026-10-11 — Import de builds du jeu (numéro, lien ou nom) suivi par le coach ; juge anti-slop (`juge-slop`) et outil de mesure des pages ; règle : rythme permis pour le pic de puissance.
 - 2026-10-11 — Agent juge branché : parties simulées (4 héros × 1080p et téléphone, captures toutes les 10 s, morts, journal des sons), fiche d'écoute, durées de réapparition du wiki dans `data/reapparition.json`.

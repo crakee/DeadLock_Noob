@@ -439,7 +439,7 @@
       const passe = (l.fin || l.t) < t;
       const proche = !passe && l.t - t <= 60;
       const mien = prio.indexOf(l.e.id) !== -1;
-      const li = el('li', 'obj-ligne' + (passe ? ' passe' : '') + (proche ? ' proche' : '') + (mien ? ' mien' : '') + (l.e.annonce_avant_s > 0 ? '' : ' info'));
+      const li = el('li', 'obj-ligne' + (passe ? ' passe' : '') + (proche ? ' proche' : '') + (!passe && l.t <= t && chrono.lance ? ' maintenant' : '') + (mien ? ' mien' : '') + (l.e.annonce_avant_s > 0 ? '' : ' info'));
       li.style.setProperty('--cat', 'var(--cat-' + l.e.categorie + ', var(--doux))');
       const heure = (l.e.fiabilite === 'incertain' ? '≈ ' : '') + fmt(l.t) + (l.fin ? '–' + fmt(l.fin) : '');
       const quand = !chrono.lance ? '' : passe ? 'passé' : l.t <= t ? 'maintenant' : 'dans ' + fmt(l.t - t);
@@ -538,7 +538,7 @@
   function commencerAttente() {
     const t = tempsChrono().t;
     const d = Math.round(dureeReapparition(t) || 0);
-    attente = { fin: t + d, duree: d };
+    attente = { fin: t + d, duree: d, achats: null };
     estim = null;
     ecrire(CLE_ATTENTE, attente);
   }
@@ -576,9 +576,15 @@
     const etat = DLN.coach && DLN.coach.etat ? DLN.coach.etat() : null;
 
     // 1. Ce que tu achètes maintenant (celui du coach : build suivi ou achats moyens du héros).
-    // Achats déjà dus (minute dépassée), 3 au plus avec leur total ; sinon le prochain.
-    const dus = etat ? [etat.action].concat(etat.prochains).filter((a) => a && a.type === 'achat' && a.t <= c.t + 30) : [];
-    const achats = (dus.length ? dus : (etat && etat.prochains[0] ? [etat.prochains[0]] : [])).filter((a, i, l) => l.findIndex((b) => b.nom === a.nom) === i).slice(0, 3);
+    // Achats dus à la mort (minute dans la fenêtre d'achat du coach), 3 au plus avec leur total ; sinon le prochain.
+    // Calculés une fois à l'entrée dans l'attente, puis figés jusqu'au retour (la liste ne change pas sous les yeux).
+    if (!attente.achats && DLN.coach && DLN.coach.achats && contexte.heros) {
+      const tm = attente.fin - attente.duree;
+      const liste = DLN.coach.achats(contexte.heros);
+      const dus = liste.filter((o) => o.t <= tm + 30 && o.t >= tm - DLN.coach.achatApresS);
+      attente.achats = (dus.length ? dus : liste.filter((o) => o.t > tm).slice(0, 1)).slice(0, 3).map((o) => ({ nom: o.nom, au_choix: o.au_choix }));
+    }
+    const achats = attente.achats || [];
     if (achats.length) {
       const bloc = el('span', 'attente-achats');
       achats.forEach((a) => bloc.append(ligneObjet(a.nom, a.au_choix ? 'au choix' : '')));
@@ -592,7 +598,9 @@
     const prochains = [];
     D.timeline.evenements.filter((e) => niveauOk(e.id) && e.annonce_avant_s > 0)
       .forEach((e) => occurrences(e, retour, retour + 10 * 60).forEach((o) => prochains.push({ e: e, t: o.t })));
-    prochains.sort((a, b) => a.t - b.t);
+    // À heure égale, l'objectif de mon rôle (★) d'abord.
+    const prioR = r && D.conseils.roles[r] ? D.conseils.roles[r].priorites : [];
+    prochains.sort((a, b) => a.t - b.t || (prioR.indexOf(a.e.id) === -1) - (prioR.indexOf(b.e.id) === -1));
     if (prochains[0]) {
       const p = prochains[0];
       const cote = r && D.conseils.roles[r] ? D.conseils.roles[r].cote : null;
@@ -710,6 +718,8 @@
     const poser = (v, depuis, saisi) => {
       r.classList.toggle('saisi', Boolean(saisi));
       r.dataset.saisi = saisi ? '1' : '';
+      // La valeur lue sur le tableau des scores vaut pour cette minute-là : on compare à cette minute.
+      if (saisi) r.dataset.minute = String(tempsChrono().t);
       if (!saisi && depuis == null) {
         v = Math.max(0, Math.round(Number(v) || 0));
         curseur.value = String(v);
@@ -747,7 +757,8 @@
     champ.addEventListener('blur', () => { if (r.dataset.saisi) champ.value = DLN.fmtNombre(Number(r.dataset.valeur) || 0); });
     curseur.addEventListener('change', () => curseur.blur());
     r.append(tete, piste, champ);
-    return { noeud: r, poser: poser, curseur: curseur, valeur: () => Number(r.dataset.valeur) || 0, saisi: () => Boolean(r.dataset.saisi), tete: tete };
+    return { noeud: r, poser: poser, curseur: curseur, valeur: () => Number(r.dataset.valeur) || 0, saisi: () => Boolean(r.dataset.saisi),
+      minute: () => Number(r.dataset.minute) || tempsChrono().t, tete: tete };
   }
 
   function estimateur(ids) {
@@ -816,12 +827,13 @@
     const t = tempsChrono().t;
     const h = herosDe(estim.cible), moi = herosDe(contexte.heros);
     const vLui = estim.lui.valeur(), vMoi = estim.moi.valeur();
-    const sLui = estim.lui.saisi() ? situer(estim.cible, vLui, t) : null, sMoi = moi && estim.moi.saisi() ? situer(moi.id, vMoi, t) : null;
+    const tLui = estim.lui.minute(), tMoi = estim.moi.minute();
+    const sLui = estim.lui.saisi() ? situer(estim.cible, vLui, tLui) : null, sMoi = moi && estim.moi.saisi() ? situer(moi.id, vMoi, tMoi) : null;
     estim.verdict.textContent = '';
     if (!sLui && !sMoi) { estim.verdict.append(el('span', 'doux', 'Règle ou tape au moins un chiffre pour avoir un verdict.')); return; }
     if (sLui) {
       const l = el('span', 'souls-ligne ' + (sLui.z > 0.5 ? 'avance' : sLui.z < -0.5 ? 'retard' : ''));
-      l.append(el('strong', null, h.nom + ' ' + sLui.mot), el('span', 'doux', ' · moyenne ' + DLN.fmtNombre(arrondi(sLui.moy)) + ' à ' + fmt(t)));
+      l.append(el('strong', null, h.nom + ' ' + sLui.mot), el('span', 'doux', ' · moyenne ' + DLN.fmtNombre(arrondi(sLui.moy)) + ' à ' + fmt(tLui)));
       estim.verdict.append(l);
     }
     if (moi && sMoi) {
@@ -920,7 +932,8 @@
     // Lignes compactes : les deux suivantes après le grand bloc (ce qui est plus proche est déjà chez le coach).
     const apres = cartes.filter((c) => c !== grand && Number(c.dataset.debut) >= Number(grand.dataset.debut));
     apres.slice(0, 2).forEach((c) => { c.dataset.suite = '1'; });
-    vusAvenir = [grand].concat(apres.slice(0, 2)).map((c) => c.dataset.ev + ':' + c.dataset.debut);
+    const vus = [grand].concat(apres.slice(0, 2)).map((c) => c.dataset.ev + ':' + c.dataset.debut);
+    if (vus.join() !== vusAvenir.join()) { vusAvenir = vus; dessinerObjectifs(); }
   }
   let vusAvenir = [];
 
@@ -1023,7 +1036,7 @@
     z.style.setProperty('--cat', 'var(--cat-' + (ev.categorie || 'objectif') + ', var(--alerte))');
     const carte = el('div', 'alerte-carte');
     carte.append(el('div', 'alerte-nom', nom || ev.nom.split(' (')[0]),
-      el('div', 'alerte-delai', restant > 1 ? 'dans ' + Math.round(restant) + ' s' : 'maintenant'));
+      el('div', 'alerte-delai' + (restant > 1 ? '' : ' maintenant'), restant > 1 ? 'dans ' + Math.round(restant) + ' s' : 'maintenant'));
     if (texte) carte.append(el('div', 'alerte-texte', texte));
     carte.append(el('div', 'alerte-aide', 'toucher pour fermer'));
     z.append(carte);

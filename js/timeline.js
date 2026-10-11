@@ -272,13 +272,19 @@
     } catch (e) { /* pas de voix */ }
   }
 
-  function annoncer(cle, nom, restant_s) {
+  // Voix seulement pour les objectifs de mon rôle (★) quand un rôle est connu ; pour les autres, le son suffit.
+  function pourMonRole(id) {
+    const x = window.DLN && DLN.partieContexte ? DLN.partieContexte.get() : null;
+    return !x || !x.priorites || !id || x.priorites.indexOf(id) !== -1;
+  }
+
+  function annoncer(cle, nom, restant_s, id) {
     if (annonces.has(cle)) return;
     annonces.add(cle);
     // Au chargement de la page, les alertes déjà en cours ne sonnent pas une seconde fois.
     if (premierPassage || !enMarche()) return;
     if (reglages.son) bip();
-    if (reglages.voix) {
+    if (reglages.voix && pourMonRole(id)) {
       const texte = restant_s > 1 ? nom + ' dans ' + Math.round(restant_s) + ' secondes' : nom + ' maintenant';
       // La voix attend la fin du son pour ne pas le couvrir.
       const attente = reglages.son && window.DLN && DLN.sons ? DLN.sons.duree('preavis') * 1000 : 0;
@@ -496,7 +502,7 @@
   function rafraichirAvenir(t) {
     const items = aVenir(t);
     items.forEach((it) => {
-      if (it.statut !== 'attente') annoncer(it.cle, it.ev.nom, it.occ.debut - t);
+      if (it.statut !== 'attente') annoncer(it.cle, it.ev.nom, it.occ.debut - t, it.ev.id);
     });
     cartes.forEach((c, i) => {
       const it = items[i];
@@ -590,7 +596,7 @@
     const r = niveaux && niveaux.rappel_minimap;
     const zone = $('rappel');
     const actif = Boolean(r) && reglages.rappel && enMarche() && DLN.niveau() <= r.niveau_max &&
-      t >= r.intervalle_s && (t % r.intervalle_s) < DUREE_RAPPEL_S;
+      t >= r.intervalle_s && (t % r.intervalle_s) < DUREE_RAPPEL_S && document.body.dataset.coachRappel !== 'minimap';
     zone.classList.toggle('actif', actif);
     if (actif && zone.textContent !== r.texte) zone.textContent = r.texte;
   }

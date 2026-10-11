@@ -335,6 +335,8 @@
     // Le focus de la page Progression passe avant les autres difficultés pendant sa phase.
     const l = focusActif ? { id: f.id, titre: f.titre, en_partie: { rappel: f.rappel } } : (m ? m.l : null);
     z.rappel.hidden = !l || !r.c.lance;
+    // Le bandeau « regarde ta map » du chrono se tait quand le coach parle déjà de la minimap.
+    document.body.dataset.coachRappel = z.rappel.hidden ? '' : l.id;
     if (z.rappel.hidden) return;
     const frais = focusActif ? (m && m.l.id === f.id && r.t - m.dernier < RAPPEL_FRAIS_S) : (r.t - m.dernier < RAPPEL_FRAIS_S);
     z.rappel.classList.toggle('frais', Boolean(frais));
@@ -570,6 +572,7 @@
       z.action.classList.toggle('long', a.titre.length > 55);
       z.pourquoi.textContent = a.texte;
       zone.classList.toggle('objectif', a.type === 'objectif');
+      zone.classList.toggle('maintenant', a.type === 'objectif' && a.t <= r.t);
       zone.classList.toggle('coach-achat', a.type === 'achat');
       // Son « achat » quand un achat devient « à faire » (si le son du chrono est activé). Les minutes d'achat sont
       // des moyennes : pas plus d'un son d'achat par ACHAT_SON_ECART_S, et aucun juste après un retour en jeu.
@@ -632,7 +635,7 @@
     });
   }
 
-  DLN.coach = { texteObjectif: texteObjectif, redessiner: dessiner, procheS: () => (C ? C.proche_s : null), etat: () => (C && timeline && rappels && conseils ? recos() : null) };
+  DLN.coach = { texteObjectif: texteObjectif, redessiner: dessiner, achats: (id) => achatsDe(id), achatApresS: ACHAT_APRES_S, procheS: () => (C ? C.proche_s : null), etat: () => (C && timeline && rappels && conseils ? recos() : null) };
 
   Promise.all(['data/coach.json', 'data/timeline.json', 'data/conseils-roles.json', 'data/heroes.json', 'data/rappels.json'].map(DLN.charger)
     .concat([DLN.charger('data/niveaux.json').catch(() => null), DLN.charger('data/achats.json').catch(() => null),

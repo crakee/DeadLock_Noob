@@ -362,7 +362,7 @@
               : st.etat === 'maintenant' || st.etat === 'bientot' || (!jungle && st.dans != null) || (jungle && st.dans != null && st.dans <= PROCHE_JUNGLE_S);
             if (montre) {
               const txt = !chrono.lance ? fmt(e.ev.temps_s != null ? e.ev.temps_s : e.ev.debut_s)
-                : st.etat === 'maintenant' ? 'OUVERT' : (st.approx ? '≈' : '') + fmt(st.dans);
+                : st.etat === 'maintenant' || (st.dans != null && st.dans < 1) ? 'OUVERT' : (st.approx ? '≈' : '') + fmt(st.dans);
               pastilles.push({ ex: px, ey: py, x: px, y: py - r - 22, texte: txt, etat: chrono.lance ? st.etat : 'ferme', coach: e.ev.id === duCoach, nom: e.ev.nom.split(' (')[0] });
             }
           }

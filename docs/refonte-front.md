@@ -59,3 +59,18 @@ visible, En partie sans défilement en 1080p, sommaire du Mémo.
    panneau / bouton / ligne) et icônes SVG.
 2. En partie (index), en boucle avec juge-partie et juge-slop (3 tours au plus).
 3. Fiche héros, puis Counters, puis le reste.
+
+## État au 2026-10-11 (fin des 3 tours sur En partie)
+
+- **En partie : terminée pour la boucle.** juge-partie : VALIDÉ (toutes les notes ≥ 4) ; juge-slop : 4 à 5
+  partout sauf vitesse et téléphone (3), corrigés ensuite (CLS téléphone 0,11 → 0,02, cibles de 44 px dans
+  la barre). Rien ne bloque un essai en vraie partie.
+- Finitions notées par les juges, à reprendre après l'essai en partie : barre de contexte du téléphone haute
+  (≈ 150 px), pied de page qui chevauche la carte sur la capture téléphone pleine page (à vérifier sur un vrai
+  appareil), infobulle « sources » qui ne s'ouvre pas au toucher, idées (relier l'estimateur de souls au bloc
+  Achète, griser l'objet de « Leur menace » s'il est déjà dans le build suivi), se passer de la touche F en
+  clôturant la partie à l'arrivée du débrief.
+- **Suite (ordre du juge-slop)** : fiche héros (5 décisions ci-dessus dans le rapport du tour 2 : tête de fiche
+  à 3 chiffres et un bouton « Étiqueter », « comment je le joue » d'abord, chaque héros une fois dans la liste,
+  composant « objet » commun, winrate dans Matchups), puis Counters (fusion partielle avec Objets clés),
+  Parcours, Progression, Patch, Objets clés, Carte (légende commune), Rôles, Mémo.
