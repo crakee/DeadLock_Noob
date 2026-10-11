@@ -1,0 +1,17 @@
+{
+ "meta": {
+  "patch": "City Never Sleeps (29 septembre 2026)",
+  "verifie_le": "2026-10-11",
+  "source": "deadlock.wiki, Data:Convars.json (révision du 2026-10-09), convars citadel_player_spawn_time_* ; page Death §Respawn Time",
+  "regle": "Durée interpolée en ligne droite entre les points ; avant 5 min, 8 s (premier point, hypothèse de lecture du wiki).",
+  "note": "Mort sans tueur ni assistance ennemie : + penalite_sans_heros_s. Le joueur nettement plus riche que l'autre équipe réapparaît plus tard (convars rich_nw_penalty, non modélisées ici)."
+ },
+ "points": [
+  { "minute": 5, "secondes": 8 },
+  { "minute": 20, "secondes": 38 },
+  { "minute": 30, "secondes": 70 },
+  { "minute": 40, "secondes": 85 }
+ ],
+ "maximum_s": 90,
+ "penalite_sans_heros_s": 10
+}

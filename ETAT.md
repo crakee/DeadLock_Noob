@@ -22,11 +22,11 @@ Tout est poussé et publié ; rien n'a encore été essayé en partie réelle.
 | Mise à jour de patch | 🟢 | prochain patch | `docs/maj-patch.md` |
 | Données en direct pendant la partie | 🔴 | pas de source légère confirmée (Overwolf = gros chantier ; test `-condebug` à faire) | `docs/coach-donnees.md` |
 | Quiz « Entraînement » (gamifié, lié aux points faibles) | 🔴 | brief à écrire | compte rendu Obsidian du 2026-10-06 |
-| Agent juge (boucle constructeur / juge sur En partie) | 🟡 | besoin à finir de définir avec l'utilisateur | `docs/brief-juge.md`, `docs/ressources-ui.md` |
+| Agent juge (boucle constructeur / juge sur En partie) | 🟡 | premier passage à blanc à analyser avec l'utilisateur | `.claude/agents/juge-partie.md`, `docs/brief-juge.md`, `outils/juge/` |
 | Traduction anglaise | 🟡 | seulement navigation, parcours, leçons | `CLAUDE.md` §Langues |
 
 ## Prochaine étape
-Reprendre `docs/brief-juge.md` (questions ouvertes), créer `.claude/agents/juge-partie.md`, puis premier passage du juge sur l'onglet Mort (écran d'attente de réapparition).
+Relire avec l'utilisateur le rapport du premier passage du juge, puis construire l'onglet « Attente » (réapparition, `data/reapparition.json`) en boucle constructeur / juge (3 tours au plus).
 
 Ensuite : Essayer le site pendant de vraies parties (second écran 1080p et téléphone), puis corriger ce qui gêne : rappels du coach, horaires incertains, lisibilité de la carte.
 
@@ -56,6 +56,7 @@ Ensuite : Essayer le site pendant de vraies parties (second écran 1080p et tél
 - Positionnement : apprendre (parcours, coach, leçons), pas un site de stats ; site public multilingue.
 
 ## Journal
+- 2026-10-11 — Agent juge branché : parties simulées (4 héros × 1080p et téléphone, captures toutes les 10 s, morts, journal des sons), fiche d'écoute, durées de réapparition du wiki dans `data/reapparition.json`.
 - 2026-10-11 — Brief de l'agent juge (parcours en partie seconde par seconde, coup d'œil / attente de mort) et liste de ressources UI.
 - 2026-10-06 — En partie : coach selon le profil du joueur (zones de mort, points faibles), avant/après la partie, version téléphone.
 - 2026-10-06 — Fiches héros : blocs Arme et Corps à corps sous les compétences ; textes passifs ; achats pour les 39 héros ; procédure `docs/maj-patch.md`.

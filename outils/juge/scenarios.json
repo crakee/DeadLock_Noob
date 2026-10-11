@@ -1,0 +1,16 @@
+{
+ "note": "Parties simulées pour le juge. Compos adverses choisies pour varier les menaces (fixtures de test, pas un classement) : à remplacer par les héros étiquetés « me casse » par l'utilisateur.",
+ "duree_s": 2400,
+ "pas_s": 10,
+ "morts_s": [240, 1080, 1980],
+ "formats": {
+  "ecran-1080p": { "width": 1920, "height": 1080 },
+  "telephone": { "width": 390, "height": 844, "isMobile": true, "hasTouch": true, "deviceScaleFactor": 2 }
+ },
+ "parties": [
+  { "id": "haze", "heros": 13, "en_face": [31, 1, 2, 7, 15, 12] },
+  { "id": "mirage", "heros": 52, "en_face": [13, 6, 20, 3, 8, 11] },
+  { "id": "yamato", "heros": 27, "en_face": [25, 4, 50, 19, 18, 58] },
+  { "id": "lady-geist", "heros": 4, "en_face": [10, 17, 35, 14, 16, 60] }
+ ]
+}

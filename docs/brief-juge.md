@@ -1,7 +1,8 @@
 # Brief : agent juge pour l'écran En partie
 
-État : **en cours de définition** (session du 2026-10-11, à reprendre). Rien
-n'est encore branché : l'agent n'existe pas encore dans `.claude/agents/`.
+État : **branché le 2026-10-11**. Agent `.claude/agents/juge-partie.md`, outils
+`outils/juge/captures.mjs` (parties simulées) et `outils/juge/sons.py` (fiche
+d'écoute). Premier passage à blanc fait sur le site tel quel.
 
 ## Le principe
 
@@ -21,6 +22,9 @@ Une boucle à deux agents, comme un mangaka et son éditeur :
 | Déclenchement | Boucle automatique après chaque changement visible de l'écran En partie, 3 tours au plus |
 | Modèle | Opus, le même que le constructeur |
 | Pouvoirs | Lecture seule : il regarde et juge, il ne modifie pas le code |
+| Captures | **Balayage complet** : une capture toutes les 10 s sur 40 min, onglets En jeu et Attente, 1080p et téléphone. Pour que ce soit jugeable : les captures identiques à la précédente sont écartées automatiquement (empreinte d'image), le juge ne regarde que celles où l'écran a changé, plus un résumé chronologique de ce qui est affiché à chaque instant |
+| Scénarios | **Les 4 héros joués dès le départ** (Haze, Mirage, Yamato, Lady Geist), chacun contre une compo difficile (étiquette « me casse ») |
+| Écran de mort | **Nouvel onglet « Attente »**, dédié à la réapparition ; « Mort · compo » reste tel quel |
 
 ## Le besoin (formulé par l'utilisateur)
 
@@ -57,22 +61,55 @@ Deux façons de regarder l'écran, à juger séparément :
   l'affichage change (un rappel arrive, un objectif passe en « bientôt », un
   achat conseillé), plus un balayage régulier pour repérer les trous.
 
-## Questions encore ouvertes (à trancher à la reprise)
+## Puissance des adversaires (décidé le 2026-10-11)
 
-1. Quels **moments clés** dans le scénario ? Proposition : 0:00 avant la
-   partie, 0:30, 3:00, 6:00, 10:00, 15:00, 20:00, 30:00, 40:00, plus une mort
-   en début, milieu et fin de partie.
-2. Quels **scénarios** ? Proposition : un par héros joué (Haze, Mirage, Yamato,
-   Lady Geist), contre une compo qui pose problème (étiquette « me casse »).
-3. « Power des héros adverses » : qu'affiche-t-on exactement ? Leurs gros achats
-   probables à cette minute (`data/achats.json`) ? Leur pic de puissance
-   (`data/tempo.json`) ? Les deux ?
-4. Faut-il un **onglet ou un mode « attente »** qui s'adapte à la durée de la
-   mort (court en début de partie : une ligne ; long en fin de partie : plus
-   riche), ou bien l'onglet Mort actuel enrichi ?
-5. Le juge doit-il aussi lire le **son** (rappels sonores) et la **voix**, ou
-   seulement l'écran ?
-6. Grille finale du juge : la rédiger ensemble à partir des critères ci-dessus,
-   puis créer `.claude/agents/juge-partie.md`.
+À afficher : **leur pic de puissance** (`data/tempo.json`) et **leur menace
+principale** avec l'objet qui y répond (`data/counters.json`, justifié par la
+mécanique). Pas de classement automatique « le plus dangereux ».
+
+Remarque de l'utilisateur : la puissance dépend aussi du joueur, bon ou non.
+D'où l'idée d'un **estimateur** : on choisit un héros adverse et on saisit ses
+souls lues sur le tableau des scores à la minute X ; le site compare à la
+courbe normale de ce héros à ce rang et dit « en avance / dans la moyenne / en
+retard ». Faisable : `/v1/analytics/player-performance-curve` (paramètres
+`hero_ids`, `min_average_badge`/`max_average_badge`, depuis le patch) donne la
+valeur nette (net worth) par minute ; à mettre en cache dans un JSON comme les
+autres données. Place naturelle : l'onglet Attente, quand la réapparition est
+longue (38 s à 20 min d'après `data/patch.json`, plus ensuite).
+
+Autres idées à trier ensuite (proposées par Claude) :
+- Comparer avec **mes** souls à la même minute : « tu es en retard de 3 000 sur
+  ton vis-à-vis » plutôt qu'un chiffre seul.
+- **Ce qu'il a déjà acheté** (visible en jeu) coché dans une liste : le site
+  retire les menaces déjà couvertes et dit ce qu'il reste à contrer.
+- Un rappel du **prochain gros achat probable** du héros en avance
+  (`data/achats.json`) : « il approche de X, prévois Y ».
+- Pendant l'attente : **où réapparaître et quoi faire en premier** selon la
+  minute (rejoindre l'équipe en fin de partie, farmer sa lane au début).
+- Pendant l'attente : le **prochain objectif** et le temps qu'il restera une
+  fois revenu en jeu (chrono − durée de réapparition).
+
+## Sons et voix (décidé le 2026-10-11)
+
+Le juge juge aussi l'audio : à quel moment chaque son ou voix part (journal des
+parties simulées), s'il est audible et cohérent (mesures de volume et
+spectrogrammes de `outils/juge/sons.py`, le juge n'entend pas), et ce qu'il
+faudrait **ajouter** ou retirer. Premier constat : sons d'alerte vers -41 LUFS,
+voix vers -17 LUFS, soit environ 24 dB d'écart.
+
+## Grille
+
+Elle est dans `.claude/agents/juge-partie.md` (critères A coup d'œil, B attente,
+C débutant, D exactitude, E décisions bloquantes, F sons et voix).
+
+## Outils
+
+- `node outils/juge/captures.mjs [--parties haze] [--formats ecran-1080p]` :
+  Playwright (`outils/juge/package.json`, `npm install` dans ce dossier) avec le
+  Chromium déjà installé ; scénarios dans `outils/juge/scenarios.json` (compos
+  adverses provisoires, à remplacer par les héros « me casse ») ; morts à 4:00,
+  18:00 et 33:00 avec la durée de `data/reapparition.json`.
+- `.venv/bin/python outils/juge/sons.py`.
+- Sorties non versionnées dans `outils/juge/sorties/`.
 
 Ressources visuelles pour les corrections : `docs/ressources-ui.md`.

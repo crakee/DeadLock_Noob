@@ -24,3 +24,8 @@ outils/.cle_elevenlabs
 # Captures d'applications tierces (Deadlock Labs) : inspiration, pseudos d'autres joueurs
 docs/dl*.png
 docs/petitjeu.png
+
+# Outil du juge : dépendance Node et sorties (captures) locales
+outils/juge/node_modules/
+outils/juge/sorties/
+outils/juge/derniere-execution.log
