@@ -27,41 +27,41 @@ main.partie .frise { flex: none; }
 
 /* ---------- barre de contexte ---------- */
 .contexte { flex: none; display: flex; flex-wrap: wrap; align-items: center; gap: .45rem .8rem; padding: .45rem .7rem; position: relative; z-index: 2; }
-.contexte .btn { padding: .25rem .65rem; font-size: .9rem; }
+.contexte .btn { padding: .25rem .65rem; font-size: var(--t-s); }
 .contexte-heros { display: inline-flex; align-items: center; gap: .45rem; font-weight: 600; }
-.contexte-heros img { width: 1.6rem; height: 1.6rem; border-radius: .3rem; object-fit: cover; }
-.contexte-role { font: inherit; font-size: .9rem; color: var(--texte); background: var(--fond-2); border: 1px solid var(--bord); border-radius: .4rem; padding: .25rem .4rem; }
+.contexte-heros img { width: 1.6rem; height: 1.6rem; border-radius: var(--r-s); object-fit: cover; }
+.contexte-role { font: inherit; font-size: var(--t-s); color: var(--texte); background: var(--fond-2); border: 1px solid var(--bord); border-radius: var(--r-m); padding: .25rem .4rem; }
 .contexte-lanes, .segments-modes { display: inline-flex; align-items: center; gap: .25rem; }
 .lane-bouton { border-color: var(--lane) !important; color: var(--texte); }
 .lane-bouton.choisi { background: var(--lane) !important; color: #14100a !important; font-weight: 700; }
 .mode-bouton[aria-pressed="true"] { background: var(--or); color: #14100a; border-color: var(--or); }
-.contexte-panneaux > summary { list-style: none; cursor: pointer; padding: .25rem .65rem; font-size: .9rem; border: 1px solid var(--bord); border-radius: .4rem; color: var(--doux); }
+.contexte-panneaux > summary { list-style: none; cursor: pointer; padding: .25rem .65rem; font-size: var(--t-s); border: 1px solid var(--bord); border-radius: var(--r-m); color: var(--doux); }
 .contexte-panneaux > summary::-webkit-details-marker { display: none; }
 .contexte-panneaux[open] > summary { color: var(--texte); border-color: var(--or); }
-.contexte-panneaux-liste { position: absolute; margin-top: .3rem; padding: .6rem .8rem; display: grid; grid-template-columns: repeat(3, auto); gap: .3rem 1rem; background: var(--panneau-2); border: 1px solid var(--bord-fort); border-radius: .5rem; box-shadow: 0 8px 24px rgba(0, 0, 0, .5); }
-.contexte-panneaux-liste label { white-space: nowrap; font-size: .9rem; }
+.contexte-panneaux-liste { position: absolute; margin-top: .3rem; padding: .6rem .8rem; display: grid; grid-template-columns: repeat(3, auto); gap: .3rem 1rem; background: var(--panneau-2); border: 1px solid var(--bord-fort); border-radius: var(--r-m); box-shadow: 0 8px 24px rgba(0, 0, 0, .5); }
+.contexte-panneaux-liste label { white-space: nowrap; font-size: var(--t-s); }
 .contexte-panneaux-liste .btn { grid-column: 1 / -1; justify-self: start; }
-.bouton-equipe { display: inline-flex; align-items: center; gap: .4rem; font-size: .85rem; padding: .2rem .6rem; }
+.bouton-equipe { display: inline-flex; align-items: center; gap: .4rem; font-size: var(--t-s); padding: .2rem .6rem; }
 .pastille-equipe { width: .7rem; height: .7rem; border-radius: 50%; display: inline-block; }
 
 /* ---------- chrono plus discret hors mode Complet ---------- */
-body.onglet-jeu .horloge-temps{ font-size: 4.6rem; }
+body.onglet-jeu .horloge-temps{ font-size: var(--t-chiffre); }
 body.onglet-jeu .horloge .commandes{ margin-top: .3rem; }
 
 /* ---------- Ton plan ---------- */
 .plan h2 { display: flex; align-items: center; gap: .5rem; margin: 0; }
-.plan h3 { margin: .7rem 0 .3rem; font-size: .95rem; }
+.plan h3 { margin: .7rem 0 .3rem; font-size: var(--t-s); }
 .plan-tete { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .3rem .6rem; }
 .plan-qui { display: inline-flex; flex-wrap: wrap; align-items: center; gap: .35rem; font-weight: 600; }
-.plan-qui img { width: 1.6rem; height: 1.6rem; border-radius: .3rem; object-fit: cover; }
+.plan-qui img { width: 1.6rem; height: 1.6rem; border-radius: var(--r-s); object-fit: cover; }
 .lane-puce { border-color: var(--lane) !important; color: var(--texte) !important; }
-.plan-conseil { margin: .5rem 0 0; font-size: 1.12rem; line-height: 1.45; }
+.plan-conseil { margin: .5rem 0 0; font-size: var(--t-l); line-height: 1.45; }
 .plan-conseil strong { color: var(--or); }
 .plan-actions { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .3rem; }
-.plan-actions li { display: grid; grid-template-columns: 1.5rem minmax(0, 1fr) auto; align-items: baseline; column-gap: .5rem; font-size: 1.02rem; }
-.plan-num { display: inline-grid; place-items: center; width: 1.3rem; height: 1.3rem; border-radius: 50%; background: var(--panneau-2); border: 1px solid var(--bord-fort); font-size: .75rem; }
+.plan-actions li { display: grid; grid-template-columns: 1.5rem minmax(0, 1fr) auto; align-items: baseline; column-gap: .5rem; font-size: var(--t-m); }
+.plan-num { display: inline-grid; place-items: center; width: 1.3rem; height: 1.3rem; border-radius: 50%; background: var(--panneau-2); border: 1px solid var(--bord-fort); font-size: var(--t-xs); }
 .plan-quand { font-variant-numeric: tabular-nums; color: var(--doux); white-space: nowrap; }
-.plan-detail { grid-column: 2 / -1; font-size: .88rem; color: var(--doux); }
+.plan-detail { grid-column: 2 / -1; font-size: var(--t-s); color: var(--doux); }
 .plan-actions li .marque { grid-column: 2 / -1; justify-self: start; }
 .plan-actions li.bientot strong, .plan-actions li.bientot .plan-quand { color: var(--or-clair); }
 .plan-actions li.maintenant strong, .plan-actions li.maintenant .plan-quand { color: var(--alerte); font-weight: 700; }
@@ -86,12 +86,12 @@ body.onglet-jeu .horloge .commandes{ margin-top: .3rem; }
 .mini-numero { fill: #fff; font: 700 30px var(--corps); text-anchor: middle; stroke: #0c0a08; stroke-width: 6px; paint-order: stroke; }
 @keyframes mini-pulse { 0%, 100% { opacity: .9; } 50% { opacity: .25; } }
 @media (prefers-reduced-motion: reduce) { .mini-halo { animation: none; } .carte-partie-zone { transition: none; } }
-.carte-partie-liste { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .25rem; overflow-y: auto; font-size: .92rem; }
+.carte-partie-liste { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .25rem; overflow-y: auto; font-size: var(--t-s); }
 .carte-partie-liste li { display: grid; grid-template-columns: 1.2rem minmax(0, 1fr) auto; align-items: center; column-gap: .5rem; }
-.mini-pastille { display: inline-grid; place-items: center; width: 1.2rem; height: 1.2rem; border-radius: 50%; font-size: .7rem; font-weight: 700; color: #14100a; }
+.mini-pastille { display: inline-grid; place-items: center; width: 1.2rem; height: 1.2rem; border-radius: 50%; font-size: var(--t-xs); font-weight: 700; color: #14100a; }
 .mini-nom { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .mini-quand { font-variant-numeric: tabular-nums; color: var(--doux); }
-.mini-conseil { grid-column: 2 / -1; font-size: .82rem; color: var(--doux); }
+.mini-conseil { grid-column: 2 / -1; font-size: var(--t-xs); color: var(--doux); }
 .carte-partie-liste li.etat-maintenant .mini-quand, .carte-partie-liste li.etat-maintenant .mini-nom { color: var(--alerte); font-weight: 700; }
 .carte-partie-liste li.etat-bientot .mini-quand { color: var(--or-clair); font-weight: 600; }
 .carte-partie-liste li.etat-ferme, .carte-partie-liste li.etat-attente { opacity: .7; }
@@ -109,11 +109,11 @@ body.onglet-jeu .horloge .commandes{ margin-top: .3rem; }
   .col { flex: none; }
   .contexte { gap: .4rem; }
   .contexte-panneaux-liste { grid-template-columns: repeat(2, auto); right: .5rem; }
-  body.onglet-jeu .horloge-temps{ font-size: 3.6rem; }
+  body.onglet-jeu .horloge-temps{ font-size: var(--t-chiffre); }
   .carte-partie-zone { width: 100%; }
 }
-.plan-ouverts { margin: .4rem 0 0; font-size: .92rem; color: var(--doux); }
-.plan-ennemis-titre { margin: .4rem 0 .1rem; font-size: .9rem; }
+.plan-ouverts { margin: .4rem 0 0; font-size: var(--t-s); color: var(--doux); }
+.plan-ennemis-titre { margin: .4rem 0 .1rem; font-size: var(--t-s); }
 
 /* ---------- alertes ---------- */
 .alertes-liste { grid-template-columns: 1fr; min-width: 18rem; right: .7rem; }
@@ -126,22 +126,22 @@ body.onglet-jeu .horloge .commandes{ margin-top: .3rem; }
 .alerte-flash[hidden] { display: none; }
 .alerte-carte {
   width: min(92vw, 60rem); padding: 2.2rem 2.6rem; text-align: center;
-  background: var(--panneau); border: 3px solid var(--cat); border-top-width: 1rem; border-radius: 1rem;
+  background: var(--panneau); border: 3px solid var(--cat); border-top-width: 1rem; border-radius: var(--r-rond);
   box-shadow: 0 0 0 0 var(--cat), 0 30px 80px rgba(0, 0, 0, .6);
   display: flex; flex-direction: column; gap: .6rem;
 }
 .alerte-flash.anime .alerte-carte { animation: alerte-pulse .7s ease-out 3; }
 @keyframes alerte-pulse { 0% { box-shadow: 0 0 0 0 var(--cat), 0 30px 80px rgba(0, 0, 0, .6); } 100% { box-shadow: 0 0 0 2.5rem transparent, 0 30px 80px rgba(0, 0, 0, .6); } }
 @media (prefers-reduced-motion: reduce) { .alerte-flash.anime .alerte-carte { animation: none; } }
-.alerte-nom { font-family: var(--titre); font-size: clamp(3rem, 9vw, 7.5rem); line-height: 1; text-transform: uppercase; color: var(--texte); }
-.alerte-delai { font-family: var(--titre); font-size: clamp(2.2rem, 6vw, 5rem); line-height: 1; color: var(--cat); }
-.alerte-texte { font-size: clamp(1.2rem, 2.4vw, 1.9rem); line-height: 1.35; color: var(--texte); }
-.alerte-aide { font-size: .9rem; color: var(--doux); }
+.alerte-nom { font-family: var(--titre); font-size: var(--t-chiffre); line-height: 1; text-transform: uppercase; color: var(--texte); }
+.alerte-delai { font-family: var(--titre); font-size: var(--t-xxl); line-height: 1; color: var(--cat); }
+.alerte-texte { font-size: var(--t-l); line-height: 1.35; color: var(--texte); }
+.alerte-aide { font-size: var(--t-s); color: var(--doux); }
 .choix-son { display: flex; flex-direction: column; gap: .3rem; padding-bottom: .4rem; margin-bottom: .2rem; border-bottom: 1px solid var(--bord); }
 .choix-son-profils, .choix-son-ecoute { display: flex; flex-wrap: wrap; gap: .25rem; }
 .son-profil.choisi { background: var(--or); color: #14100a; border-color: var(--or); }
-.choix-son .aide { margin: 0; font-size: .82rem; }
-.choix-son-volume { display: flex; align-items: center; gap: .5rem; font-size: .88rem; }
+.choix-son .aide { margin: 0; font-size: var(--t-xs); }
+.choix-son-volume { display: flex; align-items: center; gap: .5rem; font-size: var(--t-s); }
 .choix-son-volume input { flex: 1; }
 
 
@@ -157,7 +157,7 @@ body.onglet-jeu .horloge .commandes{ margin-top: .3rem; }
 
 /* Chrono minimal : heure et état ; les commandes se déplient au survol, au focus ou au toucher. */
 body.onglet-jeu .horloge{ padding: .5rem .8rem; }
-body.onglet-jeu .horloge-temps{ font-size: 3.4rem; }
+body.onglet-jeu .horloge-temps{ font-size: var(--t-chiffre); }
 body.onglet-jeu .horloge-ligne{ cursor: pointer; }
 body.onglet-jeu .horloge .commandes, body.onglet-jeu .horloge .chrono-reglages{
   max-height: 0; overflow: hidden; opacity: 0; margin: 0; transition: max-height .2s, opacity .2s;
@@ -169,7 +169,7 @@ body.onglet-jeu .horloge:hover .chrono-reglages, body.onglet-jeu .horloge.ouvert
   max-height: 20rem; opacity: 1; overflow: visible;
 }
 /* Le rappel « regarde ta map » devient une ligne discrète. */
-body.onglet-jeu .rappel{ font-size: 1rem; padding: .25rem .6rem; margin-top: .3rem; }
+body.onglet-jeu .rappel{ font-size: var(--t-m); padding: .25rem .6rem; margin-top: .3rem; }
 
 /* À venir : un objectif à la fois, en grand, avec des points pour passer d'un à l'autre. */
 body.onglet-jeu .avenir{ display: flex; flex-direction: column; }
@@ -180,22 +180,20 @@ body.onglet-jeu #avenir > li[data-vue]{
   padding: 1.6rem 1.8rem; border-left-width: .8rem;
 }
 body.onglet-jeu #avenir { flex-direction: column; }
-body.onglet-jeu #avenir .carte-nom{ font-size: 3rem; white-space: normal; line-height: 1.05; }
+body.onglet-jeu #avenir .carte-nom{ font-size: var(--t-xxl); white-space: normal; line-height: 1.05; }
 body.onglet-jeu #avenir .carte-droite{ text-align: left; }
-body.onglet-jeu #avenir .carte-compte{ font-size: 7rem; }
-body.onglet-jeu #avenir .carte.maintenant .carte-compte, body.onglet-jeu #avenir .carte.ouverte .carte-compte{ font-size: 4.5rem; }
-body.onglet-jeu #avenir .carte-heure{ font-size: 1.2rem; }
-body.onglet-jeu #avenir .carte-conseil{ font-size: 1.5rem; line-height: 1.35; }
-.avenir-points { display: flex; justify-content: center; gap: .5rem; padding-top: .6rem; }
-.avenir-points[hidden] { display: none; }
+body.onglet-jeu #avenir .carte-compte{ font-size: var(--t-chiffre); }
+body.onglet-jeu #avenir .carte.maintenant .carte-compte, body.onglet-jeu #avenir .carte.ouverte .carte-compte{ font-size: var(--t-chiffre); }
+body.onglet-jeu #avenir .carte-heure{ font-size: var(--t-l); }
+body.onglet-jeu #avenir .carte-conseil{ font-size: var(--t-xl); line-height: 1.35; }
 .avenir-point { width: .85rem; height: .85rem; padding: 0; border-radius: 50%; border: 2px solid var(--bord-fort); background: transparent; cursor: pointer; }
 .avenir-point[aria-selected="true"] { background: var(--or); border-color: var(--or); }
 
 /* Ton plan : la phrase de conseil et la portée ; la liste d'actions fait doublon avec « À venir ». */
 body.onglet-jeu .plan .plan-actions, body.onglet-jeu .plan h3,
 body.onglet-jeu .plan .plan-ouverts, body.onglet-jeu .plan-portee .aide{ display: none; }
-body.onglet-jeu .plan-conseil{ font-size: 1.3rem; }
-body.onglet-jeu .plan-portee{ margin-top: .6rem; font-size: .95rem; color: var(--doux); }
+body.onglet-jeu .plan-conseil{ font-size: var(--t-l); }
+body.onglet-jeu .plan-portee{ margin-top: .6rem; font-size: var(--t-s); color: var(--doux); }
 
 /* Compact : une colonne centrée, chrono + objectif + conseil. */
 
@@ -205,9 +203,9 @@ body.onglet-jeu .plan-portee{ margin-top: .6rem; font-size: .95rem; color: var(-
    ==================================================================== */
 
 .onglets-partie { display: inline-flex; gap: .3rem; }
-.onglet-partie { font-size: 1rem !important; padding: .35rem .9rem !important; }
-.contexte .btn.onglet-partie[aria-selected="true"] { background: var(--or) !important; color: #14100a !important; border-color: var(--or) !important; opacity: 1; }
-.mini-chrono { font-family: var(--titre); font-size: 1.3rem; letter-spacing: .03em; color: var(--or-clair); font-variant-numeric: tabular-nums; }
+.onglet-partie { font-size: var(--t-m) !important; padding: .35rem .9rem !important; }
+.contexte .btn.onglet-partie[aria-selected="true"] { background: var(--action) !important; color: #14100a !important; border-color: var(--action) !important; opacity: 1; }
+.mini-chrono { font-family: var(--titre); font-size: var(--t-l); letter-spacing: .03em; color: var(--or-clair); font-variant-numeric: tabular-nums; }
 .mini-chrono[hidden] { display: none; }
 
 /* --- En jeu : une seule colonne centrée, tailles qui suivent l'écran --- */
@@ -215,17 +213,17 @@ body.onglet-jeu .partie-colonnes { justify-content: center; }
 body.onglet-jeu .col-gauche { flex: 0 1 min(100%, 64rem); }
 body.onglet-jeu .col-gauche .avenir { flex: 1 1 auto; min-height: 0; }
 body.onglet-jeu .col-gauche .plan { flex: 0 0 auto; }
-body.onglet-jeu .horloge-temps { font-size: clamp(2rem, 6vmin, 4rem); }
-body.onglet-jeu #avenir .carte-nom { font-size: clamp(2rem, 6.5vmin, 5rem); }
-body.onglet-jeu #avenir .carte-compte { font-size: clamp(4rem, 16vmin, 12rem); }
-body.onglet-jeu #avenir .carte.maintenant .carte-compte, body.onglet-jeu #avenir .carte.ouverte .carte-compte { font-size: clamp(3rem, 10vmin, 8rem); }
-body.onglet-jeu #avenir .carte-conseil { font-size: clamp(1.15rem, 3vmin, 2.2rem); }
-body.onglet-jeu #avenir .carte-heure { font-size: clamp(1rem, 2vmin, 1.4rem); }
-body.onglet-jeu .plan-conseil { font-size: clamp(1.1rem, 2.6vmin, 1.8rem); }
+body.onglet-jeu .horloge-temps { font-size: var(--t-xl); }
+body.onglet-jeu #avenir .carte-nom { font-size: var(--t-xl); }
+body.onglet-jeu #avenir .carte-compte { font-size: var(--t-chiffre); }
+body.onglet-jeu #avenir .carte.maintenant .carte-compte, body.onglet-jeu #avenir .carte.ouverte .carte-compte { font-size: var(--t-chiffre); }
+body.onglet-jeu #avenir .carte-conseil { font-size: var(--t-l); }
+body.onglet-jeu #avenir .carte-heure { font-size: var(--t-m); }
+body.onglet-jeu .plan-conseil { font-size: var(--t-m); }
 body.onglet-jeu .plan .plan-tete, body.onglet-jeu .plan .plan-portee, body.onglet-jeu .plan .plan-actions, body.onglet-jeu .plan h3, body.onglet-jeu .plan .plan-ouverts { display: none; }
 body.onglet-jeu .plan { padding: .6rem 1rem; }
 body.onglet-jeu .declenches { flex: 0 0 auto; }
-body.onglet-jeu .declenches .minuteur-btn { font-size: clamp(.95rem, 2vmin, 1.3rem); }
+body.onglet-jeu .declenches .minuteur-btn { font-size: var(--t-s); }
 
 /* --- Objectifs : la liste à gauche, la carte à droite, la frise en bas --- */
 body.onglet-objectifs .col-gauche { flex: 6 1 0; }
@@ -234,11 +232,11 @@ body.onglet-objectifs .col-avenir { flex: 5 1 0; }
 .obj-tete { display: flex; flex-wrap: wrap; align-items: baseline; gap: .3rem 1rem; }
 .obj-tete h2 { margin: 0; }
 .obj-liste { list-style: none; margin: .6rem 0 0; padding: 0; overflow-y: auto; flex: 1; display: flex; flex-direction: column; gap: .35rem; }
-.obj-ligne, .obj-phase { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr) auto; column-gap: .8rem; align-items: baseline; padding: .35rem .6rem; border-left: .3rem solid var(--cat, var(--bord)); border-radius: .3rem; background: var(--fond-2); }
-.obj-heure { font-family: var(--titre); font-size: 1.25rem; font-variant-numeric: tabular-nums; color: var(--or-clair); }
-.obj-nom { font-size: 1.15rem; }
+.obj-ligne, .obj-phase { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr) auto; column-gap: .8rem; align-items: baseline; padding: .35rem .6rem; border-left: .3rem solid var(--cat, var(--bord)); border-radius: var(--r-s); background: var(--fond-2); }
+.obj-heure { font-family: var(--titre); font-size: var(--t-l); font-variant-numeric: tabular-nums; color: var(--or-clair); }
+.obj-nom { font-size: var(--t-l); }
 .obj-quand { font-variant-numeric: tabular-nums; color: var(--doux); white-space: nowrap; }
-.obj-texte { grid-column: 2 / -1; font-size: .95rem; color: var(--doux); }
+.obj-texte { grid-column: 2 / -1; font-size: var(--t-s); color: var(--doux); }
 .obj-ligne.mien .obj-nom { color: var(--or); }
 .obj-ligne.info { opacity: .7; }
 .obj-ligne.proche { background: var(--alerte-fond); border-color: var(--alerte); }
@@ -252,16 +250,16 @@ body.onglet-mort .col-gauche { flex: 4 1 0; }
 body.onglet-mort .col-avenir { flex: 4 1 0; }
 body.onglet-mort .col-carte { flex: 4 1 0; }
 .compo h2, .notes h2 { display: flex; align-items: center; gap: .5rem; margin: 0 0 .5rem; }
-.compo-points { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .6rem; font-size: 1.05rem; line-height: 1.45; }
+.compo-points { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .6rem; font-size: var(--t-m); line-height: 1.45; }
 .compo-points strong { color: var(--or); }
 .notes { display: flex; flex-direction: column; gap: .7rem; }
-.note-heros { padding: .5rem .6rem; background: var(--fond-2); border: 1px solid var(--bord); border-radius: .4rem; }
-.note-tete { display: flex; align-items: center; gap: .5rem; font-size: 1.05rem; }
-.note-tete img { width: 1.8rem; height: 1.8rem; border-radius: .3rem; object-fit: cover; }
+.note-heros { padding: .5rem .6rem; background: var(--fond-2); border: 1px solid var(--bord); border-radius: var(--r-m); }
+.note-tete { display: flex; align-items: center; gap: .5rem; font-size: var(--t-m); }
+.note-tete img { width: 1.8rem; height: 1.8rem; border-radius: var(--r-s); object-fit: cover; }
 .note-form { display: flex; gap: .3rem; margin-top: .3rem; }
-.note-form input { flex: 1; min-width: 0; font: inherit; font-size: .9rem; color: var(--texte); background: var(--fond); border: 1px solid var(--bord); border-radius: .3rem; padding: .3rem .5rem; }
-.note-form .btn { padding: .2rem .7rem; font-size: .9rem; }
-.note-liste { list-style: none; margin: .4rem 0 0; padding: 0; display: flex; flex-direction: column; gap: .2rem; font-size: .92rem; }
+.note-form input { flex: 1; min-width: 0; font: inherit; font-size: var(--t-s); color: var(--texte); background: var(--fond); border: 1px solid var(--bord); border-radius: var(--r-s); padding: .3rem .5rem; }
+.note-form .btn { padding: .2rem .7rem; font-size: var(--t-s); }
+.note-liste { list-style: none; margin: .4rem 0 0; padding: 0; display: flex; flex-direction: column; gap: .2rem; font-size: var(--t-s); }
 .note-liste li { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: .5rem; align-items: baseline; }
 .note-suppr { padding: 0 .4rem !important; }
 
@@ -289,39 +287,39 @@ body.onglet-jeu .col-avenir { flex: 5 1 0; }
 .coach-tete { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem; }
 .coach-tete h2 { display: flex; align-items: center; gap: .5rem; margin: 0; }
 .coach-styles { display: inline-flex; gap: .25rem; }
-.coach-style { font-size: .85rem !important; padding: .2rem .6rem !important; }
+.coach-style { font-size: var(--t-xs) !important; padding: .2rem .6rem !important; }
 .coach-style[aria-pressed="true"] { background: var(--panneau-2); border-color: var(--or); color: var(--or-clair); }
-.coach-carte { padding: clamp(.9rem, 2.4vmin, 1.8rem); border-radius: .7rem; background: var(--fond-2); border: 2px solid var(--bord-fort); border-left: .7rem solid var(--or); display: flex; flex-direction: column; gap: .5rem; }
+.coach-carte { padding: clamp(.9rem, 2.4vmin, 1.8rem); border-radius: var(--r-m); background: var(--fond-2); border: 2px solid var(--bord-fort); border-left: .7rem solid var(--or); display: flex; flex-direction: column; gap: .5rem; }
 .coach.objectif .coach-carte { border-color: var(--alerte); border-left-color: var(--alerte); background: var(--alerte-fond); }
 .coach.urgent .coach-carte { border-color: var(--danger); border-left-color: var(--danger); background: #3a1614; }
-.coach-label { font-family: var(--titre); text-transform: uppercase; letter-spacing: .08em; font-size: clamp(.8rem, 1.6vmin, 1rem); color: var(--doux); }
-.coach-action { font-family: var(--titre); font-size: clamp(1.8rem, 5.2vmin, 3.8rem); line-height: 1.1; color: var(--texte); }
-.coach-pourquoi { font-size: clamp(1.05rem, 2.4vmin, 1.6rem); line-height: 1.4; color: var(--texte); opacity: .85; }
-.coach-ensuite { font-size: clamp(1rem, 2vmin, 1.3rem); line-height: 1.4; color: var(--doux); padding: 0 .3rem; }
+.coach-label { font-family: var(--titre); text-transform: uppercase; letter-spacing: .08em; font-size: var(--t-xs); color: var(--doux); }
+.coach-action { font-family: var(--titre); font-size: var(--t-xl); line-height: 1.1; color: var(--texte); }
+.coach-pourquoi { font-size: var(--t-m); line-height: 1.4; color: var(--texte); opacity: .85; }
+.coach-ensuite { font-size: var(--t-m); line-height: 1.4; color: var(--doux); padding: 0 .3rem; }
 .coach-ensuite strong { color: var(--or-clair); }
 .coach-etats { display: grid; gap: .45rem; margin-top: auto; }
 .coach-etat { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); align-items: center; gap: .6rem; }
-.coach-etat-nom { font-size: .95rem; color: var(--doux); }
+.coach-etat-nom { font-size: var(--t-s); color: var(--doux); }
 .coach-options { display: flex; gap: .3rem; }
-.coach-option { flex: 1; font-size: clamp(.95rem, 1.9vmin, 1.2rem) !important; padding: clamp(.4rem, 1.2vmin, .75rem) .5rem !important; }
+.coach-option { flex: 1; font-size: var(--t-s); padding: clamp(.4rem, 1.2vmin, .75rem) .5rem !important; }
 .coach-option[aria-pressed="true"] { background: var(--or); color: #14100a; border-color: var(--or); font-weight: 700; }
 .coach-option[data-valeur="danger"][aria-pressed="true"], .coach-option[data-valeur="bas"][aria-pressed="true"], .coach-option[data-valeur="perd"][aria-pressed="true"] { background: var(--danger); border-color: var(--danger); color: #fff; }
 .obj-moi { color: var(--texte) !important; }
 
 /* En jeu, l'objectif à droite reste grand mais laisse la place au coach. */
-body.onglet-jeu #avenir .carte-nom { font-size: clamp(1.8rem, 5vmin, 4rem); }
-body.onglet-jeu #avenir .carte-compte { font-size: clamp(3.5rem, 13vmin, 10rem); }
-body.onglet-jeu #avenir .carte-conseil { font-size: clamp(1.05rem, 2.4vmin, 1.7rem); }
+body.onglet-jeu #avenir .carte-nom { font-size: var(--t-xl); }
+body.onglet-jeu #avenir .carte-compte { font-size: var(--t-chiffre); }
+body.onglet-jeu #avenir .carte-conseil { font-size: var(--t-m); }
 @media (max-width: 1000px), (orientation: portrait) {
   .coach-etat { grid-template-columns: minmax(0, 1fr); gap: .2rem; }
 }
-.coach-action.long { font-size: clamp(1.35rem, 3.4vmin, 2.5rem); line-height: 1.2; }
+.coach-action.long { font-size: var(--t-l); line-height: 1.2; }
 
 /* Focus choisi sur la page Parties */
-.coach-focus { display: flex; flex-wrap: wrap; align-items: baseline; gap: .2rem .7rem; padding: .4rem .8rem; border: 1px dashed var(--bord-fort); border-radius: .5rem; color: var(--doux); }
+.coach-focus { display: flex; flex-wrap: wrap; align-items: baseline; gap: .2rem .7rem; padding: .4rem .8rem; border: 1px dashed var(--bord-fort); border-radius: var(--r-m); color: var(--doux); }
 .coach-focus.actif { border: 2px solid var(--or); background: rgba(217, 178, 91, .08); color: var(--texte); }
 .coach-focus-titre { font-family: var(--titre); text-transform: uppercase; letter-spacing: .05em; color: var(--or-clair); text-decoration: none; }
-.coach-focus.actif .coach-focus-rappel { font-size: 1.15rem; font-weight: 600; }
+.coach-focus.actif .coach-focus-rappel { font-size: var(--t-l); font-weight: 600; }
 
 
 /* ====================================================================
@@ -334,40 +332,40 @@ body.onglet-jeu .col-carte { flex: 5 1 0; }
 body.onglet-jeu .col-avenir .avenir { flex: 0 1 auto; max-height: 42%; }
 body.onglet-jeu .col-avenir .objectifs-vue { flex: 1 1 0; min-height: 10rem; }
 body.onglet-jeu #avenir > li[data-vue] { padding: .9rem 1.1rem; gap: .3rem; }
-body.onglet-jeu #avenir .carte-nom { font-size: clamp(1.4rem, 3.6vmin, 2.6rem); }
-body.onglet-jeu #avenir .carte-compte { font-size: clamp(2.6rem, 8vmin, 5.5rem); }
-body.onglet-jeu #avenir .carte.maintenant .carte-compte, body.onglet-jeu #avenir .carte.ouverte .carte-compte { font-size: clamp(2rem, 6vmin, 4rem); }
-body.onglet-jeu #avenir .carte-conseil { font-size: clamp(.95rem, 1.9vmin, 1.25rem); }
+body.onglet-jeu #avenir .carte-nom { font-size: var(--t-l); }
+body.onglet-jeu #avenir .carte-compte { font-size: var(--t-xxl); }
+body.onglet-jeu #avenir .carte.maintenant .carte-compte, body.onglet-jeu #avenir .carte.ouverte .carte-compte { font-size: var(--t-xl); }
+body.onglet-jeu #avenir .carte-conseil { font-size: var(--t-s); }
 body.onglet-jeu .avenir h2 { display: none; }
 body.onglet-jeu .objectifs-vue .obj-ligne, body.onglet-jeu .objectifs-vue .obj-phase { grid-template-columns: 4.6rem minmax(0, 1fr) auto; padding: .25rem .5rem; }
-body.onglet-jeu .obj-heure { font-size: 1.05rem; }
-body.onglet-jeu .obj-nom { font-size: 1rem; }
-body.onglet-jeu .obj-texte { font-size: .85rem; }
+body.onglet-jeu .obj-heure { font-size: var(--t-m); }
+body.onglet-jeu .obj-nom { font-size: var(--t-m); }
+body.onglet-jeu .obj-texte { font-size: var(--t-s); }
 body.onglet-jeu .obj-liste { margin-top: .4rem; gap: .25rem; }
 body.onglet-jeu .col-carte .carte-partie { flex: 1 1 auto; }
 
 /* ---------- coach sans clic ---------- */
 .coach { gap: .55rem; }
-.coach-phase { font-family: var(--titre); font-size: 1.1rem; color: var(--or-clair); font-variant-numeric: tabular-nums; }
+.coach-phase { font-family: var(--titre); font-size: var(--t-m); color: var(--or-clair); font-variant-numeric: tabular-nums; }
 .coach-carte { gap: .35rem; }
 .coach.coach-achat .coach-carte { border-left-color: #7cc46a; }
-.coach-action { font-size: clamp(1.5rem, 4.2vmin, 3rem); }
-.coach-action.long { font-size: clamp(1.2rem, 2.9vmin, 2.1rem); }
-.coach-pourquoi { font-size: clamp(1rem, 2vmin, 1.35rem); }
-.coach-rappel { display: flex; flex-direction: column; gap: .15rem; padding: .45rem .8rem; border: 1px dashed var(--bord-fort); border-radius: .5rem; }
+.coach-action { font-size: var(--t-xl); }
+.coach-action.long { font-size: var(--t-l); }
+.coach-pourquoi { font-size: var(--t-m); }
+.coach-rappel { display: flex; flex-direction: column; gap: .15rem; padding: .45rem .8rem; border: 0; border-left: 3px solid var(--bord-fort); border-radius: 0; }
 .coach-rappel[hidden] { display: none; }
-.coach-rappel-titre { font-family: var(--titre); text-transform: uppercase; letter-spacing: .05em; font-size: .85rem; color: var(--or-clair); text-decoration: none; }
-.coach-rappel-texte { font-size: clamp(1rem, 2vmin, 1.3rem); font-weight: 600; }
-.coach-rappel.frais { border: 2px solid var(--or); background: rgba(217, 178, 91, .1); }
+.coach-rappel-titre { font-family: var(--titre); text-transform: uppercase; letter-spacing: .05em; font-size: var(--t-s); color: var(--or-clair); text-decoration: none; }
+.coach-rappel-texte { font-size: var(--t-m); font-weight: 600; }
+.coach-rappel.frais { border-left-color: var(--or); background: none; }
 @media (prefers-reduced-motion: no-preference) { .coach-rappel.frais { animation: rappel-frais 1.2s ease-out 2; } }
 @keyframes rappel-frais { 0% { box-shadow: 0 0 0 0 rgba(217, 178, 91, .6); } 100% { box-shadow: 0 0 0 .8rem transparent; } }
-.coach-prochains-titre { margin: .2rem 0 0; font-size: .95rem; color: var(--doux); }
+.coach-prochains-titre { margin: .2rem 0 0; font-size: var(--t-s); color: var(--doux); }
 .coach-prochains-titre[hidden] { display: none; }
 .coach-prochains { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .2rem; }
-.coach-prochain { display: grid; grid-template-columns: 3.6rem minmax(0, 1fr) auto; gap: .5rem; align-items: baseline; font-size: 1rem; }
+.coach-prochain { display: grid; grid-template-columns: 3.6rem minmax(0, 1fr) auto; gap: .5rem; align-items: baseline; font-size: var(--t-m); }
 .coach-prochain-quand { font-family: var(--titre); color: var(--or-clair); font-variant-numeric: tabular-nums; }
-.coach-prochain-pct { color: var(--doux); font-size: .85rem; }
-.coach-difficultes { margin-top: auto; font-size: .92rem; }
+.coach-prochain-pct { color: var(--doux); font-size: var(--t-s); }
+.coach-difficultes { margin-top: auto; font-size: var(--t-s); }
 .coach-difficultes > summary { cursor: pointer; color: var(--doux); }
 .coach-difficultes > summary strong { color: var(--texte); }
 .coach-difficultes-corps { display: flex; flex-direction: column; gap: .4rem; padding-top: .4rem; }
@@ -379,7 +377,7 @@ body.onglet-jeu .col-carte .carte-partie { flex: 1 1 auto; }
 .carte-partie { gap: .4rem; }
 .carte-partie-tete { flex-wrap: wrap; }
 .carte-outils { display: inline-flex; flex-wrap: wrap; gap: .25rem; }
-.carte-outils .btn { font-size: .8rem; padding: .15rem .55rem; }
+.carte-outils .btn { font-size: var(--t-xs); padding: .15rem .55rem; }
 .carte-outils .btn[aria-pressed="true"] { border-color: var(--or); color: var(--or-clair); }
 .carte-outils .btn[hidden] { display: none; }
 .carte-partie-zone { width: min(100%, 47vh); }
@@ -388,10 +386,10 @@ body.onglet-jeu .col-carte .carte-partie { flex: 1 1 auto; }
 .mini-lettre { fill: #0c0a08; font: 800 18px var(--corps); text-anchor: middle; dominant-baseline: central; pointer-events: none; }
 .mini-lane { font: 700 24px var(--titre); text-transform: uppercase; letter-spacing: .05em; stroke: #0c0a08; stroke-width: 5px; paint-order: stroke; dominant-baseline: central; }
 .mini-base { fill: var(--or-clair); font: 700 24px var(--titre); text-anchor: middle; stroke: #0c0a08; stroke-width: 5px; paint-order: stroke; text-transform: uppercase; }
-.mini-numero { font-size: 26px; text-anchor: start; }
-.carte-legende { flex: 1 1 auto; min-height: 0; overflow-y: auto; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .1rem .8rem; align-content: start; font-size: .86rem; }
-.carte-lecture { grid-column: 1 / -1; margin: 0 0 .2rem; display: flex; flex-wrap: wrap; align-items: center; gap: .25rem; color: var(--doux); font-size: .8rem; }
-.carte-groupe { grid-column: 1 / -1; margin-top: .3rem; font-family: var(--titre); text-transform: uppercase; letter-spacing: .06em; font-size: .78rem; color: var(--or); border-bottom: 1px solid var(--bord); }
+.mini-numero { font-size: var(--t-xl); text-anchor: start; }
+.carte-legende { flex: 1 1 auto; min-height: 0; overflow-y: auto; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .1rem .8rem; align-content: start; font-size: var(--t-s); }
+.carte-lecture { grid-column: 1 / -1; margin: 0 0 .2rem; display: flex; flex-wrap: wrap; align-items: center; gap: .25rem; color: var(--doux); font-size: var(--t-xs); }
+.carte-groupe { grid-column: 1 / -1; margin-top: .3rem; font-family: var(--titre); text-transform: uppercase; letter-spacing: .06em; font-size: var(--t-xs); color: var(--or); border-bottom: 1px solid var(--bord); }
 .carte-ligne { display: grid; grid-template-columns: auto auto minmax(0, 1fr) auto; align-items: center; gap: .35rem; padding: 0; line-height: 1.3; cursor: pointer; }
 .carte-ligne input { margin: 0; }
 .carte-ligne.cachee .carte-ligne-nom, .carte-ligne.cachee .carte-symbole { opacity: .45; }
@@ -401,7 +399,7 @@ body.onglet-jeu .col-carte .carte-partie { flex: 1 1 auto; }
 .carte-ligne.etat-bientot .carte-ligne-etat { color: var(--or-clair); font-weight: 600; }
 .carte-symbole { width: 1.05rem; height: 1.05rem; flex: none; }
 .carte-symboles { display: inline-flex; gap: .1rem; }
-.legende-lettre { font-size: 18px; }
+.legende-lettre { font-size: var(--t-l); }
 .carte-halo-ex { display: inline-block; width: .9rem; height: .9rem; border-radius: 50%; border: 2px solid var(--or); margin-left: .4rem; }
 @media (max-width: 1000px), (orientation: portrait) {
   .carte-partie-zone { width: 100%; }
@@ -414,12 +412,12 @@ body.onglet-jeu .col-carte .carte-partie { flex: 1 1 auto; }
 
 .coach-avant[hidden], .coach-risque[hidden] { display: none; }
 .coach.avant .coach-carte { border-left-color: var(--bord-fort); }
-.coach.avant .coach-action { font-size: clamp(1.3rem, 3.2vmin, 2.3rem); }
+.coach.avant .coach-action { font-size: var(--t-l); }
 .coach-avant { display: flex; flex-direction: column; gap: .5rem; }
 .coach-avant p { margin: 0; line-height: 1.4; }
-.coach-bloc-titre { font-family: var(--titre); text-transform: uppercase; letter-spacing: .06em; font-size: .85rem; color: var(--or-clair); }
-.coach-profil, .coach-fin { display: flex; flex-direction: column; gap: .35rem; padding: .55rem .8rem; border: 1px solid var(--bord); border-radius: .5rem; background: var(--fond-2); }
-.coach-profil .aide { font-size: .88rem; }
+.coach-bloc-titre { font-family: var(--titre); text-transform: uppercase; letter-spacing: .06em; font-size: var(--t-s); color: var(--or-clair); }
+.coach-profil, .coach-fin { display: flex; flex-direction: column; gap: .35rem; padding: .55rem .8rem; border: 1px solid var(--bord); border-radius: var(--r-m); background: var(--fond-2); }
+.coach-profil .aide { font-size: var(--t-s); }
 .coach-faibles strong, .coach-forts strong { color: var(--doux); font-weight: 600; }
 .coach-fin { border-color: var(--bord-fort); }
 .coach-fin.pret { border: 2px solid var(--bon); }
@@ -427,26 +425,26 @@ body.onglet-jeu .col-carte .carte-partie { flex: 1 1 auto; }
 .coach-fin a { color: var(--or-clair); }
 
 /* Bande 0–45 min : zones où le joueur meurt le plus, curseur du chrono. */
-.coach-risque { display: flex; flex-direction: column; gap: .3rem; padding: .35rem .8rem .45rem; border-radius: .5rem; border: 1px solid var(--bord); }
+.coach-risque { display: flex; flex-direction: column; gap: .3rem; padding: .35rem .8rem .45rem; border-radius: var(--r-m); border: 1px solid var(--bord); }
 .coach-risque.actif { border: 2px solid var(--danger); background: rgba(226, 103, 95, .12); }
-.coach-risque-barre { position: relative; height: .55rem; margin-bottom: .85rem; border-radius: .3rem; background: var(--panneau-2); }
-.coach-risque-zone { position: absolute; top: 0; bottom: 0; border-radius: .3rem; background: rgba(226, 103, 95, .7); }
-.coach-risque-graduation { position: absolute; top: .7rem; transform: translateX(-50%); font-size: .68rem; line-height: 1; color: var(--doux); font-variant-numeric: tabular-nums; }
-.coach-risque-curseur { position: absolute; top: -.2rem; bottom: -.2rem; width: 3px; margin-left: -1px; border-radius: 2px; background: var(--or-clair); }
-.coach-risque-texte { font-size: clamp(.95rem, 1.8vmin, 1.2rem); line-height: 1.35; }
-.coach-risque:not(.actif) .coach-risque-texte { color: var(--doux); font-size: .95rem; }
+.coach-risque-barre { position: relative; height: .55rem; margin-bottom: .85rem; border-radius: var(--r-s); background: var(--panneau-2); }
+.coach-risque-zone { position: absolute; top: 0; bottom: 0; border-radius: var(--r-s); background: rgba(226, 103, 95, .7); }
+.coach-risque-graduation { position: absolute; top: .7rem; transform: translateX(-50%); font-size: var(--t-xs); line-height: 1; color: var(--doux); font-variant-numeric: tabular-nums; }
+.coach-risque-curseur { position: absolute; top: -.2rem; bottom: -.2rem; width: 3px; margin-left: -1px; border-radius: var(--r-s); background: var(--or-clair); }
+.coach-risque-texte { font-size: var(--t-s); line-height: 1.35; }
+.coach-risque:not(.actif) .coach-risque-texte { color: var(--doux); font-size: var(--t-s); }
 .coach-risque.actif .coach-risque-texte strong { color: #ff8a7a; }
 .coach-risque-conseil { display: block; font-weight: 700; margin-top: .1rem; }
-.coach-risque-source { color: var(--doux); font-size: .8rem; }
+.coach-risque-source { color: var(--doux); font-size: var(--t-xs); }
 .coach-profil .coach-risque-barre { margin-top: .2rem; }
 
 /* Onglet Mort : la leçon de ton type de mort le plus fréquent. */
 .attente { display: flex; flex-direction: column; gap: .35rem; flex: none !important; }
 .attente h2 { display: flex; align-items: center; gap: .5rem; margin: 0; }
 .attente p { margin: 0; }
-.attente-pourquoi { color: var(--doux); font-size: .92rem; }
-.attente-titre { font-family: var(--titre); font-size: 1.3rem; color: var(--or-clair); text-decoration: none; }
-.attente-rappel { font-weight: 700; font-size: 1.1rem; }
+.attente-pourquoi { color: var(--doux); font-size: var(--t-s); }
+.attente-titre { font-family: var(--titre); font-size: var(--t-l); color: var(--or-clair); text-decoration: none; }
+.attente-rappel { font-weight: 700; font-size: var(--t-m); }
 .attente-comment { margin: 0; padding-left: 1.1rem; display: flex; flex-direction: column; gap: .2rem; line-height: 1.4; }
 #btn-fin.confirmer { border-color: var(--danger); color: var(--texte); }
 
@@ -470,23 +468,23 @@ body.onglet-jeu .col-carte .carte-partie { flex: 1 1 auto; }
   .panneau { padding: .7rem .75rem; }
   /* La barre de contexte (mini chrono compris) reste collée sous la navigation pendant le défilement. */
   .contexte { position: sticky; top: var(--haut-nav, 0); z-index: 6; box-shadow: 0 6px 16px rgba(0, 0, 0, .55); }
-  .mini-chrono { font-size: 1.05rem; white-space: nowrap; }
+  .mini-chrono { font-size: var(--t-m); white-space: nowrap; }
   .contexte { gap: .35rem; }
-  .contexte .btn, .contexte-panneaux > summary { font-size: .8rem; padding: .2rem .45rem; min-height: 2.2rem; }
-  .onglet-partie { padding: .25rem .4rem !important; font-size: .9rem !important; min-height: 2.3rem; }
+  .contexte .btn, .contexte-panneaux > summary { font-size: var(--t-xs); padding: .2rem .45rem; min-height: 2.2rem; }
+  .onglet-partie { padding: .25rem .4rem !important; font-size: var(--t-s) !important; min-height: 2.3rem; }
   .contexte-heros span:not(.doux) { max-width: 5.5rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .contexte-heros img { width: 1.3rem; height: 1.3rem; }
   .contexte-plus { margin-left: auto; }
-  body.onglet-jeu .horloge-temps { font-size: 2.8rem; }
+  body.onglet-jeu .horloge-temps { font-size: var(--t-xxl); }
   .commandes .btn, .recalage .btn { min-height: 2.6rem; }
   .saisie input { width: 5.5rem; }
   .contexte { padding: .4rem .5rem; }
-  .coach-tete h2 { font-size: 1rem; }
+  .coach-tete h2 { font-size: var(--t-m); }
   .coach-carte { padding: .75rem .85rem; border-left-width: .45rem; }
-  .coach-action, .coach.avant .coach-action { font-size: 1.55rem; }
-  .coach-action.long { font-size: 1.3rem; }
-  .coach-pourquoi { font-size: 1rem; }
-  .coach-rappel-texte, .coach-risque-texte { font-size: 1rem; }
+  .coach-action, .coach.avant .coach-action { font-size: var(--t-xl); }
+  .coach-action.long { font-size: var(--t-l); }
+  .coach-pourquoi { font-size: var(--t-m); }
+  .coach-rappel-texte, .coach-risque-texte { font-size: var(--t-m); }
   .coach-difficultes-grille { grid-template-columns: minmax(0, 1fr); }
   .coach-difficultes-grille label { padding: .25rem 0; }
   body.onglet-jeu #avenir > li[data-vue] { padding: .8rem .9rem; }
@@ -496,5 +494,79 @@ body.onglet-jeu .col-carte .carte-partie { flex: 1 1 auto; }
   .carte-legende-pli > summary { display: list-item; cursor: pointer; padding: .5rem 0; color: var(--doux); }
   .carte-legende { grid-template-columns: minmax(0, 1fr); }
   .carte-ligne { padding: .2rem 0; }
-  .attente-titre { font-size: 1.15rem; }
+  .attente-titre { font-size: var(--t-l); }
+}
+
+/* ===== Refonte 2026-10-11 (docs/refonte-front.md) : une seule réponse en grand, pas de boîte dans la boîte ===== */
+
+/* Chrono : à l'arrêt ou en pause, « Démarrer / Reprendre » reste visible (au toucher, pas de survol). */
+body.onglet-jeu .horloge.au-repos .commandes, body.onglet-jeu .horloge.en-pause .commandes { max-height: 12rem; opacity: 1; margin-top: .4rem; }
+
+/* À venir : la prochaine en grand, les deux suivantes en lignes compactes. */
+body.onglet-jeu #avenir > li:not([data-vue]):not([data-suite]) { display: none; }
+body.onglet-jeu #avenir > li[data-suite] {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; gap: .8rem;
+  flex: none; padding: .45rem 0 .45rem .8rem; background: none; border: 0; border-left: 3px solid var(--cat); border-radius: 0;
+}
+body.onglet-jeu #avenir > li[data-suite] .carte-nom { font-size: var(--t-l); }
+body.onglet-jeu #avenir > li[data-suite] .carte-droite { grid-row: auto; grid-column: 2; display: flex; gap: .6rem; align-items: baseline; }
+body.onglet-jeu #avenir > li[data-suite] .carte-compte { font-size: var(--t-xl); }
+body.onglet-jeu #avenir > li[data-suite] .carte-conseil, body.onglet-jeu #avenir > li[data-suite] .marque { display: none; }
+body.onglet-jeu #avenir > li[data-vue] { transition: border-color var(--duree), background var(--duree); }
+
+/* Coach : une seule carte, celle de l'action ; trait d'action à gauche, pas de cadre autour. */
+.coach-carte { border: 0; border-left: 6px solid var(--or); border-radius: var(--r-s); background: var(--panneau-2); }
+.coach.objectif .coach-carte { border-left-color: var(--alerte); background: var(--alerte-fond); }
+.coach.coach-achat .coach-carte { border-left-color: var(--action); background: var(--action-fond); }
+.coach.urgent .coach-carte { border-left-color: var(--danger); background: #3a1614; }
+.coach.avant .coach-carte { border-left-color: var(--bord-fort); background: none; }
+.coach-carte .btn.principal { align-self: flex-start; margin-top: .3rem; }
+
+/* Objectifs : des rangées, pas des cartes. */
+.obj-ligne, .obj-phase { background: none; border-left-width: 3px; border-radius: 0; }
+.obj-ligne.proche { background: none; }
+
+/* Téléphone : dans l'ordre de la tâche. Barre (chrono + héros) → prochain objectif → coach → le reste. */
+@media (max-width: 600px) {
+  body.onglet-jeu .partie-colonnes > .col { display: contents; }
+  body.onglet-jeu .partie-colonnes { display: flex; flex-direction: column; }
+  body.onglet-jeu [data-panneau="avenir"] { order: 1; }
+  body.onglet-jeu [data-panneau="coach"] { order: 2; }
+  body.onglet-jeu [data-panneau="horloge"] { order: 3; }
+  body.onglet-jeu [data-panneau="objectifs"] { order: 4; }
+  body.onglet-jeu [data-panneau="declenches"] { order: 5; }
+  body.onglet-jeu [data-panneau="carte"] { order: 6; }
+  .btn, .onglet-partie, .lane-bouton, select { min-height: 44px; }
+}
+
+/* Onglets : icône, nom, touche. */
+.onglet-partie { display: inline-flex; align-items: center; gap: .4rem; }
+.onglet-partie kbd { font-size: var(--t-xs); opacity: .7; }
+.onglet-partie[aria-selected="true"] { background: var(--action); border-color: var(--action); color: #1a1206; }
+.contexte-plus > summary, .contexte-alertes > summary { display: inline-flex; align-items: center; gap: .4rem; }
+
+/* Attente : le compte à rebours d'abord, puis une liste courte. */
+body.onglet-attente .col-gauche { flex: 3 1 0; }
+body.onglet-attente .col-avenir { flex: 2 1 0; }
+.reapparition { display: flex; flex-direction: column; gap: 1rem; }
+.attente-compte { font-family: var(--titre); font-weight: 700; font-size: clamp(6rem, 22vmin, 14rem); line-height: .9; color: var(--texte); font-variant-numeric: tabular-nums; transition: color var(--duree); }
+.attente-compte.bientot { color: var(--action); }
+.attente-sous { font-family: var(--titre); font-size: var(--t-xl); color: var(--doux); }
+.attente-liste { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 1rem; font-size: var(--t-l); }
+.attente-liste > li { display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: 1rem; align-items: baseline; padding-left: .8rem; border-left: 3px solid var(--bord-fort); }
+.attente-liste > li:first-child { border-left-color: var(--action); }
+.attente-titre { font-family: var(--titre); font-size: var(--t-s); letter-spacing: .1em; text-transform: uppercase; color: var(--or); }
+.attente-objet { display: inline-flex; align-items: center; gap: .5rem; }
+.attente-objet img { width: 2.6rem; height: 2.6rem; border-radius: var(--r-s); }
+.attente-cout { color: var(--doux); font-variant-numeric: tabular-nums; }
+.attente-objet.obj-weapon .attente-cout { color: var(--weapon); }
+.attente-objet.obj-vitality .attente-cout { color: var(--vitality); }
+.attente-objet.obj-spirit .attente-cout { color: var(--spirit); }
+.attente-detail { display: block; font-size: var(--t-m); color: var(--doux); margin-top: .2rem; }
+.attente-sous-liste { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .4rem; }
+.attente-sous-liste li { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
+.attente-sous-liste li > img { width: 2rem; height: 2rem; border-radius: var(--r-s); }
+.reapparition .source { margin-top: auto; font-size: var(--t-xs); color: var(--doux); }
+@media (max-width: 600px) {
+  .attente-liste > li { grid-template-columns: 1fr; gap: .2rem; }
 }

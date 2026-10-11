@@ -139,7 +139,8 @@
       "annonce_avant_s": 30,
       "fiabilite": "donnees",
       "detail": "Ramassable 12,5 s après l'apparition. Première côté Yellow, puis alternance. 250 + 70 souls/min, 4 buffs au porteur. Pas de zipline ni de teleporter.",
-      "conseil": "À livrer quand l'équipe met la pression devant. Mirage : Traveler fait lâcher l'urne."
+      "conseil": "À livrer quand l'équipe met la pression devant.",
+      "conseil_heros": { "52": "Mirage : Traveler fait lâcher l'urne." }
     },
     {
       "id": "buffs_niv2",

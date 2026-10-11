@@ -4,10 +4,10 @@
 .etiquette {
   display: inline-flex; align-items: center; gap: .15rem;
   padding: 0 .45em;
-  font-size: .72rem; font-weight: 600; line-height: 1.5;
+  font-size: var(--t-xs); font-weight: 600; line-height: 1.5;
   color: var(--etiquette, var(--doux));
   border: 1px solid var(--etiquette, var(--bord));
-  border-radius: 1em;
+  border-radius: var(--r-rond);
   white-space: nowrap;
 }
 .etiquette-retirer {
@@ -18,13 +18,13 @@
 .etiquettes-editeur { display: flex; flex-wrap: wrap; align-items: center; gap: .3rem; margin: .3rem 0; }
 .etiquette-form input {
   width: 8.5rem; padding: .1rem .5rem;
-  font: inherit; font-size: .8rem; color: var(--texte);
-  background: var(--fond-2, var(--fond)); border: 1px dashed var(--bord-fort, var(--bord)); border-radius: 1em;
+  font: inherit; font-size: var(--t-xs); color: var(--texte);
+  background: var(--fond-2, var(--fond)); border: 1px dashed var(--bord-fort, var(--bord)); border-radius: var(--r-rond);
 }
 .etiquette-suggestion {
-  padding: 0 .5em; font: inherit; font-size: .72rem; color: var(--doux);
-  background: none; border: 1px dashed var(--bord); border-radius: 1em; cursor: pointer;
+  padding: 0 .5em; font: inherit; font-size: var(--t-xs); color: var(--doux);
+  background: none; border: 1px dashed var(--bord); border-radius: var(--r-rond); cursor: pointer;
 }
 .etiquette-suggestion:hover { color: var(--texte); border-color: var(--doux); }
 .heros-case .etiquettes { justify-content: center; }
-.heros-case .etiquette { font-size: .6rem; padding: 0 .35em; }
+.heros-case .etiquette { font-size: var(--t-xs); padding: 0 .35em; }

@@ -150,6 +150,7 @@
 
   // Le rappel du moment : parmi les difficultés actives à t, la plus prioritaire, puis celle dont l'heure de
   // rappel est la plus récente. Point faible du profil : intervalle raccourci. Partie longue : passe devant.
+  let tenu = null;   // rappel affiché et depuis quand (secondes de partie)
   function rappelDuMoment(t, pr) {
     const d = difficultes(pr);
     const faibles = pr.ok ? (pr.p.faibles || []) : [];
@@ -170,11 +171,16 @@
       }
     }
     let meilleur = null;
-    candidats.forEach((c) => {
-      if (t < c.de || (c.a != null && t > c.a)) return;
+    const actifs = candidats.filter((c) => !(t < c.de || (c.a != null && t > c.a)));
+    actifs.forEach((c) => {
       const dernier = c.de + Math.floor((t - c.de) / c.toutes) * c.toutes;
       if (!meilleur || c.prio > meilleur.prio || (c.prio === meilleur.prio && dernier > meilleur.dernier)) meilleur = Object.assign(c, { dernier: dernier });
     });
+    // Un rappel reste affiché au moins `tenue_s` (data/rappels.json), sauf si un rappel plus prioritaire arrive.
+    const tenue = (rappels && rappels.tenue_s) || 0;
+    const garde = tenu && actifs.find((c) => c.l.id === tenu.id);
+    if (garde && t >= tenu.depuis && t - tenu.depuis < tenue && (!meilleur || meilleur.prio <= garde.prio)) return garde;
+    if (meilleur && (!tenu || tenu.id !== meilleur.l.id || t < tenu.depuis)) tenu = { id: meilleur.l.id, depuis: t };
     return meilleur;
   }
 
@@ -219,7 +225,7 @@
       .map((a) => ({
         type: 'objectif', t: a.t, cle: 'o:' + a.e.id + ':' + a.t,
         titre: nomCourt(a.e) + (a.e.fiabilite === 'incertain' ? ' (≈)' : ''),
-        texte: texteObjectif(a.e.id, role, cote) || a.e.conseil || ''
+        texte: texteObjectif(a.e.id, role, cote) || DLN.conseilEvenement(a.e) || ''
       }));
 
     // Achats : minute moyenne des joueurs du héros ; un rappel en plus si les souls dormantes sont une difficulté.
@@ -532,9 +538,17 @@
     if (r.c.lance && r.t > FIN_OUBLIEE_S && localStorage.getItem(CLE_FIN)) ecrireCle(CLE_FIN, null);
 
     if (avant) {
+      document.body.dataset.coachObjectif = '';
       const f = lireCle('dln.coach.focus.v1');
       z.label.textContent = T({ fr: 'Avant la partie', en: 'Before the game' }) + (f ? ' · ' + T({ fr: 'ton focus', en: 'your focus' }) : '');
-      z.action.textContent = f ? f.titre : (r.x.heros ? T({ fr: 'Lance le chrono quand la partie commence', en: 'Start the clock when the game starts' }) : T({ fr: 'Choisis ton héros en haut', en: 'Pick your hero at the top' }));
+      z.action.textContent = f ? f.titre : (r.x.heros ? T({ fr: 'Lance le chrono quand la partie commence', en: 'Start the clock when the game starts' }) : '');
+      if (!f && !r.x.heros) {
+        // État vide = une action : le bouton ouvre le choix du héros (barre de contexte).
+        const b = el('button', 'btn principal', T({ fr: 'Choisir mon héros', en: 'Pick my hero' }));
+        b.type = 'button';
+        b.addEventListener('click', () => { const c = document.querySelector('.contexte-heros'); if (c) c.click(); });
+        z.action.append(b);
+      }
       z.pourquoi.textContent = f ? T({ fr: 'Exercice : ', en: 'Drill: ' }) + f.exercice : T({ fr: 'Espace ou « Démarrer » à 0:00, puis recale avec ← → si besoin.', en: 'Space or “Start” at 0:00, then adjust with ← → if needed.' });
       z.action.classList.remove('long');
       zone.classList.remove('objectif', 'coach-achat');
@@ -543,6 +557,8 @@
       cleAvant = null;
       z.avant.textContent = '';
       const a = r.action;
+      // « À venir » (js/partie.js) saute l'objectif que le coach annonce déjà.
+      document.body.dataset.coachObjectif = a.type === 'objectif' && a.cle ? a.cle.split(':')[1] : '';
       z.label.textContent = a.type === 'objectif' ? T({ fr: 'Objectif ', en: 'Objective ' }) + a.quand : a.type === 'achat' ? T({ fr: 'Achat · ', en: 'Item · ' }) + a.quand : T({ fr: 'À faire maintenant', en: 'Do it now' });
       z.action.textContent = a.titre;
       z.action.classList.toggle('long', a.titre.length > 55);
@@ -572,7 +588,7 @@
     const build = r.x.heros && DLN.builds && DLN.builds.suivi(r.x.heros);
     z.prochainsTitre.textContent = build ? T({ fr: 'Ton build : ', en: 'Your build: ' }) + build.nom : T({ fr: 'Tes prochains achats', en: 'Your next items' });
     if (r.sansAchats) z.prochains.append(el('li', 'aide', T({ fr: 'Pas de données d\'achat pour ce héros : regarde l\'onglet Builds de sa fiche.', en: 'No item data for this hero: see the Builds tab of its page.' })));
-    else if (!r.x.heros) z.prochains.append(el('li', 'aide', T({ fr: 'Choisis ton héros en haut : le coach ajoute ses achats habituels, minute par minute.', en: 'Pick your hero at the top: the coach adds its usual items, minute by minute.' })));
+
   }
 
   // « Partie finie » : en deux temps comme Zéro (bouton ou F deux fois), note l'heure de fin et remet le chrono à zéro.
@@ -605,7 +621,7 @@
     });
   }
 
-  DLN.coach = { texteObjectif: texteObjectif, redessiner: dessiner };
+  DLN.coach = { texteObjectif: texteObjectif, redessiner: dessiner, etat: () => (C && timeline && rappels && conseils ? recos() : null) };
 
   Promise.all(['data/coach.json', 'data/timeline.json', 'data/conseils-roles.json', 'data/heroes.json', 'data/rappels.json'].map(DLN.charger)
     .concat([DLN.charger('data/niveaux.json').catch(() => null), DLN.charger('data/achats.json').catch(() => null),

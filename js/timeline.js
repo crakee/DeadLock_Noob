@@ -489,6 +489,7 @@
     if (bouton.firstChild.nodeValue !== libelle + ' ') bouton.firstChild.nodeValue = libelle + ' ';
     $('horloge-etat').textContent = enMarche() ? 'en cours' : (auRepos() ? 'prêt' : 'en pause');
     document.querySelector('.horloge').classList.toggle('en-pause', etat.pauseA != null);
+    document.querySelector('.horloge').classList.toggle('au-repos', auRepos());
     document.querySelectorAll('[data-recale]').forEach((b) => { b.disabled = auRepos(); });
   }
 
@@ -503,11 +504,12 @@
       c.li.hidden = !it;
       if (!it) return;
       c.li.className = 'carte ' + it.statut;
+      c.li.dataset.ev = it.ev.id;
       c.li.style.setProperty('--cat', 'var(--cat-' + it.ev.categorie + ', var(--doux))');
       c.nom.textContent = it.ev.nom;
       const m = marque(it.ev);
       if (m) c.nom.append(m);
-      c.conseil.textContent = it.ev.conseil || '';
+      c.conseil.textContent = DLN.conseilEvenement ? DLN.conseilEvenement(it.ev) : (it.ev.conseil || '');
       if (it.statut === 'maintenant') {
         c.compte.textContent = 'MAINTENANT';
         c.heure.textContent = heureTexte(it.ev, it.occ);
@@ -516,7 +518,9 @@
         c.heure.textContent = heureTexte(it.ev, it.occ) + ' · encore ' + fmtRestant(it.occ.fin - t);
       } else {
         c.compte.textContent = fmtRestant(it.occ.debut - t);
-        c.heure.textContent = heureTexte(it.ev, it.occ);
+        const h = heureTexte(it.ev, it.occ);
+        // Chrono à zéro, le compte à rebours EST l'heure de jeu : ne pas l'écrire deux fois.
+        c.heure.textContent = h.replace(/^à /, '') === c.compte.textContent ? '' : h;
       }
     });
     $('avenir-vide').hidden = items.length > 0;

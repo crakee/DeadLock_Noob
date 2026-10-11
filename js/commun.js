@@ -71,6 +71,34 @@ window.DLN = (function () {
     return e;
   }
 
+  // Conseil d'un événement du chrono, avec les précisions propres à un héros (conseil_heros) seulement
+  // si ce héros est dans la partie : le mien (dln.partie.contexte.v1) ou en face (dln.counters.choisis.v1).
+  function conseilEvenement(ev) {
+    let texte = ev.conseil || '';
+    if (ev.conseil_heros) {
+      let ids = [];
+      try {
+        ids = (JSON.parse(localStorage.getItem('dln.counters.choisis.v1')) || []).slice();
+        const c = JSON.parse(localStorage.getItem('dln.partie.contexte.v1')) || {};
+        if (c.heros) ids.push(c.heros);
+      } catch (e) { /* stockage indisponible */ }
+      Object.keys(ev.conseil_heros).forEach((id) => { if (ids.indexOf(Number(id)) !== -1) texte += ' ' + ev.conseil_heros[id]; });
+    }
+    return texte;
+  }
+
+  // Icône SVG du jeu de symboles icones/lucide.svg (remplace les emojis). nom = id du symbole.
+  function icone(nom, classe) {
+    const NS = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(NS, 'svg');
+    svg.setAttribute('class', 'icone' + (classe ? ' ' + classe : ''));
+    svg.setAttribute('aria-hidden', 'true');
+    const u = document.createElementNS(NS, 'use');
+    u.setAttribute('href', 'icones/lucide.svg#' + nom);
+    svg.append(u);
+    return svg;
+  }
+
   function img(src, classe) {
     const i = el('img', classe || null);
     i.src = src || '';
@@ -151,7 +179,7 @@ window.DLN = (function () {
     // Menu de réglages : un seul endroit pour le niveau et le rang.
     const menu = el('details', 'reglages-menu');
     const resume = el('summary', 'reglages-bouton');
-    resume.append(el('span', 'reglages-icone', '⚙'));
+    resume.append(icone('settings', 'reglages-icone'));
     resumeReglages = el('span', 'reglages-texte');
     resume.append(resumeReglages);
     menu.append(resume);
@@ -289,6 +317,8 @@ window.DLN = (function () {
     echec: echec,
     marque: marque,
     el: el,
+    icone: icone,
+    conseilEvenement: conseilEvenement,
     img: img,
     fmtNombre: fmtNombre,
     lienHeros: lienHeros,

@@ -14,8 +14,9 @@
 
   // Chaque onglet range ses panneaux en colonnes (de gauche à droite) ; les autres sont masqués.
   const ONGLETS = {
-    jeu: { nom: '🎮 En jeu', touche: 'J', aide: 'Tout ce qui sert en jouant : chrono, coach, prochain objectif, objectifs à venir, carte', colonnes: [['horloge', 'coach', 'declenches'], ['avenir', 'objectifs'], ['carte']] },
-    mort: { nom: '💀 Mort · compo', touche: 'M', aide: 'Quand tu es mort : leur compo, comment la jouer, tes notes', colonnes: [['attente', 'compo', 'maintenant', 'checklist'], ['enface'], ['notes']] }
+    jeu: { nom: 'En jeu', icone: 'gamepad-2', touche: 'J', aide: 'Tout ce qui sert en jouant : chrono, coach, prochain objectif, objectifs à venir, carte', colonnes: [['horloge', 'coach', 'declenches'], ['avenir', 'objectifs'], ['carte']] },
+    attente: { nom: 'Attente', icone: 'hourglass', touche: 'A', aide: 'Tu es mort : compte à rebours et ce qui sert à ton retour (revient seul sur En jeu)', colonnes: [['reapparition'], ['attente']] },
+    mort: { nom: 'Mort · compo', icone: 'skull', touche: 'M', aide: 'Quand tu es mort : leur compo, comment la jouer, tes notes', colonnes: [['attente', 'compo', 'maintenant', 'checklist'], ['enface'], ['notes']] }
   };
   // Couleurs des lanes : celles de data/map.json (choix d'affichage pour les nommer).
   const LANES = { '#f1cc30': { id: 'yellow', nom: 'Yellow' }, '#29b1cc': { id: 'blue', nom: 'Blue' }, '#59b247': { id: 'green', nom: 'Green' } };
@@ -80,13 +81,15 @@
     Object.keys(ONGLETS).forEach((k) => document.body.classList.toggle('onglet-' + k, k === affichage.onglet));
     document.querySelectorAll('.onglet-partie').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.onglet === affichage.onglet)));
     window.dispatchEvent(new Event('resize'));
-    tourner(true);
+    tourner();
     if (affichage.onglet === 'jeu') dessinerObjectifs();
     if (affichage.onglet === 'mort') { dessinerCompo(); dessinerNotes(); }
+    if (affichage.onglet === 'attente') dessinerReapparition();
   }
 
   function changerOnglet(id) {
     if (!ONGLETS[id]) return;
+    if (id === 'attente' && affichage.onglet !== 'attente') commencerAttente();
     affichage.onglet = id;
     ecrire(CLE_AFFICHAGE, affichage);
     appliquerAffichage();
@@ -161,7 +164,8 @@
     const onglets = el('div', 'onglets-partie');
     onglets.setAttribute('role', 'tablist');
     Object.keys(ONGLETS).forEach((id) => {
-      const b = bouton(ONGLETS[id].nom, 'onglet-partie', () => changerOnglet(id), ONGLETS[id].aide + ' (touche ' + ONGLETS[id].touche + ')');
+      const b = bouton('', 'onglet-partie', () => changerOnglet(id), ONGLETS[id].aide + ' (touche ' + ONGLETS[id].touche + ')');
+      b.append(DLN.icone(ONGLETS[id].icone), el('span', null, ONGLETS[id].nom), el('kbd', null, ONGLETS[id].touche));
       b.dataset.onglet = id;
       b.setAttribute('role', 'tab');
       b.setAttribute('aria-selected', String(affichage.onglet === id));
@@ -174,13 +178,15 @@
 
     // Visible : héros, lane, affichage, alertes. Le reste dans « ⚙ Ma partie ».
     const plus = el('details', 'contexte-panneaux contexte-plus');
-    plus.append(el('summary', null, '⚙ Ma partie'));
+    const resumePlus = el('summary');
+    resumePlus.append(DLN.icone('settings'), el('span', null, 'Ma partie'));
+    plus.append(resumePlus);
     const contenu = el('div', 'contexte-panneaux-liste plus-liste');
     const ligne = (titre, noeud) => { const d = el('div', 'plus-ligne'); d.append(el('span', 'doux petit', titre), noeud); contenu.append(d); };
     ligne('Lane de départ', lanes);
     ligne('Rôle', role);
     ligne('Équipe (oriente la carte)', equipe);
-    if (installation) ligne('Application', bouton('📲 Installer sur cet appareil', '', installer, 'Installer le site comme une application (écran d\'accueil, plein écran)'));
+    if (installation) ligne('Application', bouton('Installer sur cet appareil', '', installer, 'Installer le site comme une application (écran d\'accueil, plein écran)'));
     plus.append(contenu);
     zone.append(choixHeros, onglets, mini, menuAlertes(), plus);
     majMiniChrono();
@@ -383,15 +389,16 @@
     const t = chrono.t;
     const r = roleCourant();
     const prio = r && D.conseils.roles[r] ? D.conseils.roles[r].priorites : [];
-    const de = Math.max(0, t - 30), a = t + 20 * 60;
+    const de = Math.max(0, t - 30), a = t + 10 * 60;   // 10 min : le reste est trop loin pour un coup d'œil
     const lignes = [];
     D.timeline.evenements.filter((e) => niveauOk(e.id)).forEach((e) => occurrences(e, de, a).forEach((o) => lignes.push({ e: e, t: o.t, fin: o.fin })));
     D.timeline.phases.forEach((p) => { if (p.debut_s > de && p.debut_s <= a) lignes.push({ phase: p, t: p.debut_s }); });
     lignes.sort((x, y) => x.t - y.t || (x.phase ? -1 : 1));
+    lignes.splice(6);
 
     zone.textContent = '';
     const tete = el('div', 'obj-tete');
-    tete.append(el('h2', null, 'Objectifs'), el('span', 'aide', chrono.lance ? 'les 20 prochaines minutes' : 'lance le chrono pour suivre la partie'));
+    tete.append(el('h2', null, 'Objectifs'), el('span', 'aide', chrono.lance ? 'les 10 prochaines minutes' : 'lance le chrono pour suivre la partie'));
     if (r) tete.append(el('span', 'aide', '★ = compte pour ton rôle (' + roleDe(r).nom.toLowerCase() + ')'));
     zone.append(tete);
     const ul = el('ol', 'obj-liste');
@@ -415,7 +422,7 @@
       const cote = r && D.conseils.roles[r] ? D.conseils.roles[r].cote : null;
       const pourMoi = DLN.coach && r ? DLN.coach.texteObjectif(l.e.id, r, cote) : null;
       if (pourMoi) li.append(el('span', 'obj-texte obj-moi', 'Toi : ' + pourMoi));
-      else if (l.e.conseil || l.e.detail) li.append(el('span', 'obj-texte', l.e.conseil || l.e.detail));
+      else if (l.e.conseil || l.e.detail) li.append(el('span', 'obj-texte', DLN.conseilEvenement(l.e) || l.e.detail));
       ul.append(li);
     });
     zone.append(ul);
@@ -431,8 +438,7 @@
   }
 
   function tendanceTempo(id) {
-    const tr = ((D.tempo || {}).tranches || {}).tous || {};
-    const d = (tr[String(id)] || {}).durees;
+    const d = (tempoDe(id) || {}).durees;
     if (!d || d.length < 3 || d[0].winrate == null || d[2].winrate == null) return null;
     const ecart = d[2].winrate - d[0].winrate, marge = Math.sqrt(d[0].marge * d[0].marge + d[2].marge * d[2].marge);
     return ecart > marge ? 'tard' : ecart < -marge ? 'tot' : null;
@@ -480,6 +486,143 @@
     if (r && D.conseils.roles[r]) point('Toi (' + roleDe(r).nom.toLowerCase() + ') :', D.conseils.roles[r].phases[phaseA(c.t).nom] || '');
     zone.append(ul);
   }
+
+  // ---------- onglet Attente : réapparition ----------
+  // À la mort (touche A) : durée de réapparition à cette minute (data/reapparition.json, wiki), compte à
+  // rebours, puis ce qui sert au retour, du plus court au plus long selon le temps disponible :
+  // toujours l'achat et le prochain objectif ; au-delà de 15 s, leurs prochains gros achats et leur
+  // menace principale ; au-delà de 30 s, la leçon (panneau « Pendant que tu attends »).
+  // Fin du compte : petit son, retour seul sur En jeu.
+
+  const CLE_ATTENTE = 'dln.partie.attente.v1';
+  let attente = lire(CLE_ATTENTE, { fin: null, duree: null });
+  let attenteBip = null;
+
+  function dureeReapparition(t) {
+    const R = D && D.reapparition;
+    if (!R) return null;
+    const m = t / 60, P = R.points;
+    if (m <= P[0].minute) return P[0].secondes;
+    for (let i = 1; i < P.length; i++) {
+      if (m <= P[i].minute) return Math.min(R.maximum_s, P[i - 1].secondes + (P[i].secondes - P[i - 1].secondes) * (m - P[i - 1].minute) / (P[i].minute - P[i - 1].minute));
+    }
+    return R.maximum_s;
+  }
+
+  function commencerAttente() {
+    const t = tempsChrono().t;
+    const d = Math.round(dureeReapparition(t) || 0);
+    attente = { fin: t + d, duree: d };
+    attenteBip = null;
+    ecrire(CLE_ATTENTE, attente);
+  }
+
+  function tempoDe(id) {
+    const T = (D.tempo || {}).tranches || {};
+    return (T[DLN.tranche()] || {})[String(id)] || (T.tous || {})[String(id)] || null;
+  }
+
+  function ligneObjet(nom, suffixe) {
+    const o = D.objets[nom];
+    const span = el('span', 'attente-objet obj-' + ((o || {}).categorie || 'autre'));
+    if (o && o.image) span.append(DLN.img(o.image));
+    span.append(el('strong', null, nom));
+    if (o && o.cout) span.append(el('span', 'attente-cout', DLN.fmtNombre(o.cout)));
+    if (suffixe) span.append(el('span', 'doux', suffixe));
+    return span;
+  }
+
+  function dessinerReapparition() {
+    const zone = document.getElementById('reapparition');
+    if (!zone || !D || affichage.onglet !== 'attente') return;
+    const c = tempsChrono();
+    const reste = attente.fin == null ? 0 : Math.max(0, attente.fin - c.t);
+    const d = attente.duree || 0;
+    zone.textContent = '';
+    const compte = el('div', 'attente-compte' + (reste <= 10 ? ' bientot' : ''), String(Math.ceil(reste)));
+    const sous = el('div', 'attente-sous', 'Tu reviens à ' + fmt(attente.fin || c.t));
+    zone.append(compte, sous);
+
+    const liste = el('ol', 'attente-liste');
+    const ligne = (titre, contenu) => { const li = el('li'); li.append(el('span', 'attente-titre', titre)); li.append(contenu); liste.append(li); };
+    const r = roleCourant();
+    const etat = DLN.coach && DLN.coach.etat ? DLN.coach.etat() : null;
+
+    // 1. Ce que tu achètes maintenant (celui du coach : build suivi ou achats moyens du héros).
+    const achat = etat && (etat.action.type === 'achat' ? etat.action : etat.prochains[0]);
+    if (achat) ligne('Achète', ligneObjet(achat.nom, achat.au_choix ? 'au choix' : ''));
+
+    // 2. Le prochain objectif après ton retour, et ce que tu y fais.
+    const retour = attente.fin || c.t;
+    const prochains = [];
+    D.timeline.evenements.filter((e) => niveauOk(e.id) && e.annonce_avant_s > 0)
+      .forEach((e) => occurrences(e, retour, retour + 10 * 60).forEach((o) => prochains.push({ e: e, t: o.t })));
+    prochains.sort((a, b) => a.t - b.t);
+    if (prochains[0]) {
+      const p = prochains[0];
+      const cote = r && D.conseils.roles[r] ? D.conseils.roles[r].cote : null;
+      const pourMoi = DLN.coach && r ? DLN.coach.texteObjectif(p.e.id, r, cote) : null;
+      const bloc = el('span');
+      bloc.append(el('strong', null, p.e.nom.split(' (')[0]), el('span', 'doux', ' à ' + fmt(p.t) + ' · ' + fmt(p.t - retour) + ' après ton retour'));
+      if (pourMoi) bloc.append(el('span', 'attente-detail', pourMoi));
+      ligne('Ensuite', bloc);
+    }
+    // Où aller en réapparaissant : le conseil de ton rôle pour la phase.
+    const ph = phaseA(retour);
+    const conseil = r && D.conseils.roles[r] ? D.conseils.roles[r].phases[ph.nom] : D.conseils.commun && D.conseils.commun[ph.nom];
+    if (conseil) ligne('Au retour', el('span', null, conseil));
+
+    // 3. Plus de 15 s : en face.
+    const ids = enFaceIds();
+    if (d > 15 && ids.length) {
+      const achats = [];
+      ids.forEach((id) => {
+        ((tempoDe(id) || {}).objets_cles || []).forEach((o) => {
+          const t = o.minute * 60;
+          if (t >= c.t - 60 && t <= retour + 5 * 60) achats.push({ h: herosDe(id), o: o, t: t });
+        });
+      });
+      achats.sort((a, b) => a.t - b.t);
+      if (achats.length) {
+        const ul = el('ul', 'attente-sous-liste');
+        achats.slice(0, 3).forEach((a) => {
+          const li = el('li');
+          li.append(DLN.img(a.h.icone || a.h.image), el('span', null, a.h.nom + ' '), ligneObjet(a.o.nom, 'vers ' + fmt(a.t)));
+          ul.append(li);
+        });
+        ligne('Leurs gros achats', ul);
+      }
+      const compte = {};
+      ids.forEach((id) => ((D.counters.heros[String(id)] || {}).menaces || []).forEach((m) => { (compte[m.id] = compte[m.id] || []).push(herosDe(id).nom); }));
+      const top = Object.keys(compte).filter((k) => D.counters.menaces[k]).sort((a, b) => compte[b].length - compte[a].length)[0];
+      if (top && compte[top].length >= 2) {
+        const M = D.counters.menaces[top];
+        const bloc = el('span');
+        bloc.append(el('strong', null, M.nom), el('span', 'doux', ' · ' + compte[top].join(', ')));
+        if (M.objets && M.objets[0]) { bloc.append(el('br')); bloc.append(ligneObjet(M.objets[0].nom, M.objets[0].quand || '')); }
+        ligne('Leur menace', bloc);
+      }
+    }
+    zone.append(liste);
+    const R = D.reapparition;
+    if (R) zone.append(el('p', 'source', 'Réapparition : ' + d + ' s à ' + fmt(attente.fin - d) + ' (' + R.meta.source.split(',')[0] + ', ' + R.meta.patch.split(' (')[0] + ')'));
+    const lecon = document.getElementById('attente');
+    if (lecon) lecon.hidden = d <= 30;
+  }
+
+  function suivreAttente() {
+    if (!D || affichage.onglet !== 'attente') return;
+    const c = tempsChrono();
+    const reste = attente.fin == null ? 0 : attente.fin - c.t;
+    const zone = document.getElementById('reapparition');
+    const compte = zone && zone.querySelector('.attente-compte');
+    if (compte) { compte.textContent = String(Math.max(0, Math.ceil(reste))); compte.classList.toggle('bientot', reste <= 10); }
+    const son = document.getElementById('opt-son');
+    const sonOk = son && son.checked && DLN.sons;
+    if (reste <= 10 && reste > 0 && attenteBip !== 10 && d10(attente)) { attenteBip = 10; if (sonOk) DLN.sons.jouer('preavis'); }
+    if (reste <= 0 && c.lance) { if (sonOk) DLN.sons.jouer('maintenant'); changerOnglet('jeu'); }
+  }
+  const d10 = (a) => (a.duree || 0) > 12;   // pas de préavis pour une mort de 8 s
 
   // ---------- notes perso sur les adversaires ----------
   // Gardées d'une partie à l'autre dans le navigateur (dln.notes.v1), avec la minute de la partie.
@@ -534,58 +677,20 @@
     });
   }
 
-  // ---------- « À venir » en un objectif à la fois (onglet En jeu) ----------
-  // Les cartes restent celles du chrono (js/timeline.js) ; ici on n'en montre qu'une, en grand,
-  // qui tourne toutes les ROTATION_S secondes. Un objectif en alerte ou en cours reste affiché.
+  // ---------- « À venir » (onglet En jeu) ----------
+  // Les cartes restent celles du chrono (js/timeline.js, triées par heure). Ici : la prochaine en grand,
+  // les deux suivantes en lignes compactes. Pas de rotation : un coup d'œil tombe toujours sur la
+  // suivante. Si le coach annonce déjà cet objectif (body[data-coach-objectif]), on montre le suivant.
 
-  const ROTATION_S = 6;
-  let indexVue = 0, prochaineRotation = 0, pauseJusqua = 0;
-
-  function points(cartes, active) {
-    let z = document.getElementById('avenir-points');
-    if (!z) {
-      z = el('div', 'avenir-points');
-      z.id = 'avenir-points';
-      z.setAttribute('role', 'tablist');
-      const liste = document.getElementById('avenir');
-      if (liste) liste.after(z);
-    }
-    if (z.childElementCount !== cartes.length) {
-      z.textContent = '';
-      cartes.forEach((c, i) => {
-        const b = el('button', 'avenir-point');
-        b.type = 'button';
-        b.setAttribute('role', 'tab');
-        b.addEventListener('click', () => { indexVue = i; pauseJusqua = Date.now() + 15000; tourner(true); b.blur(); });
-        z.append(b);
-      });
-    }
-    Array.prototype.forEach.call(z.children, (b, i) => {
-      b.setAttribute('aria-selected', String(i === active));
-      const nom = cartes[i] && cartes[i].querySelector('.carte-nom');
-      b.title = nom ? nom.textContent : '';
-    });
-  }
-
-  function tourner(force) {
-    const epure = affichage.onglet === 'jeu';
+  function tourner() {
     const toutes = Array.prototype.slice.call(document.querySelectorAll('#avenir > li'));
-    if (!epure) { toutes.forEach((c) => { delete c.dataset.vue; }); const z = document.getElementById('avenir-points'); if (z) z.hidden = true; return; }
+    toutes.forEach((c) => { delete c.dataset.vue; delete c.dataset.suite; });
+    if (affichage.onglet !== 'jeu') return;
     const cartes = toutes.filter((c) => !c.hidden);
-    if (!cartes.length) return;
-    const urgente = cartes.findIndex((c) => /\b(alerte|maintenant|ouverte)\b/.test(c.className));
-    const maintenant = Date.now();
-    if (urgente !== -1 && maintenant > pauseJusqua) indexVue = urgente;
-    else if (force !== true && maintenant >= prochaineRotation && maintenant > pauseJusqua) {
-      indexVue = (indexVue + 1) % cartes.length;
-      prochaineRotation = maintenant + ROTATION_S * 1000;
-    }
-    if (indexVue >= cartes.length) indexVue = 0;
-    if (force === true) prochaineRotation = maintenant + ROTATION_S * 1000;
-    toutes.forEach((c) => { if (c === cartes[indexVue]) c.dataset.vue = '1'; else delete c.dataset.vue; });
-    const z = document.getElementById('avenir-points');
-    points(cartes, indexVue);
-    if (z) z.hidden = cartes.length < 2;
+    const duCoach = document.body.dataset.coachObjectif;
+    const reste = cartes.filter((c, i) => !(i === 0 && duCoach && c.dataset.ev === duCoach));
+    if (reste[0]) reste[0].dataset.vue = '1';
+    reste.slice(1, 3).forEach((c) => { c.dataset.suite = '1'; });
   }
 
   // Chrono minimal : les commandes se déplient au survol ; au toucher, un appui sur l'heure les ouvre.
@@ -732,7 +837,8 @@
 
   function menuAlertes() {
     const d = el('details', 'contexte-panneaux contexte-alertes');
-    const resume = el('summary', null, '🔔 Alertes');
+    const resume = el('summary');
+    resume.append(DLN.icone('bell'), el('span', null, 'Alertes'));
     d.append(resume);
     const liste = el('div', 'contexte-panneaux-liste alertes-liste');
     const caseAlerte = (texte, aide, lireV, ecrireV) => {
@@ -822,15 +928,19 @@
 
   appliquerAffichage();
   Promise.all(['data/heroes.json', 'data/roles.json', 'data/conseils-roles.json', 'data/timeline.json', 'data/heros-details.json', 'data/map.json', 'data/counters.json']
-    .map(DLN.charger).concat([DLN.charger('data/niveaux.json').catch(() => null), DLN.charger('data/tempo.json').catch(() => null)])).then((r) => {
-    D = { heros: r[0], roles: r[1], conseils: r[2], timeline: r[3], details: r[4], carte: r[5], counters: r[6], niveaux: r[7], tempo: r[8] };
+    .map(DLN.charger).concat([DLN.charger('data/niveaux.json').catch(() => null), DLN.charger('data/tempo.json').catch(() => null),
+      DLN.charger('data/reapparition.json').catch(() => null), DLN.charger('data/items.json').catch(() => ({ objets: [] }))])).then((r) => {
+    D = { heros: r[0], roles: r[1], conseils: r[2], timeline: r[3], details: r[4], carte: r[5], counters: r[6], niveaux: r[7], tempo: r[8],
+      reapparition: r[9], objets: {} };
+    r[10].objets.forEach((o) => { D.objets[o.nom] = o; });
     dessinerContexte();
     dessinerPlan();
     ecouteurs.forEach((f) => f());
     setInterval(dessinerPlan, 1000);
     setInterval(surveiller, 500);
     setInterval(tourner, 500);
-    setInterval(() => { majMiniChrono(); dessinerObjectifs(); }, 1000);
+    setInterval(suivreAttente, 250);
+    setInterval(() => { majMiniChrono(); dessinerObjectifs(); dessinerReapparition(); }, 1000);
     appliquerAffichage();
     preparerHorloge();
     DLN.surNiveau(dessinerPlan);

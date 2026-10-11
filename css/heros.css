@@ -1,27 +1,27 @@
 /* Fiche héros : compléments à style.css (compétences bilingues, « Le contrer » en deux temps, builds publics). */
 
 /* Compétences */
-.nom-anglais { font-style: italic; font-weight: 400; font-size: .85em; opacity: .55; }
+.nom-anglais { font-style: italic; font-weight: 400; font-size: var(--t-s); opacity: .55; }
 .lien-demo {
   display: inline-block; margin-top: .4rem; padding: .1rem .6rem;
-  font-size: .85rem; color: var(--or-clair); text-decoration: none;
-  border: 1px solid var(--bord-fort); border-radius: 1em;
+  font-size: var(--t-s); color: var(--or-clair); text-decoration: none;
+  border: 1px solid var(--bord-fort); border-radius: var(--r-rond);
 }
 .lien-demo:hover { border-color: var(--or); color: var(--texte); }
 
 /* Le contrer : résumé puis détail replié */
-.contrer-resume { padding: .7rem .9rem; background: var(--fond-2); border: 1px solid var(--bord); border-left: .25rem solid var(--or); border-radius: .4rem; }
+.contrer-resume { padding: .7rem .9rem; background: var(--fond-2); border: 1px solid var(--bord); border-left: .25rem solid var(--or); border-radius: var(--r-m); }
 .contrer-resume h3 { margin: 0 0 .4rem; }
 .contrer-lignes { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .35rem; }
 .contrer-lignes li { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
 .contrer-fleche { color: var(--doux); }
 .contrer-objet {
   display: inline-flex; align-items: center; gap: .35rem;
-  padding: .05rem .55rem .05rem .2rem; font-size: .9rem;
-  border: 1px solid var(--obj, var(--bord)); border-radius: 1em;
+  padding: .05rem .55rem .05rem .2rem; font-size: var(--t-s);
+  border: 1px solid var(--obj, var(--bord)); border-radius: var(--r-rond);
 }
-.contrer-objet img { width: 1.4rem; height: 1.4rem; border-radius: .25rem; }
-.contrer-portee { margin: .6rem 0 0; color: var(--doux); font-size: .92rem; }
+.contrer-objet img { width: 1.4rem; height: 1.4rem; border-radius: var(--r-s); }
+.contrer-portee { margin: .6rem 0 0; color: var(--doux); font-size: var(--t-s); }
 .obj-weapon { --obj: var(--weapon); }
 .obj-vitality { --obj: var(--vitality); }
 .obj-spirit { --obj: var(--spirit); }
@@ -30,55 +30,55 @@ details.menace > summary { list-style: none; display: flex; flex-direction: colu
 details.menace > summary::-webkit-details-marker { display: none; }
 details.menace .menace-titre::before { content: "▸ "; color: var(--or); }
 details.menace[open] .menace-titre::before { content: "▾ "; }
-.menace-titre { font-family: var(--titre); font-size: 1.05rem; letter-spacing: .02em; }
-details.menace .menace-pourquoi { font-size: .9rem; }
+.menace-titre { font-family: var(--titre); font-size: var(--t-m); letter-spacing: .02em; }
+details.menace .menace-pourquoi { font-size: var(--t-s); }
 details.menace[open] > summary { margin-bottom: .4rem; }
 
 /* Builds publics */
-.build-public { margin-top: .5rem; padding: .5rem .7rem; background: var(--fond-2); border: 1px solid var(--bord); border-radius: .4rem; }
+.build-public { margin-top: .5rem; padding: .5rem .7rem; background: var(--fond-2); border: 1px solid var(--bord); border-radius: var(--r-m); }
 .build-public > summary { cursor: pointer; }
-.texte-auteur { margin: .4rem 0; font-size: .9rem; font-style: italic; color: var(--doux); }
+.texte-auteur { margin: .4rem 0; font-size: var(--t-s); font-style: italic; color: var(--doux); }
 .build-section { display: grid; grid-template-columns: 8rem minmax(0, 1fr); gap: .6rem; align-items: start; padding: .35rem 0; border-top: 1px solid var(--bord); }
-.build-section-titre { font-family: var(--titre); font-size: .85rem; letter-spacing: .04em; text-transform: uppercase; color: var(--or); }
+.build-section-titre { font-family: var(--titre); font-size: var(--t-s); letter-spacing: .04em; text-transform: uppercase; color: var(--or); }
 .build-objets { display: flex; flex-wrap: wrap; gap: .3rem; }
 .build-objet {
   display: inline-flex; align-items: center; gap: .3rem;
-  padding: .05rem .5rem .05rem .15rem; font-size: .82rem;
-  background: var(--panneau-2); border: 1px solid var(--obj, var(--bord)); border-radius: .35rem;
+  padding: .05rem .5rem .05rem .15rem; font-size: var(--t-xs);
+  background: var(--panneau-2); border: 1px solid var(--obj, var(--bord)); border-radius: var(--r-m);
 }
-.build-objet img { width: 1.5rem; height: 1.5rem; border-radius: .2rem; }
+.build-objet img { width: 1.5rem; height: 1.5rem; border-radius: var(--r-s); }
 .build-objet.actif { box-shadow: inset 0 0 0 1px var(--alerte); }
 @media (max-width: 700px) {
   .build-section { grid-template-columns: minmax(0, 1fr); }
 }
 
 /* Son arme : en tête de l'onglet Compétences */
-.arme { margin-bottom: 1rem; padding: .9rem 1rem; background: var(--panneau); border: 1px solid var(--bord); border-left: .3rem solid var(--weapon, var(--or)); border-radius: .5rem; display: flex; flex-direction: column; gap: .8rem; }
-.arme h3 { margin: 0; font-size: 1.2rem; }
-.arme h4 { margin: 0 0 .35rem; font-size: 1rem; display: flex; align-items: center; gap: .5rem; }
+.arme { margin-bottom: 1rem; padding: .9rem 1rem; background: var(--panneau); border: 1px solid var(--bord); border-left: .3rem solid var(--weapon, var(--or)); border-radius: var(--r-m); display: flex; flex-direction: column; gap: .8rem; }
+.arme h3 { margin: 0; font-size: var(--t-l); }
+.arme h4 { margin: 0 0 .35rem; font-size: var(--t-m); display: flex; align-items: center; gap: .5rem; }
 .arme-tete { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .4rem .8rem; }
 .arme-types { display: flex; flex-wrap: wrap; gap: .3rem; }
 .arme-type { cursor: help; }
 .arme-chiffres { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .5rem; }
 @media (max-width: 900px) { .arme-chiffres { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-.arme-chiffre { display: flex; flex-direction: column; gap: .15rem; padding: .5rem .65rem; background: var(--fond-2); border: 1px solid var(--bord); border-radius: .4rem; }
-.arme-chiffre-nom { font-family: var(--titre); text-transform: uppercase; letter-spacing: .05em; font-size: .78rem; color: var(--doux); }
-.arme-chiffre-valeur { font-family: var(--titre); font-size: 1.55rem; line-height: 1.1; color: var(--texte); font-variant-numeric: tabular-nums; }
-.arme-chiffre-aide { font-size: .84rem; line-height: 1.35; color: var(--doux); }
-.arme-rang { display: flex; align-items: center; gap: .45rem; margin-top: auto; padding-top: .25rem; font-size: .78rem; color: var(--doux); }
-.arme-rang-jauge { flex: 1; height: .35rem; background: var(--panneau-2); border-radius: .2rem; overflow: hidden; }
+.arme-chiffre { display: flex; flex-direction: column; gap: .15rem; padding: .5rem .65rem; background: var(--fond-2); border: 1px solid var(--bord); border-radius: var(--r-m); }
+.arme-chiffre-nom { font-family: var(--titre); text-transform: uppercase; letter-spacing: .05em; font-size: var(--t-xs); color: var(--doux); }
+.arme-chiffre-valeur { font-family: var(--titre); font-size: var(--t-xl); line-height: 1.1; color: var(--texte); font-variant-numeric: tabular-nums; }
+.arme-chiffre-aide { font-size: var(--t-xs); line-height: 1.35; color: var(--doux); }
+.arme-rang { display: flex; align-items: center; gap: .45rem; margin-top: auto; padding-top: .25rem; font-size: var(--t-xs); color: var(--doux); }
+.arme-rang-jauge { flex: 1; height: .35rem; background: var(--panneau-2); border-radius: var(--r-s); overflow: hidden; }
 .arme-rang-plein { display: block; height: 100%; background: var(--weapon, var(--or)); }
 .arme-rang-texte { white-space: nowrap; font-variant-numeric: tabular-nums; }
 .arme-conseils ul { margin: 0; padding-left: 1.2rem; display: flex; flex-direction: column; gap: .3rem; line-height: 1.45; }
 .arme-conseils strong { color: var(--or-clair); }
 .arme-note strong { color: var(--or); }
-.arme-source { font-size: .78rem; color: var(--doux); font-style: italic; }
+.arme-source { font-size: var(--t-xs); color: var(--doux); font-style: italic; }
 .arme-source::before { content: '— '; }
-.arme-secondaire { padding: .5rem .7rem; background: var(--fond-2); border: 1px dashed var(--bord-fort); border-radius: .4rem; }
+.arme-secondaire { padding: .5rem .7rem; background: var(--fond-2); border: 1px dashed var(--bord-fort); border-radius: var(--r-m); }
 .arme-secondaire p { margin: 0; line-height: 1.45; }
 .arme-plus > summary { cursor: pointer; color: var(--or-clair); }
 .arme-plus[open] > summary { margin-bottom: .4rem; }
-.arme-details-liste { list-style: none; margin: 0 0 .5rem; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr)); gap: .2rem 1.2rem; font-size: .92rem; }
+.arme-details-liste { list-style: none; margin: 0 0 .5rem; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr)); gap: .2rem 1.2rem; font-size: var(--t-s); }
 .arme-details-liste li { display: flex; justify-content: space-between; gap: .8rem; border-bottom: 1px solid var(--bord); padding: .15rem 0; }
 .arme-details-liste strong { text-align: right; font-weight: 600; }
 .arme .aide { margin: 0; }
@@ -88,7 +88,7 @@ details.menace[open] > summary { margin-bottom: .4rem; }
 .melee { border-left-color: var(--vitality, var(--or)); }
 .melee .arme-rang-plein { background: var(--vitality, var(--or)); }
 .melee-verdict.fort { color: var(--or-clair); border-color: var(--or); }
-.melee-preuve { color: var(--doux); font-size: .92rem; }
+.melee-preuve { color: var(--doux); font-size: var(--t-s); }
 .melee-regles { margin: 0; padding-left: 1.2rem; display: flex; flex-direction: column; gap: .3rem; line-height: 1.45; }
 
 /* Builds importés (js/builds-perso.js) */
