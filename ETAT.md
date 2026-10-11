@@ -2,7 +2,7 @@
 type: etat
 projet: DeadLock Noob
 depot: DeadLock_Noob
-maj: 2026-10-06
+maj: 2026-10-11
 ---
 # DeadLock Noob — état des lieux
 
@@ -22,10 +22,13 @@ Tout est poussé et publié ; rien n'a encore été essayé en partie réelle.
 | Mise à jour de patch | 🟢 | prochain patch | `docs/maj-patch.md` |
 | Données en direct pendant la partie | 🔴 | pas de source légère confirmée (Overwolf = gros chantier ; test `-condebug` à faire) | `docs/coach-donnees.md` |
 | Quiz « Entraînement » (gamifié, lié aux points faibles) | 🔴 | brief à écrire | compte rendu Obsidian du 2026-10-06 |
+| Agent juge (boucle constructeur / juge sur En partie) | 🟡 | besoin à finir de définir avec l'utilisateur | `docs/brief-juge.md`, `docs/ressources-ui.md` |
 | Traduction anglaise | 🟡 | seulement navigation, parcours, leçons | `CLAUDE.md` §Langues |
 
 ## Prochaine étape
-Essayer le site pendant de vraies parties (second écran 1080p et téléphone), puis corriger ce qui gêne : rappels du coach, horaires incertains, lisibilité de la carte.
+Reprendre `docs/brief-juge.md` (questions ouvertes), créer `.claude/agents/juge-partie.md`, puis premier passage du juge sur l'onglet Mort (écran d'attente de réapparition).
+
+Ensuite : Essayer le site pendant de vraies parties (second écran 1080p et téléphone), puis corriger ce qui gêne : rappels du coach, horaires incertains, lisibilité de la carte.
 
 ## Carte du dépôt
 - Vue d'ensemble, règles, fichiers de données : lire `CLAUDE.md`, puis `README.md` pour le cadrage.
@@ -53,6 +56,7 @@ Essayer le site pendant de vraies parties (second écran 1080p et téléphone), 
 - Positionnement : apprendre (parcours, coach, leçons), pas un site de stats ; site public multilingue.
 
 ## Journal
+- 2026-10-11 — Brief de l'agent juge (parcours en partie seconde par seconde, coup d'œil / attente de mort) et liste de ressources UI.
 - 2026-10-06 — En partie : coach selon le profil du joueur (zones de mort, points faibles), avant/après la partie, version téléphone.
 - 2026-10-06 — Fiches héros : blocs Arme et Corps à corps sous les compétences ; textes passifs ; achats pour les 39 héros ; procédure `docs/maj-patch.md`.
 - 2026-10-06 — Progression : profil du joueur, synchro, journaux de l'outil d'ingestion.

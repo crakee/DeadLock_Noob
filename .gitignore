@@ -20,3 +20,7 @@ outils/.cle_elevenlabs
 
 # Réglages Claude Code propres à cette machine (hook vers le vault Obsidian)
 .claude/settings.local.json
+
+# Captures d'applications tierces (Deadlock Labs) : inspiration, pseudos d'autres joueurs
+docs/dl*.png
+docs/petitjeu.png
