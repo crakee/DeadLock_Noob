@@ -760,35 +760,8 @@ main.partie {
 .heros-case.mien img { box-shadow: 0 0 0 2px var(--or); }
 .heros-case.choisi { border-color: var(--or); color: var(--texte); background: var(--alerte-fond); }
 
-/* bandeau du héros */
+/* tête de fiche (détail dans css/heros.css) */
 .fiche-heros { display: flex; flex-direction: column; gap: 1rem; min-width: 0; }
-.bandeau {
-  position: relative;
-  display: grid;
-  grid-template-columns: 9rem minmax(0, 1fr);
-  gap: 1.3rem;
-  padding: 1.1rem 1.3rem;
-  overflow: hidden;
-  background:
-    linear-gradient(90deg, rgba(12, 10, 8, .2), var(--panneau) 45%),
-    var(--panneau-2);
-  border: 1px solid var(--bord-fort);
-  border-radius: var(--rayon);
-}
-.bandeau::after {
-  content: "";
-  position: absolute;
-  inset: .35rem;
-  border: 1px solid rgba(217, 178, 91, .18);
-  border-radius: var(--r-m);
-  pointer-events: none;
-}
-.bandeau-portrait { width: 9rem; aspect-ratio: 3 / 4; object-fit: cover; border-radius: var(--r-m); background: var(--fond); }
-.bandeau-titre { display: flex; flex-wrap: wrap; align-items: baseline; gap: .3rem 1rem; }
-.bandeau-titre h1 { font-size: var(--t-xxl); color: var(--or-clair); }
-.bandeau-accroche { margin: .1rem 0 .3rem; font-size: var(--t-m); color: var(--doux); font-style: italic; }
-.bandeau-actions { display: flex; flex-wrap: wrap; gap: .4rem; margin-left: auto; position: relative; z-index: 1; }
-
 .stats-bande { display: flex; flex-wrap: wrap; gap: .4rem 1.8rem; margin: .6rem 0 .2rem; }
 .stat { display: flex; flex-direction: column; }
 .stat-valeur { font-family: var(--titre); font-size: var(--t-xl); font-weight: 500; line-height: 1.1; font-variant-numeric: tabular-nums; }
@@ -816,13 +789,9 @@ main.partie {
 .fiche-onglet .compte { margin-left: .35rem; font-family: var(--corps); font-size: var(--t-xs); color: var(--doux); }
 
 .fiche-contenu { display: flex; flex-direction: column; gap: 1rem; }
-.deux-colonnes { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(22rem, 100%), 1fr)); gap: 1rem; align-items: start; }
+.deux-colonnes { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(22rem, 100%), 1fr)); gap: 1rem 2.5rem; align-items: start; }
 .texte-anglais { font-size: var(--t-m); line-height: 1.55; color: var(--texte); }
 
-.encadre { padding: .7rem .9rem; background: var(--fond-2); border: 1px solid var(--bord); border-left: .25rem solid var(--or); border-radius: var(--r-m); }
-.encadre h3 { margin: 0 0 .3rem; font-size: var(--t-m); }
-.encadre.danger { border-left-color: var(--danger); }
-.encadre.bon { border-left-color: var(--bon); }
 .fiche-ligne { margin: .3rem 0; }
 .fiche-ligne strong { color: var(--or); font-weight: 600; }
 .liste-points { margin: .3rem 0; padding-left: 1.2rem; }
@@ -894,18 +863,9 @@ main.partie {
 .matchup-ecart { font-family: var(--titre); font-size: var(--t-m); font-variant-numeric: tabular-nums; }
 .matchup-pourquoi { display: block; font-size: var(--t-s); color: var(--doux); }
 
-/* patch dans la fiche */
-.patch-ligne { padding: .5rem .8rem; background: var(--fond-2); border-left: .25rem solid var(--bord-fort); border-radius: var(--r-s); }
-.patch-ligne.buffs { border-left-color: var(--bon); }
-.patch-ligne.nerfs { border-left-color: var(--danger); }
-.patch-ligne .aide { display: block; }
-
 @media (max-width: 1000px), (orientation: portrait) {
   .page-heros { grid-template-columns: minmax(0, 1fr); }
   .choix-colonne { position: static; max-height: none; }
-  .bandeau { grid-template-columns: 5.5rem minmax(0, 1fr); }
-  .bandeau-portrait { width: 5.5rem; }
-  .bandeau-titre h1 { font-size: var(--t-xl); }
 }
 
 /* ====================================================================
@@ -1146,10 +1106,6 @@ main.partie {
 .heros-style { color: var(--doux); }
 .meta-table td:first-child { width: 10.5rem; white-space: nowrap; }
 
-/* Écran étroit : la liste des héros reste courte pour laisser voir la fiche. */
-@media (max-width: 1000px), (orientation: portrait) {
-  .choix-colonne #liste { max-height: 13rem; overflow-y: auto; }
-}
 .espace { white-space: nowrap; }
 @media (max-width: 500px) {
   .logo { display: none; }
@@ -1173,3 +1129,21 @@ main.partie {
 /* Pied de page replié : provenance en infobulle (js/commun.js replierMeta). */
 .meta-info { display: inline-flex; align-items: center; gap: .3rem; color: var(--doux); font-size: var(--t-xs); cursor: help; }
 .meta-info:focus-visible { outline: 2px solid var(--or); outline-offset: 2px; }
+
+/* ====================================================================
+   COMPOSANT « OBJET » commun (DLN.objetCarte) : icône 48 px, nom, prix en or, carré de catégorie
+   ==================================================================== */
+.objets-cartes { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); gap: .5rem .9rem; }
+.objet-carte { --obj: var(--doux); display: grid; grid-template-columns: 3rem minmax(0, 1fr); gap: .65rem; align-items: center; min-width: 0; }
+.objet-carte-icone { position: relative; width: 3rem; height: 3rem; padding: .3rem; object-fit: contain; background: var(--panneau-2); border-radius: var(--r-s); box-shadow: inset 0 -3px 0 var(--obj); }
+.objet-carte-corps { display: flex; flex-direction: column; min-width: 0; line-height: 1.3; }
+.objet-carte-nom { font-weight: 600; overflow-wrap: anywhere; }
+.objet-carte-prix { font-family: var(--titre); font-size: var(--t-s); color: var(--or); font-variant-numeric: tabular-nums; letter-spacing: .03em; }
+.objet-carte-actif { font-family: var(--corps); color: var(--doux); }
+.objet-carte-sous { font-size: var(--t-s); color: var(--doux); }
+.objet-carte-sous .jauge-achat { display: block; max-width: 8rem; }
+.objet-carte.obj-weapon { --obj: var(--weapon); }
+.objet-carte.obj-vitality { --obj: var(--vitality); }
+.objet-carte.obj-spirit { --obj: var(--spirit); }
+/* Petit carré de couleur : Weapon / Vitality / Spirit, jamais en contour. */
+.carre { display: inline-block; width: .6em; height: .6em; margin-right: .4em; vertical-align: .05em; background: var(--obj, var(--doux)); border-radius: 2px; }

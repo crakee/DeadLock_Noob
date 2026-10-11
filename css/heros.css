@@ -1,16 +1,103 @@
-/* Fiche héros : compléments à style.css (compétences bilingues, « Le contrer » en deux temps, builds publics). */
+/* Fiche héros (refonte 2026-10-11, docs/refonte-front.md) : pas de boîte dans une boîte, un bloc = un titre
+   et son contenu séparés par l'espace ; rouge réservé à ce qui menace ; orange seulement sur « Ajouter en face ». */
+
+/* ---------- liste : chaque héros une fois ---------- */
+.mes-heros { display: flex; flex-direction: column; gap: .5rem; margin: .8rem 0 .2rem; }
+.mes-heros-ligne { display: flex; flex-direction: column; gap: .25rem; }
+.mes-heros-nom { font-family: var(--titre); font-size: var(--t-xs); letter-spacing: .12em; text-transform: uppercase; color: var(--etiquette, var(--or)); }
+.mes-heros-portraits { display: flex; flex-wrap: wrap; gap: .3rem; }
+.heros-case.compact { padding: 2px; background: none; border: 2px solid transparent; }
+.heros-case.compact img { width: 2.5rem; height: 2.5rem; }
+.heros-case.compact.choisi { border-color: var(--or); background: none; }
+.heros-case.choisi { background: var(--panneau-2); }
+.tous-heros { display: none; }
+.btn.en-face .court { display: none; }
+
+/* ---------- tête de fiche ---------- */
+.bandeau { display: grid; grid-template-columns: 8rem minmax(0, 1fr); gap: 1.4rem; align-items: start; padding-bottom: .4rem; }
+.bandeau-portrait { width: 8rem; aspect-ratio: 3 / 4; object-fit: cover; border-radius: var(--r-m); background: var(--panneau-2); }
+.bandeau-corps { min-width: 0; }
+.bandeau-titre { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem .8rem; }
+.bandeau-titre h1 { margin: 0; font-size: var(--t-xxl); line-height: 1; color: var(--or-clair); }
+.bandeau-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; margin-left: auto; }
+.bandeau-accroche { margin: .3rem 0 .2rem; color: var(--doux); font-style: italic; }
+.bandeau-identite { display: flex; flex-wrap: wrap; align-items: baseline; gap: .2rem .5rem; margin: 0; font-size: var(--t-s); color: var(--doux); }
+.bandeau-identite .sep { color: var(--bord-fort); }
+.bandeau-identite a { color: var(--texte); }
+.bandeau-identite a.lien-wiki { color: var(--doux); }
+.type-degats.weapon { --obj: var(--weapon); }
+.type-degats.spirit { --obj: var(--spirit); }
+.type-degats.mixte { --obj: linear-gradient(90deg, var(--weapon) 50%, var(--spirit) 50%); }
+.type-degats.mixte .carre { background: linear-gradient(90deg, var(--weapon) 50%, var(--spirit) 50%); }
+.bandeau .stats-bande { gap: .4rem 2.6rem; margin-top: .9rem; }
+.bandeau .stat-valeur { font-size: var(--t-xxl); font-weight: 600; }
+.bandeau .stat.pv .stat-valeur { color: var(--vitality); }
+.bandeau .stat.dps .stat-valeur { color: var(--weapon); }
+.bandeau .stat { cursor: help; }
+
+.btn .icone, .lien-demo .icone, .competence-recharge .icone, .contrer-portee .icone { width: 1em; height: 1em; vertical-align: -.15em; }
+.btn.en-face { display: inline-flex; align-items: center; gap: .4rem; min-height: 2.75rem; border-color: var(--action); color: var(--action); background: transparent; }
+.btn.en-face.dedans { background: var(--action); color: #1a1206; }
+.etiqueter { position: relative; }
+.etiqueter > summary { display: inline-flex; align-items: center; gap: .3rem; min-height: 2.75rem; list-style: none; }
+.etiqueter > summary::-webkit-details-marker { display: none; }
+.etiqueter[open] > summary .icone { transform: rotate(180deg); }
+.etiqueter-panneau { position: absolute; right: 0; top: calc(100% + .3rem); z-index: 5; width: min(20rem, 80vw); padding: .6rem; background: var(--panneau); border: 1px solid var(--bord-fort); border-radius: var(--r-m); box-shadow: 0 12px 32px rgba(0, 0, 0, .55); }
+.bandeau-titre .etiquettes { gap: .3rem; }
+
+/* ---------- blocs : un titre, son contenu, de l'espace ---------- */
+.colonne { display: flex; flex-direction: column; gap: 1.6rem; min-width: 0; }
+.bloc { min-width: 0; }
+.bloc > h2, .titre-section { margin: 0 0 .5rem; font-size: var(--t-l); color: var(--or-clair); }
+.bloc > h3 { margin: .6rem 0 .3rem; font-size: var(--t-m); }
+.bloc .source, .fiche-contenu .source { margin: .5rem 0 0; font-size: var(--t-xs); color: var(--doux); max-width: 70ch; }
+.bloc .chapo { margin: -.2rem 0 .6rem; color: var(--doux); }
+.jouer-lignes { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: .45rem 1rem; margin: 0; }
+.jouer-lignes dt { font-family: var(--titre); font-size: var(--t-s); letter-spacing: .06em; text-transform: uppercase; color: var(--or); padding-top: .1rem; }
+.jouer-lignes dd { margin: 0; line-height: 1.5; max-width: 65ch; }
+.bloc.dangers > h2 { color: var(--danger); }
+.bloc.dangers strong { color: var(--texte); }
+details.description > summary { cursor: pointer; color: var(--doux); font-size: var(--t-s); }
+details.description[open] > summary { margin-bottom: .3rem; }
+.table td.haut { color: var(--bon); }
+.table td.bas { color: var(--danger); }
+.patch-ligne h3 { margin: 0; font-size: var(--t-m); }
+.patch-ligne .aide { display: block; }
+.marque.sens-buffs { color: var(--bon); }
+.marque.sens-nerfs { color: var(--danger); }
+.builds-phase h3 { margin: 0 0 .6rem; }
+.builds-phase .objets-cartes { grid-template-columns: minmax(0, 1fr); }
+
+@media (max-width: 1000px), (orientation: portrait) {
+  /* La liste se replie en champ de recherche + « mes héros » ; la fiche vient tout de suite après. */
+  .choix-colonne { padding: .6rem; }
+  .choix-colonne .liste-roles { display: none; }
+  .choix-colonne.ouverte .liste-roles, .choix-colonne.filtree .liste-roles { display: block; }
+  .mes-heros { flex-direction: row; flex-wrap: wrap; gap: .4rem 1rem; margin: .5rem 0 0; }
+  .tous-heros { display: inline-flex; align-items: center; gap: .3rem; min-height: 2.75rem; margin-top: .3rem; }
+  .choix-colonne.ouverte .tous-heros .icone { transform: rotate(180deg); }
+  .heros-case.compact img { width: 2.6rem; height: 2.6rem; }
+  .bandeau { grid-template-columns: 5rem minmax(0, 1fr); gap: .9rem; }
+  .bandeau-portrait { width: 5rem; }
+  .bandeau-titre h1 { font-size: var(--t-xl); }
+  .bandeau-actions { margin-left: 0; width: 100%; }
+  .bandeau .stats-bande { grid-column: 1 / -1; gap: .4rem 1.6rem; }
+  .bandeau .stat-valeur { font-size: var(--t-xl); }
+  .jouer-lignes { grid-template-columns: minmax(0, 1fr); gap: .1rem; }
+  .jouer-lignes dd { margin-bottom: .4rem; }
+}
+
 
 /* Compétences */
 .nom-anglais { font-style: italic; font-weight: 400; font-size: var(--t-s); opacity: .55; }
 .lien-demo {
-  display: inline-block; margin-top: .4rem; padding: .1rem .6rem;
+  display: inline-flex; align-items: center; gap: .35rem; margin-top: .4rem; min-height: 2.75rem;
   font-size: var(--t-s); color: var(--or-clair); text-decoration: none;
-  border: 1px solid var(--bord-fort); border-radius: var(--r-rond);
 }
-.lien-demo:hover { border-color: var(--or); color: var(--texte); }
+.lien-demo:hover { color: var(--texte); text-decoration: underline; }
 
 /* Le contrer : résumé puis détail replié */
-.contrer-resume { padding: .7rem .9rem; background: var(--fond-2); border: 1px solid var(--bord); border-left: .25rem solid var(--or); border-radius: var(--r-m); }
+.contrer-resume { padding: .9rem 1.1rem; background: var(--panneau); border-radius: var(--r-m); }
 .contrer-resume h3 { margin: 0 0 .4rem; }
 .contrer-lignes { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .35rem; }
 .contrer-lignes li { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
@@ -21,7 +108,8 @@
   border: 1px solid var(--obj, var(--bord)); border-radius: var(--r-rond);
 }
 .contrer-objet img { width: 1.4rem; height: 1.4rem; border-radius: var(--r-s); }
-.contrer-portee { margin: .6rem 0 0; color: var(--doux); font-size: var(--t-s); }
+.contrer-portee { display: flex; gap: .45rem; margin: .7rem 0 0; color: var(--doux); font-size: var(--t-s); }
+.contrer-portee .icone { flex: none; margin-top: .2rem; color: var(--or); }
 .obj-weapon { --obj: var(--weapon); }
 .obj-vitality { --obj: var(--vitality); }
 .obj-spirit { --obj: var(--spirit); }
@@ -35,33 +123,26 @@ details.menace .menace-pourquoi { font-size: var(--t-s); }
 details.menace[open] > summary { margin-bottom: .4rem; }
 
 /* Builds publics */
-.build-public { margin-top: .5rem; padding: .5rem .7rem; background: var(--fond-2); border: 1px solid var(--bord); border-radius: var(--r-m); }
+.build-public { padding: .55rem 0; border-top: 1px solid var(--bord); }
+.build-public > summary { min-height: 2.75rem; }
 .build-public > summary { cursor: pointer; }
 .texte-auteur { margin: .4rem 0; font-size: var(--t-s); font-style: italic; color: var(--doux); }
 .build-section { display: grid; grid-template-columns: 8rem minmax(0, 1fr); gap: .6rem; align-items: start; padding: .35rem 0; border-top: 1px solid var(--bord); }
 .build-section-titre { font-family: var(--titre); font-size: var(--t-s); letter-spacing: .04em; text-transform: uppercase; color: var(--or); }
-.build-objets { display: flex; flex-wrap: wrap; gap: .3rem; }
-.build-objet {
-  display: inline-flex; align-items: center; gap: .3rem;
-  padding: .05rem .5rem .05rem .15rem; font-size: var(--t-xs);
-  background: var(--panneau-2); border: 1px solid var(--obj, var(--bord)); border-radius: var(--r-m);
-}
-.build-objet img { width: 1.5rem; height: 1.5rem; border-radius: var(--r-s); }
-.build-objet.actif { box-shadow: inset 0 0 0 1px var(--alerte); }
 @media (max-width: 700px) {
   .build-section { grid-template-columns: minmax(0, 1fr); }
 }
 
 /* Son arme : en tête de l'onglet Compétences */
-.arme { margin-bottom: 1rem; padding: .9rem 1rem; background: var(--panneau); border: 1px solid var(--bord); border-left: .3rem solid var(--weapon, var(--or)); border-radius: var(--r-m); display: flex; flex-direction: column; gap: .8rem; }
+.arme { margin-bottom: 1rem; padding: .9rem 1.1rem; background: var(--panneau); border-radius: var(--r-m); display: flex; flex-direction: column; gap: .8rem; }
 .arme h3 { margin: 0; font-size: var(--t-l); }
 .arme h4 { margin: 0 0 .35rem; font-size: var(--t-m); display: flex; align-items: center; gap: .5rem; }
 .arme-tete { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .4rem .8rem; }
 .arme-types { display: flex; flex-wrap: wrap; gap: .3rem; }
 .arme-type { cursor: help; }
-.arme-chiffres { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .5rem; }
+.arme-chiffres { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem 1.4rem; }
 @media (max-width: 900px) { .arme-chiffres { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-.arme-chiffre { display: flex; flex-direction: column; gap: .15rem; padding: .5rem .65rem; background: var(--fond-2); border: 1px solid var(--bord); border-radius: var(--r-m); }
+.arme-chiffre { display: flex; flex-direction: column; gap: .15rem; }
 .arme-chiffre-nom { font-family: var(--titre); text-transform: uppercase; letter-spacing: .05em; font-size: var(--t-xs); color: var(--doux); }
 .arme-chiffre-valeur { font-family: var(--titre); font-size: var(--t-xl); line-height: 1.1; color: var(--texte); font-variant-numeric: tabular-nums; }
 .arme-chiffre-aide { font-size: var(--t-xs); line-height: 1.35; color: var(--doux); }
@@ -74,7 +155,7 @@ details.menace[open] > summary { margin-bottom: .4rem; }
 .arme-note strong { color: var(--or); }
 .arme-source { font-size: var(--t-xs); color: var(--doux); font-style: italic; }
 .arme-source::before { content: '— '; }
-.arme-secondaire { padding: .5rem .7rem; background: var(--fond-2); border: 1px dashed var(--bord-fort); border-radius: var(--r-m); }
+.arme-secondaire { padding-top: .6rem; border-top: 1px solid var(--bord); }
 .arme-secondaire p { margin: 0; line-height: 1.45; }
 .arme-plus > summary { cursor: pointer; color: var(--or-clair); }
 .arme-plus[open] > summary { margin-bottom: .4rem; }
@@ -85,7 +166,6 @@ details.menace[open] > summary { margin-bottom: .4rem; }
 
 /* Corps à corps : même gabarit que l'arme */
 .arme { margin: 1rem 0 0; }
-.melee { border-left-color: var(--vitality, var(--or)); }
 .melee .arme-rang-plein { background: var(--vitality, var(--or)); }
 .melee-verdict.fort { color: var(--or-clair); border-color: var(--or); }
 .melee-preuve { color: var(--doux); font-size: var(--t-s); }
@@ -98,3 +178,70 @@ details.menace[open] > summary { margin-bottom: .4rem; }
 .build-trouve .btn { margin-left: auto; }
 .build-actions { display: flex; gap: .5rem; margin: .4rem 0 .6rem; }
 .build-suivi { margin-left: .5rem; }
+.build-objets { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 13rem), 1fr)); gap: .45rem .9rem; }
+.fiche-heros .objets-groupe { padding-left: 0; border-left: 0; }
+.fiche-heros .objets-groupe h4 { color: var(--texte); }
+.fiche-heros .objets-groupe .objets-cartes { grid-template-columns: minmax(0, 1fr); }
+.objet-quand { color: var(--texte); }
+.heros-case { background: none; }
+.heros-case:hover { background: var(--panneau-2); }
+.carre { border-radius: var(--r-s); }
+@media (max-width: 1000px), (orientation: portrait) {
+  .choix-colonne { display: flex; flex-direction: column; }
+  .choix-colonne #liste { order: 1; }
+  .choix-colonne .tous-heros { order: 2; align-self: flex-start; }
+  .bandeau-actions { width: auto; margin-left: 0; }
+  .btn.en-face .large { display: none; }
+  .btn.en-face .court { display: inline; }
+}
+/* Le contrer : une ligne par menace, l'objet le moins cher à côté ; détail replié sans cadre. */
+.contrer-resume > h2 { margin: 0 0 .7rem; font-size: var(--t-l); color: var(--or-clair); }
+.contrer-lignes { display: grid; grid-template-columns: minmax(0, 1fr); gap: .6rem; }
+.contrer-lignes li { display: grid; grid-template-columns: minmax(10rem, 16rem) minmax(0, 1fr); align-items: center; gap: .4rem 1rem; }
+.contrer-lignes li > strong { color: var(--danger); }
+.fiche-heros .menace { padding: .8rem 0; background: none; border: 0; border-top: 1px solid var(--bord); border-radius: 0; }
+.fiche-heros details.menace > summary { cursor: pointer; min-height: 2.75rem; justify-content: center; }
+.fiche-heros details.menace .menace-titre::before { content: none; }
+.fiche-heros .menace-titre { display: flex; align-items: center; gap: .4rem; font-size: var(--t-l); }
+.fiche-heros .menace-reponse { padding: 0; background: none; }
+@media (max-width: 600px) {
+  .contrer-lignes li { grid-template-columns: minmax(0, 1fr); gap: .3rem; }
+}
+.fiche-heros details.menace .chevron { color: var(--or); transform: rotate(-90deg); transition: transform var(--duree); }
+.fiche-heros details.menace[open] .chevron { transform: none; }
+
+/* ---------- tour 2 (juge-slop) ---------- */
+.stat-nom .carre { vertical-align: .1em; }
+.bandeau .stat.pv .stat-valeur, .bandeau .stat.dps .stat-valeur { color: var(--texte); }
+.tier-puce { color: var(--texte); text-decoration: none; }
+.tier-puce strong { font-family: var(--titre); letter-spacing: .04em; color: var(--tier, var(--texte)); }
+.tier-puce:hover { text-decoration: underline; }
+.tier-S { --tier: var(--or-clair); }
+.tier-A { --tier: var(--or); }
+.tier-B { --tier: var(--texte); }
+.tier-C { --tier: var(--doux); }
+.tier-D { --tier: var(--danger); }
+.tier-cellule { font-family: var(--titre); font-weight: 600; color: var(--tier); }
+.contrer-sans-objet { color: var(--doux); font-size: var(--t-s); }
+.fiche-heros details.menace .menace-pourquoi { margin: 0 0 .4rem; color: var(--texte); }
+.gros-achat .objet-carte-nom { color: var(--or-clair); }
+.etoile { margin-left: .3rem; color: var(--or); fill: currentColor; vertical-align: -.1em; }
+/* Compétences : un filet au lieu d'une carte. */
+.fiche-heros .competences { gap: 0 2.5rem; }
+.fiche-heros .competence { padding: 1rem 0; background: none; border: 0; border-top: 1px solid var(--bord); border-radius: 0; }
+.melee .arme-rang-plein { background: var(--or); }
+.arme-rang-plein { background: var(--or); }
+@media (max-width: 1000px), (orientation: portrait) {
+  .fiche-onglets { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+  .fiche-onglet { white-space: nowrap; padding-inline: .7rem; }
+}
+@media (max-width: 600px) {
+  .choix-colonne.panneau { padding: 0; background: none; border: 0; }
+  .mes-heros { flex-direction: row; gap: .3rem; }
+  .mes-heros-ligne { flex-direction: row; }
+  .mes-heros-nom { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .bandeau-accroche { display: none; }
+  .builds-phase .objets-cartes, .build-objets { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .objet-carte { grid-template-columns: 2.5rem minmax(0, 1fr); gap: .45rem; }
+  .objet-carte-icone { width: 2.5rem; height: 2.5rem; }
+}

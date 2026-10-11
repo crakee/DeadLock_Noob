@@ -8,14 +8,14 @@ maj: 2026-10-11
 
 ## En bref
 Site statique (HTML/JS sans compilation) pour apprendre Deadlock et s'aider en partie : chrono et coach sur second écran, fiches héros, parcours débutant, analyse de ses parties.
-En ligne : https://crakee.github.io/DeadLock_Noob/ (branche `gh-pages`). Patch en place : City Never Sleeps (29 septembre 2026).
+En ligne : https://crakee.github.io/DeadLock_Noob/ (branche `gh-pages`). Patch en place : Make Your Move (9 octobre 2026 ; équilibrage du 5 octobre, héros Rat King, Baba et Solomon), stats depuis le 7 octobre.
 Tout est poussé et publié ; rien n'a encore été essayé en partie réelle.
 
 ## Où on en est
 | Chantier | État | Bloqué par | Détail |
 |---|---|---|---|
 | En partie (chrono, coach sans clic, carte, profil du joueur) | 🟡 | essai en partie réelle | `CLAUDE.md` §État, `js/partie.js`, `js/coach.js`, `js/carte-mini.js` |
-| Fiches héros (compétences, arme, corps à corps, counters) | 🟢 | — | `js/heros.js`, `data/armes.json`, `data/armes-conseils.json` |
+| Fiches héros (compétences, arme, corps à corps, counters) + Tier list par rang | 🟡 | refonte : tour 2 du juge-slop à passer | `tiers.html`, `js/tiers.js`, `js/heros.js`, `data/armes.json`, `data/armes-conseils.json` |
 | Parcours débutant et leçons | 🟢 | — | `js/parcours.js`, `data/parcours.json`, `data/lecons.json` |
 | Progression (analyse des parties, coach perso) | 🟡 | parties visibles par l'API (outil d'ingestion) | `docs/recuperer-ses-parties.md`, `js/mes-parties*.js` |
 | Timings du chrono | 🟡 | horaires `incertain` à vérifier en jeu (Unstable Rift) | `data/timeline.json`, `collecte/timings-brut.md` |
@@ -24,11 +24,11 @@ Tout est poussé et publié ; rien n'a encore été essayé en partie réelle.
 | Quiz « Entraînement » (gamifié, lié aux points faibles) | 🔴 | brief à écrire | compte rendu Obsidian du 2026-10-06 |
 | Agent juge (boucle constructeur / juge sur En partie) | 🟡 | premier passage à blanc à analyser avec l'utilisateur | `.claude/agents/juge-partie.md`, `docs/brief-juge.md`, `outils/juge/` |
 | Builds importés (numéro, lien ou nom ; suivi par le coach) | 🟢 | à essayer en partie | `js/builds-perso.js`, onglet Builds de la fiche héros |
-| Refonte du front (anti « IA slop », fluide, user first) | 🟡 | En partie terminée (3 tours, validée par les juges) ; prochaine page : fiche héros | `.claude/agents/juge-slop.md`, `outils/juge/pages.mjs` |
+| Refonte du front (anti « IA slop », fluide, user first) | 🟡 | En partie terminée ; fiche héros au tour 2 sur 3 | `.claude/agents/juge-slop.md`, `outils/juge/pages.mjs` |
 | Traduction anglaise | 🟡 | seulement navigation, parcours, leçons | `CLAUDE.md` §Langues |
 
 ## Prochaine étape
-Essayer En partie en vraie partie (second écran et téléphone), puis refaire la fiche héros en boucle avec les juges (`docs/refonte-front.md` §État au 2026-10-11).
+Fiche héros : passer le tour 2 du juge-slop sur la version publiée le 2026-10-11, corriger, tour 3 (`docs/refonte-front.md`). Essayer En partie en vraie partie. Prochains héros annoncés : Nurse Harrow, Deadman Danny, Violet (mardis et vendredis) : relancer `outils/maj_donnees.py` et ajouter leurs menaces à `data/counters.json` ; leurs rôles ne sont pas classés (`data/roles.json`, avis de Wouks), comme Rat King, Sinclair, Solomon et Baba.
 
 Ensuite : Essayer le site pendant de vraies parties (second écran 1080p et téléphone), puis corriger ce qui gêne : rappels du coach, horaires incertains, lisibilité de la carte.
 
@@ -57,6 +57,7 @@ Ensuite : Essayer le site pendant de vraies parties (second écran 1080p et tél
 - L'identifiant Steam du joueur reste dans le navigateur, jamais dans le dépôt.
 - Pas d'abonnement Patreon deadlock-api ; parties récupérées par deadlock-api-ingest en service (pas l'option de lancement Steam, qui ne lit que le cache).
 - Positionnement : apprendre (parcours, coach, leçons), pas un site de stats ; site public multilingue.
+- Fiche héros : la liste garde les doublons (héros étiquetés en tête ET dans leur rôle), décision du 2026-10-11.
 
 ## Journal
 - 2026-10-11 — Refonte tour 3 : sons audibles et distincts, alertes regroupées, grand bloc stable, Attente figée à la mort, estimateur sans verdict avant saisie ; En partie validée par les deux juges ; site publié.
@@ -69,3 +70,4 @@ Ensuite : Essayer le site pendant de vraies parties (second écran 1080p et tél
 - 2026-10-06 — Progression : profil du joueur, synchro, journaux de l'outil d'ingestion.
 - 2026-10-05 — En partie sur un seul écran : coach sans clic, carte avec légende cochable, chrono remis à zéro après 2 h.
 - 2026-10-05 — Progression : débrief, ajout de partie par Match ID, outil deadlock-api-ingest choisi.
+- 2026-10-11 : patch Make Your Move (données régénérées, stats depuis le 07/10 ; Baba incluse malgré l'API, `SORTIS_MALGRE_API`), menaces de Rat King / Solomon / Baba, page Tier list par rang (winrate + marge), fiche héros refondue (tour 1 du juge-slop + corrections), doublons de la liste gardés à la demande de l'utilisateur.

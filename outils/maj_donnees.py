@@ -135,6 +135,17 @@ def competence(a):
     }
 
 
+# Héros sortis d'après les notes de patch officielles mais encore marqués `in_development` par l'API.
+# À retirer dès que l'API les marque jouables. Baba : notes « Mind the Birds! » du 2026-10-06 (« available now »).
+SORTIS_MALGRE_API = {88}
+
+
+def jouable(h):
+    if h.get("id") in SORTIS_MALGRE_API:
+        return h.get("player_selectable") and not h.get("disabled")
+    return h.get("player_selectable") and not h.get("disabled") and not h.get("in_development")
+
+
 def construire_heros(heros, capacites, heros_fr=None, capacites_fr=None):
     """`heros_fr` et `capacites_fr` : mêmes listes demandées avec language=french (textes officiels du jeu)."""
     par_classe = {a["class_name"]: a for a in capacites}
@@ -142,7 +153,7 @@ def construire_heros(heros, capacites, heros_fr=None, capacites_fr=None):
     heros_fr = {x["id"]: x for x in (heros_fr or [])}
     sortie = []
     for h in sorted(heros, key=lambda h: h["name"]):
-        if not h.get("player_selectable") or h.get("disabled") or h.get("in_development"):
+        if not jouable(h):
             continue
         comps = []
         for emplacement in ("signature1", "signature2", "signature3", "signature4"):
@@ -360,7 +371,7 @@ def construire_fiches(heros_api, armes):
     armes = {a["class_name"]: a for a in armes}
     fiches = {}
     for h in heros_api:
-        if not h.get("player_selectable") or h.get("disabled") or h.get("in_development"):
+        if not jouable(h):
             continue
         st = {k: (v or {}).get("value") for k, v in (h.get("starting_stats") or {}).items()}
         arme = (armes.get((h.get("items") or {}).get("weapon_primary")) or {}).get("weapon_info") or {}
@@ -465,7 +476,7 @@ def construire_armes(heros_api, armes_api, armes_api_fr):
     noms_fr = {a["class_name"]: a["name"] for a in armes_api_fr}
     sortie, ecarts = {}, []
     for h in heros_api:
-        if not h.get("player_selectable") or h.get("disabled") or h.get("in_development"):
+        if not jouable(h):
             continue
         d = donnees.get(h["class_name"])
         if not d or not d.get("Weapon"):

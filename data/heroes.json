@@ -1,7 +1,7 @@
 {
  "meta": {
-  "patch": "City Never Sleeps (2026-09-29)",
-  "verifie_le": "2026-10-06",
+  "patch": "Make Your Move (2026-10-09)",
+  "verifie_le": "2026-10-11",
   "source": "https://api.deadlock-api.com",
   "genere_par": "outils/maj_donnees.py",
   "note": "`mecaniques` est déduit par mots-clés : à relire. `video` est à remplir à la main."
@@ -337,6 +337,178 @@
      "resume_fr": "",
      "description_fr": "Après un temps de recharge, Apollon donne un grand coup d'épée loin devant lui. Les unités ennemies touchées ne peuvent ni agir ni se soigner et sont ralenties. À l'expiration de l'effet, elles subissent des dégâts dévastateurs et les unités qui avaient moins de la moitié de leurs PV subissent des dégâts supplémentaires. · Pendant la phase de ralentissement, Apollon est invulnérable et les unités ennemies subissent des dégâts réduits. · Maintenez Capacité 4 ou pour retarder l'incantation.",
      "ameliorations_fr": []
+    }
+   ]
+  },
+  {
+   "id": 88,
+   "nom": "Baba",
+   "type": "mystic",
+   "complexite": 1,
+   "etiquettes_jeu": [
+    "Cackling",
+    "Beady",
+    "Hexing"
+   ],
+   "arme": "Heavy Artillery",
+   "role": "",
+   "style_de_jeu": "",
+   "role_fr": null,
+   "style_de_jeu_fr": null,
+   "pv_depart": 780,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/baba_card.webp",
+   "icone": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/baba_sm.webp",
+   "wiki": "https://deadlock.wiki/Baba",
+   "video": null,
+   "mecaniques": [
+    "bouclier",
+    "canalisation",
+    "degats_sur_la_duree",
+    "ralentissement",
+    "reduction_de_resistance",
+    "silence_desarmement",
+    "zone"
+   ],
+   "competences": [
+    {
+     "touche": 1,
+     "nom": "Threadsap",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/baba/threadsap.webp",
+     "resume": "Threadsap",
+     "description": "Weave a scraggly thread that follows your crosshair before bursting along its path, dealing spirit damage and stealing enemy Spirit, increased in effectiveness for Baba. · While holding stolen Spirit, Baba deals bonus spirit damage with every bullet.",
+     "recharge_s": 26.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Spirit Stolen per Hit",
+       "valeur": "10"
+      },
+      {
+       "nom": "Stolen Spirit Effectiveness",
+       "valeur": "175%"
+      },
+      {
+       "nom": "Spirit Damage Per Bullet",
+       "valeur": "8"
+      }
+     ],
+     "ameliorations": [
+      "-12s Cooldown · +8s Debuff Duration",
+      "+1 Charge · On Hit: Pull enemies 7m"
+     ],
+     "nom_fr": "Fil siphonnant",
+     "resume_fr": "Fil siphonnant",
+     "description_fr": "Baba tisse un vieux fil râpé qui suit votre viseur avant d'exploser le long de sa trajectoire. L'explosion inflige des dégâts spirituels et vole du Pouvoir spirituel, dont l'efficacité augmente pour Baba. · Le Pouvoir spirituel qu'elle vole confère à ses balles des dégâts spirituels bonus.",
+     "ameliorations_fr": [
+      "-12 s de temps de récupération · +8 s de durée de l'effet négatif",
+      "+1 charge · À l'impact : attire les adversaires sur 7 m"
+     ]
+    },
+    {
+     "touche": 2,
+     "nom": "Granny Long Legs",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/baba/strafing_run.webp",
+     "resume": "Granny Long Legs: jump high and kick anyone nearby with spirit-charged legs.",
+     "description": "Your bench's legs extend, granting bonus move speed, higher jumps, Debuff Resistance and Melee Resistance. · Light Melee: Perform a kick that knocks enemies back. · Heavy Melee: Perform a ground pound that applies knockup, slow, and deals spirit damage. · Hold Crouch / slide to charge a high jump, release to jump.",
+     "recharge_s": 30.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Move Speed",
+       "valeur": "5m m"
+      },
+      {
+       "nom": "Debuff Resist",
+       "valeur": "30%"
+      },
+      {
+       "nom": "Melee Resist",
+       "valeur": "30%"
+      }
+     ],
+     "ameliorations": [
+      "+2.5m Move Speed",
+      "-7.0s Cooldown",
+      "+15% Resists · +50% Melee Lifesteal"
+     ],
+     "nom_fr": "Mamie gambettes",
+     "resume_fr": "Mamie gambettes : Baba effectue un super saut et distribue des coups de pied chargés de pouvoir spirituel",
+     "description_fr": "Les pieds du banc de Baba s'allongent. Elle bénéficie alors de bonus move speed, de hauteur de saut supplémentaire, de résistance aux effets négatifs et de résistance aux attaques de mêlée. · Attaque de mêlée légère : Baba donne un coup de pied qui repousse les adversaires. · Attaque de mêlée lourde : Baba frappe le sol, ce qui applique une projection aérienne et un ralentissement, et inflige des dégâts spirituels. · Maintenez S'accroupir/glisser (maintenir) pour charger un saut propulsé, puis relâchez pour sauter.",
+     "ameliorations_fr": [
+      "+2.5 m de vitesse de déplacement",
+      "-7.0 s de temps de récupération",
+      "+15 % de résistance · +50 % de vol de vie en mêlée"
+     ]
+    },
+    {
+     "touche": 3,
+     "nom": "Baba's Brew",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/baba/teapot_brew.webp",
+     "resume": "Brew Baba's special pot of tea, then throw it to ignite or silence enemies, or shield allies",
+     "description": "Brew a pot of tea that applies a magical effect in an area when thrown, cycling over time between a soothing barrier, Silence, or scalding burn that deals spirit damage over time and reduces spirit resist. · Press to pause or resume brewing.",
+     "recharge_s": 25.0,
+     "canalisee": true,
+     "valeurs": [
+      {
+       "nom": "Barrier",
+       "valeur": "100"
+      },
+      {
+       "nom": "Barrier Duration",
+       "valeur": "8s"
+      },
+      {
+       "nom": "Burn DPS",
+       "valeur": "12"
+      },
+      {
+       "nom": "Burn Spirit Resist",
+       "valeur": "-15%"
+      },
+      {
+       "nom": "Burn Duration",
+       "valeur": "8s"
+      }
+     ],
+     "ameliorations": [
+      "+33.33% Brew Effectiveness"
+     ],
+     "nom_fr": "Breuvage de Baba",
+     "resume_fr": "Baba prépare sa tisane spéciale dans sa théière, puis la lance sur ses adversaires pour les enflammer ou les réduire au silence, ou sur ses partenaires pour les protéger",
+     "description_fr": "Baba prépare une tisane dans sa théière qui applique un effet magique dans une zone lorsqu'elle est lancée. L'effet alterne entre une apaisante protection, une réduction au Silence, ou une brulure cuisante qui inflige des dégâts spirituels au fil du temps et réduit la résistance spirituelle. · Appuyez sur pour suspendre ou reprendre l'infusion.",
+     "ameliorations_fr": [
+      "+33.33 % d'efficacité du breuvage"
+     ]
+    },
+    {
+     "touche": 4,
+     "nom": "Feed The Birds",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/baba/pigeon_launcher.webp",
+     "resume": "",
+     "description": "Cover targets in front of you with bread, adding a stacking slow . · When the channel ends a flock of pigeons bombard the targets, dealing spirit damage and hexing each target into a pigeon, increasing in both damage and duration based on bread count.",
+     "recharge_s": 150.0,
+     "canalisee": true,
+     "valeurs": [
+      {
+       "nom": "Max Damage",
+       "valeur": "450"
+      },
+      {
+       "nom": "Max Pigeon Duration",
+       "valeur": "2.75s"
+      }
+     ],
+     "ameliorations": [
+      "+4m Cast Range · +32% Max Slow",
+      "+125 Max Damage · +125 Spirit Scaling · +0.5s Max Duration"
+     ],
+     "nom_fr": "Nourrir les p'tits oiseaux",
+     "resume_fr": "",
+     "description_fr": "Baba couvre les cibles devant elle de miettes de pain, qui appliquent des charges cumulables de ralentissement. · Une fois la canalisation terminée, une volée de pigeons bombarde les cibles, qui subissent des dégâts spirituels et se transforment en pigeons. Plus il y a de miettes et plus les dégâts et la durée de la malédiction augmentent.",
+     "ameliorations_fr": [
+      "+4 m de portée d'incantation · +32 % de ralentissement max.",
+      "+125 dégâts max. · +125 pour le multiplicateur spirituel · +0.5 s de durée max."
+     ]
     }
    ]
   },
@@ -2594,7 +2766,7 @@
    "complexite": 3,
    "etiquettes_jeu": [
     "Initiator",
-    "High Flying",
+    "High-Flying",
     "Arrogant"
    ],
    "arme": "Burst Fire",
@@ -3061,7 +3233,7 @@
      ],
      "nom_fr": "Nox Nostra",
      "resume_fr": "",
-     "description_fr": "Active : Mina libère une nuée importante de chauvesouris, chacune infligeant des dégâts spirituels et appliquant Silence. · Passive : lancer Morsures passionnelles sur une unité occultiste augmente de manière permanente le nombre de chauvesouris libérées.",
+     "description_fr": "Effet actif : Mina libère une nuée importante de chauvesouris, chacune infligeant des dégâts spirituels et appliquant Silence. · Passive : lancer Morsures passionnelles sur une unité occultiste augmente de manière permanente le nombre de chauvesouris libérées.",
      "ameliorations_fr": [
       "À l'impact : inflige 0.5 % de dégâts selon les PV actuels"
      ]
@@ -3925,7 +4097,7 @@
      "valeurs": [
       {
        "nom": "Detonation Damage",
-       "valeur": "65"
+       "valeur": "70"
       },
       {
        "nom": "Move Speed",
@@ -3947,11 +4119,11 @@
      "ameliorations": [
       "Add an additional final Bigger Detonation"
      ],
-     "nom_fr": "Scrap Grenade",
+     "nom_fr": "Grenade de ferraille",
      "resume_fr": "",
-     "description_fr": "Throw a grenade of scrap that detonates multiple times, dealing dégâts balistiques and applying ralentissement. · The grenade can be meleed to knock it away.",
+     "description_fr": "Roi des rats lance une grenade de ferraille qui explose à plusieurs reprises, elle inflige des dégâts balistiques et applique un ralentissement. · Une attaque de mêlée permet de dévier la grenade.",
      "ameliorations_fr": [
-      "Add an additional final Bigger Detonation"
+      "Ajout d'une détonation finale plus forte"
      ]
     },
     {
@@ -3960,7 +4132,7 @@
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/ratking/ratking_swarm.webp",
      "resume": "",
      "description": "Call forth a swarm of rats that leap onto enemies, dealing spirit damage over time and reducing their bullet resist with every bite. The more rats are attached, the faster they will bite the target. · Enemies can have multiple rats attached, but can shake off a rat early by performing a ground or air dash.",
-     "recharge_s": 28.0,
+     "recharge_s": 24.0,
      "canalisee": false,
      "valeurs": [
       {
@@ -3976,12 +4148,12 @@
       "Increased Swarm Size · +4s Debuff Duration",
       "+8 Damage and -1% Bullet Resist per Bite"
      ],
-     "nom_fr": "Rat Swarm",
+     "nom_fr": "Horde de rats",
      "resume_fr": "",
-     "description_fr": "Call forth a swarm of rats that leap onto enemies, dealing dégâts spirituels au fil du temps and reducing their résistance aux balles with every bite. The more rats are attached, the faster they will bite the target. · Enemies can have multiple rats attached, but can shake off a rat early by performing a ground or air dash.",
+     "description_fr": "Roi des rats invoque une horde de rats qui bondissent sur les adversaires à proximité pour les mordre. Chaque morsure inflige des dégâts spirituels au fil du temps et réduit la résistance aux balles des cibles. Plus il y a de rats accrochés, plus les morsures seront rapides. · Plusieurs rats peuvent s'accrocher à la même cible, mais cette dernière peut s'en débarrasser grâce à un élan (au sol ou dans les airs).",
      "ameliorations_fr": [
-      "Increased Swarm Size · +4s Debuff Duration",
-      "+8 Damage and -1% Bullet Resist per Bite"
+      "Augmente la taille de la horde · +4 s de durée de l'effet négatif",
+      "+8 de dégâts et -1 % de résistance aux balles par morsure"
      ]
     },
     {
@@ -4006,12 +4178,12 @@
       "-8s Cooldown · +15% Bullet Return Chance",
       "Reduce all damage to a max of 250 · +10% Max Health as Barrier"
      ],
-     "nom_fr": "Royal Pestments",
+     "nom_fr": "Apparat royal",
      "resume_fr": "",
-     "description_fr": "Adorn scrappy armor, gaining protection based on your PV max.. As long as the armor holds, bullets have a chance to be deflected back towards the attacker. · The barrier does not benefit from resists.",
+     "description_fr": "Roi des rats se pare de son armure de fortune, qui lui accorde une protection basée sur ses PV max. Tant que l'armure résiste, les balles ont une chance d'être renvoyées vers l'adversaire. · Les résistances n'améliorent pas la protection.",
      "ameliorations_fr": [
-      "-8s Cooldown · +15% Bullet Return Chance",
-      "Reduce all damage to a max of 250 · +10% Max Health as Barrier"
+      "-8 s pour le temps de récupération · +15 % de chance de renvoyer les balles",
+      "Réduit tous les dégâts jusqu'à 250 · +10 % des PV max. sous forme de protection"
      ]
     },
     {
@@ -4020,7 +4192,7 @@
      "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/ratking/ratking_flag.webp",
      "resume": "",
      "description": "Charge up and summon the banner of Ratannia, granting all nearby allies increased move speed, immunity from slows, and reduced incoming damage while near the banner.",
-     "recharge_s": 130.0,
+     "recharge_s": 160.0,
      "canalisee": false,
      "valeurs": [
       {
@@ -4029,7 +4201,7 @@
       },
       {
        "nom": "Damage Reduction",
-       "valeur": "20%"
+       "valeur": "15%"
       },
       {
        "nom": "Damage",
@@ -4041,17 +4213,17 @@
       }
      ],
      "ameliorations": [
-      "-20s Cooldown and +1m Move Speed",
-      "+8s Charge Duration · +8s Flag Duration · +8m Radius",
-      "+150 Damage and +15% Damage Reduction"
+      "+2m Move Speed",
+      "+5s Flag Duration · +8m Radius",
+      "+150 Damage and +10% Damage Reduction"
      ],
-     "nom_fr": "Rule, Ratannia!",
+     "nom_fr": "Gloire à la Ratannie !",
      "resume_fr": "",
-     "description_fr": "Charge up and summon the banner of Ratannia, granting all nearby allies increased vitesse de déplacement, immunity from slows, and reduced incoming damage while near the banner.",
+     "description_fr": "Roi des rats charge au cœur de la bataille et invoque la bannière de la Ratannie. Les unités occultistes alliées à proximité bénéficient d'une vitesse de déplacement accrue, sont invulnérables aux ralentissements et subissent des dégâts réduits tant qu'elles se trouvent près de la bannière.",
      "ameliorations_fr": [
-      "-20s Cooldown and +1m Move Speed",
-      "+8s Charge Duration · +8s Flag Duration · +8m Radius",
-      "+150 Damage and +15% Damage Reduction"
+      "+2 m de vitesse de déplacement",
+      "+5 s de durée pour la bannière · +8 m de rayon",
+      "+150 de dégâts et +10 % de réduction des dégâts"
      ]
     }
    ]
@@ -4861,13 +5033,13 @@
       }
      ],
      "ameliorations": [
-      "+7% Damage Amp and +3m Radius"
+      "+7% Damage Amp and +2m Radius"
      ],
      "nom_fr": "Lagomorphose",
      "resume_fr": "",
      "description_fr": "Sinclair maudit une zone cible et transforme temporairement les adversaires qui s'y trouvent en lapins. · Les lapins sont petits et leur vitesse de déplacement est augmentée, mais ils sont plus vulnérables aux dégâts et ils sont incapables d'effectuer la plupart des actions. · La malédiction n'interrompt pas les capacités.",
      "ameliorations_fr": [
-      "+7 % d'amplification des dégâts et +3 m de rayon"
+      "+7 % d'amplification des dégâts et +2 m de rayon"
      ]
     },
     {
@@ -4881,11 +5053,11 @@
      "valeurs": [
       {
        "nom": "Copy Duration",
-       "valeur": "12s"
+       "valeur": "9s"
       },
       {
        "nom": "Copied Cooldown",
-       "valeur": "40%"
+       "valeur": "60%"
       }
      ],
      "ameliorations": [
@@ -4900,6 +5072,170 @@
       "Améliore l'imitation",
       "Améliore encore l'imitation",
       "Améliore l'imitation encore une nouvelle fois !"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 85,
+   "nom": "Solomon",
+   "type": "mystic",
+   "complexite": 1,
+   "etiquettes_jeu": [
+    "Strategist",
+    "Focused",
+    "Checkmate"
+   ],
+   "arme": "Projectile",
+   "role": "",
+   "style_de_jeu": "",
+   "role_fr": null,
+   "style_de_jeu_fr": null,
+   "pv_depart": 780,
+   "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/chessmaster_card.webp",
+   "icone": "https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/chessmaster_sm.webp",
+   "wiki": "https://deadlock.wiki/Solomon",
+   "video": null,
+   "mecaniques": [
+    "bouclier",
+    "controle",
+    "ralentissement"
+   ],
+   "competences": [
+    {
+     "touche": 1,
+     "nom": "Setup Bishop",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/chess/chessmaster_bishop.webp",
+     "resume": "",
+     "description": "Create a bishop that remains in place indefinitely. · Move ( ): Moves the bishop, applying a fading slow and dealing spirit damage to enemies it passes through. After a delay, activates diagonal squares that deal additional spirit damage when stepped on. · Re-activate to recall all bishops, ending the ability.",
+     "recharge_s": 12.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Fading Move Speed",
+       "valeur": "30%"
+      },
+      {
+       "nom": "Impact Damage",
+       "valeur": "70"
+      },
+      {
+       "nom": "Damage",
+       "valeur": "25"
+      }
+     ],
+     "ameliorations": [
+      "+5m Move Distance · +15% Fading Slow",
+      "+1 Max Pieces · Can Recast within 8s",
+      "+1 Square Range · Squares reduce Spirit Resist by -2.5%, stacking 10 times"
+     ],
+     "nom_fr": "Setup Bishop",
+     "resume_fr": "",
+     "description_fr": "Create a bishop that remains in place indefinitely. · Move ( ): Moves the bishop, applying a fading ralentissement and dealing dégâts spirituels to enemies it passes through. After a delay, activates diagonal squares that deal additional dégâts spirituels when stepped on. · Re-activate to recall all bishops, ending the ability.",
+     "ameliorations_fr": [
+      "+5 m de distance de déplacement · +15 % de ralentissement dégressif",
+      "+1 Max Pieces · Can Recast within 8s",
+      "+1 Square Range · Squares reduce Spirit Resist by -2.5%, stacking 10 times"
+     ]
+    },
+    {
+     "touche": 2,
+     "nom": "Kingside Knight",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/chess/chessmaster_knight.webp",
+     "resume": "",
+     "description": "Promote an ally to be a knight, granting bonus stamina and barrier for a duration. · If self-cast you develop yourself as king instead, granting double the barrier but no stamina. · Move ( ): Moves the piece, making it invulnerable during the duration before landing.",
+     "recharge_s": 25.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Barrier",
+       "valeur": "80"
+      },
+      {
+       "nom": "Slow Resist",
+       "valeur": "0%"
+      },
+      {
+       "nom": "Stamina",
+       "valeur": "1"
+      }
+     ],
+     "ameliorations": [
+      "+80 Barrier · +1 Stamina",
+      "Can target two allies within radius. · On Self: Remove all debuffs after a move"
+     ],
+     "nom_fr": "Cavalier du roi",
+     "resume_fr": "",
+     "description_fr": "Promote an ally to be a knight, granting bonus stamina and protection for a duration. · If self-cast you develop yourself as king instead, granting double the protection but no stamina. · Move ( ): Moves the piece, making it invulnerable during the duration before landing.",
+     "ameliorations_fr": [
+      "+80 Barrier · +1 Stamina",
+      "Can target two allies within radius. · On Self: Remove all debuffs after a move"
+     ]
+    },
+    {
+     "touche": 3,
+     "nom": "Rook Battery",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/chess/chessmaster_rook.webp",
+     "resume": "",
+     "description": "Release a pair of rooks that travel forward, dealing spirit damage and applying immobilize. If the rooks hit a wall, they reflect back in the opposite direction. · Re-Activate: Split the rooks perpendicularly.",
+     "recharge_s": 33.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "50"
+      },
+      {
+       "nom": "Current Health",
+       "valeur": "0%"
+      },
+      {
+       "nom": "Move Speed",
+       "valeur": "0%"
+      }
+     ],
+     "ameliorations": [
+      "On Hit: Reduce 25% Fire Rate for 5s",
+      "On Hit: 5% Current Health as Damage",
+      "+1 Wall Reflects · -12s Cooldown · +0.5s Immobilize Duration"
+     ],
+     "nom_fr": "Batterie de tours",
+     "resume_fr": "",
+     "description_fr": "Release a pair of rooks that travel forward, dealing dégâts spirituels and applying immobilisation. If the rooks hit a wall, they reflect back in the opposite direction. · Re-Activate: Split the rooks perpendicularly.",
+     "ameliorations_fr": [
+      "On Hit: Reduce 25% Fire Rate for 5s",
+      "À l'impact : 5 % de dégâts selon les PV actuels",
+      "+1 Wall Reflects · -12s Cooldown · +0.5s Immobilize Duration"
+     ]
+    },
+    {
+     "touche": 4,
+     "nom": "Develop Queen",
+     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/chess/chessmaster_queen.webp",
+     "resume": "",
+     "description": "Summon a queen that crashes down, dealing spirit damage in an area. After a delay, the queen releases squares in straight lines that deal spirit damage again and apply stun. · · Move ( ): The queen leaps to the target location, dealing the same effects again. · · Re-activate to recall the queen early, ending the ability.",
+     "recharge_s": 210.0,
+     "canalisee": false,
+     "valeurs": [
+      {
+       "nom": "Damage",
+       "valeur": "120"
+      },
+      {
+       "nom": "Checkmate Threshold",
+       "valeur": "0"
+      }
+     ],
+     "ameliorations": [
+      "+15% Slow. Checkmates heroes below 200 health, executing them.",
+      "+2 Moves · +1 Square Range"
+     ],
+     "nom_fr": "Développer la dame",
+     "resume_fr": "",
+     "description_fr": "Summon a queen that crashes down, dealing dégâts spirituels in an area. After a delay, the queen releases squares in straight lines that deal dégâts spirituels again and apply étourdissement. · · Move ( ): The queen leaps to the target location, dealing the same effects again. · · Re-activate to recall the queen early, ending the ability.",
+     "ameliorations_fr": [
+      "+15% Slow. Checkmates heroes below 200 health, executing them.",
+      "+2 Moves · +1 Square Range"
      ]
     }
    ]
@@ -5028,7 +5364,7 @@
      ],
      "nom_fr": "Charriot à bagages",
      "resume_fr": "",
-     "description_fr": "Send out a Luggage Cart that deals dégâts spirituels and entraine enemy heroes along its path. · Can be alt cast with to target friendly heroes instead.",
+     "description_fr": "Le Portier envoie un charriot à bagages qui inflige des dégâts spirituels, et entraine les occultistes adverses sur son chemin. · Peut être lancé avec en faveur des occultistes de son équipe.",
      "ameliorations_fr": [
       "+25 m de portée d'incantation · +75 de dégâts en cas d'impact avec un mur",
       "-15 s de temps de récupération et 1.25 s d' étourdissement en cas d'impact avec un mur"
@@ -6147,7 +6483,7 @@
      ],
      "nom_fr": "Tour de cartes",
      "resume_fr": "Lance des cartes à tête chercheuse",
-     "description_fr": "Deal weapon damage to summon cards of a random suit. Each card can be thrown, dealing damage and applying a different effect depending on its suit. Cards thrown fly towards the enemy or point under your crosshair. · Alt-cast to throw first card",
+     "description_fr": "Quand Scopa inflige des dégâts des armes, elle invoque des cartes d'une couleur aléatoire qui peuvent être lancées. Les cartes lancées sont projetées vers les cibles ou le point visé. · L'utilisation secondaire permet de lancer la première carte.",
      "ameliorations_fr": [
       "+40 de dégâts et multiplicateur spirituel augmenté",
       "Toutes les couleurs sont améliorées et les chances d'obtenir des Jokers sont plus élevées"
@@ -6205,7 +6541,7 @@
      ],
      "nom_fr": "Salve automatique",
      "resume_fr": "Augmente la cadence de tir",
-     "description_fr": "Temporarily boost your fire rate and deal bonus dégâts spirituels",
+     "description_fr": "Scopa obtient un bonus temporaire de cadence de tir et inflige des dégâts spirituels bonus.",
      "ameliorations_fr": [
       "+10 % de cadence de tir et +3 s de durée",
       "Munitions illimitées et augmentation de l'échelle des dégâts spirituels par balle"

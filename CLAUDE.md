@@ -31,7 +31,7 @@ Site en ligne : `https://crakee.github.io/DeadLock_Noob/`, servi par GitHub Page
 
 ## Prochaine étape
 
-**Mise à jour de patch** : suivre `docs/maj-patch.md` (régénération automatique, corrections écrites dans le script, fichiers à la main qui contiennent des valeurs de jeu, valeurs dans le code, contrôle, publication). Patch en place : City Never Sleeps (29 septembre 2026).
+**Mise à jour de patch** : suivre `docs/maj-patch.md` (régénération automatique, corrections écrites dans le script, fichiers à la main qui contiennent des valeurs de jeu, valeurs dans le code, contrôle, publication). Patch en place : Make Your Move (9 octobre 2026), stats depuis le 7 octobre.
 
 Timeline : la collecte brute des timings est dans `collecte/timings-brut.md` (2 octobre 2026, patch « City Never Sleeps » du 29 septembre). Les événements retenus sont dans `data/timeline.json`. Le schéma du JSON est décrit dans `docs/brief-front-timeline.md`. Prochaine étape : essai en partie réelle, puis schéma de données Héros / Objets. Restent à lever en jeu les points marqués `incertain` (horaire de l'Unstable Rift surtout).
 

@@ -1,15 +1,81 @@
 {
  "meta": {
-  "verifie_le": "2026-10-02",
+  "verifie_le": "2026-10-11",
   "sources": "api.deadlock-api.com/v2/patches, deadlock.wiki (pages Update), forum officiel. Résumés reformulés.",
   "note": "Les notes officielles font foi : suivre le lien de chaque patch pour le détail."
  },
  "a_venir": {
-  "titre": "Six nouveaux héros en cours de sortie",
-  "texte": "Nurse Harrow, Rat King, Solomon, Deadman Danny, Baba et Violet sortent un par un, les mardis et vendredis à 23 h (heure française), à partir du 2 octobre. L'ordre dépend d'un vote des joueurs. Les statistiques vont bouger à chaque sortie.",
-  "fiabilite": "wiki"
+  "titre": "Trois nouveaux héros encore à venir",
+  "texte": "Rat King (2 octobre), Baba (6 octobre) et Solomon (9 octobre) sont sortis. Restent Nurse Harrow, Deadman Danny et Violet : un par un, les mardis et vendredis à 23 h (heure française), le prochain le mardi 13 octobre, dans l'ordre du vote des joueurs. Les statistiques bougent à chaque sortie.",
+  "fiabilite": "notes officielles"
  },
  "patchs": [
+  {
+   "date": "2026-10-09",
+   "titre": "Make Your Move.",
+   "type": "heros",
+   "lien": "https://store.steampowered.com/news/app/1422450/view/703281660030879519",
+   "resume": [
+    "Nouveau héros : Solomon, sur le thème des échecs. Setup Bishop pose des fous qu'il fait glisser, Kingside Knight protège un allié, Rook Battery immobilise, Develop Queen étourdit en zone.",
+    "Moitié de la série des nouveaux héros : prochain le mardi 13 octobre à 23 h (heure française), choisi par le vote des joueurs.",
+    "Pas de changement d'équilibrage dans les notes."
+   ],
+   "heros": {},
+   "pour_toi": [],
+   "nouveaux_heros": [
+    "Solomon"
+   ]
+  },
+  {
+   "date": "2026-10-06",
+   "titre": "Mind the Birds!",
+   "type": "heros",
+   "lien": "https://store.steampowered.com/news/app/1422450/view/703281025618282871",
+   "resume": [
+    "Nouveau héros : Baba, la dame aux pigeons. Threadsap vole le Spirit, Granny Long Legs fait courir et sauter son banc, Baba's Brew alterne barrière, Silence et brûlure, Feed The Birds change les ennemis en pigeons.",
+    "La première saison classée finit plus tard : jeudi 5 novembre 2026 à 23 h (heure française), la suivante commence aussitôt."
+   ],
+   "heros": {},
+   "pour_toi": [],
+   "nouveaux_heros": [
+    "Baba"
+   ]
+  },
+  {
+   "date": "2026-10-05",
+   "titre": "Mise à jour mineure du 5 octobre",
+   "type": "equilibrage",
+   "lien": "https://store.steampowered.com/news/app/1422450/view/703281025618282632",
+   "resume": [
+    "Correction : les Troopers marchaient trop lentement en lane.",
+    "Rat King : Scrap Grenade et Rat Swarm renforcés, ultimate Rule, Ratannia! nettement affaibli (recharge 160 s, réduction de dégâts 15 %, rayon 20 m).",
+    "Sinclair affaibli : moins de dégâts et de portée pleine pour son arme (pleins dégâts jusqu'à 20 m), régénération de vie de base 2 → 1, Vexing Bolt fait moitié moins aux objectifs, Rabbit Hex et Audience Participation réduits."
+   ],
+   "heros": {
+    "buffs": [],
+    "nerfs": [
+     "Sinclair"
+    ],
+    "ajustes": [
+     "Rat King"
+    ]
+   },
+   "pour_toi": []
+  },
+  {
+   "date": "2026-10-02",
+   "titre": "Listen up, Crumbums! Your King is here.",
+   "type": "heros",
+   "lien": "https://store.steampowered.com/news/app/1422450/view/703281025618281704",
+   "resume": [
+    "Nouveau héros : Rat King. Scrap Grenade rebondit et ralentit, Rat Swarm baisse la Bullet Resist, Royal Pestments donne une armure qui renvoie des balles, Rule, Ratannia! plante une bannière qui protège ses alliés."
+   ],
+   "heros": {},
+   "pour_toi": [],
+   "nouveaux_heros": [
+    "Rat King"
+   ]
+  },
   {
    "date": "2026-09-30",
    "titre": "Correctif du 30 septembre",

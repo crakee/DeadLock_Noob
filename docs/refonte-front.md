@@ -74,3 +74,16 @@ visible, En partie sans défilement en 1080p, sommaire du Mémo.
   à 3 chiffres et un bouton « Étiqueter », « comment je le joue » d'abord, chaque héros une fois dans la liste,
   composant « objet » commun, winrate dans Matchups), puis Counters (fusion partielle avec Objets clés),
   Parcours, Progression, Patch, Objets clés, Carte (légende commune), Rôles, Mémo.
+
+## Fiche héros (2026-10-11)
+
+- Tour 1 du juge-slop : À CORRIGER (S1–S3 3, U6–U7 3, F11 3 ; décisions 1, 2, 3, 5 tenues au bureau, 4 non). Corrigé ensuite :
+  « En bref » de Le contrer (plus d'objet pour une menace sans réponse directe : `objet_direct: false`, objets en double fusionnés,
+  `quand` affiché), « À savoir » seulement dans Le contrer, orange réservé à « Ajouter en face », téléphone (panneau sans cadre,
+  onglets sur une ligne, accroche masquée, objets sur 2 colonnes), « Ses gros achats » fusionné dans la grille (étoile),
+  compétences sans cartes, marques « avis » en pied de bloc, Matchups limités aux écarts sûrs (onglet renommé Stats).
+- **Décision de l'utilisateur (2026-10-11)** : la liste garde les doublons. Les héros étiquetés sont en tête ET dans leur rôle
+  (contour or), pour voir le rôle du héros joué. Ne pas reproposer « chaque héros une seule fois ».
+- Ajout demandé par l'utilisateur : **Tier list par rang** (`tiers.html`, `DLN.tier`) : S/A/B/C/D d'après le winrate et sa marge
+  (S ≥ 52 % même marge déduite, A > 50 %, C < 50 %, D ≤ 48 % marge ajoutée, sinon B) ; tier du héros dans la tête de fiche et l'onglet Stats.
+- Outil : `outils/juge/onglets-heros.mjs` capture chaque onglet de la fiche (bureau et téléphone).

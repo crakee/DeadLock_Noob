@@ -1,6 +1,6 @@
 # Mettre le site à jour après un patch
 
-Procédure pour une session dédiée à un nouveau patch. Rédigée le 2026-10-06 (patch en place : City Never Sleeps, 29 septembre 2026).
+Procédure pour une session dédiée à un nouveau patch. Rédigée le 2026-10-06, dernier passage le 2026-10-11 (patch en place : Make Your Move, 9 octobre 2026).
 Règle du projet : **aucune valeur de jeu de mémoire**. Tout chiffre qui entre dans les données est relu sur une source courante (notes de patch, API, wiki à jour).
 
 ## 0. Repérer le patch
@@ -58,6 +58,8 @@ Dans `outils/maj_donnees.py` :
 - `NOMS_ARMES_WIKI = {"Rem": "Long Night"}` : arme que l'API ne connaît pas. Vérifier si l'API l'a ajoutée.
 - `UNITES_PAR_METRE = 39.37` : conversion des unités du moteur (recoupée avec le wiki).
 - Position du Mid-Boss (absente de l'API) : centre de la carte, d'après le wiki.
+- `SORTIS_MALGRE_API = {88}` : héros sortis d'après les notes officielles mais encore `in_development` dans l'API (Baba le 2026-10-11). Le retirer quand l'API les marque jouables ; y ajouter un héros annoncé « available now » qui manque.
+- Nouveau héros : ajouter ses menaces dans `data/counters.json` (texte de ses compétences) et son nom dans `nouveaux_heros` de son entrée de `data/patch.json` (la Tier list le signale « nouveau » 14 jours).
 
 ## 4. Fichiers écrits à la main qui contiennent des valeurs de jeu
 

@@ -39,7 +39,8 @@ window.DLN = (function () {
   const SOUS = {
     heros: [
       ['heros', { fr: 'Fiches', en: 'Heroes' }, 'heros.html'],
-      ['counters', 'Counters & compo', 'counters.html']
+      ['counters', 'Counters & compo', 'counters.html'],
+      ['tiers', 'Tier list', 'tiers.html']
     ],
     apprendre: [
       ['parcours', { fr: 'Parcours', en: 'Path' }, 'parcours.html'],
@@ -127,6 +128,41 @@ window.DLN = (function () {
     i.alt = '';
     i.loading = 'lazy';
     return i;
+  }
+
+  // Composant « objet » commun (fiche héros, puis Counters et Objets clés) : icône de 48 px, nom, prix en or,
+  // petit carré de la catégorie (Weapon, Vitality, Spirit) et une ligne libre en dessous.
+  // o : { nom, image, cout, categorie, actif } ; sous : texte ou nœud ; explication : infobulle.
+  function objetCarte(o, sous, explication, balise) {
+    const c = el(balise || 'div', 'objet-carte obj-' + (o.categorie || 'autre'));
+    c.append(img(o.image, 'objet-carte-icone'));
+    const corps = el('span', 'objet-carte-corps');
+    const nom = el('span', 'objet-carte-nom', o.nom);
+    corps.append(nom);
+    const prix = el('span', 'objet-carte-prix');
+    if (o.cout) prix.append(fmtNombre(o.cout));
+    if (o.actif) prix.append(el('span', 'objet-carte-actif', o.cout ? ' · actif' : 'actif'));
+    if (prix.childNodes.length) corps.append(prix);
+    if (sous) corps.append(typeof sous === 'string' ? el('span', 'objet-carte-sous', sous) : sous);
+    c.append(corps);
+    c.title = o.nom + (explication ? '\n' + explication : '');
+    return c;
+  }
+
+  // Tier d'un héros dans une tranche de rang, d'après son winrate ET sa marge d'erreur (intervalle à 95 %) :
+  // on ne classe au-dessus ou en dessous de la moyenne que si l'écart à 50 % est sûr. Statistique de la tranche,
+  // jamais un counter (CLAUDE.md, règles du projet). s : { winrate, marge } de data/hero-stats.json.
+  const TIERS = [
+    ['S', 'Très au-dessus', (s) => s.winrate - s.marge >= 52],
+    ['A', 'Au-dessus', (s) => s.winrate - s.marge > 50],
+    ['B', 'Dans la moyenne', () => true],
+    ['C', 'En dessous', (s) => s.winrate + s.marge < 50 && s.winrate + s.marge > 48],
+    ['D', 'Très en dessous', (s) => s.winrate + s.marge <= 48]
+  ];
+  function tier(s) {
+    if (!s || s.winrate == null) return null;
+    const t = TIERS.find((x, i) => i !== 2 && x[2](s)) || TIERS[2];
+    return { lettre: t[0], libelle: t[1] };
   }
 
   function charger(url) {
@@ -333,6 +369,7 @@ window.DLN = (function () {
     tranche: () => tranche || TRANCHE_DEFAUT,
     surNiveau: (f) => ecouteursNiveau.push(f),
     surTranche: (f) => ecouteursTranche.push(f),
+    choisirTranche: (v) => regleTranche(v),
     profil: profil,
     LIBELLES_TRANCHE: LIBELLES_TRANCHE,
     charger: charger,
@@ -342,6 +379,9 @@ window.DLN = (function () {
     icone: icone,
     conseilEvenement: conseilEvenement,
     img: img,
+    objetCarte: objetCarte,
+    tier: tier,
+    TIERS: TIERS.map((t) => ({ lettre: t[0], libelle: t[1] })),
     fmtNombre: fmtNombre,
     lienHeros: lienHeros,
     pastilleHeros: pastilleHeros,

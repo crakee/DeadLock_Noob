@@ -1,7 +1,7 @@
 {
  "meta": {
-  "patch": "City Never Sleeps (2026-09-29)",
-  "verifie_le": "2026-10-02",
+  "patch": "Make Your Move (2026-10-09)",
+  "verifie_le": "2026-10-11",
   "source": "https://api.deadlock-api.com",
   "genere_par": "outils/maj_donnees.py",
   "note": "`contre` est déduit par mots-clés : à relire."

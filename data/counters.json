@@ -1,10 +1,11 @@
 {
  "meta": {
-  "patch": "City Never Sleeps (2026-09-29)",
-  "verifie_le": "2026-10-02",
+  "patch": "Make Your Move (2026-10-09)",
+  "verifie_le": "2026-10-11",
   "methode": "Chaque héros est classé à la main d'après le texte de ses compétences (data/heroes.json) ; chaque objet d'après sa description (data/items.json). Aucun classement de winrates : un counter est justifié par une mécanique.",
-  "limites": "Lecture des descriptions, pas expérience de jeu : à corriger à l'usage. Les 17 objets sans description dans l'API et les objets de tier 5 sont ignorés. Les six héros du patch du 29/09 ne sont pas encore couverts.",
-  "objets": "`objets` : ce que fait chaque objet cité, reformulé depuis sa description dans data/items.json (patch du fichier)."
+  "limites": "Lecture des descriptions, pas expérience de jeu : à corriger à l'usage. Les 17 objets sans description dans l'API et les objets de tier 5 sont ignorés. Rat King, Solomon et Baba (octobre 2026) ajoutés le 2026-10-11 d'après leurs textes de compétences, sans expérience de jeu.",
+  "objets": "`objets` : ce que fait chaque objet cité, reformulé depuis sa description dans data/items.json (patch du fichier).",
+  "objet_direct": "`objet_direct: false` sur une menace : aucun objet n'y répond directement (les objets listés sont des parades partielles) ; la fiche affiche alors la réponse plutôt qu'un objet."
  },
  "menaces": {
   "soin": {
@@ -277,14 +278,16 @@
      "nom": "Metal Skin",
      "quand": "actif : immunisé aux balles pendant son burst"
     }
-   ]
+   ],
+   "objet_direct": false
   },
   "invocations": {
    "nom": "Tourelles et invocations",
    "niveau": 2,
    "explication": "Il pose des unités qui tirent ou gênent à sa place et tiennent une zone.",
    "reponse": "Détruire les invocations ou ne pas combattre dans la zone qu'il a préparée. Pas d'objet dédié.",
-   "objets": []
+   "objets": [],
+   "objet_direct": false
   }
  },
  "heros": {
@@ -1015,6 +1018,76 @@
    "astuces": [
     "Pendant Shadow Transformation, les stuns et les effets négatifs ne marchent pas : reculer et attendre la fin.",
     "Power Slash se charge 1,4 s : c'est le moment de s'écarter."
+   ]
+  },
+  "84": {
+   "nom": "Rat King",
+   "menaces": [
+    {
+     "id": "tir",
+     "pourquoi": "Spreadshot à plusieurs plombs, et Scrap Grenade fait des dégâts de balle en explosant plusieurs fois"
+    },
+    {
+     "id": "debuffs",
+     "pourquoi": "chaque morsure de Rat Swarm baisse ta Bullet Resist, et Scrap Grenade ralentit"
+    },
+    {
+     "id": "tank",
+     "pourquoi": "Royal Pestments lui donne une barrière (15 % de sa vie max) qui renvoie parfois les balles au tireur"
+    }
+   ],
+   "astuces": [
+    "Un dash au sol ou en l'air fait tomber un rat de Rat Swarm avant qu'il morde plus vite.",
+    "Tant que l'armure de Royal Pestments tient, une partie de tes balles revient sur toi : attends qu'elle tombe ou frappe avec tes compétences.",
+    "Rule, Ratannia! pose une bannière : ses alliés près d'elle prennent moins de dégâts et ignorent les ralentissements. Sors-les de la zone plutôt que de combattre dedans."
+   ]
+  },
+  "85": {
+   "nom": "Solomon",
+   "menaces": [
+    {
+     "id": "sorts",
+     "pourquoi": "toutes ses compétences font des dégâts spirit, et Develop Queen frappe deux fois la même zone"
+    },
+    {
+     "id": "controle",
+     "pourquoi": "Rook Battery immobilise, Develop Queen étourdit"
+    },
+    {
+     "id": "invocations",
+     "pourquoi": "Setup Bishop reste en place sans limite de durée et pose des cases qui font mal quand on marche dessus"
+    }
+   ],
+   "astuces": [
+    "Les cases de Setup Bishop et de Develop Queen s'activent après un délai : sors des lignes et des diagonales qui s'allument.",
+    "Les tours de Rook Battery rebondissent sur les murs : dans un couloir, elles peuvent revenir sur toi.",
+    "Kingside Knight rend sa pièce invulnérable pendant son déplacement : ne gaspille pas un stun à ce moment-là."
+   ]
+  },
+  "88": {
+   "nom": "Baba",
+   "menaces": [
+    {
+     "id": "sorts",
+     "pourquoi": "Threadsap, Baba's Brew et Feed The Birds (jusqu'à 450) font des dégâts spirit, et elle ajoute des dégâts spirit à chaque balle tant qu'elle garde du Spirit volé"
+    },
+    {
+     "id": "controle",
+     "pourquoi": "Feed The Birds transforme en pigeon, le coup lourd de Granny Long Legs projette en l'air, Baba's Brew peut réduire au silence"
+    },
+    {
+     "id": "debuffs",
+     "pourquoi": "Threadsap vole ton Spirit, la brûlure de Baba's Brew baisse ta Spirit Resist, le pain de Feed The Birds ralentit de plus en plus"
+    },
+    {
+     "id": "canalisation",
+     "pourquoi": "Feed The Birds se canalise : les pigeons ne frappent qu'à la fin"
+    }
+   ],
+   "astuces": [
+    "Baba's Brew change d'effet avec le temps (barrière, Silence ou brûlure) : regarde la couleur de la théière avant d'entrer dans la zone.",
+    "Plus tu reçois de pain pendant Feed The Birds, plus les dégâts et la transformation durent : sors du cône tout de suite.",
+    "Un stun pendant la canalisation de Feed The Birds l'annule."
    ]
   }
  },

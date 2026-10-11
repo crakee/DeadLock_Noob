@@ -1,8 +1,8 @@
 {
  "meta": {
-  "patch": "City Never Sleeps (2026-09-29)",
-  "verifie_le": "2026-10-06",
-  "source": "deadlock.wiki Data:HeroData.json (révision du 2026-10-02, tirée des fichiers du jeu) ; noms : https://api.deadlock-api.com",
+  "patch": "Make Your Move (2026-10-09)",
+  "verifie_le": "2026-10-11",
+  "source": "deadlock.wiki Data:HeroData.json (révision du 2026-10-09, tirée des fichiers du jeu) ; noms : https://api.deadlock-api.com",
   "genere_par": "outils/maj_donnees.py",
   "note": "Arme de base au niveau 1 sans objet. Distances en m, vitesse de balle en m/s. `dps_soutenu` compte le rechargement. `degats_chargeur` = dégâts par balle × balles par tir (1 si `touche_une_fois`) × tirs par chargeur. `types` = étiquettes d'arme du jeu. `par_niveau` = gain à chaque niveau (boon) ; `par_spirit` = gain par point de Spirit Power. Le multiplicateur de tir à la tête est ×1,65 pour tous (page Weapon Damage du wiki), plus `bonus_crit_pct`."
  },
@@ -1314,7 +1314,7 @@
    ],
    "bonus_crit_pct": 0,
    "principal": {
-    "degats_balle": 17.76,
+    "degats_balle": 16.5,
     "balles_par_tir": 1,
     "touche_une_fois": false,
     "tirs_par_rafale": 2,
@@ -1325,12 +1325,12 @@
     "munitions_par_tir": 1,
     "rechargement_s": 2.5,
     "rechargement_balle_par_balle": false,
-    "dps": 48.3,
-    "dps_soutenu": 33.9,
-    "degats_chargeur": 284.0,
+    "dps": 44.9,
+    "dps_soutenu": 31.5,
+    "degats_chargeur": 264.0,
     "vider_chargeur_s": 5.88,
-    "degats_pleins_jusqu_a_m": 25.4,
-    "degats_minimum_des_m": 61.0,
+    "degats_pleins_jusqu_a_m": 20,
+    "degats_minimum_des_m": 60,
     "degats_minimum_pct": 30.0,
     "vitesse_balle_m_s": 300,
     "gravite": 0,
@@ -1940,7 +1940,7 @@
   },
   "84": {
    "nom": "Sovereign's Decree",
-   "nom_fr": "Sovereign's Decree",
+   "nom_fr": "Décret du souverain",
    "types": [
     "RapidFire",
     "Spreadshot"
@@ -1981,6 +1981,107 @@
     "spirit_power": 1.1
    },
    "par_spirit": {},
+   "melee": {
+    "leger": 50,
+    "lourd": 116
+   }
+  },
+  "85": {
+   "nom": "Alekhine's Gun",
+   "nom_fr": "Canon d'Alekhine",
+   "types": [
+    "RapidFire",
+    "LongRange"
+   ],
+   "bonus_crit_pct": 0,
+   "principal": {
+    "degats_balle": 30,
+    "balles_par_tir": 1,
+    "touche_une_fois": true,
+    "tirs_par_rafale": 1,
+    "tirs_par_s": 2,
+    "tirs_par_s_max": null,
+    "montee_cadence_s": null,
+    "chargeur": 8,
+    "munitions_par_tir": 1,
+    "rechargement_s": 3,
+    "rechargement_balle_par_balle": false,
+    "dps": 60,
+    "dps_soutenu": 34.3,
+    "degats_chargeur": 240.0,
+    "vider_chargeur_s": 4.0,
+    "degats_pleins_jusqu_a_m": 20.0,
+    "degats_minimum_des_m": 45.7,
+    "degats_minimum_pct": 10.0,
+    "vitesse_balle_m_s": 356.0,
+    "gravite": 0,
+    "rayon_explosion_m": 1.0,
+    "vitesse_en_tirant_pct": 75.0,
+    "peut_crit": true
+   },
+   "secondaire": null,
+   "par_niveau": {
+    "degats_balle": 0.4,
+    "dps": 0.8,
+    "melee_leger": 1.58,
+    "melee_lourd": 3.6656,
+    "pv": 40,
+    "spirit_power": 1.1
+   },
+   "par_spirit": {
+    "BulletDamage": 0.14,
+    "DPS": 0.28
+   },
+   "melee": {
+    "leger": 50,
+    "lourd": 116
+   }
+  },
+  "88": {
+   "nom": "Bunko-Night Special",
+   "nom_fr": "Soirée Bingo",
+   "types": [
+    "RapidFire",
+    "LongRange"
+   ],
+   "bonus_crit_pct": -20,
+   "principal": {
+    "degats_balle": 8.8,
+    "balles_par_tir": 3,
+    "touche_une_fois": true,
+    "tirs_par_rafale": 1,
+    "tirs_par_s": 3.23,
+    "tirs_par_s_max": null,
+    "montee_cadence_s": null,
+    "chargeur": 15,
+    "munitions_par_tir": 1,
+    "rechargement_s": 2.5,
+    "rechargement_balle_par_balle": false,
+    "dps": 28.4,
+    "dps_soutenu": 18.5,
+    "degats_chargeur": 132.0,
+    "vider_chargeur_s": 4.65,
+    "degats_pleins_jusqu_a_m": 15,
+    "degats_minimum_des_m": 42,
+    "degats_minimum_pct": 10.0,
+    "vitesse_balle_m_s": 178.0,
+    "gravite": 0,
+    "rayon_explosion_m": null,
+    "vitesse_en_tirant_pct": 75.0,
+    "peut_crit": true
+   },
+   "secondaire": null,
+   "par_niveau": {
+    "degats_balle": 0.41,
+    "dps": 1.3226,
+    "melee_leger": 0.7,
+    "melee_lourd": 1.624,
+    "pv": 45,
+    "spirit_power": 1.1
+   },
+   "par_spirit": {
+    "TechResist": 0.12
+   },
    "melee": {
     "leger": 50,
     "lourd": 116

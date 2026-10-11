@@ -14,7 +14,7 @@
   const PHASES = [['Early', 'avant 10 min', 0, 10], ['Mid', '10 à 20 min', 10, 20], ['Late', 'après 20 min', 20, Infinity]];
   const ONGLETS = [
     ['apercu', 'Aperçu'], ['competences', 'Compétences'], ['contrer', 'Le contrer'],
-    ['builds', 'Builds'], ['matchups', 'Matchups'], ['patch', 'Patch']
+    ['builds', 'Builds'], ['matchups', 'Stats'], ['patch', 'Patch']
   ];
 
   let D = {};            // toutes les données chargées
@@ -58,33 +58,55 @@
 
   // ---------- liste à gauche ----------
 
-  function caseHeros(h) {
-    const b = el('button', 'heros-case' + (h.id === reglages.choisi ? ' choisi' : '') + (estMien(h.id) ? ' mien' : ''));
+  // compact : portrait seul (rangées « mes héros » en tête de liste).
+  function caseHeros(h, compact) {
+    const b = el('button', 'heros-case' + (compact ? ' compact' : '') + (h.id === reglages.choisi ? ' choisi' : '') +
+      (!compact && DLN.etiquettes.de(h.id).indexOf('joué') !== -1 ? ' mien' : ''));
     b.type = 'button';
     b.title = h.nom;
-    b.append(DLN.img(h.icone || h.image), el('span', null, h.nom), DLN.etiquettes.pastilles(h.id));
-    b.addEventListener('click', () => { aller(h.id); window.scrollTo({ top: 0 }); });
+    b.append(DLN.img(h.icone || h.image));
+    if (compact) b.setAttribute('aria-label', h.nom); else b.append(el('span', null, h.nom));
+    if (h.id === reglages.choisi) b.setAttribute('aria-current', 'true');
+    b.addEventListener('click', () => {
+      document.querySelector('.choix-colonne').classList.remove('ouverte');
+      aller(h.id);
+      window.scrollTo({ top: 0 });
+    });
     return b;
   }
 
+  // D'abord les héros qui portent une étiquette (rangée de portraits par étiquette, un héros dans la première
+  // de ses étiquettes), puis tous les héros par rôle : un héros joué y reste, avec un contour or, pour voir son rôle.
   function afficherListe() {
     const zone = document.getElementById('liste');
     const filtre = document.getElementById('recherche').value.trim().toLowerCase();
     zone.textContent = '';
     const garde = (h) => !filtre || h.nom.toLowerCase().indexOf(filtre) !== -1;
-    // Un groupe par étiquette personnelle en usage (« joué », « me casse »…), puis les rôles.
-    const parEtiquette = DLN.etiquettes.enUsage().map((t) => ({
-      nom: t.charAt(0).toUpperCase() + t.slice(1), heros: DLN.etiquettes.avec(t).map(herosDe).filter((h) => h && garde(h))
-    }));
-    const groupes = parEtiquette.concat(DLN.grouperParRole(D.heros.heros.filter(garde), D.roles));
-    groupes.forEach((g) => {
-      if (!g.heros.length) return;
-      zone.append(el('h3', 'grille-role', g.nom));
+    const places = {};
+    const mes = el('div', 'mes-heros');
+    DLN.etiquettes.enUsage().forEach((t) => {
+      const ici = DLN.etiquettes.avec(t).filter((id) => !places[id]).map(herosDe).filter((h) => h && garde(h));
+      if (!ici.length) return;
+      ici.forEach((h) => { places[h.id] = true; });
+      const ligne = el('div', 'mes-heros-ligne');
+      const nom = el('span', 'mes-heros-nom', t);
+      nom.style.setProperty('--etiquette', DLN.etiquettes.couleur(t));
+      const rang = el('div', 'mes-heros-portraits');
+      ici.forEach((h) => rang.append(caseHeros(h, true)));
+      ligne.append(nom, rang);
+      mes.append(ligne);
+    });
+    if (mes.childNodes.length) zone.append(mes);
+    const tous = el('div', 'liste-roles');
+    DLN.grouperParRole(D.heros.heros.filter(garde), D.roles).forEach((g) => {
+      tous.append(el('h3', 'grille-role', g.nom));
       const grille = el('div', 'heros-grille');
       g.heros.forEach((h) => grille.append(caseHeros(h)));
-      zone.append(grille);
+      tous.append(grille);
     });
+    if (tous.childNodes.length) zone.append(tous);
     if (!zone.childNodes.length) zone.append(el('p', 'vide', 'Aucun héros ne correspond.'));
+    document.querySelector('.choix-colonne').classList.toggle('filtree', Boolean(filtre));
   }
 
   // ---------- bandeau ----------
@@ -92,32 +114,49 @@
   function typeDegats(id) {
     const m = menacesDe(id).map((x) => x.id);
     const arme = m.indexOf('tir') !== -1, sorts = m.indexOf('sorts') !== -1;
-    if (arme && sorts) return ['Arme et compétences', 'fort'];
-    if (arme) return ['Dégâts surtout à l\'arme', 'weapon'];
-    if (sorts) return ['Dégâts surtout spirit', 'spirit'];
+    if (arme && sorts) return ['Arme et Spirit', 'mixte'];
+    if (arme) return ['Dégâts à l\'arme', 'weapon'];
+    if (sorts) return ['Dégâts Spirit', 'spirit'];
     return null;
   }
 
-  function stat(libelle, valeur, aide, classe) {
-    const d = el('div', 'stat');
-    d.append(el('span', 'stat-valeur' + (classe ? ' ' + classe : ''), valeur), el('span', 'stat-nom', libelle));
+  function stat(libelle, valeur, aide, classe, carre) {
+    const d = el('div', 'stat' + (classe ? ' ' + classe : ''));
+    const nom = el('span', 'stat-nom');
+    if (carre) nom.append(el('i', 'carre ' + carre));
+    nom.append(libelle);
+    d.append(el('span', 'stat-valeur', valeur), nom);
     if (aide) d.title = aide;
     return d;
   }
 
+  // Étiqueter ▾ : l'éditeur d'étiquettes replié derrière un seul bouton.
+  function boutonEtiqueter(h) {
+    const d = el('details', 'etiqueter');
+    const s = el('summary', 'btn discret');
+    s.append('Étiqueter', DLN.icone('chevron-down'));
+    d.append(s);
+    const p = el('div', 'etiqueter-panneau');
+    p.append(DLN.etiquettes.editeur(h.id));
+    d.append(p);
+    d.addEventListener('keydown', (e) => { if (e.key === 'Escape') { d.open = false; s.focus(); } });
+    return d;
+  }
+
+  // Tête de fiche : portrait, nom, étiquettes posées, une ligne d'identité, 3 chiffres (PV, DPS, portée).
   function bandeau(h) {
     const b = el('header', 'bandeau');
     b.append(DLN.img(h.image || h.icone, 'bandeau-portrait'));
-    const droite = el('div');
+    const droite = el('div', 'bandeau-corps');
     const titre = el('div', 'bandeau-titre');
-    const h1 = el('h1', null, h.nom);
-    titre.append(h1);
+    titre.append(el('h1', null, h.nom), DLN.etiquettes.pastilles(h.id));
 
     const actions = el('div', 'bandeau-actions');
-    const enFace = lireEnFace();
-    const dedans = enFace.indexOf(h.id) !== -1;
-    const bouton = el('button', 'btn', dedans ? '✓ En face' : '+ En face');
+    const dedans = lireEnFace().indexOf(h.id) !== -1;
+    const bouton = el('button', 'btn en-face' + (dedans ? ' dedans' : ''));
+    bouton.append(DLN.icone(dedans ? 'check' : 'swords'), el('span', 'large', dedans ? 'En face' : 'Ajouter en face'), el('span', 'court', 'En face'));
     bouton.type = 'button';
+    bouton.setAttribute('aria-pressed', String(dedans));
     bouton.title = dedans ? 'Retirer des héros d\'en face (page En partie)' : 'Ajouter aux héros d\'en face (page En partie)';
     bouton.addEventListener('click', () => {
       const l = lireEnFace();
@@ -126,149 +165,170 @@
       ecrireEnFace(l);
       afficherFiche();
     });
-    const wiki = el('a', 'btn discret', 'Wiki ↗');
+    actions.append(bouton, boutonEtiqueter(h));
+    titre.append(actions);
+    droite.append(titre, el('p', 'bandeau-accroche', h.role_fr || h.role));
+
+    // Identité en une ligne : rôle (lien), type de dégâts (carré codé), arme, complexité.
+    const ident = el('p', 'bandeau-identite');
+    const ajout = (n) => { if (ident.childNodes.length) ident.append(el('span', 'sep', '·')); ident.append(n); };
+    rolesDe(h.id).slice(0, 1).forEach((r) => {
+      const a = el('a', null, r.nom);
+      a.href = 'roles.html#' + r.id;
+      a.title = 'Voir la fiche du rôle';
+      ajout(a);
+    });
+    const td = typeDegats(h.id);
+    if (td) { const s = el('span', 'type-degats ' + td[1]); s.append(el('i', 'carre'), td[0]); ajout(s); }
+    if (h.arme) ajout(el('span', null, h.arme));
+    ajout(el('span', null, 'Complexité ' + h.complexite + '/3'));
+    const st = statDe(h.id, DLN.tranche());
+    const t = DLN.tier(st);
+    if (t) {
+      const a = el('a', 'tier-puce tier-' + t.lettre);
+      a.append(el('strong', null, 'Tier ' + t.lettre), ' ' + DLN.LIBELLES_TRANCHE[DLN.tranche()]);
+      a.href = 'tiers.html';
+      a.title = t.libelle + ' de la moyenne : ' + st.winrate.toFixed(1) + ' % ± ' + st.marge.toFixed(1) + ' (' + DLN.fmtNombre(st.parties) + ' parties). Voir la tier list.';
+      ajout(a);
+    }
+    const wiki = el('a', 'lien-wiki', 'Wiki ↗');
     wiki.href = h.wiki;
     wiki.target = '_blank';
     wiki.rel = 'noopener';
-    actions.append(bouton, wiki);
-    titre.append(actions);
-    droite.append(titre, el('p', 'bandeau-accroche', h.role_fr || h.role), DLN.etiquettes.editeur(h.id));
-
-    const puces = el('div', 'puces');
-    rolesDe(h.id).forEach((r) => {
-      const a = el('a', 'puce fort', r.nom);
-      a.href = 'roles.html#' + r.id;
-      a.title = 'Voir la fiche du rôle';
-      puces.append(a);
-    });
-    const td = typeDegats(h.id);
-    if (td) puces.append(el('span', 'puce ' + td[1], td[0]));
-    if (h.arme) puces.append(el('span', 'puce', h.arme));
-    puces.append(el('span', 'puce', 'Complexité ' + h.complexite + '/3'));
-    droite.append(puces);
+    ajout(wiki);
+    droite.append(ident);
 
     const f = (D.details.fiches || {})[String(h.id)];
-    const s = statDe(h.id, DLN.tranche());
     const bande = el('div', 'stats-bande');
-    if (s && s.winrate != null) {
-      bande.append(stat('Winrate', s.winrate.toFixed(1) + ' %',
-        '± ' + s.marge.toFixed(1) + ' points · ' + DLN.LIBELLES_TRANCHE[DLN.tranche()] + ' · ' + DLN.fmtNombre(s.parties) + ' parties',
-        s.winrate - s.marge > 50 ? 'haut' : (s.winrate + s.marge < 50 ? 'bas' : '')));
-    }
     if (f) {
-      bande.append(stat('PV de départ', String(f.pv), 'Vie au niveau 1, sans objet'));
+      bande.append(stat('PV', String(f.pv), 'Vie au niveau 1, sans objet. Vitesse ' + f.vitesse_m_s + ' m/s.', 'pv', 'obj-vitality'));
       if (f.arme && f.arme.dps != null) {
         bande.append(stat('DPS arme', String(Math.round(f.arme.dps)),
-          f.arme.degats_balle + ' par balle' + (f.arme.balles_par_tir > 1 ? ' × ' + f.arme.balles_par_tir : '') + ', ' + f.arme.tirs_par_s + ' tirs/s, niveau 1'));
-        bande.append(stat('Chargeur', String(f.arme.chargeur), 'Rechargement : ' + f.arme.rechargement_s + ' s'));
+          f.arme.degats_balle + ' par balle' + (f.arme.balles_par_tir > 1 ? ' × ' + f.arme.balles_par_tir : '') + ', ' + f.arme.tirs_par_s +
+          ' tirs/s, chargeur ' + f.arme.chargeur + ', niveau 1', 'dps', 'obj-weapon'));
       }
-      if (f.arme && f.arme.degats_pleins_jusqu_a_m != null) bande.append(stat('Pleins dégâts', '≤ ' + f.arme.degats_pleins_jusqu_a_m + ' m'));
-      bande.append(stat('Vitesse', f.vitesse_m_s + ' m/s'));
+      if (f.arme && f.arme.degats_pleins_jusqu_a_m != null) {
+        bande.append(stat('Portée', f.arme.degats_pleins_jusqu_a_m + ' m', 'Pleins dégâts jusqu\'à ' + f.arme.degats_pleins_jusqu_a_m +
+          ' m (un dash = 10 m), moins au-delà', 'portee'));
+      }
     }
-    droite.append(bande);
+    if (bande.childNodes.length) droite.append(bande);
     b.append(droite);
     return b;
   }
 
   // ---------- onglet Aperçu ----------
 
-  function carteRole(r) {
-    const c = el('div', 'encadre');
-    const t = el('h3', null, 'Rôle : ' + r.nom);
-    t.append(el('span', 'marque', 'avis de joueur'));
+  // « Comment je le joue » : où, quoi faire, à éviter. La source va en pied de bloc.
+  function blocJouer(h) {
+    const roles = rolesDe(h.id);
+    if (!roles.length) return null;
+    const c = el('section', 'bloc jouer');
+    const t = el('h2', null, 'Comment le jouer');
     c.append(t);
-    const ligne = (libelle, texte) => {
-      const p = el('p', 'fiche-ligne');
-      p.append(el('strong', null, libelle + ' '), texte);
-      c.append(p);
-    };
-    ligne('Où :', r.place);
-    ligne('Quoi faire :', r.quoi_faire);
-    ligne('À éviter :', r.a_eviter.join(' '));
-    if (DLN.niveau() >= 2) {
-      ligne('Objectifs :', r.objectifs);
-      ligne('Puissance :', 'début ' + r.puissance.debut + ', milieu ' + r.puissance.milieu + ', fin ' + r.puissance.fin + '.');
-    }
+    roles.forEach((r, i) => {
+      if (i > 0 && DLN.niveau() < 2) return;
+      if (roles.length > 1 && DLN.niveau() >= 2) c.append(el('h3', null, r.nom));
+      const dl = el('dl', 'jouer-lignes');
+      const ligne = (libelle, texte) => { dl.append(el('dt', null, libelle), el('dd', null, texte)); };
+      ligne('Où', r.place);
+      ligne('Quoi faire', r.quoi_faire);
+      ligne('À éviter', r.a_eviter.join(' '));
+      if (DLN.niveau() >= 2) {
+        ligne('Objectifs', r.objectifs);
+        ligne('Puissance', 'début ' + r.puissance.debut + ', milieu ' + r.puissance.milieu + ', fin ' + r.puissance.fin + '.');
+      }
+      c.append(dl);
+    });
+    const src = el('p', 'source', 'Rôle ' + roles[0].nom + ' : avis de joueur (vidéo de Wouks), pas une donnée du jeu. ');
+    const a = el('a', null, 'Fiche du rôle');
+    a.href = 'roles.html#' + roles[0].id;
+    src.append(a);
+    c.append(src);
     return c;
   }
 
-  // Winrate selon la durée de la partie : fort tôt ou tard ?
+  // Winrate selon la durée de la partie : fort tôt ou tard ? (rythme, data/tempo.json)
   function blocDurees(h) {
     const t = ((D.tempo || {}).tranches || {})[DLN.tranche()];
     const d = t && t[String(h.id)] && t[String(h.id)].durees;
     if (!d || !d.length) return null;
-    const c = el('div', 'encadre');
-    c.append(el('h3', null, 'Fort tôt ou tard ?'));
+    const c = el('section', 'bloc');
+    c.append(el('h2', null, 'Fort tôt ou tard ?'));
     const table = el('table', 'table');
     d.forEach((x) => {
       const tr = el('tr');
       const libelle = x.a_min == null ? 'plus de ' + x.de_min + ' min' : (x.de_min === 0 ? 'moins de ' + x.a_min + ' min' : x.de_min + ' à ' + x.a_min + ' min');
-      const v = el('td', 'nombre', x.winrate.toFixed(1) + ' %');
-      if (x.winrate - x.marge > 50) v.style.color = 'var(--bon)';
-      if (x.winrate + x.marge < 50) v.style.color = 'var(--danger)';
+      const v = el('td', 'nombre' + (x.winrate - x.marge > 50 ? ' haut' : x.winrate + x.marge < 50 ? ' bas' : ''), x.winrate.toFixed(1) + ' %');
       tr.append(el('td', null, 'Partie de ' + libelle), v, el('td', 'nombre doux', '± ' + x.marge.toFixed(1)),
         el('td', 'nombre doux', DLN.fmtNombre(x.parties) + ' parties'));
       table.append(tr);
     });
-    c.append(table, el('p', 'aide', 'Winrate selon la durée de la partie (' + DLN.LIBELLES_TRANCHE[DLN.tranche()] +
+    c.append(table, el('p', 'source', 'Winrate selon la durée de la partie (' + DLN.LIBELLES_TRANCHE[DLN.tranche()] +
       '). S\'il monte avec la durée, le héros est meilleur en fin de partie. Un écart plus petit que la marge ne veut rien dire.'));
+    return c;
+  }
+
+  function blocWinrate(h) {
+    const c = el('section', 'bloc');
+    c.append(el('h2', null, 'Tier et winrate'));
+    const table = el('table', 'table');
+    Object.keys(D.stats.tranches).forEach((cle) => {
+      const s = statDe(h.id, cle);
+      if (!s) return;
+      const tr = el('tr', cle === DLN.tranche() ? 'courante' : null);
+      const t = DLN.tier(s);
+      tr.append(el('td', null, DLN.LIBELLES_TRANCHE[cle] || cle), el('td', 'tier-cellule tier-' + t.lettre, t.lettre), el('td', 'nombre', s.winrate.toFixed(1) + ' %'),
+        el('td', 'nombre doux', '± ' + s.marge.toFixed(1)), el('td', 'nombre doux', DLN.fmtNombre(s.parties) + ' parties'));
+      table.append(tr);
+    });
+    const lien = el('a', null, 'Tier list complète');
+    lien.href = 'tiers.html';
+    const src = el('p', 'source', 'Depuis le ' + D.stats.meta.depuis + '. Ta tranche est en surbrillance (menu ⚙). Tier : S/A au-dessus de 50 % même avec la marge, C/D en dessous, B dans la moyenne. Ça dit si le héros gagne souvent, pas s\'il te convient. ');
+    src.append(lien);
+    c.append(table, src);
+    return c;
+  }
+
+  function blocAstuces(h, titre) {
+    const fiche = D.counters.heros[String(h.id)];
+    if (!fiche || !fiche.astuces || !fiche.astuces.length) return null;
+    const c = el('section', 'bloc');
+    c.append(el('h2', null, titre));
+    const ul = el('ul', 'liste-points');
+    fiche.astuces.forEach((a) => ul.append(el('li', null, a)));
+    c.append(ul);
     return c;
   }
 
   function ongletApercu(h) {
     const zone = el('div', 'deux-colonnes');
-    const g = el('div', 'fiche-contenu');
-    const d = el('div', 'fiche-contenu');
+    const g = el('div', 'colonne');
+    const d = el('div', 'colonne');
 
-    const style = el('div', 'encadre');
-    const ts = el('h3', null, 'Style de jeu');
-    ts.append(el('span', 'marque', 'description officielle du jeu'));
-    style.append(ts, el('p', 'texte-anglais', h.style_de_jeu_fr || h.style_de_jeu));
+    const jouer = blocJouer(h);
+    if (jouer) g.append(jouer);
+    const style = el('details', 'bloc description');
+    style.append(el('summary', null, 'Description officielle du jeu'), el('p', 'texte-anglais', h.style_de_jeu_fr || h.style_de_jeu));
+    style.open = !jouer;
     g.append(style);
-    rolesDe(h.id).forEach((r, i) => { if (i === 0 || DLN.niveau() >= 2) g.append(carteRole(r)); });
 
-    const fiche = D.counters.heros[String(h.id)];
     const menaces = menacesDe(h.id);
     if (menaces.length) {
-      const c = el('div', 'encadre danger');
-      c.append(el('h3', null, 'Ses dangers'));
+      const c = el('section', 'bloc dangers');
+      c.append(el('h2', null, 'Ses dangers'));
       const ul = el('ul', 'liste-points');
       menaces.forEach((m) => {
         const li = el('li');
         li.append(el('strong', null, D.counters.menaces[m.id].nom + ' : '), m.pourquoi + '.');
         ul.append(li);
       });
-      const lien = el('a', 'lien', 'Quoi acheter contre ce héros →');
+      const lien = el('a', 'lien', 'Quoi acheter contre lui →');
       lien.href = '#h=' + h.id + '&o=contrer';
       lien.addEventListener('click', (e) => { e.preventDefault(); aller(h.id, 'contrer'); });
       c.append(ul, lien);
       d.append(c);
     }
-    if (fiche && fiche.astuces && fiche.astuces.length) {
-      const c = el('div', 'encadre bon');
-      c.append(el('h3', null, 'À savoir'));
-      const ul = el('ul', 'liste-points');
-      fiche.astuces.forEach((a) => ul.append(el('li', null, a)));
-      c.append(ul);
-      d.append(c);
-    }
-
-    const c = el('div', 'encadre');
-    c.append(el('h3', null, 'Winrate depuis le ' + D.stats.meta.depuis));
-    const table = el('table', 'table');
-    Object.keys(D.stats.tranches).forEach((cle) => {
-      const s = statDe(h.id, cle);
-      if (!s) return;
-      const tr = el('tr', cle === DLN.tranche() ? 'courante' : null);
-      tr.append(el('td', null, DLN.LIBELLES_TRANCHE[cle] || cle), el('td', 'nombre', s.winrate.toFixed(1) + ' %'),
-        el('td', 'nombre doux', '± ' + s.marge.toFixed(1)), el('td', 'nombre doux', DLN.fmtNombre(s.parties) + ' parties'));
-      table.append(tr);
-    });
-    c.append(table);
-    d.append(c);
-    const durees = blocDurees(h);
-    if (durees) d.append(durees);
-
     zone.append(g, d);
     return zone;
   }
@@ -398,18 +458,17 @@
     // Comment s'en servir : sens des étiquettes du jeu, règles de lecture, notes du héros.
     if (C) {
       const conseils = el('div', 'arme-conseils');
-      const titreC = el('h4', null, 'Comment t\'en servir ');
-      titreC.append(el('span', 'marque', 'avis'));
+      const titreC = el('h4', null, 'Comment t\'en servir');
       const ul = el('ul');
       a.types.forEach((t) => { const def = C.types[t]; if (def) { const li = el('li'); li.append(el('strong', null, def.nom + ' : '), def.texte); ul.append(li); } });
       C.regles.filter((r) => regleVraie(r.si, a, p)).forEach((r) => ul.append(el('li', null, remplirRegle(r.texte, a, p))));
       const notes = C.notes[String(h.id)] || [];
       notes.forEach((n) => {
         const li = el('li', 'arme-note');
-        li.append(el('strong', null, h.nom + ' : '), n.texte, ' ', el('span', 'arme-source', n.source));
+        li.append(n.texte, ' ', el('span', 'arme-source', n.source));
         ul.append(li);
       });
-      conseils.append(titreC, ul);
+      conseils.append(titreC, ul, el('p', 'source', 'Avis de joueur appuyé sur les chiffres du jeu (data/armes-conseils.json).'));
       s.append(conseils);
     }
 
@@ -440,7 +499,7 @@
     plus.append(prog);
     if (a.secondaire) { plus.append(el('h4', null, 'Tir secondaire')); plus.append(detailsTir(a.secondaire)); }
     s.append(plus);
-    s.append(el('p', 'aide', 'Chiffres du jeu au niveau 1, sans objet (' + D.armes.meta.source + ', patch ' + D.armes.meta.patch +
+    s.append(el('p', 'source', 'Chiffres du jeu au niveau 1, sans objet (' + D.armes.meta.source + ', patch ' + D.armes.meta.patch +
       '). Tir à la tête : ×1,65 pour tous, moins un malus propre à certains héros (page Weapon Damage du wiki). Classements parmi les ' +
       D.heros.heros.length + ' héros.'));
     return s;
@@ -483,8 +542,7 @@
     // Verdict et ce qui le fonde.
     if (verdict) {
       const d = el('div', 'arme-conseils');
-      const t = el('h4', null, verdict.nom + ' ');
-      t.append(el('span', 'marque', 'avis'));
+      const t = el('h4', null, verdict.nom);
       const ul = el('ul');
       ul.append(el('li', null, verdict.texte));
       const combien = nbMelee === 0 ? 'Aucun des ' + builds.length + ' builds publics ne prend'
@@ -498,7 +556,7 @@
         li.append(el('strong', null, c.nom + ' : '), c.texte);
         ul.append(li);
       });
-      d.append(t, ul);
+      d.append(t, ul, el('p', 'source', 'Avis tiré des builds publics et des achats de ses joueurs.'));
       s.append(d);
     }
 
@@ -524,7 +582,8 @@
 
   // Pas de vidéo dans l'API ni sur le wiki : on renvoie vers une recherche de démonstrations.
   function lienDemo(h, c) {
-    const a = el('a', 'lien-demo', '▶ Voir une démo');
+    const a = el('a', 'lien-demo');
+    a.append(DLN.icone('play'), 'Voir une démo');
     a.href = 'https://www.youtube.com/results?search_query=' + encodeURIComponent('Deadlock ' + h.nom + ' ' + c.nom);
     a.target = '_blank';
     a.rel = 'noopener';
@@ -540,7 +599,7 @@
       const corps = el('div');
       const nom = el('h4');
       nom.append(el('span', 'competence-touche', c.touche === 4 ? 'Ultime' : String(c.touche)), nomBilingue(c.nom_fr, c.nom));
-      if (c.recharge_s) nom.append(el('span', 'competence-recharge', '⟳ ' + c.recharge_s + ' s'));
+      if (c.recharge_s) { const r = el('span', 'competence-recharge'); r.append(DLN.icone('timer'), c.recharge_s + ' s'); r.title = 'Temps de recharge'; nom.append(r); }
       if (c.canalisee) nom.append(el('span', 'marque', 'canalisée : un stun l\'interrompt'));
       corps.append(nom, el('p', 'competence-resume', c.resume_fr || c.resume));
       // Quelques compétences n'ont pas de texte dans l'API (Rake de Mina) : pas de paragraphe vide.
@@ -566,7 +625,7 @@
     });
     const boite = el('div', 'fiche-contenu');
     boite.append(zone);
-    boite.append(el('p', 'aide', 'Textes officiels du jeu en français. Noms des valeurs en anglais.' +
+    boite.append(el('p', 'source', 'Textes officiels du jeu en français. Noms des valeurs en anglais.' +
       (DLN.niveau() < 2 ? ' Valeurs et améliorations : niveau 2 ou plus (menu ⚙).' : '') +
       ' Les démos sont des recherches YouTube : aucune vidéo officielle n\'est disponible par l\'API.'));
     // L'arme et le corps à corps viennent après les compétences.
@@ -580,21 +639,13 @@
   // ---------- onglet Le contrer ----------
 
   function ligneObjet(o) {
-    const fiche = objets[o.nom];
-    const li = el('li', 'objet');
-    if (fiche && fiche.image) li.append(DLN.img(fiche.image, 'objet-icone'));
-    const corps = el('div', 'objet-corps');
-    const tete = el('div', 'objet-tete');
-    tete.append(el('strong', null, o.nom));
-    if (fiche) tete.append(el('span', 'objet-prix', DLN.fmtNombre(fiche.cout)));
-    if (fiche && fiche.actif) tete.append(el('span', 'objet-actif', 'actif'));
-    corps.append(tete);
-    if (o.quand) corps.append(el('span', 'objet-quand', o.quand));
+    const fiche = objets[o.nom] || { nom: o.nom };
+    const sous = el('span', 'objet-carte-sous');
+    if (o.quand) sous.append(el('span', 'objet-quand', o.quand + ' '));
     const explication = (D.counters.objets[o.nom] || {}).explication;
-    if (explication) corps.append(el('span', 'objet-explication', explication));
-    if (fiche && DLN.niveau() >= 3 && fiche.description) corps.append(el('span', 'objet-description', fiche.description));
-    li.append(corps);
-    return li;
+    if (explication) sous.append(explication);
+    if (DLN.niveau() >= 3 && fiche.description) sous.append(el('span', 'objet-description', fiche.description));
+    return DLN.objetCarte(fiche, sous.childNodes.length ? sous : null, null, 'li');
   }
 
   function groupesObjets(liste) {
@@ -603,8 +654,10 @@
       const ici = liste.filter((o) => ((objets[o.nom] || {}).categorie || 'autre') === categorie);
       if (!ici.length) return;
       const groupe = el('div', 'objets-groupe ' + categorie);
-      groupe.append(el('h4', null, LIBELLES_CATEGORIE[categorie] || 'Autres'));
-      const ul = el('ul', 'objets');
+      const t = el('h4', null);
+      t.append(el('i', 'carre'), LIBELLES_CATEGORIE[categorie] || 'Autres');
+      groupe.append(t);
+      const ul = el('ul', 'objets-cartes');
       ici.forEach((o) => ul.append(ligneObjet(o)));
       groupe.append(ul);
       boite.append(groupe);
@@ -633,26 +686,27 @@
 
     if (menaces.length) {
       const resume = el('section', 'contrer-resume');
-      resume.append(el('h3', null, 'En bref'));
+      resume.append(el('h2', null, 'En bref : le moins cher qui répond'));
       const ul = el('ul', 'contrer-lignes');
+      // Une ligne par réponse : les menaces qui mènent au même objet sont fusionnées.
+      const lignes = [];
       menaces.forEach((m) => {
         const menace = D.counters.menaces[m.id];
+        const premier = menace.objet_direct === false ? null : menace.objets.slice().sort(parPrix)[0];
+        const deja = premier && lignes.find((l) => l.objet && l.objet.nom === premier.nom);
+        if (deja) deja.noms.push(menace.nom);
+        else lignes.push({ noms: [menace.nom], objet: premier, menace: menace });
+      });
+      lignes.forEach((l) => {
         const li = el('li');
-        const premier = menace.objets.slice().sort(parPrix)[0];
-        li.append(el('strong', null, menace.nom));
-        if (premier) {
-          const o = objets[premier.nom];
-          const chip = el('span', 'contrer-objet obj-' + ((o || {}).categorie || 'autre'));
-          if (o && o.image) chip.append(DLN.img(o.image));
-          chip.append(premier.nom);
-          chip.title = (D.counters.objets[premier.nom] || {}).explication || '';
-          li.append(el('span', 'contrer-fleche', '→'), chip);
-        }
+        li.append(el('strong', null, l.noms.join(', ')));
+        if (l.objet) li.append(DLN.objetCarte(objets[l.objet.nom] || { nom: l.objet.nom }, l.objet.quand || null, (D.counters.objets[l.objet.nom] || {}).explication));
+        else li.append(el('span', 'contrer-sans-objet', 'Pas d\'objet qui y répond. ' + l.menace.reponse.split(/(?<=\.) /).filter((p) => !/objet/i.test(p)).join(' ')));
         ul.append(li);
       });
       resume.append(ul);
       const f = (D.details.fiches || {})[String(h.id)];
-      if (f && f.arme && f.arme.degats_pleins_jusqu_a_m != null) resume.append(el('p', 'contrer-portee', '🎯 ' + porteeTexte(f.arme)));
+      if (f && f.arme && f.arme.degats_pleins_jusqu_a_m != null) { const p = el('p', 'contrer-portee'); p.append(DLN.icone('crosshair'), porteeTexte(f.arme)); resume.append(p); }
       zone.append(resume);
     }
 
@@ -661,8 +715,10 @@
       const carte = el('details', 'menace');
       carte.open = i === 0 && menaces.length <= 2;
       const titre = el('summary');
-      titre.append(el('span', 'menace-titre', menace.nom), el('span', 'menace-pourquoi', m.pourquoi + '.'));
-      carte.append(titre);
+      const mt = el('span', 'menace-titre');
+      mt.append(DLN.icone('chevron-down', 'chevron'), menace.nom);
+      titre.append(mt);
+      carte.append(titre, el('p', 'menace-pourquoi', m.pourquoi + '.'));
       const rep = el('p', 'menace-reponse');
       rep.append(el('strong', null, 'Réponse : '), menace.reponse);
       carte.append(rep);
@@ -673,45 +729,32 @@
     });
     const cachees = menacesDe(h.id).length - menaces.length;
     if (cachees > 0) zone.append(el('p', 'aide', cachees + ' menace' + (cachees > 1 ? 's' : '') + ' de plus au niveau supérieur (menu ⚙).'));
-    const fiche = D.counters.heros[String(h.id)];
-    if (fiche && fiche.astuces && fiche.astuces.length) {
-      const c = el('div', 'encadre bon');
-      c.append(el('h3', null, 'À savoir'));
-      const ul = el('ul', 'liste-points');
-      fiche.astuces.forEach((a) => ul.append(el('li', null, a)));
-      c.append(ul);
-      zone.append(c);
-    }
+    const astuces = blocAstuces(h, 'À savoir');
+    if (astuces) zone.append(astuces);
     return zone;
   }
 
   // ---------- onglet Builds ----------
 
+  // Un achat : composant objet commun, avec la part des joueurs qui le prennent en jauge.
   function ligneAchat(o, details) {
-    const li = el('li', 'achat obj-' + (o.categorie || 'autre'));
-    li.append(DLN.img((objets[o.nom] || {}).image));
-    const nom = el('span', 'achat-nom', o.nom + ' ');
-    nom.append(el('span', 'objet-prix', DLN.fmtNombre(o.cout)));
-    if (o.actif) nom.append(' ', el('span', 'objet-actif', 'actif'));
-    const pour = el('span', 'achat-pour', details);
-    const jauge = el('div', 'jauge-achat');
+    const sous = el('span', 'objet-carte-sous', details);
+    const jauge = el('span', 'jauge-achat');
     const barre = el('span');
     barre.style.width = Math.min(100, o.achete_par) + '%';
     jauge.append(barre);
-    pour.append(jauge);
-    li.append(nom, pour);
-    li.title = (D.counters.objets[o.nom] || {}).explication || '';
-    return li;
+    sous.append(jauge);
+    const fiche = Object.assign({}, o, { image: (objets[o.nom] || {}).image });
+    return DLN.objetCarte(fiche, sous, (D.counters.objets[o.nom] || {}).explication, 'li');
   }
 
   // Builds publics du jeu : ceux qu'on trouve dans le navigateur de builds en jeu.
   function blocBuildsPublics(h, liste) {
-    const c = el('section', 'panneau');
-    c.append(el('h2', null, 'Builds publics les plus suivis'),
-      el('p', 'aide', 'Les builds de la communauté visibles dans le navigateur de builds du jeu, les plus mis en favori parmi ceux mis à jour ' +
-        'depuis le patch (' + D.builds.meta.depuis + '). Pour en suivre un en partie : le chercher par son nom dans les builds de ' + h.nom + '. ' +
-        'Textes des auteurs, souvent en anglais.'));
-    liste.forEach((b, i) => c.append(detailsBuild(h, b, i === 0)));
+    const c = el('section', 'bloc');
+    c.append(el('h2', null, 'Builds publics les plus suivis'));
+    liste.forEach((b) => c.append(detailsBuild(h, b, false)));
+    c.append(el('p', 'source', 'Navigateur de builds du jeu : les plus mis en favori parmi ceux mis à jour depuis le ' + D.builds.meta.depuis +
+      '. En jeu, cherche-les par leur nom. Textes des auteurs, souvent en anglais.'));
     return c;
   }
 
@@ -747,15 +790,7 @@
         const t = el('div', 'build-section-titre', sec.nom);
         if (sec.note) t.title = sec.note;
         const icones = el('div', 'build-objets');
-        sec.objets.forEach((nom) => {
-          const o = objets[nom];
-          const x = el('span', 'build-objet obj-' + ((o || {}).categorie || 'autre') + (o && o.actif ? ' actif' : ''));
-          if (o && o.image) x.append(DLN.img(o.image));
-          x.append(el('span', null, nom));
-          x.title = nom + (o ? ' · ' + DLN.fmtNombre(o.cout) + ' souls' + (o.actif ? ' · actif' : '') : '') +
-            ((D.counters.objets[nom] || {}).explication ? '\n' + D.counters.objets[nom].explication : '');
-          icones.append(x);
-        });
+        sec.objets.forEach((nom) => icones.append(DLN.objetCarte(objets[nom] || { nom: nom }, null, (D.counters.objets[nom] || {}).explication)));
         ligne.append(t, icones);
         d.append(ligne);
       });
@@ -764,16 +799,14 @@
 
   // Importer un build du jeu : numéro (navigateur de builds en jeu), lien qui le contient, ou nom.
   function blocImport(h) {
-    const c = el('section', 'panneau build-import');
-    c.append(el('h2', null, 'Importer un build'),
-      el('p', 'aide', 'Colle le numéro d\'un build (affiché dans le navigateur de builds du jeu) ou un lien qui le contient, ou cherche par nom parmi les builds de ' + h.nom + '. ' +
-        'Le build reste dans ce navigateur ; « Suivre en partie » le donne au coach.'));
+    const c = el('section', 'bloc build-import');
+    c.append(el('h2', null, 'Importer un build du jeu'));
     const f = el('form', 'build-import-form');
     const champ = el('input');
     champ.type = 'text';
-    champ.placeholder = 'Ex. : 414186, ou « melee »';
+    champ.placeholder = 'Numéro, lien ou nom (ex. 414186)';
     champ.setAttribute('aria-label', 'Numéro, lien ou nom du build');
-    const ok = el('button', 'btn principal', 'Chercher');
+    const ok = el('button', 'btn', 'Chercher');
     ok.type = 'submit';
     const res = el('div', 'build-import-resultats');
     res.setAttribute('aria-live', 'polite');
@@ -797,7 +830,7 @@
         });
       }).catch((err) => { res.textContent = ''; res.append(el('p', 'erreur', 'Recherche impossible (' + err.message + ').')); });
     });
-    c.append(f, res);
+    c.append(f, res, el('p', 'source', 'Le build reste dans ce navigateur. « Suivre en partie » le donne au coach.'));
     const miens = DLN.builds.liste(h.id);
     if (miens.length) {
       c.append(el('h3', null, 'Mes builds importés'));
@@ -810,12 +843,13 @@
     const zone = el('div', 'fiche-contenu');
     const tranche = D.achats.tranches[DLN.tranche()] ? DLN.tranche() : 'tous';
     const a = (D.achats.tranches[tranche] || {})[String(h.id)];
+    // Gros achats (tempo.json : tier 3+, pris par 35 % ou plus) : marqués d'une étoile dans la grille.
+    const t = ((D.tempo || {}).tranches || {});
+    const trancheTempo = t[tranche] && t[tranche][String(h.id)] && (t[tranche][String(h.id)].objets_cles || []).length ? tranche : 'tous';
+    const cles = (((t[trancheTempo] || {})[String(h.id)] || {}).objets_cles || []).map((o) => o.nom);
     if (a) {
-      const c = el('section', 'panneau');
-      c.append(el('h2', null, 'Ce que ses joueurs achètent'),
-        el('p', 'aide', 'Objets pris par au moins 20 % des joueurs de ' + h.nom + ' (' + DLN.fmtNombre(a.parties) + ' parties, ' +
-          DLN.LIBELLES_TRANCHE[tranche] + ', depuis le ' + D.achats.meta.depuis + '), à leur minute moyenne d\'achat. ' +
-          'La barre = part des joueurs qui le prennent.'));
+      const c = el('section', 'bloc');
+      c.append(el('h2', null, 'Ce que ses joueurs achètent'));
       const phases = el('div', 'builds-phases');
       PHASES.forEach((ph) => {
         const ici = a.objets.filter((o) => o.minute >= ph[2] && o.minute < ph[3]);
@@ -824,30 +858,26 @@
         const t = el('h3', null, ph[0]);
         t.append(el('span', 'aide', ph[1] + ' · ' + DLN.fmtNombre(total) + ' souls'));
         col.append(t);
-        const ul = el('ul', 'achats');
-        ici.forEach((o) => ul.append(ligneAchat(o, o.achete_par + ' % · vers ' + Math.round(o.minute) + ' min')));
+        const ul = el('ul', 'objets-cartes');
+        ici.forEach((o) => {
+          const li = ligneAchat(o, 'vers ' + Math.round(o.minute) + ' min · ' + o.achete_par + ' %');
+          if (cles.indexOf(o.nom) !== -1) {
+            li.classList.add('gros-achat');
+            li.querySelector('.objet-carte-nom').append(DLN.icone('star', 'etoile'));
+            li.title += '\nGros achat : il monte en puissance quand il l\'a.';
+          }
+          ul.append(li);
+        });
         col.append(ul);
         phases.append(col);
       });
-      c.append(phases);
-      zone.append(c);
-    }
-    const t = ((D.tempo || {}).tranches || {});
-    const trancheTempo = t[DLN.tranche()] && t[DLN.tranche()][String(h.id)] && (t[DLN.tranche()][String(h.id)].objets_cles || []).length ? DLN.tranche() : 'tous';
-    const cles = ((t[trancheTempo] || {})[String(h.id)] || {}).objets_cles || [];
-    if (cles.length) {
-      const c = el('section', 'panneau');
-      c.append(el('h2', null, 'Ses gros achats : quand ce héros monte en puissance'),
-        el('p', 'aide', 'Objets de tier 3 ou plus pris par au moins 35 % de ses joueurs (' + DLN.LIBELLES_TRANCHE[trancheTempo] +
-          '), dans l\'ordre de la minute moyenne d\'achat. En face, c\'est le moment où il faut s\'attendre à un palier de puissance.'));
-      const ul = el('ul', 'achats');
-      cles.slice().sort((x, y) => x.minute - y.minute).forEach((o) => ul.append(ligneAchat(o, 'vers ' + fmtMinute(o.minute) + ' · ' + o.achete_par + ' % de ses joueurs')));
-      c.append(ul);
+      c.append(phases, el('p', 'source', 'Objets pris par au moins 20 % des joueurs de ' + h.nom + ' (' + DLN.fmtNombre(a.parties) + ' parties, ' +
+        DLN.LIBELLES_TRANCHE[tranche] + ', depuis le ' + D.achats.meta.depuis + '), à leur minute moyenne d\'achat. La barre : part des joueurs qui le prennent. Étoile : gros achat (tier 3 ou plus, pris par 35 % ou plus), le moment où il monte en puissance.'));
       zone.append(c);
     }
     const publics = ((D.builds || {}).heros || {})[String(h.id)] || [];
-    if (publics.length) zone.prepend(blocBuildsPublics(h, publics));
-    if (DLN.builds) zone.prepend(blocImport(h));
+    if (publics.length) zone.append(blocBuildsPublics(h, publics));
+    if (DLN.builds) zone.append(blocImport(h));
     if (!a && !cles.length && !publics.length) zone.append(el('p', 'vide', 'Pas de données d\'achats pour ce héros.'));
     else if (!a) zone.append(el('p', 'aide', 'Le build complet par phase n\'est récupéré que pour les héros du profil (joués et à essayer).'));
     return zone;
@@ -867,8 +897,7 @@
     nom.addEventListener('click', (e) => { e.preventDefault(); aller(m.contre, 'apercu'); });
     const ecart = sens === 'perd' ? -m.ecart : m.ecart;
     tete.append(nom, el('span', 'matchup-ecart', (ecart > 0 ? '+' : '') + ecart.toFixed(1) + ' pts'),
-      el('span', 'doux petit', '± ' + m.marge.toFixed(1) + ' · ' + DLN.fmtNombre(m.parties) + ' parties'),
-      el('span', signal ? 'marque signal' : 'marque', signal ? 'signal' : 'dans la marge'));
+      el('span', 'doux petit', '± ' + m.marge.toFixed(1) + ' · ' + DLN.fmtNombre(m.parties) + ' parties'));
     corps.append(tete);
     const menaces = menacesDe(m.contre);
     if (menaces.length) corps.append(el('span', 'matchup-pourquoi', 'Ce qu\'il fait : ' + menaces.map((x) => D.counters.menaces[x.id].nom.toLowerCase()).join(', ')));
@@ -878,29 +907,33 @@
 
   function ongletMatchups(h) {
     const zone = el('div', 'fiche-contenu');
+    const stats = el('div', 'deux-colonnes');
+    stats.append(blocWinrate(h));
+    const durees = blocDurees(h);
+    if (durees) stats.append(durees);
+    zone.append(stats);
     const m = ((D.details.matchups || {})[DLN.tranche()] || {})[String(h.id)];
     if (!m) {
       zone.append(el('p', 'vide', 'Pas assez de parties pour ce héros dans cette tranche de rang.'));
       return zone;
     }
-    zone.append(el('p', 'aide', 'Statistiques ' + DLN.LIBELLES_TRANCHE[DLN.tranche()] + ' depuis le ' + D.details.meta.depuis +
-      '. Écart = winrate réel contre ce héros moins le winrate attendu d\'après la force des deux. « Signal » seulement si l\'écart dépasse la marge d\'erreur.'));
-    if (!m.signaux) {
-      zone.append(el('p', 'avertissement', 'Aucun matchup de ' + h.nom + ' ne sort de la marge d\'erreur dans cette tranche : ' +
-        'les noms ci-dessous sont surtout du hasard. Ce qui compte, ce sont ses menaces (onglet « Le contrer »).'));
-    } else {
-      zone.append(el('p', 'doux', m.signaux + ' matchup' + (m.signaux > 1 ? 's' : '') + ' sur ' + m.adversaires + ' sortent de la marge.'));
-    }
+    zone.append(el('h2', 'titre-section', 'Matchups'));
     const colonnes = el('div', 'matchups-colonnes');
-    [['perd', 'Le battent le plus', (x) => x.ecart < 0], ['bat', h.nom + ' les bat le plus', (x) => x.ecart > 0]].forEach((c) => {
-      const col = el('section', 'panneau');
+    [['perd', 'Le battent', (x) => x.ecart < 0], ['bat', h.nom + ' les bat', (x) => x.ecart > 0]].forEach((c) => {
+      const col = el('section', 'bloc');
       col.append(el('h3', null, c[1]));
-      const ul = el('ul', 'matchups-liste');
-      m[c[0]].filter(c[2]).slice(0, NB_MATCHUPS).forEach((x) => ul.append(ligneMatchup(x, c[0])));
-      col.append(ul);
+      const surs = m[c[0]].filter((x) => c[2](x) && Math.abs(x.ecart) > x.marge).slice(0, NB_MATCHUPS);
+      if (!surs.length) col.append(el('p', 'vide', 'Aucun écart sûr dans cette tranche.'));
+      else {
+        const ul = el('ul', 'matchups-liste');
+        surs.forEach((x) => ul.append(ligneMatchup(x, c[0])));
+        col.append(ul);
+      }
       colonnes.append(col);
     });
-    zone.append(colonnes);
+    zone.append(colonnes, el('p', 'source', 'Statistiques ' + DLN.LIBELLES_TRANCHE[DLN.tranche()] + ' depuis le ' + D.details.meta.depuis +
+      '. Écart = winrate réel contre ce héros moins le winrate attendu d\'après la force des deux ; seuls les écarts plus grands que la marge d\'erreur sont montrés (' +
+      (m.signaux || 0) + ' sur ' + m.adversaires + '). Ce qu\'il faut acheter contre lui est dans « Le contrer ».'));
     return zone;
   }
 
@@ -924,14 +957,14 @@
     if (!liste.length) zone.append(el('p', 'vide', 'Pas de changement pour ' + h.nom + ' dans les patchs résumés (' +
       D.patch.patchs.map((p) => p.titre).join(', ') + ').'));
     liste.forEach((x) => {
-      const c = el('div', 'patch-ligne ' + (x.sens[0] || ''));
+      const c = el('section', 'bloc patch-ligne');
       const t = el('h3', null, null);
       const a = el('a', null, x.p.titre);
       a.href = x.p.lien;
       a.target = '_blank';
       a.rel = 'noopener';
       t.append(a);
-      x.sens.forEach((s) => t.append(el('span', 'marque', SENS[s])));
+      x.sens.forEach((s) => t.append(el('span', 'marque sens-' + s, SENS[s])));
       c.append(t, el('span', 'aide', new Date(x.p.date + 'T12:00:00').toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })));
       if (x.lignes.length) {
         const ul = el('ul', 'liste-points');
@@ -1007,6 +1040,10 @@
       if (e.key !== 'Enter') return;
       const premier = document.querySelector('#liste .heros-case');
       if (premier) premier.click();
+    });
+    document.getElementById('tous-heros').addEventListener('click', (e) => {
+      const ouverte = document.querySelector('.choix-colonne').classList.toggle('ouverte');
+      e.currentTarget.setAttribute('aria-expanded', String(ouverte));
     });
     window.addEventListener('hashchange', () => { lireAdresse(); afficher(); });
     afficher();

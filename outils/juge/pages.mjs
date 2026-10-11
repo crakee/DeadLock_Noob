@@ -19,7 +19,7 @@ const PORT = 8766;
 const PAGES = {
   index: 'index.html', heros: 'heros.html#h=13', counters: 'counters.html', parcours: 'parcours.html',
   memo: 'memo.html', roles: 'roles.html', carte: 'carte.html', objets: 'objets.html',
-  'mes-parties': 'mes-parties.html', patch: 'patch.html'
+  'mes-parties': 'mes-parties.html', patch: 'patch.html', tiers: 'tiers.html'
 };
 const FORMATS = {
   bureau: { width: 1440, height: 900 },

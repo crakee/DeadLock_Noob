@@ -5,7 +5,7 @@
 
   const el = DLN.el;
   const NB_META = 8;
-  const LIBELLES_TYPE = { majeur: 'majeur', equilibrage: 'équilibrage', correctif: 'correctif' };
+  const LIBELLES_TYPE = { majeur: 'majeur', equilibrage: 'équilibrage', correctif: 'correctif', heros: 'nouveau héros' };
   const LIBELLES_SENS = { buffs: 'Renforcés', nerfs: 'Affaiblis', ajustes: 'Ajustés', corriges: 'Bugs corrigés' };
 
   let patch = null, stats = null, heros = null, profil = null;

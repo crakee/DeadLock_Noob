@@ -1,0 +1,34 @@
+/* Tier list : une rangée par tier, la lettre en grand à gauche, les portraits à droite. */
+.page-tiers { grid-template-columns: minmax(0, 1fr); max-width: 80rem; }
+.tiers-tete { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1.5rem; }
+.tiers-tete h1 { margin: 0; font-size: var(--t-xxl); color: var(--or-clair); }
+.tiers-tranches { display: flex; flex-wrap: wrap; gap: .2rem; border-bottom: 1px solid var(--bord); }
+.tiers-tranche { min-height: 2.75rem; padding: .4rem .9rem; font: inherit; font-family: var(--titre); letter-spacing: .04em; color: var(--doux); background: none; border: 0; border-bottom: 2px solid transparent; margin-bottom: -1px; cursor: pointer; }
+.tiers-tranche:hover { color: var(--texte); }
+.tiers-tranche[aria-selected="true"] { color: var(--or-clair); border-bottom-color: var(--or); }
+.tiers { display: flex; flex-direction: column; }
+.tier-ligne { --tier: var(--doux); display: grid; grid-template-columns: 7rem minmax(0, 1fr); gap: 1rem; align-items: start; padding: .9rem 0; border-top: 1px solid var(--bord); }
+.tier-S { --tier: var(--or-clair); }
+.tier-A { --tier: var(--or); }
+.tier-C { --tier: var(--doux); }
+.tier-D { --tier: var(--danger); }
+.tier-tete { display: flex; flex-direction: column; }
+.tier-lettre { font-family: var(--titre); font-size: var(--t-chiffre); font-weight: 600; line-height: .9; color: var(--tier); }
+.tier-libelle { font-size: var(--t-xs); color: var(--doux); }
+.tier-heros { display: grid; grid-template-columns: repeat(auto-fill, minmax(5.2rem, 1fr)); gap: .5rem; }
+.tier-case { position: relative; display: flex; flex-direction: column; align-items: center; gap: .1rem; padding: .3rem .2rem; color: var(--texte); text-decoration: none; border: 2px solid transparent; border-radius: var(--r-m); }
+.tier-case:hover { background: var(--panneau-2); }
+.tier-case img { width: 3.5rem; height: 3.5rem; object-fit: cover; border-radius: var(--r-s); }
+.tier-case.mien img { box-shadow: 0 0 0 2px var(--or); }
+.tier-nom { max-width: 100%; font-size: var(--t-s); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tier-wr { font-family: var(--titre); font-size: var(--t-s); color: var(--doux); font-variant-numeric: tabular-nums; }
+.tier-nouveau { position: absolute; top: 0; right: 0; padding: 0 .3em; font-size: var(--t-xs); color: var(--fond); background: var(--or); border-radius: var(--r-s); }
+.tier-vide { color: var(--doux); font-size: var(--t-s); }
+.tiers-source { max-width: 75ch; margin: 0; font-size: var(--t-xs); color: var(--doux); }
+@media (max-width: 600px) {
+  .tier-ligne { grid-template-columns: 3.2rem minmax(0, 1fr); gap: .6rem; }
+  .tier-libelle { display: none; }
+  .tier-lettre { font-size: var(--t-xxl); }
+  .tier-heros { grid-template-columns: repeat(auto-fill, minmax(4.4rem, 1fr)); }
+  .tier-case img { width: 3rem; height: 3rem; }
+}
