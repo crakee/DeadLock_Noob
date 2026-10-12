@@ -80,6 +80,7 @@
     colonnes.forEach((c, i) => { c.hidden = i >= o.colonnes.length; });
     Object.keys(ONGLETS).forEach((k) => document.body.classList.toggle('onglet-' + k, k === affichage.onglet));
     document.querySelectorAll('.onglet-partie').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.onglet === affichage.onglet)));
+    if (DLN.disposition) DLN.disposition.appliquer(affichage.onglet);
     window.dispatchEvent(new Event('resize'));
     tourner();
     if (affichage.onglet === 'jeu') dessinerObjectifs();

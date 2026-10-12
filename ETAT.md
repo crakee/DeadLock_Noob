@@ -2,7 +2,7 @@
 type: etat
 projet: DeadLock Noob
 depot: DeadLock_Noob
-maj: 2026-10-11
+maj: 2026-10-12
 ---
 # DeadLock Noob — état des lieux
 
@@ -60,6 +60,8 @@ Ensuite : Essayer le site pendant de vraies parties (second écran 1080p et tél
 - Fiche héros : la liste garde les doublons (héros étiquetés en tête ET dans leur rôle), décision du 2026-10-11.
 
 ## Journal
+- 2026-10-12 — En partie : infobulle au survol de la carte (nom, état, à quoi ça sert, comment s'en servir, d'après `data/map-elements.json`) ; disposition réglable par onglet (poignées entre colonnes et panneaux, `dln.partie.tailles.v1`, double-clic = origine, `js/disposition.js`) ; site publié.
+- 2026-10-11 — Profil joueur compilé (Steam public + tous les endpoints joueurs de deadlock-api) dans la note Obsidian « Mon profil joueur » ; ingestion active (dernier envoi le 10/10), aucune partie jouée depuis le 06/10 ; l'historique (58 parties) n'est toujours pas rattrapé (14 dans l'API).
 - 2026-10-11 — Refonte tour 3 : sons audibles et distincts, alertes regroupées, grand bloc stable, Attente figée à la mort, estimateur sans verdict avant saisie ; En partie validée par les deux juges ; site publié.
 - 2026-10-11 — Refonte tours 1-2 : système commun (7 tailles, icônes SVG), En partie (objectif fixe, carte avec les temps dessus et bouton Retourner, recherche de héros), onglet Attente avec estimateur de souls ; `data/souls.json` à générer (`--seulement souls`, DNS en panne le 2026-10-11).
 - 2026-10-11 — Import de builds du jeu (numéro, lien ou nom) suivi par le coach ; juge anti-slop (`juge-slop`) et outil de mesure des pages ; règle : rythme permis pour le pic de puissance.

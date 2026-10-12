@@ -671,3 +671,27 @@ body.onglet-jeu #avenir > li[data-vue] { transition: border-color var(--duree), 
   /* « À venir » réserve sa hauteur avant l'arrivée des objectifs (sinon le coach saute de 240 px au chargement). */
   body.onglet-jeu [data-panneau="avenir"] { min-height: 16.5rem; }
 }
+
+/* ---------- carte : infobulle au survol (js/carte-mini.js) ---------- */
+.carte-partie-zone.survol { cursor: help; }
+.carte-bulle { position: absolute; z-index: 5; width: max-content; max-width: min(20rem, 90%); display: flex; flex-direction: column; gap: .2rem; padding: .5rem .7rem; background: var(--panneau-2); border: 1px solid var(--bord-fort); border-radius: var(--r-m); box-shadow: 0 8px 24px rgba(0, 0, 0, .5); font-size: var(--t-s); line-height: 1.35; pointer-events: none; }
+.carte-bulle[hidden] { display: none; }
+.carte-bulle p { margin: 0; }
+.carte-bulle-titre { font-family: var(--titre); font-size: var(--t-m); color: var(--or-clair); letter-spacing: .03em; }
+.carte-bulle-etat { font-variant-numeric: tabular-nums; color: var(--action); font-weight: 600; }
+.carte-bulle-comment { color: var(--doux); }
+.carte-bulle-note { color: var(--doux); font-style: italic; }
+
+/* ---------- disposition réglable (js/disposition.js) ---------- */
+.poignee { flex: none; position: relative; z-index: 3; touch-action: none; }
+.poignee-x { width: .7rem; margin: 0 -.7rem; cursor: col-resize; }
+.poignee-y { height: .7rem; margin: -.7rem 0; cursor: row-resize; }
+.poignee::after { content: ""; position: absolute; border-radius: 2px; background: var(--or); opacity: 0; transition: opacity .15s; }
+.poignee-x::after { top: 0; bottom: 0; left: calc(50% - 1.5px); width: 3px; }
+.poignee-y::after { left: 0; right: 0; top: calc(50% - 1.5px); height: 3px; }
+.poignee:hover::after, body.redimension .poignee:active::after { opacity: .7; }
+body.redimension { user-select: none; }
+body.redimension-x { cursor: col-resize; }
+body.redimension-y { cursor: row-resize; }
+/* Un panneau agrandi à la main n'est plus plafonné. */
+.col > section[style*="flex"] { max-height: none !important; }

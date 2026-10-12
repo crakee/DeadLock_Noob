@@ -180,6 +180,11 @@
     carte.couches.forEach((c) => { parId[c.id] = c; });
     const evParId = {};
     timeline.evenements.forEach((e) => { evParId[e.id] = e; });
+    // Fiche de chaque couche (data/map-elements.json) : « comment s'en servir », montré au survol.
+    const fiches = {};
+    ((donnees.fiches || {}).elements || []).forEach((f) => {
+      String(f.couche_carte || '').split(',').map((x) => x.trim()).filter(Boolean).forEach((id) => { if (!fiches[id]) fiches[id] = f; });
+    });
     const toutes = [];
     GROUPES.forEach((g) => g.couches.forEach((c) => { if (parId[c.id]) toutes.push(c); }));
 
@@ -228,7 +233,11 @@
     retourner.append(DLN.icone('flip-vertical-2'), el('span', null, 'Retourner'));
     retourner.title = 'Mettre ta base en bas : retourne la carte si tu joues de l\'autre côté (' + EQUIPES[0].nom + ' / ' + EQUIPES[1].nom + ')';
     retourner.addEventListener('click', () => { regleEquipe(1 - equipe()); retourner.blur(); });
-    cadre.append(zone, retourner);
+    // Infobulle : posée dans le cadre (hors de la zone qui pivote), elle survit au redessin de chaque seconde.
+    const bulle = el('div', 'carte-bulle');
+    bulle.hidden = true;
+    bulle.setAttribute('role', 'tooltip');
+    cadre.append(zone, retourner, bulle);
     const image = el('img');
     image.alt = 'Minimap';
     const svg = svgEl('svg', { viewBox: '0 0 ' + T + ' ' + T, preserveAspectRatio: 'none', 'aria-label': 'Carte et objectifs' });
@@ -306,6 +315,7 @@
       const src = reglage.tunnels && carte.image_tunnels ? carte.image_tunnels : carte.image;
       if (image.getAttribute('src') !== src) image.src = src;
       svg.textContent = '';
+      cibles = [];
       const filtreCote = jungleDeMaLane();
 
       // 1. Couches visibles et état de leur objectif.
@@ -350,10 +360,7 @@
           if (!couleur) couleur = (EQUIPES[el2.equipe] && EQUIPES[el2.equipe].couleur) || '#ffffff';
           if (e.st.etat === 'maintenant' || e.st.etat === 'bientot') g.append(svgEl('circle', { cx: px, cy: py, r: r + 10, class: 'mini-halo', stroke: couleur }));
           const m = forme(f, px, py, r, peinture(couleur, e.st.etat));
-          const titre = svgEl('title');
-          titre.textContent = c.nom + (el2.type && c.id !== 'structures' ? ' · ' + el2.type : '') + (c.id === 'structures' ? ' · ' + el2.type + (el2.equipe === mienne ? ' (ton équipe)' : ' (en face)') : '') +
-            (e.ev ? ' · ' + texteEtat(e.st, e.ev, t, chrono.lance) : '') + (el2.approximatif ? ' · position approximative' : '');
-          m.append(titre);
+          cibles.push({ x: px, y: py, r: r, cle: c.id + ':' + px + ':' + py, info: () => infoElement(c, e, el2, mienne, t, chrono.lance) });
           g.append(m);
           if (lettre && r >= 8) g.append(texte(px, py + 1, lettre, 'mini-lettre', { 'font-size': Math.round(r * 1.3) }));
           if (e.ev) {
@@ -387,12 +394,11 @@
         gp.append(svgEl('rect', { x: p.x - largeur / 2, y: p.y - hauteur / 2, width: largeur, height: hauteur, rx: hauteur / 2 }));
         const tx = svgEl('text', { x: p.x, y: p.y + 1 });
         tx.textContent = p.texte;
-        const titre = svgEl('title');
-        titre.textContent = p.nom + ' · ' + p.texte;
-        gp.append(tx, titre);
+        gp.append(tx);
         couche.append(gp);
       });
       svg.append(couche);
+      if (survol) montrerBulle();
 
       // 4. Légende : cases, état de chaque objectif, numéro.
       toutes.forEach((c) => {
@@ -420,6 +426,64 @@
       bTunnels.setAttribute('aria-pressed', String(Boolean(reglage.tunnels)));
     }
 
+    // ---------- survol : l'élément le plus proche du pointeur, avec une marge pour les petits points ----------
+    function infoElement(c, e, el2, mienne, t, lance) {
+      const couche = e.couche;
+      let titre = c.nom;
+      if (c.id === 'structures') titre = el2.type + (el2.equipe === mienne ? ' · ton équipe' : ' · en face');
+      else if (c.id === 'shops') titre = el2.type === 'secret' ? 'Shop secret' : el2.type === 'base' ? 'Shop de base' : 'Shop de lane';
+      const etat = e.ev ? texteEtat(e.st, e.ev, t, lance) : '';
+      const fiche = fiches[c.id];
+      return {
+        titre: titre,
+        etat: etat ? String(etat) : '',
+        quoi: couche.a_quoi_ca_sert || '',
+        comment: fiche && fiche.comment && fiche.comment !== couche.a_quoi_ca_sert ? fiche.comment : '',
+        approx: Boolean(el2.approximatif)
+      };
+    }
+    let cibles = [];
+    let survol = null;        // { cle, cx, cy } : élément survolé et position du pointeur dans le cadre
+    function pointeurCarte(ev) {
+      const b = zone.getBoundingClientRect();
+      let x = (ev.clientX - b.left) / b.width * T, y = (ev.clientY - b.top) / b.height * T;
+      if (equipe() === 1) { x = T - x; y = T - y; }
+      return { x: x, y: y, echelle: T / b.width };
+    }
+    function montrerBulle() {
+      const cible = cibles.find((k) => k.cle === survol.cle);
+      if (!cible) { cacherBulle(); return; }
+      const i = cible.info();
+      bulle.textContent = '';
+      bulle.append(el('strong', 'carte-bulle-titre', i.titre));
+      if (i.etat) bulle.append(el('span', 'carte-bulle-etat', i.etat));
+      if (i.quoi) bulle.append(el('p', null, i.quoi));
+      if (i.comment) bulle.append(el('p', 'carte-bulle-comment', i.comment));
+      if (i.approx) bulle.append(el('p', 'carte-bulle-note', 'Position approximative'));
+      bulle.hidden = false;
+      // À droite du pointeur, ou à gauche s'il est dans la moitié droite ; idem en hauteur.
+      const lc = cadre.clientWidth, hc = cadre.clientHeight;
+      bulle.style.left = bulle.style.right = bulle.style.top = bulle.style.bottom = '';
+      if (survol.cx > lc / 2) bulle.style.right = (lc - survol.cx + 14) + 'px'; else bulle.style.left = (survol.cx + 14) + 'px';
+      if (survol.cy > hc / 2) bulle.style.bottom = (hc - survol.cy + 14) + 'px'; else bulle.style.top = (survol.cy + 14) + 'px';
+    }
+    function cacherBulle() { survol = null; bulle.hidden = true; zone.classList.remove('survol'); }
+    zone.addEventListener('pointermove', (ev) => {
+      const p = pointeurCarte(ev);
+      const marge = 12 * p.echelle;   // 12 px d'écran autour de chaque point
+      let mieux = null, dMieux = Infinity;
+      cibles.forEach((k) => {
+        const d = Math.hypot(k.x - p.x, k.y - p.y) - k.r;
+        if (d < marge && d < dMieux) { mieux = k; dMieux = d; }
+      });
+      if (!mieux) { cacherBulle(); return; }
+      const b = cadre.getBoundingClientRect();
+      survol = { cle: mieux.cle, cx: ev.clientX - b.left, cy: ev.clientY - b.top };
+      zone.classList.add('survol');
+      montrerBulle();
+    });
+    zone.addEventListener('pointerleave', cacherBulle);
+
     dessiner();
     setInterval(dessiner, 1000);
     DLN.surNiveau(dessiner);
@@ -437,8 +501,9 @@
   // Sur la page En partie : remplit #carte-partie s'il existe.
   const cible = document.getElementById('carte-partie');
   if (cible) {
-    Promise.all([DLN.charger('data/map.json'), DLN.charger('data/timeline.json'), DLN.charger('data/niveaux.json').catch(() => null)])
-      .then((r) => creer(cible, { carte: r[0], timeline: r[1], niveaux: r[2] }))
+    Promise.all([DLN.charger('data/map.json'), DLN.charger('data/timeline.json'), DLN.charger('data/niveaux.json').catch(() => null),
+      DLN.charger('data/map-elements.json').catch(() => null)])
+      .then((r) => creer(cible, { carte: r[0], timeline: r[1], niveaux: r[2], fiches: r[3] }))
       .catch(() => { cible.append(el('p', 'vide', 'Carte indisponible (data/map.json).')); });
   }
 })();

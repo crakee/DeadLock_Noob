@@ -1,13 +1,13 @@
 // Service worker : rend le site installable et utilisable hors ligne.
 // Réseau d'abord pour tout (pages, CSS, JS, données) : le site change à chaque patch, on ne sert le
 // cache que si le réseau est indisponible. Changer VERSION vide les anciens caches à l'activation.
-const VERSION = 'dln-v11';
+const VERSION = 'dln-v12';
 const ESSENTIEL = [
   './', './index.html', './manifest.webmanifest',
   './css/style.css', './css/partie.css', './css/etiquettes.css',
-  './js/commun.js', './js/sons.js', './js/voix.js', './data/voix.json', './js/timeline.js', './js/enface.js', './js/etiquettes.js', './js/partie.js', './js/coach-etat.js', './js/builds-perso.js', './js/coach.js', './data/items.json', './data/coach.json', './data/rappels.json', './data/lecons.json', './data/textes/fr/lecons.json', './data/achats.json', './js/carte-mini.js',
+  './js/commun.js', './js/sons.js', './js/voix.js', './data/voix.json', './js/timeline.js', './js/enface.js', './js/etiquettes.js', './js/disposition.js', './js/partie.js', './js/coach-etat.js', './js/builds-perso.js', './js/coach.js', './data/items.json', './data/coach.json', './data/rappels.json', './data/lecons.json', './data/textes/fr/lecons.json', './data/achats.json', './js/carte-mini.js',
   './data/timeline.json', './data/niveaux.json', './data/profil.json', './data/heroes.json', './data/roles.json',
-  './data/conseils-roles.json', './data/heros-details.json', './data/map.json', './data/counters.json', './data/items.json',
+  './data/conseils-roles.json', './data/heros-details.json', './data/map.json', './data/map-elements.json', './data/counters.json', './data/items.json',
   './data/tempo.json', './data/reapparition.json', './icones/icone-192.png', './icones/lucide.svg',
   './sons/tic-bois-grave.mp3', './sons/tic-clavier-grave.mp3', './sons/tic-ludique-grave.mp3',
   './voix/nom-small-camps.mp3', './voix/nom-medium-camps.mp3', './voix/nom-large-camps.mp3', './voix/nom-sinner-s-sacrifice.mp3',
