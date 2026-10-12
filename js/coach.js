@@ -7,7 +7,10 @@
 // Profil du joueur (dln.coach.profil.v1, écrit par Progression) : zones de la partie où il meurt le plus,
 // rappels plus fréquents sur ses points faibles, aucun sur ses points forts, rappel des parties longues.
 // Chrono à zéro : écran « Avant la partie » (focus, profil, dernière partie, débrief attendu après « Partie finie »).
-// Onglet Mort : la leçon de son type de mort le plus fréquent. Expose DLN.coach.texteObjectif pour la liste des objectifs.
+// Onglet Mort : la leçon de son type de mort le plus fréquent.
+// Bloc « Repères » (réglages `reperes` de data/rappels.json), une ligne de chaque qui tourne : souls moyennes
+// de ton héros au prochain palier (data/souls.json), astuce contre un héros d'en face (data/counters.json),
+// réflexe visé sur tes points faibles, conseil de ton héros (data/armes-conseils.json, rythme de data/tempo.json). Expose DLN.coach.texteObjectif pour la liste des objectifs.
 (function () {
   'use strict';
 
@@ -37,6 +40,8 @@
   };
 
   let C = null, timeline = null, conseils = null, niveaux = null, achats = null, tempo = null, heros = null, rappels = null, lecons = [];
+  let souls = null, counters = null, armes = null;
+  const CLE_ENFACE = 'dln.counters.choisis.v1';
 
   const fmt = (s) => { s = Math.max(0, Math.round(s)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); };
   const nomCourt = (ev) => ev.nom.split(' (')[0];
@@ -282,10 +287,11 @@
     z.avant = el('div', 'coach-avant');
     z.risque = el('div', 'coach-risque');
     z.rappel = el('div', 'coach-rappel');
+    z.reperes = el('ul', 'coach-reperes');
     z.prochains = el('ol', 'coach-prochains');
     z.prochainsTitre = el('h3', 'coach-prochains-titre', T({ fr: 'Tes prochains achats', en: 'Your next items' }));
     z.difficultes = el('details', 'coach-difficultes');
-    zone.append(tete, carte, z.avant, z.risque, z.rappel, z.prochainsTitre, z.prochains, z.difficultes);
+    zone.append(tete, carte, z.avant, z.risque, z.rappel, z.reperes, z.prochainsTitre, z.prochains, z.difficultes);
     construireDifficultes();
   }
 
@@ -345,6 +351,99 @@
     const lien = el('a', 'coach-rappel-titre', titre);
     lien.href = 'parcours.html#l=' + encodeURIComponent(l.id);
     z.rappel.append(lien, el('span', 'coach-rappel-texte', (!focusActif && m.avant ? m.avant : '') + l.en_partie.rappel));
+  }
+
+  // ---------- repères : souls, contre eux, réflexe, ton héros ----------
+
+  const tourner = (liste, t, toutes) => (liste.length ? liste[Math.floor(t / toutes) % liste.length] : null);
+  const libelleTranche = (tr) => (DLN.LIBELLES_TRANCHE && DLN.LIBELLES_TRANCHE[tr]) || tr;
+
+  // Valeur nette moyenne des joueurs de ton héros au prochain palier (au moins 20 s devant).
+  function repereSouls(r) {
+    const id = r.x.heros;
+    if (!id || !souls) return null;
+    let tr = DLN.tranche();
+    let pts = (souls.tranches[tr] || {})[String(id)];
+    if (!pts) { tr = 'tous'; pts = (souls.tranches.tous || {})[String(id)]; }
+    const p = pts && pts.find((q) => q[0] >= r.t + 20);
+    if (!p) return null;
+    const v = DLN.fmtNombre(Math.round(p[1] / 100) * 100);
+    return {
+      cle: 'souls', label: T({ fr: 'Souls', en: 'Souls' }),
+      texte: T({ fr: 'À ' + fmt(p[0]) + ', un ' + nomHeros(id) + ' a ≈ ' + v + ' souls en moyenne. Compare aux tiennes.',
+        en: 'At ' + fmt(p[0]) + ', a ' + nomHeros(id) + ' has ≈ ' + v + ' souls on average. Compare with yours.' }),
+      source: libelleTranche(tr) + T({ fr: ', depuis le ', en: ', since ' }) + souls.meta.depuis
+    };
+  }
+
+  // Une astuce contre un des héros d'en face choisis (compétences et astuces de data/counters.json).
+  function repereEnface(r) {
+    if (!counters) return null;
+    let ids = [];
+    try { ids = JSON.parse(localStorage.getItem(CLE_ENFACE)) || []; } catch (e) { ids = []; }
+    const astuces = [];
+    ids.forEach((id) => {
+      const h = counters.heros[String(id)];
+      if (!h) return;
+      (h.astuces || []).forEach((a) => astuces.push({ nom: h.nom, texte: a }));
+      (h.menaces || []).forEach((m) => { if (m.pourquoi) astuces.push({ nom: h.nom, texte: m.pourquoi + '.' }); });
+    });
+    const a = tourner(astuces, r.t, rappels.reperes.toutes_s.enface);
+    return a ? { cle: 'enface', label: T({ fr: 'Contre ', en: 'Vs ' }) + a.nom, texte: a.texte } : null;
+  }
+
+  // Réflexes : ceux de tes points faibles reviennent plus souvent, ceux de tes points forts sont retirés,
+  // celui que le rappel de difficulté affiche déjà est sauté.
+  function repereReflexe(r) {
+    const R = rappels.reperes;
+    const faibles = r.pr.ok ? (r.pr.p.faibles || []) : [];
+    const forts = r.pr.ok ? (r.pr.p.forts || []) : [];
+    const deja = r.rappel && r.rappel.l ? r.rappel.l.declencheur : null;
+    const actifs = R.reflexes.filter((x) => r.t >= x.de_s && (x.a_s == null || r.t <= x.a_s) &&
+      forts.indexOf(x.mesure) === -1 && !(x.mesure && x.mesure === deja));
+    const liste = [];
+    for (let k = 0; k < R.faible_poids; k++) actifs.forEach((x) => { if (k === 0 || faibles.indexOf(x.mesure) !== -1) liste.push(x); });
+    const x = tourner(liste, r.t, R.toutes_s.reflexe);
+    return x ? { cle: 'reflexe', label: faibles.indexOf(x.mesure) !== -1 ? T({ fr: 'Ton point faible', en: 'Your weak spot' }) : T({ fr: 'Réflexe', en: 'Habit' }), texte: T(x.texte) } : null;
+  }
+
+  // Ton héros : notes sur son arme et ses compétences, et son rythme (winrate selon la durée de la partie,
+  // statistique de ta tranche, montré seulement si l'écart dépasse la marge).
+  function repereHeros(r) {
+    const id = r.x.heros;
+    if (!id) return null;
+    const liste = ((armes && armes.notes[String(id)]) || []).map((n) => n.texte);
+    const tr = DLN.tranche();
+    const k = tempo && ((tempo.tranches[tr] || {})[String(id)] || (tempo.tranches.tous || {})[String(id)]);
+    const d = k && k.durees;
+    if (d && d.length >= 2) {
+      const court = d[0], long = d[d.length - 1];
+      const ecart = long.winrate - court.winrate;
+      const marge = Math.sqrt(court.marge * court.marge + long.marge * long.marge);
+      const pct = (x) => DLN.fmtNombre(Math.round(x.winrate)) + ' %';
+      if (Math.abs(ecart) > marge) {
+        liste.push(ecart > 0
+          ? T({ fr: 'Statistique : ' + nomHeros(id) + ' gagne plus quand la partie dure (' + pct(long) + ' après ' + long.de_min + ' min, ' + pct(court) + ' avant ' + court.a_min + ' min). Pas de panique si tu es en retard au début.',
+            en: 'Stat: ' + nomHeros(id) + ' wins more in long games (' + pct(long) + ' after ' + long.de_min + ' min, ' + pct(court) + ' before ' + court.a_min + ' min). Don\'t panic if you are behind early.' })
+          : T({ fr: 'Statistique : ' + nomHeros(id) + ' gagne plus quand la partie est courte (' + pct(court) + ' avant ' + court.a_min + ' min, ' + pct(long) + ' après ' + long.de_min + ' min). Profite de ton avance tôt.',
+            en: 'Stat: ' + nomHeros(id) + ' wins more in short games (' + pct(court) + ' before ' + court.a_min + ' min, ' + pct(long) + ' after ' + long.de_min + ' min). Use your early lead.' }));
+      }
+    }
+    const texte = tourner(liste, r.t, rappels.reperes.toutes_s.heros);
+    return texte ? { cle: 'heros', label: nomHeros(id), texte: texte } : null;
+  }
+
+  function dessinerReperes(r) {
+    z.reperes.textContent = '';
+    z.reperes.hidden = !r.c.lance || !rappels.reperes;
+    if (z.reperes.hidden) return;
+    [repereSouls(r), repereEnface(r), repereReflexe(r), repereHeros(r)].filter(Boolean).forEach((x) => {
+      const li = el('li', 'coach-repere repere-' + x.cle);
+      li.append(el('span', 'coach-repere-label', x.label), el('span', 'coach-repere-texte', x.texte));
+      if (x.source) li.title = x.source;
+      z.reperes.append(li);
+    });
+    z.reperes.hidden = !z.reperes.children.length;
   }
 
   // ---------- zones de mort : bande 0–45 min et rappel à l'approche ----------
@@ -589,6 +688,7 @@
     z.avant.hidden = !avant;
     dessinerRisque(r);
     dessinerRappel(r);
+    dessinerReperes(r);
     dessinerAttente(r.pr);
 
     z.prochains.textContent = '';
@@ -639,8 +739,11 @@
 
   Promise.all(['data/coach.json', 'data/timeline.json', 'data/conseils-roles.json', 'data/heroes.json', 'data/rappels.json'].map(DLN.charger)
     .concat([DLN.charger('data/niveaux.json').catch(() => null), DLN.charger('data/achats.json').catch(() => null),
-      DLN.charger('data/tempo.json').catch(() => null), DLN.coachEtat.lecons().catch(() => ({ lecons: [] }))])).then((r) => {
+      DLN.charger('data/tempo.json').catch(() => null), DLN.coachEtat.lecons().catch(() => ({ lecons: [] })),
+      DLN.charger('data/souls.json').catch(() => null), DLN.charger('data/counters.json').catch(() => null),
+      DLN.charger('data/armes-conseils.json').catch(() => null)])).then((r) => {
     C = r[0]; timeline = r[1]; conseils = r[2]; heros = r[3]; rappels = r[4]; niveaux = r[5]; achats = r[6]; tempo = r[7]; lecons = r[8].lecons;
+    souls = r[9]; counters = r[10]; armes = r[11];
     installerFin();
     dessiner();
     setInterval(dessiner, 1000);

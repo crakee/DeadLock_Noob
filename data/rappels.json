@@ -129,5 +129,87 @@
    "surpris": "minimap"
   }
  },
- "tenue_s": 120
+ "tenue_s": 120,
+ "reperes": {
+  "nature": "Avis de joueur : bloc « Repères » du coach (js/coach.js). Chaque ligne tourne toutes les `toutes_s` secondes. Les réflexes visent les points faibles du profil (dln.coach.profil.v1) : ils reviennent `faible_poids` fois plus souvent, et ceux des points forts disparaissent.",
+  "toutes_s": {
+   "souls": 30,
+   "enface": 40,
+   "reflexe": 45,
+   "heros": 50
+  },
+  "faible_poids": 3,
+  "reflexes": [
+   {
+    "id": "points",
+    "mesure": "points_dormants",
+    "de_s": 0,
+    "a_s": null,
+    "texte": {
+     "fr": "Un point de compétence à placer ? Regarde après chaque montée de niveau.",
+     "en": "An ability point to spend? Check after every level-up."
+    }
+   },
+   {
+    "id": "souls",
+    "mesure": "souls_dormantes",
+    "de_s": 120,
+    "a_s": null,
+    "texte": {
+     "fr": "Des souls en poche ? Achète au prochain shop plutôt que de les garder.",
+     "en": "Souls in your pocket? Buy at the next shop instead of holding them."
+    }
+   },
+   {
+    "id": "last_hit",
+    "mesure": "creeps_9",
+    "de_s": 0,
+    "a_s": 600,
+    "texte": {
+     "fr": "Last hit : c'est le dernier coup sur un Trooper qui donne ses souls.",
+     "en": "Last hit: the final blow on a Trooper is what gives its souls."
+    }
+   },
+   {
+    "id": "orbes",
+    "mesure": "orbes",
+    "de_s": 0,
+    "a_s": 600,
+    "texte": {
+     "fr": "Après ton dernier coup, tire sur l'orbe qui flotte : c'est l'autre moitié des souls.",
+     "en": "After your last hit, shoot the floating orb: it's the other half of the souls."
+    }
+   },
+   {
+    "id": "minimap",
+    "mesure": null,
+    "de_s": 60,
+    "a_s": null,
+    "texte": {
+     "fr": "Coup d'œil à la minimap : qui manque sur la carte ?",
+     "en": "Glance at the minimap: who is missing?"
+    }
+   },
+   {
+    "id": "vie",
+    "mesure": "engage_bas",
+    "de_s": 600,
+    "a_s": null,
+    "texte": {
+     "fr": "Moins de la moitié de ta vie ? Pas de combat : recule ou soigne-toi.",
+     "en": "Below half health? No fight: back off or heal."
+    }
+   },
+   {
+    "id": "seul",
+    "mesure": "isoles",
+    "de_s": 600,
+    "a_s": null,
+    "texte": {
+     "fr": "Où est ton équipe ? Ne pars pas seul du côté adverse.",
+     "en": "Where is your team? Don't go alone to the enemy side."
+    }
+   }
+  ]
+ }
 }

@@ -695,3 +695,13 @@ body.redimension-x { cursor: col-resize; }
 body.redimension-y { cursor: row-resize; }
 /* Un panneau agrandi à la main n'est plus plafonné. */
 .col > section[style*="flex"] { max-height: none !important; }
+
+/* ---------- coach : repères qui tournent (js/coach.js) ---------- */
+.coach-reperes { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .45rem; }
+.coach-reperes[hidden] { display: none; }
+.coach-repere { display: grid; grid-template-columns: 8.5rem minmax(0, 1fr); column-gap: .7rem; align-items: baseline; padding: .35rem .6rem; border-left: 3px solid var(--bord-fort); background: var(--fond-2); border-radius: 0 var(--r-s) var(--r-s) 0; }
+.coach-repere-label { font-family: var(--titre); text-transform: uppercase; letter-spacing: .05em; font-size: var(--t-s); color: var(--or-clair); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.coach-repere-texte { font-size: var(--t-m); line-height: 1.35; }
+.coach-repere.repere-souls .coach-repere-texte { font-variant-numeric: tabular-nums; }
+.coach-repere.repere-enface { border-left-color: var(--danger); }
+@media (max-width: 600px) { .coach-repere { grid-template-columns: 1fr; } }
